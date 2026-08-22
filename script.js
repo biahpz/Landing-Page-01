@@ -1,43 +1,61 @@
-/* =========================================
-   DREAM AMOR NO AR
-========================================= */
-
-
-/* ATIVAR JS */
-
 document.body.classList.add("js-ativo");
 
 
-/* =========================================
+/* ===============================
    LOADER
-========================================= */
+================================ */
 
 window.addEventListener("load", () => {
 
     const loader =
         document.getElementById("loader");
 
-
     setTimeout(() => {
 
         if (loader) {
-
             loader.classList.add("sumir");
-
         }
 
-    }, 1200);
+    }, 1100);
 
 });
 
 
-/* =========================================
-   MENU MOBILE
-========================================= */
+/* ===============================
+   TOAST
+================================ */
+
+const toast =
+    document.getElementById("toast");
+
+let timerToast;
+
+
+function mostrarToast(texto) {
+
+    if (!toast) return;
+
+    toast.textContent = texto;
+
+    toast.classList.add("mostrar");
+
+    clearTimeout(timerToast);
+
+    timerToast = setTimeout(() => {
+
+        toast.classList.remove("mostrar");
+
+    }, 2200);
+
+}
+
+
+/* ===============================
+   MENU
+================================ */
 
 const menuMobile =
     document.getElementById("menuMobile");
-
 
 const menu =
     document.getElementById("menu");
@@ -45,124 +63,133 @@ const menu =
 
 if (menuMobile && menu) {
 
-    menuMobile.addEventListener(
-        "click",
-        () => {
+    menuMobile.addEventListener("click", () => {
 
-            menu.classList.toggle("ativo");
+        menu.classList.toggle("ativo");
 
+        menuMobile.textContent =
+            menu.classList.contains("ativo")
+                ? "✕"
+                : "☰";
 
-            menuMobile.textContent =
-                menu.classList.contains("ativo")
-                    ? "✕"
-                    : "☰";
-
-        }
-    );
+    });
 
 
     document
         .querySelectorAll(".menu a")
         .forEach(link => {
 
-            link.addEventListener(
-                "click",
-                () => {
+            link.addEventListener("click", () => {
 
-                    menu.classList.remove("ativo");
+                menu.classList.remove("ativo");
 
-                    menuMobile.textContent = "☰";
+                menuMobile.textContent = "☰";
 
-                }
-            );
+            });
 
         });
 
 }
 
 
-/* =========================================
-   HEADER
-========================================= */
+/* ===============================
+   SCROLL
+================================ */
 
 const header =
     document.getElementById("header");
-
-
-function atualizarHeader() {
-
-    if (!header) return;
-
-
-    header.classList.toggle(
-        "scrolled",
-        window.scrollY > 40
-    );
-
-}
-
-
-window.addEventListener(
-    "scroll",
-    atualizarHeader
-);
-
-
-/* =========================================
-   BARRA DE PROGRESSO
-========================================= */
 
 const barraProgresso =
     document.getElementById(
         "barraProgresso"
     );
 
-
-function atualizarProgresso() {
-
-    if (!barraProgresso) return;
-
-
-    const alturaDocumento =
-
-        document.documentElement.scrollHeight
-
-        -
-
-        window.innerHeight;
+const voltarTopo =
+    document.getElementById(
+        "voltarTopo"
+    );
 
 
-    const porcentagem =
+function atualizarScroll() {
 
-        alturaDocumento > 0
-
-            ?
-
-            (
-                window.scrollY /
-                alturaDocumento
-            ) * 100
-
-            :
-
-            0;
+    const y =
+        window.scrollY;
 
 
-    barraProgresso.style.width =
-        porcentagem + "%";
+    if (header) {
+
+        header.classList.toggle(
+            "scrolled",
+            y > 40
+        );
+
+    }
+
+
+    if (voltarTopo) {
+
+        voltarTopo.classList.toggle(
+            "mostrar",
+            y > 600
+        );
+
+    }
+
+
+    if (barraProgresso) {
+
+        const total =
+            document.documentElement.scrollHeight
+            -
+            window.innerHeight;
+
+
+        const porcentagem =
+            total > 0
+                ? (y / total) * 100
+                : 0;
+
+
+        barraProgresso.style.width =
+            porcentagem + "%";
+
+    }
 
 }
 
 
 window.addEventListener(
     "scroll",
-    atualizarProgresso
+    atualizarScroll
 );
 
 
-/* =========================================
-   ANIMAÇÃO AO ROLAR
-========================================= */
+atualizarScroll();
+
+
+if (voltarTopo) {
+
+    voltarTopo.addEventListener(
+        "click",
+        () => {
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        }
+    );
+
+}
+
+
+/* ===============================
+   REVEAL
+================================ */
 
 const elementos =
     document.querySelectorAll(
@@ -172,7 +199,7 @@ const elementos =
 
 if ("IntersectionObserver" in window) {
 
-    const observador =
+    const observer =
         new IntersectionObserver(
 
             entradas => {
@@ -191,10 +218,9 @@ if ("IntersectionObserver" in window) {
                                 );
 
 
-                            observador
-                                .unobserve(
-                                    entrada.target
-                                );
+                            observer.unobserve(
+                                entrada.target
+                            );
 
                         }
 
@@ -204,7 +230,7 @@ if ("IntersectionObserver" in window) {
             },
 
             {
-                threshold: 0.08
+                threshold: .08
             }
 
         );
@@ -212,7 +238,7 @@ if ("IntersectionObserver" in window) {
 
     elementos.forEach(elemento => {
 
-        observador.observe(elemento);
+        observer.observe(elemento);
 
     });
 
@@ -220,16 +246,18 @@ if ("IntersectionObserver" in window) {
 
     elementos.forEach(elemento => {
 
-        elemento.classList.add("visivel");
+        elemento.classList.add(
+            "visivel"
+        );
 
     });
 
 }
 
 
-/* =========================================
+/* ===============================
    MEDIDORES
-========================================= */
+================================ */
 
 const medidores =
     document.querySelectorAll(
@@ -237,68 +265,53 @@ const medidores =
     );
 
 
-if ("IntersectionObserver" in window) {
+const observerMedidores =
+    new IntersectionObserver(
 
-    const observadorMedidores =
-        new IntersectionObserver(
+        entradas => {
 
-            entradas => {
+            entradas.forEach(
+                entrada => {
 
-                entradas.forEach(
-                    entrada => {
+                    if (
+                        entrada.isIntersecting
+                    ) {
 
-                        if (
-                            entrada.isIntersecting
-                        ) {
-
-                            const valor =
-                                entrada.target
-                                    .dataset
-                                    .valor;
-
-
+                        entrada.target
+                            .style
+                            .width =
                             entrada.target
-                                .style
-                                .width =
-                                valor + "%";
-
-                        }
+                                .dataset
+                                .valor
+                            +
+                            "%";
 
                     }
-                );
 
-            },
+                }
+            );
 
-            {
-                threshold: 0.3
-            }
+        },
 
-        );
+        {
+            threshold: .25
+        }
 
-
-    medidores.forEach(medidor => {
-
-        observadorMedidores.observe(
-            medidor
-        );
-
-    });
-
-} else {
-
-    medidores.forEach(medidor => {
-
-        medidor.style.width =
-            medidor.dataset.valor + "%";
-
-    });
-
-}
+    );
 
 
-/* =========================================
-   PARTÍCULAS
-========================================= */
+medidores.forEach(medidor => {
+
+    observerMedidores.observe(
+        medidor
+    );
+
+});
+
+
+/* ===============================
+   PARTÍCULAS FUNDO
+================================ */
 
 const particulas =
     document.getElementById(
@@ -315,57 +328,58 @@ function criarParticula() {
     if (!particulas) return;
 
 
-    const item =
+    const elemento =
         document.createElement(
             "span"
         );
 
 
-    item.className =
+    elemento.className =
         "particula";
 
 
-    item.textContent =
+    elemento.textContent =
         simbolos[
             Math.floor(
-                Math.random() *
+                Math.random()
+                *
                 simbolos.length
             )
         ];
 
 
-    item.style.left =
-        Math.random() *
-        100 +
-        "vw";
+    elemento.style.left =
+        Math.random() * 100 + "vw";
 
 
-    item.style.fontSize =
+    elemento.style.fontSize =
         (
-            9 +
-            Math.random() *
-            16
+            9
+            +
+            Math.random() * 16
         )
         +
         "px";
 
 
-    item.style.animationDuration =
+    elemento.style.animationDuration =
         (
-            8 +
-            Math.random() *
-            9
+            8
+            +
+            Math.random() * 9
         )
         +
         "s";
 
 
-    particulas.appendChild(item);
+    particulas.appendChild(
+        elemento
+    );
 
 
     setTimeout(() => {
 
-        item.remove();
+        elemento.remove();
 
     }, 18000);
 
@@ -374,25 +388,23 @@ function criarParticula() {
 
 setInterval(
     criarParticula,
-    900
+    1000
 );
 
 
-/* =========================================
-   EFEITO 3D FRASCO
-========================================= */
+/* ===============================
+   FRASCO 3D
+================================ */
 
 const heroProduto =
     document.getElementById(
         "heroProduto"
     );
 
-
 const frasco =
     document.getElementById(
         "frascoPrincipal"
     );
-
 
 const brilho =
     document.getElementById(
@@ -419,47 +431,38 @@ if (heroProduto && frasco) {
 
 
             const x =
-                evento.clientX -
+                evento.clientX
+                -
                 area.left;
 
 
             const y =
-                evento.clientY -
+                evento.clientY
+                -
                 area.top;
 
 
-            const centroX =
+            const cx =
                 area.width / 2;
 
 
-            const centroY =
+            const cy =
                 area.height / 2;
 
 
-            const rotacaoY =
-                (
-                    x -
-                    centroX
-                )
-                /
-                30;
+            const ry =
+                (x - cx) / 30;
 
 
-            const rotacaoX =
-                -(
-                    y -
-                    centroY
-                )
-                /
-                30;
+            const rx =
+                -(y - cy) / 30;
 
 
             frasco.style.transform =
                 `
                 perspective(900px)
-                rotateX(${rotacaoX}deg)
-                rotateY(${rotacaoY}deg)
-                translateY(-8px)
+                rotateX(${rx}deg)
+                rotateY(${ry}deg)
                 scale(1.03)
                 `;
 
@@ -467,15 +470,11 @@ if (heroProduto && frasco) {
             if (brilho) {
 
                 brilho.style.left =
-                    x -
-                    100 +
-                    "px";
+                    x - 100 + "px";
 
 
                 brilho.style.top =
-                    y -
-                    100 +
-                    "px";
+                    y - 100 + "px";
 
             }
 
@@ -496,51 +495,740 @@ if (heroProduto && frasco) {
 }
 
 
-/* =========================================
+/* ===============================
+   EFEITO SPRAY
+================================ */
+
+const botaoSpray =
+    document.getElementById(
+        "botaoSpray"
+    );
+
+const sprayArea =
+    document.getElementById(
+        "sprayArea"
+    );
+
+
+function fazerSpray() {
+
+    if (!sprayArea) return;
+
+
+    for (
+        let i = 0;
+        i < 28;
+        i++
+    ) {
+
+        const p =
+            document.createElement(
+                "span"
+            );
+
+
+        p.className =
+            "spray-particula";
+
+
+        const x =
+            (
+                Math.random() * 180
+            )
+            -
+            90;
+
+
+        const y =
+            -(
+                30
+                +
+                Math.random() * 150
+            );
+
+
+        p.style.setProperty(
+            "--x",
+            x + "px"
+        );
+
+
+        p.style.setProperty(
+            "--y",
+            y + "px"
+        );
+
+
+        p.style.animationDelay =
+            Math.random() * .15 + "s";
+
+
+        p.style.width =
+            (
+                3
+                +
+                Math.random() * 5
+            )
+            +
+            "px";
+
+
+        p.style.height =
+            p.style.width;
+
+
+        sprayArea.appendChild(p);
+
+
+        setTimeout(() => {
+
+            p.remove();
+
+        }, 1200);
+
+    }
+
+
+    mostrarToast(
+        "Dream Amor no Ar ✦"
+    );
+
+}
+
+
+if (botaoSpray) {
+
+    botaoSpray.addEventListener(
+        "click",
+        fazerSpray
+    );
+
+}
+
+
+/* ===============================
+   FAVORITOS
+================================ */
+
+const favoritar =
+    document.getElementById(
+        "favoritar"
+    );
+
+const favoritarModal =
+    document.getElementById(
+        "favoritarModal"
+    );
+
+
+function estaFavoritado() {
+
+    return (
+        localStorage.getItem(
+            "dreamFavorito"
+        )
+        ===
+        "sim"
+    );
+
+}
+
+
+function atualizarFavorito() {
+
+    const ativo =
+        estaFavoritado();
+
+
+    if (favoritar) {
+
+        favoritar.classList.toggle(
+            "favoritado",
+            ativo
+        );
+
+
+        favoritar.querySelector(
+            ".coracao-favorito"
+        ).textContent =
+            ativo
+                ? "♥"
+                : "♡";
+
+
+        favoritar.querySelector(
+            ".texto-favorito"
+        ).textContent =
+            ativo
+                ? "Favoritado"
+                : "Favoritar";
+
+    }
+
+
+    if (favoritarModal) {
+
+        favoritarModal.textContent =
+            ativo
+                ? "♥ Favoritado"
+                : "♡ Favoritar";
+
+    }
+
+}
+
+
+function alternarFavorito() {
+
+    const novoEstado =
+        !estaFavoritado();
+
+
+    localStorage.setItem(
+        "dreamFavorito",
+        novoEstado
+            ? "sim"
+            : "nao"
+    );
+
+
+    atualizarFavorito();
+
+
+    mostrarToast(
+        novoEstado
+            ? "Adicionado aos favoritos ♡"
+            : "Removido dos favoritos"
+    );
+
+}
+
+
+if (favoritar) {
+
+    favoritar.addEventListener(
+        "click",
+        alternarFavorito
+    );
+
+}
+
+
+if (favoritarModal) {
+
+    favoritarModal.addEventListener(
+        "click",
+        alternarFavorito
+    );
+
+}
+
+
+atualizarFavorito();
+
+
+/* ===============================
+   COMPARTILHAR
+================================ */
+
+const compartilhar =
+    document.getElementById(
+        "compartilhar"
+    );
+
+const compartilharModal =
+    document.getElementById(
+        "compartilharModal"
+    );
+
+
+async function compartilharSite() {
+
+    const dados = {
+
+        title:
+            "Dream Amor no Ar 350ml",
+
+        text:
+            "Conheça Dream Amor no Ar.",
+
+        url:
+            window.location.href
+
+    };
+
+
+    try {
+
+        if (navigator.share) {
+
+            await navigator.share(
+                dados
+            );
+
+        } else if (
+            navigator.clipboard
+        ) {
+
+            await navigator
+                .clipboard
+                .writeText(
+                    window.location.href
+                );
+
+
+            mostrarToast(
+                "Link copiado!"
+            );
+
+        } else {
+
+            const input =
+                document.createElement(
+                    "textarea"
+                );
+
+
+            input.value =
+                window.location.href;
+
+
+            document.body.appendChild(
+                input
+            );
+
+
+            input.select();
+
+
+            document.execCommand(
+                "copy"
+            );
+
+
+            input.remove();
+
+
+            mostrarToast(
+                "Link copiado!"
+            );
+
+        }
+
+    } catch (erro) {
+
+        console.log(
+            "Compartilhamento cancelado."
+        );
+
+    }
+
+}
+
+
+if (compartilhar) {
+
+    compartilhar.addEventListener(
+        "click",
+        compartilharSite
+    );
+
+}
+
+
+if (compartilharModal) {
+
+    compartilharModal.addEventListener(
+        "click",
+        compartilharSite
+    );
+
+}
+
+
+/* ===============================
+   MODAL PRODUTO
+================================ */
+
+const modalProduto =
+    document.getElementById(
+        "modalProduto"
+    );
+
+
+const abrirProduto =
+    document.querySelectorAll(
+        ".abrir-produto"
+    );
+
+
+function abrirModalProduto() {
+
+    if (!modalProduto) return;
+
+
+    modalProduto.classList.add(
+        "ativo"
+    );
+
+
+    modalProduto.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    document.body.classList.add(
+        "modal-aberto"
+    );
+
+}
+
+
+function fecharModalProduto() {
+
+    if (!modalProduto) return;
+
+
+    modalProduto.classList.remove(
+        "ativo"
+    );
+
+
+    modalProduto.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    document.body.classList.remove(
+        "modal-aberto"
+    );
+
+}
+
+
+abrirProduto.forEach(botao => {
+
+    botao.addEventListener(
+        "click",
+        abrirModalProduto
+    );
+
+});
+
+
+document
+    .querySelectorAll(
+        ".fechar-modal"
+    )
+    .forEach(botao => {
+
+        botao.addEventListener(
+            "click",
+            fecharModalProduto
+        );
+
+    });
+
+
+/* ===============================
+   NOTAS CLICÁVEIS
+================================ */
+
+const modalNota =
+    document.getElementById(
+        "modalNota"
+    );
+
+const notaTitulo =
+    document.getElementById(
+        "notaTitulo"
+    );
+
+const notaDescricao =
+    document.getElementById(
+        "notaDescricao"
+    );
+
+const notaIcone =
+    document.getElementById(
+        "notaIcone"
+    );
+
+
+const dadosNotas = {
+
+    bergamota: {
+        titulo:
+            "Bergamota",
+        icone:
+            "🍋",
+        descricao:
+            "Traz uma sensação cítrica, fresca e luminosa para a abertura da fragrância."
+    },
+
+    cassis: {
+        titulo:
+            "Cassis",
+        icone:
+            "🫐",
+        descricao:
+            "Uma nota frutada de perfil escuro, levemente ácido e marcante."
+    },
+
+    mandarina: {
+        titulo:
+            "Mandarina",
+        icone:
+            "🍊",
+        descricao:
+            "Adiciona um frescor cítrico mais doce e alegre."
+    },
+
+    maca: {
+        titulo:
+            "Maçã",
+        icone:
+            "🍎",
+        descricao:
+            "Contribui com um toque frutado fresco, suave e suculento."
+    },
+
+    rosa: {
+        titulo:
+            "Rosa",
+        icone:
+            "🌹",
+        descricao:
+            "Uma nota floral clássica que reforça o lado romântico e delicado."
+    },
+
+    lotus: {
+        titulo:
+            "Flor de Lótus",
+        icone:
+            "🌸",
+        descricao:
+            "Traz uma sensação floral leve, aquática e delicada."
+    },
+
+    freesia: {
+        titulo:
+            "Frésia",
+        icone:
+            "💐",
+        descricao:
+            "Uma flor de perfil fresco e luminoso que deixa o coração da fragrância mais leve."
+    },
+
+    pessego: {
+        titulo:
+            "Pêssego",
+        icone:
+            "🍑",
+        descricao:
+            "Adiciona uma faceta frutada macia, doce e confortável."
+    },
+
+    ambar: {
+        titulo:
+            "Âmbar",
+        icone:
+            "✨",
+        descricao:
+            "Traz calor e profundidade para a base da fragrância."
+    },
+
+    sandalo: {
+        titulo:
+            "Sândalo",
+        icone:
+            "🪵",
+        descricao:
+            "Uma nota amadeirada cremosa que aumenta a sensação de conforto."
+    },
+
+    baunilha: {
+        titulo:
+            "Baunilha",
+        icone:
+            "🤍",
+        descricao:
+            "Acrescenta um dulçor macio, envolvente e aconchegante."
+    },
+
+    musk: {
+        titulo:
+            "Musk",
+        icone:
+            "☁",
+        descricao:
+            "Ajuda a criar uma sensação limpa, macia e confortável na base."
+    }
+
+};
+
+
+function abrirNota(nome) {
+
+    const nota =
+        dadosNotas[nome];
+
+
+    if (
+        !nota ||
+        !modalNota
+    ) {
+        return;
+    }
+
+
+    notaTitulo.textContent =
+        nota.titulo;
+
+
+    notaDescricao.textContent =
+        nota.descricao;
+
+
+    notaIcone.textContent =
+        nota.icone;
+
+
+    modalNota.classList.add(
+        "ativo"
+    );
+
+
+    modalNota.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    document.body.classList.add(
+        "modal-aberto"
+    );
+
+}
+
+
+function fecharNota() {
+
+    if (!modalNota) return;
+
+
+    modalNota.classList.remove(
+        "ativo"
+    );
+
+
+    modalNota.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    document.body.classList.remove(
+        "modal-aberto"
+    );
+
+}
+
+
+document
+    .querySelectorAll(
+        ".nota-chip"
+    )
+    .forEach(chip => {
+
+        chip.addEventListener(
+            "click",
+            () => {
+
+                abrirNota(
+                    chip.dataset.nota
+                );
+
+            }
+        );
+
+    });
+
+
+document
+    .querySelectorAll(
+        ".fechar-nota"
+    )
+    .forEach(botao => {
+
+        botao.addEventListener(
+            "click",
+            fecharNota
+        );
+
+    });
+
+
+/* ESC fecha modal */
+
+document.addEventListener(
+    "keydown",
+    evento => {
+
+        if (
+            evento.key ===
+            "Escape"
+        ) {
+
+            fecharNota();
+
+            fecharModalProduto();
+
+        }
+
+    }
+);
+
+
+/* ===============================
    CARROSSEL
-========================================= */
+================================ */
 
 const carrossel =
     document.getElementById(
         "carrossel"
     );
 
+const slides =
+    document.querySelectorAll(
+        ".slide"
+    );
 
 const anterior =
     document.getElementById(
         "anterior"
     );
 
-
 const proximo =
     document.getElementById(
         "proximo"
     );
-
 
 const pontos =
     document.getElementById(
         "pontos"
     );
 
-
-const slides =
-    document.querySelectorAll(
-        ".slide"
-    );
-
-
 let slideAtual = 0;
+
+let autoCarrossel;
 
 
 function atualizarCarrossel() {
 
-    if (
-        !carrossel ||
-        slides.length === 0
-    ) {
-        return;
-    }
+    if (!carrossel) return;
 
 
     carrossel.style.transform =
@@ -556,7 +1244,8 @@ function atualizarCarrossel() {
 
                 ponto.classList.toggle(
                     "ativo",
-                    indice === slideAtual
+                    indice ===
+                    slideAtual
                 );
 
             }
@@ -574,12 +1263,6 @@ if (pontos) {
                 document.createElement(
                     "button"
                 );
-
-
-            ponto.setAttribute(
-                "aria-label",
-                `Ir para imagem ${indice + 1}`
-            );
 
 
             if (indice === 0) {
@@ -615,10 +1298,7 @@ if (pontos) {
 }
 
 
-if (
-    proximo &&
-    slides.length
-) {
+if (proximo) {
 
     proximo.addEventListener(
         "click",
@@ -641,10 +1321,7 @@ if (
 }
 
 
-if (
-    anterior &&
-    slides.length
-) {
+if (anterior) {
 
     anterior.addEventListener(
         "click",
@@ -653,7 +1330,8 @@ if (
             slideAtual =
                 (
                     slideAtual -
-                    1 +
+                    1
+                    +
                     slides.length
                 )
                 %
@@ -668,14 +1346,21 @@ if (
 }
 
 
-/* CARROSSEL AUTOMÁTICO */
+function iniciarCarrossel() {
 
-let carrosselAutomatico;
+    clearInterval(
+        autoCarrossel
+    );
 
 
-if (slides.length > 1) {
+    if (
+        slides.length <= 1
+    ) {
+        return;
+    }
 
-    carrosselAutomatico =
+
+    autoCarrossel =
         setInterval(
             () => {
 
@@ -698,37 +1383,40 @@ if (slides.length > 1) {
 }
 
 
-const carrosselArea =
+const areaCarrossel =
     document.querySelector(
         ".carrossel"
     );
 
 
-if (carrosselArea) {
+if (areaCarrossel) {
 
-    carrosselArea.addEventListener(
+    areaCarrossel.addEventListener(
         "mouseenter",
         () => {
 
-            if (
-                carrosselAutomatico
-            ) {
-
-                clearInterval(
-                    carrosselAutomatico
-                );
-
-            }
+            clearInterval(
+                autoCarrossel
+            );
 
         }
+    );
+
+
+    areaCarrossel.addEventListener(
+        "mouseleave",
+        iniciarCarrossel
     );
 
 }
 
 
-/* =========================================
+iniciarCarrossel();
+
+
+/* ===============================
    QUIZ
-========================================= */
+================================ */
 
 const quizCard =
     document.getElementById(
@@ -740,105 +1428,45 @@ let perguntaAtual = 0;
 
 
 const respostas = {
-
     romantico: 0,
-
     leve: 0,
-
     elegante: 0
-
 };
 
 
 const perguntas = [
 
     {
-
-        numero:
-            "01 / 03",
-
         pergunta:
             "Qual clima combina mais com você?",
 
         opcoes: [
-
-            [
-                "♡ Romântico",
-                "romantico"
-            ],
-
-            [
-                "☀ Leve",
-                "leve"
-            ],
-
-            [
-                "✦ Elegante",
-                "elegante"
-            ]
-
+            ["♡ Romântico", "romantico"],
+            ["☀ Leve", "leve"],
+            ["✦ Elegante", "elegante"]
         ]
-
     },
 
-
     {
-
-        numero:
-            "02 / 03",
-
         pergunta:
-            "Qual é seu momento favorito?",
+            "Qual momento você prefere?",
 
         opcoes: [
-
-            [
-                "♡ Um encontro",
-                "romantico"
-            ],
-
-            [
-                "☀ Depois do banho",
-                "leve"
-            ],
-
-            [
-                "☾ Sair à noite",
-                "elegante"
-            ]
-
+            ["♡ Um encontro", "romantico"],
+            ["☀ Depois do banho", "leve"],
+            ["☾ Sair à noite", "elegante"]
         ]
-
     },
 
-
     {
-
-        numero:
-            "03 / 03",
-
         pergunta:
             "Como você gosta de se sentir?",
 
         opcoes: [
-
-            [
-                "♡ Apaixonada",
-                "romantico"
-            ],
-
-            [
-                "☁ Confortável",
-                "leve"
-            ],
-
-            [
-                "✦ Marcante",
-                "elegante"
-            ]
-
+            ["♡ Apaixonada", "romantico"],
+            ["☁ Confortável", "leve"],
+            ["✦ Marcante", "elegante"]
         ]
-
     }
 
 ];
@@ -849,7 +1477,7 @@ function mostrarPergunta() {
     if (!quizCard) return;
 
 
-    const atual =
+    const pergunta =
         perguntas[
             perguntaAtual
         ];
@@ -859,26 +1487,22 @@ function mostrarPergunta() {
 
         <div>
 
-            <span
-                class="quiz-numero"
-            >
-                ${atual.numero}
+            <span class="quiz-numero">
+                0${perguntaAtual + 1} / 03
             </span>
 
             <h3>
-                ${atual.pergunta}
+                ${pergunta.pergunta}
             </h3>
 
-            <div
-                class="quiz-opcoes"
-            >
+            <div class="quiz-opcoes">
 
-                ${atual.opcoes
+                ${pergunta.opcoes
                     .map(
                         opcao => `
 
                             <button
-                                data-pontos="${opcao[1]}"
+                                data-resposta="${opcao[1]}"
                             >
                                 ${opcao[0]}
                             </button>
@@ -898,40 +1522,38 @@ function mostrarPergunta() {
         .querySelectorAll(
             ".quiz-opcoes button"
         )
-        .forEach(
-            botao => {
+        .forEach(botao => {
 
-                botao.addEventListener(
-                    "click",
-                    () => {
+            botao.addEventListener(
+                "click",
+                () => {
 
-                        respostas[
-                            botao.dataset.pontos
-                        ]++;
-
-
-                        perguntaAtual++;
+                    respostas[
+                        botao.dataset.resposta
+                    ]++;
 
 
-                        if (
-                            perguntaAtual
-                            <
-                            perguntas.length
-                        ) {
+                    perguntaAtual++;
 
-                            mostrarPergunta();
 
-                        } else {
+                    if (
+                        perguntaAtual
+                        <
+                        perguntas.length
+                    ) {
 
-                            mostrarResultado();
+                        mostrarPergunta();
 
-                        }
+                    } else {
+
+                        mostrarResultado();
 
                     }
-                );
 
-            }
-        );
+                }
+            );
+
+        });
 
 }
 
@@ -942,87 +1564,61 @@ function mostrarResultado() {
         "romantico";
 
 
-    if (
-        respostas.leve
-        >
-        respostas[resultado]
-    ) {
+    Object.keys(
+        respostas
+    )
+    .forEach(chave => {
 
-        resultado =
-            "leve";
+        if (
+            respostas[chave]
+            >
+            respostas[resultado]
+        ) {
 
-    }
+            resultado =
+                chave;
 
+        }
 
-    if (
-        respostas.elegante
-        >
-        respostas[resultado]
-    ) {
-
-        resultado =
-            "elegante";
-
-    }
+    });
 
 
-    const resultados = {
+    const dados = {
 
         romantico: {
-
-            icone:
-                "♡",
-
+            icone: "♡",
             titulo:
                 "Seu momento é Romântico",
-
             texto:
-                "Você combina com encontros, detalhes especiais e uma atmosfera cheia de amor."
-
+                "Você combina com detalhes especiais, encontros e uma atmosfera cheia de amor."
         },
-
 
         leve: {
-
-            icone:
-                "☀",
-
+            icone: "☀",
             titulo:
                 "Seu momento é Leve",
-
             texto:
                 "Você combina com dias tranquilos, pós-banho e aquela sensação confortável."
-
         },
 
-
         elegante: {
-
-            icone:
-                "✦",
-
+            icone: "✦",
             titulo:
                 "Seu momento é Elegante",
-
             texto:
-                "Você gosta de personalidade, presença e momentos em que cada detalhe faz diferença."
-
+                "Você gosta de personalidade, presença e momentos especiais."
         }
 
     };
 
 
     const r =
-        resultados[
-            resultado
-        ];
+        dados[resultado];
 
 
     quizCard.innerHTML = `
 
-        <div
-            class="quiz-resultado"
-        >
+        <div class="quiz-resultado">
 
             <span>
                 ${r.icone}
@@ -1048,160 +1644,81 @@ function mostrarResultado() {
     `;
 
 
-    const reiniciar =
-        document.getElementById(
+    document
+        .getElementById(
             "reiniciarQuiz"
-        );
-
-
-    if (reiniciar) {
-
-        reiniciar.addEventListener(
+        )
+        .addEventListener(
             "click",
-            reiniciarQuiz
+            () => {
+
+                perguntaAtual = 0;
+
+                respostas.romantico = 0;
+                respostas.leve = 0;
+                respostas.elegante = 0;
+
+                mostrarPergunta();
+
+            }
         );
 
-    }
-
 }
 
 
-function reiniciarQuiz() {
-
-    perguntaAtual = 0;
+mostrarPergunta();
 
 
-    respostas.romantico = 0;
-
-    respostas.leve = 0;
-
-    respostas.elegante = 0;
-
-
-    mostrarPergunta();
-
-}
-
-
-if (quizCard) {
-
-    mostrarPergunta();
-
-}
-
-
-/* =========================================
+/* ===============================
    FAQ
-========================================= */
+================================ */
 
 document
     .querySelectorAll(
         ".faq-pergunta"
     )
-    .forEach(
-        pergunta => {
+    .forEach(pergunta => {
 
-            pergunta.addEventListener(
-                "click",
-                () => {
+        pergunta.addEventListener(
+            "click",
+            () => {
 
-                    const item =
-                        pergunta.closest(
-                            ".faq-item"
-                        );
-
-
-                    if (!item) return;
+                const item =
+                    pergunta.closest(
+                        ".faq-item"
+                    );
 
 
-                    const estavaAberto =
-                        item.classList
-                            .contains(
-                                "ativo"
-                            );
-
-
-                    document
-                        .querySelectorAll(
-                            ".faq-item"
-                        )
-                        .forEach(
-                            outro => {
-
-                                outro.classList
-                                    .remove(
-                                        "ativo"
-                                    );
-
-                            }
-                        );
-
-
-                    if (!estavaAberto) {
-
-                        item.classList.add(
+                const aberto =
+                    item.classList
+                        .contains(
                             "ativo"
                         );
 
-                    }
+
+                document
+                    .querySelectorAll(
+                        ".faq-item"
+                    )
+                    .forEach(outro => {
+
+                        outro.classList
+                            .remove(
+                                "ativo"
+                            );
+
+                    });
+
+
+                if (!aberto) {
+
+                    item.classList.add(
+                        "ativo"
+                    );
 
                 }
-            );
 
-        }
-    );
-
-
-/* =========================================
-   VOLTAR AO TOPO
-========================================= */
-
-const voltarTopo =
-    document.getElementById(
-        "voltarTopo"
-    );
-
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        if (!voltarTopo) return;
-
-
-        voltarTopo.classList.toggle(
-            "mostrar",
-            window.scrollY > 600
+            }
         );
 
-    }
-);
-
-
-if (voltarTopo) {
-
-    voltarTopo.addEventListener(
-        "click",
-        () => {
-
-            window.scrollTo({
-
-                top: 0,
-
-                behavior: "smooth"
-
-            });
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   INICIAR
-========================================= */
-
-atualizarHeader();
-
-atualizarProgresso();
+    });

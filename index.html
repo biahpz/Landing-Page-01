@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta
@@ -23,7 +22,7 @@
 
 <body>
 
-    <!-- BARRA DE PROGRESSO -->
+    <!-- PROGRESSO -->
     <div class="progresso">
         <div id="barraProgresso"></div>
     </div>
@@ -42,9 +41,7 @@
                 Dream<span>.</span>
             </h1>
 
-            <p>
-                Amor no Ar
-            </p>
+            <p>Amor no Ar</p>
 
             <div class="loader-barra">
                 <div></div>
@@ -55,7 +52,7 @@
     </div>
 
 
-    <!-- PARTÍCULAS -->
+    <!-- PARTÍCULAS DO FUNDO -->
     <div
         class="particulas"
         id="particulas"
@@ -112,12 +109,11 @@
         </nav>
 
 
-        <a
-            href="#final"
-            class="botao-header"
+        <button
+            class="botao-header abrir-produto"
         >
             Conhecer
-        </a>
+        </button>
 
 
         <button
@@ -170,12 +166,11 @@
                         Descobrir o Dream
                     </a>
 
-                    <a
-                        href="#galeria"
-                        class="botao-secundario"
+                    <button
+                        class="botao-secundario abrir-produto"
                     >
-                        Ver galeria
-                    </a>
+                        Ver produto
+                    </button>
 
                 </div>
 
@@ -202,6 +197,7 @@
             </div>
 
 
+            <!-- FRASCO -->
             <div
                 class="hero-produto revelar"
                 id="heroProduto"
@@ -218,6 +214,14 @@
                     DREAM
                 </span>
 
+
+                <!-- partículas do spray -->
+                <div
+                    class="spray-area"
+                    id="sprayArea"
+                ></div>
+
+
                 <img
                     src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
                     alt="Dream Amor no Ar 350ml"
@@ -225,11 +229,20 @@
                     id="frascoPrincipal"
                 >
 
+
+                <button
+                    class="botao-spray"
+                    id="botaoSpray"
+                    aria-label="Borrifar perfume"
+                >
+                    ✦
+                    <span>Borrifar</span>
+                </button>
+
+
                 <div class="selo">
 
-                    <span>
-                        ♡
-                    </span>
+                    <span>♡</span>
 
                     <strong>
                         350
@@ -311,7 +324,7 @@
                     </p>
 
                     <p>
-                        Uma fragrância criada para acompanhar
+                        Uma fragrância para acompanhar
                         diferentes momentos do seu dia.
                     </p>
 
@@ -320,18 +333,11 @@
 
                         <div>
 
-                            <span>
-                                ✿
-                            </span>
+                            <span>✿</span>
 
                             <div>
-                                <strong>
-                                    Floral
-                                </strong>
-
-                                <p>
-                                    Delicado e romântico
-                                </p>
+                                <strong>Floral</strong>
+                                <p>Delicado e romântico</p>
                             </div>
 
                         </div>
@@ -339,18 +345,11 @@
 
                         <div>
 
-                            <span>
-                                ♡
-                            </span>
+                            <span>♡</span>
 
                             <div>
-                                <strong>
-                                    Dream
-                                </strong>
-
-                                <p>
-                                    Amor no Ar
-                                </p>
+                                <strong>Dream</strong>
+                                <p>Amor no Ar</p>
                             </div>
 
                         </div>
@@ -358,18 +357,11 @@
 
                         <div>
 
-                            <span>
-                                ✦
-                            </span>
+                            <span>✦</span>
 
                             <div>
-                                <strong>
-                                    350 ml
-                                </strong>
-
-                                <p>
-                                    Body Splash
-                                </p>
+                                <strong>350 ml</strong>
+                                <p>Body Splash</p>
                             </div>
 
                         </div>
@@ -377,12 +369,37 @@
                     </div>
 
 
-                    <a
-                        href="#campanha"
-                        class="botao-principal"
-                    >
-                        Ver campanha
-                    </a>
+                    <div class="produto-acoes">
+
+                        <button
+                            class="botao-principal abrir-produto"
+                        >
+                            Ver detalhes
+                        </button>
+
+
+                        <button
+                            class="acao-produto"
+                            id="favoritar"
+                        >
+                            <span class="coracao-favorito">
+                                ♡
+                            </span>
+
+                            <span class="texto-favorito">
+                                Favoritar
+                            </span>
+                        </button>
+
+
+                        <button
+                            class="acao-produto"
+                            id="compartilhar"
+                        >
+                            ↗ Compartilhar
+                        </button>
+
+                    </div>
 
                 </div>
 
@@ -447,13 +464,13 @@
                 </span>
 
                 <h2>
-                    Uma fragrância em
-                    <span>três momentos.</span>
+                    Descubra cada
+                    <span>nota.</span>
                 </h2>
 
                 <p>
-                    Da abertura fresca ao fundo
-                    confortável e envolvente.
+                    Agora você pode clicar nas notas
+                    para conhecer cada uma.
                 </p>
 
             </div>
@@ -461,6 +478,7 @@
 
             <div class="notas-grid">
 
+                <!-- SAÍDA -->
                 <article class="nota-card revelar">
 
                     <span class="numero">
@@ -472,7 +490,7 @@
                     </div>
 
                     <small>
-                        SAÍDA
+                        NOTAS DE SAÍDA
                     </small>
 
                     <h3>
@@ -480,19 +498,50 @@
                     </h3>
 
                     <p>
-                        Uma abertura fresca,
-                        luminosa e delicadamente frutada.
+                        O primeiro contato com
+                        a fragrância.
                     </p>
 
+
                     <div class="chips">
-                        <span>Bergamota</span>
-                        <span>Cassis</span>
+
+                        <button
+                            class="nota-chip"
+                            data-nota="bergamota"
+                        >
+                            Bergamota
+                        </button>
+
+                        <button
+                            class="nota-chip"
+                            data-nota="cassis"
+                        >
+                            Cassis
+                        </button>
+
+                        <button
+                            class="nota-chip"
+                            data-nota="mandarina"
+                        >
+                            Mandarina
+                        </button>
+
+                        <button
+                            class="nota-chip"
+                            data-nota="maca"
+                        >
+                            Maçã
+                        </button>
+
                     </div>
 
                 </article>
 
 
-                <article class="nota-card destaque revelar">
+                <!-- CORPO -->
+                <article
+                    class="nota-card destaque revelar"
+                >
 
                     <span class="numero">
                         02
@@ -503,7 +552,7 @@
                     </div>
 
                     <small>
-                        CORPO
+                        NOTAS DE CORPO
                     </small>
 
                     <h3>
@@ -511,18 +560,47 @@
                     </h3>
 
                     <p>
-                        O lado romântico e floral
-                        que define Amor no Ar.
+                        A parte mais romântica
+                        da fragrância.
                     </p>
 
+
                     <div class="chips">
-                        <span>Rosa</span>
-                        <span>Flor de Lótus</span>
+
+                        <button
+                            class="nota-chip"
+                            data-nota="rosa"
+                        >
+                            Rosa
+                        </button>
+
+                        <button
+                            class="nota-chip"
+                            data-nota="lotus"
+                        >
+                            Flor de Lótus
+                        </button>
+
+                        <button
+                            class="nota-chip"
+                            data-nota="freesia"
+                        >
+                            Frésia
+                        </button>
+
+                        <button
+                            class="nota-chip"
+                            data-nota="pessego"
+                        >
+                            Pêssego
+                        </button>
+
                     </div>
 
                 </article>
 
 
+                <!-- FUNDO -->
                 <article class="nota-card revelar">
 
                     <span class="numero">
@@ -534,7 +612,7 @@
                     </div>
 
                     <small>
-                        FUNDO
+                        NOTAS DE FUNDO
                     </small>
 
                     <h3>
@@ -542,14 +620,41 @@
                     </h3>
 
                     <p>
-                        Um fundo confortável,
-                        amadeirado e levemente adocicado.
+                        As notas que permanecem
+                        por mais tempo.
                     </p>
 
+
                     <div class="chips">
-                        <span>Âmbar</span>
-                        <span>Sândalo</span>
-                        <span>Baunilha</span>
+
+                        <button
+                            class="nota-chip"
+                            data-nota="ambar"
+                        >
+                            Âmbar
+                        </button>
+
+                        <button
+                            class="nota-chip"
+                            data-nota="sandalo"
+                        >
+                            Sândalo
+                        </button>
+
+                        <button
+                            class="nota-chip"
+                            data-nota="baunilha"
+                        >
+                            Baunilha
+                        </button>
+
+                        <button
+                            class="nota-chip"
+                            data-nota="musk"
+                        >
+                            Musk
+                        </button>
+
                     </div>
 
                 </article>
@@ -567,17 +672,17 @@
                 <div class="perfil-texto revelar">
 
                     <span class="etiqueta">
-                        PERFIL DA FRAGRÂNCIA
+                        PERFIL VISUAL
                     </span>
 
                     <h2>
-                        Conheça a
+                        Conheça sua
                         <span>personalidade.</span>
                     </h2>
 
                     <p>
-                        Uma representação visual do estilo
-                        e da proposta da fragrância.
+                        Uma representação visual
+                        da proposta da fragrância.
                     </p>
 
                 </div>
@@ -680,8 +785,8 @@
                 </h2>
 
                 <p>
-                    Use as setas para navegar
-                    pelas imagens.
+                    Navegue pelas imagens
+                    da campanha.
                 </p>
 
             </div>
@@ -692,7 +797,6 @@
                 <button
                     class="seta seta-esquerda"
                     id="anterior"
-                    aria-label="Imagem anterior"
                 >
                     ‹
                 </button>
@@ -716,9 +820,7 @@
 
                             <div class="slide-info">
 
-                                <span>
-                                    01
-                                </span>
+                                <span>01</span>
 
                                 <h3>
                                     Dream World
@@ -736,7 +838,7 @@
                         <article class="slide">
 
                             <img
-                                src="./img/DREAM (2).png"
+                                src="./img/DREAM%20(2).png"
                                 alt="Dream Amor no Ar"
                             >
 
@@ -744,9 +846,7 @@
 
                             <div class="slide-info">
 
-                                <span>
-                                    02
-                                </span>
+                                <span>02</span>
 
                                 <h3>
                                     Amor no Ar
@@ -764,7 +864,7 @@
                         <article class="slide">
 
                             <img
-                                src="./img/DREAM AMOR NO AR.png"
+                                src="./img/DREAM%20AMOR%20NO%20AR.png"
                                 alt="Dream Amor no Ar"
                             >
 
@@ -772,9 +872,7 @@
 
                             <div class="slide-info">
 
-                                <span>
-                                    03
-                                </span>
+                                <span>03</span>
 
                                 <h3>
                                     Romance Dream
@@ -796,7 +894,6 @@
                 <button
                     class="seta seta-direita"
                     id="proximo"
-                    aria-label="Próxima imagem"
                 >
                     ›
                 </button>
@@ -832,74 +929,27 @@
             <div class="momentos-grid">
 
                 <article class="momento revelar">
-
-                    <span>
-                        ☀
-                    </span>
-
-                    <h3>
-                        De manhã
-                    </h3>
-
-                    <p>
-                        Comece o dia com
-                        uma sensação leve.
-                    </p>
-
+                    <span>☀</span>
+                    <h3>De manhã</h3>
+                    <p>Comece o dia com leveza.</p>
                 </article>
 
-
                 <article class="momento revelar">
-
-                    <span>
-                        ✦
-                    </span>
-
-                    <h3>
-                        Pós-banho
-                    </h3>
-
-                    <p>
-                        Complete seu ritual
-                        de cuidado.
-                    </p>
-
+                    <span>✦</span>
+                    <h3>Pós-banho</h3>
+                    <p>Complete seu ritual.</p>
                 </article>
 
-
                 <article class="momento revelar">
-
-                    <span>
-                        ♡
-                    </span>
-
-                    <h3>
-                        Encontros
-                    </h3>
-
-                    <p>
-                        Um toque romântico
-                        para momentos especiais.
-                    </p>
-
+                    <span>♡</span>
+                    <h3>Encontros</h3>
+                    <p>Um toque romântico.</p>
                 </article>
 
-
                 <article class="momento revelar">
-
-                    <span>
-                        ☾
-                    </span>
-
-                    <h3>
-                        À noite
-                    </h3>
-
-                    <p>
-                        Renove sua fragrância
-                        quando quiser.
-                    </p>
-
+                    <span>☾</span>
+                    <h3>À noite</h3>
+                    <p>Renove sua fragrância.</p>
                 </article>
 
             </div>
@@ -927,9 +977,8 @@
                     </h2>
 
                     <p>
-                        Responda três perguntas rápidas
-                        e descubra qual clima combina
-                        mais com você.
+                        Responda três perguntas
+                        e descubra.
                     </p>
 
                 </div>
@@ -983,9 +1032,7 @@
 
                         <div>
 
-                            <span>
-                                01
-                            </span>
+                            <span>01</span>
 
                             <div>
                                 <strong>
@@ -1002,9 +1049,7 @@
 
                         <div>
 
-                            <span>
-                                02
-                            </span>
+                            <span>02</span>
 
                             <div>
                                 <strong>
@@ -1021,9 +1066,7 @@
 
                         <div>
 
-                            <span>
-                                03
-                            </span>
+                            <span>03</span>
 
                             <div>
                                 <strong>
@@ -1074,17 +1117,15 @@
 
                         Qual volume aparece nesta página?
 
-                        <span>
-                            +
-                        </span>
+                        <span>+</span>
 
                     </button>
 
                     <div class="faq-resposta">
 
                         <p>
-                            Esta landing page apresenta
-                            o Dream Amor no Ar de 350 ml.
+                            A página apresenta
+                            a versão de 350 ml.
                         </p>
 
                     </div>
@@ -1098,17 +1139,15 @@
 
                         Qual é o estilo da fragrância?
 
-                        <span>
-                            +
-                        </span>
+                        <span>+</span>
 
                     </button>
 
                     <div class="faq-resposta">
 
                         <p>
-                            O perfil apresentado é Floral
-                            Amadeirado, delicado e romântico.
+                            Floral Amadeirado,
+                            delicado e romântico.
                         </p>
 
                     </div>
@@ -1120,43 +1159,17 @@
 
                     <button class="faq-pergunta">
 
-                        Quando posso usar?
+                        Posso usar todos os dias?
 
-                        <span>
-                            +
-                        </span>
+                        <span>+</span>
 
                     </button>
 
                     <div class="faq-resposta">
 
                         <p>
-                            Pode acompanhar diferentes
-                            momentos da rotina.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="faq-item">
-
-                    <button class="faq-pergunta">
-
-                        Posso reaplicar?
-
-                        <span>
-                            +
-                        </span>
-
-                    </button>
-
-                    <div class="faq-resposta">
-
-                        <p>
-                            Você pode renovar a perfumação
-                            quando desejar.
+                            A proposta é acompanhar
+                            diferentes momentos da rotina.
                         </p>
 
                     </div>
@@ -1168,7 +1181,7 @@
         </section>
 
 
-        <!-- FINAL -->
+        <!-- CTA -->
         <section
             class="cta"
             id="final"
@@ -1186,18 +1199,15 @@
                 </h2>
 
                 <p>
-                    Uma fragrância para transformar
-                    pequenos momentos em lembranças especiais.
+                    Uma fragrância feita
+                    para momentos especiais.
                 </p>
 
-                <a
-                    href="https://www.boticario.com.br/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="botao-cta"
+                <button
+                    class="botao-cta abrir-produto"
                 >
-                    Visitar O Boticário ↗
-                </a>
+                    Conhecer produto
+                </button>
 
             </div>
 
@@ -1231,11 +1241,153 @@
     </footer>
 
 
-    <!-- VOLTAR AO TOPO -->
+    <!-- MODAL PRODUTO -->
+    <div
+        class="modal"
+        id="modalProduto"
+        aria-hidden="true"
+    >
+
+        <div class="modal-fundo fechar-modal"></div>
+
+
+        <div class="modal-produto">
+
+            <button
+                class="modal-fechar fechar-modal"
+            >
+                ×
+            </button>
+
+
+            <div class="modal-produto-imagem">
+
+                <div class="modal-circulo"></div>
+
+                <img
+                    src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
+                    alt="Dream Amor no Ar 350ml"
+                >
+
+            </div>
+
+
+            <div class="modal-produto-info">
+
+                <span class="etiqueta">
+                    DREAM
+                </span>
+
+                <h2>
+                    Amor no Ar
+                </h2>
+
+                <p class="modal-subtitulo">
+                    Body Splash • 350 ml
+                </p>
+
+                <p>
+                    Uma fragrância floral,
+                    romântica e confortável
+                    para acompanhar sua rotina.
+                </p>
+
+
+                <div class="modal-tags">
+
+                    <span>✿ Floral</span>
+                    <span>♡ Romântico</span>
+                    <span>✦ 350 ml</span>
+
+                </div>
+
+
+                <div class="modal-acoes">
+
+                    <button
+                        class="botao-principal"
+                        id="favoritarModal"
+                    >
+                        ♡ Favoritar
+                    </button>
+
+                    <button
+                        class="botao-modal-secundario"
+                        id="compartilharModal"
+                    >
+                        ↗ Compartilhar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MODAL NOTAS -->
+    <div
+        class="modal"
+        id="modalNota"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-fundo fechar-nota"
+        ></div>
+
+
+        <div class="modal-nota">
+
+            <button
+                class="modal-fechar fechar-nota"
+            >
+                ×
+            </button>
+
+
+            <div
+                class="modal-nota-icone"
+                id="notaIcone"
+            >
+                ✿
+            </div>
+
+
+            <span class="etiqueta">
+                NOTA OLFATIVA
+            </span>
+
+
+            <h2 id="notaTitulo">
+                Rosa
+            </h2>
+
+
+            <p id="notaDescricao">
+                Descrição da nota.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOAST -->
+    <div
+        class="toast"
+        id="toast"
+    >
+        Salvo ♡
+    </div>
+
+
+    <!-- VOLTAR TOPO -->
     <button
         class="voltar-topo"
         id="voltarTopo"
-        aria-label="Voltar ao topo"
     >
         ↑
     </button>
