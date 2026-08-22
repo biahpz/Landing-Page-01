@@ -3,26 +3,42 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta
         name="description"
-        content="Landing page Dream Amor no Ar 350ml."
+        content="Dream Amor no Ar 350ml - landing page demonstrativa."
     >
 
-    <title>Dream Amor no Ar 350ml | O Boticário</title>
+    <title>Dream Amor no Ar 350ml</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+    <!-- TELA DE CARREGAMENTO -->
 
-    <header class="header">
+    <div class="loader" id="loader">
+        <div class="loader-conteudo">
+            <div class="loader-coracao">♡</div>
+            <h1>Dream<span>.</span></h1>
+            <p>Amor no Ar</p>
+            <div class="loader-barra">
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- PARTÍCULAS -->
+
+    <div id="particulas" class="particulas"></div>
+
+
+    <!-- HEADER -->
+
+    <header class="header" id="header">
 
         <a href="#inicio" class="logo">
             Dream<span>.</span>
@@ -32,12 +48,12 @@
             <a href="#inicio">Início</a>
             <a href="#produto">Produto</a>
             <a href="#notas">Fragrância</a>
-            <a href="#momentos">Momentos</a>
-            <a href="#avaliacoes">Avaliações</a>
+            <a href="#galeria">Galeria</a>
+            <a href="#quiz">Quiz</a>
             <a href="#faq">FAQ</a>
         </nav>
 
-        <a href="#comprar" class="botao-header">
+        <a href="#final" class="botao-header">
             Conheça o Dream
         </a>
 
@@ -54,15 +70,12 @@
 
     <main>
 
-        <!-- =========================
-             HERO
-        ========================== -->
+        <!-- HERO -->
 
-        <section class="hero" id="inicio">
+        <section id="inicio" class="hero">
 
-            <div class="bolha bolha-1"></div>
-            <div class="bolha bolha-2"></div>
-            <div class="bolha bolha-3"></div>
+            <div class="hero-bolha bolha-1"></div>
+            <div class="hero-bolha bolha-2"></div>
 
             <div class="hero-texto revelar">
 
@@ -75,10 +88,9 @@
                     <span>Amor no Ar</span>
                 </h1>
 
-                <p class="hero-descricao">
-                    Uma fragrância romântica, delicada e envolvente
-                    para transformar os pequenos momentos da rotina
-                    em lembranças especiais.
+                <p>
+                    Uma fragrância delicada, romântica e envolvente
+                    para transformar cada momento da rotina.
                 </p>
 
                 <div class="hero-botoes">
@@ -87,8 +99,8 @@
                         Descobrir o Dream
                     </a>
 
-                    <a href="#notas" class="botao-secundario">
-                        Conhecer a fragrância
+                    <a href="#quiz" class="botao-secundario">
+                        Fazer o quiz
                     </a>
 
                 </div>
@@ -115,26 +127,29 @@
             </div>
 
 
-            <div class="hero-produto revelar">
+            <!-- PRODUTO HERO -->
 
-                <span class="dream-gigante">
-                    DREAM
-                </span>
+            <div class="hero-produto revelar" id="heroProduto">
 
                 <div class="circulo-produto"></div>
 
-                <div class="brilho-produto"></div>
+                <div class="brilho-mouse" id="brilhoMouse"></div>
+
+                <span class="dream-fundo">
+                    DREAM
+                </span>
 
                 <img
+                    id="frascoPrincipal"
                     src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
                     alt="Dream Amor no Ar 350ml"
-                    class="imagem-principal"
+                    class="frasco-principal"
                 >
 
-                <div class="selo-amor">
+                <div class="selo">
                     <span>♡</span>
-                    <strong>Amor</strong>
-                    <small>no ar</small>
+                    <strong>350</strong>
+                    <small>ML</small>
                 </div>
 
             </div>
@@ -142,40 +157,21 @@
         </section>
 
 
-        <!-- =========================
-             FAIXA
-        ========================== -->
+        <!-- FAIXA -->
 
-        <section class="faixa-destaques">
+        <section class="faixa">
 
-            <div>
-                <span>✿</span>
-                Floral Amadeirado
-            </div>
-
-            <div>
-                <span>♡</span>
-                Vegano
-            </div>
-
-            <div>
-                <span>✦</span>
-                Cruelty Free
-            </div>
-
-            <div>
-                <span>350</span>
-                ml
-            </div>
+            <div>✿ Floral Amadeirado</div>
+            <div>♡ Dream Amor no Ar</div>
+            <div>✦ 350 ml</div>
+            <div>☁ Leve & delicado</div>
 
         </section>
 
 
-        <!-- =========================
-             SOBRE O PRODUTO
-        ========================== -->
+        <!-- PRODUTO -->
 
-        <section class="produto" id="produto">
+        <section id="produto" class="produto">
 
             <div class="produto-container">
 
@@ -183,20 +179,14 @@
 
                     <div class="forma-produto"></div>
 
-                    <span class="texto-vertical">
-                        AMOR NO AR
+                    <span class="produto-fundo-texto">
+                        LOVE
                     </span>
 
                     <img
                         src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
-                        alt="Body Splash Dream Amor no Ar"
-                        class="imagem-produto"
+                        alt="Dream Amor no Ar"
                     >
-
-                    <div class="volume">
-                        <strong>350</strong>
-                        <span>ML</span>
-                    </div>
 
                 </div>
 
@@ -204,72 +194,45 @@
                 <div class="produto-texto revelar">
 
                     <span class="etiqueta">
-                        DREAM AMOR NO AR
+                        BODY SPLASH
                     </span>
 
                     <h2>
-                        Delicado.
-                        <span>Romântico.</span>
-                        Marcante.
+                        Um toque de
+                        <span>amor</span>
+                        na sua rotina.
                     </h2>
 
                     <p>
-                        Dream Amor no Ar combina elementos frutais,
-                        florais e amadeirados em uma fragrância
-                        confortável e cheia de personalidade.
+                        Dream Amor no Ar combina uma personalidade
+                        romântica com uma fragrância floral e
+                        confortável.
                     </p>
 
                     <p>
-                        Um Body Splash para acompanhar o dia a dia,
-                        trazer frescor depois do banho e completar
-                        momentos especiais.
+                        Perfeito para usar depois do banho,
+                        durante o dia ou sempre que quiser
+                        renovar sua perfumação.
                     </p>
 
-                    <div class="caracteristicas">
+                    <div class="beneficios">
 
-                        <div class="caracteristica">
-
-                            <span class="caracteristica-icone">
-                                ✿
-                            </span>
-
-                            <div>
-                                <strong>Família olfativa</strong>
-                                <p>Floral Amadeirada</p>
-                            </div>
-
+                        <div>
+                            <span>✿</span>
+                            <p>Perfil floral</p>
                         </div>
 
-
-                        <div class="caracteristica">
-
-                            <span class="caracteristica-icone">
-                                ♡
-                            </span>
-
-                            <div>
-                                <strong>Personalidade</strong>
-                                <p>Romântica e delicada</p>
-                            </div>
-
+                        <div>
+                            <span>♡</span>
+                            <p>Toque romântico</p>
                         </div>
 
-
-                        <div class="caracteristica">
-
-                            <span class="caracteristica-icone">
-                                ✦
-                            </span>
-
-                            <div>
-                                <strong>Volume</strong>
-                                <p>350 ml</p>
-                            </div>
-
+                        <div>
+                            <span>✦</span>
+                            <p>350 ml</p>
                         </div>
 
                     </div>
-
 
                     <a href="#notas" class="botao-principal">
                         Descobrir as notas
@@ -282,33 +245,9 @@
         </section>
 
 
-        <!-- =========================
-             FRASE
-        ========================== -->
+        <!-- NOTAS -->
 
-        <section class="frase-destaque">
-
-            <div class="revelar">
-
-                <span class="coracao-grande">
-                    ♡
-                </span>
-
-                <p>
-                    Uma fragrância feita para deixar
-                    <strong>o amor no ar.</strong>
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             PIRÂMIDE OLFATIVA
-        ========================== -->
-
-        <section class="notas" id="notas">
+        <section id="notas" class="notas">
 
             <div class="titulo-secao revelar">
 
@@ -317,14 +256,9 @@
                 </span>
 
                 <h2>
-                    Uma fragrância em
+                    A fragrância em
                     <span>três momentos.</span>
                 </h2>
-
-                <p>
-                    Do frescor inicial ao fundo confortável
-                    e envolvente.
-                </p>
 
             </div>
 
@@ -333,25 +267,21 @@
 
                 <article class="nota-card revelar">
 
-                    <span class="numero-card">
-                        01
-                    </span>
+                    <span class="numero">01</span>
 
                     <div class="nota-icone">
                         🍊
                     </div>
 
-                    <small>
-                        SAÍDA
-                    </small>
+                    <small>SAÍDA</small>
 
                     <h3>
-                        Frescor frutado
+                        Frescor
                     </h3>
 
                     <p>
-                        Bergamota e Cassis trazem uma abertura
-                        fresca, luminosa e delicadamente frutada.
+                        Uma abertura luminosa e frutada,
+                        trazendo leveza à fragrância.
                     </p>
 
                     <div class="chips">
@@ -364,25 +294,21 @@
 
                 <article class="nota-card destaque revelar">
 
-                    <span class="numero-card">
-                        02
-                    </span>
+                    <span class="numero">02</span>
 
                     <div class="nota-icone">
                         🌸
                     </div>
 
-                    <small>
-                        CORPO
-                    </small>
+                    <small>CORPO</small>
 
                     <h3>
-                        Coração floral
+                        Floral
                     </h3>
 
                     <p>
-                        Rosa e Flor de Lótus criam o lado
-                        feminino e romântico da fragrância.
+                        O coração romântico e delicado
+                        da fragrância Dream.
                     </p>
 
                     <div class="chips">
@@ -395,25 +321,21 @@
 
                 <article class="nota-card revelar">
 
-                    <span class="numero-card">
-                        03
-                    </span>
+                    <span class="numero">03</span>
 
                     <div class="nota-icone">
                         ✨
                     </div>
 
-                    <small>
-                        FUNDO
-                    </small>
+                    <small>FUNDO</small>
 
                     <h3>
-                        Conforto envolvente
+                        Conforto
                     </h3>
 
                     <p>
-                        Âmbar, Sândalo e Baunilha completam
-                        a fragrância com suavidade e conforto.
+                        Uma base confortável, levemente
+                        doce e envolvente.
                     </p>
 
                     <div class="chips">
@@ -429,99 +351,145 @@
         </section>
 
 
-        <!-- =========================
-             EXPERIÊNCIA
-        ========================== -->
+        <!-- FRASE -->
 
-        <section class="experiencia">
+        <section class="frase-destaque">
 
-            <div class="experiencia-container">
+            <span>♡</span>
 
-                <div class="experiencia-texto revelar">
-
-                    <span class="etiqueta">
-                        A EXPERIÊNCIA
-                    </span>
-
-                    <h2>
-                        Mais do que uma
-                        <span>fragrância.</span>
-                    </h2>
-
-                    <p>
-                        Um toque perfumado para fazer parte
-                        de diferentes momentos da sua rotina.
-                    </p>
-
-                </div>
-
-
-                <div class="experiencia-cards">
-
-                    <article class="experiencia-card revelar">
-
-                        <span>01</span>
-
-                        <h3>
-                            Leveza
-                        </h3>
-
-                        <p>
-                            Uma fragrância agradável para
-                            acompanhar o dia.
-                        </p>
-
-                    </article>
-
-
-                    <article class="experiencia-card revelar">
-
-                        <span>02</span>
-
-                        <h3>
-                            Delicadeza
-                        </h3>
-
-                        <p>
-                            Um perfil floral romântico
-                            e feminino.
-                        </p>
-
-                    </article>
-
-
-                    <article class="experiencia-card revelar">
-
-                        <span>03</span>
-
-                        <h3>
-                            Conforto
-                        </h3>
-
-                        <p>
-                            Fundo amadeirado e adocicado
-                            para completar a experiência.
-                        </p>
-
-                    </article>
-
-                </div>
-
-            </div>
+            <p>
+                Feito para deixar
+                <strong>o amor no ar.</strong>
+            </p>
 
         </section>
 
 
-        <!-- =========================
-             MOMENTOS
-        ========================== -->
+        <!-- GALERIA / CARROSSEL -->
 
-        <section class="momentos" id="momentos">
+        <section id="galeria" class="galeria">
 
             <div class="titulo-secao revelar">
 
                 <span class="etiqueta">
-                    SUA ROTINA
+                    DREAM WORLD
+                </span>
+
+                <h2>
+                    Veja o Dream de
+                    <span>outro jeito.</span>
+                </h2>
+
+                <p>
+                    Use as setas para navegar.
+                </p>
+
+            </div>
+
+
+            <div class="carrossel revelar">
+
+                <button
+                    class="carrossel-seta esquerda"
+                    id="anterior"
+                    aria-label="Anterior"
+                >
+                    ‹
+                </button>
+
+
+                <div class="carrossel-janela">
+
+                    <div class="carrossel-trilho" id="carrossel">
+
+                        <article class="slide slide-rosa">
+
+                            <span class="slide-texto-fundo">
+                                LOVE
+                            </span>
+
+                            <img
+                                src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
+                                alt="Dream Amor no Ar"
+                            >
+
+                            <div class="slide-info">
+                                <span>01</span>
+                                <h3>Amor no Ar</h3>
+                                <p>Romântico e delicado.</p>
+                            </div>
+
+                        </article>
+
+
+                        <article class="slide slide-lilas">
+
+                            <span class="slide-texto-fundo">
+                                DREAM
+                            </span>
+
+                            <img
+                                src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
+                                alt="Dream Amor no Ar"
+                            >
+
+                            <div class="slide-info">
+                                <span>02</span>
+                                <h3>Dream World</h3>
+                                <p>Um universo perfumado.</p>
+                            </div>
+
+                        </article>
+
+
+                        <article class="slide slide-claro">
+
+                            <span class="slide-texto-fundo">
+                                350
+                            </span>
+
+                            <img
+                                src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
+                                alt="Dream Amor no Ar 350ml"
+                            >
+
+                            <div class="slide-info">
+                                <span>03</span>
+                                <h3>350 ml</h3>
+                                <p>Para acompanhar sua rotina.</p>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="carrossel-seta direita"
+                    id="proximo"
+                    aria-label="Próximo"
+                >
+                    ›
+                </button>
+
+            </div>
+
+
+            <div class="carrossel-pontos" id="pontos"></div>
+
+        </section>
+
+
+        <!-- MOMENTOS -->
+
+        <section class="momentos">
+
+            <div class="titulo-secao revelar">
+
+                <span class="etiqueta">
+                    QUANDO USAR
                 </span>
 
                 <h2>
@@ -535,74 +503,27 @@
             <div class="momentos-grid">
 
                 <article class="momento revelar">
-
-                    <div class="momento-icone">
-                        ☀
-                    </div>
-
-                    <h3>
-                        Ao acordar
-                    </h3>
-
-                    <p>
-                        Um começo de dia leve,
-                        perfumado e especial.
-                    </p>
-
+                    <span>☀</span>
+                    <h3>De manhã</h3>
+                    <p>Comece o dia com leveza.</p>
                 </article>
 
-
                 <article class="momento revelar">
-
-                    <div class="momento-icone">
-                        ✦
-                    </div>
-
-                    <h3>
-                        Depois do banho
-                    </h3>
-
-                    <p>
-                        Complete a sensação de
-                        cuidado e frescor.
-                    </p>
-
+                    <span>✦</span>
+                    <h3>Pós-banho</h3>
+                    <p>Complete seu ritual de cuidado.</p>
                 </article>
 
-
                 <article class="momento revelar">
-
-                    <div class="momento-icone">
-                        ♡
-                    </div>
-
-                    <h3>
-                        Encontros
-                    </h3>
-
-                    <p>
-                        Um toque romântico para
-                        momentos especiais.
-                    </p>
-
+                    <span>♡</span>
+                    <h3>Encontros</h3>
+                    <p>Um toque romântico especial.</p>
                 </article>
 
-
                 <article class="momento revelar">
-
-                    <div class="momento-icone">
-                        ☾
-                    </div>
-
-                    <h3>
-                        À noite
-                    </h3>
-
-                    <p>
-                        Renove sua fragrância para
-                        continuar perfumada.
-                    </p>
-
+                    <span>☾</span>
+                    <h3>À noite</h3>
+                    <p>Renove a fragrância.</p>
                 </article>
 
             </div>
@@ -610,9 +531,69 @@
         </section>
 
 
-        <!-- =========================
-             COMO USAR
-        ========================== -->
+        <!-- QUIZ -->
+
+        <section id="quiz" class="quiz">
+
+            <div class="quiz-container revelar">
+
+                <div class="quiz-intro">
+
+                    <span class="etiqueta">
+                        QUIZ DREAM
+                    </span>
+
+                    <h2>
+                        Qual é o seu
+                        <span>momento Dream?</span>
+                    </h2>
+
+                    <p>
+                        Escolha a opção que mais combina
+                        com você.
+                    </p>
+
+                </div>
+
+
+                <div class="quiz-card" id="quizCard">
+
+                    <div id="quizPergunta">
+
+                        <span class="quiz-numero">
+                            01 / 03
+                        </span>
+
+                        <h3>
+                            Qual clima você prefere?
+                        </h3>
+
+                        <div class="quiz-opcoes">
+
+                            <button data-pontos="romantico">
+                                ♡ Romântico
+                            </button>
+
+                            <button data-pontos="leve">
+                                ☀ Leve
+                            </button>
+
+                            <button data-pontos="elegante">
+                                ✦ Elegante
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- COMO USAR -->
 
         <section class="como-usar">
 
@@ -620,16 +601,16 @@
 
                 <div class="como-visual revelar">
 
-                    <div class="circulo-como"></div>
+                    <div class="como-circulo"></div>
+
+                    <span class="como-texto-fundo">
+                        DREAM
+                    </span>
 
                     <img
                         src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
                         alt="Dream Amor no Ar"
                     >
-
-                    <span class="como-dream">
-                        DREAM
-                    </span>
 
                 </div>
 
@@ -641,58 +622,31 @@
                     </span>
 
                     <h2>
-                        Crie seu próprio
-                        <span>ritual.</span>
+                        Seu ritual
+                        <span>Dream.</span>
                     </h2>
-
-                    <p>
-                        Borrife o Body Splash nas regiões
-                        que preferir e reaplique quando desejar
-                        renovar a perfumação.
-                    </p>
-
 
                     <div class="passos">
 
-                        <div class="passo">
-
+                        <div>
                             <span>01</span>
-
-                            <div>
-                                <strong>Após o banho</strong>
-                                <p>
-                                    Use sobre a pele limpa.
-                                </p>
-                            </div>
-
+                            <p>
+                                Use depois do banho.
+                            </p>
                         </div>
 
-
-                        <div class="passo">
-
+                        <div>
                             <span>02</span>
-
-                            <div>
-                                <strong>Pontos estratégicos</strong>
-                                <p>
-                                    Pescoço e pulsos são boas opções.
-                                </p>
-                            </div>
-
+                            <p>
+                                Borrife nos pontos que preferir.
+                            </p>
                         </div>
 
-
-                        <div class="passo">
-
+                        <div>
                             <span>03</span>
-
-                            <div>
-                                <strong>Durante o dia</strong>
-                                <p>
-                                    Reaplique quando quiser renovar.
-                                </p>
-                            </div>
-
+                            <p>
+                                Reaplique ao longo do dia.
+                            </p>
                         </div>
 
                     </div>
@@ -704,180 +658,9 @@
         </section>
 
 
-        <!-- =========================
-             GALERIA
-        ========================== -->
+        <!-- FAQ -->
 
-        <section class="galeria">
-
-            <div class="titulo-secao revelar">
-
-                <span class="etiqueta">
-                    DREAM WORLD
-                </span>
-
-                <h2>
-                    Um universo
-                    <span>encantador.</span>
-                </h2>
-
-            </div>
-
-
-            <div class="galeria-grid">
-
-                <div class="galeria-card galeria-grande revelar">
-
-                    <span>
-                        DREAM
-                    </span>
-
-                    <img
-                        src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
-                        alt="Dream Amor no Ar"
-                    >
-
-                </div>
-
-
-                <div class="galeria-card galeria-rosa revelar">
-
-                    <div>
-                        <span>
-                            ♡
-                        </span>
-
-                        <h3>
-                            Amor no Ar
-                        </h3>
-
-                        <p>
-                            Delicado em cada detalhe.
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <div class="galeria-card galeria-lilas revelar">
-
-                    <div>
-                        <span>
-                            ✿
-                        </span>
-
-                        <h3>
-                            Floral
-                        </h3>
-
-                        <p>
-                            Uma experiência romântica.
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             AVALIAÇÕES
-        ========================== -->
-
-        <section class="avaliacoes" id="avaliacoes">
-
-            <div class="avaliacoes-intro revelar">
-
-                <span class="etiqueta">
-                    QUEM CONHECE, AMA
-                </span>
-
-                <h2>
-                    Uma fragrância
-                    <span>querida.</span>
-                </h2>
-
-                <p>
-                    Avaliações públicas da versão 350 ml
-                    destacam principalmente sua suavidade,
-                    delicadeza e perfil agradável para
-                    o uso diário.
-                </p>
-
-                <div class="estrelas-grandes">
-                    ★★★★★
-                </div>
-
-            </div>
-
-
-            <div class="reviews">
-
-                <article class="review revelar">
-
-                    <div class="review-estrelas">
-                        ★★★★★
-                    </div>
-
-                    <h3>
-                        Suave
-                    </h3>
-
-                    <p>
-                        O perfil delicado é um dos pontos
-                        frequentemente elogiados.
-                    </p>
-
-                </article>
-
-
-                <article class="review revelar">
-
-                    <div class="review-estrelas">
-                        ★★★★★
-                    </div>
-
-                    <h3>
-                        Docinho
-                    </h3>
-
-                    <p>
-                        O toque adocicado aparece de forma
-                        confortável na fragrância.
-                    </p>
-
-                </article>
-
-
-                <article class="review revelar">
-
-                    <div class="review-estrelas">
-                        ★★★★★
-                    </div>
-
-                    <h3>
-                        Para o dia
-                    </h3>
-
-                    <p>
-                        Uma opção elogiada para acompanhar
-                        diferentes momentos da rotina.
-                    </p>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             FAQ
-        ========================== -->
-
-        <section class="faq" id="faq">
+        <section id="faq" class="faq">
 
             <div class="titulo-secao revelar">
 
@@ -895,122 +678,52 @@
 
             <div class="faq-lista">
 
-                <div class="faq-item revelar">
+                <div class="faq-item">
 
                     <button class="faq-pergunta">
-
-                        <span>
-                            Qual é o tamanho do produto?
-                        </span>
-
-                        <b>+</b>
-
+                        Qual é o volume?
+                        <span>+</span>
                     </button>
 
                     <div class="faq-resposta">
-
                         <p>
-                            Esta página apresenta a versão
-                            Dream Amor no Ar de 350 ml.
+                            Esta landing page apresenta
+                            a versão de 350 ml.
                         </p>
-
                     </div>
 
                 </div>
 
 
-                <div class="faq-item revelar">
+                <div class="faq-item">
 
                     <button class="faq-pergunta">
-
-                        <span>
-                            Qual é a família olfativa?
-                        </span>
-
-                        <b>+</b>
-
+                        Qual é a família olfativa?
+                        <span>+</span>
                     </button>
 
                     <div class="faq-resposta">
-
                         <p>
-                            A fragrância é classificada como
                             Floral Amadeirada.
                         </p>
-
                     </div>
 
                 </div>
 
 
-                <div class="faq-item revelar">
+                <div class="faq-item">
 
                     <button class="faq-pergunta">
-
-                        <span>
-                            Quais notas se destacam?
-                        </span>
-
-                        <b>+</b>
-
+                        Quando posso usar?
+                        <span>+</span>
                     </button>
 
                     <div class="faq-resposta">
-
                         <p>
-                            Entre as notas estão Bergamota,
-                            Cassis, Rosa, Flor de Lótus,
-                            Âmbar, Sândalo e Baunilha.
+                            Depois do banho, durante o dia,
+                            antes de sair ou sempre que quiser
+                            renovar a fragrância.
                         </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="faq-item revelar">
-
-                    <button class="faq-pergunta">
-
-                        <span>
-                            A fórmula é vegana?
-                        </span>
-
-                        <b>+</b>
-
-                    </button>
-
-                    <div class="faq-resposta">
-
-                        <p>
-                            A versão de 350 ml é descrita
-                            como vegana.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="faq-item revelar">
-
-                    <button class="faq-pergunta">
-
-                        <span>
-                            É cruelty free?
-                        </span>
-
-                        <b>+</b>
-
-                    </button>
-
-                    <div class="faq-resposta">
-
-                        <p>
-                            Sim. A versão de 350 ml é identificada
-                            como cruelty free.
-                        </p>
-
                     </div>
 
                 </div>
@@ -1020,14 +733,12 @@
         </section>
 
 
-        <!-- =========================
-             CTA FINAL
-        ========================== -->
+        <!-- FINAL -->
 
-        <section class="cta" id="comprar">
+        <section id="final" class="cta">
 
-            <div class="cta-bolha cta-bolha-1"></div>
-            <div class="cta-bolha cta-bolha-2"></div>
+            <div class="cta-bolha cta-bolha1"></div>
+            <div class="cta-bolha cta-bolha2"></div>
 
             <div class="cta-conteudo revelar">
 
@@ -1041,8 +752,8 @@
                 </h2>
 
                 <p>
-                    Descubra mais produtos, fragrâncias e
-                    novidades da linha Dream.
+                    Uma fragrância delicada para fazer parte
+                    dos seus momentos favoritos.
                 </p>
 
                 <a
@@ -1061,72 +772,32 @@
     </main>
 
 
-    <!-- =========================
-         BOTÃO FLUTUANTE
-    ========================== -->
-
-    <a href="#comprar" class="botao-flutuante">
-        ♡ Conhecer
-    </a>
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
     <footer>
 
-        <div class="footer-top">
-
-            <div>
-
-                <a href="#inicio" class="logo">
-                    Dream<span>.</span>
-                </a>
-
-                <p>
-                    Amor no Ar 350 ml
-                </p>
-
-            </div>
-
-
-            <div class="footer-links">
-
-                <a href="#produto">
-                    Produto
-                </a>
-
-                <a href="#notas">
-                    Fragrância
-                </a>
-
-                <a href="#momentos">
-                    Momentos
-                </a>
-
-                <a href="#faq">
-                    FAQ
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div class="footer-bottom">
+        <div>
+            <a href="#inicio" class="logo">
+                Dream<span>.</span>
+            </a>
 
             <p>
-                Projeto demonstrativo não oficial.
+                Amor no Ar • 350 ml
             </p>
-
-            <p>
-                © 2026 Dream Amor no Ar
-            </p>
-
         </div>
+
+        <p>
+            Projeto demonstrativo não oficial • 2026
+        </p>
 
     </footer>
+
+
+    <button
+        id="voltarTopo"
+        class="voltar-topo"
+        aria-label="Voltar ao topo"
+    >
+        ↑
+    </button>
 
 
     <script src="script.js"></script>
