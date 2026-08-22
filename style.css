@@ -9606,3 +9606,355 @@ body.no-animations
 /* =========================================================
    FIM UPDATE 4.0 CSS
 ========================================================= */
+/* =========================================================
+   TESTE VISUAL 4.0 — TEM QUE MUDAR NA HORA
+========================================================= */
+
+body {
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255, 75, 170, 0.23),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 85% 30%,
+            rgba(140, 80, 255, 0.22),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #fff7fc,
+            #f4ecff
+        ) !important;
+}
+
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    left: -250px;
+    top: -200px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(
+                var(--primary-rgb),
+                0.32
+            ),
+            transparent 68%
+        );
+
+    filter:
+        blur(45px);
+
+    pointer-events: none;
+
+    animation:
+        testeAurora 5s
+        ease-in-out
+        infinite alternate;
+}
+
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 650px;
+    height: 650px;
+
+    right: -220px;
+    bottom: -220px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(
+                var(--secondary-rgb),
+                0.28
+            ),
+            transparent 68%
+        );
+
+    filter:
+        blur(55px);
+
+    pointer-events: none;
+
+    animation:
+        testeAurora2 6s
+        ease-in-out
+        infinite alternate;
+}
+
+
+@keyframes testeAurora {
+
+    from {
+        transform:
+            translate(
+                0,
+                0
+            )
+            scale(
+                1
+            );
+    }
+
+    to {
+        transform:
+            translate(
+                160px,
+                100px
+            )
+            scale(
+                1.25
+            );
+    }
+
+}
+
+
+@keyframes testeAurora2 {
+
+    from {
+        transform:
+            translate(
+                0,
+                0
+            )
+            scale(
+                1
+            );
+    }
+
+    to {
+        transform:
+            translate(
+                -140px,
+                -80px
+            )
+            scale(
+                1.20
+            );
+    }
+
+}
+
+
+/* FRASCO MUITO MAIS CHAMATIVO */
+
+.main-bottle {
+    filter:
+        drop-shadow(
+            0 45px 40px
+            rgba(
+                var(--primary-rgb),
+                0.34
+            )
+        )
+        drop-shadow(
+            0 0 35px
+            rgba(
+                var(--primary-rgb),
+                0.35
+            )
+        ) !important;
+}
+
+
+/* PULSO ATRÁS DO FRASCO */
+
+.product-halo {
+    animation:
+        halo4teste
+        3.5s
+        ease-in-out
+        infinite !important;
+}
+
+
+@keyframes halo4teste {
+
+    0%,
+    100% {
+        transform:
+            scale(
+                0.92
+            );
+
+        opacity:
+            0.55;
+    }
+
+    50% {
+        transform:
+            scale(
+                1.20
+            );
+
+        opacity:
+            1;
+    }
+
+}
+
+
+/* TÍTULO COM EFEITO */
+
+.hero h1 {
+    background:
+        linear-gradient(
+            110deg,
+            var(--text) 20%,
+            var(--primary) 42%,
+            var(--secondary) 55%,
+            var(--text) 76%
+        );
+
+    background-size:
+        250% 100%;
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent !important;
+
+    animation:
+        tituloDream4
+        4s
+        ease-in-out
+        infinite;
+}
+
+
+.hero h1 span {
+    color:
+        transparent !important;
+}
+
+
+@keyframes tituloDream4 {
+
+    0%,
+    100% {
+        background-position:
+            100%
+            50%;
+    }
+
+    50% {
+        background-position:
+            0%
+            50%;
+    }
+
+}
+
+
+/* CARDS */
+
+.note-card,
+.experience-card,
+.moment-card,
+.quiz-card {
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease !important;
+}
+
+
+.note-card:hover,
+.experience-card:hover,
+.moment-card:hover,
+.quiz-card:hover {
+    transform:
+        translateY(-12px)
+        scale(1.02) !important;
+
+    box-shadow:
+        0 35px 90px
+        rgba(
+            var(--primary-rgb),
+            0.22
+        ) !important;
+}
+
+
+/* CAMPANHA */
+
+.campaign-image {
+    animation:
+        campanhaDream4
+        8s
+        ease-in-out
+        infinite alternate;
+}
+
+
+@keyframes campanhaDream4 {
+
+    from {
+        transform:
+            scale(
+                1
+            );
+    }
+
+    to {
+        transform:
+            scale(
+                1.075
+            );
+    }
+
+}
+
+
+/* BOTÕES */
+
+.primary-btn,
+.pill-btn {
+    box-shadow:
+        0 15px 35px
+        rgba(
+            var(--primary-rgb),
+            0.30
+        ),
+        0 0 25px
+        rgba(
+            var(--primary-rgb),
+            0.15
+        ) !important;
+}
+
+
+.primary-btn:hover,
+.pill-btn:hover {
+    transform:
+        translateY(-5px)
+        scale(1.05) !important;
+
+    box-shadow:
+        0 25px 55px
+        rgba(
+            var(--primary-rgb),
+            0.42
+        ) !important;
+}
