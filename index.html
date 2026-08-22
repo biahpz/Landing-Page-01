@@ -12,13 +12,13 @@
 
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <div class="logo">
-            Dream<span>.</span>
-        </div>
+    <header class="header">
 
-        <nav>
+        <a href="#inicio" class="logo">
+            Dream<span>.</span>
+        </a>
+
+        <nav class="menu">
             <a href="#inicio">Início</a>
             <a href="#produto">Produto</a>
             <a href="#fragrancia">Fragrância</a>
@@ -28,13 +28,18 @@
         <a href="#comprar" class="botao-header">
             Conheça o produto
         </a>
+
     </header>
 
 
     <main>
 
         <!-- HERO -->
+
         <section id="inicio" class="hero">
+
+            <div class="hero-decor decor-1"></div>
+            <div class="hero-decor decor-2"></div>
 
             <div class="hero-texto">
 
@@ -48,9 +53,8 @@
                 </h1>
 
                 <p>
-                    Uma fragrância delicada e encantadora para
-                    acompanhar seus momentos e deixar tudo
-                    mais especial.
+                    Uma fragrância delicada, romântica e envolvente
+                    para transformar pequenos momentos em lembranças especiais.
                 </p>
 
                 <div class="botoes">
@@ -65,19 +69,43 @@
 
                 </div>
 
+                <div class="mini-info">
+
+                    <div>
+                        <strong>350 ml</strong>
+                        <span>Body Splash</span>
+                    </div>
+
+                    <div>
+                        <strong>Dream</strong>
+                        <span>Amor no Ar</span>
+                    </div>
+
+                    <div>
+                        <strong>O Boticário</strong>
+                        <span>Perfumaria</span>
+                    </div>
+
+                </div>
+
             </div>
 
 
-            <!-- IMAGEM REAL DO PRODUTO -->
             <div class="produto-visual">
 
                 <div class="circulo-hero"></div>
 
+                <div class="brilho"></div>
+
                 <img
-                    src="img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
+                    src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
                     alt="Dream Amor no Ar O Boticário"
                     class="imagem-produto"
                 >
+
+                <span class="texto-fundo">
+                    DREAM
+                </span>
 
             </div>
 
@@ -85,19 +113,25 @@
 
 
         <!-- PRODUTO -->
+
         <section id="produto" class="produto">
 
             <div class="produto-conteudo">
 
                 <div class="produto-imagem">
 
-                    <div class="circulo"></div>
+                    <div class="forma-produto"></div>
 
                     <img
-                        src="img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
-                        alt="Body Splash Dream Amor no Ar O Boticário"
+                        src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
+                        alt="Body Splash Dream Amor no Ar"
                         class="imagem-produto-menor"
                     >
+
+                    <div class="selo">
+                        <strong>350</strong>
+                        <span>ml</span>
+                    </div>
 
                 </div>
 
@@ -109,20 +143,40 @@
                     </span>
 
                     <h2>
-                        Amor no Ar
+                        Um toque de
+                        <span>amor</span>
+                        em cada momento.
                     </h2>
 
                     <p>
-                        O Body Splash Dream Amor no Ar foi pensado
-                        para trazer uma sensação leve, delicada e
-                        agradável para a sua rotina.
+                        Dream Amor no Ar traz uma proposta leve e delicada,
+                        perfeita para acompanhar a rotina com uma sensação
+                        perfumada e especial.
                     </p>
 
                     <p>
-                        Uma opção para usar depois do banho,
-                        durante o dia ou sempre que você quiser
-                        adicionar um toque especial ao seu momento.
+                        Ideal para usar depois do banho, antes de sair
+                        ou sempre que quiser renovar a fragrância ao longo do dia.
                     </p>
+
+                    <div class="beneficios">
+
+                        <div>
+                            <span>♡</span>
+                            <p>Fragrância delicada</p>
+                        </div>
+
+                        <div>
+                            <span>✦</span>
+                            <p>Sensação de frescor</p>
+                        </div>
+
+                        <div>
+                            <span>✿</span>
+                            <p>Uso para o dia a dia</p>
+                        </div>
+
+                    </div>
 
                     <a href="#fragrancia" class="botao-principal">
                         Conhecer a fragrância
@@ -135,23 +189,36 @@
         </section>
 
 
+        <!-- FRASE DE DESTAQUE -->
+
+        <section class="frase-destaque">
+
+            <p>
+                “Uma fragrância para deixar o
+                <span>amor no ar.</span>”
+            </p>
+
+        </section>
+
+
         <!-- FRAGRÂNCIA -->
+
         <section id="fragrancia" class="fragrancia">
 
             <div class="titulo-secao">
 
                 <span class="etiqueta">
-                    A FRAGRÂNCIA
+                    A EXPERIÊNCIA
                 </span>
 
                 <h2>
-                    Uma experiência
-                    <span>delicada.</span>
+                    Delicada em cada
+                    <span>detalhe.</span>
                 </h2>
 
                 <p>
-                    Descubra uma fragrância feita para momentos
-                    leves, especiais e cheios de encanto.
+                    Uma combinação pensada para trazer leveza,
+                    feminilidade e encanto para todos os momentos.
                 </p>
 
             </div>
@@ -160,38 +227,68 @@
             <div class="cards-fragrancia">
 
                 <article class="card">
-                    <div class="icone">✿</div>
 
-                    <h3>Leveza</h3>
+                    <div class="numero">
+                        01
+                    </div>
+
+                    <div class="icone">
+                        ✿
+                    </div>
+
+                    <h3>
+                        Leveza
+                    </h3>
 
                     <p>
-                        Uma proposta delicada para acompanhar
+                        Uma presença suave que acompanha
                         diferentes momentos do seu dia.
                     </p>
+
                 </article>
 
 
                 <article class="card destaque">
-                    <div class="icone">♡</div>
 
-                    <h3>Delicadeza</h3>
+                    <div class="numero">
+                        02
+                    </div>
+
+                    <div class="icone">
+                        ♡
+                    </div>
+
+                    <h3>
+                        Delicadeza
+                    </h3>
 
                     <p>
-                        Um toque feminino e romântico para
-                        completar sua rotina.
+                        Um toque romântico e feminino
+                        para deixar sua rotina mais especial.
                     </p>
+
                 </article>
 
 
                 <article class="card">
-                    <div class="icone">✨</div>
 
-                    <h3>Encanto</h3>
+                    <div class="numero">
+                        03
+                    </div>
+
+                    <div class="icone">
+                        ✦
+                    </div>
+
+                    <h3>
+                        Encanto
+                    </h3>
 
                     <p>
-                        Uma experiência perfumada para deixar
-                        seus momentos ainda mais especiais.
+                        Uma experiência perfumada feita
+                        para momentos inesquecíveis.
                     </p>
+
                 </article>
 
             </div>
@@ -200,6 +297,7 @@
 
 
         <!-- SOBRE -->
+
         <section id="sobre" class="sobre">
 
             <div class="sobre-conteudo">
@@ -211,39 +309,48 @@
                     </span>
 
                     <h2>
-                        Leve o
-                        <span>amor no ar</span>
-                        para sua rotina.
+                        Transforme o comum
+                        em algo
+                        <span>especial.</span>
                     </h2>
 
                     <p>
-                        O Dream Amor no Ar combina a praticidade
-                        de um body splash com uma proposta delicada
-                        e feminina.
+                        Dream Amor no Ar combina praticidade e delicadeza
+                        em uma fragrância pensada para acompanhar
+                        os momentos que fazem parte da sua história.
                     </p>
 
                     <p>
-                        É aquele toque final para depois do banho,
-                        antes de sair ou simplesmente quando você
-                        quiser se sentir ainda mais especial.
+                        Um toque final para a rotina que transmite
+                        leveza, charme e personalidade.
                     </p>
 
                 </div>
 
 
-                <div class="frase">
+                <div class="sobre-card">
 
                     <div class="coracao">
                         ♡
                     </div>
 
-                    <h3>DREAM</h3>
-
-                    <p>Amor no Ar</p>
-
-                    <span>
-                        Uma fragrância para sonhar.
+                    <span class="sobre-mini">
+                        O BOTICÁRIO
                     </span>
+
+                    <h3>
+                        DREAM
+                    </h3>
+
+                    <p>
+                        Amor no Ar
+                    </p>
+
+                    <div class="linha"></div>
+
+                    <small>
+                        Uma fragrância para sonhar.
+                    </small>
 
                 </div>
 
@@ -253,37 +360,41 @@
 
 
         <!-- CTA -->
+
         <section id="comprar" class="cta">
 
-            <span class="etiqueta">
-                DREAM • AMOR NO AR
-            </span>
+            <div class="cta-conteudo">
 
-            <h2>
-                Descubra o seu novo
-                momento favorito.
-            </h2>
+                <span class="etiqueta">
+                    DREAM • AMOR NO AR
+                </span>
 
-            <p>
-                Conheça o Body Splash Dream Amor no Ar
-                e descubra mais sobre o produto.
-            </p>
+                <h2>
+                    Seu próximo momento favorito
+                    pode começar aqui.
+                </h2>
 
-            <a
-                href="https://www.boticario.com.br/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="botao-cta"
-            >
-                Conhecer no O Boticário
-            </a>
+                <p>
+                    Conheça o Dream Amor no Ar e descubra
+                    mais sobre a fragrância no O Boticário.
+                </p>
+
+                <a
+                    href="https://www.boticario.com.br/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="botao-cta"
+                >
+                    Conhecer no O Boticário
+                </a>
+
+            </div>
 
         </section>
 
     </main>
 
 
-    <!-- FOOTER -->
     <footer>
 
         <div class="logo">
@@ -291,11 +402,12 @@
         </div>
 
         <p>
-            Projeto de landing page inspirado no universo
-            do Dream Amor no Ar.
+            Landing page inspirada no Dream Amor no Ar.
         </p>
 
-        <p>© 2026</p>
+        <p>
+            © 2026
+        </p>
 
     </footer>
 

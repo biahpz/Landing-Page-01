@@ -1,7 +1,3 @@
-/* =========================
-   RESET
-========================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -14,30 +10,34 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #ffffff;
-    color: #2b2433;
+    background: #fff;
+    color: #261f2d;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
 }
 
 :root {
-    --lilas: #9b6de3;
-    --lilas-escuro: #7950bd;
-    --lilas-claro: #f3edfc;
-    --lilas-muito-claro: #faf7ff;
+    --rosa: #d56f9e;
+    --rosa-escuro: #ad4f7b;
+    --rosa-claro: #fdeef5;
 
-    --rosa: #d778a8;
-    --rosa-claro: #fbeaf3;
+    --lilas: #9364df;
+    --lilas-escuro: #7650bb;
+    --lilas-claro: #f1eafd;
 
-    --texto: #2b2433;
-    --texto-claro: #77717e;
+    --dourado: #ba8b3d;
+
+    --texto: #261f2d;
+    --texto-claro: #756e79;
 
     --branco: #ffffff;
-    --borda: #eee8f5;
+    --fundo: #fdf9fc;
+    --borda: #eee5ed;
 }
 
 span {
@@ -45,64 +45,67 @@ span {
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
-header {
-    width: 100%;
+.header {
     height: 80px;
-
     padding: 0 7%;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    background: rgba(255, 255, 255, 0.95);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(255, 255, 255, 0.92);
 
     border-bottom: 1px solid var(--borda);
 
-    position: sticky;
-    top: 0;
-
-    z-index: 1000;
-
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(14px);
 }
 
 .logo {
-    font-size: 26px;
-    font-weight: bold;
+    font-size: 27px;
+    font-weight: 800;
+
     color: var(--texto);
 }
 
 .logo span {
-    color: var(--lilas);
+    color: var(--rosa);
 }
 
-nav {
+.menu {
     display: flex;
     gap: 35px;
 }
 
-nav a {
-    color: var(--texto-claro);
+.menu a {
     font-size: 14px;
+    color: var(--texto-claro);
+
     transition: 0.3s;
 }
 
-nav a:hover {
-    color: var(--lilas);
+.menu a:hover {
+    color: var(--rosa);
 }
 
 .botao-header {
-    background: var(--lilas);
+    padding: 12px 22px;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--rosa),
+            var(--lilas)
+        );
+
     color: white;
-
-    padding: 11px 20px;
-
-    border-radius: 8px;
 
     font-size: 13px;
     font-weight: bold;
@@ -111,17 +114,17 @@ nav a:hover {
 }
 
 .botao-header:hover {
-    background: var(--lilas-escuro);
     transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(147, 100, 223, 0.25);
 }
 
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero {
-    min-height: 650px;
+    min-height: 690px;
 
     padding: 70px 8%;
 
@@ -130,196 +133,284 @@ nav a:hover {
 
     align-items: center;
 
-    gap: 80px;
+    gap: 60px;
+
+    position: relative;
+
+    overflow: hidden;
 
     background:
-        radial-gradient(
-            circle at 80% 50%,
-            #faf0f7 0%,
-            #ffffff 45%
+        linear-gradient(
+            135deg,
+            #ffffff 30%,
+            #fff6fa 70%,
+            #f7f0ff 100%
         );
+}
+
+.hero-decor {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(5px);
+
+    opacity: 0.7;
+}
+
+.decor-1 {
+    width: 260px;
+    height: 260px;
+
+    right: -100px;
+    top: 40px;
+
+    background: #eadbfd;
+}
+
+.decor-2 {
+    width: 180px;
+    height: 180px;
+
+    left: -80px;
+    bottom: 20px;
+
+    background: #fbdde9;
 }
 
 .hero-texto {
     max-width: 600px;
+
+    position: relative;
+    z-index: 2;
 }
 
 .etiqueta {
     display: inline-block;
 
-    padding: 7px 14px;
+    padding: 8px 15px;
+
+    border-radius: 50px;
 
     background: var(--lilas-claro);
 
     color: var(--lilas);
 
-    border-radius: 30px;
-
     font-size: 11px;
-    font-weight: bold;
+    font-weight: 700;
 
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
 }
 
 .hero h1 {
-    margin-top: 25px;
+    margin-top: 24px;
 
-    font-size: 70px;
+    font-size: clamp(55px, 6vw, 82px);
 
-    line-height: 1.05;
+    line-height: 0.98;
 
-    letter-spacing: -3px;
+    letter-spacing: -4px;
 
     color: var(--texto);
 }
 
 .hero h1 span {
     display: block;
-    color: var(--lilas);
+
+    color: var(--rosa);
 }
 
-.hero-texto p {
-    max-width: 530px;
+.hero-texto > p {
+    max-width: 540px;
 
-    margin-top: 25px;
+    margin-top: 28px;
 
     color: var(--texto-claro);
 
-    font-size: 16px;
+    font-size: 17px;
 }
 
 .botoes {
-    display: flex;
-
-    gap: 15px;
-
     margin-top: 35px;
+
+    display: flex;
+    gap: 15px;
+}
+
+.botao-principal,
+.botao-secundario {
+    padding: 14px 24px;
+
+    border-radius: 50px;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    transition: 0.3s;
 }
 
 .botao-principal {
-    display: inline-block;
-
-    padding: 14px 23px;
-
-    background: var(--lilas);
-
     color: white;
-
-    border-radius: 8px;
-
-    font-size: 13px;
-    font-weight: bold;
-
-    transition: 0.3s;
-}
-
-.botao-principal:hover {
-    background: var(--lilas-escuro);
-    transform: translateY(-3px);
-}
-
-.botao-secundario {
-    display: inline-block;
-
-    padding: 14px 23px;
-
-    border: 1px solid var(--borda);
-
-    border-radius: 8px;
-
-    background: white;
-
-    color: var(--texto);
-
-    font-size: 13px;
-    font-weight: bold;
-
-    transition: 0.3s;
-}
-
-.botao-secundario:hover {
-    color: var(--lilas);
-    border-color: var(--lilas);
-}
-
-
-/* =========================
-   PRODUTO PRINCIPAL
-========================= */
-
-.produto-visual {
-    height: 520px;
-
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.circulo-hero {
-    position: absolute;
-
-    width: 420px;
-    height: 420px;
-
-    border-radius: 50%;
 
     background:
         linear-gradient(
             135deg,
-            #f7e6f1,
-            #eee4fb
+            var(--rosa),
+            var(--lilas)
         );
 
     box-shadow:
-        0 30px 80px rgba(155, 109, 227, 0.12);
+        0 10px 28px rgba(169, 90, 162, 0.2);
 }
 
-.imagem-produto {
+.botao-principal:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(169, 90, 162, 0.3);
+}
+
+.botao-secundario {
+    color: var(--texto);
+
+    background: rgba(255, 255, 255, 0.7);
+
+    border: 1px solid var(--borda);
+}
+
+.botao-secundario:hover {
+    border-color: var(--rosa);
+    color: var(--rosa);
+}
+
+.mini-info {
+    margin-top: 40px;
+
+    display: flex;
+    gap: 35px;
+}
+
+.mini-info div {
+    display: flex;
+    flex-direction: column;
+}
+
+.mini-info strong {
+    font-size: 13px;
+
+    color: var(--texto);
+}
+
+.mini-info span {
+    margin-top: 2px;
+
+    color: var(--texto-claro);
+
+    font-size: 11px;
+}
+
+
+/* PRODUTO HERO */
+
+.produto-visual {
+    min-height: 520px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     position: relative;
 
     z-index: 2;
+}
 
-    width: 450px;
-    max-width: 90%;
+.circulo-hero {
+    width: 430px;
+    height: 430px;
 
-    height: 500px;
+    position: absolute;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #fff 0%,
+            #f9e9f2 55%,
+            #eadcfa 100%
+        );
+
+    box-shadow:
+        0 40px 90px rgba(150, 90, 170, 0.18);
+}
+
+.brilho {
+    width: 320px;
+    height: 320px;
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.75);
+
+    filter: blur(35px);
+}
+
+.imagem-produto {
+    width: 470px;
+    max-width: 88%;
+
+    height: 510px;
 
     object-fit: contain;
 
-    /*
-       A imagem possui fundo branco.
-       Multiply ajuda o branco a se misturar
-       ao fundo do layout.
-    */
+    position: relative;
+    z-index: 3;
+
     mix-blend-mode: multiply;
 
     filter:
         drop-shadow(
-            0 25px 25px rgba(70, 30, 70, 0.18)
+            0 30px 28px rgba(75, 30, 60, 0.2)
         );
 
-    transition: transform 0.4s ease;
+    transition: 0.5s ease;
 }
 
 .imagem-produto:hover {
-    transform: translateY(-8px) scale(1.02);
+    transform:
+        translateY(-10px)
+        rotate(-1deg)
+        scale(1.02);
+}
+
+.texto-fundo {
+    position: absolute;
+
+    bottom: 10px;
+
+    font-size: 110px;
+    font-weight: 900;
+
+    letter-spacing: 10px;
+
+    color: rgba(214, 111, 158, 0.07);
+
+    z-index: 1;
 }
 
 
-/* =========================
-   SEÇÃO PRODUTO
-========================= */
+/* PRODUTO */
 
 .produto {
-    padding: 110px 8%;
+    padding: 120px 8%;
 
-    background: var(--lilas-muito-claro);
+    background: var(--fundo);
 }
 
 .produto-conteudo {
-    max-width: 1150px;
+    max-width: 1180px;
 
     margin: auto;
 
@@ -332,86 +423,201 @@ nav a:hover {
 }
 
 .produto-imagem {
-    height: 450px;
-
-    position: relative;
+    min-height: 480px;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    position: relative;
 }
 
-.circulo {
+.forma-produto {
+    width: 380px;
+    height: 420px;
+
     position: absolute;
 
-    width: 350px;
-    height: 350px;
-
-    border-radius: 50%;
+    border-radius:
+        180px
+        180px
+        30px
+        30px;
 
     background:
         linear-gradient(
-            135deg,
-            #f8e9f2,
-            #eee3fc
+            160deg,
+            #fbe8f1,
+            #eee4fb
         );
 }
 
 .imagem-produto-menor {
-    position: relative;
-
-    z-index: 2;
-
-    width: 320px;
+    width: 340px;
     max-width: 85%;
 
-    height: 420px;
+    height: 450px;
 
     object-fit: contain;
+
+    position: relative;
+    z-index: 2;
 
     mix-blend-mode: multiply;
 
     filter:
         drop-shadow(
-            0 20px 20px rgba(70, 30, 70, 0.16)
+            0 25px 25px rgba(75, 30, 60, 0.17)
         );
-
-    transition: transform 0.4s ease;
 }
 
-.imagem-produto-menor:hover {
-    transform: translateY(-7px);
+.selo {
+    width: 75px;
+    height: 75px;
+
+    position: absolute;
+
+    right: 50px;
+    bottom: 55px;
+
+    z-index: 4;
+
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+
+    box-shadow:
+        0 12px 30px rgba(70, 30, 60, 0.15);
+}
+
+.selo strong {
+    color: var(--rosa);
+
+    font-size: 18px;
+}
+
+.selo span {
+    color: var(--texto-claro);
+
+    font-size: 10px;
 }
 
 .produto-texto h2 {
-    margin-top: 18px;
+    margin-top: 20px;
 
-    font-size: 48px;
+    max-width: 550px;
 
-    color: var(--texto);
+    font-size: 52px;
+
+    line-height: 1.1;
+
+    letter-spacing: -2px;
 }
 
-.produto-texto p {
-    margin-top: 18px;
+.produto-texto h2 span {
+    color: var(--rosa);
+}
+
+.produto-texto > p {
+    margin-top: 20px;
+
+    max-width: 560px;
 
     color: var(--texto-claro);
 
     font-size: 15px;
 }
 
-.produto-texto .botao-principal {
-    margin-top: 28px;
+.beneficios {
+    margin: 30px 0;
+
+    display: grid;
+    gap: 12px;
+}
+
+.beneficios div {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.beneficios span {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--rosa-claro);
+
+    color: var(--rosa);
+}
+
+.beneficios p {
+    color: var(--texto);
+
+    font-size: 13px;
 }
 
 
-/* =========================
-   TÍTULOS
-========================= */
+/* FRASE */
+
+.frase-destaque {
+    padding: 80px 8%;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ca6f9c,
+            #9564d9
+        );
+}
+
+.frase-destaque p {
+    max-width: 900px;
+
+    margin: auto;
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(32px, 5vw, 55px);
+
+    font-style: italic;
+
+    line-height: 1.2;
+
+    color: white;
+}
+
+.frase-destaque span {
+    color: #ffe9b8;
+}
+
+
+/* FRAGRÂNCIA */
+
+.fragrancia {
+    padding: 120px 8%;
+
+    background: white;
+}
 
 .titulo-secao {
-    max-width: 700px;
+    max-width: 720px;
 
-    margin: 0 auto 60px;
+    margin: 0 auto 65px;
 
     text-align: center;
 }
@@ -419,109 +625,129 @@ nav a:hover {
 .titulo-secao h2 {
     margin-top: 20px;
 
-    font-size: 45px;
+    font-size: 50px;
 
-    line-height: 1.15;
+    line-height: 1.1;
+
+    letter-spacing: -2px;
+}
+
+.titulo-secao h2 span {
+    color: var(--rosa);
 }
 
 .titulo-secao p {
-    margin-top: 15px;
+    margin-top: 18px;
 
     color: var(--texto-claro);
 
     font-size: 14px;
 }
 
-
-/* =========================
-   FRAGRÂNCIA
-========================= */
-
-.fragrancia {
-    padding: 110px 8%;
-
-    background: white;
-}
-
 .cards-fragrancia {
-    max-width: 1150px;
+    max-width: 1180px;
 
     margin: auto;
 
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(3, 1fr);
 
     gap: 25px;
 }
 
 .card {
+    min-height: 310px;
+
     padding: 35px;
+
+    position: relative;
+
+    border-radius: 24px;
 
     border: 1px solid var(--borda);
 
-    border-radius: 18px;
-
     background: white;
 
-    transition: 0.3s;
+    overflow: hidden;
+
+    transition: 0.35s;
 }
 
 .card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-9px);
 
     box-shadow:
-        0 20px 45px rgba(100, 70, 140, 0.1);
+        0 25px 55px rgba(100, 60, 120, 0.12);
 }
 
 .card.destaque {
     background:
         linear-gradient(
-            135deg,
-            #a878e7,
-            #8d5ed2
+            145deg,
+            #d875a5,
+            #9364df
         );
 
     color: white;
 
-    border-color: transparent;
+    border: none;
+}
+
+.numero {
+    position: absolute;
+
+    top: 20px;
+    right: 25px;
+
+    font-size: 55px;
+    font-weight: 900;
+
+    color: rgba(150, 100, 200, 0.08);
+}
+
+.card.destaque .numero {
+    color: rgba(255, 255, 255, 0.1);
 }
 
 .icone {
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 14px;
+    border-radius: 16px;
 
-    background: var(--lilas-claro);
+    background: var(--rosa-claro);
 
-    color: var(--lilas);
+    color: var(--rosa);
 
-    font-size: 21px;
+    font-size: 24px;
 }
 
-.destaque .icone {
+.card.destaque .icone {
     background: rgba(255, 255, 255, 0.15);
 
     color: white;
 }
 
 .card h3 {
-    margin-top: 25px;
+    margin-top: 35px;
 
-    font-size: 20px;
+    font-size: 23px;
 }
 
 .card p {
-    margin-top: 10px;
+    margin-top: 12px;
 
     color: var(--texto-claro);
 
     font-size: 13px;
+
+    max-width: 290px;
 }
 
 .card.destaque p {
@@ -529,24 +755,23 @@ nav a:hover {
 }
 
 
-/* =========================
-   SOBRE
-========================= */
+/* SOBRE */
 
 .sobre {
-    padding: 110px 8%;
+    padding: 120px 8%;
 
-    background: var(--lilas-muito-claro);
+    background: var(--fundo);
 }
 
 .sobre-conteudo {
-    max-width: 1150px;
+    max-width: 1180px;
 
     margin: auto;
 
     display: grid;
 
-    grid-template-columns: 1fr 400px;
+    grid-template-columns:
+        1fr 420px;
 
     align-items: center;
 
@@ -554,14 +779,22 @@ nav a:hover {
 }
 
 .sobre-texto h2 {
-    margin-top: 18px;
+    margin-top: 20px;
 
-    font-size: 45px;
+    font-size: 50px;
 
-    line-height: 1.2;
+    line-height: 1.1;
+
+    letter-spacing: -2px;
+}
+
+.sobre-texto h2 span {
+    color: var(--rosa);
 }
 
 .sobre-texto p {
+    max-width: 600px;
+
     margin-top: 20px;
 
     color: var(--texto-claro);
@@ -569,8 +802,10 @@ nav a:hover {
     font-size: 14px;
 }
 
-.frase {
-    min-height: 350px;
+.sobre-card {
+    min-height: 400px;
+
+    padding: 50px;
 
     display: flex;
     flex-direction: column;
@@ -580,93 +815,114 @@ nav a:hover {
 
     text-align: center;
 
-    background:
-        linear-gradient(
-            145deg,
-            #a978e8,
-            #8a59ce
-        );
+    border-radius: 35px;
 
     color: white;
 
-    border-radius: 25px;
+    background:
+        linear-gradient(
+            145deg,
+            #d976a5,
+            #9260dc
+        );
 
     box-shadow:
-        0 25px 60px rgba(130, 80, 190, 0.2);
+        0 30px 70px rgba(135, 70, 160, 0.22);
 }
 
 .coracao {
-    font-size: 60px;
+    font-size: 65px;
 
     font-family: Georgia, serif;
 }
 
-.frase h3 {
-    margin-top: 20px;
+.sobre-mini {
+    margin-top: 15px;
 
-    font-size: 25px;
+    color: rgba(255, 255, 255, 0.7);
 
-    letter-spacing: 4px;
+    font-size: 9px;
+
+    letter-spacing: 3px;
 }
 
-.frase p {
-    margin-top: 5px;
+.sobre-card h3 {
+    margin-top: 8px;
+
+    font-size: 29px;
+
+    letter-spacing: 5px;
+}
+
+.sobre-card p {
+    margin-top: 3px;
 
     font-family: Georgia, serif;
 
-    font-size: 18px;
+    font-size: 20px;
 
     font-style: italic;
 }
 
-.frase span {
-    margin-top: 25px;
+.linha {
+    width: 50px;
+    height: 1px;
 
-    color: rgba(255, 255, 255, 0.75);
+    margin: 25px 0;
+
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.sobre-card small {
+    color: rgba(255, 255, 255, 0.7);
 
     font-size: 11px;
 }
 
 
-/* =========================
-   CTA
-========================= */
+/* CTA */
 
 .cta {
-    padding: 100px 20px;
+    padding: 110px 8%;
+
+    text-align: center;
+
+    color: white;
 
     background:
         linear-gradient(
             135deg,
-            #a16fe2,
-            #8252c5
+            #c96898,
+            #8d5dd4
         );
+}
 
-    color: white;
+.cta-conteudo {
+    max-width: 750px;
 
-    text-align: center;
+    margin: auto;
 }
 
 .cta .etiqueta {
-    background: rgba(255, 255, 255, 0.15);
-
     color: white;
+
+    background: rgba(255, 255, 255, 0.13);
 }
 
 .cta h2 {
-    max-width: 700px;
+    margin-top: 22px;
 
-    margin: 20px auto;
+    font-size: 52px;
 
-    font-size: 45px;
+    line-height: 1.1;
 
-    line-height: 1.2;
+    letter-spacing: -2px;
 }
 
 .cta p {
     max-width: 550px;
 
-    margin: auto auto 30px;
+    margin: 22px auto 35px;
 
     color: rgba(255, 255, 255, 0.8);
 
@@ -676,13 +932,13 @@ nav a:hover {
 .botao-cta {
     display: inline-block;
 
-    padding: 15px 25px;
+    padding: 15px 28px;
+
+    border-radius: 50px;
 
     background: white;
 
-    color: var(--lilas);
-
-    border-radius: 8px;
+    color: var(--rosa-escuro);
 
     font-size: 13px;
     font-weight: bold;
@@ -694,24 +950,23 @@ nav a:hover {
     transform: translateY(-3px);
 
     box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.15);
+        0 15px 35px rgba(0, 0, 0, 0.18);
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer {
     padding: 35px 8%;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
-    background: white;
-
     border-top: 1px solid var(--borda);
+
+    background: white;
 }
 
 footer p {
@@ -721,13 +976,11 @@ footer p {
 }
 
 
-/* =========================
-   TABLET
-========================= */
+/* TABLET */
 
 @media (max-width: 900px) {
 
-    nav {
+    .menu {
         display: none;
     }
 
@@ -736,19 +989,20 @@ footer p {
 
         text-align: center;
 
-        gap: 30px;
+        gap: 25px;
     }
 
     .hero-texto {
         margin: auto;
     }
 
-    .hero-texto p {
+    .hero-texto > p {
         margin-left: auto;
         margin-right: auto;
     }
 
-    .botoes {
+    .botoes,
+    .mini-info {
         justify-content: center;
     }
 
@@ -764,23 +1018,42 @@ footer p {
         text-align: center;
     }
 
+    .produto-texto > p,
+    .sobre-texto p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .beneficios {
+        max-width: 300px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        text-align: left;
+    }
+
     .cards-fragrancia {
         grid-template-columns: 1fr;
     }
 
-    .sobre-conteudo {
-        max-width: 700px;
+    .sobre-card {
+        max-width: 500px;
+
+        width: 100%;
+
+        margin: auto;
     }
 }
 
 
-/* =========================
-   CELULAR
-========================= */
+/* CELULAR */
 
 @media (max-width: 600px) {
 
-    header {
+    .header {
+        height: 70px;
+
         padding: 0 5%;
     }
 
@@ -793,18 +1066,18 @@ footer p {
     }
 
     .hero {
-        padding: 55px 5%;
+        min-height: auto;
 
-        gap: 20px;
+        padding: 60px 5% 40px;
     }
 
     .hero h1 {
-        font-size: 48px;
+        font-size: 52px;
 
-        letter-spacing: -2px;
+        letter-spacing: -3px;
     }
 
-    .hero-texto p {
+    .hero-texto > p {
         font-size: 14px;
     }
 
@@ -819,8 +1092,14 @@ footer p {
         text-align: center;
     }
 
+    .mini-info {
+        gap: 15px;
+
+        flex-wrap: wrap;
+    }
+
     .produto-visual {
-        height: 430px;
+        min-height: 430px;
     }
 
     .circulo-hero {
@@ -829,11 +1108,14 @@ footer p {
     }
 
     .imagem-produto {
-        width: 330px;
-
+        width: 340px;
         height: 410px;
 
         max-width: 95%;
+    }
+
+    .texto-fundo {
+        font-size: 55px;
     }
 
     .produto {
@@ -841,46 +1123,55 @@ footer p {
     }
 
     .produto-imagem {
-        height: 390px;
+        min-height: 400px;
     }
 
-    .circulo {
-        width: 290px;
-        height: 290px;
+    .forma-produto {
+        width: 280px;
+        height: 340px;
     }
 
     .imagem-produto-menor {
         width: 270px;
-
         height: 350px;
-
-        max-width: 90%;
     }
 
-    .fragrancia {
-        padding: 80px 5%;
+    .selo {
+        width: 65px;
+        height: 65px;
+
+        right: 20px;
+        bottom: 40px;
     }
 
+    .produto-texto h2,
+    .titulo-secao h2,
+    .sobre-texto h2,
+    .cta h2 {
+        font-size: 36px;
+
+        letter-spacing: -1px;
+    }
+
+    .frase-destaque {
+        padding: 65px 5%;
+    }
+
+    .fragrancia,
     .sobre {
         padding: 80px 5%;
     }
 
-    .titulo-secao h2,
-    .sobre-texto h2,
-    .cta h2 {
-        font-size: 34px;
+    .card {
+        min-height: 270px;
     }
 
-    .produto-texto h2 {
-        font-size: 40px;
+    .sobre-card {
+        min-height: 330px;
     }
 
-    .sobre-conteudo {
-        grid-template-columns: 1fr;
-    }
-
-    .frase {
-        min-height: 300px;
+    .cta {
+        padding: 80px 5%;
     }
 
     footer {
@@ -888,7 +1179,7 @@ footer p {
 
         flex-direction: column;
 
-        gap: 15px;
+        gap: 14px;
 
         text-align: center;
     }
