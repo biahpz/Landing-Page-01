@@ -5518,3 +5518,1131 @@ console.log(
 
 
 })();
+/* =========================================================
+   DREAM UPDATE 3.2
+   MELHORIAS PREMIUM + NOVAS FUNÇÕES
+   COLAR NO FINAL DO SCRIPT.JS
+========================================================= */
+
+(() => {
+
+    "use strict";
+
+    if (window.DREAM_UPDATE_32) {
+        return;
+    }
+
+    window.DREAM_UPDATE_32 = true;
+
+    const $32 = (selector, parent = document) =>
+        parent.querySelector(selector);
+
+    const $$32 = (selector, parent = document) =>
+        [...parent.querySelectorAll(selector)];
+
+    const body32 = document.body;
+    const root32 = document.documentElement;
+
+    /* =====================================================
+       CSS 3.2
+    ===================================================== */
+
+    const style32 = document.createElement("style");
+
+    style32.id = "dreamUpdate32Style";
+
+    style32.textContent = `
+        .dream32-status {
+            position: fixed;
+            top: 95px;
+            right: 20px;
+            z-index: 8500;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(18,18,26,.78);
+            border: 1px solid rgba(255,255,255,.12);
+            color: #fff;
+            backdrop-filter: blur(16px);
+            font-size: 10px;
+            font-weight: 700;
+            opacity: .85;
+            pointer-events: none;
+        }
+
+        .dream32-achievement {
+            position: fixed;
+            top: 22px;
+            left: 50%;
+            z-index: 99999;
+            width: min(420px, calc(100vw - 30px));
+            padding: 16px 20px;
+            border-radius: 20px;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(var(--primary-rgb), .95),
+                    rgba(var(--secondary-rgb), .95)
+                );
+            color: #fff;
+            box-shadow: 0 20px 70px rgba(0,0,0,.28);
+            transform: translate(-50%, -30px) scale(.95);
+            opacity: 0;
+            pointer-events: none;
+            transition:
+                opacity .35s ease,
+                transform .35s ease;
+            text-align: center;
+        }
+
+        .dream32-achievement.show {
+            opacity: 1;
+            transform: translate(-50%, 0) scale(1);
+        }
+
+        .dream32-achievement small {
+            display: block;
+            margin-bottom: 4px;
+            opacity: .75;
+            letter-spacing: 2px;
+            font-size: 8px;
+        }
+
+        .dream32-achievement strong {
+            font-size: 18px;
+        }
+
+        .dream32-history {
+            position: fixed;
+            left: 20px;
+            top: 95px;
+            z-index: 8400;
+            width: min(290px, calc(100vw - 40px));
+            padding: 15px;
+            border-radius: 20px;
+            background: rgba(18,18,26,.80);
+            border: 1px solid rgba(255,255,255,.10);
+            color: #fff;
+            backdrop-filter: blur(18px);
+            box-shadow: 0 20px 60px rgba(0,0,0,.20);
+            opacity: 0;
+            transform: translateY(-10px);
+            pointer-events: none;
+            transition: .25s ease;
+        }
+
+        .dream32-history.open {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .dream32-history h4 {
+            margin: 0 0 12px;
+            font-size: 15px;
+        }
+
+        .dream32-history-item {
+            padding: 10px;
+            border-radius: 12px;
+            background: rgba(255,255,255,.06);
+            margin-bottom: 8px;
+            font-size: 10px;
+            line-height: 1.4;
+        }
+
+        .dream32-history-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .dream32-history-button {
+            position: fixed;
+            left: 20px;
+            top: 44px;
+            z-index: 8501;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.12);
+            background: rgba(18,18,26,.8);
+            color: #fff;
+            cursor: pointer;
+            backdrop-filter: blur(15px);
+        }
+
+        .dream32-preset-row {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .dream32-preset {
+            padding: 10px 8px;
+            border: 1px solid rgba(255,255,255,.10);
+            border-radius: 12px;
+            background: rgba(255,255,255,.06);
+            color: #fff;
+            cursor: pointer;
+            font-size: 10px;
+            font-weight: 700;
+            transition: .2s ease;
+        }
+
+        .dream32-preset:hover {
+            transform: translateY(-2px);
+            background: rgba(255,255,255,.11);
+        }
+
+        .dream32-auto-active {
+            box-shadow:
+                0 0 0 2px rgba(var(--primary-rgb),.25),
+                0 15px 45px rgba(var(--primary-rgb),.20);
+        }
+
+        .dream32-spray-cooldown {
+            opacity: .55 !important;
+            pointer-events: none !important;
+        }
+
+        .dream32-flash {
+            position: fixed;
+            inset: 0;
+            z-index: 99998;
+            pointer-events: none;
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(var(--primary-rgb), .18),
+                    transparent 65%
+                );
+            opacity: 0;
+            animation: dream32Flash .65s ease;
+        }
+
+        @keyframes dream32Flash {
+            0% { opacity: 0; }
+            35% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        body.dream32-auto-mode .dream31-open-panel {
+            box-shadow:
+                0 0 0 3px rgba(var(--primary-rgb),.15),
+                0 15px 55px rgba(var(--primary-rgb),.4);
+        }
+
+        @media(max-width:700px) {
+            .dream32-status {
+                display: none;
+            }
+
+            .dream32-history {
+                left: 15px;
+                right: 15px;
+                width: auto;
+            }
+
+            .dream32-history-button {
+                left: 15px;
+            }
+        }
+    `;
+
+    document.head.appendChild(style32);
+
+    /* =====================================================
+       STATUS ATUAL
+    ===================================================== */
+
+    const status32 = document.createElement("div");
+    status32.className = "dream32-status";
+    status32.id = "dream32Status";
+    status32.textContent = "Dream 3.2 ativo";
+    body32.appendChild(status32);
+
+    function updateStatus32() {
+        const activeScene =
+            $32(".scene-button.active")?.dataset.scene ||
+            localStorage.getItem("dream31Scene") ||
+            "dream";
+
+        const activePalette =
+            $32(".palette.active")?.dataset.palette ||
+            "dream";
+
+        status32.textContent =
+            `✦ ${activeScene} • ${activePalette}`;
+    }
+
+    /* =====================================================
+       HISTÓRICO
+    ===================================================== */
+
+    const historyButton32 = document.createElement("button");
+    historyButton32.type = "button";
+    historyButton32.className = "dream32-history-button";
+    historyButton32.textContent = "☰";
+    historyButton32.setAttribute("aria-label", "Histórico Dream");
+
+    const historyPanel32 = document.createElement("div");
+    historyPanel32.className = "dream32-history";
+    historyPanel32.innerHTML = `
+        <h4>Últimas experiências</h4>
+        <div id="dream32HistoryList"></div>
+    `;
+
+    body32.appendChild(historyButton32);
+    body32.appendChild(historyPanel32);
+
+    historyButton32.addEventListener("click", () => {
+        historyPanel32.classList.toggle("open");
+    });
+
+    let history32 = [];
+
+    try {
+        history32 =
+            JSON.parse(
+                localStorage.getItem("dream32History") ||
+                "[]"
+            );
+    } catch {
+        history32 = [];
+    }
+
+    function saveHistory32(type, text) {
+        history32.unshift({
+            type,
+            text,
+            time: Date.now()
+        });
+
+        history32 = history32.slice(0, 8);
+
+        localStorage.setItem(
+            "dream32History",
+            JSON.stringify(history32)
+        );
+
+        renderHistory32();
+    }
+
+    function renderHistory32() {
+        const list = $32("#dream32HistoryList");
+
+        if (!list) {
+            return;
+        }
+
+        if (!history32.length) {
+            list.innerHTML = `
+                <div class="dream32-history-item">
+                    Nenhuma experiência ainda.
+                </div>
+            `;
+            return;
+        }
+
+        list.innerHTML = history32.map(item => {
+            const date = new Date(item.time);
+
+            return `
+                <div class="dream32-history-item">
+                    <strong>${item.type}</strong><br>
+                    ${item.text}<br>
+                    <small>
+                        ${date.toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit"
+                        })}
+                    </small>
+                </div>
+            `;
+        }).join("");
+    }
+
+    renderHistory32();
+
+    /* =====================================================
+       CONQUISTAS
+    ===================================================== */
+
+    const achievement32 =
+        document.createElement("div");
+
+    achievement32.className =
+        "dream32-achievement";
+
+    achievement32.innerHTML = `
+        <small>CONQUISTA DESBLOQUEADA</small>
+        <strong id="dream32AchievementText"></strong>
+    `;
+
+    body32.appendChild(achievement32);
+
+    let achievementTimer32;
+
+    function showAchievement32(text, key) {
+        const unlocked =
+            JSON.parse(
+                localStorage.getItem(
+                    "dream32Achievements"
+                ) ||
+                "[]"
+            );
+
+        if (unlocked.includes(key)) {
+            return;
+        }
+
+        unlocked.push(key);
+
+        localStorage.setItem(
+            "dream32Achievements",
+            JSON.stringify(unlocked)
+        );
+
+        const textElement =
+            $32("#dream32AchievementText");
+
+        if (textElement) {
+            textElement.textContent =
+                text;
+        }
+
+        achievement32.classList.add(
+            "show"
+        );
+
+        clearTimeout(
+            achievementTimer32
+        );
+
+        achievementTimer32 =
+            setTimeout(
+                () => {
+                    achievement32.classList.remove(
+                        "show"
+                    );
+                },
+                3500
+            );
+    }
+
+    function checkAchievements32() {
+        const sprays =
+            Number(
+                localStorage.getItem(
+                    "dream31Sprays"
+                ) ||
+                0
+            );
+
+        const surprises =
+            Number(
+                localStorage.getItem(
+                    "dream31Surprises"
+                ) ||
+                0
+            );
+
+        const mixes =
+            Number(
+                localStorage.getItem(
+                    "dream32MixCount"
+                ) ||
+                0
+            );
+
+        if (sprays >= 10) {
+            showAchievement32(
+                "10 sprays realizados ✦",
+                "spray10"
+            );
+        }
+
+        if (sprays >= 50) {
+            showAchievement32(
+                "Mestre do Dream • 50 sprays",
+                "spray50"
+            );
+        }
+
+        if (surprises >= 5) {
+            showAchievement32(
+                "5 experiências surpresa",
+                "surprise5"
+            );
+        }
+
+        if (mixes >= 3) {
+            showAchievement32(
+                "Criador de fragrâncias",
+                "mix3"
+            );
+        }
+    }
+
+    /* =====================================================
+       SPRAY MELHORADO
+    ===================================================== */
+
+    const sprayButton32 =
+        $32("#sprayButton");
+
+    let sprayCooldown32 =
+        false;
+
+    sprayButton32?.addEventListener(
+        "click",
+        () => {
+            if (sprayCooldown32) {
+                return;
+            }
+
+            sprayCooldown32 = true;
+
+            sprayButton32.classList.add(
+                "dream32-spray-cooldown"
+            );
+
+            const flash =
+                document.createElement(
+                    "div"
+                );
+
+            flash.className =
+                "dream32-flash";
+
+            body32.appendChild(
+                flash
+            );
+
+            setTimeout(
+                () => {
+                    flash.remove();
+                },
+                700
+            );
+
+            saveHistory32(
+                "Spray",
+                "Dream borrifado"
+            );
+
+            checkAchievements32();
+
+            setTimeout(
+                () => {
+                    sprayCooldown32 =
+                        false;
+
+                    sprayButton32.classList.remove(
+                        "dream32-spray-cooldown"
+                    );
+                },
+                600
+            );
+        },
+        true
+    );
+
+    /* =====================================================
+       DREAM MIXER MELHORADO
+    ===================================================== */
+
+    const noteCategories32 = {
+        Bergamota: "cítrico",
+        Mandarina: "cítrico",
+        Rosa: "floral",
+        Gardênia: "floral",
+        Baunilha: "doce",
+        Pêssego: "frutado",
+        Musk: "almiscarado",
+        Sândalo: "amadeirado"
+    };
+
+    function getMixProfile32(notes) {
+        const categories =
+            notes.map(
+                note =>
+                    noteCategories32[note] ||
+                    "especial"
+            );
+
+        if (
+            categories.includes("floral") &&
+            categories.includes("doce")
+        ) {
+            return {
+                title:
+                    "Romântico e envolvente",
+
+                text:
+                    "Uma criação floral com fundo adocicado e assinatura confortável."
+            };
+        }
+
+        if (
+            categories.includes("cítrico") &&
+            categories.includes("frutado")
+        ) {
+            return {
+                title:
+                    "Fresco e luminoso",
+
+                text:
+                    "Uma combinação vibrante, alegre e cheia de energia."
+            };
+        }
+
+        if (
+            categories.includes("amadeirado") &&
+            categories.includes("almiscarado")
+        ) {
+            return {
+                title:
+                    "Elegante e marcante",
+
+                text:
+                    "Um perfil profundo, macio e sofisticado."
+            };
+        }
+
+        return {
+            title:
+                "Dream Signature",
+
+            text:
+                "Uma mistura equilibrada, única e feita para deixar uma assinatura pessoal."
+        };
+    }
+
+    $32("#dream31Mix")?.addEventListener(
+        "click",
+        () => {
+            setTimeout(
+                () => {
+                    const selected =
+                        $$32(
+                            ".dream31-note.active"
+                        )
+                        .map(
+                            item =>
+                                item.dataset.mixerNote
+                        );
+
+                    if (
+                        selected.length !==
+                        3
+                    ) {
+                        return;
+                    }
+
+                    const profile =
+                        getMixProfile32(
+                            selected
+                        );
+
+                    const title =
+                        $32(
+                            "#dream31MixTitle"
+                        );
+
+                    const text =
+                        $32(
+                            "#dream31MixText"
+                        );
+
+                    if (title) {
+                        title.textContent =
+                            `${profile.title} ✦`;
+                    }
+
+                    if (text) {
+                        text.textContent =
+                            `${selected.join(" + ")}. ${profile.text}`;
+                    }
+
+                    const count =
+                        Number(
+                            localStorage.getItem(
+                                "dream32MixCount"
+                            ) ||
+                            0
+                        ) +
+                        1;
+
+                    localStorage.setItem(
+                        "dream32MixCount",
+                        String(count)
+                    );
+
+                    saveHistory32(
+                        "Dream Mixer",
+                        selected.join(" + ")
+                    );
+
+                    checkAchievements32();
+                },
+                50
+            );
+        }
+    );
+
+    /* =====================================================
+       SURPREENDA-ME MELHORADO
+    ===================================================== */
+
+    $32("#dream31Surprise")?.addEventListener(
+        "click",
+        () => {
+            setTimeout(
+                () => {
+                    const activeScene =
+                        $32(
+                            ".scene-button.active"
+                        )?.dataset.scene ||
+                        "dream";
+
+                    const activePalette =
+                        $32(
+                            ".palette.active"
+                        )?.dataset.palette ||
+                        "dream";
+
+                    saveHistory32(
+                        "Surpresa",
+                        `${activeScene} • ${activePalette}`
+                    );
+
+                    updateStatus32();
+
+                    checkAchievements32();
+                },
+                350
+            );
+        }
+    );
+
+    /* =====================================================
+       PRESETS
+    ===================================================== */
+
+    const panel31 =
+        $32("#dream31Panel");
+
+    if (panel31) {
+        const block =
+            document.createElement("div");
+
+        block.className =
+            "dream31-block";
+
+        block.innerHTML = `
+            <div class="dream31-label">
+                <span>🎨 Presets rápidos</span>
+            </div>
+
+            <div class="dream32-preset-row">
+                <button class="dream32-preset" data-preset32="romantico">
+                    ♡ Romântico
+                </button>
+
+                <button class="dream32-preset" data-preset32="noturno">
+                    ☾ Noturno
+                </button>
+
+                <button class="dream32-preset" data-preset32="suave">
+                    ☁ Suave
+                </button>
+
+                <button class="dream32-preset" data-preset32="intenso">
+                    ✦ Intenso
+                </button>
+            </div>
+        `;
+
+        panel31.appendChild(
+            block
+        );
+    }
+
+    const presets32 = {
+        romantico: {
+            scene: "romance",
+            palette: "dream",
+            intensity: 100
+        },
+
+        noturno: {
+            scene: "ceu",
+            palette: "roxo",
+            intensity: 85
+        },
+
+        suave: {
+            scene: "flores",
+            palette: "menta",
+            intensity: 70
+        },
+
+        intenso: {
+            scene: "energia",
+            palette: "cherry",
+            intensity: 150
+        }
+    };
+
+    $$32(
+        ".dream32-preset"
+    ).forEach(
+        button => {
+            button.addEventListener(
+                "click",
+                () => {
+                    const preset =
+                        presets32[
+                            button.dataset.preset32
+                        ];
+
+                    if (!preset) {
+                        return;
+                    }
+
+                    $32(
+                        `.scene-button[data-scene="${preset.scene}"]`
+                    )?.click();
+
+                    $32(
+                        `.palette[data-palette="${preset.palette}"]`
+                    )?.click();
+
+                    const intensity =
+                        $32(
+                            "#dream31Intensity"
+                        );
+
+                    if (intensity) {
+                        intensity.value =
+                            preset.intensity;
+
+                        intensity.dispatchEvent(
+                            new Event(
+                                "input",
+                                {
+                                    bubbles: true
+                                }
+                            )
+                        );
+                    }
+
+                    saveHistory32(
+                        "Preset",
+                        button.textContent.trim()
+                    );
+
+                    updateStatus32();
+                }
+            );
+        }
+    );
+
+    /* =====================================================
+       DREAM AUTO
+    ===================================================== */
+
+    let auto32 =
+        null;
+
+    if (panel31) {
+        const autoBlock =
+            document.createElement(
+                "div"
+            );
+
+        autoBlock.className =
+            "dream31-block";
+
+        autoBlock.innerHTML = `
+            <label class="dream31-label">
+                <span>∞ Dream Auto</span>
+
+                <input
+                    type="checkbox"
+                    class="dream31-toggle"
+                    id="dream32Auto"
+                >
+            </label>
+
+            <p style="
+                margin:5px 0 0;
+                opacity:.55;
+                font-size:10px;
+            ">
+                Troca automaticamente a atmosfera.
+            </p>
+        `;
+
+        panel31.appendChild(
+            autoBlock
+        );
+    }
+
+    function runAuto32() {
+        const scenes =
+            $$32(
+                ".scene-button"
+            );
+
+        const palettes =
+            $$32(
+                ".palette"
+            );
+
+        if (scenes.length) {
+            scenes[
+                Math.floor(
+                    Math.random() *
+                    scenes.length
+                )
+            ].click();
+        }
+
+        if (palettes.length) {
+            palettes[
+                Math.floor(
+                    Math.random() *
+                    palettes.length
+                )
+            ].click();
+        }
+
+        if (
+            Math.random() >
+            0.5
+        ) {
+            $32(
+                "#sprayButton"
+            )?.click();
+        }
+
+        updateStatus32();
+    }
+
+    $32("#dream32Auto")?.addEventListener(
+        "change",
+        event => {
+            if (
+                event.target.checked
+            ) {
+                body32.classList.add(
+                    "dream32-auto-mode"
+                );
+
+                runAuto32();
+
+                auto32 =
+                    setInterval(
+                        runAuto32,
+                        9000
+                    );
+
+                saveHistory32(
+                    "Dream Auto",
+                    "Ativado"
+                );
+            } else {
+                body32.classList.remove(
+                    "dream32-auto-mode"
+                );
+
+                clearInterval(
+                    auto32
+                );
+
+                auto32 =
+                    null;
+
+                saveHistory32(
+                    "Dream Auto",
+                    "Desativado"
+                );
+            }
+        }
+    );
+
+    /* =====================================================
+       DREAM DO DIA
+    ===================================================== */
+
+    function dreamOfDay32() {
+        const key =
+            new Date()
+                .toISOString()
+                .slice(
+                    0,
+                    10
+                );
+
+        let hash = 0;
+
+        for (
+            let i = 0;
+            i < key.length;
+            i++
+        ) {
+            hash =
+                (
+                    hash *
+                    31 +
+                    key.charCodeAt(i)
+                ) >>> 0;
+        }
+
+        const scenes =
+            [
+                "romance",
+                "ceu",
+                "flores",
+                "energia"
+            ];
+
+        const palettes =
+            [
+                "dream",
+                "roxo",
+                "azul",
+                "cherry",
+                "gold",
+                "menta"
+            ];
+
+        return {
+            scene:
+                scenes[
+                    hash %
+                    scenes.length
+                ],
+
+            palette:
+                palettes[
+                    hash %
+                    palettes.length
+                ]
+        };
+    }
+
+    const day32 =
+        dreamOfDay32();
+
+    localStorage.setItem(
+        "dream32DayScene",
+        day32.scene
+    );
+
+    localStorage.setItem(
+        "dream32DayPalette",
+        day32.palette
+    );
+
+    /* =====================================================
+       CLIQUE EM CENAS E PALETAS
+    ===================================================== */
+
+    $$32(
+        ".scene-button"
+    ).forEach(
+        button => {
+            button.addEventListener(
+                "click",
+                () => {
+                    updateStatus32();
+
+                    saveHistory32(
+                        "Cenário",
+                        button.dataset.scene ||
+                        "Dream"
+                    );
+                }
+            );
+        }
+    );
+
+    $$32(
+        ".palette"
+    ).forEach(
+        button => {
+            button.addEventListener(
+                "click",
+                () => {
+                    updateStatus32();
+
+                    saveHistory32(
+                        "Paleta",
+                        button.dataset.palette ||
+                        "Dream"
+                    );
+                }
+            );
+        }
+    );
+
+    /* =====================================================
+       MODO CINEMA MELHORADO
+    ===================================================== */
+
+    const cinema32 =
+        $32(
+            "#dream31Cinema"
+        );
+
+    cinema32?.addEventListener(
+        "change",
+        event => {
+            if (
+                event.target.checked
+            ) {
+                body32.animate(
+                    [
+                        {
+                            opacity: .94
+                        },
+                        {
+                            opacity: 1
+                        }
+                    ],
+                    {
+                        duration:
+                            500,
+                        easing:
+                            "ease"
+                    }
+                );
+
+                saveHistory32(
+                    "Cinema",
+                    "Modo cinema ativado"
+                );
+            }
+        }
+    );
+
+    /* =====================================================
+       INICIALIZAÇÃO
+    ===================================================== */
+
+    updateStatus32();
+
+    checkAchievements32();
+
+    console.log(
+        "%cDream Update 3.2 carregado ✦",
+        `
+        color:#df76a8;
+        font-size:14px;
+        font-weight:900;
+        `
+    );
+
+})();
