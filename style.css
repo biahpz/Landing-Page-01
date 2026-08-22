@@ -3850,3 +3850,14 @@ body.font-large {
     }
 
 }
+.developer-credit {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.developer-credit::after {
+    content: " ♡";
+    color: var(--primary);
+}
