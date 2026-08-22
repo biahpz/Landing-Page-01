@@ -698,7 +698,7 @@ body.dark .menu-mobile {
 
     box-shadow:
         0 16px 38px
-        rgba(var(--primary-rgb), 0.34);
+                rgba(var(--primary-rgb), 0.34);
 }
 
 .menu-mobile {
@@ -1397,7 +1397,8 @@ body.dark .volume-badge {
         translateX(-50%);
 }
 
-kbd {
+
+    kbd {
     min-width: 22px;
     height: 22px;
 
@@ -2086,19 +2087,6 @@ body.dark .benefits > div {
    CAMPANHA
 ========================================================= */
 
-.campaign {
-    position: relative;
-
-    min-height: 720px;
-
-    display: flex;
-    align-items: center;
-
-    overflow: hidden;
-
-    background: #171018;
-}
-
 .campaign-image {
     position: absolute;
 
@@ -2482,7 +2470,6 @@ body.dark .experience-card {
     margin-top: 9px;
 
     font-size: 27px;
-
     letter-spacing: -1.2px;
 }
 
@@ -2766,7 +2753,6 @@ body.dark .experience-card {
 
 .feeling-center strong {
     font-size: 20px;
-
     letter-spacing: 2px;
 }
 
@@ -2797,8 +2783,7 @@ body.dark .experience-card {
         transform:
             scale(1);
     }
-
-    50% {
+        50% {
         transform:
             scale(1.07);
     }
@@ -3104,7 +3089,6 @@ body.dark .moment-card {
     z-index: 3;
 
     width: var(--container);
-
     margin: auto;
 }
 
@@ -3498,7 +3482,7 @@ body.dark .moment-card {
 
 body.dark .gallery-arrow {
     background:
-        rgba(25,20,27,0.82);
+            rgba(25,20,27,0.82);
 }
 
 .gallery-arrow:hover {
@@ -4198,7 +4182,7 @@ body.dark .developer-credit {
             145deg,
             rgba(var(--primary-rgb),0.12),
             rgba(var(--secondary-rgb),0.05)
-        );
+                    );
 }
 
 .product-modal-image img {
@@ -4898,7 +4882,7 @@ body.dark .settings-panel {
         repeat(3,1fr);
 
     gap: 8px;
-}
+    }
 
 .font-size-buttons button {
     height: 42px;
@@ -5597,8 +5581,7 @@ body.no-animations *::after {
     .spray-shortcut {
         display: none;
     }
-
-    .ticker {
+        .ticker {
         justify-content: flex-start;
 
         overflow-x: auto;
