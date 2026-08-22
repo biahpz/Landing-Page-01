@@ -699,7 +699,6 @@ function sprayDream() {
             "--mist-x",
             `${x}px`
         );
-                );
 
 
         mist.style.setProperty(
@@ -899,8 +898,7 @@ heroProduct?.addEventListener(
         ) {
 
             return;
-
-        }
+                    }
 
 
         if (
@@ -2098,7 +2096,7 @@ function resetAutoplayProgress() {
 
 
     autoplayProgress.style.transition =
-            "none";
+        "none";
 
 
     autoplayProgress.style.width =
@@ -2338,8 +2336,6 @@ function updateLightbox() {
     }
 
 }
-
-
 function openLightbox(
     index
 ) {
@@ -2799,7 +2795,6 @@ const questions = [
 
         ]
     },
-        },
 
 
     {
@@ -3233,8 +3228,6 @@ $("#restartQuiz")?.addEventListener(
     "click",
     startQuiz
 );
-
-
 /* =========================================================
    DREAM STUDIO
 ========================================================= */
@@ -3501,7 +3494,8 @@ function generateParticles() {
     ) {
 
         return;
-            }
+
+    }
 
 
     container.innerHTML =
@@ -3759,14 +3753,6 @@ function setAnimationSpeed(
         );
 
 
-    /*
-        O HTML trabalha de 40 até 160.
-        No CSS transformamos para:
-        40%  = 0.4
-        100% = 1
-        160% = 1.6
-    */
-
     const cssSpeed =
         safe /
         100;
@@ -4006,8 +3992,6 @@ fontButtons.forEach(
 
     }
 );
-
-
 /* =========================================================
    DREAM SCENE
 ========================================================= */
@@ -4276,6 +4260,8 @@ $$(
 
     }
 );
+
+
 /* =========================================================
    MOMENT CARDS
 ========================================================= */
@@ -4575,12 +4561,6 @@ $("#resetSettings")?.addEventListener(
         }
 
 
-        /*
-            Valores padrão do HTML:
-            animação = 100%
-            contraste = 100%
-        */
-
         setAnimationSpeed(
             100
         );
@@ -4642,8 +4622,6 @@ $("#resetSettings")?.addEventListener(
 
     }
 );
-
-
 /* =========================================================
    CARREGAR CONFIGURAÇÕES
 ========================================================= */
@@ -4993,68 +4971,6 @@ document.addEventListener(
         }
 
 
-        if (
-            !lightboxOpen &&
-            event.key ===
-            "ArrowRight"
-        ) {
-
-            goGallery(
-                Math.min(
-                    galleryIndex + 1,
-                    galleryItems.length - 1
-                )
-            );
-
-
-            return;
-
-        }
-
-
-        if (
-            !lightboxOpen &&
-            event.key ===
-            "ArrowLeft"
-        ) {
-
-            goGallery(
-                Math.max(
-                    galleryIndex - 1,
-                    0
-                )
-            );
-
-
-            return;
-
-        }
-
-
-        if (
-            event.key.toLowerCase() ===
-            "d"
-        ) {
-
-            $("#themeButton")?.click();
-
-
-            return;
-
-        }
-
-
-        if (
-            event.key.toLowerCase() ===
-            "s"
-        ) {
-
-            sprayDream();
-
-        }
-
-    }
-);
         if (
             !lightboxOpen &&
             event.key ===
