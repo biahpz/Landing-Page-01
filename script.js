@@ -1,11 +1,20 @@
-document.body.classList.add("js-ativo");
+/* =========================================
+   INÍCIO
+========================================= */
+
+document.body.classList.add(
+    "js-ativo"
+);
 
 
 /* =========================================
    STORAGE
 ========================================= */
 
-function salvar(chave, valor) {
+function salvar(
+    chave,
+    valor
+) {
 
     try {
 
@@ -95,19 +104,14 @@ window.addEventListener(
         setTimeout(
             () => {
 
-                const loader =
-                    document.getElementById(
+                document
+                    .getElementById(
                         "loader"
-                    );
-
-
-                if (loader) {
-
-                    loader.classList.add(
+                    )
+                    ?.classList
+                    .add(
                         "sumir"
                     );
-
-                }
 
             },
 
@@ -134,7 +138,10 @@ const menuMobile =
     );
 
 
-if (menuMobile && menu) {
+if (
+    menu &&
+    menuMobile
+) {
 
     menuMobile.addEventListener(
         "click",
@@ -149,8 +156,10 @@ if (menuMobile && menu) {
                 menu.classList.contains(
                     "ativo"
                 )
-                    ? "✕"
-                    : "☰";
+                    ?
+                    "✕"
+                    :
+                    "☰";
 
         }
     );
@@ -212,24 +221,16 @@ function atualizarScroll() {
         window.scrollY;
 
 
-    if (header) {
-
-        header.classList.toggle(
-            "scrolled",
-            scroll > 40
-        );
-
-    }
+    header?.classList.toggle(
+        "scrolled",
+        scroll > 40
+    );
 
 
-    if (voltarTopo) {
-
-        voltarTopo.classList.toggle(
-            "mostrar",
-            scroll > 600
-        );
-
-    }
+    voltarTopo?.classList.toggle(
+        "mostrar",
+        scroll > 600
+    );
 
 
     if (barraProgresso) {
@@ -241,19 +242,20 @@ function atualizarScroll() {
             window.innerHeight;
 
 
-        barraProgresso.style.width =
+        const porcentagem =
             total > 0
+
                 ?
-                (
-                    scroll /
-                    total
-                )
-                *
-                100
-                +
-                "%"
+                scroll / total * 100
+
                 :
-                "0%";
+                0;
+
+
+        barraProgresso.style.width =
+            porcentagem
+            +
+            "%";
 
     }
 
@@ -272,28 +274,28 @@ window.addEventListener(
 atualizarScroll();
 
 
-if (voltarTopo) {
+voltarTopo?.addEventListener(
+    "click",
+    () => {
 
-    voltarTopo.addEventListener(
-        "click",
-        () => {
+        window.scrollTo({
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+            top: 0,
 
-        }
-    );
+            behavior:
+                "smooth"
 
-}
+        });
+
+    }
+);
 
 
 /* =========================================
    REVEAL
 ========================================= */
 
-const revelar =
+const elementosReveal =
     document.querySelectorAll(
         ".revelar"
     );
@@ -304,7 +306,7 @@ if (
     in window
 ) {
 
-    const observer =
+    const observerReveal =
         new IntersectionObserver(
 
             entradas => {
@@ -323,9 +325,10 @@ if (
                                 );
 
 
-                            observer.unobserve(
-                                entrada.target
-                            );
+                            observerReveal
+                                .unobserve(
+                                    entrada.target
+                                );
 
                         }
 
@@ -335,16 +338,16 @@ if (
             },
 
             {
-                threshold: .08
+                threshold: 0.08
             }
 
         );
 
 
-    revelar.forEach(
+    elementosReveal.forEach(
         elemento => {
 
-            observer.observe(
+            observerReveal.observe(
                 elemento
             );
 
@@ -353,7 +356,7 @@ if (
 
 } else {
 
-    revelar.forEach(
+    elementosReveal.forEach(
         elemento => {
 
             elemento.classList.add(
@@ -416,7 +419,7 @@ if (
             },
 
             {
-                threshold: .3
+                threshold: 0.3
             }
 
         );
@@ -445,21 +448,29 @@ const particulas =
     );
 
 
+const simbolosParticulas =
+    [
+        "♡",
+        "✦",
+        "✿"
+    ];
+
+
 function criarParticula() {
 
     if (
-        !particulas ||
-        document.body.classList
+        !particulas
+        ||
+        document.body
+            .classList
             .contains(
                 "sem-particulas"
             )
     ) {
+
         return;
+
     }
-
-
-    const simbolos =
-        ["♡", "✦", "✿"];
 
 
     const elemento =
@@ -473,11 +484,11 @@ function criarParticula() {
 
 
     elemento.textContent =
-        simbolos[
+        simbolosParticulas[
             Math.floor(
                 Math.random()
                 *
-                simbolos.length
+                simbolosParticulas.length
             )
         ];
 
@@ -516,7 +527,12 @@ function criarParticula() {
 
 
     setTimeout(
-        () => elemento.remove(),
+        () => {
+
+            elemento.remove();
+
+        },
+
         18000
     );
 
@@ -530,7 +546,7 @@ setInterval(
 
 
 /* =========================================
-   CURSOR
+   CURSOR DREAM
 ========================================= */
 
 const cursorDream =
@@ -544,10 +560,13 @@ document.addEventListener(
     evento => {
 
         if (
-            !cursorDream ||
+            !cursorDream
+            ||
             window.innerWidth < 900
         ) {
+
             return;
+
         }
 
 
@@ -576,19 +595,23 @@ const heroProduto =
     );
 
 
-const frasco =
+const frascoPrincipal =
     document.getElementById(
         "frascoPrincipal"
     );
 
 
-const brilho =
+const brilhoProduto =
     document.getElementById(
         "brilhoProduto"
     );
 
 
-if (heroProduto && frasco) {
+if (
+    heroProduto
+    &&
+    frascoPrincipal
+) {
 
     heroProduto.addEventListener(
         "mousemove",
@@ -598,7 +621,9 @@ if (heroProduto && frasco) {
                 window.innerWidth <
                 900
             ) {
+
                 return;
+
             }
 
 
@@ -619,41 +644,52 @@ if (heroProduto && frasco) {
                 area.top;
 
 
-            const rx =
+            const rotacaoX =
                 -(
-                    y -
+                    y
+                    -
                     area.height / 2
                 )
                 /
                 30;
 
 
-            const ry =
+            const rotacaoY =
                 (
-                    x -
+                    x
+                    -
                     area.width / 2
                 )
                 /
                 30;
 
 
-            frasco.style.transform =
+            frascoPrincipal
+                .style
+                .transform =
                 `
                 perspective(900px)
-                rotateX(${rx}deg)
-                rotateY(${ry}deg)
-                scale(1.03)
+                rotateX(${rotacaoX}deg)
+                rotateY(${rotacaoY}deg)
                 `;
 
 
-            if (brilho) {
+            if (brilhoProduto) {
 
-                brilho.style.left =
-                    x - 100 + "px";
+                brilhoProduto.style.left =
+                    x
+                    -
+                    100
+                    +
+                    "px";
 
 
-                brilho.style.top =
-                    y - 100 + "px";
+                brilhoProduto.style.top =
+                    y
+                    -
+                    100
+                    +
+                    "px";
 
             }
 
@@ -665,7 +701,9 @@ if (heroProduto && frasco) {
         "mouseleave",
         () => {
 
-            frasco.style.transform =
+            frascoPrincipal
+                .style
+                .transform =
                 "";
 
         }
@@ -737,13 +775,26 @@ function fazerSpray() {
         );
 
 
+        gota.style.animationDelay =
+            Math.random()
+            *
+            0.12
+            +
+            "s";
+
+
         sprayArea.appendChild(
             gota
         );
 
 
         setTimeout(
-            () => gota.remove(),
+            () => {
+
+                gota.remove();
+
+            },
+
             1200
         );
 
@@ -757,18 +808,14 @@ function fazerSpray() {
 }
 
 
-if (botaoSpray) {
-
-    botaoSpray.addEventListener(
-        "click",
-        fazerSpray
-    );
-
-}
+botaoSpray?.addEventListener(
+    "click",
+    fazerSpray
+);
 
 
 /* =========================================
-   FAVORITOS
+   FAVORITO
 ========================================= */
 
 const favoritar =
@@ -786,7 +833,9 @@ const favoritarModal =
 function estaFavoritado() {
 
     return (
-        ler("dreamFavorito")
+        ler(
+            "dreamFavorito"
+        )
         ===
         "sim"
     );
@@ -824,8 +873,10 @@ function atualizarFavorito() {
 
             coracao.textContent =
                 ativo
-                    ? "♥"
-                    : "♡";
+                    ?
+                    "♥"
+                    :
+                    "♡";
 
         }
 
@@ -834,8 +885,10 @@ function atualizarFavorito() {
 
             texto.textContent =
                 ativo
-                    ? "Favoritado"
-                    : "Favoritar";
+                    ?
+                    "Favoritado"
+                    :
+                    "Favoritar";
 
         }
 
@@ -846,8 +899,10 @@ function atualizarFavorito() {
 
         favoritarModal.textContent =
             ativo
-                ? "♥ Favoritado"
-                : "♡ Favoritar";
+                ?
+                "♥ Favoritado"
+                :
+                "♡ Favoritar";
 
     }
 
@@ -856,15 +911,17 @@ function atualizarFavorito() {
 
 function alternarFavorito() {
 
-    const estado =
+    const novoEstado =
         !estaFavoritado();
 
 
     salvar(
         "dreamFavorito",
-        estado
-            ? "sim"
-            : "nao"
+        novoEstado
+            ?
+            "sim"
+            :
+            "nao"
     );
 
 
@@ -872,7 +929,7 @@ function alternarFavorito() {
 
 
     mostrarToast(
-        estado
+        novoEstado
             ?
             "Adicionado aos favoritos ♡"
             :
@@ -882,24 +939,16 @@ function alternarFavorito() {
 }
 
 
-if (favoritar) {
-
-    favoritar.addEventListener(
-        "click",
-        alternarFavorito
-    );
-
-}
+favoritar?.addEventListener(
+    "click",
+    alternarFavorito
+);
 
 
-if (favoritarModal) {
-
-    favoritarModal.addEventListener(
-        "click",
-        alternarFavorito
-    );
-
-}
+favoritarModal?.addEventListener(
+    "click",
+    alternarFavorito
+);
 
 
 atualizarFavorito();
@@ -924,25 +973,24 @@ async function compartilharSite() {
                     "Conheça Dream Amor no Ar 350ml.",
 
                 url:
-                    location.href
+                    window.location.href
 
             });
 
+            return;
+
         }
 
-        else {
 
-            await navigator.clipboard
-                .writeText(
-                    location.href
-                );
-
-
-            mostrarToast(
-                "Link copiado!"
+        await navigator.clipboard
+            .writeText(
+                window.location.href
             );
 
-        }
+
+        mostrarToast(
+            "Link copiado!"
+        );
 
     } catch (erro) {}
 
@@ -991,42 +1039,48 @@ const lightbox =
     );
 
 
-function atualizarBloqueio() {
+function atualizarBloqueioBody() {
 
     const aberto =
         document.querySelector(
-            ".modal.ativo, .lightbox.ativo"
+            ".modal.ativo, .lightbox.ativo, .modal-atalhos.ativo"
         );
 
 
-    document.body.classList.toggle(
-        "modal-aberto",
-        Boolean(aberto)
-    );
+    document.body
+        .classList
+        .toggle(
+            "modal-aberto",
+            Boolean(aberto)
+        );
 
 }
 
 
 function abrirProduto() {
 
-    modalProduto?.classList.add(
-        "ativo"
-    );
+    modalProduto
+        ?.classList
+        .add(
+            "ativo"
+        );
 
 
-    atualizarBloqueio();
+    atualizarBloqueioBody();
 
 }
 
 
 function fecharProduto() {
 
-    modalProduto?.classList.remove(
-        "ativo"
-    );
+    modalProduto
+        ?.classList
+        .remove(
+            "ativo"
+        );
 
 
-    atualizarBloqueio();
+    atualizarBloqueioBody();
 
 }
 
@@ -1164,28 +1218,46 @@ document
                     if (!dados) return;
 
 
-                    document
-                        .getElementById(
+                    const titulo =
+                        document.getElementById(
                             "notaTitulo"
-                        )
-                        .textContent =
-                        dados[0];
+                        );
 
 
-                    document
-                        .getElementById(
+                    const icone =
+                        document.getElementById(
                             "notaIcone"
-                        )
-                        .textContent =
-                        dados[1];
+                        );
 
 
-                    document
-                        .getElementById(
+                    const descricao =
+                        document.getElementById(
                             "notaDescricao"
-                        )
-                        .textContent =
-                        dados[2];
+                        );
+
+
+                    if (titulo) {
+
+                        titulo.textContent =
+                            dados[0];
+
+                    }
+
+
+                    if (icone) {
+
+                        icone.textContent =
+                            dados[1];
+
+                    }
+
+
+                    if (descricao) {
+
+                        descricao.textContent =
+                            dados[2];
+
+                    }
 
 
                     modalNota
@@ -1195,7 +1267,7 @@ document
                         );
 
 
-                    atualizarBloqueio();
+                    atualizarBloqueioBody();
 
                 }
             );
@@ -1213,7 +1285,7 @@ function fecharNota() {
         );
 
 
-    atualizarBloqueio();
+    atualizarBloqueioBody();
 
 }
 
@@ -1250,7 +1322,36 @@ const slides =
     );
 
 
-let slideAtual = 0;
+const pontos =
+    document.getElementById(
+        "pontos"
+    );
+
+
+let slideAtual =
+    0;
+
+
+let autoCarrossel =
+    null;
+
+
+let autoGaleriaAtivo =
+    ler(
+        "dreamAutoGaleria"
+    )
+    !==
+    "off";
+
+
+let tempoGaleria =
+    Number(
+        ler(
+            "dreamVelocidadeGaleria"
+        )
+        ||
+        6000
+    );
 
 
 function atualizarCarrossel() {
@@ -1267,7 +1368,10 @@ function atualizarCarrossel() {
             ".pontos button"
         )
         .forEach(
-            (ponto, indice) => {
+            (
+                ponto,
+                indice
+            ) => {
 
                 ponto.classList.toggle(
                     "ativo",
@@ -1280,14 +1384,11 @@ function atualizarCarrossel() {
 }
 
 
-const pontos =
-    document.getElementById(
-        "pontos"
-    );
-
-
 slides.forEach(
-    (_, indice) => {
+    (
+        _,
+        indice
+    ) => {
 
         const ponto =
             document.createElement(
@@ -1295,8 +1396,13 @@ slides.forEach(
             );
 
 
+        ponto.type =
+            "button";
+
+
         if (
-            indice === 0
+            indice ===
+            0
         ) {
 
             ponto.classList.add(
@@ -1315,6 +1421,8 @@ slides.forEach(
 
 
                 atualizarCarrossel();
+
+                reiniciarAutoGaleria();
 
             }
         );
@@ -1335,7 +1443,8 @@ function proximoSlide() {
 
     slideAtual =
         (
-            slideAtual +
+            slideAtual
+            +
             1
         )
         %
@@ -1354,8 +1463,10 @@ function slideAnterior() {
 
     slideAtual =
         (
-            slideAtual -
-            1 +
+            slideAtual
+            -
+            1
+            +
             slides.length
         )
         %
@@ -1373,7 +1484,13 @@ document
     )
     ?.addEventListener(
         "click",
-        proximoSlide
+        () => {
+
+            proximoSlide();
+
+            reiniciarAutoGaleria();
+
+        }
     );
 
 
@@ -1383,15 +1500,186 @@ document
     )
     ?.addEventListener(
         "click",
-        slideAnterior
+        () => {
+
+            slideAnterior();
+
+            reiniciarAutoGaleria();
+
+        }
     );
 
 
-let autoCarrossel =
-    setInterval(
-        proximoSlide,
-        6000
+/* =========================================
+   AUTOPLAY / VELOCIDADE
+========================================= */
+
+const autoGaleria =
+    document.getElementById(
+        "autoGaleria"
     );
+
+
+const velocidadeGaleria =
+    document.getElementById(
+        "velocidadeGaleria"
+    );
+
+
+function atualizarAutoGaleriaUI() {
+
+    if (!autoGaleria) return;
+
+
+    autoGaleria.classList.toggle(
+        "ativo",
+        autoGaleriaAtivo
+    );
+
+
+    autoGaleria.textContent =
+        autoGaleriaAtivo
+            ?
+            "❚❚ Automático: ON"
+            :
+            "▶ Automático: OFF";
+
+}
+
+
+function reiniciarAutoGaleria() {
+
+    clearInterval(
+        autoCarrossel
+    );
+
+
+    autoCarrossel =
+        null;
+
+
+    if (
+        !autoGaleriaAtivo
+        ||
+        slides.length <=
+        1
+    ) {
+
+        return;
+
+    }
+
+
+    autoCarrossel =
+        setInterval(
+            proximoSlide,
+            tempoGaleria
+        );
+
+}
+
+
+if (velocidadeGaleria) {
+
+    velocidadeGaleria.value =
+        String(
+            tempoGaleria
+        );
+
+
+    velocidadeGaleria.addEventListener(
+        "change",
+        () => {
+
+            tempoGaleria =
+                Number(
+                    velocidadeGaleria.value
+                );
+
+
+            salvar(
+                "dreamVelocidadeGaleria",
+                String(
+                    tempoGaleria
+                )
+            );
+
+
+            reiniciarAutoGaleria();
+
+
+            mostrarToast(
+                "Velocidade alterada ✦"
+            );
+
+        }
+    );
+
+}
+
+
+autoGaleria?.addEventListener(
+    "click",
+    () => {
+
+        autoGaleriaAtivo =
+            !autoGaleriaAtivo;
+
+
+        salvar(
+            "dreamAutoGaleria",
+            autoGaleriaAtivo
+                ?
+                "on"
+                :
+                "off"
+        );
+
+
+        atualizarAutoGaleriaUI();
+
+        reiniciarAutoGaleria();
+
+
+        mostrarToast(
+            autoGaleriaAtivo
+                ?
+                "Galeria automática ativada"
+                :
+                "Galeria automática pausada"
+        );
+
+    }
+);
+
+
+const areaCarrossel =
+    document.querySelector(
+        ".carrossel"
+    );
+
+
+areaCarrossel?.addEventListener(
+    "mouseenter",
+    () => {
+
+        clearInterval(
+            autoCarrossel
+        );
+
+    }
+);
+
+
+areaCarrossel?.addEventListener(
+    "mouseleave",
+    reiniciarAutoGaleria
+);
+
+
+atualizarAutoGaleriaUI();
+
+reiniciarAutoGaleria();
 
 
 /* =========================================
@@ -1408,57 +1696,70 @@ let toqueInicio =
     0;
 
 
-janelaCarrossel
-    ?.addEventListener(
-        "touchstart",
-        evento => {
+janelaCarrossel?.addEventListener(
+    "touchstart",
+    evento => {
 
-            toqueInicio =
-                evento.touches[0]
-                    .clientX;
+        toqueInicio =
+            evento.touches[0]
+                .clientX;
 
-        },
-        {
-            passive: true
+    },
+    {
+        passive: true
+    }
+);
+
+
+janelaCarrossel?.addEventListener(
+    "touchend",
+    evento => {
+
+        const fim =
+            evento.changedTouches[0]
+                .clientX;
+
+
+        const diferenca =
+            toqueInicio
+            -
+            fim;
+
+
+        if (
+            Math.abs(
+                diferenca
+            )
+            <
+            45
+        ) {
+
+            return;
+
         }
-    );
 
 
-janelaCarrossel
-    ?.addEventListener(
-        "touchend",
-        evento => {
+        if (
+            diferenca >
+            0
+        ) {
 
-            const fim =
-                evento.changedTouches[0]
-                    .clientX;
+            proximoSlide();
 
+        } else {
 
-            const diferenca =
-                toqueInicio -
-                fim;
+            slideAnterior();
 
-
-            if (
-                Math.abs(diferenca)
-                <
-                45
-            ) {
-                return;
-            }
-
-
-            diferenca > 0
-                ?
-                proximoSlide()
-                :
-                slideAnterior();
-
-        },
-        {
-            passive: true
         }
-    );
+
+
+        reiniciarAutoGaleria();
+
+    },
+    {
+        passive: true
+    }
+);
 
 
 /* =========================================
@@ -1482,6 +1783,17 @@ document
                 "click",
                 () => {
 
+                    if (
+                        !lightbox
+                        ||
+                        !lightboxImagem
+                    ) {
+
+                        return;
+
+                    }
+
+
                     lightboxImagem.src =
                         imagem.src;
 
@@ -1495,7 +1807,7 @@ document
                     );
 
 
-                    atualizarBloqueio();
+                    atualizarBloqueioBody();
 
                 }
             );
@@ -1513,7 +1825,7 @@ function fecharLightbox() {
         );
 
 
-    atualizarBloqueio();
+    atualizarBloqueioBody();
 
 }
 
@@ -1536,64 +1848,6 @@ document
         "click",
         fecharLightbox
     );
-
-
-/* =========================================
-   TECLADO
-========================================= */
-
-document.addEventListener(
-    "keydown",
-    evento => {
-
-        const tag =
-            document.activeElement
-                ?.tagName;
-
-
-        if (
-            tag === "INPUT" ||
-            tag === "TEXTAREA"
-        ) {
-            return;
-        }
-
-
-        if (
-            evento.key ===
-            "ArrowRight"
-        ) {
-
-            proximoSlide();
-
-        }
-
-
-        if (
-            evento.key ===
-            "ArrowLeft"
-        ) {
-
-            slideAnterior();
-
-        }
-
-
-        if (
-            evento.key ===
-            "Escape"
-        ) {
-
-            fecharProduto();
-
-            fecharNota();
-
-            fecharLightbox();
-
-        }
-
-    }
-);
 
 
 /* =========================================
@@ -1623,6 +1877,103 @@ const moods = {
 };
 
 
+function selecionarMood(
+    mood
+) {
+
+    const dados =
+        moods[
+            mood
+        ];
+
+
+    if (!dados) return;
+
+
+    document
+        .querySelectorAll(
+            ".mood-botao"
+        )
+        .forEach(
+            botao => {
+
+                botao.classList.toggle(
+                    "ativo",
+                    botao.dataset.mood
+                    ===
+                    mood
+                );
+
+            }
+        );
+
+
+    const card =
+        document.getElementById(
+            "moodCard"
+        );
+
+
+    if (card) {
+
+        card.classList.remove(
+            "romantico",
+            "delicado",
+            "noturno"
+        );
+
+
+        card.classList.add(
+            mood
+        );
+
+    }
+
+
+    const icone =
+        document.getElementById(
+            "moodIcone"
+        );
+
+
+    const titulo =
+        document.getElementById(
+            "moodTitulo"
+        );
+
+
+    const texto =
+        document.getElementById(
+            "moodTexto"
+        );
+
+
+    if (icone) {
+
+        icone.textContent =
+            dados[0];
+
+    }
+
+
+    if (titulo) {
+
+        titulo.textContent =
+            dados[1];
+
+    }
+
+
+    if (texto) {
+
+        texto.textContent =
+            dados[2];
+
+    }
+
+}
+
+
 document
     .querySelectorAll(
         ".mood-botao"
@@ -1634,68 +1985,9 @@ document
                 "click",
                 () => {
 
-                    const mood =
-                        botao.dataset.mood;
-
-
-                    const dados =
-                        moods[mood];
-
-
-                    document
-                        .querySelectorAll(
-                            ".mood-botao"
-                        )
-                        .forEach(
-                            outro => {
-
-                                outro.classList.remove(
-                                    "ativo"
-                                );
-
-                            }
-                        );
-
-
-                    botao.classList.add(
-                        "ativo"
+                    selecionarMood(
+                        botao.dataset.mood
                     );
-
-
-                    const card =
-                        document.getElementById(
-                            "moodCard"
-                        );
-
-
-                    card.className =
-                        "mood-card "
-                        +
-                        mood;
-
-
-                    document
-                        .getElementById(
-                            "moodIcone"
-                        )
-                        .textContent =
-                        dados[0];
-
-
-                    document
-                        .getElementById(
-                            "moodTitulo"
-                        )
-                        .textContent =
-                        dados[1];
-
-
-                    document
-                        .getElementById(
-                            "moodTexto"
-                        )
-                        .textContent =
-                        dados[2];
 
                 }
             );
@@ -1718,16 +2010,18 @@ let perguntaAtual =
     0;
 
 
-const respostas = {
+const respostasQuiz = {
 
     romantico: 0,
+
     leve: 0,
+
     elegante: 0
 
 };
 
 
-const perguntas = [
+const perguntasQuiz = [
 
     {
 
@@ -1736,9 +2030,20 @@ const perguntas = [
 
         opcoes: [
 
-            ["♡ Romântico", "romantico"],
-            ["☀ Leve", "leve"],
-            ["✦ Elegante", "elegante"]
+            [
+                "♡ Romântico",
+                "romantico"
+            ],
+
+            [
+                "☀ Leve",
+                "leve"
+            ],
+
+            [
+                "✦ Elegante",
+                "elegante"
+            ]
 
         ]
 
@@ -1751,9 +2056,20 @@ const perguntas = [
 
         opcoes: [
 
-            ["♡ Um encontro", "romantico"],
-            ["☀ Depois do banho", "leve"],
-            ["☾ Sair à noite", "elegante"]
+            [
+                "♡ Um encontro",
+                "romantico"
+            ],
+
+            [
+                "☀ Depois do banho",
+                "leve"
+            ],
+
+            [
+                "☾ Sair à noite",
+                "elegante"
+            ]
 
         ]
 
@@ -1766,9 +2082,20 @@ const perguntas = [
 
         opcoes: [
 
-            ["♡ Apaixonada", "romantico"],
-            ["☁ Confortável", "leve"],
-            ["✦ Marcante", "elegante"]
+            [
+                "♡ Apaixonada",
+                "romantico"
+            ],
+
+            [
+                "☁ Confortável",
+                "leve"
+            ],
+
+            [
+                "✦ Marcante",
+                "elegante"
+            ]
 
         ]
 
@@ -1783,7 +2110,7 @@ function mostrarPergunta() {
 
 
     const atual =
-        perguntas[
+        perguntasQuiz[
             perguntaAtual
         ];
 
@@ -1803,16 +2130,20 @@ function mostrarPergunta() {
 
             <div class="quiz-opcoes">
 
-                ${atual.opcoes.map(
-                    opcao =>
-                    `
-                    <button
-                        data-resposta="${opcao[1]}"
-                    >
-                        ${opcao[0]}
-                    </button>
-                    `
-                ).join("")}
+                ${atual.opcoes
+                    .map(
+                        opcao => `
+
+                        <button
+                            type="button"
+                            data-resposta="${opcao[1]}"
+                        >
+                            ${opcao[0]}
+                        </button>
+
+                        `
+                    )
+                    .join("")}
 
             </div>
 
@@ -1832,7 +2163,7 @@ function mostrarPergunta() {
                     "click",
                     () => {
 
-                        respostas[
+                        respostasQuiz[
                             botao.dataset.resposta
                         ]++;
 
@@ -1840,13 +2171,19 @@ function mostrarPergunta() {
                         perguntaAtual++;
 
 
-                        perguntaAtual
-                        <
-                        perguntas.length
-                            ?
-                            mostrarPergunta()
-                            :
-                            mostrarResultado();
+                        if (
+                            perguntaAtual
+                            <
+                            perguntasQuiz.length
+                        ) {
+
+                            mostrarPergunta();
+
+                        } else {
+
+                            mostrarResultadoQuiz();
+
+                        }
 
                     }
                 );
@@ -1857,21 +2194,27 @@ function mostrarPergunta() {
 }
 
 
-function mostrarResultado() {
+function mostrarResultadoQuiz() {
 
     let resultado =
         "romantico";
 
 
     Object
-        .keys(respostas)
+        .keys(
+            respostasQuiz
+        )
         .forEach(
             chave => {
 
                 if (
-                    respostas[chave]
+                    respostasQuiz[
+                        chave
+                    ]
                     >
-                    respostas[resultado]
+                    respostasQuiz[
+                        resultado
+                    ]
                 ) {
 
                     resultado =
@@ -1917,15 +2260,22 @@ function mostrarResultado() {
 
         <div class="quiz-resultado">
 
-            <span>${r[0]}</span>
+            <span>
+                ${r[0]}
+            </span>
 
-            <h3>${r[1]}</h3>
+            <h3>
+                ${r[1]}
+            </h3>
 
-            <p>${r[2]}</p>
+            <p>
+                ${r[2]}
+            </p>
 
             <button
                 class="quiz-reiniciar"
                 id="reiniciarQuiz"
+                type="button"
             >
                 Fazer novamente
             </button>
@@ -1947,15 +2297,15 @@ function mostrarResultado() {
                     0;
 
 
-                respostas.romantico =
+                respostasQuiz.romantico =
                     0;
 
 
-                respostas.leve =
+                respostasQuiz.leve =
                     0;
 
 
-                respostas.elegante =
+                respostasQuiz.elegante =
                     0;
 
 
@@ -1991,34 +2341,12 @@ document
                         );
 
 
-                    const aberto =
-                        item.classList.contains(
-                            "ativo"
-                        );
+                    if (!item) return;
 
 
-                    document
-                        .querySelectorAll(
-                            ".faq-item"
-                        )
-                        .forEach(
-                            outro => {
-
-                                outro.classList.remove(
-                                    "ativo"
-                                );
-
-                            }
-                        );
-
-
-                    if (!aberto) {
-
-                        item.classList.add(
-                            "ativo"
-                        );
-
-                    }
+                    item.classList.toggle(
+                        "ativo"
+                    );
 
                 }
             );
@@ -2027,27 +2355,80 @@ document
     );
 
 
-/* BUSCA FAQ */
-
 const buscarFaq =
     document.getElementById(
         "buscarFaq"
     );
 
 
-buscarFaq
+buscarFaq?.addEventListener(
+    "input",
+    () => {
+
+        const busca =
+            buscarFaq.value
+                .toLowerCase()
+                .trim();
+
+
+        let encontrados =
+            0;
+
+
+        document
+            .querySelectorAll(
+                ".faq-item"
+            )
+            .forEach(
+                item => {
+
+                    const mostrar =
+                        item.textContent
+                            .toLowerCase()
+                            .includes(
+                                busca
+                            );
+
+
+                    item.style.display =
+                        mostrar
+                            ?
+                            ""
+                            :
+                            "none";
+
+
+                    if (mostrar) {
+
+                        encontrados++;
+
+                    }
+
+                }
+            );
+
+
+        document
+            .getElementById(
+                "faqSemResultado"
+            )
+            ?.classList
+            .toggle(
+                "mostrar",
+                encontrados === 0
+            );
+
+    }
+);
+
+
+document
+    .getElementById(
+        "abrirTodosFaq"
+    )
     ?.addEventListener(
-        "input",
+        "click",
         () => {
-
-            const busca =
-                buscarFaq.value
-                    .toLowerCase();
-
-
-            let encontrados =
-                0;
-
 
             document
                 .querySelectorAll(
@@ -2056,38 +2437,45 @@ buscarFaq
                 .forEach(
                     item => {
 
-                        const mostrar =
-                            item.textContent
-                                .toLowerCase()
-                                .includes(
-                                    busca
-                                );
+                        if (
+                            item.style.display
+                            !==
+                            "none"
+                        ) {
 
-
-                        item.style.display =
-                            mostrar
-                                ? ""
-                                : "none";
-
-
-                        if (mostrar) {
-
-                            encontrados++;
+                            item.classList.add(
+                                "ativo"
+                            );
 
                         }
 
                     }
                 );
 
+        }
+    );
+
+
+document
+    .getElementById(
+        "fecharTodosFaq"
+    )
+    ?.addEventListener(
+        "click",
+        () => {
 
             document
-                .getElementById(
-                    "faqSemResultado"
+                .querySelectorAll(
+                    ".faq-item"
                 )
-                ?.classList
-                .toggle(
-                    "mostrar",
-                    encontrados === 0
+                .forEach(
+                    item => {
+
+                        item.classList.remove(
+                            "ativo"
+                        );
+
+                    }
                 );
 
         }
@@ -2095,7 +2483,7 @@ buscarFaq
 
 
 /* =========================================
-   PERSONALIZAÇÃO
+   PALETAS
 ========================================= */
 
 const paletasDream = {
@@ -2135,7 +2523,7 @@ const paletasDream = {
 
 function clarearCor(
     cor,
-    intensidade = .86
+    intensidade = 0.86
 ) {
 
     let hex =
@@ -2143,6 +2531,25 @@ function clarearCor(
             "#",
             ""
         );
+
+
+    if (
+        hex.length ===
+        3
+    ) {
+
+        hex =
+            hex
+                .split("")
+                .map(
+                    letra =>
+                        letra
+                        +
+                        letra
+                )
+                .join("");
+
+    }
 
 
     const numero =
@@ -2153,28 +2560,38 @@ function clarearCor(
 
 
     const r =
-        numero >> 16;
+        numero >>
+        16;
 
 
     const g =
-        numero >> 8 & 255;
+        numero >>
+        8
+        &
+        255;
 
 
     const b =
-        numero & 255;
+        numero
+        &
+        255;
 
 
     const mix =
         valor =>
+
             Math.round(
+
                 valor
                 +
                 (
-                    255 -
+                    255
+                    -
                     valor
                 )
                 *
                 intensidade
+
             );
 
 
@@ -2188,6 +2605,7 @@ function clarearCor(
         ]
         .map(
             valor =>
+
                 valor
                     .toString(16)
                     .padStart(
@@ -2203,7 +2621,8 @@ function clarearCor(
 
 function aplicarCores(
     principal,
-    secundaria
+    secundaria,
+    salvarCores = true
 ) {
 
     const raiz =
@@ -2250,35 +2669,55 @@ function aplicarCores(
     );
 
 
-    document
-        .getElementById(
+    const inputPrincipal =
+        document.getElementById(
             "corPrincipal"
-        )
-        .value =
-        principal;
+        );
 
 
-    document
-        .getElementById(
+    const inputSecundaria =
+        document.getElementById(
             "corSecundaria"
-        )
-        .value =
-        secundaria;
+        );
 
 
-    salvar(
-        "dreamCorPrincipal",
-        principal
-    );
+    if (inputPrincipal) {
+
+        inputPrincipal.value =
+            principal;
+
+    }
 
 
-    salvar(
-        "dreamCorSecundaria",
-        secundaria
-    );
+    if (inputSecundaria) {
+
+        inputSecundaria.value =
+            secundaria;
+
+    }
+
+
+    if (salvarCores) {
+
+        salvar(
+            "dreamCorPrincipal",
+            principal
+        );
+
+
+        salvar(
+            "dreamCorSecundaria",
+            secundaria
+        );
+
+    }
 
 }
 
+
+/* =========================================
+   PERSONALIZAÇÃO
+========================================= */
 
 const painel =
     document.getElementById(
@@ -2294,7 +2733,7 @@ document
         "click",
         () => {
 
-            painel.classList.toggle(
+            painel?.classList.toggle(
                 "ativo"
             );
 
@@ -2310,7 +2749,7 @@ document
         "click",
         () => {
 
-            painel.classList.remove(
+            painel?.classList.remove(
                 "ativo"
             );
 
@@ -2334,7 +2773,12 @@ document
 
 
                     const cores =
-                        paletasDream[nome];
+                        paletasDream[
+                            nome
+                        ];
+
+
+                    if (!cores) return;
 
 
                     aplicarCores(
@@ -2348,19 +2792,15 @@ document
                             ".paleta"
                         )
                         .forEach(
-                            p => {
+                            outro => {
 
-                                p.classList.remove(
-                                    "ativo"
+                                outro.classList.toggle(
+                                    "ativo",
+                                    outro === botao
                                 );
 
                             }
                         );
-
-
-                    botao.classList.add(
-                        "ativo"
-                    );
 
 
                     salvar(
@@ -2370,7 +2810,7 @@ document
 
 
                     mostrarToast(
-                        "Cor alterada ✦"
+                        "Paleta alterada ✦"
                     );
 
                 }
@@ -2392,7 +2832,18 @@ const corSecundaria =
     );
 
 
-function aplicarManual() {
+function aplicarCorManual() {
+
+    if (
+        !corPrincipal
+        ||
+        !corSecundaria
+    ) {
+
+        return;
+
+    }
+
 
     document
         .querySelectorAll(
@@ -2423,18 +2874,16 @@ function aplicarManual() {
 }
 
 
-corPrincipal
-    ?.addEventListener(
-        "input",
-        aplicarManual
-    );
+corPrincipal?.addEventListener(
+    "input",
+    aplicarCorManual
+);
 
 
-corSecundaria
-    ?.addEventListener(
-        "input",
-        aplicarManual
-    );
+corSecundaria?.addEventListener(
+    "input",
+    aplicarCorManual
+);
 
 
 /* =========================================
@@ -2456,7 +2905,8 @@ const configEscuro =
 function atualizarTemaUI() {
 
     const escuro =
-        document.body.classList
+        document.body
+            .classList
             .contains(
                 "tema-escuro"
             );
@@ -2466,8 +2916,10 @@ function atualizarTemaUI() {
 
         botaoTema.textContent =
             escuro
-                ? "☀"
-                : "☾";
+                ?
+                "☀"
+                :
+                "☾";
 
     }
 
@@ -2487,10 +2939,12 @@ function aplicarTema(
     salvarTema = true
 ) {
 
-    document.body.classList.toggle(
-        "tema-escuro",
-        escuro
-    );
+    document.body
+        .classList
+        .toggle(
+            "tema-escuro",
+            escuro
+        );
 
 
     if (salvarTema) {
@@ -2498,8 +2952,10 @@ function aplicarTema(
         salvar(
             "dreamTema",
             escuro
-                ? "escuro"
-                : "claro"
+                ?
+                "escuro"
+                :
+                "claro"
         );
 
     }
@@ -2510,56 +2966,55 @@ function aplicarTema(
 }
 
 
-botaoTema
-    ?.addEventListener(
-        "click",
-        () => {
+function desativarTemaAutomatico() {
 
-            salvar(
-                "dreamTemaAutomatico",
-                "nao"
-            );
-
-
-            atualizarTemaAutoUI();
-
-
-            aplicarTema(
-                !document.body
-                    .classList
-                    .contains(
-                        "tema-escuro"
-                    )
-            );
-
-        }
+    salvar(
+        "dreamTemaAutomatico",
+        "nao"
     );
 
 
-configEscuro
-    ?.addEventListener(
-        "change",
-        () => {
+    atualizarTemaAutoUI();
 
-            salvar(
-                "dreamTemaAutomatico",
-                "nao"
-            );
+}
 
 
-            atualizarTemaAutoUI();
+botaoTema?.addEventListener(
+    "click",
+    () => {
+
+        desativarTemaAutomatico();
 
 
-            aplicarTema(
-                configEscuro.checked
-            );
+        aplicarTema(
+            !document.body
+                .classList
+                .contains(
+                    "tema-escuro"
+                )
+        );
 
-        }
-    );
+    }
+);
+
+
+configEscuro?.addEventListener(
+    "change",
+    () => {
+
+        desativarTemaAutomatico();
+
+
+        aplicarTema(
+            configEscuro.checked
+        );
+
+    }
+);
 
 
 /* =========================================
-   CONFIGURAÇÕES
+   CONFIG SWITCHES
 ========================================= */
 
 const configParticulas =
@@ -2580,131 +3035,88 @@ const configGlass =
     );
 
 
-function aplicarSwitchesSalvos() {
+configParticulas?.addEventListener(
+    "change",
+    () => {
 
-    const part =
-        ler("dreamParticulas");
-
-
-    const anima =
-        ler("dreamAnimacoes");
-
-
-    const glass =
-        ler("dreamGlass");
-
-
-    if (part === "off") {
-
-        configParticulas.checked =
-            false;
-
-
-        document.body.classList.add(
-            "sem-particulas"
-        );
-
-    }
-
-
-    if (anima === "off") {
-
-        configAnimacoes.checked =
-            false;
-
-
-        document.body.classList.add(
-            "sem-animacoes"
-        );
-
-    }
-
-
-    if (glass === "off") {
-
-        configGlass.checked =
-            false;
-
-
-        document.body.classList.add(
-            "sem-glass"
-        );
-
-    }
-
-}
-
-
-configParticulas
-    ?.addEventListener(
-        "change",
-        () => {
-
-            document.body.classList.toggle(
+        document.body
+            .classList
+            .toggle(
                 "sem-particulas",
                 !configParticulas.checked
             );
 
 
-            salvar(
-                "dreamParticulas",
-                configParticulas.checked
-                    ? "on"
-                    : "off"
-            );
+        salvar(
+            "dreamParticulas",
+            configParticulas.checked
+                ?
+                "on"
+                :
+                "off"
+        );
 
-        }
-    );
+    }
+);
 
 
-configAnimacoes
-    ?.addEventListener(
-        "change",
-        () => {
+configAnimacoes?.addEventListener(
+    "change",
+    () => {
 
-            document.body.classList.toggle(
+        document.body
+            .classList
+            .toggle(
                 "sem-animacoes",
                 !configAnimacoes.checked
             );
 
 
-            salvar(
-                "dreamAnimacoes",
-                configAnimacoes.checked
-                    ? "on"
-                    : "off"
-            );
+        salvar(
+            "dreamAnimacoes",
+            configAnimacoes.checked
+                ?
+                "on"
+                :
+                "off"
+        );
 
-        }
-    );
+    }
+);
 
 
-configGlass
-    ?.addEventListener(
-        "change",
-        () => {
+configGlass?.addEventListener(
+    "change",
+    () => {
 
-            document.body.classList.toggle(
+        document.body
+            .classList
+            .toggle(
                 "sem-glass",
                 !configGlass.checked
             );
 
 
-            salvar(
-                "dreamGlass",
-                configGlass.checked
-                    ? "on"
-                    : "off"
-            );
+        salvar(
+            "dreamGlass",
+            configGlass.checked
+                ?
+                "on"
+                :
+                "off"
+        );
 
-        }
-    );
+    }
+);
 
 
-/* TAMANHO */
+/* =========================================
+   TAMANHO TEXTO
+========================================= */
 
 function aplicarTamanho(
-    tamanho
+    tamanho,
+    salvarValor = true
 ) {
 
     document.body.classList.remove(
@@ -2718,9 +3130,11 @@ function aplicarTamanho(
         "pequeno"
     ) {
 
-        document.body.classList.add(
-            "texto-pequeno"
-        );
+        document.body
+            .classList
+            .add(
+                "texto-pequeno"
+            );
 
     }
 
@@ -2730,9 +3144,11 @@ function aplicarTamanho(
         "grande"
     ) {
 
-        document.body.classList.add(
-            "texto-grande"
-        );
+        document.body
+            .classList
+            .add(
+                "texto-grande"
+            );
 
     }
 
@@ -2755,10 +3171,14 @@ function aplicarTamanho(
         );
 
 
-    salvar(
-        "dreamTamanho",
-        tamanho
-    );
+    if (salvarValor) {
+
+        salvar(
+            "dreamTamanho",
+            tamanho
+        );
+
+    }
 
 }
 
@@ -2786,23 +3206,27 @@ document
 
 
 /* =========================================
-   DREAM LAB
+   SAUDAÇÃO
 ========================================= */
-
-/* SAUDAÇÃO */
 
 function atualizarSaudacao() {
 
     const hora =
-        new Date().getHours();
+        new Date()
+            .getHours();
 
 
-    let titulo;
-    let texto;
+    let titulo =
+        "Olá ♡";
+
+
+    let texto =
+        "Aproveite o universo Dream.";
 
 
     if (
-        hora >= 5 &&
+        hora >= 5
+        &&
         hora < 12
     ) {
 
@@ -2813,10 +3237,9 @@ function atualizarSaudacao() {
         texto =
             "Comece o dia com leveza e Dream.";
 
-    }
-
-    else if (
-        hora >= 12 &&
+    } else if (
+        hora >= 12
+        &&
         hora < 18
     ) {
 
@@ -2827,9 +3250,7 @@ function atualizarSaudacao() {
         texto =
             "Um ótimo momento para renovar sua fragrância.";
 
-    }
-
-    else {
+    } else {
 
         titulo =
             "Boa noite ☾";
@@ -2841,20 +3262,32 @@ function atualizarSaudacao() {
     }
 
 
-    document
-        .getElementById(
+    const tituloElemento =
+        document.getElementById(
             "saudacaoDream"
-        )
-        .textContent =
-        titulo;
+        );
 
 
-    document
-        .getElementById(
+    const textoElemento =
+        document.getElementById(
             "textoSaudacaoDream"
-        )
-        .textContent =
-        texto;
+        );
+
+
+    if (tituloElemento) {
+
+        tituloElemento.textContent =
+            titulo;
+
+    }
+
+
+    if (textoElemento) {
+
+        textoElemento.textContent =
+            texto;
+
+    }
 
 }
 
@@ -2862,11 +3295,15 @@ function atualizarSaudacao() {
 atualizarSaudacao();
 
 
-/* VISITAS */
+/* =========================================
+   VISITAS
+========================================= */
 
 let visitas =
     Number(
-        ler("dreamVisitas")
+        ler(
+            "dreamVisitas"
+        )
         ||
         0
     );
@@ -2877,21 +3314,29 @@ visitas++;
 
 salvar(
     "dreamVisitas",
-    visitas
+    String(visitas)
 );
 
 
-document
-    .getElementById(
+const contadorVisitas =
+    document.getElementById(
         "contadorVisitas"
-    )
-    .textContent =
-    visitas;
+    );
 
 
-/* INTENSIDADE */
+if (contadorVisitas) {
 
-const intensidade =
+    contadorVisitas.textContent =
+        visitas;
+
+}
+
+
+/* =========================================
+   INTENSIDADE
+========================================= */
+
+const intensidadeDream =
     document.getElementById(
         "intensidadeDream"
     );
@@ -2899,20 +3344,13 @@ const intensidade =
 
 function atualizarIntensidade() {
 
+    if (!intensidadeDream) return;
+
+
     const valor =
         Number(
-            intensidade.value
+            intensidadeDream.value
         );
-
-
-    document
-        .getElementById(
-            "intensidadeNumero"
-        )
-        .textContent =
-        valor
-        +
-        "%";
 
 
     let nome;
@@ -2928,9 +3366,9 @@ function atualizarIntensidade() {
         texto =
             "Uma experiência leve e delicada.";
 
-    }
-
-    else if (valor <= 66) {
+    } else if (
+        valor <= 66
+    ) {
 
         nome =
             "Equilibrado";
@@ -2939,9 +3377,7 @@ function atualizarIntensidade() {
         texto =
             "Equilíbrio entre leveza e presença.";
 
-    }
-
-    else {
+    } else {
 
         nome =
             "Marcante";
@@ -2953,55 +3389,90 @@ function atualizarIntensidade() {
     }
 
 
-    document
-        .getElementById(
+    const numero =
+        document.getElementById(
+            "intensidadeNumero"
+        );
+
+
+    const nomeElemento =
+        document.getElementById(
             "intensidadeNome"
-        )
-        .textContent =
-        nome;
+        );
 
 
-    document
-        .getElementById(
+    const textoElemento =
+        document.getElementById(
             "intensidadeTexto"
-        )
-        .textContent =
-        texto;
+        );
+
+
+    if (numero) {
+
+        numero.textContent =
+            valor
+            +
+            "%";
+
+    }
+
+
+    if (nomeElemento) {
+
+        nomeElemento.textContent =
+            nome;
+
+    }
+
+
+    if (textoElemento) {
+
+        textoElemento.textContent =
+            texto;
+
+    }
 
 
     salvar(
         "dreamIntensidade",
-        valor
+        String(valor)
     );
 
 }
 
 
-const intensidadeSalva =
-    ler("dreamIntensidade");
+if (intensidadeDream) {
+
+    const salvo =
+        ler(
+            "dreamIntensidade"
+        );
 
 
-if (intensidadeSalva) {
+    if (salvo) {
 
-    intensidade.value =
-        intensidadeSalva;
+        intensidadeDream.value =
+            salvo;
 
-}
+    }
 
 
-intensidade
-    ?.addEventListener(
+    intensidadeDream.addEventListener(
         "input",
         atualizarIntensidade
     );
 
 
-atualizarIntensidade();
+    atualizarIntensidade();
+
+}
 
 
-/* ROTINA */
+/* =========================================
+   ROTINA
+========================================= */
 
-const rotinas = {
+const rotinasDream = {
 
     manha:
         "☀ Depois do banho, comece o dia com uma sensação leve.",
@@ -3049,14 +3520,20 @@ document
                     );
 
 
-                    document
-                        .getElementById(
+                    const resultado =
+                        document.getElementById(
                             "rotinaResultado"
-                        )
-                        .textContent =
-                        rotinas[
-                            botao.dataset.rotina
-                        ];
+                        );
+
+
+                    if (resultado) {
+
+                        resultado.textContent =
+                            rotinasDream[
+                                botao.dataset.rotina
+                            ];
+
+                    }
 
                 }
             );
@@ -3066,8 +3543,665 @@ document
 
 
 /* =========================================
-   ME SURPREENDA
+   ZOOM FRASCOS
 ========================================= */
+
+const zoomFrasco =
+    document.getElementById(
+        "zoomFrasco"
+    );
+
+
+const zoomNumero =
+    document.getElementById(
+        "zoomNumero"
+    );
+
+
+function aplicarZoomFrasco(
+    valor
+) {
+
+    const zoom =
+        Number(
+            valor
+        );
+
+
+    document.documentElement
+        .style
+        .setProperty(
+            "--zoom-frascos",
+            zoom / 100
+        );
+
+
+    if (zoomNumero) {
+
+        zoomNumero.textContent =
+            zoom
+            +
+            "%";
+
+    }
+
+
+    salvar(
+        "dreamZoomFrasco",
+        String(
+            zoom
+        )
+    );
+
+}
+
+
+if (zoomFrasco) {
+
+    const salvo =
+        Number(
+            ler(
+                "dreamZoomFrasco"
+            )
+            ||
+            100
+        );
+
+
+    zoomFrasco.value =
+        String(
+            salvo
+        );
+
+
+    aplicarZoomFrasco(
+        salvo
+    );
+
+
+    zoomFrasco.addEventListener(
+        "input",
+        () => {
+
+            aplicarZoomFrasco(
+                zoomFrasco.value
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   NOTA ALEATÓRIA
+========================================= */
+
+document
+    .getElementById(
+        "notaAleatoria"
+    )
+    ?.addEventListener(
+        "click",
+        () => {
+
+            const nomes =
+                Object.keys(
+                    dadosNotas
+                );
+
+
+            const chave =
+                nomes[
+                    Math.floor(
+                        Math.random()
+                        *
+                        nomes.length
+                    )
+                ];
+
+
+            const nota =
+                dadosNotas[
+                    chave
+                ];
+
+
+            const icone =
+                document.getElementById(
+                    "notaMomentoIcone"
+                );
+
+
+            const titulo =
+                document.getElementById(
+                    "notaMomentoTitulo"
+                );
+
+
+            const texto =
+                document.getElementById(
+                    "notaMomentoTexto"
+                );
+
+
+            if (icone) {
+
+                icone.textContent =
+                    nota[1];
+
+            }
+
+
+            if (titulo) {
+
+                titulo.textContent =
+                    nota[0];
+
+            }
+
+
+            if (texto) {
+
+                texto.textContent =
+                    nota[2];
+
+            }
+
+
+            mostrarToast(
+                "Sua nota é "
+                +
+                nota[0]
+                +
+                " ✦"
+            );
+
+        }
+    );
+
+
+/* =========================================
+   SALVAR MOOD
+========================================= */
+
+document
+    .getElementById(
+        "salvarMood"
+    )
+    ?.addEventListener(
+        "click",
+        () => {
+
+            const ativo =
+                document.querySelector(
+                    ".mood-botao.ativo"
+                );
+
+
+            if (!ativo) return;
+
+
+            salvar(
+                "dreamMoodFavorito",
+                ativo.dataset.mood
+            );
+
+
+            mostrarToast(
+                "Mood salvo ♡"
+            );
+
+        }
+    );
+
+
+document
+    .getElementById(
+        "carregarMood"
+    )
+    ?.addEventListener(
+        "click",
+        () => {
+
+            const mood =
+                ler(
+                    "dreamMoodFavorito"
+                );
+
+
+            if (!mood) {
+
+                mostrarToast(
+                    "Nenhum Mood salvo"
+                );
+
+                return;
+
+            }
+
+
+            selecionarMood(
+                mood
+            );
+
+
+            document
+                .getElementById(
+                    "mood"
+                )
+                ?.scrollIntoView({
+
+                    behavior:
+                        "smooth",
+
+                    block:
+                        "center"
+
+                });
+
+
+            mostrarToast(
+                "Mood restaurado ♡"
+            );
+
+        }
+    );
+
+
+/* =========================================
+   CORAÇÕES AO CLICAR
+========================================= */
+
+const coracoesClique =
+    document.getElementById(
+        "coracoesClique"
+    );
+
+
+let coracoesCliqueAtivo =
+    ler(
+        "dreamCoracoesClique"
+    )
+    ===
+    "on";
+
+
+function atualizarCoracoesCliqueUI() {
+
+    if (!coracoesClique) return;
+
+
+    coracoesClique.classList.toggle(
+        "ativo",
+        coracoesCliqueAtivo
+    );
+
+
+    coracoesClique.textContent =
+        coracoesCliqueAtivo
+            ?
+            "♥ Corações: ON"
+            :
+            "♥ Corações: OFF";
+
+}
+
+
+function criarCoracoesNoClique(
+    x,
+    y
+) {
+
+    for (
+        let i = 0;
+        i < 6;
+        i++
+    ) {
+
+        const coracao =
+            document.createElement(
+                "span"
+            );
+
+
+        coracao.className =
+            "coracao-clique";
+
+
+        coracao.textContent =
+            Math.random() >
+            0.5
+                ?
+                "♡"
+                :
+                "♥";
+
+
+        coracao.style.left =
+            x
+            +
+            "px";
+
+
+        coracao.style.top =
+            y
+            +
+            "px";
+
+
+        coracao.style.setProperty(
+            "--x",
+            Math.random()
+            *
+            90
+            -
+            45
+            +
+            "px"
+        );
+
+
+        coracao.style.setProperty(
+            "--y",
+            -(
+                30
+                +
+                Math.random()
+                *
+                80
+            )
+            +
+            "px"
+        );
+
+
+        coracao.style.setProperty(
+            "--rotacao",
+            Math.random()
+            *
+            180
+            -
+            90
+            +
+            "deg"
+        );
+
+
+        document.body.appendChild(
+            coracao
+        );
+
+
+        setTimeout(
+            () => {
+
+                coracao.remove();
+
+            },
+
+            1000
+        );
+
+    }
+
+}
+
+
+coracoesClique?.addEventListener(
+    "click",
+    () => {
+
+        coracoesCliqueAtivo =
+            !coracoesCliqueAtivo;
+
+
+        salvar(
+            "dreamCoracoesClique",
+            coracoesCliqueAtivo
+                ?
+                "on"
+                :
+                "off"
+        );
+
+
+        atualizarCoracoesCliqueUI();
+
+    }
+);
+
+
+document.addEventListener(
+    "click",
+    evento => {
+
+        if (
+            !coracoesCliqueAtivo
+        ) {
+
+            return;
+
+        }
+
+
+        if (
+            evento.target.closest(
+                "button, a, input, select, textarea, label"
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        criarCoracoesNoClique(
+            evento.clientX,
+            evento.clientY
+        );
+
+    }
+);
+
+
+atualizarCoracoesCliqueUI();
+
+
+/* =========================================
+   COPIAR PRODUTO
+========================================= */
+
+document
+    .getElementById(
+        "copiarProduto"
+    )
+    ?.addEventListener(
+        "click",
+        async () => {
+
+            const texto =
+                "Dream Amor no Ar • 350 ml • Body Splash • Floral Amadeirado";
+
+
+            try {
+
+                await navigator
+                    .clipboard
+                    .writeText(
+                        texto
+                    );
+
+
+                mostrarToast(
+                    "Informações copiadas ♡"
+                );
+
+            } catch (erro) {
+
+                mostrarToast(
+                    "Não foi possível copiar"
+                );
+
+            }
+
+        }
+    );
+
+
+/* =========================================
+   COPIAR PALETA
+========================================= */
+
+document
+    .getElementById(
+        "copiarPaleta"
+    )
+    ?.addEventListener(
+        "click",
+        async () => {
+
+            const estilo =
+                getComputedStyle(
+                    document.documentElement
+                );
+
+
+            const principal =
+                estilo
+                    .getPropertyValue(
+                        "--rosa"
+                    )
+                    .trim();
+
+
+            const secundaria =
+                estilo
+                    .getPropertyValue(
+                        "--lilas"
+                    )
+                    .trim();
+
+
+            const texto =
+                `Dream Palette: ${principal} + ${secundaria}`;
+
+
+            try {
+
+                await navigator
+                    .clipboard
+                    .writeText(
+                        texto
+                    );
+
+
+                mostrarToast(
+                    "Cores copiadas ◈"
+                );
+
+            } catch (erro) {
+
+                mostrarToast(
+                    texto
+                );
+
+            }
+
+        }
+    );
+
+
+/* =========================================
+   SURPRESA
+========================================= */
+
+function chuvaDeCoracoes() {
+
+    for (
+        let i = 0;
+        i < 45;
+        i++
+    ) {
+
+        const coracao =
+            document.createElement(
+                "span"
+            );
+
+
+        coracao.className =
+            "coracao-explosao";
+
+
+        coracao.textContent =
+            Math.random() >
+            0.5
+                ?
+                "♡"
+                :
+                "♥";
+
+
+        coracao.style.left =
+            Math.random()
+            *
+            100
+            +
+            "vw";
+
+
+        coracao.style.bottom =
+            Math.random()
+            *
+            70
+            -
+            20
+            +
+            "px";
+
+
+        coracao.style.fontSize =
+            12
+            +
+            Math.random()
+            *
+            28
+            +
+            "px";
+
+
+        coracao.style.setProperty(
+            "--movimento",
+            Math.random()
+            *
+            200
+            -
+            100
+            +
+            "px"
+        );
+
+
+        document.body.appendChild(
+            coracao
+        );
+
+
+        setTimeout(
+            () => {
+
+                coracao.remove();
+
+            },
+
+            3000
+        );
+
+    }
+
+}
+
 
 document
     .getElementById(
@@ -3094,12 +4228,20 @@ document
 
 
             const cores =
-                paletasDream[nome];
+                paletasDream[
+                    nome
+                ];
 
 
             aplicarCores(
                 cores[0],
                 cores[1]
+            );
+
+
+            salvar(
+                "dreamPaleta",
+                nome
             );
 
 
@@ -3121,20 +4263,21 @@ document
                 );
 
 
-            const moods =
-                document.querySelectorAll(
-                    ".mood-botao"
+            const nomesMood =
+                Object.keys(
+                    moods
                 );
 
 
-            moods[
-                Math.floor(
-                    Math.random()
-                    *
-                    moods.length
-                )
-            ]
-            ?.click();
+            selecionarMood(
+                nomesMood[
+                    Math.floor(
+                        Math.random()
+                        *
+                        nomesMood.length
+                    )
+                ]
+            );
 
 
             chuvaDeCoracoes();
@@ -3143,40 +4286,6 @@ document
             mostrarToast(
                 "Dream reinventado ✦"
             );
-
-        }
-    );
-
-
-/* =========================================
-   COPIAR PRODUTO
-========================================= */
-
-document
-    .getElementById(
-        "copiarProduto"
-    )
-    ?.addEventListener(
-        "click",
-        async () => {
-
-            const texto =
-                "Dream Amor no Ar • 350 ml • Body Splash • Floral Amadeirado";
-
-
-            try {
-
-                await navigator.clipboard
-                    .writeText(
-                        texto
-                    );
-
-
-                mostrarToast(
-                    "Informações copiadas ♡"
-                );
-
-            } catch (erro) {}
 
         }
     );
@@ -3192,47 +4301,40 @@ const modoFoco =
     );
 
 
-modoFoco
-    ?.addEventListener(
-        "click",
-        () => {
+modoFoco?.addEventListener(
+    "click",
+    () => {
 
-            document.body.classList.toggle(
+        document.body
+            .classList
+            .toggle(
                 "modo-foco"
             );
 
 
-            const ativo =
-                document.body.classList
-                    .contains(
-                        "modo-foco"
-                    );
+        const ativo =
+            document.body
+                .classList
+                .contains(
+                    "modo-foco"
+                );
 
 
-            modoFoco.classList.toggle(
-                "ativo",
-                ativo
-            );
+        modoFoco.classList.toggle(
+            "ativo",
+            ativo
+        );
 
 
-            modoFoco.textContent =
-                ativo
-                    ?
-                    "◉ Sair do foco"
-                    :
-                    "◉ Modo foco";
+        modoFoco.textContent =
+            ativo
+                ?
+                "◉ Sair do foco"
+                :
+                "◉ Modo foco";
 
-
-            mostrarToast(
-                ativo
-                    ?
-                    "Modo foco ativado"
-                    :
-                    "Modo foco desativado"
-            );
-
-        }
-    );
+    }
+);
 
 
 /* =========================================
@@ -3245,40 +4347,37 @@ const telaCheia =
     );
 
 
-telaCheia
-    ?.addEventListener(
-        "click",
-        async () => {
+telaCheia?.addEventListener(
+    "click",
+    async () => {
 
-            try {
+        try {
 
-                if (
-                    !document.fullscreenElement
-                ) {
+            if (
+                !document.fullscreenElement
+            ) {
 
-                    await document
-                        .documentElement
-                        .requestFullscreen();
+                await document
+                    .documentElement
+                    .requestFullscreen();
 
-                }
+            } else {
 
-                else {
-
-                    await document
-                        .exitFullscreen();
-
-                }
-
-            } catch (erro) {
-
-                mostrarToast(
-                    "Tela cheia indisponível"
-                );
+                await document
+                    .exitFullscreen();
 
             }
 
+        } catch (erro) {
+
+            mostrarToast(
+                "Tela cheia indisponível"
+            );
+
         }
-    );
+
+    }
+);
 
 
 document.addEventListener(
@@ -3349,19 +4448,17 @@ function atualizarTemaAutoUI() {
 
 function aplicarTemaAutomatico() {
 
-    if (!temaAutoAtivo()) {
-
-        return;
-
-    }
+    if (!temaAutoAtivo()) return;
 
 
     const hora =
-        new Date().getHours();
+        new Date()
+            .getHours();
 
 
     aplicarTema(
-        hora >= 18 ||
+        hora >= 18
+        ||
         hora < 6,
         false
     );
@@ -3369,39 +4466,76 @@ function aplicarTemaAutomatico() {
 }
 
 
-temaAutomatico
+temaAutomatico?.addEventListener(
+    "click",
+    () => {
+
+        const novo =
+            !temaAutoAtivo();
+
+
+        salvar(
+            "dreamTemaAutomatico",
+            novo
+                ?
+                "sim"
+                :
+                "nao"
+        );
+
+
+        atualizarTemaAutoUI();
+
+
+        if (novo) {
+
+            aplicarTemaAutomatico();
+
+        }
+
+
+        mostrarToast(
+            novo
+                ?
+                "Tema automático ativado"
+                :
+                "Tema automático desativado"
+        );
+
+    }
+);
+
+
+/* =========================================
+   WHATSAPP
+========================================= */
+
+document
+    .getElementById(
+        "compartilharWhatsApp"
+    )
     ?.addEventListener(
         "click",
         () => {
 
-            const novo =
-                !temaAutoAtivo();
+            const mensagem =
+                "Conheça Dream Amor no Ar 350ml ♡ "
+                +
+                window.location.href;
 
 
-            salvar(
-                "dreamTemaAutomatico",
-                novo
-                    ? "sim"
-                    : "nao"
-            );
+            const destino =
+                "https://wa.me/?text="
+                +
+                encodeURIComponent(
+                    mensagem
+                );
 
 
-            atualizarTemaAutoUI();
-
-
-            if (novo) {
-
-                aplicarTemaAutomatico();
-
-            }
-
-
-            mostrarToast(
-                novo
-                    ?
-                    "Tema automático ativado"
-                    :
-                    "Tema automático desativado"
+            window.open(
+                destino,
+                "_blank",
+                "noopener,noreferrer"
             );
 
         }
@@ -3409,7 +4543,328 @@ temaAutomatico
 
 
 /* =========================================
-   SEÇÕES / MENU
+   BAIXAR FICHA
+========================================= */
+
+document
+    .getElementById(
+        "baixarFicha"
+    )
+    ?.addEventListener(
+        "click",
+        () => {
+
+            const conteudo =
+`DREAM AMOR NO AR
+
+Volume: 350 ml
+Tipo: Body Splash
+Família: Floral Amadeirado
+
+Notas de saída:
+Bergamota, Cassis, Mandarina e Maçã.
+
+Notas de corpo:
+Rosa, Flor de Lótus, Frésia e Pêssego.
+
+Notas de fundo:
+Âmbar, Sândalo, Baunilha e Musk.
+
+Projeto demonstrativo não oficial.
+`;
+
+
+            const arquivo =
+                new Blob(
+                    [
+                        conteudo
+                    ],
+                    {
+                        type:
+                            "text/plain;charset=utf-8"
+                    }
+                );
+
+
+            const url =
+                URL.createObjectURL(
+                    arquivo
+                );
+
+
+            const link =
+                document.createElement(
+                    "a"
+                );
+
+
+            link.href =
+                url;
+
+
+            link.download =
+                "dream-amor-no-ar-350ml.txt";
+
+
+            document.body.appendChild(
+                link
+            );
+
+
+            link.click();
+
+
+            link.remove();
+
+
+            URL.revokeObjectURL(
+                url
+            );
+
+
+            mostrarToast(
+                "Ficha Dream criada ↓"
+            );
+
+        }
+    );
+
+
+/* =========================================
+   MODAL ATALHOS
+========================================= */
+
+const modalAtalhos =
+    document.getElementById(
+        "modalAtalhos"
+    );
+
+
+function abrirAtalhos() {
+
+    modalAtalhos
+        ?.classList
+        .add(
+            "ativo"
+        );
+
+
+    atualizarBloqueioBody();
+
+}
+
+
+function fecharAtalhos() {
+
+    modalAtalhos
+        ?.classList
+        .remove(
+            "ativo"
+        );
+
+
+    atualizarBloqueioBody();
+
+}
+
+
+document
+    .getElementById(
+        "atalhosDream"
+    )
+    ?.addEventListener(
+        "click",
+        abrirAtalhos
+    );
+
+
+document
+    .getElementById(
+        "fecharAtalhos"
+    )
+    ?.addEventListener(
+        "click",
+        fecharAtalhos
+    );
+
+
+document
+    .getElementById(
+        "fecharAtalhosFundo"
+    )
+    ?.addEventListener(
+        "click",
+        fecharAtalhos
+    );
+
+
+/* =========================================
+   ATALHOS + SETAS
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    evento => {
+
+        const elemento =
+            document.activeElement;
+
+
+        const digitando =
+            elemento
+            &&
+            (
+                elemento.tagName ===
+                "INPUT"
+                ||
+                elemento.tagName ===
+                "TEXTAREA"
+                ||
+                elemento.tagName ===
+                "SELECT"
+            );
+
+
+        if (
+            evento.key ===
+            "Escape"
+        ) {
+
+            fecharProduto();
+
+            fecharNota();
+
+            fecharLightbox();
+
+            fecharAtalhos();
+
+
+            painel?.classList.remove(
+                "ativo"
+            );
+
+
+            return;
+
+        }
+
+
+        if (digitando) return;
+
+
+        if (
+            evento.key ===
+            "ArrowRight"
+        ) {
+
+            proximoSlide();
+
+            reiniciarAutoGaleria();
+
+            return;
+
+        }
+
+
+        if (
+            evento.key ===
+            "ArrowLeft"
+        ) {
+
+            slideAnterior();
+
+            reiniciarAutoGaleria();
+
+            return;
+
+        }
+
+
+        const tecla =
+            evento.key
+                .toLowerCase();
+
+
+        if (tecla === "p") {
+
+            painel?.classList.toggle(
+                "ativo"
+            );
+
+        }
+
+
+        if (tecla === "m") {
+
+            botaoTema?.click();
+
+        }
+
+
+        if (tecla === "g") {
+
+            document
+                .getElementById(
+                    "galeria"
+                )
+                ?.scrollIntoView({
+                    behavior:
+                        "smooth"
+                });
+
+        }
+
+
+        if (tecla === "q") {
+
+            document
+                .getElementById(
+                    "quiz"
+                )
+                ?.scrollIntoView({
+                    behavior:
+                        "smooth"
+                });
+
+        }
+
+
+        if (tecla === "l") {
+
+            document
+                .getElementById(
+                    "dreamLab"
+                )
+                ?.scrollIntoView({
+                    behavior:
+                        "smooth"
+                });
+
+        }
+
+
+        if (tecla === "s") {
+
+            fazerSpray();
+
+        }
+
+
+        if (
+            evento.key ===
+            "?"
+        ) {
+
+            abrirAtalhos();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   INDICADOR + MENU ATIVO
 ========================================= */
 
 const indicador =
@@ -3469,7 +4924,9 @@ if (
                         if (
                             !entrada.isIntersecting
                         ) {
+
                             return;
+
                         }
 
 
@@ -3478,12 +4935,17 @@ if (
 
 
                         if (
-                            indicador &&
-                            nomesSecoes[id]
+                            indicador
+                            &&
+                            nomesSecoes[
+                                id
+                            ]
                         ) {
 
                             indicador.textContent =
-                                nomesSecoes[id];
+                                nomesSecoes[
+                                    id
+                                ];
 
                         }
 
@@ -3516,7 +4978,10 @@ if (
 
             {
                 rootMargin:
-                    "-35% 0px -55% 0px"
+                    "-35% 0px -55% 0px",
+
+                threshold:
+                    0
             }
 
         );
@@ -3607,91 +5072,8 @@ document
     );
 
 
-function chuvaDeCoracoes() {
-
-    for (
-        let i = 0;
-        i < 45;
-        i++
-    ) {
-
-        const coracao =
-            document.createElement(
-                "span"
-            );
-
-
-        coracao.className =
-            "coracao-explosao";
-
-
-        coracao.textContent =
-            Math.random()
-            >
-            .5
-                ?
-                "♡"
-                :
-                "♥";
-
-
-        coracao.style.left =
-            Math.random()
-            *
-            100
-            +
-            "vw";
-
-
-        coracao.style.bottom =
-            Math.random()
-            *
-            70
-            -
-            20
-            +
-            "px";
-
-
-        coracao.style.fontSize =
-            12
-            +
-            Math.random()
-            *
-            28
-            +
-            "px";
-
-
-        coracao.style.setProperty(
-            "--movimento",
-            Math.random()
-            *
-            200
-            -
-            100
-            +
-            "px"
-        );
-
-
-        document.body.appendChild(
-            coracao
-        );
-
-
-        setTimeout(
-            () => coracao.remove(),
-            3000
-        );
-
-    }
-
-}
-
-
 /* =========================================
-   RESTAURAR PERSONALIZAÇÃO
+   RESTAURAR CONFIGURAÇÕES
 ========================================= */
 
 document
@@ -3702,6 +5084,7 @@ document
         "click",
         () => {
 
+            const chaves =
             [
                 "dreamCorPrincipal",
                 "dreamCorSecundaria",
@@ -3711,9 +5094,15 @@ document
                 "dreamGlass",
                 "dreamTamanho",
                 "dreamTema",
-                "dreamTemaAutomatico"
-            ]
-            .forEach(
+                "dreamTemaAutomatico",
+                "dreamZoomFrasco",
+                "dreamAutoGaleria",
+                "dreamVelocidadeGaleria",
+                "dreamCoracoesClique"
+            ];
+
+
+            chaves.forEach(
                 chave => {
 
                     localStorage.removeItem(
@@ -3730,31 +5119,90 @@ document
                 "sem-glass",
                 "texto-pequeno",
                 "texto-grande",
-                "tema-escuro"
+                "tema-escuro",
+                "modo-foco"
             );
 
 
-            configParticulas.checked =
-                true;
+            if (configParticulas) {
+
+                configParticulas.checked =
+                    true;
+
+            }
 
 
-            configAnimacoes.checked =
-                true;
+            if (configAnimacoes) {
+
+                configAnimacoes.checked =
+                    true;
+
+            }
 
 
-            configGlass.checked =
-                true;
+            if (configGlass) {
+
+                configGlass.checked =
+                    true;
+
+            }
 
 
             aplicarCores(
                 "#df76a8",
-                "#9562dc"
+                "#9562dc",
+                false
             );
 
 
             aplicarTamanho(
-                "normal"
+                "normal",
+                false
             );
+
+
+            aplicarZoomFrasco(
+                100
+            );
+
+
+            if (zoomFrasco) {
+
+                zoomFrasco.value =
+                    "100";
+
+            }
+
+
+            autoGaleriaAtivo =
+                true;
+
+
+            tempoGaleria =
+                6000;
+
+
+            if (velocidadeGaleria) {
+
+                velocidadeGaleria.value =
+                    "6000";
+
+            }
+
+
+            coracoesCliqueAtivo =
+                false;
+
+
+            atualizarCoracoesCliqueUI();
+
+            atualizarAutoGaleriaUI();
+
+            reiniciarAutoGaleria();
+
+            atualizarTemaUI();
+
+            atualizarTemaAutoUI();
 
 
             document
@@ -3775,11 +5223,6 @@ document
                 );
 
 
-            atualizarTemaUI();
-
-            atualizarTemaAutoUI();
-
-
             mostrarToast(
                 "Configurações restauradas ♡"
             );
@@ -3789,7 +5232,7 @@ document
 
 
 /* =========================================
-   CARREGAR PREFERÊNCIAS
+   CARREGAR CONFIGURAÇÕES
 ========================================= */
 
 const corSalva =
@@ -3805,13 +5248,15 @@ const secundariaSalva =
 
 
 if (
-    corSalva &&
+    corSalva
+    &&
     secundariaSalva
 ) {
 
     aplicarCores(
         corSalva,
-        secundariaSalva
+        secundariaSalva,
+        false
     );
 
 }
@@ -3845,26 +5290,105 @@ if (paletaSalva) {
 }
 
 
-aplicarSwitchesSalvos();
+/* PARTÍCULAS */
 
+if (
+    ler(
+        "dreamParticulas"
+    )
+    ===
+    "off"
+) {
+
+    document.body.classList.add(
+        "sem-particulas"
+    );
+
+
+    if (configParticulas) {
+
+        configParticulas.checked =
+            false;
+
+    }
+
+}
+
+
+/* ANIMAÇÕES */
+
+if (
+    ler(
+        "dreamAnimacoes"
+    )
+    ===
+    "off"
+) {
+
+    document.body.classList.add(
+        "sem-animacoes"
+    );
+
+
+    if (configAnimacoes) {
+
+        configAnimacoes.checked =
+            false;
+
+    }
+
+}
+
+
+/* GLASS */
+
+if (
+    ler(
+        "dreamGlass"
+    )
+    ===
+    "off"
+) {
+
+    document.body.classList.add(
+        "sem-glass"
+    );
+
+
+    if (configGlass) {
+
+        configGlass.checked =
+            false;
+
+    }
+
+}
+
+
+/* TAMANHO */
 
 aplicarTamanho(
-    ler("dreamTamanho")
+    ler(
+        "dreamTamanho"
+    )
     ||
-    "normal"
+    "normal",
+    false
 );
 
+
+/* TEMA */
 
 if (temaAutoAtivo()) {
 
     aplicarTemaAutomatico();
 
-}
-
-else {
+} else {
 
     aplicarTema(
-        ler("dreamTema")
+        ler(
+            "dreamTema"
+        )
         ===
         "escuro",
         false
@@ -3874,3 +5398,9 @@ else {
 
 
 atualizarTemaAutoUI();
+
+atualizarAutoGaleriaUI();
+
+atualizarCoracoesCliqueUI();
+
+atualizarCarrossel();

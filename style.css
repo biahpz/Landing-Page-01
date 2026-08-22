@@ -14,10 +14,14 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+
     color: #2c2230;
+
     line-height: 1.6;
+
     overflow-x: hidden;
-    background: #fff;
+
+    background: #ffffff;
 }
 
 body.modal-aberto {
@@ -25,11 +29,13 @@ body.modal-aberto {
 }
 
 a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
 }
 
-button {
+button,
+input,
+select {
     font: inherit;
 }
 
@@ -44,7 +50,6 @@ img {
 ========================================= */
 
 :root {
-
     --rosa: #df76a8;
     --rosa2: #ef95bb;
     --rosa-claro: #ffe8f2;
@@ -57,11 +62,13 @@ img {
     --cinza: #746d78;
 
     --borda:
-        rgba(130,80,150,.14);
+        rgba(130, 80, 150, 0.14);
 
     --sombra:
         0 25px 70px
-        rgba(80,40,100,.14);
+        rgba(80, 40, 100, 0.14);
+
+    --zoom-frascos: 1;
 }
 
 
@@ -74,6 +81,7 @@ img {
     height: 3px;
 
     position: fixed;
+
     top: 0;
     left: 0;
 
@@ -98,29 +106,33 @@ img {
 
 .loader {
     position: fixed;
+
     inset: 0;
 
     z-index: 99990;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     background: linear-gradient(
         135deg,
-        #fff,
+        #ffffff,
         var(--rosa-claro),
         var(--lilas-claro)
     );
 
     transition:
-        opacity .6s,
-        visibility .6s;
+        opacity 0.6s,
+        visibility 0.6s;
 }
 
 .loader.sumir {
     opacity: 0;
+
     visibility: hidden;
+
     pointer-events: none;
 }
 
@@ -129,8 +141,9 @@ img {
 }
 
 .loader-coracao {
-    font-size: 50px;
     color: var(--rosa);
+
+    font-size: 50px;
 
     animation:
         pulsar 1s infinite;
@@ -138,6 +151,7 @@ img {
 
 .loader h1 {
     font-size: 55px;
+
     line-height: 1;
 }
 
@@ -147,11 +161,10 @@ img {
 
 .loader p {
     margin-top: 8px;
+
     color: var(--cinza);
 
-    font-family:
-        Georgia,
-        serif;
+    font-family: Georgia, serif;
 
     font-style: italic;
 }
@@ -167,7 +180,7 @@ img {
     border-radius: 20px;
 
     background:
-        rgba(100,60,130,.12);
+        rgba(100, 60, 130, 0.12);
 }
 
 .loader-barra div {
@@ -185,20 +198,16 @@ img {
 }
 
 @keyframes carregar {
-
     to {
         width: 100%;
     }
-
 }
 
 @keyframes pulsar {
-
     50% {
         transform:
             scale(1.15);
     }
-
 }
 
 
@@ -208,6 +217,7 @@ img {
 
 .particulas {
     position: fixed;
+
     inset: 0;
 
     z-index: 3;
@@ -219,6 +229,7 @@ img {
 
 .particula {
     position: absolute;
+
     bottom: -40px;
 
     color:
@@ -267,8 +278,8 @@ img {
 
     position: fixed;
 
-    left: 0;
     top: 0;
+    left: 0;
 
     z-index: 1;
 
@@ -276,7 +287,10 @@ img {
 
     pointer-events: none;
 
-    opacity: .32;
+    opacity: 0.3;
+
+    transform:
+        translate(-50%, -50%);
 
     background: radial-gradient(
         circle,
@@ -288,10 +302,8 @@ img {
         transparent 70%
     );
 
-    filter: blur(25px);
-
-    transform:
-        translate(-50%,-50%);
+    filter:
+        blur(25px);
 }
 
 
@@ -319,6 +331,7 @@ img {
 
     letter-spacing: 1.5px;
 }
+
 
 .hero h1 span,
 .produto-info h2 span,
@@ -354,37 +367,43 @@ img {
     padding: 0 7%;
 
     position: sticky;
+
     top: 0;
 
     z-index: 1000;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
     background:
-        rgba(255,255,255,.88);
+        rgba(255, 255, 255, 0.88);
 
     backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
         blur(18px);
 
     border-bottom:
         1px solid var(--borda);
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .header.scrolled {
     background:
-        rgba(255,255,255,.96);
+        rgba(255, 255, 255, 0.96);
 
     box-shadow:
         0 10px 35px
-        rgba(50,20,70,.08);
+        rgba(50, 20, 70, 0.08);
 }
 
 .logo {
     font-size: 28px;
+
     font-weight: 900;
 }
 
@@ -394,8 +413,10 @@ img {
 
 .menu {
     display: flex;
+
     align-items: center;
-    gap: 20px;
+
+    gap: 19px;
 }
 
 .menu a {
@@ -405,7 +426,7 @@ img {
 
     font-size: 10px;
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .menu a:hover,
@@ -432,7 +453,7 @@ img {
         var(--lilas)
     );
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .menu a:hover::after,
@@ -442,7 +463,9 @@ img {
 
 .header-acoes {
     display: flex;
+
     align-items: center;
+
     gap: 10px;
 }
 
@@ -456,13 +479,13 @@ img {
     border-radius: 50%;
 
     background:
-        rgba(255,255,255,.8);
+        rgba(255, 255, 255, 0.8);
 
     color: var(--lilas);
 
     cursor: pointer;
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .botao-tema:hover {
@@ -478,6 +501,7 @@ img {
     padding: 13px 23px;
 
     border: 0;
+
     border-radius: 50px;
 
     color: white;
@@ -501,7 +525,7 @@ img {
 
     cursor: pointer;
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .botao-header:hover,
@@ -557,7 +581,7 @@ img {
 
     background: linear-gradient(
         135deg,
-        #fff 0%,
+        #ffffff 0%,
         color-mix(
             in srgb,
             var(--rosa) 12%,
@@ -617,9 +641,9 @@ img {
     margin-top: 22px;
 
     font-size:
-        clamp(60px,7vw,95px);
+        clamp(60px, 7vw, 95px);
 
-    line-height: .92;
+    line-height: 0.92;
 
     letter-spacing: -5px;
 }
@@ -655,7 +679,7 @@ img {
     border-radius: 50px;
 
     background:
-        rgba(255,255,255,.75);
+        rgba(255, 255, 255, 0.75);
 
     color: var(--texto);
 
@@ -664,7 +688,7 @@ img {
 
     cursor: pointer;
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .botao-secundario:hover {
@@ -753,9 +777,10 @@ img {
     border-radius: 50%;
 
     background:
-        rgba(255,255,255,.65);
+        rgba(255, 255, 255, 0.65);
 
-    filter: blur(45px);
+    filter:
+        blur(45px);
 
     pointer-events: none;
 }
@@ -772,14 +797,18 @@ img {
 
     mix-blend-mode: multiply;
 
+    scale:
+        var(--zoom-frascos);
+
     filter:
         drop-shadow(
             0 30px 28px
-            rgba(65,25,60,.20)
+            rgba(65, 25, 60, 0.2)
         );
 
     transition:
-        transform .15s;
+        transform 0.15s,
+        scale 0.35s;
 }
 
 .dream-fundo {
@@ -824,7 +853,8 @@ img {
 
     background: white;
 
-    box-shadow: var(--sombra);
+    box-shadow:
+        var(--sombra);
 }
 
 .selo > span {
@@ -861,19 +891,19 @@ img {
     border-radius: 50px;
 
     background:
-        rgba(255,255,255,.92);
+        rgba(255, 255, 255, 0.92);
 
     color: var(--rosa);
 
     box-shadow:
         var(--sombra);
 
-    font-weight: bold;
     font-size: 11px;
+    font-weight: bold;
 
     cursor: pointer;
 
-    transition: .25s;
+    transition: 0.25s;
 }
 
 .botao-spray:hover {
@@ -909,25 +939,24 @@ img {
     background: white;
 
     box-shadow:
-        0 0 9px var(--rosa);
+        0 0 9px
+        var(--rosa);
 
     animation:
-        sprayVoar .9s ease-out forwards;
+        sprayVoar 0.9s ease-out forwards;
 }
 
 @keyframes sprayVoar {
 
     from {
-
         opacity: 1;
 
         transform:
-            translate(-50%,-50%)
-            scale(.5);
+            translate(-50%, -50%)
+            scale(0.5);
     }
 
     to {
-
         opacity: 0;
 
         transform:
@@ -983,11 +1012,13 @@ img {
 .como-usar,
 .dream-lab,
 .faq {
-
     padding: 120px 8%;
 }
 
-.produto {
+.produto,
+.momentos,
+.como-usar,
+.dream-lab {
     background: linear-gradient(
         135deg,
         white,
@@ -998,13 +1029,15 @@ img {
         ),
         color-mix(
             in srgb,
-            var(--lilas) 9%,
+            var(--lilas) 8%,
             white
         )
     );
 }
 
-.notas {
+.notas,
+.galeria,
+.faq {
     background: linear-gradient(
         180deg,
         white,
@@ -1021,44 +1054,16 @@ img {
     );
 }
 
-.perfil {
+.perfil,
+.quiz {
     background: linear-gradient(
         135deg,
-        color-mix(
-            in srgb,
-            var(--lilas) 10%,
-            white
-        ),
-        white
-    );
-}
-
-.galeria {
-    background: linear-gradient(
-        180deg,
-        white,
-        color-mix(
-            in srgb,
-            var(--rosa) 7%,
-            white
-        ),
         color-mix(
             in srgb,
             var(--lilas) 9%,
             white
-        )
-    );
-}
-
-.momentos {
-    background: linear-gradient(
-        135deg,
-        white,
-        color-mix(
-            in srgb,
-            var(--rosa) 8%,
-            white
-        )
+        ),
+        white
     );
 }
 
@@ -1074,66 +1079,6 @@ img {
         color-mix(
             in srgb,
             var(--lilas) 10%,
-            white
-        )
-    );
-}
-
-.quiz {
-    background: linear-gradient(
-        135deg,
-        color-mix(
-            in srgb,
-            var(--lilas) 9%,
-            white
-        ),
-        white
-    );
-}
-
-.como-usar {
-    overflow: hidden;
-
-    background: linear-gradient(
-        135deg,
-        white,
-        color-mix(
-            in srgb,
-            var(--rosa) 9%,
-            white
-        ),
-        color-mix(
-            in srgb,
-            var(--lilas) 10%,
-            white
-        )
-    );
-}
-
-.dream-lab {
-    background: linear-gradient(
-        135deg,
-        white,
-        color-mix(
-            in srgb,
-            var(--rosa) 9%,
-            white
-        ),
-        color-mix(
-            in srgb,
-            var(--lilas) 9%,
-            white
-        )
-    );
-}
-
-.faq {
-    background: linear-gradient(
-        180deg,
-        white,
-        color-mix(
-            in srgb,
-            var(--lilas) 7%,
             white
         )
     );
@@ -1217,6 +1162,12 @@ img {
     object-fit: contain;
 
     mix-blend-mode: multiply;
+
+    scale:
+        var(--zoom-frascos);
+
+    transition:
+        scale 0.35s;
 }
 
 .produto-info h2 {
@@ -1255,12 +1206,12 @@ img {
     width: 42px;
     height: 42px;
 
+    flex-shrink: 0;
+
     display: flex;
 
     align-items: center;
     justify-content: center;
-
-    flex-shrink: 0;
 
     border-radius: 50%;
 
@@ -1305,7 +1256,7 @@ img {
 
     cursor: pointer;
 
-    transition: .25s;
+    transition: 0.25s;
 }
 
 .acao-produto:hover {
@@ -1320,6 +1271,8 @@ img {
 
 .acao-produto.favoritado {
     color: white;
+
+    border-color: transparent;
 
     background: linear-gradient(
         135deg,
@@ -1376,8 +1329,8 @@ img {
 
     background: linear-gradient(
         90deg,
-        rgba(25,10,30,.75),
-        rgba(40,15,40,.25),
+        rgba(25, 10, 30, 0.75),
+        rgba(40, 15, 40, 0.25),
         transparent
     );
 }
@@ -1402,9 +1355,9 @@ img {
     margin-top: 15px;
 
     font-size:
-        clamp(48px,6vw,80px);
+        clamp(48px, 6vw, 80px);
 
-    line-height: .98;
+    line-height: 0.98;
 }
 
 .campanha h2 span {
@@ -1420,7 +1373,7 @@ img {
     margin-top: 22px;
 
     color:
-        rgba(255,255,255,.82);
+        rgba(255, 255, 255, 0.82);
 }
 
 .botao-campanha {
@@ -1483,7 +1436,7 @@ img {
     display: grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(3, 1fr);
 
     gap: 25px;
 }
@@ -1503,16 +1456,17 @@ img {
     border-radius: 25px;
 
     background:
-        rgba(255,255,255,.78);
+        rgba(255, 255, 255, 0.78);
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .nota-card:hover {
     transform:
         translateY(-8px);
 
-    box-shadow: var(--sombra);
+    box-shadow:
+        var(--sombra);
 }
 
 .nota-card.destaque {
@@ -1534,7 +1488,7 @@ img {
     top: 0;
 
     color:
-        rgba(100,50,120,.08);
+        rgba(100, 50, 120, 0.08);
 
     font-size: 70px;
     font-weight: 900;
@@ -1542,7 +1496,7 @@ img {
 
 .destaque .numero {
     color:
-        rgba(255,255,255,.1);
+        rgba(255, 255, 255, 0.1);
 }
 
 .nota-icone {
@@ -1564,7 +1518,7 @@ img {
 
 .destaque .nota-icone {
     background:
-        rgba(255,255,255,.15);
+        rgba(255, 255, 255, 0.15);
 }
 
 .nota-card small {
@@ -1575,13 +1529,12 @@ img {
     color: var(--rosa);
 
     font-size: 9px;
-
     font-weight: bold;
 }
 
 .destaque small {
     color:
-        rgba(255,255,255,.75);
+        rgba(255, 255, 255, 0.75);
 }
 
 .nota-card h3 {
@@ -1598,7 +1551,7 @@ img {
 
 .destaque p {
     color:
-        rgba(255,255,255,.82);
+        rgba(255, 255, 255, 0.82);
 }
 
 .chips {
@@ -1628,7 +1581,7 @@ img {
 
     cursor: pointer;
 
-    transition: .25s;
+    transition: 0.25s;
 }
 
 .nota-chip:hover {
@@ -1640,7 +1593,7 @@ img {
     color: white;
 
     background:
-        rgba(255,255,255,.15);
+        rgba(255, 255, 255, 0.15);
 }
 
 
@@ -1656,7 +1609,7 @@ img {
     display: grid;
 
     grid-template-columns:
-        .8fr 1.2fr;
+        0.8fr 1.2fr;
 
     align-items: center;
 
@@ -1703,7 +1656,7 @@ img {
     border-radius: 50px;
 
     background:
-        rgba(100,80,120,.1);
+        rgba(100, 80, 120, 0.1);
 }
 
 .barra div {
@@ -1751,7 +1704,7 @@ img {
         serif;
 
     font-size:
-        clamp(32px,5vw,55px);
+        clamp(32px, 5vw, 55px);
 
     font-style: italic;
 }
@@ -1774,15 +1727,16 @@ img {
 
     border-radius: 32px;
 
-    box-shadow: var(--sombra);
+    box-shadow:
+        var(--sombra);
 }
 
 .carrossel-trilho {
     display: flex;
 
     transition:
-        transform .6s
-        cubic-bezier(.2,.7,.3,1);
+        transform 0.6s
+        cubic-bezier(.2, .7, .3, 1);
 }
 
 .slide {
@@ -1812,7 +1766,7 @@ img {
 
     background: linear-gradient(
         0deg,
-        rgba(20,8,25,.7),
+        rgba(20, 8, 25, 0.7),
         transparent 55%
     );
 }
@@ -1835,10 +1789,10 @@ img {
 }
 
 .slide-info p {
-    font-size: 11px;
-
     color:
-        rgba(255,255,255,.8);
+        rgba(255, 255, 255, 0.8);
+
+    font-size: 11px;
 }
 
 .seta {
@@ -1859,11 +1813,12 @@ img {
     border-radius: 50%;
 
     background:
-        rgba(255,255,255,.95);
+        rgba(255, 255, 255, 0.95);
 
     color: var(--texto);
 
-    box-shadow: var(--sombra);
+    box-shadow:
+        var(--sombra);
 
     font-size: 30px;
 
@@ -1897,11 +1852,11 @@ img {
     border-radius: 20px;
 
     background:
-        rgba(100,70,120,.2);
+        rgba(100, 70, 120, 0.2);
 
     cursor: pointer;
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .pontos button.ativo {
@@ -1927,7 +1882,7 @@ img {
     display: grid;
 
     grid-template-columns:
-        repeat(4,1fr);
+        repeat(4, 1fr);
 
     gap: 18px;
 }
@@ -1941,16 +1896,17 @@ img {
     border-radius: 24px;
 
     background:
-        rgba(255,255,255,.72);
+        rgba(255, 255, 255, 0.72);
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .momento:hover {
     transform:
         translateY(-8px);
 
-    box-shadow: var(--sombra);
+    box-shadow:
+        var(--sombra);
 }
 
 .momento > span {
@@ -2022,7 +1978,7 @@ img {
 
     cursor: pointer;
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .mood-botao:hover {
@@ -2057,9 +2013,10 @@ img {
 
     color: white;
 
-    box-shadow: var(--sombra);
+    box-shadow:
+        var(--sombra);
 
-    transition: .4s;
+    transition: 0.4s;
 }
 
 .mood-card.romantico {
@@ -2102,7 +2059,7 @@ img {
     border-radius: 30px;
 
     background:
-        rgba(255,255,255,.15);
+        rgba(255, 255, 255, 0.15);
 
     font-size: 48px;
 }
@@ -2123,7 +2080,7 @@ img {
     margin-top: 10px;
 
     color:
-        rgba(255,255,255,.82);
+        rgba(255, 255, 255, 0.82);
 }
 
 
@@ -2139,7 +2096,7 @@ img {
     display: grid;
 
     grid-template-columns:
-        .8fr 1.2fr;
+        0.8fr 1.2fr;
 
     align-items: center;
 
@@ -2173,9 +2130,10 @@ img {
     border-radius: 30px;
 
     background:
-        rgba(255,255,255,.76);
+        rgba(255, 255, 255, 0.76);
 
-    box-shadow: var(--sombra);
+    box-shadow:
+        var(--sombra);
 }
 
 .quiz-card > div {
@@ -2186,7 +2144,6 @@ img {
     color: var(--rosa);
 
     font-size: 10px;
-
     font-weight: bold;
 }
 
@@ -2218,7 +2175,7 @@ img {
 
     cursor: pointer;
 
-    transition: .25s;
+    transition: 0.25s;
 }
 
 .quiz-opcoes button:hover {
@@ -2268,7 +2225,7 @@ img {
 
 /* =========================================
    COMO USAR
-   SEM CÍRCULO BUGADO
+   SEM CÍRCULO
 ========================================= */
 
 .como-container {
@@ -2298,6 +2255,8 @@ img {
     align-items: center;
     justify-content: center;
 
+    isolation: isolate;
+
     border:
         1px solid var(--borda);
 
@@ -2305,12 +2264,13 @@ img {
 
     background: linear-gradient(
         135deg,
-        rgba(255,255,255,.9),
+        rgba(255, 255, 255, 0.9),
         var(--rosa-claro),
         var(--lilas-claro)
     );
 
-    box-shadow: var(--sombra);
+    box-shadow:
+        var(--sombra);
 }
 
 .como-imagem::before {
@@ -2324,23 +2284,28 @@ img {
     top: 50%;
     left: 50%;
 
+    z-index: 0;
+
     transform:
-        translate(-50%,-50%);
+        translate(-50%, -50%);
 
     background: radial-gradient(
         ellipse,
-        rgba(255,255,255,.95),
+        rgba(255, 255, 255, 0.95),
         transparent 72%
     );
 
-    filter: blur(18px);
+    filter:
+        blur(18px);
 }
 
 .como-dream-fundo {
     position: absolute;
 
-    bottom: 20px;
     left: 50%;
+    bottom: 20px;
+
+    z-index: 1;
 
     transform:
         translateX(-50%);
@@ -2356,6 +2321,8 @@ img {
     font-weight: 900;
 
     letter-spacing: 9px;
+
+    white-space: nowrap;
 }
 
 .como-frasco {
@@ -2369,6 +2336,12 @@ img {
     object-fit: contain;
 
     mix-blend-mode: multiply;
+
+    scale:
+        var(--zoom-frascos);
+
+    transition:
+        scale 0.35s;
 }
 
 .como-texto h2 {
@@ -2400,7 +2373,7 @@ img {
     border-radius: 16px;
 
     background:
-        rgba(255,255,255,.78);
+        rgba(255, 255, 255, 0.78);
 }
 
 .passos > div > span {
@@ -2447,7 +2420,7 @@ img {
     display: grid;
 
     grid-template-columns:
-        repeat(2,1fr);
+        repeat(2, 1fr);
 
     gap: 18px;
 }
@@ -2465,20 +2438,21 @@ img {
     border-radius: 28px;
 
     background:
-        rgba(255,255,255,.72);
+        rgba(255, 255, 255, 0.72);
 
     box-shadow:
         0 20px 50px
-        rgba(80,40,100,.07);
+        rgba(80, 40, 100, 0.07);
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .lab-card:hover {
     transform:
         translateY(-7px);
 
-    box-shadow: var(--sombra);
+    box-shadow:
+        var(--sombra);
 }
 
 .lab-card-grande {
@@ -2514,7 +2488,6 @@ img {
     color: var(--rosa);
 
     font-size: 8px;
-
     font-weight: 900;
 
     letter-spacing: 2px;
@@ -2539,6 +2512,8 @@ img {
 
     align-items: center;
     justify-content: space-between;
+
+    gap: 20px;
 }
 
 .intensidade-numero {
@@ -2547,7 +2522,11 @@ img {
     font-size: 25px;
 }
 
-#intensidadeDream {
+
+/* SLIDERS */
+
+#intensidadeDream,
+.slider-dream {
     width: 100%;
     height: 8px;
 
@@ -2557,14 +2536,19 @@ img {
 
     border-radius: 50px;
 
+    outline: none;
+
     background: linear-gradient(
         90deg,
         var(--rosa),
         var(--lilas)
     );
+
+    cursor: pointer;
 }
 
-#intensidadeDream::-webkit-slider-thumb {
+#intensidadeDream::-webkit-slider-thumb,
+.slider-dream::-webkit-slider-thumb {
     width: 24px;
     height: 24px;
 
@@ -2575,9 +2559,14 @@ img {
 
     border-radius: 50%;
 
-    background: var(--rosa);
+    background:
+        var(--rosa);
 
-    cursor: pointer;
+    box-shadow:
+        0 5px 20px
+        rgba(50, 20, 80, 0.2);
+
+    cursor: grab;
 }
 
 .intensidade-info {
@@ -2588,18 +2577,24 @@ img {
     border-radius: 16px;
 
     background:
-        rgba(255,255,255,.6);
+        rgba(255, 255, 255, 0.6);
 }
 
 .intensidade-info span {
     font-weight: bold;
 }
 
-.intensidade-info p {
+.intensidade-info p,
+.texto-controle {
+    margin-top: 5px;
+
     color: var(--cinza);
 
     font-size: 10px;
 }
+
+
+/* ROTINA */
 
 .rotina-botoes {
     margin-top: 25px;
@@ -2611,8 +2606,7 @@ img {
     gap: 8px;
 }
 
-.rotina-botoes button,
-.lab-ferramentas button {
+.rotina-botoes button {
     padding: 11px 16px;
 
     border:
@@ -2624,18 +2618,16 @@ img {
 
     color: var(--texto);
 
-    font-weight: bold;
     font-size: 10px;
+    font-weight: bold;
 
     cursor: pointer;
 
-    transition: .25s;
+    transition: 0.25s;
 }
 
 .rotina-botoes button:hover,
-.rotina-botoes button.ativo,
-.lab-ferramentas button:hover,
-.lab-ferramentas button.ativo {
+.rotina-botoes button.ativo {
     color: white;
 
     border-color: transparent;
@@ -2668,13 +2660,16 @@ img {
     font-size: 11px;
 }
 
+
+/* LAB TOOLS */
+
 .lab-ferramentas {
     margin-top: 25px;
 
     display: grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(3, 1fr);
 
     gap: 10px;
 }
@@ -2682,7 +2677,208 @@ img {
 .lab-ferramentas button {
     min-height: 55px;
 
+    padding: 12px;
+
+    border:
+        1px solid var(--borda);
+
     border-radius: 15px;
+
+    background: white;
+
+    color: var(--texto);
+
+    font-size: 10px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.lab-ferramentas button:hover,
+.lab-ferramentas button.ativo {
+    transform:
+        translateY(-3px);
+
+    color: white;
+
+    border-color: transparent;
+
+    background: linear-gradient(
+        135deg,
+        var(--rosa),
+        var(--lilas)
+    );
+}
+
+
+/* GALERIA CONTROL */
+
+.controle-galeria {
+    margin-top: 25px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.controle-botao {
+    min-height: 48px;
+
+    padding: 12px 18px;
+
+    border:
+        1px solid var(--borda);
+
+    border-radius: 14px;
+
+    background:
+        rgba(255, 255, 255, 0.7);
+
+    color: var(--texto);
+
+    font-size: 10px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.controle-botao.ativo {
+    color: white;
+
+    border-color: transparent;
+
+    background: linear-gradient(
+        135deg,
+        var(--rosa),
+        var(--lilas)
+    );
+}
+
+.controle-select {
+    min-height: 48px;
+
+    padding: 7px 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    border:
+        1px solid var(--borda);
+
+    border-radius: 14px;
+
+    background:
+        rgba(255, 255, 255, 0.7);
+}
+
+.controle-select span {
+    color: var(--cinza);
+
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.controle-select select {
+    border: 0;
+
+    outline: 0;
+
+    background: transparent;
+
+    color: var(--texto);
+
+    cursor: pointer;
+}
+
+
+/* NOTA MOMENTO */
+
+.nota-momento {
+    margin-top: 25px;
+
+    padding: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    border:
+        1px solid var(--borda);
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        135deg,
+        var(--rosa-claro),
+        var(--lilas-claro)
+    );
+}
+
+.nota-momento-icone {
+    width: 60px;
+    height: 60px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255, 255, 255, 0.75);
+
+    font-size: 27px;
+}
+
+.nota-momento strong {
+    display: block;
+
+    font-size: 13px;
+}
+
+.nota-momento p {
+    margin-top: 4px;
+
+    color: var(--cinza);
+
+    font-size: 10px;
+}
+
+.botao-lab-principal {
+    margin-top: 18px;
+
+    padding: 12px 20px;
+
+    border: 0;
+
+    border-radius: 50px;
+
+    color: white;
+
+    background: linear-gradient(
+        135deg,
+        var(--rosa),
+        var(--lilas)
+    );
+
+    font-size: 10px;
+    font-weight: bold;
+
+    cursor: pointer;
 }
 
 
@@ -2695,7 +2891,7 @@ img {
     height: 55px;
 
     margin:
-        -25px auto 40px;
+        -25px auto 30px;
 
     padding: 0 20px;
 
@@ -2711,7 +2907,7 @@ img {
     border-radius: 50px;
 
     background:
-        rgba(255,255,255,.75);
+        rgba(255, 255, 255, 0.75);
 
     box-shadow:
         var(--sombra);
@@ -2738,6 +2934,8 @@ img {
 .faq-sem-resultado {
     display: none;
 
+    margin-bottom: 25px;
+
     text-align: center;
 
     color: var(--cinza);
@@ -2745,6 +2943,40 @@ img {
 
 .faq-sem-resultado.mostrar {
     display: block;
+}
+
+.faq-controles {
+    max-width: 850px;
+
+    margin:
+        0 auto 20px;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+.faq-controles button {
+    padding: 9px 14px;
+
+    border:
+        1px solid var(--borda);
+
+    border-radius: 50px;
+
+    background:
+        rgba(255, 255, 255, 0.65);
+
+    color: var(--texto);
+
+    font-size: 9px;
+    font-weight: bold;
+
+    cursor: pointer;
 }
 
 .faq-lista {
@@ -2769,6 +3001,8 @@ img {
 
     align-items: center;
 
+    gap: 20px;
+
     border: 0;
 
     background: transparent;
@@ -2786,12 +3020,12 @@ img {
     width: 30px;
     height: 30px;
 
+    flex-shrink: 0;
+
     display: flex;
 
     align-items: center;
     justify-content: center;
-
-    flex-shrink: 0;
 
     border-radius: 50%;
 
@@ -2802,7 +3036,7 @@ img {
 
     font-size: 18px;
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .faq-resposta {
@@ -2811,7 +3045,7 @@ img {
     overflow: hidden;
 
     transition:
-        max-height .35s;
+        max-height 0.35s ease;
 }
 
 .faq-resposta p {
@@ -2823,7 +3057,7 @@ img {
 
 .faq-item.ativo
 .faq-resposta {
-    max-height: 160px;
+    max-height: 300px;
 }
 
 .faq-item.ativo
@@ -2869,24 +3103,24 @@ img {
     color: white;
 
     background:
-        rgba(255,255,255,.15);
+        rgba(255, 255, 255, 0.15);
 }
 
 .cta h2 {
     margin-top: 20px;
 
     font-size:
-        clamp(45px,6vw,68px);
+        clamp(45px, 6vw, 68px);
 }
 
 .cta p {
+    max-width: 550px;
+
     margin:
         22px auto 35px;
 
-    max-width: 550px;
-
     color:
-        rgba(255,255,255,.82);
+        rgba(255, 255, 255, 0.82);
 }
 
 .botao-cta {
@@ -2915,9 +3149,10 @@ footer {
 
     display: flex;
 
+    align-items: center;
     justify-content: space-between;
 
-    align-items: center;
+    background: white;
 }
 
 footer p {
@@ -2928,7 +3163,7 @@ footer p {
 
 
 /* =========================================
-   MODAL
+   MODAIS
 ========================================= */
 
 .modal {
@@ -2951,7 +3186,7 @@ footer p {
 
     pointer-events: none;
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .modal.ativo {
@@ -2968,7 +3203,7 @@ footer p {
     inset: 0;
 
     background:
-        rgba(30,15,35,.58);
+        rgba(30, 15, 35, 0.58);
 
     backdrop-filter:
         blur(10px);
@@ -2998,7 +3233,7 @@ footer p {
 
 .modal-produto {
     width:
-        min(900px,100%);
+        min(900px, 100%);
 
     max-height: 90vh;
 
@@ -3024,7 +3259,7 @@ footer p {
 
     box-shadow:
         0 40px 100px
-        rgba(30,10,35,.25);
+        rgba(30, 10, 35, 0.25);
 }
 
 .modal-produto-imagem {
@@ -3096,9 +3331,9 @@ footer p {
 
     display: flex;
 
-    gap: 10px;
-
     flex-wrap: wrap;
+
+    gap: 10px;
 }
 
 .botao-modal-secundario {
@@ -3116,7 +3351,7 @@ footer p {
 
 .modal-nota {
     width:
-        min(460px,100%);
+        min(460px, 100%);
 
     position: relative;
 
@@ -3135,7 +3370,8 @@ footer p {
         var(--lilas-claro)
     );
 
-    box-shadow: var(--sombra);
+    box-shadow:
+        var(--sombra);
 }
 
 .modal-nota-icone {
@@ -3192,7 +3428,7 @@ footer p {
 
     pointer-events: none;
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .lightbox.ativo {
@@ -3209,7 +3445,7 @@ footer p {
     inset: 0;
 
     background:
-        rgba(19,10,23,.86);
+        rgba(19, 10, 23, 0.86);
 
     backdrop-filter:
         blur(14px);
@@ -3223,11 +3459,13 @@ footer p {
 
     z-index: 3;
 
+    object-fit: contain;
+
     border-radius: 25px;
 
     box-shadow:
         0 35px 100px
-        rgba(0,0,0,.35);
+        rgba(0, 0, 0, 0.35);
 }
 
 .lightbox-fechar {
@@ -3280,13 +3518,14 @@ footer p {
         var(--lilas)
     );
 
-    box-shadow: var(--sombra);
+    box-shadow:
+        var(--sombra);
 
     font-size: 19px;
 
     cursor: pointer;
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .abrir-personalizacao:hover {
@@ -3318,14 +3557,17 @@ footer p {
     border-radius: 28px;
 
     background:
-        rgba(255,255,255,.94);
+        rgba(255, 255, 255, 0.94);
 
     backdrop-filter:
         blur(25px);
 
+    -webkit-backdrop-filter:
+        blur(25px);
+
     box-shadow:
         0 35px 90px
-        rgba(60,25,75,.22);
+        rgba(60, 25, 75, 0.22);
 
     opacity: 0;
 
@@ -3334,9 +3576,9 @@ footer p {
     transform:
         translateY(-50%)
         translateX(40px)
-        scale(.96);
+        scale(0.96);
 
-    transition: .35s;
+    transition: 0.35s;
 }
 
 .painel-personalizacao.ativo {
@@ -3361,7 +3603,6 @@ footer p {
     color: var(--rosa);
 
     font-size: 8px;
-
     font-weight: 900;
 
     letter-spacing: 2px;
@@ -3402,7 +3643,6 @@ footer p {
     color: var(--cinza);
 
     font-size: 9px;
-
     font-weight: 900;
 }
 
@@ -3410,7 +3650,7 @@ footer p {
     display: grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(3, 1fr);
 
     gap: 8px;
 }
@@ -3432,7 +3672,7 @@ footer p {
     border-radius: 13px;
 
     background:
-        rgba(255,255,255,.7);
+        rgba(255, 255, 255, 0.7);
 
     color: var(--texto);
 
@@ -3442,11 +3682,21 @@ footer p {
 .paleta.ativo {
     border-color:
         var(--rosa);
+
+    box-shadow:
+        0 8px 25px
+        color-mix(
+            in srgb,
+            var(--rosa) 15%,
+            transparent
+        );
 }
 
 .paleta i {
     width: 35px;
     height: 35px;
+
+    display: block;
 
     border-radius: 50%;
 
@@ -3478,13 +3728,15 @@ footer p {
     align-items: center;
     justify-content: space-between;
 
+    gap: 8px;
+
     border:
         1px solid var(--borda);
 
     border-radius: 14px;
 
     background:
-        rgba(255,255,255,.6);
+        rgba(255, 255, 255, 0.6);
 }
 
 .cores-personalizadas span {
@@ -3540,10 +3792,12 @@ footer p {
 
     position: relative;
 
+    flex-shrink: 0;
+
     border-radius: 30px;
 
     background:
-        rgba(120,100,130,.2);
+        rgba(120, 100, 130, 0.2);
 }
 
 .switch::before {
@@ -3561,7 +3815,7 @@ footer p {
 
     background: white;
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .config-linha
@@ -3583,7 +3837,7 @@ input:checked + .switch::before {
     display: grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(3, 1fr);
 
     gap: 7px;
 }
@@ -3618,6 +3872,8 @@ input:checked + .switch::before {
 .seletor-tamanho button.ativo {
     color: white;
 
+    border-color: transparent;
+
     background: linear-gradient(
         135deg,
         var(--rosa),
@@ -3646,7 +3902,164 @@ input:checked + .switch::before {
 
 
 /* =========================================
-   TOAST
+   ATALHOS
+========================================= */
+
+.modal-atalhos {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 65000;
+
+    padding: 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition: 0.3s;
+}
+
+.modal-atalhos.ativo {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+.modal-atalhos-fundo {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(20, 10, 25, 0.68);
+
+    backdrop-filter:
+        blur(12px);
+}
+
+.atalhos-card {
+    width:
+        min(500px, 100%);
+
+    max-height: 85vh;
+
+    position: relative;
+
+    z-index: 2;
+
+    padding: 38px;
+
+    overflow-y: auto;
+
+    border-radius: 28px;
+
+    background: linear-gradient(
+        135deg,
+        white,
+        var(--rosa-claro),
+        var(--lilas-claro)
+    );
+
+    box-shadow:
+        0 40px 100px
+        rgba(20, 10, 30, 0.3);
+}
+
+.atalhos-card h2 {
+    margin-top: 15px;
+
+    font-size: 32px;
+}
+
+.atalhos-fechar {
+    width: 38px;
+    height: 38px;
+
+    position: absolute;
+
+    right: 18px;
+    top: 18px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: white;
+
+    font-size: 24px;
+
+    cursor: pointer;
+}
+
+.atalhos-lista {
+    margin-top: 25px;
+
+    display: grid;
+
+    gap: 9px;
+}
+
+.atalhos-lista > div {
+    min-height: 52px;
+
+    padding: 10px 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border:
+        1px solid var(--borda);
+
+    border-radius: 15px;
+
+    background:
+        rgba(255, 255, 255, 0.58);
+}
+
+.atalhos-lista kbd {
+    min-width: 38px;
+    height: 32px;
+
+    padding: 0 8px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background:
+        #2d2332;
+
+    color: white;
+
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.atalhos-lista span {
+    font-size: 10px;
+    font-weight: bold;
+}
+
+
+/* =========================================
+   TOAST / INDICADOR / TOPO
 ========================================= */
 
 .toast {
@@ -3655,14 +4068,14 @@ input:checked + .switch::before {
     left: 50%;
     bottom: 25px;
 
-    z-index: 60000;
+    z-index: 70000;
 
     padding: 12px 20px;
 
     border-radius: 50px;
 
     background:
-        rgba(42,29,47,.95);
+        rgba(42, 29, 47, 0.95);
 
     color: white;
 
@@ -3671,9 +4084,9 @@ input:checked + .switch::before {
     visibility: hidden;
 
     transform:
-        translate(-50%,30px);
+        translate(-50%, 30px);
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .toast.mostrar {
@@ -3682,13 +4095,8 @@ input:checked + .switch::before {
     visibility: visible;
 
     transform:
-        translate(-50%,0);
+        translate(-50%, 0);
 }
-
-
-/* =========================================
-   INDICADOR
-========================================= */
 
 .secao-indicador {
     position: fixed;
@@ -3706,7 +4114,7 @@ input:checked + .switch::before {
     border-radius: 50px;
 
     background:
-        rgba(255,255,255,.8);
+        rgba(255, 255, 255, 0.8);
 
     backdrop-filter:
         blur(15px);
@@ -3714,16 +4122,10 @@ input:checked + .switch::before {
     color: var(--cinza);
 
     font-size: 8px;
-
     font-weight: bold;
 
     text-transform: uppercase;
 }
-
-
-/* =========================================
-   TOPO
-========================================= */
 
 .voltar-topo {
     width: 46px;
@@ -3752,15 +4154,21 @@ input:checked + .switch::before {
 
     visibility: hidden;
 
+    transform:
+        translateY(10px);
+
     cursor: pointer;
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .voltar-topo.mostrar {
     opacity: 1;
 
     visibility: visible;
+
+    transform:
+        translateY(0);
 }
 
 
@@ -3780,8 +4188,8 @@ body.js-ativo
         translateY(35px);
 
     transition:
-        opacity .8s,
-        transform .8s;
+        opacity 0.8s,
+        transform 0.8s;
 }
 
 body.js-ativo
@@ -3799,7 +4207,7 @@ body.js-ativo
 .coracao-explosao {
     position: fixed;
 
-    z-index: 60000;
+    z-index: 70000;
 
     color: var(--rosa);
 
@@ -3824,6 +4232,46 @@ body.js-ativo
 
 }
 
+.coracao-clique {
+    position: fixed;
+
+    z-index: 70000;
+
+    pointer-events: none;
+
+    color: var(--rosa);
+
+    font-size: 17px;
+
+    animation:
+        coracaoCliqueVoar
+        0.9s ease-out forwards;
+}
+
+@keyframes coracaoCliqueVoar {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.4);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(1.4)
+            rotate(var(--rotacao));
+    }
+
+}
+
 
 /* =========================================
    MODOS
@@ -3837,12 +4285,11 @@ body.sem-particulas
 body.sem-animacoes *,
 body.sem-animacoes *::before,
 body.sem-animacoes *::after {
-
     animation-duration:
-        .001s !important;
+        0.001s !important;
 
     transition-duration:
-        .001s !important;
+        0.001s !important;
 }
 
 body.sem-glass
@@ -3852,9 +4299,13 @@ body.sem-glass
 body.sem-glass
 .modal-fundo,
 body.sem-glass
-.lightbox-fundo {
-
+.lightbox-fundo,
+body.sem-glass
+.modal-atalhos-fundo {
     backdrop-filter:
+        none !important;
+
+    -webkit-backdrop-filter:
         none !important;
 }
 
@@ -3874,17 +4325,15 @@ body.modo-foco
 .faixa,
 body.modo-foco
 .secao-indicador {
-
     display: none !important;
 }
 
 
 /* =========================================
-   MODO ESCURO
+   DARK MODE
 ========================================= */
 
 body.tema-escuro {
-
     --texto: #f8eef8;
     --cinza: #c8b9ca;
 
@@ -3897,9 +4346,13 @@ body.tema-escuro {
 
 body.tema-escuro
 .header {
-
     background:
-        rgba(29,20,35,.92);
+        rgba(29, 20, 35, 0.92);
+}
+
+body.tema-escuro
+.menu-mobile {
+    color: white;
 }
 
 body.tema-escuro
@@ -3924,7 +4377,6 @@ body.tema-escuro
 .dream-lab,
 body.tema-escuro
 .faq {
-
     background: linear-gradient(
         135deg,
         #18111d,
@@ -3947,16 +4399,14 @@ body.tema-escuro
 .faq-busca,
 body.tema-escuro
 .painel-personalizacao {
-
     background:
-        rgba(255,255,255,.055);
+        rgba(255, 255, 255, 0.055);
 
     color: white;
 }
 
 body.tema-escuro
 .como-imagem {
-
     background: linear-gradient(
         135deg,
         #261a2c,
@@ -3978,26 +4428,57 @@ body.tema-escuro
 body.tema-escuro
 .seletor-tamanho button,
 body.tema-escuro
-.cores-personalizadas label {
-
+.cores-personalizadas label,
+body.tema-escuro
+.controle-botao,
+body.tema-escuro
+.controle-select,
+body.tema-escuro
+.faq-controles button,
+body.tema-escuro
+.acao-produto {
     background:
-        rgba(255,255,255,.06);
+        rgba(255, 255, 255, 0.06);
 
     color: white;
 }
 
 body.tema-escuro
-.secao-indicador {
+.controle-select select {
+    color: white;
 
     background:
-        rgba(30,20,35,.85);
+        #25192d;
+}
+
+body.tema-escuro
+.atalhos-card {
+    background: linear-gradient(
+        135deg,
+        #211626,
+        #2e1d34,
+        #312541
+    );
+
+    color: white;
+}
+
+body.tema-escuro
+.atalhos-lista > div {
+    background:
+        rgba(255, 255, 255, 0.055);
+}
+
+body.tema-escuro
+.secao-indicador {
+    background:
+        rgba(30, 20, 35, 0.85);
 
     color: white;
 }
 
 body.tema-escuro
 footer {
-
     background:
         #151018;
 }
@@ -4051,7 +4532,6 @@ footer {
     .perfil-container,
     .quiz-container,
     .como-container {
-
         grid-template-columns:
             1fr;
     }
@@ -4063,9 +4543,7 @@ footer {
     .hero-botoes,
     .hero-dados,
     .produto-acoes {
-
-        justify-content:
-            center;
+        justify-content: center;
     }
 
     .hero-texto > p {
@@ -4077,7 +4555,6 @@ footer {
     .perfil-texto,
     .quiz-texto,
     .como-texto {
-
         text-align: center;
     }
 
@@ -4088,7 +4565,7 @@ footer {
 
     .momentos-grid {
         grid-template-columns:
-            repeat(2,1fr);
+            repeat(2, 1fr);
     }
 
     .modal-produto {
@@ -4129,6 +4606,8 @@ footer {
 
     .hero h1 {
         font-size: 48px;
+
+        letter-spacing: -3px;
     }
 
     .hero-botoes {
@@ -4197,7 +4676,6 @@ footer {
     .como-usar,
     .dream-lab,
     .faq {
-
         padding:
             80px 5%;
     }
@@ -4207,7 +4685,6 @@ footer {
     .perfil-texto h2,
     .quiz-texto h2,
     .como-texto h2 {
-
         font-size: 36px;
     }
 
@@ -4234,7 +4711,8 @@ footer {
     }
 
     .mood-card {
-        padding: 35px 25px;
+        padding:
+            35px 25px;
 
         flex-direction: column;
 
@@ -4247,7 +4725,8 @@ footer {
     }
 
     .quiz-card {
-        padding: 30px 20px;
+        padding:
+            30px 20px;
     }
 
     .como-imagem {
@@ -4261,6 +4740,8 @@ footer {
 
     .como-dream-fundo {
         font-size: 45px;
+
+        letter-spacing: 5px;
     }
 
     .lab-grid {
@@ -4275,11 +4756,31 @@ footer {
 
     .lab-ferramentas {
         grid-template-columns:
-            repeat(2,1fr);
+            repeat(2, 1fr);
+    }
+
+    .controle-galeria {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .controle-botao,
+    .controle-select {
+        width: 100%;
+    }
+
+    .controle-select {
+        justify-content:
+            space-between;
     }
 
     .cursor-dream {
         display: none;
+    }
+
+    .faq-controles {
+        justify-content: center;
     }
 
     .modal {
@@ -4311,7 +4812,15 @@ footer {
         width:
             calc(100% - 24px);
 
+        max-height:
+            calc(100vh - 24px);
+
         right: 12px;
+    }
+
+    .atalhos-card {
+        padding:
+            35px 20px 25px;
     }
 
     .secao-indicador {
