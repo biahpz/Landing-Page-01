@@ -5213,3 +5213,3029 @@ console.log(
     `
 
 );
+/* =========================================================
+   =========================================================
+   DREAM • AMOR NO AR
+   JAVASCRIPT UPDATE 3.0
+   COLE NO FINAL DO SCRIPT.JS
+   =========================================================
+   ========================================================= */
+
+(() => {
+
+    "use strict";
+
+
+    /* =====================================================
+       HELPERS DO UPDATE 3.0
+    ===================================================== */
+
+    const dream3$ = (
+        selector,
+        parent = document
+    ) => {
+
+        return parent.querySelector(
+            selector
+        );
+
+    };
+
+
+    const dream3$$ = (
+        selector,
+        parent = document
+    ) => {
+
+        return [
+            ...parent.querySelectorAll(
+                selector
+            )
+        ];
+
+    };
+
+
+    const dream3Body =
+        document.body;
+
+
+    const dream3Root =
+        document.documentElement;
+
+
+    /* =====================================================
+       CONFIGURAÇÕES PADRÃO
+    ===================================================== */
+
+    const DREAM3_DEFAULTS = {
+
+        animationSpeed:
+            100,
+
+        sprayIntensity:
+            70,
+
+        contrast:
+            100,
+
+        spraySound:
+            true,
+
+        cleanMode:
+            false
+
+    };
+
+
+    /* =====================================================
+       ESTADO
+    ===================================================== */
+
+    let dream3AnimationSpeed =
+        Number(
+            localStorage.getItem(
+                "dreamAnimationSpeed"
+            ) ||
+            DREAM3_DEFAULTS.animationSpeed
+        );
+
+
+    let dream3SprayIntensity =
+        Number(
+            localStorage.getItem(
+                "dreamSprayIntensity"
+            ) ||
+            DREAM3_DEFAULTS.sprayIntensity
+        );
+
+
+    let dream3Contrast =
+        Number(
+            localStorage.getItem(
+                "dreamContrast"
+            ) ||
+            DREAM3_DEFAULTS.contrast
+        );
+
+
+    let dream3SpraySound =
+        localStorage.getItem(
+            "dreamSpraySound"
+        );
+
+
+    dream3SpraySound =
+        dream3SpraySound === null
+            ? DREAM3_DEFAULTS.spraySound
+            : dream3SpraySound ===
+                "true";
+
+
+    let dream3CleanMode =
+        localStorage.getItem(
+            "dreamCleanMode"
+        ) ===
+        "true";
+
+
+    /* =====================================================
+       ELEMENTOS DO DREAM STUDIO 3.0
+    ===================================================== */
+
+    const dream3AnimationSpeedInput =
+        dream3$(
+            "#animationSpeed"
+        );
+
+
+    const dream3AnimationSpeedValue =
+        dream3$(
+            "#animationSpeedValue"
+        );
+
+
+    const dream3SprayIntensityInput =
+        dream3$(
+            "#sprayIntensity"
+        );
+
+
+    const dream3SprayIntensityValue =
+        dream3$(
+            "#sprayIntensityValue"
+        );
+
+
+    const dream3ContrastInput =
+        dream3$(
+            "#contrastControl"
+        );
+
+
+    const dream3ContrastValue =
+        dream3$(
+            "#contrastValue"
+        );
+
+
+    const dream3SpraySoundToggle =
+        dream3$(
+            "#spraySoundToggle"
+        );
+
+
+    const dream3CleanModeToggle =
+        dream3$(
+            "#cleanModeToggle"
+        );
+
+
+    /* =====================================================
+       TOAST SEGURO
+    ===================================================== */
+
+    function dream3Toast(
+        message
+    ) {
+
+        if (
+            typeof showToast ===
+            "function"
+        ) {
+
+            showToast(
+                message
+            );
+
+
+            return;
+
+        }
+
+
+        const toastElement =
+            dream3$(
+                "#toast"
+            );
+
+
+        if (
+            !toastElement
+        ) {
+
+            return;
+
+        }
+
+
+        toastElement.textContent =
+            message;
+
+
+        toastElement.classList.add(
+            "show"
+        );
+
+
+        setTimeout(
+            () => {
+
+                toastElement.classList.remove(
+                    "show"
+                );
+
+            },
+            2200
+        );
+
+    }
+
+
+    /* =====================================================
+       =====================================================
+       HERO CINEMATOGRÁFICO
+       =====================================================
+       ===================================================== */
+
+    const dream3Hero =
+        dream3$(
+            "#inicio"
+        );
+
+
+    const dream3HeroCopy =
+        dream3$(
+            ".hero-copy"
+        );
+
+
+    const dream3OrbOne =
+        dream3$(
+            ".orb-one"
+        );
+
+
+    const dream3OrbTwo =
+        dream3$(
+            ".orb-two"
+        );
+
+
+    const dream3HeroDreamText =
+        dream3$(
+            ".dream-bg"
+        );
+
+
+    const dream3HeroProduct =
+        dream3$(
+            "#heroProduct"
+        );
+
+
+    /* =====================================================
+       PARALLAX DO HERO
+    ===================================================== */
+
+    dream3Hero?.addEventListener(
+        "mousemove",
+        event => {
+
+            if (
+                dream3Body.classList.contains(
+                    "no-animations"
+                )
+            ) {
+
+                return;
+
+            }
+
+
+            const rect =
+                dream3Hero
+                    .getBoundingClientRect();
+
+
+            const x =
+                (
+                    event.clientX -
+                    rect.left
+                ) /
+                rect.width -
+                0.5;
+
+
+            const y =
+                (
+                    event.clientY -
+                    rect.top
+                ) /
+                rect.height -
+                0.5;
+
+
+            const intensity =
+                dream3AnimationSpeed /
+                100;
+
+
+            if (
+                dream3HeroCopy
+            ) {
+
+                dream3HeroCopy.style.transform = `
+
+                    translate3d(
+                        ${
+                            x *
+                            -8 *
+                            intensity
+                        }px,
+
+                        ${
+                            y *
+                            -5 *
+                            intensity
+                        }px,
+
+                        0
+                    )
+
+                `;
+
+            }
+
+
+            if (
+                dream3OrbOne
+            ) {
+
+                dream3OrbOne.style.transform = `
+
+                    translate(
+                        ${
+                            x *
+                            38 *
+                            intensity
+                        }px,
+
+                        ${
+                            y *
+                            28 *
+                            intensity
+                        }px
+                    )
+
+                `;
+
+            }
+
+
+            if (
+                dream3OrbTwo
+            ) {
+
+                dream3OrbTwo.style.transform = `
+
+                    translate(
+                        ${
+                            x *
+                            -45 *
+                            intensity
+                        }px,
+
+                        ${
+                            y *
+                            -35 *
+                            intensity
+                        }px
+                    )
+
+                `;
+
+            }
+
+
+            if (
+                dream3HeroDreamText
+            ) {
+
+                dream3HeroDreamText.style.transform = `
+
+                    translate(
+                        ${
+                            x *
+                            -25 *
+                            intensity
+                        }px,
+
+                        ${
+                            y *
+                            -15 *
+                            intensity
+                        }px
+                    )
+
+                `;
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       RESET PARALLAX
+    ===================================================== */
+
+    dream3Hero?.addEventListener(
+        "mouseleave",
+        () => {
+
+            if (
+                dream3HeroCopy
+            ) {
+
+                dream3HeroCopy.style.transform =
+                    "";
+
+            }
+
+
+            if (
+                dream3OrbOne
+            ) {
+
+                dream3OrbOne.style.transform =
+                    "";
+
+            }
+
+
+            if (
+                dream3OrbTwo
+            ) {
+
+                dream3OrbTwo.style.transform =
+                    "";
+
+            }
+
+
+            if (
+                dream3HeroDreamText
+            ) {
+
+                dream3HeroDreamText.style.transform =
+                    "";
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       =====================================================
+       SENSAÇÃO DA FRAGRÂNCIA
+       =====================================================
+       ===================================================== */
+
+    const dream3FeelingMeters =
+        dream3$$(
+            ".feeling-meter-fill"
+        );
+
+
+    if (
+        dream3FeelingMeters.length
+    ) {
+
+        const dream3FeelingObserver =
+            new IntersectionObserver(
+
+                entries => {
+
+                    entries.forEach(
+                        entry => {
+
+                            if (
+                                !entry.isIntersecting
+                            ) {
+
+                                return;
+
+                            }
+
+
+                            const value =
+                                Number(
+                                    entry
+                                        .target
+                                        .dataset
+                                        .feeling ||
+                                    0
+                                );
+
+
+                            entry.target.style.width =
+                                `${value}%`;
+
+
+                            dream3FeelingObserver
+                                .unobserve(
+                                    entry.target
+                                );
+
+                        }
+                    );
+
+                },
+
+                {
+                    threshold:
+                        0.25
+                }
+
+            );
+
+
+        dream3FeelingMeters.forEach(
+            meter => {
+
+                dream3FeelingObserver
+                    .observe(
+                        meter
+                    );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       ORBITA INTERATIVA
+    ===================================================== */
+
+    const dream3FeelingOrbit =
+        dream3$(
+            ".feeling-orbit"
+        );
+
+
+    dream3FeelingOrbit?.addEventListener(
+        "mousemove",
+        event => {
+
+            if (
+                dream3Body.classList.contains(
+                    "no-animations"
+                )
+            ) {
+
+                return;
+
+            }
+
+
+            const rect =
+                dream3FeelingOrbit
+                    .getBoundingClientRect();
+
+
+            const x =
+                (
+                    event.clientX -
+                    rect.left
+                ) /
+                rect.width -
+                0.5;
+
+
+            const y =
+                (
+                    event.clientY -
+                    rect.top
+                ) /
+                rect.height -
+                0.5;
+
+
+            const center =
+                dream3$(
+                    ".feeling-center",
+                    dream3FeelingOrbit
+                );
+
+
+            if (
+                center
+            ) {
+
+                center.style.transform = `
+
+                    translate3d(
+                        ${x * 12}px,
+                        ${y * 12}px,
+                        30px
+                    )
+
+                    rotateX(
+                        ${y * -6}deg
+                    )
+
+                    rotateY(
+                        ${x * 6}deg
+                    )
+
+                `;
+
+            }
+
+        }
+    );
+
+
+    dream3FeelingOrbit?.addEventListener(
+        "mouseleave",
+        () => {
+
+            const center =
+                dream3$(
+                    ".feeling-center",
+                    dream3FeelingOrbit
+                );
+
+
+            if (
+                center
+            ) {
+
+                center.style.transform =
+                    "";
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       =====================================================
+       CARDS "QUANDO USAR"
+       =====================================================
+       ===================================================== */
+
+    const dream3MomentCards =
+        dream3$$(
+            ".moment-card"
+        );
+
+
+    /* =====================================================
+       TILT 3D DOS CARDS
+    ===================================================== */
+
+    dream3MomentCards.forEach(
+        card => {
+
+            card.addEventListener(
+                "mousemove",
+                event => {
+
+                    if (
+                        dream3Body
+                            .classList
+                            .contains(
+                                "no-animations"
+                            )
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const rect =
+                        card
+                            .getBoundingClientRect();
+
+
+                    const x =
+                        (
+                            event.clientX -
+                            rect.left
+                        ) /
+                        rect.width -
+                        0.5;
+
+
+                    const y =
+                        (
+                            event.clientY -
+                            rect.top
+                        ) /
+                        rect.height -
+                        0.5;
+
+
+                    card.style.transform = `
+
+                        perspective(
+                            900px
+                        )
+
+                        rotateX(
+                            ${y * -8}deg
+                        )
+
+                        rotateY(
+                            ${x * 10}deg
+                        )
+
+                        translateY(
+                            -6px
+                        )
+
+                    `;
+
+                }
+            );
+
+
+            card.addEventListener(
+                "mouseleave",
+                () => {
+
+                    card.style.transform =
+                        "";
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       RESPOSTAS DOS MOMENTOS
+    ===================================================== */
+
+    const dream3MomentMessages = {
+
+        dia: {
+
+            icon:
+                "☀",
+
+            title:
+                "Dream durante o dia",
+
+            text:
+                "Leve, confortável e delicado para acompanhar a rotina."
+
+        },
+
+
+        noite: {
+
+            icon:
+                "☾",
+
+            title:
+                "Dream à noite",
+
+            text:
+                "O lado envolvente ganha ainda mais destaque à noite."
+
+        },
+
+
+        encontro: {
+
+            icon:
+                "♡",
+
+            title:
+                "Dream no encontro",
+
+            text:
+                "Um clima romântico e delicado para momentos especiais."
+
+        },
+
+
+        estudo: {
+
+            icon:
+                "✎",
+
+            title:
+                "Dream na rotina",
+
+            text:
+                "Uma presença leve para escola, faculdade e compromissos."
+
+        },
+
+
+        role: {
+
+            icon:
+                "✦",
+
+            title:
+                "Dream no rolê",
+
+            text:
+                "Mais personalidade e energia para acompanhar seu momento."
+
+        },
+
+
+        banho: {
+
+            icon:
+                "◌",
+
+            title:
+                "Dream pós-banho",
+
+            text:
+                "Frescor e conforto para completar a sensação de cuidado."
+
+        }
+
+    };
+
+
+    dream3MomentCards.forEach(
+        card => {
+
+            card.addEventListener(
+                "click",
+                () => {
+
+                    const moment =
+                        dream3MomentMessages[
+                            card.dataset.moment
+                        ];
+
+
+                    if (
+                        !moment
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    dream3MomentCards.forEach(
+                        item => {
+
+                            item.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+
+                    card.classList.add(
+                        "active"
+                    );
+
+
+                    dream3Toast(
+                        `${
+                            moment.icon
+                        } ${
+                            moment.title
+                        }`
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       =====================================================
+       UNIVERSOS DREAM
+       =====================================================
+       ===================================================== */
+
+    const dream3SceneButtons =
+        dream3$$(
+            ".scene-button"
+        );
+
+
+    const dream3SceneResultIcon =
+        dream3$(
+            "#sceneResultIcon"
+        );
+
+
+    const dream3SceneResultMini =
+        dream3$(
+            "#sceneResultMini"
+        );
+
+
+    const dream3SceneResultTitle =
+        dream3$(
+            "#sceneResultTitle"
+        );
+
+
+    const dream3SceneResultText =
+        dream3$(
+            "#sceneResultText"
+        );
+
+
+    const dream3SceneSection =
+        dream3$(
+            "#dream-scene"
+        );
+
+
+    const dream3SceneBackground =
+        dream3$(
+            ".dream-scene-bg"
+        );
+
+
+    const dream3SceneData = {
+
+        romance: {
+
+            icon:
+                "♡",
+
+            mini:
+                "ROMANCE DREAM",
+
+            title:
+                "Amor está no ar.",
+
+            text:
+                "Uma atmosfera delicada, rosa e envolvente.",
+
+            primary:
+                "#df76a8",
+
+            secondary:
+                "#9562dc",
+
+            background: `
+
+                radial-gradient(
+                    circle at 25% 40%,
+                    rgba(
+                        223,
+                        118,
+                        168,
+                        .25
+                    ),
+                    transparent 45%
+                ),
+
+                radial-gradient(
+                    circle at 75% 65%,
+                    rgba(
+                        149,
+                        98,
+                        220,
+                        .20
+                    ),
+                    transparent 45%
+                )
+
+            `
+
+        },
+
+
+        ceu: {
+
+            icon:
+                "☾",
+
+            mini:
+                "DREAM SKY",
+
+            title:
+                "Sonhe um pouco mais.",
+
+            text:
+                "Um universo noturno, calmo e cheio de possibilidades.",
+
+            primary:
+                "#818cf8",
+
+            secondary:
+                "#6d28d9",
+
+            background: `
+
+                radial-gradient(
+                    circle at 25% 35%,
+                    rgba(
+                        129,
+                        140,
+                        248,
+                        .27
+                    ),
+                    transparent 45%
+                ),
+
+                radial-gradient(
+                    circle at 75% 70%,
+                    rgba(
+                        109,
+                        40,
+                        217,
+                        .24
+                    ),
+                    transparent 45%
+                )
+
+            `
+
+        },
+
+
+        flores: {
+
+            icon:
+                "✿",
+
+            mini:
+                "FLOWER DREAM",
+
+            title:
+                "Um jardim no ar.",
+
+            text:
+                "Flores, delicadeza e uma atmosfera luminosa.",
+
+            primary:
+                "#f472b6",
+
+            secondary:
+                "#c084fc",
+
+            background: `
+
+                radial-gradient(
+                    circle at 30% 40%,
+                    rgba(
+                        244,
+                        114,
+                        182,
+                        .26
+                    ),
+                    transparent 45%
+                ),
+
+                radial-gradient(
+                    circle at 75% 65%,
+                    rgba(
+                        192,
+                        132,
+                        252,
+                        .20
+                    ),
+                    transparent 45%
+                )
+
+            `
+
+        },
+
+
+        energia: {
+
+            icon:
+                "✦",
+
+            mini:
+                "DREAM ENERGY",
+
+            title:
+                "Faça o momento brilhar.",
+
+            text:
+                "Mais cor, movimento e energia para o universo Dream.",
+
+            primary:
+                "#fb7185",
+
+            secondary:
+                "#f59e0b",
+
+            background: `
+
+                radial-gradient(
+                    circle at 25% 35%,
+                    rgba(
+                        251,
+                        113,
+                        133,
+                        .26
+                    ),
+                    transparent 45%
+                ),
+
+                radial-gradient(
+                    circle at 75% 65%,
+                    rgba(
+                        245,
+                        158,
+                        11,
+                        .22
+                    ),
+                    transparent 45%
+                )
+
+            `
+
+        }
+
+    };
+
+
+    /* =====================================================
+       APLICAR CENA
+    ===================================================== */
+
+    function dream3ApplyScene(
+        sceneName
+    ) {
+
+        const scene =
+            dream3SceneData[
+                sceneName
+            ];
+
+
+        if (
+            !scene
+        ) {
+
+            return;
+
+        }
+
+
+        dream3SceneButtons.forEach(
+            button => {
+
+                button.classList.toggle(
+
+                    "active",
+
+                    button.dataset.scene ===
+                    sceneName
+
+                );
+
+            }
+        );
+
+
+        if (
+            dream3SceneResultIcon
+        ) {
+
+            dream3SceneResultIcon.textContent =
+                scene.icon;
+
+        }
+
+
+        if (
+            dream3SceneResultMini
+        ) {
+
+            dream3SceneResultMini.textContent =
+                scene.mini;
+
+        }
+
+
+        if (
+            dream3SceneResultTitle
+        ) {
+
+            dream3SceneResultTitle.textContent =
+                scene.title;
+
+        }
+
+
+        if (
+            dream3SceneResultText
+        ) {
+
+            dream3SceneResultText.textContent =
+                scene.text;
+
+        }
+
+
+        if (
+            dream3SceneBackground
+        ) {
+
+            dream3SceneBackground.style.background =
+                scene.background;
+
+        }
+
+
+        /*
+            APROVEITA A FUNÇÃO DE CORES
+            QUE JÁ EXISTE NO SCRIPT ANTIGO
+        */
+
+        if (
+            typeof applyColors ===
+            "function"
+        ) {
+
+            applyColors(
+
+                scene.primary,
+
+                scene.secondary
+
+            );
+
+        }
+
+
+        localStorage.setItem(
+            "dreamScene",
+            sceneName
+        );
+
+
+        dream3CreateSceneParticles(
+            scene
+        );
+
+    }
+
+
+    dream3SceneButtons.forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    dream3ApplyScene(
+                        button.dataset.scene
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       PARTÍCULAS AO TROCAR UNIVERSO
+    ===================================================== */
+
+    function dream3CreateSceneParticles(
+        scene
+    ) {
+
+        if (
+            !dream3SceneSection
+        ) {
+
+            return;
+
+        }
+
+
+        if (
+            dream3Body.classList.contains(
+                "no-particles"
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        const symbols = [
+
+            scene.icon,
+
+            "✦",
+
+            "·",
+
+            scene.icon
+
+        ];
+
+
+        for (
+            let i = 0;
+            i < 20;
+            i++
+        ) {
+
+            const particle =
+                document.createElement(
+                    "span"
+                );
+
+
+            particle.className =
+                "dream-scene-particle";
+
+
+            particle.textContent =
+                symbols[
+                    Math.floor(
+                        Math.random() *
+                        symbols.length
+                    )
+                ];
+
+
+            particle.style.position =
+                "absolute";
+
+
+            particle.style.left =
+                `${
+                    Math.random() *
+                    100
+                }%`;
+
+
+            particle.style.top =
+                `${
+                    20 +
+                    Math.random() *
+                    70
+                }%`;
+
+
+            particle.style.zIndex =
+                "1";
+
+
+            particle.style.pointerEvents =
+                "none";
+
+
+            particle.style.color =
+                scene.primary;
+
+
+            particle.style.fontSize =
+                `${
+                    8 +
+                    Math.random() *
+                    14
+                }px`;
+
+
+            particle.style.opacity =
+                "0";
+
+
+            particle.animate(
+
+                [
+
+                    {
+
+                        opacity:
+                            0,
+
+                        transform:
+                            "translateY(20px) scale(.5)"
+
+                    },
+
+                    {
+
+                        opacity:
+                            0.8,
+
+                        offset:
+                            0.2
+
+                    },
+
+                    {
+
+                        opacity:
+                            0,
+
+                        transform:
+                            `translateY(${
+                                -80 -
+                                Math.random() *
+                                100
+                            }px) rotate(${
+                                Math.random() *
+                                280
+                            }deg) scale(1.3)`
+
+                    }
+
+                ],
+
+                {
+
+                    duration:
+                        1200 +
+                        Math.random() *
+                        900,
+
+                    easing:
+                        "ease-out"
+
+                }
+
+            );
+
+
+            dream3SceneSection.appendChild(
+                particle
+            );
+
+
+            setTimeout(
+                () => {
+
+                    particle.remove();
+
+                },
+                2300
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       RESTAURAR UNIVERSO SALVO
+    ===================================================== */
+
+    const dream3SavedScene =
+        localStorage.getItem(
+            "dreamScene"
+        );
+
+
+    if (
+        dream3SavedScene &&
+        dream3SceneData[
+            dream3SavedScene
+        ]
+    ) {
+
+        dream3ApplyScene(
+            dream3SavedScene
+        );
+
+    }
+
+
+    /* =====================================================
+       =====================================================
+       GALERIA • PROGRESSO DO AUTOPLAY
+       =====================================================
+       ===================================================== */
+
+    const dream3GalleryProgress =
+        dream3$(
+            "#galleryAutoplayProgress"
+        );
+
+
+    const dream3GalleryAutoplayButton =
+        dream3$(
+            "#galleryAutoplay"
+        );
+
+
+    const dream3GalleryTrack =
+        dream3$(
+            "#galleryTrack"
+        );
+
+
+    let dream3GalleryProgressTimer =
+        null;
+
+
+    /* =====================================================
+       RESETAR BARRA
+    ===================================================== */
+
+    function dream3ResetGalleryProgress() {
+
+        if (
+            !dream3GalleryProgress
+        ) {
+
+            return;
+
+        }
+
+
+        dream3GalleryProgress
+            .classList
+            .remove(
+                "running"
+            );
+
+
+        dream3GalleryProgress.style.width =
+            "0%";
+
+
+        void dream3GalleryProgress
+            .offsetWidth;
+
+
+        dream3GalleryProgress
+            .classList
+            .add(
+                "running"
+            );
+
+    }
+
+
+    /* =====================================================
+       PARAR BARRA
+    ===================================================== */
+
+    function dream3StopGalleryProgress() {
+
+        if (
+            dream3GalleryProgressTimer
+        ) {
+
+            clearInterval(
+                dream3GalleryProgressTimer
+            );
+
+        }
+
+
+        dream3GalleryProgressTimer =
+            null;
+
+
+        if (
+            dream3GalleryProgress
+        ) {
+
+            dream3GalleryProgress
+                .classList
+                .remove(
+                    "running"
+                );
+
+
+            dream3GalleryProgress.style.width =
+                "0%";
+
+        }
+
+    }
+
+
+    /* =====================================================
+       INICIAR PROGRESSO MANUAL
+    ===================================================== */
+
+    function dream3StartGalleryProgress() {
+
+        dream3StopGalleryProgress();
+
+
+        if (
+            !dream3GalleryProgress
+        ) {
+
+            return;
+
+        }
+
+
+        let elapsed =
+            0;
+
+
+        const total =
+            3500;
+
+
+        const interval =
+            50;
+
+
+        dream3GalleryProgressTimer =
+            setInterval(
+                () => {
+
+                    elapsed +=
+                        interval;
+
+
+                    const percent =
+                        Math.min(
+                            100,
+                            elapsed /
+                            total *
+                            100
+                        );
+
+
+                    dream3GalleryProgress.style.width =
+                        `${percent}%`;
+
+
+                    if (
+                        percent >=
+                        100
+                    ) {
+
+                        elapsed =
+                            0;
+
+
+                        dream3GalleryProgress.style.width =
+                            "0%";
+
+                    }
+
+                },
+                interval
+            );
+
+    }
+
+
+    /* =====================================================
+       SINCRONIZAR AUTOPLAY ANTIGO
+    ===================================================== */
+
+    dream3GalleryAutoplayButton?.addEventListener(
+        "click",
+        () => {
+
+            setTimeout(
+                () => {
+
+                    /*
+                        galleryTimer pertence
+                        ao script antigo.
+                    */
+
+                    if (
+                        typeof galleryTimer !==
+                        "undefined" &&
+                        galleryTimer
+                    ) {
+
+                        dream3StartGalleryProgress();
+
+                    } else {
+
+                        dream3StopGalleryProgress();
+
+                    }
+
+                },
+                50
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       RESETAR PROGRESSO NAS SETAS
+    ===================================================== */
+
+    dream3$(
+        "#galleryNext"
+    )?.addEventListener(
+        "click",
+        () => {
+
+            if (
+                dream3GalleryProgressTimer
+            ) {
+
+                dream3StartGalleryProgress();
+
+            }
+
+        }
+    );
+
+
+    dream3$(
+        "#galleryPrev"
+    )?.addEventListener(
+        "click",
+        () => {
+
+            if (
+                dream3GalleryProgressTimer
+            ) {
+
+                dream3StartGalleryProgress();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       PAUSAR NO HOVER
+    ===================================================== */
+
+    dream3GalleryTrack?.addEventListener(
+        "mouseenter",
+        () => {
+
+            if (
+                dream3GalleryProgressTimer
+            ) {
+
+                clearInterval(
+                    dream3GalleryProgressTimer
+                );
+
+            }
+
+        }
+    );
+
+
+    dream3GalleryTrack?.addEventListener(
+        "mouseleave",
+        () => {
+
+            if (
+                typeof galleryTimer !==
+                "undefined" &&
+                galleryTimer
+            ) {
+
+                dream3StartGalleryProgress();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       =====================================================
+       DREAM STUDIO 3.0
+       =====================================================
+       ===================================================== */
+
+
+    /* =====================================================
+       VELOCIDADE DAS ANIMAÇÕES
+    ===================================================== */
+
+    function dream3SetAnimationSpeed(
+        value,
+        save = true
+    ) {
+
+        dream3AnimationSpeed =
+            Number(
+                value
+            );
+
+
+        const multiplier =
+            dream3AnimationSpeed /
+            100;
+
+
+        dream3Root.style.setProperty(
+            "--animation-speed",
+            multiplier
+        );
+
+
+        if (
+            dream3AnimationSpeedInput
+        ) {
+
+            dream3AnimationSpeedInput.value =
+                dream3AnimationSpeed;
+
+        }
+
+
+        if (
+            dream3AnimationSpeedValue
+        ) {
+
+            dream3AnimationSpeedValue.textContent =
+                `${dream3AnimationSpeed}%`;
+
+        }
+
+
+        if (
+            save
+        ) {
+
+            localStorage.setItem(
+                "dreamAnimationSpeed",
+                String(
+                    dream3AnimationSpeed
+                )
+            );
+
+        }
+
+    }
+
+
+    dream3AnimationSpeedInput?.addEventListener(
+        "input",
+        event => {
+
+            dream3SetAnimationSpeed(
+                event.target.value
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       CONTRASTE
+    ===================================================== */
+
+    function dream3SetContrast(
+        value,
+        save = true
+    ) {
+
+        dream3Contrast =
+            Number(
+                value
+            );
+
+
+        dream3Root.style.setProperty(
+            "--site-contrast",
+            dream3Contrast /
+            100
+        );
+
+
+        if (
+            dream3ContrastInput
+        ) {
+
+            dream3ContrastInput.value =
+                dream3Contrast;
+
+        }
+
+
+        if (
+            dream3ContrastValue
+        ) {
+
+            dream3ContrastValue.textContent =
+                `${dream3Contrast}%`;
+
+        }
+
+
+        if (
+            save
+        ) {
+
+            localStorage.setItem(
+                "dreamContrast",
+                String(
+                    dream3Contrast
+                )
+            );
+
+        }
+
+    }
+
+
+    dream3ContrastInput?.addEventListener(
+        "input",
+        event => {
+
+            dream3SetContrast(
+                event.target.value
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       INTENSIDADE DO BORRIFO
+    ===================================================== */
+
+    function dream3SetSprayIntensity(
+        value,
+        save = true
+    ) {
+
+        dream3SprayIntensity =
+            Number(
+                value
+            );
+
+
+        if (
+            dream3SprayIntensityInput
+        ) {
+
+            dream3SprayIntensityInput.value =
+                dream3SprayIntensity;
+
+        }
+
+
+        if (
+            dream3SprayIntensityValue
+        ) {
+
+            dream3SprayIntensityValue.textContent =
+                `${dream3SprayIntensity}%`;
+
+        }
+
+
+        if (
+            save
+        ) {
+
+            localStorage.setItem(
+                "dreamSprayIntensity",
+                String(
+                    dream3SprayIntensity
+                )
+            );
+
+        }
+
+    }
+
+
+    dream3SprayIntensityInput?.addEventListener(
+        "input",
+        event => {
+
+            dream3SetSprayIntensity(
+                event.target.value
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       MODO CLEAN
+    ===================================================== */
+
+    function dream3SetCleanMode(
+        active,
+        save = true
+    ) {
+
+        dream3CleanMode =
+            Boolean(
+                active
+            );
+
+
+        dream3Body.classList.toggle(
+            "clean-mode",
+            dream3CleanMode
+        );
+
+
+        if (
+            dream3CleanModeToggle
+        ) {
+
+            dream3CleanModeToggle.checked =
+                dream3CleanMode;
+
+        }
+
+
+        if (
+            save
+        ) {
+
+            localStorage.setItem(
+                "dreamCleanMode",
+                String(
+                    dream3CleanMode
+                )
+            );
+
+        }
+
+
+        if (
+            dream3CleanMode
+        ) {
+
+            dream3Toast(
+                "Modo Clean ativado ✦"
+            );
+
+        }
+
+    }
+
+
+    dream3CleanModeToggle?.addEventListener(
+        "change",
+        event => {
+
+            dream3SetCleanMode(
+                event.target.checked
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       SOM DO BORRIFADOR
+    ===================================================== */
+
+    dream3SpraySoundToggle?.addEventListener(
+        "change",
+        event => {
+
+            dream3SpraySound =
+                event.target.checked;
+
+
+            localStorage.setItem(
+                "dreamSpraySound",
+                String(
+                    dream3SpraySound
+                )
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       CRIAR SOM DE SPRAY
+    ===================================================== */
+
+    function dream3PlaySpraySound() {
+
+        if (
+            !dream3SpraySound
+        ) {
+
+            return;
+
+        }
+
+
+        try {
+
+            const AudioContextClass =
+                window.AudioContext ||
+                window.webkitAudioContext;
+
+
+            if (
+                !AudioContextClass
+            ) {
+
+                return;
+
+            }
+
+
+            const context =
+                new AudioContextClass();
+
+
+            const duration =
+                0.22;
+
+
+            const buffer =
+                context.createBuffer(
+
+                    1,
+
+                    Math.floor(
+                        context.sampleRate *
+                        duration
+                    ),
+
+                    context.sampleRate
+
+                );
+
+
+            const data =
+                buffer.getChannelData(
+                    0
+                );
+
+
+            for (
+                let i = 0;
+                i < data.length;
+                i++
+            ) {
+
+                const progress =
+                    i /
+                    data.length;
+
+
+                const fade =
+                    Math.pow(
+                        1 -
+                        progress,
+                        2
+                    );
+
+
+                data[i] =
+                    (
+                        Math.random() *
+                        2 -
+                        1
+                    ) *
+                    fade *
+                    0.23;
+
+            }
+
+
+            const source =
+                context
+                    .createBufferSource();
+
+
+            const highPass =
+                context
+                    .createBiquadFilter();
+
+
+            const lowPass =
+                context
+                    .createBiquadFilter();
+
+
+            const gain =
+                context
+                    .createGain();
+
+
+            source.buffer =
+                buffer;
+
+
+            highPass.type =
+                "highpass";
+
+
+            highPass.frequency.value =
+                1200;
+
+
+            lowPass.type =
+                "lowpass";
+
+
+            lowPass.frequency.value =
+                7000;
+
+
+            gain.gain.setValueAtTime(
+                0.35,
+                context.currentTime
+            );
+
+
+            gain.gain.exponentialRampToValueAtTime(
+                0.01,
+                context.currentTime +
+                duration
+            );
+
+
+            source.connect(
+                highPass
+            );
+
+
+            highPass.connect(
+                lowPass
+            );
+
+
+            lowPass.connect(
+                gain
+            );
+
+
+            gain.connect(
+                context.destination
+            );
+
+
+            source.start();
+
+
+            source.onended =
+                () => {
+
+                    context.close();
+
+                };
+
+        } catch (
+            error
+        ) {
+
+            console.log(
+                "Dream Spray Sound:",
+                error
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       =====================================================
+       INTENSIDADE REAL DO BORRIFO
+       =====================================================
+       ===================================================== */
+
+    const dream3SprayButton =
+        dream3$(
+            "#sprayButton"
+        );
+
+
+    const dream3SprayArea =
+        dream3$(
+            "#sprayArea"
+        );
+
+
+    /* =====================================================
+       NÉVOA EXTRA DE ACORDO COM O SLIDER
+    ===================================================== */
+
+    function dream3CreateExtraSpray() {
+
+        if (
+            !dream3SprayArea
+        ) {
+
+            return;
+
+        }
+
+
+        const power =
+            dream3SprayIntensity /
+            100;
+
+
+        /*
+            Quanto maior a intensidade,
+            mais partículas extras.
+        */
+
+        const mistAmount =
+            Math.round(
+                8 +
+                35 *
+                power
+            );
+
+
+        const symbolAmount =
+            Math.round(
+                2 +
+                10 *
+                power
+            );
+
+
+        /* =========================================
+           NÉVOA
+        ========================================= */
+
+        for (
+            let i = 0;
+            i < mistAmount;
+            i++
+        ) {
+
+            const mist =
+                document.createElement(
+                    "span"
+                );
+
+
+            /*
+                Compatível com o CSS
+                do Update 2.0.
+            */
+
+            mist.className =
+                "dream-mist";
+
+
+            const directionPower =
+                180 +
+                280 *
+                power;
+
+
+            const x =
+                (
+                    Math.random() -
+                    0.5
+                ) *
+                directionPower;
+
+
+            const y =
+                -50 -
+                Math.random() *
+                (
+                    160 +
+                    220 *
+                    power
+                );
+
+
+            mist.style.setProperty(
+                "--mist-x",
+                `${x}px`
+            );
+
+
+            mist.style.setProperty(
+                "--mist-y",
+                `${y}px`
+            );
+
+
+            mist.style.setProperty(
+                "--mist-size",
+                `${
+                    3 +
+                    Math.random() *
+                    (
+                        5 +
+                        9 *
+                        power
+                    )
+                }px`
+            );
+
+
+            mist.style.setProperty(
+                "--mist-blur",
+                `${
+                    Math.random() *
+                    3
+                }px`
+            );
+
+
+            mist.style.setProperty(
+                "--mist-duration",
+                `${
+                    0.7 +
+                    Math.random() *
+                    0.8
+                }s`
+            );
+
+
+            mist.style.animationDelay =
+                `${
+                    Math.random() *
+                    0.15
+                }s`;
+
+
+            dream3SprayArea.appendChild(
+                mist
+            );
+
+
+            setTimeout(
+                () => {
+
+                    mist.remove();
+
+                },
+                1900
+            );
+
+        }
+
+
+        /* =========================================
+           SÍMBOLOS
+        ========================================= */
+
+        const symbols = [
+
+            "♡",
+
+            "✦",
+
+            "✧",
+
+            "♡"
+
+        ];
+
+
+        for (
+            let i = 0;
+            i < symbolAmount;
+            i++
+        ) {
+
+            const symbol =
+                document.createElement(
+                    "span"
+                );
+
+
+            symbol.className =
+                "dream-spray-symbol";
+
+
+            symbol.textContent =
+                symbols[
+                    Math.floor(
+                        Math.random() *
+                        symbols.length
+                    )
+                ];
+
+
+            symbol.style.setProperty(
+                "--symbol-x",
+                `${
+                    (
+                        Math.random() -
+                        0.5
+                    ) *
+                    (
+                        230 +
+                        250 *
+                        power
+                    )
+                }px`
+            );
+
+
+            symbol.style.setProperty(
+                "--symbol-y",
+                `${
+                    -70 -
+                    Math.random() *
+                    (
+                        160 +
+                        190 *
+                        power
+                    )
+                }px`
+            );
+
+
+            symbol.style.setProperty(
+                "--symbol-rotate",
+                `${
+                    (
+                        Math.random() -
+                        0.5
+                    ) *
+                    500
+                }deg`
+            );
+
+
+            symbol.style.setProperty(
+                "--symbol-size",
+                `${
+                    9 +
+                    Math.random() *
+                    14
+                }px`
+            );
+
+
+            symbol.style.animationDelay =
+                `${
+                    Math.random() *
+                    0.15
+                }s`;
+
+
+            dream3SprayArea.appendChild(
+                symbol
+            );
+
+
+            setTimeout(
+                () => {
+
+                    symbol.remove();
+
+                },
+                1900
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       CONECTAR AO BORRIFADOR ANTIGO
+    ===================================================== */
+
+    dream3SprayButton?.addEventListener(
+        "click",
+        () => {
+
+            dream3CreateExtraSpray();
+
+            dream3PlaySpraySound();
+
+        }
+    );
+
+
+    /* =====================================================
+       =====================================================
+       MICROINTERAÇÕES
+       =====================================================
+       ===================================================== */
+
+    const dream3InteractiveCards =
+        dream3$$(
+
+            ".note-card, " +
+            ".experience-card, " +
+            ".quiz-card"
+
+        );
+
+
+    dream3InteractiveCards.forEach(
+        card => {
+
+            card.addEventListener(
+                "mousemove",
+                event => {
+
+                    if (
+                        dream3Body
+                            .classList
+                            .contains(
+                                "no-animations"
+                            )
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const rect =
+                        card
+                            .getBoundingClientRect();
+
+
+                    const x =
+                        (
+                            event.clientX -
+                            rect.left
+                        ) /
+                        rect.width;
+
+
+                    const y =
+                        (
+                            event.clientY -
+                            rect.top
+                        ) /
+                        rect.height;
+
+
+                    card.style.setProperty(
+                        "--mouse-x",
+                        `${x * 100}%`
+                    );
+
+
+                    card.style.setProperty(
+                        "--mouse-y",
+                        `${y * 100}%`
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       =====================================================
+       DEVELOPER CREDIT
+       =====================================================
+       ===================================================== */
+
+    const dream3Developer =
+        dream3$(
+            ".developer-credit"
+        );
+
+
+    dream3Developer?.addEventListener(
+        "click",
+        () => {
+
+            dream3Toast(
+                "Desenvolvido por BAYERLEE ✦"
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       =====================================================
+       CARREGAR CONFIGURAÇÕES
+       =====================================================
+       ===================================================== */
+
+    function dream3LoadSettings() {
+
+        dream3SetAnimationSpeed(
+            dream3AnimationSpeed,
+            false
+        );
+
+
+        dream3SetSprayIntensity(
+            dream3SprayIntensity,
+            false
+        );
+
+
+        dream3SetContrast(
+            dream3Contrast,
+            false
+        );
+
+
+        dream3SetCleanMode(
+            dream3CleanMode,
+            false
+        );
+
+
+        if (
+            dream3SpraySoundToggle
+        ) {
+
+            dream3SpraySoundToggle.checked =
+                dream3SpraySound;
+
+        }
+
+    }
+
+
+    dream3LoadSettings();
+
+
+    /* =====================================================
+       =====================================================
+       RESET 3.0
+       =====================================================
+       ===================================================== */
+
+    const dream3ResetButton =
+        dream3$(
+            "#resetSettings"
+        );
+
+
+    dream3ResetButton?.addEventListener(
+        "click",
+        () => {
+
+            /*
+                O reset antigo continua
+                funcionando normalmente.
+
+                Este segundo listener limpa
+                apenas as opções do Update 3.0.
+            */
+
+            localStorage.removeItem(
+                "dreamAnimationSpeed"
+            );
+
+
+            localStorage.removeItem(
+                "dreamSprayIntensity"
+            );
+
+
+            localStorage.removeItem(
+                "dreamContrast"
+            );
+
+
+            localStorage.removeItem(
+                "dreamCleanMode"
+            );
+
+
+            localStorage.removeItem(
+                "dreamSpraySound"
+            );
+
+
+            localStorage.removeItem(
+                "dreamScene"
+            );
+
+
+            dream3AnimationSpeed =
+                DREAM3_DEFAULTS
+                    .animationSpeed;
+
+
+            dream3SprayIntensity =
+                DREAM3_DEFAULTS
+                    .sprayIntensity;
+
+
+            dream3Contrast =
+                DREAM3_DEFAULTS
+                    .contrast;
+
+
+            dream3SpraySound =
+                DREAM3_DEFAULTS
+                    .spraySound;
+
+
+            dream3CleanMode =
+                DREAM3_DEFAULTS
+                    .cleanMode;
+
+
+            dream3SetAnimationSpeed(
+                dream3AnimationSpeed,
+                false
+            );
+
+
+            dream3SetSprayIntensity(
+                dream3SprayIntensity,
+                false
+            );
+
+
+            dream3SetContrast(
+                dream3Contrast,
+                false
+            );
+
+
+            dream3SetCleanMode(
+                dream3CleanMode,
+                false
+            );
+
+
+            if (
+                dream3SpraySoundToggle
+            ) {
+
+                dream3SpraySoundToggle.checked =
+                    true;
+
+            }
+
+
+            /*
+                Retorna o universo Dream
+                para Romance.
+            */
+
+            if (
+                dream3SceneData.romance
+            ) {
+
+                dream3ApplyScene(
+                    "romance"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       =====================================================
+       MOBILE • TOUCH EFFECT
+       =====================================================
+       ===================================================== */
+
+    dream3MomentCards.forEach(
+        card => {
+
+            card.addEventListener(
+                "touchstart",
+                () => {
+
+                    card.classList.add(
+                        "touch-active"
+                    );
+
+                },
+                {
+                    passive:
+                        true
+                }
+            );
+
+
+            card.addEventListener(
+                "touchend",
+                () => {
+
+                    setTimeout(
+                        () => {
+
+                            card.classList.remove(
+                                "touch-active"
+                            );
+
+                        },
+                        180
+                    );
+
+                },
+                {
+                    passive:
+                        true
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       =====================================================
+       PERFORMANCE
+       =====================================================
+       ===================================================== */
+
+    document.addEventListener(
+        "visibilitychange",
+        () => {
+
+            /*
+                Evita desperdiçar processamento
+                com o progresso da galeria quando
+                a aba estiver em segundo plano.
+            */
+
+            if (
+                document.hidden
+            ) {
+
+                if (
+                    dream3GalleryProgressTimer
+                ) {
+
+                    clearInterval(
+                        dream3GalleryProgressTimer
+                    );
+
+                }
+
+            } else {
+
+                if (
+                    typeof galleryTimer !==
+                    "undefined" &&
+                    galleryTimer
+                ) {
+
+                    dream3StartGalleryProgress();
+
+                }
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       =====================================================
+       FINAL DO UPDATE
+       =====================================================
+       ===================================================== */
+
+    console.log(
+
+        "%cDream Update 3.0 ♡",
+
+        `
+            color: #df76a8;
+            font-size: 18px;
+            font-weight: 900;
+        `
+
+    );
+
+
+    console.log(
+
+        "%cSensação • Momentos • Universos • Studio 3.0",
+
+        `
+            color: #9562dc;
+            font-size: 11px;
+            font-weight: 700;
+        `
+
+    );
+
+
+})();

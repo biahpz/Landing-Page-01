@@ -5860,3 +5860,1621 @@ img {
 /* =========================================================
    FIM • DREAM UPDATE 2.0
 ========================================================= */
+/* =========================================================
+   =========================================================
+   DREAM • AMOR NO AR
+   UPDATE 3.0
+   COLE NO FINAL DO STYLE.CSS
+   =========================================================
+   ========================================================= */
+
+
+/* =========================================================
+   3.0 • VARIÁVEIS
+========================================================= */
+
+:root {
+    --dream-soft:
+        rgba(
+            var(--primary-rgb),
+            0.10
+        );
+
+    --dream-medium:
+        rgba(
+            var(--primary-rgb),
+            0.20
+        );
+
+    --dream-strong:
+        rgba(
+            var(--primary-rgb),
+            0.40
+        );
+
+    --dream-gradient:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    --dream-gradient-soft:
+        linear-gradient(
+            135deg,
+            rgba(
+                var(--primary-rgb),
+                0.12
+            ),
+            rgba(
+                var(--secondary-rgb),
+                0.12
+            )
+        );
+
+    --dream-shadow:
+        0 25px 70px
+        rgba(
+            var(--primary-rgb),
+            0.16
+        );
+}
+
+
+/* =========================================================
+   3.0 • SENSATION SECTION
+========================================================= */
+
+.sensation-section {
+    position: relative;
+
+    padding:
+        120px
+        7%;
+
+    overflow: hidden;
+}
+
+
+.sensation-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 550px;
+    height: 550px;
+
+    left: -260px;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(
+                var(--primary-rgb),
+                0.16
+            ),
+            transparent 70%
+        );
+}
+
+
+.sensation-grid {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 1200px;
+
+    margin:
+        55px
+        auto
+        0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            1fr
+        );
+
+    gap: 18px;
+}
+
+
+.sensation-card {
+    position: relative;
+
+    min-height: 290px;
+
+    padding: 32px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 28px;
+
+    background:
+        var(--surface);
+
+    backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 15px 50px
+        rgba(
+            50,
+            30,
+            60,
+            0.06
+        );
+
+    transition:
+        transform 0.4s
+        cubic-bezier(
+            .2,
+            .8,
+            .2,
+            1
+        ),
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+}
+
+
+.sensation-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    right: -70px;
+    top: -70px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(
+                var(--primary-rgb),
+                0.18
+            ),
+            transparent 70%
+        );
+
+    transition:
+        transform 0.5s ease;
+}
+
+
+.sensation-card:hover {
+    transform:
+        translateY(-10px);
+
+    border-color:
+        rgba(
+            var(--primary-rgb),
+            0.35
+        );
+
+    box-shadow:
+        0 30px 80px
+        rgba(
+            var(--primary-rgb),
+            0.15
+        );
+}
+
+
+.sensation-card:hover::before {
+    transform:
+        scale(1.5);
+}
+
+
+.sensation-icon {
+    position: relative;
+
+    z-index: 2;
+
+    width: 58px;
+    height: 58px;
+
+    display: grid;
+
+    place-items: center;
+
+    margin-bottom: 35px;
+
+    border-radius: 18px;
+
+    color: white;
+
+    background:
+        var(--dream-gradient);
+
+    box-shadow:
+        0 12px 30px
+        rgba(
+            var(--primary-rgb),
+            0.25
+        );
+
+    font-size: 24px;
+}
+
+
+.sensation-card small {
+    position: relative;
+
+    z-index: 2;
+
+    color: var(--primary);
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+
+.sensation-card h3 {
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 10px;
+
+    font-size: 23px;
+
+    letter-spacing: -1px;
+}
+
+
+.sensation-card p {
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 12px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   3.0 • QUANDO USAR
+========================================================= */
+
+.when-section {
+    position: relative;
+
+    padding:
+        120px
+        7%;
+
+    overflow: hidden;
+}
+
+
+.when-grid {
+    max-width: 1200px;
+
+    margin:
+        55px
+        auto
+        0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+
+    gap: 20px;
+}
+
+
+.when-card {
+    position: relative;
+
+    min-height: 390px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    padding: 35px;
+
+    overflow: hidden;
+
+    border-radius: 32px;
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        var(--surface);
+
+    box-shadow:
+        var(--shadow);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+.when-card:hover {
+    transform:
+        translateY(-10px);
+
+    box-shadow:
+        0 35px 90px
+        rgba(
+            var(--primary-rgb),
+            0.18
+        );
+}
+
+
+.when-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    opacity: 0.85;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 10%,
+            rgba(
+                var(--primary-rgb),
+                0.08
+            ) 60%,
+            rgba(
+                var(--secondary-rgb),
+                0.14
+            )
+        );
+}
+
+
+.when-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    right: -70px;
+    top: -70px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(
+                var(--primary-rgb),
+                0.22
+            ),
+            transparent 70%
+        );
+
+    transition:
+        0.5s ease;
+}
+
+
+.when-card:hover::after {
+    transform:
+        scale(1.5);
+}
+
+
+.when-icon {
+    position: absolute;
+
+    left: 35px;
+    top: 35px;
+
+    z-index: 2;
+
+    width: 65px;
+    height: 65px;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px solid
+        rgba(
+            var(--primary-rgb),
+            0.20
+        );
+
+    border-radius: 20px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.25
+        );
+
+    backdrop-filter:
+        blur(15px);
+
+    font-size: 28px;
+}
+
+
+.when-content {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.when-content small {
+    color: var(--primary);
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+
+.when-content h3 {
+    margin-top: 8px;
+
+    font-size: 28px;
+
+    letter-spacing: -1.5px;
+}
+
+
+.when-content p {
+    margin-top: 12px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   3.0 • UNIVERSOS DREAM
+========================================================= */
+
+.universe-section {
+    position: relative;
+
+    padding:
+        120px
+        7%;
+
+    overflow: hidden;
+}
+
+
+.universe-grid {
+    max-width: 1200px;
+
+    margin:
+        55px
+        auto
+        0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            1fr
+        );
+
+    gap: 15px;
+}
+
+
+.universe-card {
+    position: relative;
+
+    min-height: 380px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    background:
+        var(--surface);
+
+    transition:
+        transform 0.45s
+        cubic-bezier(
+            .2,
+            .8,
+            .2,
+            1
+        ),
+        box-shadow 0.45s ease,
+        border-color 0.45s ease;
+}
+
+
+.universe-card:hover {
+    transform:
+        translateY(-12px)
+        scale(1.015);
+
+    border-color:
+        rgba(
+            var(--primary-rgb),
+            0.40
+        );
+
+    box-shadow:
+        0 35px 90px
+        rgba(
+            var(--primary-rgb),
+            0.18
+        );
+}
+
+
+.universe-card.active {
+    border-color:
+        var(--primary);
+
+    box-shadow:
+        0 0 0 2px
+        rgba(
+            var(--primary-rgb),
+            0.12
+        ),
+        0 30px 80px
+        rgba(
+            var(--primary-rgb),
+            0.18
+        );
+}
+
+
+.universe-bg {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0.65;
+
+    transition:
+        transform 0.6s ease,
+        opacity 0.6s ease;
+}
+
+
+.universe-card:hover
+.universe-bg {
+    transform:
+        scale(1.10);
+
+    opacity: 0.9;
+}
+
+
+.universe-romantic
+.universe-bg {
+    background:
+        radial-gradient(
+            circle at 70% 20%,
+            #ffd4e6,
+            transparent 40%
+        ),
+        linear-gradient(
+            145deg,
+            #fff4fa,
+            #efc9e1
+        );
+}
+
+
+.universe-dream
+.universe-bg {
+    background:
+        radial-gradient(
+            circle at 70% 20%,
+            #d9d1ff,
+            transparent 40%
+        ),
+        linear-gradient(
+            145deg,
+            #f8f4ff,
+            #c7b7ef
+        );
+}
+
+
+.universe-night
+.universe-bg {
+    background:
+        radial-gradient(
+            circle at 70% 20%,
+            #8868c9,
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            #21172f,
+            #4d3374
+        );
+}
+
+
+.universe-soft
+.universe-bg {
+    background:
+        radial-gradient(
+            circle at 70% 20%,
+            #c7f2e9,
+            transparent 40%
+        ),
+        linear-gradient(
+            145deg,
+            #f4fffc,
+            #bde1dc
+        );
+}
+
+
+.universe-content {
+    position: absolute;
+
+    left: 28px;
+    right: 28px;
+    bottom: 28px;
+
+    z-index: 2;
+}
+
+
+.universe-content span {
+    display: inline-grid;
+
+    width: 45px;
+    height: 45px;
+
+    place-items: center;
+
+    margin-bottom: 15px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.65
+        );
+
+    backdrop-filter:
+        blur(10px);
+
+    font-size: 20px;
+}
+
+
+.universe-content small {
+    display: block;
+
+    color: var(--primary);
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+
+.universe-content h3 {
+    margin-top: 6px;
+
+    font-size: 25px;
+
+    letter-spacing: -1px;
+}
+
+
+.universe-content p {
+    margin-top: 8px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+.universe-night
+.universe-content h3 {
+    color: white;
+}
+
+
+.universe-night
+.universe-content p {
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.68
+        );
+}
+
+
+/* =========================================================
+   3.0 • GALLERY PROGRESS
+========================================================= */
+
+.gallery-progress {
+    position: relative;
+
+    width:
+        min(
+            500px,
+            80%
+        );
+
+    height: 3px;
+
+    margin:
+        22px
+        auto
+        0;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background:
+        rgba(
+            var(--primary-rgb),
+            0.12
+        );
+}
+
+
+.gallery-progress-bar {
+    width: 33.333%;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        var(--dream-gradient);
+
+    box-shadow:
+        0 0 15px
+        rgba(
+            var(--primary-rgb),
+            0.45
+        );
+
+    transition:
+        width 0.45s ease;
+}
+
+
+/* =========================================================
+   3.0 • GLASS CARDS
+========================================================= */
+
+.dream-glass {
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.22
+        );
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.30
+        );
+
+    backdrop-filter:
+        blur(25px)
+        saturate(140%);
+
+    -webkit-backdrop-filter:
+        blur(25px)
+        saturate(140%);
+}
+
+
+body.dark
+.dream-glass {
+    background:
+        rgba(
+            25,
+            18,
+            33,
+            0.55
+        );
+}
+
+
+/* =========================================================
+   3.0 • MICROINTERAÇÃO NOS BOTÕES
+========================================================= */
+
+.primary-btn,
+.secondary-btn,
+.outline-btn,
+.white-btn,
+.pill-btn,
+.mood-button,
+.note-chip {
+    isolation: isolate;
+}
+
+
+.primary-btn::after,
+.pill-btn::after {
+    content: "";
+
+    position: absolute;
+
+    top: -50%;
+
+    left: -80%;
+
+    width: 50%;
+    height: 200%;
+
+    pointer-events: none;
+
+    opacity: 0.25;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            white,
+            transparent
+        );
+
+    transform:
+        rotate(25deg);
+
+    transition:
+        left 0.65s ease;
+}
+
+
+.primary-btn:hover::after,
+.pill-btn:hover::after {
+    left: 130%;
+}
+
+
+/* =========================================================
+   3.0 • NOTE CHIPS PREMIUM
+========================================================= */
+
+.note-chip {
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.note-chip:hover {
+    color: white;
+
+    border-color:
+        transparent;
+
+    background:
+        var(--dream-gradient);
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(
+            var(--primary-rgb),
+            0.25
+        );
+}
+
+
+/* =========================================================
+   3.0 • CARDS DAS NOTAS
+========================================================= */
+
+.note-card {
+    overflow: hidden;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+}
+
+
+.note-card:hover {
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(
+            var(--primary-rgb),
+            0.32
+        );
+
+    box-shadow:
+        0 30px 80px
+        rgba(
+            var(--primary-rgb),
+            0.12
+        );
+}
+
+
+.note-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    right: -90px;
+    bottom: -90px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(
+                var(--primary-rgb),
+                0.14
+            ),
+            transparent 70%
+        );
+
+    transition:
+        transform 0.5s ease;
+}
+
+
+.note-card:hover::after {
+    transform:
+        scale(1.6);
+}
+
+
+/* =========================================================
+   3.0 • EXPERIENCE CARD
+========================================================= */
+
+.experience-card {
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+}
+
+
+.experience-card:hover {
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(
+            var(--primary-rgb),
+            0.30
+        );
+
+    box-shadow:
+        var(--dream-shadow);
+}
+
+
+/* =========================================================
+   3.0 • MOOD BUTTON
+========================================================= */
+
+.mood-button {
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.mood-button:hover {
+    transform:
+        translateY(-4px);
+}
+
+
+.mood-button.active {
+    color: white;
+
+    background:
+        var(--dream-gradient);
+
+    box-shadow:
+        0 15px 35px
+        rgba(
+            var(--primary-rgb),
+            0.28
+        );
+}
+
+
+/* =========================================================
+   3.0 • QUIZ PREMIUM
+========================================================= */
+
+.quiz-card {
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.quiz-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    right: -170px;
+    top: -170px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(
+                var(--primary-rgb),
+                0.16
+            ),
+            transparent 70%
+        );
+}
+
+
+.quiz-options button {
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.quiz-options button:hover {
+    color: white;
+
+    border-color:
+        transparent;
+
+    background:
+        var(--dream-gradient);
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(
+            var(--primary-rgb),
+            0.22
+        );
+}
+
+
+/* =========================================================
+   3.0 • FOOTER DEVELOPER
+========================================================= */
+
+.developer-credit {
+    position: relative;
+
+    padding:
+        7px
+        12px;
+
+    border:
+        1px solid
+        transparent;
+
+    border-radius: 999px;
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.developer-credit:hover {
+    border-color:
+        rgba(
+            var(--primary-rgb),
+            0.20
+        );
+
+    background:
+        rgba(
+            var(--primary-rgb),
+            0.06
+        );
+
+    transform:
+        translateY(-2px);
+}
+
+
+.developer-photo {
+    flex:
+        0 0 auto;
+
+    transition:
+        transform 0.35s
+        cubic-bezier(
+            .2,
+            .8,
+            .2,
+            1
+        ),
+        box-shadow 0.35s ease;
+}
+
+
+.developer-credit:hover
+.developer-photo {
+    transform:
+        scale(1.12)
+        rotate(-4deg);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(
+            var(--primary-rgb),
+            0.10
+        ),
+        0 0 25px
+        rgba(
+            var(--primary-rgb),
+            0.40
+        );
+}
+
+
+.developer-credit strong {
+    background:
+        var(--dream-gradient);
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color: transparent;
+}
+
+
+/* =========================================================
+   3.0 • CLEAN MODE
+========================================================= */
+
+body.clean-mode
+.particles,
+
+body.clean-mode
+.cursor-glow,
+
+body.clean-mode
+.section-indicator,
+
+body.clean-mode
+.orb,
+
+body.clean-mode
+.dream-bg {
+    opacity: 0 !important;
+
+    visibility: hidden !important;
+}
+
+
+body.clean-mode
+.header {
+    box-shadow:
+        0 10px 30px
+        rgba(
+            0,
+            0,
+            0,
+            0.06
+        );
+}
+
+
+/* =========================================================
+   3.0 • FOCUS MODE
+========================================================= */
+
+body.focus-mode
+.header,
+
+body.focus-mode
+.settings-fab,
+
+body.focus-mode
+.back-top,
+
+body.focus-mode
+.section-indicator {
+    opacity: 0.15;
+
+    transition:
+        opacity 0.3s ease;
+}
+
+
+body.focus-mode
+.header:hover,
+
+body.focus-mode
+.settings-fab:hover,
+
+body.focus-mode
+.back-top:hover {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   3.0 • SITE CONTRAST
+========================================================= */
+
+body {
+    filter:
+        contrast(
+            var(--site-contrast)
+        );
+}
+
+
+/* =========================================================
+   3.0 • SCROLL REVEAL MELHORADO
+========================================================= */
+
+.reveal {
+    will-change:
+        transform,
+        opacity;
+}
+
+
+.reveal.visible {
+    animation:
+        dreamReveal3
+        0.75s
+        cubic-bezier(
+            .2,
+            .8,
+            .2,
+            1
+        )
+        both;
+}
+
+
+@keyframes dreamReveal3 {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(28px)
+            scale(0.985);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   3.0 • SECTION TITLE
+========================================================= */
+
+.section-title h2 span,
+.section-copy h2 span {
+    position: relative;
+
+    display: inline-block;
+}
+
+
+.section-title h2 span::after,
+.section-copy h2 span::after {
+    content: "";
+
+    position: absolute;
+
+    left: 5%;
+    right: 5%;
+    bottom: -5px;
+
+    height: 7px;
+
+    z-index: -1;
+
+    border-radius: 999px;
+
+    opacity: 0.15;
+
+    background:
+        var(--dream-gradient);
+}
+
+
+/* =========================================================
+   3.0 • SCROLLBAR PREMIUM
+========================================================= */
+
+::-webkit-scrollbar-thumb:hover {
+    background:
+        linear-gradient(
+            180deg,
+            var(--secondary),
+            var(--primary)
+        );
+}
+
+
+/* =========================================================
+   3.0 • RESPONSIVO
+========================================================= */
+
+@media (
+    max-width: 1100px
+) {
+
+    .sensation-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+    }
+
+
+    .universe-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+    }
+
+
+    .when-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+    }
+
+}
+
+
+@media (
+    max-width: 750px
+) {
+
+    .sensation-section,
+    .when-section,
+    .universe-section {
+        padding:
+            90px
+            20px;
+    }
+
+
+    .sensation-grid,
+    .when-grid,
+    .universe-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .sensation-card {
+        min-height:
+            240px;
+    }
+
+
+    .when-card {
+        min-height:
+            330px;
+    }
+
+
+    .universe-card {
+        min-height:
+            320px;
+    }
+
+
+    .gallery-progress {
+        width:
+            90%;
+    }
+
+
+    .developer-credit {
+        flex-wrap:
+            wrap;
+    }
+
+}
+
+
+@media (
+    max-width: 500px
+) {
+
+    .sensation-card,
+    .when-card {
+        padding:
+            25px;
+    }
+
+
+    .when-icon {
+        left:
+            25px;
+
+        top:
+            25px;
+    }
+
+
+    .universe-content {
+        left:
+            22px;
+
+        right:
+            22px;
+
+        bottom:
+            22px;
+    }
+
+
+    .developer-photo {
+        width:
+            40px;
+
+        height:
+            40px;
+    }
+
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE • REDUZIR MOVIMENTO
+========================================================= */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+
+    .sensation-card,
+    .when-card,
+    .universe-card,
+    .note-card,
+    .experience-card,
+    .developer-photo,
+    .mood-button,
+    .quiz-options button {
+        transition:
+            none;
+    }
+
+
+    .reveal.visible {
+        animation:
+            none;
+    }
+
+}
+
+
+/* =========================================================
+   FIM • DREAM UPDATE 3.0
+========================================================= */
