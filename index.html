@@ -93,6 +93,7 @@
         aria-hidden="true"
     ></div>
 
+
     <div
         class="cursor-glow"
         id="cursorGlow"
@@ -164,6 +165,7 @@
                 id="themeButton"
                 type="button"
                 aria-label="Alterar tema"
+                title="Alternar tema"
             >
                 ☾
             </button>
@@ -302,14 +304,19 @@
             </div>
 
 
-            <!-- PRODUTO PRINCIPAL -->
+            <!-- ==================================
+                 PRODUTO PRINCIPAL
+            =================================== -->
 
             <div
                 class="hero-product reveal"
                 id="heroProduct"
             >
 
-                <div class="product-halo"></div>
+                <div
+                    class="product-halo"
+                    id="productHalo"
+                ></div>
 
 
                 <div
@@ -323,9 +330,32 @@
                 </span>
 
 
+                <!-- ==============================
+                     ÁREA DO BORRIFADOR
+                =============================== -->
+
                 <div
                     class="spray-area"
                     id="sprayArea"
+                    aria-hidden="true"
+                ></div>
+
+
+                <!-- ONDA DO BORRIFO -->
+
+                <div
+                    class="spray-wave"
+                    id="sprayWave"
+                    aria-hidden="true"
+                ></div>
+
+
+                <!-- FLASH DO BORRIFO -->
+
+                <div
+                    class="spray-glow"
+                    id="sprayGlow"
+                    aria-hidden="true"
                 ></div>
 
 
@@ -334,6 +364,7 @@
                     alt="Dream Amor no Ar 350 ml"
                     class="main-bottle"
                     id="mainBottle"
+                    draggable="false"
                 >
 
 
@@ -341,8 +372,16 @@
                     class="spray-button"
                     id="sprayButton"
                     type="button"
+                    aria-label="Borrifar Dream Amor no Ar"
+                    title="Borrifar • Atalho S"
                 >
-                    ✦
+
+                    <span
+                        class="spray-button-icon"
+                        aria-hidden="true"
+                    >
+                        ✦
+                    </span>
 
                     <span>
                         Borrifar
@@ -365,6 +404,17 @@
                         ML
                     </small>
 
+                </div>
+
+
+                <!-- INDICAÇÃO DO ATALHO -->
+
+                <div
+                    class="spray-shortcut"
+                    aria-hidden="true"
+                >
+                    pressione
+                    <kbd>S</kbd>
                 </div>
 
             </div>
@@ -427,6 +477,7 @@
                     <img
                         src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
                         alt="Dream Amor no Ar 350 ml"
+                        draggable="false"
                     >
 
                 </div>
@@ -689,41 +740,52 @@
                         <button
                             class="note-chip"
                             data-note="bergamota"
+                            type="button"
                         >
                             Bergamota
                         </button>
 
+
                         <button
                             class="note-chip"
                             data-note="laranja"
+                            type="button"
                         >
                             Laranja
                         </button>
 
+
                         <button
                             class="note-chip"
                             data-note="mandarina"
+                            type="button"
                         >
                             Mandarina
                         </button>
 
+
                         <button
                             class="note-chip"
                             data-note="limao"
+                            type="button"
                         >
                             Limão
                         </button>
 
+
                         <button
                             class="note-chip"
                             data-note="cassis"
+                            type="button"
                         >
                             Cassis
                         </button>
 
+
                         <button
                             class="note-chip"
                             data-note="maca"
+                            type="button"
                         >
                             Maçã
                         </button>
@@ -770,41 +832,52 @@
                         <button
                             class="note-chip"
                             data-note="rosa"
+                            type="button"
                         >
                             Rosa
                         </button>
 
+
                         <button
                             class="note-chip"
                             data-note="tilia"
+                            type="button"
                         >
                             Tília
                         </button>
 
+
                         <button
                             class="note-chip"
                             data-note="freesia"
+                            type="button"
                         >
                             Frésia
                         </button>
 
+
                         <button
                             class="note-chip"
                             data-note="lotus"
+                            type="button"
                         >
                             Flor de Lótus
                         </button>
 
+
                         <button
                             class="note-chip"
                             data-note="gardenia"
+                            type="button"
                         >
                             Gardênia
                         </button>
 
+
                         <button
                             class="note-chip"
                             data-note="pessego"
+                            type="button"
                         >
                             Pêssego
                         </button>
@@ -849,34 +922,43 @@
                         <button
                             class="note-chip"
                             data-note="ambar"
+                            type="button"
                         >
                             Âmbar
                         </button>
 
+
                         <button
                             class="note-chip"
                             data-note="sandalo"
+                            type="button"
                         >
                             Sândalo
                         </button>
 
+
                         <button
                             class="note-chip"
                             data-note="baunilha"
+                            type="button"
                         >
                             Baunilha
                         </button>
 
+
                         <button
                             class="note-chip"
                             data-note="tonka"
+                            type="button"
                         >
                             Tonka
                         </button>
 
+
                         <button
                             class="note-chip"
                             data-note="musk"
+                            type="button"
                         >
                             Musk
                         </button>
@@ -1075,7 +1157,7 @@
 
 
         <!-- ======================================
-             GALERIA
+             GALERIA PREMIUM
         ======================================= -->
 
         <section
@@ -1099,6 +1181,13 @@
                     </span>
                 </h2>
 
+
+                <p>
+                    Explore o universo Dream.
+                    Arraste as imagens ou utilize
+                    as setas para navegar.
+                </p>
+
             </div>
 
 
@@ -1108,6 +1197,7 @@
                     class="gallery-arrow"
                     id="galleryPrev"
                     type="button"
+                    aria-label="Imagem anterior"
                 >
                     ‹
                 </button>
@@ -1116,14 +1206,22 @@
                 <div
                     class="gallery-track"
                     id="galleryTrack"
+                    tabindex="0"
+                    aria-label="Galeria Dream"
                 >
 
 
-                    <article class="gallery-item">
+                    <!-- FOTO 01 -->
+
+                    <article
+                        class="gallery-item"
+                        data-gallery-index="0"
+                    >
 
                         <img
                             src="./img/DREAM.png"
                             alt="Dream World"
+                            draggable="false"
                         >
 
                         <div class="gallery-caption">
@@ -1141,11 +1239,17 @@
                     </article>
 
 
-                    <article class="gallery-item">
+                    <!-- FOTO 02 -->
+
+                    <article
+                        class="gallery-item"
+                        data-gallery-index="1"
+                    >
 
                         <img
                             src="./img/DREAM (2).png"
                             alt="Amor no Ar"
+                            draggable="false"
                         >
 
                         <div class="gallery-caption">
@@ -1163,11 +1267,17 @@
                     </article>
 
 
-                    <article class="gallery-item">
+                    <!-- FOTO 03 -->
+
+                    <article
+                        class="gallery-item"
+                        data-gallery-index="2"
+                    >
 
                         <img
                             src="./img/DREAM AMOR NO AR.png"
                             alt="Romance Dream"
+                            draggable="false"
                         >
 
                         <div class="gallery-caption">
@@ -1191,9 +1301,40 @@
                     class="gallery-arrow"
                     id="galleryNext"
                     type="button"
+                    aria-label="Próxima imagem"
                 >
                     ›
                 </button>
+
+            </div>
+
+
+            <!-- ==================================
+                 NOVO: INDICADORES
+            =================================== -->
+
+            <div
+                class="gallery-dots"
+                id="galleryDots"
+                aria-label="Navegação da galeria"
+            ></div>
+
+
+            <!-- ==================================
+                 NOVO: CONTADOR
+            =================================== -->
+
+            <div class="gallery-status">
+
+                <span id="galleryCurrent">
+                    01
+                </span>
+
+                <i></i>
+
+                <span id="galleryTotal">
+                    03
+                </span>
 
             </div>
 
@@ -1207,6 +1348,25 @@
                 >
                     ▶ Autoplay
                 </button>
+
+            </div>
+
+
+            <!-- INSTRUÇÃO -->
+
+            <div class="gallery-help">
+
+                <span>
+                    ↔ Arraste
+                </span>
+
+                <span>
+                    •
+                </span>
+
+                <span>
+                    Clique para ampliar
+                </span>
 
             </div>
 
@@ -1246,6 +1406,7 @@
                 <button
                     class="mood-button active"
                     data-mood="romantico"
+                    type="button"
                 >
                     ♡ Romântico
                 </button>
@@ -1254,6 +1415,7 @@
                 <button
                     class="mood-button"
                     data-mood="sonhador"
+                    type="button"
                 >
                     ☁ Sonhador
                 </button>
@@ -1262,6 +1424,7 @@
                 <button
                     class="mood-button"
                     data-mood="noturno"
+                    type="button"
                 >
                     ☾ Noturno
                 </button>
@@ -1270,6 +1433,7 @@
                 <button
                     class="mood-button"
                     data-mood="energia"
+                    type="button"
                 >
                     ✦ Energia
                 </button>
@@ -1278,6 +1442,7 @@
                 <button
                     class="mood-button"
                     data-mood="calmo"
+                    type="button"
                 >
                     ☁ Calmo
                 </button>
@@ -1534,11 +1699,17 @@
         ></div>
 
 
-        <div class="product-modal-card">
+        <div
+            class="product-modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Detalhes do Dream Amor no Ar"
+        >
 
             <button
                 class="modal-close close-product"
                 type="button"
+                aria-label="Fechar"
             >
                 ×
             </button>
@@ -1638,11 +1809,16 @@
         ></div>
 
 
-        <div class="note-modal-card">
+        <div
+            class="note-modal-card"
+            role="dialog"
+            aria-modal="true"
+        >
 
             <button
                 class="modal-close close-note"
                 type="button"
+                aria-label="Fechar"
             >
                 ×
             </button>
@@ -1674,12 +1850,13 @@
 
 
     <!-- ==========================================
-         LIGHTBOX
+         LIGHTBOX PREMIUM
     =========================================== -->
 
     <div
         class="lightbox"
         id="lightbox"
+        aria-hidden="true"
     >
 
         <div
@@ -1692,16 +1869,62 @@
             class="lightbox-close"
             id="lightboxClose"
             type="button"
+            aria-label="Fechar imagem"
         >
             ×
         </button>
 
 
-        <img
-            id="lightboxImage"
-            src=""
-            alt="Imagem ampliada"
+        <!-- ANTERIOR -->
+
+        <button
+            class="lightbox-nav lightbox-prev"
+            id="lightboxPrev"
+            type="button"
+            aria-label="Imagem anterior"
         >
+            ‹
+        </button>
+
+
+        <!-- CONTEÚDO -->
+
+        <div class="lightbox-content">
+
+            <img
+                id="lightboxImage"
+                src=""
+                alt="Imagem ampliada"
+                draggable="false"
+            >
+
+
+            <div class="lightbox-info">
+
+                <span id="lightboxCounter">
+                    01 / 03
+                </span>
+
+
+                <strong id="lightboxTitle">
+                    Dream
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRÓXIMA -->
+
+        <button
+            class="lightbox-nav lightbox-next"
+            id="lightboxNext"
+            type="button"
+            aria-label="Próxima imagem"
+        >
+            ›
+        </button>
 
     </div>
 
@@ -1715,6 +1938,7 @@
         id="settingsButton"
         type="button"
         aria-label="Personalizar"
+        title="Dream Studio"
     >
         ⚙
     </button>
@@ -1743,6 +1967,7 @@
             <button
                 id="closeSettings"
                 type="button"
+                aria-label="Fechar personalização"
             >
                 ×
             </button>
@@ -1750,7 +1975,9 @@
         </div>
 
 
-        <!-- PALETAS -->
+        <!-- ======================================
+             PALETAS
+        ======================================= -->
 
         <div class="settings-group">
 
@@ -1886,7 +2113,9 @@
         </div>
 
 
-        <!-- CORES MANUAIS -->
+        <!-- ======================================
+             CORES MANUAIS
+        ======================================= -->
 
         <div class="settings-group">
 
@@ -1927,7 +2156,9 @@
         </div>
 
 
-        <!-- APARÊNCIA -->
+        <!-- ======================================
+             APARÊNCIA
+        ======================================= -->
 
         <div class="settings-group">
 
@@ -1949,6 +2180,7 @@
                     </small>
 
                 </span>
+
 
                 <input
                     type="checkbox"
@@ -1973,6 +2205,7 @@
                     </small>
 
                 </span>
+
 
                 <input
                     type="checkbox"
@@ -1999,6 +2232,7 @@
 
                 </span>
 
+
                 <input
                     type="checkbox"
                     id="animationsToggle"
@@ -2023,6 +2257,7 @@
                     </small>
 
                 </span>
+
 
                 <input
                     type="checkbox"
@@ -2049,6 +2284,7 @@
 
                 </span>
 
+
                 <input
                     type="checkbox"
                     id="cursorToggle"
@@ -2062,7 +2298,100 @@
         </div>
 
 
-        <!-- TAMANHO DO TEXTO -->
+        <!-- ======================================
+             NOVO: EFEITOS
+        ======================================= -->
+
+        <div class="settings-group">
+
+            <span class="settings-title">
+                Intensidade
+            </span>
+
+
+            <label class="studio-range">
+
+                <span>
+
+                    <strong>
+                        Movimento 3D
+                    </strong>
+
+                    <b id="motionIntensityValue">
+                        60%
+                    </b>
+
+                </span>
+
+
+                <input
+                    type="range"
+                    id="motionIntensity"
+                    min="0"
+                    max="100"
+                    value="60"
+                >
+
+            </label>
+
+
+            <label class="studio-range">
+
+                <span>
+
+                    <strong>
+                        Cursor Glow
+                    </strong>
+
+                    <b id="glowIntensityValue">
+                        60%
+                    </b>
+
+                </span>
+
+
+                <input
+                    type="range"
+                    id="glowIntensity"
+                    min="0"
+                    max="100"
+                    value="60"
+                >
+
+            </label>
+
+
+            <label class="studio-range">
+
+                <span>
+
+                    <strong>
+                        Partículas
+                    </strong>
+
+                    <b id="particleIntensityValue">
+                        60%
+                    </b>
+
+                </span>
+
+
+                <input
+                    type="range"
+                    id="particleIntensity"
+                    min="10"
+                    max="100"
+                    value="60"
+                >
+
+            </label>
+
+        </div>
+
+
+        <!-- ======================================
+             TAMANHO DO TEXTO
+        ======================================= -->
 
         <div class="settings-group">
 
@@ -2076,6 +2405,7 @@
                 <button
                     data-font-size="small"
                     type="button"
+                    aria-label="Texto pequeno"
                 >
                     A
                 </button>
@@ -2085,6 +2415,7 @@
                     class="active"
                     data-font-size="normal"
                     type="button"
+                    aria-label="Texto normal"
                 >
                     A
                 </button>
@@ -2093,6 +2424,7 @@
                 <button
                     data-font-size="large"
                     type="button"
+                    aria-label="Texto grande"
                 >
                     A
                 </button>
@@ -2120,6 +2452,8 @@
     <div
         class="toast"
         id="toast"
+        role="status"
+        aria-live="polite"
     >
         Dream ♡
     </div>
@@ -2135,6 +2469,40 @@
         </span>
 
         Início
+
+    </div>
+
+
+    <!-- ==========================================
+         ATALHOS
+    =========================================== -->
+
+    <div
+        class="keyboard-hints"
+        id="keyboardHints"
+        aria-hidden="true"
+    >
+
+        <span>
+            <kbd>S</kbd>
+            Borrifar
+        </span>
+
+        <span>
+            <kbd>D</kbd>
+            Tema
+        </span>
+
+        <span>
+            <kbd>←</kbd>
+            <kbd>→</kbd>
+            Galeria
+        </span>
+
+        <span>
+            <kbd>ESC</kbd>
+            Fechar
+        </span>
 
     </div>
 

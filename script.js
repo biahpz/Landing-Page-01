@@ -2,33 +2,35 @@
 
 
 /* =========================================================
+   =========================================================
+   DREAM • AMOR NO AR
+   SCRIPT COMPLETO
+   =========================================================
+   ========================================================= */
+
+
+/* =========================================================
    HELPERS
 ========================================================= */
 
 const $ = (
     selector,
     parent = document
-) => {
-
-    return parent.querySelector(
+) =>
+    parent.querySelector(
         selector
     );
-
-};
 
 
 const $$ = (
     selector,
     parent = document
-) => {
-
-    return [
+) =>
+    [
         ...parent.querySelectorAll(
             selector
         )
     ];
-
-};
 
 
 const body =
@@ -40,7 +42,7 @@ const root =
 
 
 /* =========================================================
-   ELEMENTOS PRINCIPAIS
+   ELEMENTOS GERAIS
 ========================================================= */
 
 const loader =
@@ -95,7 +97,7 @@ window.addEventListener(
                 );
 
             },
-            700
+            650
         );
 
     }
@@ -158,21 +160,18 @@ function showToast(
 
 function updateScroll() {
 
-    const scrollTop =
+    const top =
         window.scrollY;
 
 
-    const scrollHeight =
+    const total =
         document.documentElement.scrollHeight -
         window.innerHeight;
 
 
-    const percentage =
-        scrollHeight > 0
-            ? (
-                scrollTop /
-                scrollHeight
-            ) * 100
+    const percent =
+        total > 0
+            ? top / total * 100
             : 0;
 
 
@@ -181,20 +180,20 @@ function updateScroll() {
     ) {
 
         scrollProgress.style.width =
-            `${percentage}%`;
+            `${percent}%`;
 
     }
 
 
     header?.classList.toggle(
         "scrolled",
-        scrollTop > 30
+        top > 30
     );
 
 
     backTop?.classList.toggle(
         "show",
-        scrollTop > 450
+        top > 450
     );
 
 }
@@ -270,7 +269,7 @@ $$(
 
 
 /* =========================================================
-   MENU ATIVO
+   SEÇÃO ATIVA
 ========================================================= */
 
 const sections =
@@ -281,7 +280,7 @@ const menuLinks =
     $$(".menu a");
 
 
-function updateCurrentSection() {
+function updateActiveSection() {
 
     if (
         !sections.length
@@ -292,7 +291,7 @@ function updateCurrentSection() {
     }
 
 
-    let activeSection =
+    let current =
         sections[0];
 
 
@@ -307,7 +306,7 @@ function updateCurrentSection() {
                 rect.top <= 220
             ) {
 
-                activeSection =
+                current =
                     section;
 
             }
@@ -316,25 +315,21 @@ function updateCurrentSection() {
     );
 
 
-    const activeId =
-        activeSection.id;
+    const currentId =
+        current.id;
 
 
     menuLinks.forEach(
         link => {
 
-            const href =
-                link.getAttribute(
-                    "href"
-                );
-
-
             link.classList.toggle(
 
                 "active",
 
-                href ===
-                `#${activeId}`
+                link.getAttribute(
+                    "href"
+                ) ===
+                `#${currentId}`
 
             );
 
@@ -348,13 +343,13 @@ function updateCurrentSection() {
 
         const index =
             sections.indexOf(
-                activeSection
+                current
             ) + 1;
 
 
         const name =
-            activeSection.dataset.sectionName ||
-            activeId;
+            current.dataset.sectionName ||
+            currentId;
 
 
         sectionIndicator.innerHTML = `
@@ -380,14 +375,14 @@ function updateCurrentSection() {
 
 window.addEventListener(
     "scroll",
-    updateCurrentSection,
+    updateActiveSection,
     {
         passive: true
     }
 );
 
 
-updateCurrentSection();
+updateActiveSection();
 
 
 /* =========================================================
@@ -418,8 +413,7 @@ const revealObserver =
         },
 
         {
-            threshold:
-                0.12
+            threshold: 0.12
         }
 
     );
@@ -451,23 +445,18 @@ const meterObserver =
                 entry => {
 
                     if (
-                        !entry.isIntersecting
+                        entry.isIntersecting
                     ) {
 
-                        return;
+                        const value =
+                            entry.target.dataset.meter ||
+                            0;
+
+
+                        entry.target.style.width =
+                            `${value}%`;
 
                     }
-
-
-                    const meter =
-                        entry.target;
-
-
-                    meter.style.width =
-                        `${
-                            meter.dataset.meter ||
-                            0
-                        }%`;
 
                 }
             );
@@ -475,8 +464,7 @@ const meterObserver =
         },
 
         {
-            threshold:
-                0.35
+            threshold: 0.35
         }
 
     );
@@ -535,7 +523,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   PRODUTO PRINCIPAL
+   HERO
 ========================================================= */
 
 const heroProduct =
@@ -546,16 +534,20 @@ const mainBottle =
     $("#mainBottle");
 
 
+const productHalo =
+    $("#productHalo");
+
+
 const productLight =
     $("#productLight");
 
 
-const productHalo =
-    $(".product-halo");
+let motionIntensity =
+    60;
 
 
 /* =========================================================
-   FRASCO INTERATIVO
+   MOVIMENTO 3D DO FRASCO
 ========================================================= */
 
 heroProduct?.addEventListener(
@@ -582,51 +574,67 @@ heroProduct?.addEventListener(
         }
 
 
+        if (
+            heroProduct.classList.contains(
+                "spraying"
+            )
+        ) {
+
+            return;
+
+        }
+
+
         const rect =
             heroProduct
                 .getBoundingClientRect();
 
 
-        const mouseX =
-            event.clientX -
-            rect.left;
-
-
-        const mouseY =
-            event.clientY -
-            rect.top;
-
-
         const x =
             (
-                mouseX /
-                rect.width
-            ) -
+                event.clientX -
+                rect.left
+            ) /
+            rect.width -
             0.5;
 
 
         const y =
             (
-                mouseY /
-                rect.height
-            ) -
+                event.clientY -
+                rect.top
+            ) /
+            rect.height -
             0.5;
 
 
+        const power =
+            motionIntensity /
+            100;
+
+
         const moveX =
-            x * 18;
+            x *
+            22 *
+            power;
 
 
         const moveY =
-            y * 10;
+            y *
+            14 *
+            power;
 
 
         const rotateY =
-            x * 10;
+            x *
+            18 *
+            power;
 
 
         const rotateX =
-            y * -8;
+            y *
+            -13 *
+            power;
 
 
         mainBottle.style.transform = `
@@ -634,7 +642,7 @@ heroProduct?.addEventListener(
             translate3d(
                 ${moveX}px,
                 ${moveY}px,
-                20px
+                30px
             )
 
             rotateX(
@@ -649,14 +657,14 @@ heroProduct?.addEventListener(
 
 
         if (
-            productLight
+            productHalo
         ) {
 
-            productLight.style.transform = `
+            productHalo.style.transform = `
 
                 translate(
-                    ${x * 50}px,
-                    ${y * 35}px
+                    ${x * -28 * power}px,
+                    ${y * -24 * power}px
                 )
 
             `;
@@ -665,14 +673,14 @@ heroProduct?.addEventListener(
 
 
         if (
-            productHalo
+            productLight
         ) {
 
-            productHalo.style.transform = `
+            productLight.style.transform = `
 
                 translate(
-                    ${x * -18}px,
-                    ${y * -15}px
+                    ${x * 55 * power}px,
+                    ${y * 38 * power}px
                 )
 
             `;
@@ -683,25 +691,22 @@ heroProduct?.addEventListener(
 );
 
 
+/* =========================================================
+   RESET 3D
+========================================================= */
+
 heroProduct?.addEventListener(
     "mouseleave",
     () => {
 
         if (
-            mainBottle
+            mainBottle &&
+            !heroProduct.classList.contains(
+                "spraying"
+            )
         ) {
 
             mainBottle.style.transform =
-                "";
-
-        }
-
-
-        if (
-            productLight
-        ) {
-
-            productLight.style.transform =
                 "";
 
         }
@@ -716,12 +721,22 @@ heroProduct?.addEventListener(
 
         }
 
+
+        if (
+            productLight
+        ) {
+
+            productLight.style.transform =
+                "";
+
+        }
+
     }
 );
 
 
 /* =========================================================
-   BORRIFAR
+   BORRIFADOR PREMIUM 2.0
 ========================================================= */
 
 const sprayButton =
@@ -732,7 +747,23 @@ const sprayArea =
     $("#sprayArea");
 
 
-function sprayDream() {
+const sprayWave =
+    $("#sprayWave");
+
+
+const sprayGlow =
+    $("#sprayGlow");
+
+
+let spraying =
+    false;
+
+
+/* =========================================================
+   CRIAR NÉVOA
+========================================================= */
+
+function createMist() {
 
     if (
         !sprayArea
@@ -743,145 +774,341 @@ function sprayDream() {
     }
 
 
-    for (
-        let i = 0;
-        i < 38;
-        i++
+    const mist =
+        document.createElement(
+            "span"
+        );
+
+
+    mist.className =
+        "dream-mist";
+
+
+    const x =
+        (
+            Math.random() -
+            0.5
+        ) *
+        430;
+
+
+    const y =
+        -40 -
+        Math.random() *
+        300;
+
+
+    const size =
+        3 +
+        Math.random() *
+        12;
+
+
+    const blur =
+        Math.random() *
+        3;
+
+
+    const duration =
+        0.85 +
+        Math.random() *
+        0.85;
+
+
+    mist.style.setProperty(
+        "--mist-x",
+        `${x}px`
+    );
+
+
+    mist.style.setProperty(
+        "--mist-y",
+        `${y}px`
+    );
+
+
+    mist.style.setProperty(
+        "--mist-size",
+        `${size}px`
+    );
+
+
+    mist.style.setProperty(
+        "--mist-blur",
+        `${blur}px`
+    );
+
+
+    mist.style.setProperty(
+        "--mist-duration",
+        `${duration}s`
+    );
+
+
+    mist.style.animationDelay =
+        `${
+            Math.random() *
+            0.13
+        }s`;
+
+
+    sprayArea.appendChild(
+        mist
+    );
+
+
+    setTimeout(
+        () => {
+
+            mist.remove();
+
+        },
+        2000
+    );
+
+}
+
+
+/* =========================================================
+   CRIAR SÍMBOLO
+========================================================= */
+
+function createSpraySymbol() {
+
+    if (
+        !sprayArea
     ) {
 
-        const particle =
-            document.createElement(
-                "span"
-            );
+        return;
+
+    }
 
 
-        particle.className =
-            "spray-particle";
+    const symbols = [
+
+        "♡",
+
+        "✦",
+
+        "✧",
+
+        "♡",
+
+        "✦"
+
+    ];
 
 
-        const size =
-            3 +
-            Math.random() *
-            7;
+    const symbol =
+        document.createElement(
+            "span"
+        );
 
 
-        const x =
+    symbol.className =
+        "dream-spray-symbol";
+
+
+    symbol.textContent =
+        symbols[
+            Math.floor(
+                Math.random() *
+                symbols.length
+            )
+        ];
+
+
+    symbol.style.setProperty(
+        "--symbol-x",
+        `${
             (
                 Math.random() -
                 0.5
             ) *
-            330;
+            390
+        }px`
+    );
 
 
-        const y =
-            -40 -
+    symbol.style.setProperty(
+        "--symbol-y",
+        `${
+            -70 -
             Math.random() *
-            260;
+            270
+        }px`
+    );
 
 
-        particle.style.width =
-            `${size}px`;
+    symbol.style.setProperty(
+        "--symbol-rotate",
+        `${
+            (
+                Math.random() -
+                0.5
+            ) *
+            500
+        }deg`
+    );
 
 
-        particle.style.height =
-            `${size}px`;
+    symbol.style.setProperty(
+        "--symbol-size",
+        `${
+            10 +
+            Math.random() *
+            14
+        }px`
+    );
 
 
-        particle.style.left =
-            `${
-                45 +
-                Math.random() *
-                10
-            }%`;
+    symbol.style.animationDelay =
+        `${
+            Math.random() *
+            0.15
+        }s`;
 
 
-        particle.style.top =
-            `${
-                38 +
-                Math.random() *
-                10
-            }%`;
+    sprayArea.appendChild(
+        symbol
+    );
 
 
-        particle.style.setProperty(
-            "--spray-x",
-            `${x}px`
-        );
+    setTimeout(
+        () => {
+
+            symbol.remove();
+
+        },
+        1900
+    );
+
+}
 
 
-        particle.style.setProperty(
-            "--spray-y",
-            `${y}px`
-        );
+/* =========================================================
+   BORRIFAR
+========================================================= */
+
+function sprayDream() {
+
+    if (
+        spraying ||
+        !sprayArea
+    ) {
+
+        return;
+
+    }
 
 
-        sprayArea.appendChild(
-            particle
-        );
+    spraying =
+        true;
 
 
-        setTimeout(
-            () => {
+    heroProduct?.classList.add(
+        "spraying"
+    );
 
-                particle.remove();
 
-            },
-            1400
-        );
+    sprayWave?.classList.remove(
+        "active"
+    );
+
+
+    sprayGlow?.classList.remove(
+        "active"
+    );
+
+
+    if (
+        sprayWave
+    ) {
+
+        void sprayWave.offsetWidth;
 
     }
 
 
     if (
-        mainBottle &&
-        !body.classList.contains(
-            "no-animations"
-        )
+        sprayGlow
     ) {
 
-        mainBottle.animate(
+        void sprayGlow.offsetWidth;
 
-            [
+    }
 
-                {
-                    transform:
-                        "translateY(0) scale(1)"
-                },
 
-                {
-                    transform:
-                        "translateY(5px) scale(0.97)"
-                },
+    sprayWave?.classList.add(
+        "active"
+    );
 
-                {
-                    transform:
-                        "translateY(-10px) scale(1.04)"
-                },
 
-                {
-                    transform:
-                        "translateY(0) scale(1)"
-                }
+    sprayGlow?.classList.add(
+        "active"
+    );
 
-            ],
 
-            {
+    for (
+        let i = 0;
+        i < 70;
+        i++
+    ) {
 
-                duration:
-                    550,
+        createMist();
 
-                easing:
-                    "ease-out"
+    }
 
-            }
 
-        );
+    for (
+        let i = 0;
+        i < 15;
+        i++
+    ) {
+
+        createSpraySymbol();
 
     }
 
 
     showToast(
         "Dream está no ar ♡"
+    );
+
+
+    setTimeout(
+        () => {
+
+            sprayWave?.classList.remove(
+                "active"
+            );
+
+
+            sprayGlow?.classList.remove(
+                "active"
+            );
+
+
+            heroProduct?.classList.remove(
+                "spraying"
+            );
+
+
+            if (
+                mainBottle
+            ) {
+
+                mainBottle.style.transform =
+                    "";
+
+            }
+
+
+            spraying =
+                false;
+
+        },
+        1100
     );
 
 }
@@ -932,12 +1159,21 @@ function openProductModal() {
 
 function closeProductModal() {
 
-    productModal?.classList.remove(
+    if (
+        !productModal
+    ) {
+
+        return;
+
+    }
+
+
+    productModal.classList.remove(
         "open"
     );
 
 
-    productModal?.setAttribute(
+    productModal.setAttribute(
         "aria-hidden",
         "true"
     );
@@ -979,7 +1215,7 @@ $$(
 
 
 /* =========================================================
-   FAVORITOS
+   FAVORITO
 ========================================================= */
 
 let favorite =
@@ -1107,15 +1343,13 @@ async function shareDream() {
 
 
         showToast(
-            "Copie o link do navegador para compartilhar"
+            "Copie o link do navegador"
         );
 
-    } catch (
-        error
-    ) {
+    } catch {
 
-        console.log(
-            error
+        showToast(
+            "Compartilhamento cancelado"
         );
 
     }
@@ -1139,247 +1373,200 @@ $("#shareModal")?.addEventListener(
    NOTAS OLFATIVAS
 ========================================================= */
 
-const notesData = {
+const notes = {
 
-    bergamota: {
+    bergamota: [
 
-        icon:
-            "🍊",
+        "🍊",
 
-        title:
-            "Bergamota",
+        "Bergamota",
 
-        text:
-            "Cítrica, fresca e luminosa."
+        "Cítrica, fresca e luminosa."
 
-    },
+    ],
 
 
-    laranja: {
+    laranja: [
 
-        icon:
-            "🍊",
+        "🍊",
 
-        title:
-            "Laranja",
+        "Laranja",
 
-        text:
-            "Uma sensação cítrica alegre e confortável."
+        "Uma sensação cítrica alegre e confortável."
 
-    },
+    ],
 
 
-    mandarina: {
+    mandarina: [
 
-        icon:
-            "🍊",
+        "🍊",
 
-        title:
-            "Mandarina",
+        "Mandarina",
 
-        text:
-            "Frutada, vibrante e delicada."
+        "Frutada, vibrante e delicada."
 
-    },
+    ],
 
 
-    limao: {
+    limao: [
 
-        icon:
-            "🍋",
+        "🍋",
 
-        title:
-            "Limão",
+        "Limão",
 
-        text:
-            "Traz brilho e frescor para a fragrância."
+        "Traz brilho e frescor para a fragrância."
 
-    },
+    ],
 
 
-    cassis: {
+    cassis: [
 
-        icon:
-            "🫐",
+        "🫐",
 
-        title:
-            "Cassis",
+        "Cassis",
 
-        text:
-            "Frutado com uma leve sensação ácida."
+        "Frutado com leve acidez."
 
-    },
+    ],
 
 
-    maca: {
+    maca: [
 
-        icon:
-            "🍎",
+        "🍎",
 
-        title:
-            "Maçã",
+        "Maçã",
 
-        text:
-            "Fresca e suavemente adocicada."
+        "Fresca e suavemente adocicada."
 
-    },
+    ],
 
 
-    rosa: {
+    rosa: [
 
-        icon:
-            "🌹",
+        "🌹",
 
-        title:
-            "Rosa",
+        "Rosa",
 
-        text:
-            "Floral romântico, delicado e clássico."
+        "Floral romântico, delicado e clássico."
 
-    },
+    ],
 
 
-    tilia: {
+    tilia: [
 
-        icon:
-            "🌼",
+        "🌼",
 
-        title:
-            "Tília",
+        "Tília",
 
-        text:
-            "Floral suave e confortável."
+        "Floral delicado e confortável."
 
-    },
+    ],
 
 
-    freesia: {
+    freesia: [
 
-        icon:
-            "🌸",
+        "🌸",
 
-        title:
-            "Frésia",
+        "Frésia",
 
-        text:
-            "Floral leve e luminoso."
+        "Floral leve e luminoso."
 
-    },
+    ],
 
 
-    lotus: {
+    lotus: [
 
-        icon:
-            "🪷",
+        "🪷",
 
-        title:
-            "Flor de Lótus",
+        "Flor de Lótus",
 
-        text:
-            "Floral suave com uma sensação aquática."
+        "Floral suave e aquático."
 
-    },
+    ],
 
 
-    gardenia: {
+    gardenia: [
 
-        icon:
-            "🌼",
+        "🌼",
 
-        title:
-            "Gardênia",
+        "Gardênia",
 
-        text:
-            "Floral cremoso e sofisticado."
+        "Floral cremoso e sofisticado."
 
-    },
+    ],
 
 
-    pessego: {
+    pessego: [
 
-        icon:
-            "🍑",
+        "🍑",
 
-        title:
-            "Pêssego",
+        "Pêssego",
 
-        text:
-            "Frutado macio e confortável."
+        "Frutado macio e confortável."
 
-    },
+    ],
 
 
-    ambar: {
+    ambar: [
 
-        icon:
-            "✨",
+        "✨",
 
-        title:
-            "Âmbar",
+        "Âmbar",
 
-        text:
-            "Quente e envolvente."
+        "Quente e envolvente."
 
-    },
+    ],
 
 
-    sandalo: {
+    sandalo: [
 
-        icon:
-            "🪵",
+        "🪵",
 
-        title:
-            "Sândalo",
+        "Sândalo",
 
-        text:
-            "Madeira cremosa e suave."
+        "Madeira cremosa e suave."
 
-    },
+    ],
 
 
-    baunilha: {
+    baunilha: [
 
-        icon:
-            "🤍",
+        "🤍",
 
-        title:
-            "Baunilha",
+        "Baunilha",
 
-        text:
-            "Doce, cremosa e aconchegante."
+        "Doce, cremosa e aconchegante."
 
-    },
+    ],
 
 
-    tonka: {
+    tonka: [
 
-        icon:
-            "✨",
+        "✨",
 
-        title:
-            "Tonka",
+        "Tonka",
 
-        text:
-            "Quente e levemente adocicada."
+        "Quente e levemente adocicada."
 
-    },
+    ],
 
 
-    musk: {
+    musk: [
 
-        icon:
-            "☁",
+        "☁",
 
-        title:
-            "Musk",
+        "Musk",
 
-        text:
-            "Macio, confortável e envolvente."
+        "Macio, confortável e envolvente."
 
-    }
+    ]
 
 };
 
+
+/* =========================================================
+   MODAL DAS NOTAS
+========================================================= */
 
 const noteModal =
     $("#noteModal");
@@ -1407,7 +1594,7 @@ $$(
             () => {
 
                 const note =
-                    notesData[
+                    notes[
                         button.dataset.note
                     ];
 
@@ -1426,7 +1613,7 @@ $$(
                 ) {
 
                     noteModalIcon.textContent =
-                        note.icon;
+                        note[0];
 
                 }
 
@@ -1436,7 +1623,7 @@ $$(
                 ) {
 
                     noteModalTitle.textContent =
-                        note.title;
+                        note[1];
 
                 }
 
@@ -1446,7 +1633,7 @@ $$(
                 ) {
 
                     noteModalText.textContent =
-                        note.text;
+                        note[2];
 
                 }
 
@@ -1596,7 +1783,7 @@ const timelineStages = [
             "Fundo aconchegante",
 
         text:
-            "Âmbar, madeiras e notas doces permanecem."
+            "Madeiras e notas doces permanecem."
 
     }
 
@@ -1684,11 +1871,17 @@ updateTimeline();
 
 
 /* =========================================================
-   GALERIA
-========================================================= */
+   =========================================================
+   GALERIA PREMIUM
+   =========================================================
+   ========================================================= */
 
 const galleryTrack =
     $("#galleryTrack");
+
+
+const galleryItems =
+    $$(".gallery-item");
 
 
 const galleryPrev =
@@ -1699,48 +1892,110 @@ const galleryNext =
     $("#galleryNext");
 
 
+const galleryDots =
+    $("#galleryDots");
+
+
+const galleryCurrent =
+    $("#galleryCurrent");
+
+
+const galleryTotal =
+    $("#galleryTotal");
+
+
 const galleryAutoplay =
     $("#galleryAutoplay");
 
 
-function getGalleryMoveAmount() {
+let galleryIndex =
+    0;
+
+
+let galleryTimer =
+    null;
+
+
+let dragging =
+    false;
+
+
+let dragMoved =
+    false;
+
+
+let dragStartX =
+    0;
+
+
+let dragStartScroll =
+    0;
+
+
+/* =========================================================
+   ATUALIZAR UI DA GALERIA
+========================================================= */
+
+function updateGalleryUI() {
+
+    $$(".gallery-dot")
+        .forEach(
+            (
+                dot,
+                index
+            ) => {
+
+                dot.classList.toggle(
+                    "active",
+                    index ===
+                        galleryIndex
+                );
+
+            }
+        );
+
 
     if (
-        !galleryTrack
+        galleryCurrent
     ) {
 
-        return 0;
+        galleryCurrent.textContent =
+            String(
+                galleryIndex +
+                1
+            ).padStart(
+                2,
+                "0"
+            );
 
     }
 
 
-    const item =
-        $(".gallery-item", galleryTrack);
-
-
     if (
-        !item
+        galleryTotal
     ) {
 
-        return 0;
+        galleryTotal.textContent =
+            String(
+                galleryItems.length
+            ).padStart(
+                2,
+                "0"
+            );
 
     }
-
-
-    return (
-        item.offsetWidth +
-        18
-    );
 
 }
 
 
-function moveGallery(
-    direction
-) {
+/* =========================================================
+   CRIAR DOTS
+========================================================= */
+
+function createGalleryDots() {
 
     if (
-        !galleryTrack
+        !galleryDots
     ) {
 
         return;
@@ -1748,38 +2003,150 @@ function moveGallery(
     }
 
 
-    galleryTrack.scrollBy({
+    galleryDots.innerHTML =
+        "";
+
+
+    galleryItems.forEach(
+        (
+            _,
+            index
+        ) => {
+
+            const dot =
+                document.createElement(
+                    "button"
+                );
+
+
+            dot.type =
+                "button";
+
+
+            dot.className =
+                "gallery-dot";
+
+
+            dot.setAttribute(
+                "aria-label",
+                `Ir para imagem ${index + 1}`
+            );
+
+
+            dot.addEventListener(
+                "click",
+                () => {
+
+                    goGallery(
+                        index
+                    );
+
+                }
+            );
+
+
+            galleryDots.appendChild(
+                dot
+            );
+
+        }
+    );
+
+
+    updateGalleryUI();
+
+}
+
+
+/* =========================================================
+   IR PARA SLIDE
+========================================================= */
+
+function goGallery(
+    index
+) {
+
+    if (
+        !galleryTrack ||
+        !galleryItems.length
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        index < 0
+    ) {
+
+        index =
+            galleryItems.length -
+            1;
+
+    }
+
+
+    if (
+        index >=
+        galleryItems.length
+    ) {
+
+        index =
+            0;
+
+    }
+
+
+    galleryIndex =
+        index;
+
+
+    const item =
+        galleryItems[
+            galleryIndex
+        ];
+
+
+    galleryTrack.scrollTo({
 
         left:
-            getGalleryMoveAmount() *
-            direction,
+            item.offsetLeft -
+            galleryTrack.offsetLeft,
 
         behavior:
             "smooth"
 
     });
 
+
+    updateGalleryUI();
+
 }
 
 
-galleryPrev?.addEventListener(
+/* =========================================================
+   SETAS DA GALERIA
+========================================================= */
+
+galleryNext?.addEventListener(
     "click",
     () => {
 
-        moveGallery(
-            -1
+        goGallery(
+            galleryIndex + 1
         );
 
     }
 );
 
 
-galleryNext?.addEventListener(
+galleryPrev?.addEventListener(
     "click",
     () => {
 
-        moveGallery(
-            1
+        goGallery(
+            galleryIndex - 1
         );
 
     }
@@ -1787,17 +2154,13 @@ galleryNext?.addEventListener(
 
 
 /* =========================================================
-   AUTOPLAY DA GALERIA
+   DETECTAR SLIDE ATUAL
 ========================================================= */
 
-let galleryTimer =
-    null;
-
-
-function stopGalleryAutoplay() {
+function detectGallerySlide() {
 
     if (
-        !galleryTimer
+        !galleryTrack
     ) {
 
         return;
@@ -1805,9 +2168,209 @@ function stopGalleryAutoplay() {
     }
 
 
-    clearInterval(
-        galleryTimer
+    const center =
+        galleryTrack.scrollLeft +
+        galleryTrack.clientWidth /
+        2;
+
+
+    let nearestIndex =
+        0;
+
+
+    let nearestDistance =
+        Infinity;
+
+
+    galleryItems.forEach(
+        (
+            item,
+            index
+        ) => {
+
+            const itemCenter =
+                item.offsetLeft +
+                item.offsetWidth /
+                2;
+
+
+            const distance =
+                Math.abs(
+                    center -
+                    itemCenter
+                );
+
+
+            if (
+                distance <
+                nearestDistance
+            ) {
+
+                nearestDistance =
+                    distance;
+
+
+                nearestIndex =
+                    index;
+
+            }
+
+        }
     );
+
+
+    galleryIndex =
+        nearestIndex;
+
+
+    updateGalleryUI();
+
+}
+
+
+galleryTrack?.addEventListener(
+    "scroll",
+    detectGallerySlide,
+    {
+        passive: true
+    }
+);
+
+
+/* =========================================================
+   ARRASTAR GALERIA
+========================================================= */
+
+galleryTrack?.addEventListener(
+    "mousedown",
+    event => {
+
+        dragging =
+            true;
+
+
+        dragMoved =
+            false;
+
+
+        dragStartX =
+            event.pageX;
+
+
+        dragStartScroll =
+            galleryTrack.scrollLeft;
+
+
+        galleryTrack.classList.add(
+            "dragging"
+        );
+
+    }
+);
+
+
+galleryTrack?.addEventListener(
+    "mousemove",
+    event => {
+
+        if (
+            !dragging
+        ) {
+
+            return;
+
+        }
+
+
+        event.preventDefault();
+
+
+        const distance =
+            event.pageX -
+            dragStartX;
+
+
+        if (
+            Math.abs(
+                distance
+            ) >
+            5
+        ) {
+
+            dragMoved =
+                true;
+
+        }
+
+
+        galleryTrack.scrollLeft =
+            dragStartScroll -
+            distance;
+
+    }
+);
+
+
+function stopGalleryDragging() {
+
+    if (
+        !dragging
+    ) {
+
+        return;
+
+    }
+
+
+    dragging =
+        false;
+
+
+    galleryTrack?.classList.remove(
+        "dragging"
+    );
+
+
+    setTimeout(
+        () => {
+
+            dragMoved =
+                false;
+
+        },
+        80
+    );
+
+}
+
+
+window.addEventListener(
+    "mouseup",
+    stopGalleryDragging
+);
+
+
+galleryTrack?.addEventListener(
+    "mouseleave",
+    stopGalleryDragging
+);
+
+
+/* =========================================================
+   AUTOPLAY
+========================================================= */
+
+function stopGalleryAutoplay() {
+
+    if (
+        galleryTimer
+    ) {
+
+        clearInterval(
+            galleryTimer
+        );
+
+    }
 
 
     galleryTimer =
@@ -1820,6 +2383,37 @@ function stopGalleryAutoplay() {
 
         galleryAutoplay.textContent =
             "▶ Autoplay";
+
+    }
+
+}
+
+
+function startGalleryAutoplay() {
+
+    stopGalleryAutoplay();
+
+
+    galleryTimer =
+        setInterval(
+            () => {
+
+                goGallery(
+                    galleryIndex +
+                    1
+                );
+
+            },
+            3500
+        );
+
+
+    if (
+        galleryAutoplay
+    ) {
+
+        galleryAutoplay.textContent =
+            "❚❚ Pausar";
 
     }
 
@@ -1841,71 +2435,72 @@ galleryAutoplay?.addEventListener(
                 "Autoplay pausado"
             );
 
+        } else {
 
-            return;
-
-        }
-
-
-        galleryAutoplay.textContent =
-            "❚❚ Pausar";
+            startGalleryAutoplay();
 
 
-        galleryTimer =
-            setInterval(
-                () => {
-
-                    if (
-                        !galleryTrack
-                    ) {
-
-                        return;
-
-                    }
-
-
-                    const maxScroll =
-                        galleryTrack.scrollWidth -
-                        galleryTrack.clientWidth;
-
-
-                    if (
-                        galleryTrack.scrollLeft >=
-                        maxScroll - 30
-                    ) {
-
-                        galleryTrack.scrollTo({
-
-                            left: 0,
-
-                            behavior:
-                                "smooth"
-
-                        });
-
-                    } else {
-
-                        moveGallery(
-                            1
-                        );
-
-                    }
-
-                },
-                3500
+            showToast(
+                "Autoplay ativado"
             );
 
-
-        showToast(
-            "Autoplay ativado"
-        );
+        }
 
     }
 );
 
 
 /* =========================================================
-   LIGHTBOX
+   PAUSAR AUTOPLAY AO INTERAGIR
+========================================================= */
+
+galleryTrack?.addEventListener(
+    "mouseenter",
+    () => {
+
+        if (
+            galleryTimer
+        ) {
+
+            clearInterval(
+                galleryTimer
+            );
+
+        }
+
+    }
+);
+
+
+galleryTrack?.addEventListener(
+    "mouseleave",
+    () => {
+
+        if (
+            galleryTimer
+        ) {
+
+            galleryTimer =
+                setInterval(
+                    () => {
+
+                        goGallery(
+                            galleryIndex +
+                            1
+                        );
+
+                    },
+                    3500
+                );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   LIGHTBOX PREMIUM
 ========================================================= */
 
 const lightbox =
@@ -1916,12 +2511,42 @@ const lightboxImage =
     $("#lightboxImage");
 
 
-function openLightbox(
-    image
-) {
+const lightboxTitle =
+    $("#lightboxTitle");
+
+
+const lightboxCounter =
+    $("#lightboxCounter");
+
+
+const lightboxPrev =
+    $("#lightboxPrev");
+
+
+const lightboxNext =
+    $("#lightboxNext");
+
+
+const lightboxClose =
+    $("#lightboxClose");
+
+
+const lightboxBackdrop =
+    $("#lightboxBackdrop");
+
+
+let lightboxIndex =
+    0;
+
+
+/* =========================================================
+   ATUALIZAR LIGHTBOX
+========================================================= */
+
+function updateLightbox() {
 
     if (
-        !lightbox ||
+        !galleryItems.length ||
         !lightboxImage
     ) {
 
@@ -1930,16 +2555,126 @@ function openLightbox(
     }
 
 
-    lightboxImage.src =
-        image.src;
+    const item =
+        galleryItems[
+            lightboxIndex
+        ];
 
 
-    lightboxImage.alt =
-        image.alt;
+    const image =
+        $("img", item);
+
+
+    const title =
+        $("h3", item);
+
+
+    if (
+        !image
+    ) {
+
+        return;
+
+    }
+
+
+    lightboxImage.classList.add(
+        "lightbox-image-changing"
+    );
+
+
+    setTimeout(
+        () => {
+
+            lightboxImage.src =
+                image.src;
+
+
+            lightboxImage.alt =
+                image.alt;
+
+
+            if (
+                lightboxTitle
+            ) {
+
+                lightboxTitle.textContent =
+                    title?.textContent ||
+                    "Dream";
+
+            }
+
+
+            if (
+                lightboxCounter
+            ) {
+
+                lightboxCounter.textContent =
+                    `${
+                        String(
+                            lightboxIndex +
+                            1
+                        )
+                        .padStart(
+                            2,
+                            "0"
+                        )
+                    } / ${
+                        String(
+                            galleryItems.length
+                        )
+                        .padStart(
+                            2,
+                            "0"
+                        )
+                    }`;
+
+            }
+
+
+            lightboxImage.classList.remove(
+                "lightbox-image-changing"
+            );
+
+        },
+        120
+    );
+
+}
+
+
+/* =========================================================
+   ABRIR LIGHTBOX
+========================================================= */
+
+function openLightbox(
+    index
+) {
+
+    if (
+        !lightbox
+    ) {
+
+        return;
+
+    }
+
+
+    lightboxIndex =
+        index;
+
+
+    updateLightbox();
 
 
     lightbox.classList.add(
         "open"
+    );
+
+
+    lightbox.setAttribute(
+        "aria-hidden",
+        "false"
     );
 
 
@@ -1950,10 +2685,20 @@ function openLightbox(
 }
 
 
+/* =========================================================
+   FECHAR LIGHTBOX
+========================================================= */
+
 function closeLightbox() {
 
     lightbox?.classList.remove(
         "open"
+    );
+
+
+    lightbox?.setAttribute(
+        "aria-hidden",
+        "true"
     );
 
 
@@ -1964,17 +2709,88 @@ function closeLightbox() {
 }
 
 
-$$(
-    ".gallery-item img"
-).forEach(
-    image => {
+/* =========================================================
+   PRÓXIMA IMAGEM
+========================================================= */
 
-        image.addEventListener(
+function nextLightbox() {
+
+    if (
+        !galleryItems.length
+    ) {
+
+        return;
+
+    }
+
+
+    lightboxIndex =
+        (
+            lightboxIndex +
+            1
+        ) %
+        galleryItems.length;
+
+
+    updateLightbox();
+
+}
+
+
+/* =========================================================
+   IMAGEM ANTERIOR
+========================================================= */
+
+function previousLightbox() {
+
+    if (
+        !galleryItems.length
+    ) {
+
+        return;
+
+    }
+
+
+    lightboxIndex =
+        (
+            lightboxIndex -
+            1 +
+            galleryItems.length
+        ) %
+        galleryItems.length;
+
+
+    updateLightbox();
+
+}
+
+
+/* =========================================================
+   ABRIR AO CLICAR NA GALERIA
+========================================================= */
+
+galleryItems.forEach(
+    (
+        item,
+        index
+    ) => {
+
+        item.addEventListener(
             "click",
             () => {
 
+                if (
+                    dragMoved
+                ) {
+
+                    return;
+
+                }
+
+
                 openLightbox(
-                    image
+                    index
                 );
 
             }
@@ -1984,16 +2800,39 @@ $$(
 );
 
 
-$("#lightboxClose")?.addEventListener(
+/* =========================================================
+   BOTÕES LIGHTBOX
+========================================================= */
+
+lightboxNext?.addEventListener(
+    "click",
+    nextLightbox
+);
+
+
+lightboxPrev?.addEventListener(
+    "click",
+    previousLightbox
+);
+
+
+lightboxClose?.addEventListener(
     "click",
     closeLightbox
 );
 
 
-$("#lightboxBackdrop")?.addEventListener(
+lightboxBackdrop?.addEventListener(
     "click",
     closeLightbox
 );
+
+
+/* =========================================================
+   CRIAR GALERIA
+========================================================= */
+
+createGalleryDots();
 
 
 /* =========================================================
@@ -2020,9 +2859,9 @@ function hexToRgb(
             value
                 .split("")
                 .map(
-                    char =>
-                        char +
-                        char
+                    character =>
+                        character +
+                        character
                 )
                 .join("");
 
@@ -2061,23 +2900,15 @@ function hexToRgb(
 }
 
 
+/* =========================================================
+   APLICAR CORES
+========================================================= */
+
 function applyColors(
     primary,
     secondary,
     save = true
 ) {
-
-    const primaryRgb =
-        hexToRgb(
-            primary
-        );
-
-
-    const secondaryRgb =
-        hexToRgb(
-            secondary
-        );
-
 
     root.style.setProperty(
         "--primary",
@@ -2089,6 +2920,18 @@ function applyColors(
         "--secondary",
         secondary
     );
+
+
+    const primaryRgb =
+        hexToRgb(
+            primary
+        );
+
+
+    const secondaryRgb =
+        hexToRgb(
+            secondary
+        );
 
 
     root.style.setProperty(
@@ -2115,29 +2958,29 @@ function applyColors(
     );
 
 
-    const primaryInput =
+    const primaryColor =
         $("#primaryColor");
 
 
-    const secondaryInput =
+    const secondaryColor =
         $("#secondaryColor");
 
 
     if (
-        primaryInput
+        primaryColor
     ) {
 
-        primaryInput.value =
+        primaryColor.value =
             primary;
 
     }
 
 
     if (
-        secondaryInput
+        secondaryColor
     ) {
 
-        secondaryInput.value =
+        secondaryColor.value =
             secondary;
 
     }
@@ -2170,28 +3013,47 @@ function applyColors(
 const moods = {
 
     romantico: [
+
         "#df76a8",
+
         "#9562dc"
+
     ],
+
 
     sonhador: [
+
         "#a78bfa",
+
         "#60a5fa"
+
     ],
+
 
     noturno: [
+
         "#7c3aed",
+
         "#312e81"
+
     ],
+
 
     energia: [
+
         "#fb7185",
+
         "#f59e0b"
+
     ],
 
+
     calmo: [
+
         "#45c4aa",
+
         "#5285c5"
+
     ]
 
 };
@@ -2246,7 +3108,7 @@ $$(
 
 
                 showToast(
-                    `Mood ${button.textContent.trim()}`
+                    `Mood ${button.textContent.trim()} ativado`
                 );
 
             }
@@ -2257,8 +3119,10 @@ $$(
 
 
 /* =========================================================
+   =========================================================
    QUIZ
-========================================================= */
+   =========================================================
+   ========================================================= */
 
 const quizStart =
     $("#quizStart");
@@ -2298,23 +3162,35 @@ const quizData = [
         options: [
 
             [
-                "Um encontro romântico ♡",
+
+                "Encontro romântico ♡",
+
                 "romantico"
+
             ],
 
             [
-                "Uma noite olhando o céu ☾",
+
+                "Noite olhando o céu ☾",
+
                 "sonhador"
+
             ],
 
             [
+
                 "Uma festa ✦",
+
                 "energia"
+
             ],
 
             [
-                "Um momento tranquilo ☁",
+
+                "Momento tranquilo ☁",
+
                 "calmo"
+
             ]
 
         ]
@@ -2330,23 +3206,35 @@ const quizData = [
         options: [
 
             [
+
                 "Romance",
+
                 "romantico"
+
             ],
 
             [
+
                 "Liberdade",
+
                 "sonhador"
+
             ],
 
             [
+
                 "Intensidade",
+
                 "energia"
+
             ],
 
             [
+
                 "Conforto",
+
                 "calmo"
+
             ]
 
         ]
@@ -2362,23 +3250,35 @@ const quizData = [
         options: [
 
             [
+
                 "♡ Coração",
+
                 "romantico"
+
             ],
 
             [
+
                 "☾ Lua",
+
                 "sonhador"
+
             ],
 
             [
+
                 "✦ Estrela",
+
                 "energia"
+
             ],
 
             [
+
                 "☁ Nuvem",
+
                 "calmo"
+
             ]
 
         ]
@@ -2394,23 +3294,35 @@ const quizData = [
         options: [
 
             [
+
                 "Jardim florido",
+
                 "romantico"
+
             ],
 
             [
+
                 "Céu estrelado",
+
                 "sonhador"
+
             ],
 
             [
+
                 "Cidade iluminada",
+
                 "energia"
+
             ],
 
             [
+
                 "Fim de tarde",
+
                 "calmo"
+
             ]
 
         ]
@@ -2488,6 +3400,10 @@ let quizScore =
     {};
 
 
+/* =========================================================
+   COMEÇAR QUIZ
+========================================================= */
+
 function startQuiz() {
 
     quizIndex =
@@ -2496,13 +3412,17 @@ function startQuiz() {
 
     quizScore = {
 
-        romantico: 0,
+        romantico:
+            0,
 
-        sonhador: 0,
+        sonhador:
+            0,
 
-        energia: 0,
+        energia:
+            0,
 
-        calmo: 0
+        calmo:
+            0
 
     };
 
@@ -2518,16 +3438,6 @@ function startQuiz() {
 
 
     if (
-        quizQuestions
-    ) {
-
-        quizQuestions.hidden =
-            false;
-
-    }
-
-
-    if (
         quizResult
     ) {
 
@@ -2537,10 +3447,24 @@ function startQuiz() {
     }
 
 
+    if (
+        quizQuestions
+    ) {
+
+        quizQuestions.hidden =
+            false;
+
+    }
+
+
     renderQuiz();
 
 }
 
+
+/* =========================================================
+   RENDERIZAR QUIZ
+========================================================= */
 
 function renderQuiz() {
 
@@ -2656,6 +3580,10 @@ function renderQuiz() {
 }
 
 
+/* =========================================================
+   FINALIZAR QUIZ
+========================================================= */
+
 function finishQuiz() {
 
     if (
@@ -2698,50 +3626,50 @@ function finishQuiz() {
         ];
 
 
-    const resultIcon =
+    const icon =
         $("#quizResultIcon");
 
 
-    const resultTitle =
+    const title =
         $("#quizResultTitle");
 
 
-    const resultText =
+    const text =
         $("#quizResultText");
 
 
     if (
-        resultIcon
+        icon
     ) {
 
-        resultIcon.textContent =
+        icon.textContent =
             result.icon;
 
     }
 
 
     if (
-        resultTitle
+        title
     ) {
 
-        resultTitle.textContent =
+        title.textContent =
             result.title;
 
     }
 
 
     if (
-        resultText
+        text
     ) {
 
-        resultText.textContent =
+        text.textContent =
             result.text;
 
     }
 
 
     showToast(
-        `Seu perfil: ${result.title}`
+        `Seu perfil: ${result.title} ♡`
     );
 
 }
@@ -2760,14 +3688,24 @@ $("#restartQuiz")?.addEventListener(
 
 
 /* =========================================================
+   =========================================================
    DREAM STUDIO
-========================================================= */
+   =========================================================
+   ========================================================= */
 
 const settingsPanel =
     $("#settingsPanel");
 
 
-$("#settingsButton")?.addEventListener(
+const settingsButton =
+    $("#settingsButton");
+
+
+const closeSettings =
+    $("#closeSettings");
+
+
+settingsButton?.addEventListener(
     "click",
     () => {
 
@@ -2779,7 +3717,7 @@ $("#settingsButton")?.addEventListener(
 );
 
 
-$("#closeSettings")?.addEventListener(
+closeSettings?.addEventListener(
     "click",
     () => {
 
@@ -2798,33 +3736,56 @@ $("#closeSettings")?.addEventListener(
 const palettes = {
 
     dream: [
+
         "#df76a8",
+
         "#9562dc"
+
     ],
+
 
     roxo: [
+
         "#a855f7",
+
         "#6d28d9"
+
     ],
+
 
     azul: [
+
         "#38bdf8",
+
         "#6366f1"
+
     ],
+
 
     cherry: [
+
         "#fb7185",
+
         "#db2777"
+
     ],
+
 
     gold: [
+
         "#d6a84b",
+
         "#9a6b21"
+
     ],
 
+
     menta: [
+
         "#45c4aa",
+
         "#5285c5"
+
     ]
 
 };
@@ -2875,6 +3836,11 @@ $$(
                 applyColors(
                     palette[0],
                     palette[1]
+                );
+
+
+                showToast(
+                    `Paleta ${button.textContent.trim()} ativada`
                 );
 
             }
@@ -2934,7 +3900,7 @@ const darkToggle =
     $("#darkToggle");
 
 
-function setDarkMode(
+function setDark(
     active,
     save = true
 ) {
@@ -2987,7 +3953,7 @@ themeButton?.addEventListener(
     "click",
     () => {
 
-        setDarkMode(
+        setDark(
 
             !body.classList.contains(
                 "dark"
@@ -3001,10 +3967,10 @@ themeButton?.addEventListener(
 
 darkToggle?.addEventListener(
     "change",
-    () => {
+    event => {
 
-        setDarkMode(
-            darkToggle.checked
+        setDark(
+            event.target.checked
         );
 
     }
@@ -3017,6 +3983,10 @@ darkToggle?.addEventListener(
 
 const particlesContainer =
     $("#particles");
+
+
+let particleIntensity =
+    60;
 
 
 function generateParticles() {
@@ -3034,22 +4004,35 @@ function generateParticles() {
         "";
 
 
+    const quantity =
+        Math.max(
+
+            5,
+
+            Math.round(
+                particleIntensity /
+                2.5
+            )
+
+        );
+
+
     const symbols = [
 
         "♡",
 
         "✦",
 
-        "✿",
+        "·",
 
-        "·"
+        "✿"
 
     ];
 
 
     for (
         let i = 0;
-        i < 25;
+        i < quantity;
         i++
     ) {
 
@@ -3083,23 +4066,27 @@ function generateParticles() {
             `${
                 8 +
                 Math.random() *
-                15
+                17
             }px`;
 
 
-        particle.style.animationDuration =
+        particle.style.setProperty(
+            "--duration",
             `${
                 8 +
                 Math.random() *
                 12
-            }s`;
+            }s`
+        );
 
 
-        particle.style.animationDelay =
+        particle.style.setProperty(
+            "--delay",
             `${
                 -Math.random() *
                 15
-            }s`;
+            }s`
+        );
 
 
         particlesContainer.appendChild(
@@ -3109,9 +4096,6 @@ function generateParticles() {
     }
 
 }
-
-
-generateParticles();
 
 
 /* =========================================================
@@ -3136,18 +4120,18 @@ const cursorToggle =
 
 particlesToggle?.addEventListener(
     "change",
-    () => {
+    event => {
 
         body.classList.toggle(
             "no-particles",
-            !particlesToggle.checked
+            !event.target.checked
         );
 
 
         localStorage.setItem(
             "dreamParticles",
             String(
-                particlesToggle.checked
+                event.target.checked
             )
         );
 
@@ -3157,18 +4141,18 @@ particlesToggle?.addEventListener(
 
 animationsToggle?.addEventListener(
     "change",
-    () => {
+    event => {
 
         body.classList.toggle(
             "no-animations",
-            !animationsToggle.checked
+            !event.target.checked
         );
 
 
         localStorage.setItem(
             "dreamAnimations",
             String(
-                animationsToggle.checked
+                event.target.checked
             )
         );
 
@@ -3178,18 +4162,18 @@ animationsToggle?.addEventListener(
 
 glassToggle?.addEventListener(
     "change",
-    () => {
+    event => {
 
         body.classList.toggle(
             "no-glass",
-            !glassToggle.checked
+            !event.target.checked
         );
 
 
         localStorage.setItem(
             "dreamGlass",
             String(
-                glassToggle.checked
+                event.target.checked
             )
         );
 
@@ -3199,18 +4183,187 @@ glassToggle?.addEventListener(
 
 cursorToggle?.addEventListener(
     "change",
-    () => {
+    event => {
 
         body.classList.toggle(
             "no-cursor",
-            !cursorToggle.checked
+            !event.target.checked
         );
 
 
         localStorage.setItem(
             "dreamCursor",
             String(
-                cursorToggle.checked
+                event.target.checked
+            )
+        );
+
+    }
+);
+
+
+/* =========================================================
+   CONTROLES DE INTENSIDADE
+========================================================= */
+
+const particleIntensityInput =
+    $("#particleIntensity");
+
+
+const particleIntensityValue =
+    $("#particleIntensityValue");
+
+
+const motionIntensityInput =
+    $("#motionIntensity");
+
+
+const motionIntensityValue =
+    $("#motionIntensityValue");
+
+
+const glowIntensityInput =
+    $("#glowIntensity");
+
+
+const glowIntensityValue =
+    $("#glowIntensityValue");
+
+
+/* =========================================================
+   INTENSIDADE DAS PARTÍCULAS
+========================================================= */
+
+particleIntensityInput?.addEventListener(
+    "input",
+    event => {
+
+        particleIntensity =
+            Number(
+                event.target.value
+            );
+
+
+        if (
+            particleIntensityValue
+        ) {
+
+            particleIntensityValue.textContent =
+                `${particleIntensity}%`;
+
+        }
+
+
+        localStorage.setItem(
+            "dreamParticleIntensity",
+            String(
+                particleIntensity
+            )
+        );
+
+
+        generateParticles();
+
+    }
+);
+
+
+/* =========================================================
+   INTENSIDADE 3D
+========================================================= */
+
+motionIntensityInput?.addEventListener(
+    "input",
+    event => {
+
+        motionIntensity =
+            Number(
+                event.target.value
+            );
+
+
+        if (
+            motionIntensityValue
+        ) {
+
+            motionIntensityValue.textContent =
+                `${motionIntensity}%`;
+
+        }
+
+
+        root.style.setProperty(
+            "--dream-motion",
+            motionIntensity /
+            100
+        );
+
+
+        localStorage.setItem(
+            "dreamMotionIntensity",
+            String(
+                motionIntensity
+            )
+        );
+
+    }
+);
+
+
+/* =========================================================
+   INTENSIDADE DO GLOW
+========================================================= */
+
+glowIntensityInput?.addEventListener(
+    "input",
+    event => {
+
+        const value =
+            Number(
+                event.target.value
+            );
+
+
+        if (
+            glowIntensityValue
+        ) {
+
+            glowIntensityValue.textContent =
+                `${value}%`;
+
+        }
+
+
+        root.style.setProperty(
+            "--dream-glow",
+            value /
+            100
+        );
+
+
+        if (
+            cursorGlow
+        ) {
+
+            cursorGlow.style.opacity =
+                String(
+                    Math.max(
+                        0,
+                        Math.min(
+                            1,
+                            value /
+                            180
+                        )
+                    )
+                );
+
+        }
+
+
+        localStorage.setItem(
+            "dreamGlowIntensity",
+            String(
+                value
             )
         );
 
@@ -3296,7 +4449,7 @@ $$(
 
 
 /* =========================================================
-   CARREGAR CONFIGURAÇÕES SALVAS
+   CARREGAR CONFIGURAÇÕES
 ========================================================= */
 
 function loadSettings() {
@@ -3337,7 +4490,7 @@ function loadSettings() {
         );
 
 
-    setDarkMode(
+    setDark(
 
         savedDark ===
         "true",
@@ -3350,26 +4503,14 @@ function loadSettings() {
     const savedFont =
         localStorage.getItem(
             "dreamFont"
-        );
+        ) ||
+        "normal";
 
 
-    if (
-        savedFont
-    ) {
-
-        setFontSize(
-            savedFont,
-            false
-        );
-
-    } else {
-
-        setFontSize(
-            "normal",
-            false
-        );
-
-    }
+    setFontSize(
+        savedFont,
+        false
+    );
 
 
     const savedParticles =
@@ -3380,21 +4521,22 @@ function loadSettings() {
 
     if (
         savedParticles !==
-        null
+        null &&
+        particlesToggle
     ) {
 
-        const active =
+        const enabled =
             savedParticles ===
             "true";
 
 
         particlesToggle.checked =
-            active;
+            enabled;
 
 
         body.classList.toggle(
             "no-particles",
-            !active
+            !enabled
         );
 
     }
@@ -3408,21 +4550,22 @@ function loadSettings() {
 
     if (
         savedAnimations !==
-        null
+        null &&
+        animationsToggle
     ) {
 
-        const active =
+        const enabled =
             savedAnimations ===
             "true";
 
 
         animationsToggle.checked =
-            active;
+            enabled;
 
 
         body.classList.toggle(
             "no-animations",
-            !active
+            !enabled
         );
 
     }
@@ -3436,21 +4579,22 @@ function loadSettings() {
 
     if (
         savedGlass !==
-        null
+        null &&
+        glassToggle
     ) {
 
-        const active =
+        const enabled =
             savedGlass ===
             "true";
 
 
         glassToggle.checked =
-            active;
+            enabled;
 
 
         body.classList.toggle(
             "no-glass",
-            !active
+            !enabled
         );
 
     }
@@ -3464,24 +4608,142 @@ function loadSettings() {
 
     if (
         savedCursor !==
-        null
+        null &&
+        cursorToggle
     ) {
 
-        const active =
+        const enabled =
             savedCursor ===
             "true";
 
 
         cursorToggle.checked =
-            active;
+            enabled;
 
 
         body.classList.toggle(
             "no-cursor",
-            !active
+            !enabled
         );
 
     }
+
+
+    particleIntensity =
+        Number(
+            localStorage.getItem(
+                "dreamParticleIntensity"
+            ) ||
+            60
+        );
+
+
+    motionIntensity =
+        Number(
+            localStorage.getItem(
+                "dreamMotionIntensity"
+            ) ||
+            60
+        );
+
+
+    const glowIntensity =
+        Number(
+            localStorage.getItem(
+                "dreamGlowIntensity"
+            ) ||
+            60
+        );
+
+
+    if (
+        particleIntensityInput
+    ) {
+
+        particleIntensityInput.value =
+            particleIntensity;
+
+    }
+
+
+    if (
+        particleIntensityValue
+    ) {
+
+        particleIntensityValue.textContent =
+            `${particleIntensity}%`;
+
+    }
+
+
+    if (
+        motionIntensityInput
+    ) {
+
+        motionIntensityInput.value =
+            motionIntensity;
+
+    }
+
+
+    if (
+        motionIntensityValue
+    ) {
+
+        motionIntensityValue.textContent =
+            `${motionIntensity}%`;
+
+    }
+
+
+    if (
+        glowIntensityInput
+    ) {
+
+        glowIntensityInput.value =
+            glowIntensity;
+
+    }
+
+
+    if (
+        glowIntensityValue
+    ) {
+
+        glowIntensityValue.textContent =
+            `${glowIntensity}%`;
+
+    }
+
+
+    root.style.setProperty(
+        "--dream-motion",
+        motionIntensity /
+        100
+    );
+
+
+    root.style.setProperty(
+        "--dream-glow",
+        glowIntensity /
+        100
+    );
+
+
+    if (
+        cursorGlow
+    ) {
+
+        cursorGlow.style.opacity =
+            String(
+                glowIntensity /
+                180
+            );
+
+    }
+
+
+    generateParticles();
 
 }
 
@@ -3490,50 +4752,48 @@ loadSettings();
 
 
 /* =========================================================
-   RESET SETTINGS
+   RESET DAS CONFIGURAÇÕES
 ========================================================= */
 
 $("#resetSettings")?.addEventListener(
     "click",
     () => {
 
-        localStorage.removeItem(
-            "dreamPrimary"
-        );
+        const keys = [
+
+            "dreamPrimary",
+
+            "dreamSecondary",
+
+            "dreamDark",
+
+            "dreamFont",
+
+            "dreamParticles",
+
+            "dreamAnimations",
+
+            "dreamGlass",
+
+            "dreamCursor",
+
+            "dreamParticleIntensity",
+
+            "dreamMotionIntensity",
+
+            "dreamGlowIntensity"
+
+        ];
 
 
-        localStorage.removeItem(
-            "dreamSecondary"
-        );
+        keys.forEach(
+            key => {
 
+                localStorage.removeItem(
+                    key
+                );
 
-        localStorage.removeItem(
-            "dreamDark"
-        );
-
-
-        localStorage.removeItem(
-            "dreamFont"
-        );
-
-
-        localStorage.removeItem(
-            "dreamParticles"
-        );
-
-
-        localStorage.removeItem(
-            "dreamAnimations"
-        );
-
-
-        localStorage.removeItem(
-            "dreamGlass"
-        );
-
-
-        localStorage.removeItem(
-            "dreamCursor"
+            }
         );
 
 
@@ -3548,7 +4808,7 @@ $("#resetSettings")?.addEventListener(
         );
 
 
-        setDarkMode(
+        setDark(
             false,
             false
         );
@@ -3557,6 +4817,86 @@ $("#resetSettings")?.addEventListener(
         setFontSize(
             "normal",
             false
+        );
+
+
+        particleIntensity =
+            60;
+
+
+        motionIntensity =
+            60;
+
+
+        if (
+            particleIntensityInput
+        ) {
+
+            particleIntensityInput.value =
+                60;
+
+        }
+
+
+        if (
+            motionIntensityInput
+        ) {
+
+            motionIntensityInput.value =
+                60;
+
+        }
+
+
+        if (
+            glowIntensityInput
+        ) {
+
+            glowIntensityInput.value =
+                60;
+
+        }
+
+
+        if (
+            particleIntensityValue
+        ) {
+
+            particleIntensityValue.textContent =
+                "60%";
+
+        }
+
+
+        if (
+            motionIntensityValue
+        ) {
+
+            motionIntensityValue.textContent =
+                "60%";
+
+        }
+
+
+        if (
+            glowIntensityValue
+        ) {
+
+            glowIntensityValue.textContent =
+                "60%";
+
+        }
+
+
+        root.style.setProperty(
+            "--dream-motion",
+            "0.60"
+        );
+
+
+        root.style.setProperty(
+            "--dream-glow",
+            "0.60"
         );
 
 
@@ -3631,6 +4971,9 @@ $("#resetSettings")?.addEventListener(
         );
 
 
+        generateParticles();
+
+
         showToast(
             "Configurações restauradas ♡"
         );
@@ -3640,16 +4983,92 @@ $("#resetSettings")?.addEventListener(
 
 
 /* =========================================================
-   ESC
+   ATALHOS DO TECLADO
 ========================================================= */
 
 document.addEventListener(
     "keydown",
     event => {
 
+        const typing =
+            event.target.matches(
+                "input, textarea, select"
+            );
+
+
+        const lightboxOpen =
+            lightbox?.classList.contains(
+                "open"
+            );
+
+
+        /* =========================================
+           ESC
+        ========================================= */
+
         if (
-            event.key !==
+            event.key ===
             "Escape"
+        ) {
+
+            closeProductModal();
+
+            closeNoteModal();
+
+            closeLightbox();
+
+
+            settingsPanel?.classList.remove(
+                "open"
+            );
+
+
+            menu?.classList.remove(
+                "open"
+            );
+
+
+            return;
+
+        }
+
+
+        /* =========================================
+           LIGHTBOX
+        ========================================= */
+
+        if (
+            lightboxOpen
+        ) {
+
+            if (
+                event.key ===
+                "ArrowRight"
+            ) {
+
+                nextLightbox();
+
+                return;
+
+            }
+
+
+            if (
+                event.key ===
+                "ArrowLeft"
+            ) {
+
+                previousLightbox();
+
+                return;
+
+            }
+
+        }
+
+
+        if (
+            typing
         ) {
 
             return;
@@ -3657,28 +5076,69 @@ document.addEventListener(
         }
 
 
-        closeProductModal();
+        /* =========================================
+           GALERIA
+        ========================================= */
 
-        closeNoteModal();
+        if (
+            event.key ===
+            "ArrowRight"
+        ) {
 
-        closeLightbox();
+            goGallery(
+                galleryIndex +
+                1
+            );
+
+        }
 
 
-        settingsPanel?.classList.remove(
-            "open"
-        );
+        if (
+            event.key ===
+            "ArrowLeft"
+        ) {
+
+            goGallery(
+                galleryIndex -
+                1
+            );
+
+        }
 
 
-        menu?.classList.remove(
-            "open"
-        );
+        /* =========================================
+           DARK MODE
+        ========================================= */
+
+        if (
+            event.key.toLowerCase() ===
+            "d"
+        ) {
+
+            themeButton?.click();
+
+        }
+
+
+        /* =========================================
+           BORRIFAR
+        ========================================= */
+
+        if (
+            event.key.toLowerCase() ===
+            "s"
+        ) {
+
+            sprayDream();
+
+        }
 
     }
 );
 
 
 /* =========================================================
-   RESPONSIVO
+   RESPONSIVIDADE
 ========================================================= */
 
 window.addEventListener(
@@ -3696,6 +5156,31 @@ window.addEventListener(
 
         }
 
+
+        detectGallerySlide();
+
+    }
+);
+
+
+/* =========================================================
+   IMPEDIR DRAG NATIVO DAS IMAGENS
+========================================================= */
+
+$$(
+    "img"
+).forEach(
+    image => {
+
+        image.addEventListener(
+            "dragstart",
+            event => {
+
+                event.preventDefault();
+
+            }
+        );
+
     }
 );
 
@@ -3705,6 +5190,26 @@ window.addEventListener(
 ========================================================= */
 
 console.log(
+
     "%cDream ♡ Amor no Ar",
-    "color:#df76a8;font-size:22px;font-weight:900"
+
+    `
+        color: #df76a8;
+        font-size: 22px;
+        font-weight: 900;
+    `
+
+);
+
+
+console.log(
+
+    "%cDesenvolvido por BAYERLEE",
+
+    `
+        color: #9562dc;
+        font-size: 13px;
+        font-weight: 800;
+    `
+
 );
