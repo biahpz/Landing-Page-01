@@ -146,12 +146,8 @@
                 Sensação
             </a>
 
-            <a href="#momentos">
-                Momentos
-            </a>
-
-            <a href="#universo">
-                Universo
+            <a href="#quando-usar">
+                Quando usar
             </a>
 
             <a href="#galeria">
@@ -176,6 +172,7 @@
                 id="themeButton"
                 type="button"
                 aria-label="Alterar tema"
+                title="Alternar tema"
             >
                 ☾
             </button>
@@ -314,7 +311,9 @@
             </div>
 
 
-            <!-- PRODUTO PRINCIPAL -->
+            <!-- ==================================
+                 PRODUTO PRINCIPAL
+            =================================== -->
 
             <div
                 class="hero-product reveal"
@@ -337,6 +336,8 @@
                     DREAM
                 </span>
 
+
+                <!-- BORRIFADOR -->
 
                 <div
                     class="spray-area"
@@ -399,6 +400,20 @@
                     <small>
                         ML
                     </small>
+
+                </div>
+
+
+                <div
+                    class="spray-shortcut"
+                    aria-hidden="true"
+                >
+
+                    pressione
+
+                    <kbd>
+                        S
+                    </kbd>
 
                 </div>
 
@@ -488,81 +503,61 @@
 
                     <p>
                         Dream Amor no Ar combina
-                        um perfil floral romântico
-                        com uma sensação leve,
-                        confortável e envolvente.
+                        delicadeza, romantismo e
+                        personalidade em uma fragrância
+                        confortável para diferentes
+                        momentos do dia.
                     </p>
 
 
-                    <div class="benefits">
-
+                    <div class="product-points">
 
                         <div>
 
-                            <b>
+                            <span>
                                 ✿
-                            </b>
-
-                            <span>
-
-                                <strong>
-                                    Floral
-                                </strong>
-
-                                <small>
-                                    Delicado e romântico
-                                </small>
-
                             </span>
+
+                            <p>
+                                Uma fragrância floral
+                                com presença delicada.
+                            </p>
 
                         </div>
 
 
                         <div>
 
-                            <b>
+                            <span>
                                 ♡
-                            </b>
-
-                            <span>
-
-                                <strong>
-                                    Dream
-                                </strong>
-
-                                <small>
-                                    Amor no Ar
-                                </small>
-
                             </span>
+
+                            <p>
+                                Sensação romântica,
+                                confortável e envolvente.
+                            </p>
 
                         </div>
 
 
                         <div>
 
-                            <b>
-                                ✦
-                            </b>
-
                             <span>
-
-                                <strong>
-                                    350 ml
-                                </strong>
-
-                                <small>
-                                    Body Splash
-                                </small>
-
+                                ✦
                             </span>
+
+                            <p>
+                                Um body splash de
+                                350 ml para acompanhar
+                                a rotina.
+                            </p>
 
                         </div>
 
                     </div>
 
 
-                    <div class="action-row">
+                    <div class="product-actions">
 
                         <button
                             class="primary-btn open-product"
@@ -573,20 +568,11 @@
 
 
                         <button
-                            class="outline-btn"
+                            class="favorite-btn"
                             id="favoriteButton"
                             type="button"
                         >
                             ♡ Favoritar
-                        </button>
-
-
-                        <button
-                            class="outline-btn"
-                            id="shareButton"
-                            type="button"
-                        >
-                            ↗ Compartilhar
                         </button>
 
                     </div>
@@ -612,7 +598,6 @@
                 src="./img/DREAM.png"
                 alt="Campanha Dream"
                 class="campaign-image"
-                draggable="false"
             >
 
 
@@ -650,9 +635,6 @@
                 </a>
 
             </div>
-
-        </section>
-                    </div>
 
         </section>
 
@@ -1053,9 +1035,9 @@
                                 <b>90%</b>
                             </span>
 
-                            <i>
-                                <em data-meter="90"></em>
-                            </i>
+                            <div>
+                                <i data-meter="90"></i>
+                            </div>
 
                         </div>
 
@@ -1064,12 +1046,12 @@
 
                             <span>
                                 Romântico
-                                <b>85%</b>
+                                <b>92%</b>
                             </span>
 
-                            <i>
-                                <em data-meter="85"></em>
-                            </i>
+                            <div>
+                                <i data-meter="92"></i>
+                            </div>
 
                         </div>
 
@@ -1077,13 +1059,13 @@
                         <div>
 
                             <span>
-                                Doce
-                                <b>65%</b>
+                                Confortável
+                                <b>84%</b>
                             </span>
 
-                            <i>
-                                <em data-meter="65"></em>
-                            </i>
+                            <div>
+                                <i data-meter="84"></i>
+                            </div>
 
                         </div>
 
@@ -1091,15 +1073,78 @@
                         <div>
 
                             <span>
-                                Amadeirado
-                                <b>55%</b>
+                                Intensidade
+                                <b>58%</b>
                             </span>
 
-                            <i>
-                                <em data-meter="55"></em>
-                            </i>
+                            <div>
+                                <i data-meter="58"></i>
+                            </div>
 
                         </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="experience-card reveal">
+
+                    <small>
+                        MOMENTO
+                    </small>
+
+
+                    <h3>
+                        Como você quer se sentir?
+                    </h3>
+
+
+                    <div class="mood-buttons">
+
+                        <button
+                            type="button"
+                            class="mood-button active"
+                            data-mood="romantico"
+                        >
+                            ♡ Romântico
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="mood-button"
+                            data-mood="sonhador"
+                        >
+                            ☾ Sonhador
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="mood-button"
+                            data-mood="noturno"
+                        >
+                            ✦ Noturno
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="mood-button"
+                            data-mood="energia"
+                        >
+                            ⚡ Energia
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="mood-button"
+                            data-mood="calmo"
+                        >
+                            ☁ Calmo
+                        </button>
 
                     </div>
 
@@ -1108,10 +1153,8 @@
             </div>
 
         </section>
-
-
-        <!-- ======================================
-             SENSAÇÃO DA FRAGRÂNCIA
+                <!-- ======================================
+             SENSAÇÃO
         ======================================= -->
 
         <section
@@ -1123,22 +1166,20 @@
             <div class="section-title reveal">
 
                 <span class="eyebrow">
-                    PERSONALIDADE DREAM
+                    SENSAÇÃO DA FRAGRÂNCIA
                 </span>
 
-
                 <h2>
-                    Como Amor no Ar
+                    Um equilíbrio entre
 
                     <span>
-                        se sente.
+                        leveza e presença.
                     </span>
                 </h2>
 
-
                 <p>
-                    Uma leitura visual da personalidade
-                    da fragrância.
+                    Uma leitura visual da sensação
+                    que Dream Amor no Ar transmite.
                 </p>
 
             </div>
@@ -1146,12 +1187,13 @@
 
             <div class="feeling-layout">
 
-
                 <div class="feeling-orbit reveal">
 
-                    <div class="feeling-orbit-ring ring-one"></div>
-                    <div class="feeling-orbit-ring ring-two"></div>
-                    <div class="feeling-orbit-ring ring-three"></div>
+                    <div class="feeling-ring feeling-ring-one"></div>
+
+                    <div class="feeling-ring feeling-ring-two"></div>
+
+                    <div class="feeling-ring feeling-ring-three"></div>
 
 
                     <div class="feeling-center">
@@ -1173,35 +1215,7 @@
                 </div>
 
 
-                <div class="feeling-bars reveal">
-
-
-                    <div class="feeling-meter">
-
-                        <div class="feeling-meter-head">
-
-                            <span>
-                                ♡ Romantismo
-                            </span>
-
-                            <strong>
-                                95%
-                            </strong>
-
-                        </div>
-
-
-                        <div class="feeling-meter-track">
-
-                            <i
-                                class="feeling-meter-fill"
-                                data-feeling="95"
-                            ></i>
-
-                        </div>
-
-                    </div>
-
+                <div class="feeling-meters reveal">
 
                     <div class="feeling-meter">
 
@@ -1216,7 +1230,6 @@
                             </strong>
 
                         </div>
-
 
                         <div class="feeling-meter-track">
 
@@ -1235,21 +1248,20 @@
                         <div class="feeling-meter-head">
 
                             <span>
-                                ☁ Conforto
+                                ♡ Romântico
                             </span>
 
                             <strong>
-                                85%
+                                92%
                             </strong>
 
                         </div>
-
 
                         <div class="feeling-meter-track">
 
                             <i
                                 class="feeling-meter-fill"
-                                data-feeling="85"
+                                data-feeling="92"
                             ></i>
 
                         </div>
@@ -1262,21 +1274,20 @@
                         <div class="feeling-meter-head">
 
                             <span>
-                                ✦ Doçura
+                                ☁ Confortável
                             </span>
 
                             <strong>
-                                68%
+                                84%
                             </strong>
 
                         </div>
-
 
                         <div class="feeling-meter-track">
 
                             <i
                                 class="feeling-meter-fill"
-                                data-feeling="68"
+                                data-feeling="84"
                             ></i>
 
                         </div>
@@ -1289,7 +1300,7 @@
                         <div class="feeling-meter-head">
 
                             <span>
-                                ❄ Frescor
+                                ✦ Presença
                             </span>
 
                             <strong>
@@ -1297,7 +1308,6 @@
                             </strong>
 
                         </div>
-
 
                         <div class="feeling-meter-track">
 
@@ -1325,7 +1335,6 @@
 
                         </div>
 
-
                         <div class="feeling-meter-track">
 
                             <i
@@ -1350,215 +1359,116 @@
 
         <section
             class="moments-section section-track"
-                        id="quando-usar"
+            id="quando-usar"
             data-section-name="Quando usar"
         >
 
             <div class="section-title reveal">
 
                 <span class="eyebrow">
-                    SEU MOMENTO
+                    QUANDO USAR
                 </span>
 
 
                 <h2>
-                    Um Dream para
+                    Um Dream para cada
 
                     <span>
-                        cada momento.
+                        momento.
                     </span>
                 </h2>
-
-
-                <p>
-                    Escolha uma situação e descubra
-                    como Amor no Ar combina com ela.
-                </p>
 
             </div>
 
 
             <div class="moments-grid">
 
+                <article class="moment-card reveal">
 
-                <button
-                    class="moment-card tilt-card reveal"
-                    data-moment="dia"
-                    type="button"
-                >
-
-                    <span class="moment-icon">
+                    <span>
                         ☀
                     </span>
 
                     <small>
-                        MOMENTO
+                        DIA
                     </small>
 
                     <h3>
-                        Durante o dia
+                        Rotina leve
                     </h3>
 
                     <p>
-                        Leve, confortável e fácil
-                        de usar na rotina.
+                        Para começar o dia
+                        com uma sensação delicada.
                     </p>
 
-                    <b>
-                        Explorar →
-                    </b>
-
-                </button>
+                </article>
 
 
-                <button
-                    class="moment-card tilt-card reveal"
-                    data-moment="noite"
-                    type="button"
-                >
+                <article class="moment-card reveal">
 
-                    <span class="moment-icon">
-                        ☾
-                    </span>
-
-                    <small>
-                        MOMENTO
-                    </small>
-
-                    <h3>
-                        À noite
-                    </h3>
-
-                    <p>
-                        Mais envolvente sob
-                        as luzes da noite.
-                    </p>
-
-                    <b>
-                        Explorar →
-                    </b>
-
-                </button>
-
-
-                <button
-                    class="moment-card tilt-card reveal"
-                    data-moment="encontro"
-                    type="button"
-                >
-
-                    <span class="moment-icon">
+                    <span>
                         ♡
                     </span>
 
                     <small>
-                        MOMENTO
+                        ENCONTRO
                     </small>
 
                     <h3>
-                        Encontro
+                        Momento romântico
                     </h3>
 
                     <p>
-                        O lado mais romântico
-                        do Dream.
+                        Uma atmosfera confortável
+                        para momentos especiais.
                     </p>
 
-                    <b>
-                        Explorar →
-                    </b>
-
-                </button>
+                </article>
 
 
-                <button
-                    class="moment-card tilt-card reveal"
-                    data-moment="estudo"
-                    type="button"
-                >
+                <article class="moment-card reveal">
 
-                    <span class="moment-icon">
-                        ✎
+                    <span>
+                        ☾
                     </span>
 
                     <small>
-                        MOMENTO
+                        NOITE
                     </small>
 
                     <h3>
-                        Escola & faculdade
+                        Noite Dream
                     </h3>
 
                     <p>
-                        Uma presença leve
-                        para acompanhar a rotina.
+                        Para quando você quer
+                        uma presença suave e envolvente.
                     </p>
 
-                    <b>
-                        Explorar →
-                    </b>
-
-                </button>
+                </article>
 
 
-                <button
-                    class="moment-card tilt-card reveal"
-                    data-moment="role"
-                    type="button"
-                >
+                <article class="moment-card reveal">
 
-                    <span class="moment-icon">
+                    <span>
                         ✦
                     </span>
 
                     <small>
-                        MOMENTO
+                        ESPECIAL
                     </small>
 
                     <h3>
-                        Rolê
+                        Seu momento
                     </h3>
 
                     <p>
-                        Uma atmosfera divertida
-                        e cheia de personalidade.
+                        Porque alguns momentos
+                        merecem uma assinatura própria.
                     </p>
 
-                    <b>
-                        Explorar →
-                    </b>
-
-                </button>
-
-
-                <button
-                    class="moment-card tilt-card reveal"
-                    data-moment="banho"
-                    type="button"
-                >
-
-                    <span class="moment-icon">
-                        ◌
-                    </span>
-
-                    <small>
-                        MOMENTO
-                    </small>
-
-                    <h3>
-                        Pós-banho
-                    </h3>
-
-                    <p>
-                        Frescor, conforto
-                        e sensação de cuidado.
-                    </p>
-
-                    <b>
-                        Explorar →
-                    </b>
-
-                </button>
+                </article>
 
             </div>
 
@@ -1566,104 +1476,73 @@
 
 
         <!-- ======================================
-             ESCOLHA SEU DREAM
+             DREAM SCENE
         ======================================= -->
 
         <section
-            class="dream-scene-section section-track"
+            class="dream-scene section-track"
             id="dream-scene"
-            data-section-name="Seu Dream"
+            data-section-name="Dream Scene"
         >
 
             <div class="dream-scene-bg"></div>
 
 
-            <div class="dream-scene-content">
+            <div class="section-title reveal">
 
-                <div class="section-title reveal">
+                <span class="eyebrow">
+                    DREAM SCENE
+                </span>
 
-                    <span class="eyebrow">
-                        DREAM EXPERIENCE
+
+                <h2>
+                    Escolha sua
+
+                    <span>
+                        atmosfera.
                     </span>
+                </h2>
+
+            </div>
 
 
-                    <h2>
-                        Escolha seu
+            <div class="scene-layout">
 
-                        <span>
-                            universo.
-                        </span>
-                    </h2>
-
-
-                    <p>
-                        Cada escolha transforma
-                        a atmosfera do Dream.
-                    </p>
-
-                </div>
-
-
-                <div class="scene-options reveal">
-
+                <div class="scene-buttons reveal">
 
                     <button
+                        type="button"
                         class="scene-button active"
                         data-scene="romance"
-                        type="button"
                     >
-
-                        <span>
-                            ♡
-                        </span>
-
-                        Romance
-
+                        ♡ Romance
                     </button>
 
 
                     <button
+                        type="button"
                         class="scene-button"
                         data-scene="ceu"
-                        type="button"
                     >
-
-                        <span>
-                            ☾
-                        </span>
-
-                        Céu
-
+                        ☾ Céu
                     </button>
 
 
                     <button
+                        type="button"
                         class="scene-button"
                         data-scene="flores"
-                        type="button"
                     >
-
-                        <span>
-                            ✿
-                        </span>
-
-                        Flores
-
+                        ✿ Flores
                     </button>
 
 
                     <button
+                        type="button"
                         class="scene-button"
                         data-scene="energia"
-                        type="button"
                     >
-
-                        <span>
-                            ✦
-                        </span>
-
-                        Energia
-
+                        ✦ Energia
                     </button>
 
                 </div>
@@ -1778,7 +1657,6 @@
                     tabindex="0"
                 >
 
-
                     <article
                         class="gallery-item"
                         data-gallery-index="0"
@@ -1856,6 +1734,32 @@
 
                     </article>
 
+
+                    <article
+                        class="gallery-item"
+                        data-gallery-index="3"
+                    >
+
+                        <img
+                            src="./img/perfume_dream_em_rosa_encantada.png"
+                            alt="Dream Rosa"
+                            draggable="false"
+                        >
+
+                        <div class="gallery-caption">
+
+                            <small>
+                                04
+                            </small>
+
+                            <h3>
+                                Dream Rosa
+                            </h3>
+
+                        </div>
+
+                    </article>
+
                 </div>
 
 
@@ -1871,38 +1775,33 @@
             </div>
 
 
-            <div
-                class="gallery-dots"
-                id="galleryDots"
-            ></div>
+            <div class="gallery-bottom">
+
+                <div class="gallery-counter">
+
+                    <span id="galleryCurrent">
+                        01
+                    </span>
+
+                    <small>
+                        /
+                    </small>
+
+                    <span id="galleryTotal">
+                        04
+                    </span>
+
+                </div>
 
 
-            <div class="gallery-status">
+                <div
+                    class="gallery-dots"
+                    id="galleryDots"
+                ></div>
 
-                <span id="galleryCurrent">
-                    01
-                </span>
-
-                <i></i>
-
-                <span id="galleryTotal">
-                    03
-                </span>
-
-            </div>
-
-
-            <div class="gallery-autoplay-progress">
-
-                <i id="galleryAutoplayProgress"></i>
-
-            </div>
-
-
-            <div class="gallery-buttons">
 
                 <button
-                    class="outline-btn"
+                    class="gallery-autoplay"
                     id="galleryAutoplay"
                     type="button"
                 >
@@ -1912,20 +1811,8 @@
             </div>
 
 
-            <div class="gallery-help">
-
-                <span>
-                    ↔ Arraste
-                </span>
-
-                <span>
-                    •
-                </span>
-
-                <span>
-                    Clique para ampliar
-                </span>
-
+            <div class="gallery-autoplay-progress">
+                <i id="galleryAutoplayProgress"></i>
             </div>
 
         </section>
@@ -1944,65 +1831,125 @@
             <div class="section-title reveal">
 
                 <span class="eyebrow">
-                    DREAM MOOD
+                    ESCOLHA SEU MOOD
                 </span>
 
 
                 <h2>
-                    Escolha seu
+                    Qual é o seu
 
                     <span>
-                        clima Dream.
+                        Dream de hoje?
                     </span>
                 </h2>
 
             </div>
 
 
-            <div class="mood-buttons reveal">
+            <div class="mood-grid">
 
                 <button
-                    class="mood-button active"
+                    type="button"
+                    class="mood-card mood-button active"
                     data-mood="romantico"
-                    type="button"
                 >
-                    ♡ Romântico
+
+                    <span>
+                        ♡
+                    </span>
+
+                    <strong>
+                        Romântico
+                    </strong>
+
+                    <small>
+                        delicado
+                    </small>
+
                 </button>
 
 
                 <button
-                    class="mood-button"
+                    type="button"
+                    class="mood-card mood-button"
                     data-mood="sonhador"
-                    type="button"
                 >
-                    ☁ Sonhador
+
+                    <span>
+                        ☾
+                    </span>
+
+                    <strong>
+                        Sonhador
+                    </strong>
+
+                    <small>
+                        leve
+                    </small>
+
                 </button>
 
 
                 <button
-                    class="mood-button"
+                    type="button"
+                    class="mood-card mood-button"
                     data-mood="noturno"
-                    type="button"
                 >
-                    ☾ Noturno
+
+                    <span>
+                        ✦
+                    </span>
+
+                    <strong>
+                        Noturno
+                    </strong>
+
+                    <small>
+                        misterioso
+                    </small>
+
                 </button>
 
 
                 <button
-                    class="mood-button"
+                    type="button"
+                    class="mood-card mood-button"
                     data-mood="energia"
-                    type="button"
                 >
-                    ✦ Energia
+
+                    <span>
+                        ⚡
+                    </span>
+
+                    <strong>
+                        Energia
+                    </strong>
+
+                    <small>
+                        intenso
+                    </small>
+
                 </button>
 
 
                 <button
-                    class="mood-button"
-                    data-mood="calmo"
                     type="button"
+                    class="mood-card mood-button"
+                    data-mood="calmo"
                 >
-                    ☁ Calmo
+
+                    <span>
+                        ☁
+                    </span>
+
+                    <strong>
+                        Calmo
+                    </strong>
+
+                    <small>
+                        confortável
+                    </small>
+
                 </button>
 
             </div>
@@ -2020,47 +1967,34 @@
             data-section-name="Quiz"
         >
 
-            <div class="section-title reveal">
-
-                <span class="eyebrow">
-                    QUIZ DREAM
-                </span>
-
-
-                <h2>
-                    Qual é o seu
-
-                    <span>
-                        perfil Dream?
-                    </span>
-                </h2>
-
-
-                <p>
-                    Descubra qual estilo combina
-                    mais com você.
-                </p>
-
-            </div>
-
-
             <div class="quiz-card reveal">
 
 
-                <div id="quizStart">
+                <div
+                    class="quiz-start"
+                    id="quizStart"
+                >
 
-                    <div class="quiz-big-icon">
-                                                ♡
-                    </div>
+                    <span class="quiz-symbol">
+                        ✦
+                    </span>
 
 
-                    <h3>
-                        Descubra seu Dream
-                    </h3>
+                    <small>
+                        DREAM QUIZ
+                    </small>
+
+
+                    <h2>
+                        Qual é o seu
+                        Dream?
+                    </h2>
 
 
                     <p>
-                        Responda algumas perguntas rápidas.
+                        Responda algumas perguntas
+                        e descubra qual atmosfera
+                        combina mais com você.
                     </p>
 
 
@@ -2076,24 +2010,27 @@
 
 
                 <div
+                    class="quiz-questions"
                     id="quizQuestions"
                     hidden
                 >
 
-                    <div class="quiz-progress">
+                    <div class="quiz-top">
 
                         <span id="quizStep">
                             1 / 4
                         </span>
 
-                        <div>
+                        <div class="quiz-progress">
                             <i id="quizProgressBar"></i>
                         </div>
 
                     </div>
 
 
-                    <h3 id="quizQuestion"></h3>
+                    <h3 id="quizQuestion">
+                        Pergunta
+                    </h3>
 
 
                     <div
@@ -2105,20 +2042,21 @@
 
 
                 <div
+                    class="quiz-result"
                     id="quizResult"
                     hidden
                 >
 
-                    <div
+                    <span
                         class="quiz-result-icon"
                         id="quizResultIcon"
                     >
                         ♡
-                    </div>
+                    </span>
 
 
                     <small>
-                        SEU PERFIL
+                        SEU RESULTADO
                     </small>
 
 
@@ -2127,20 +2065,18 @@
                     </h3>
 
 
-                    <p id="quizResultText"></p>
+                    <p id="quizResultText">
+                        Seu resultado aparece aqui.
+                    </p>
 
 
-                    <div class="action-row">
-
-                        <button
-                            class="primary-btn"
-                            id="restartQuiz"
-                            type="button"
-                        >
-                            Refazer
-                        </button>
-
-                    </div>
+                    <button
+                        class="secondary-btn"
+                        id="restartQuiz"
+                        type="button"
+                    >
+                        Refazer quiz
+                    </button>
 
                 </div>
 
@@ -2150,42 +2086,54 @@
 
 
         <!-- ======================================
-             FINAL
+             CTA FINAL
         ======================================= -->
 
-        <section
-            class="cta-section section-track"
-            id="final"
-            data-section-name="Final"
-        >
+        <section class="final-cta">
 
-            <div class="reveal">
+            <div class="final-cta-copy reveal">
 
-                <span class="eyebrow light">
+                <span class="eyebrow">
                     DREAM • AMOR NO AR
                 </span>
 
 
                 <h2>
-                    Deixe o
+                    Deixe seu momento
 
                     <span>
-                        amor no ar.
+                        no ar.
                     </span>
                 </h2>
 
 
                 <p>
-                    Dream Amor no Ar • 350 ml
+                    Explore as notas,
+                    descubra seu mood
+                    e crie sua própria
+                    experiência Dream.
                 </p>
 
 
-                <button
-                    class="white-btn open-product"
-                    type="button"
-                >
-                    Conhecer produto
-                </button>
+                <div class="hero-buttons">
+
+                    <button
+                        class="primary-btn open-product"
+                        type="button"
+                    >
+                        Ver produto
+                    </button>
+
+
+                    <button
+                        class="secondary-btn"
+                        id="shareButton"
+                        type="button"
+                    >
+                        Compartilhar
+                    </button>
+
+                </div>
 
             </div>
 
@@ -2195,71 +2143,21 @@
 
 
     <!-- ==========================================
-         FOOTER
-    =========================================== -->
-
-    <footer>
-
-        <div>
-
-            <a
-                href="#inicio"
-                class="logo"
-            >
-                Dream<span>.</span>
-            </a>
-
-
-            <p>
-                Amor no Ar • 350 ml
-            </p>
-
-        </div>
-
-
-        <div class="developer-credit">
-
-            <span class="developer-label">
-                DESENVOLVIDO POR
-            </span>
-
-
-            <img
-                src="./img/ASTRO.jpg"
-                alt="Bayerlee"
-                class="developer-photo"
-            >
-
-
-            <strong>
-                BAYERLEE
-            </strong>
-
-        </div>
-
-    </footer>
-
-
-    <!-- ==========================================
          MODAL PRODUTO
     =========================================== -->
 
     <div
-        class="modal"
+        class="product-modal"
         id="productModal"
-        aria-hidden="true"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Detalhes do produto"
     >
 
-        <div
-            class="modal-backdrop close-product"
-        ></div>
+        <div class="product-modal-backdrop close-product"></div>
 
 
-        <div
-            class="product-modal-card"
-            role="dialog"
-            aria-modal="true"
-        >
+        <div class="product-modal-card">
 
             <button
                 class="modal-close close-product"
@@ -2272,9 +2170,11 @@
 
             <div class="product-modal-image">
 
+                <div class="product-modal-halo"></div>
+
                 <img
                     src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
-                    alt="Dream Amor no Ar"
+                    alt="Dream Amor no Ar 350 ml"
                 >
 
             </div>
@@ -2283,28 +2183,24 @@
             <div class="product-modal-copy">
 
                 <span class="eyebrow">
-                    DREAM
+                    DREAM AMOR NO AR
                 </span>
 
 
                 <h2>
-                    Amor no Ar
+                    Dream
+                    <span>350 ml</span>
                 </h2>
 
 
-                <p class="accent-text">
-                    Body Splash • 350 ml
-                </p>
-
-
                 <p>
-                    Floral Amadeirado com uma
-                    proposta romântica, delicada
-                    e confortável.
+                    Uma fragrância floral,
+                    romântica, confortável
+                    e envolvente.
                 </p>
 
 
-                <div class="tag-row">
+                <div class="modal-features">
 
                     <span>
                         ✿ Floral
@@ -2315,13 +2211,17 @@
                     </span>
 
                     <span>
+                        ☁ Confortável
+                    </span>
+
+                    <span>
                         ✦ 350 ml
                     </span>
 
                 </div>
 
 
-                <div class="action-row">
+                <div class="modal-actions">
 
                     <button
                         class="primary-btn"
@@ -2333,11 +2233,11 @@
 
 
                     <button
-                        class="outline-btn"
+                        class="secondary-btn"
                         id="shareModal"
                         type="button"
                     >
-                        ↗ Compartilhar
+                        Compartilhar
                     </button>
 
                 </div>
@@ -2354,21 +2254,17 @@
     =========================================== -->
 
     <div
-        class="modal"
+        class="note-modal"
         id="noteModal"
-        aria-hidden="true"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Detalhes da nota"
     >
 
-        <div
-            class="modal-backdrop close-note"
-        ></div>
+        <div class="note-modal-backdrop close-note"></div>
 
 
-        <div
-            class="note-modal-card"
-            role="dialog"
-            aria-modal="true"
-        >
+        <div class="note-modal-card">
 
             <button
                 class="modal-close close-note"
@@ -2379,25 +2275,27 @@
             </button>
 
 
-            <div
+            <span
                 class="note-modal-icon"
                 id="noteModalIcon"
             >
                 ✿
-            </div>
-
-
-            <span class="eyebrow">
-                NOTA OLFATIVA
             </span>
 
 
-            <h2 id="noteModalTitle">
-                Rosa
-            </h2>
+            <small>
+                NOTA DREAM
+            </small>
 
 
-            <p id="noteModalText"></p>
+            <h3 id="noteModalTitle">
+                Nota
+            </h3>
+
+
+            <p id="noteModalText">
+                Descrição da nota.
+            </p>
 
         </div>
 
@@ -2405,13 +2303,15 @@
 
 
     <!-- ==========================================
-         LIGHTBOX PREMIUM
+         LIGHTBOX
     =========================================== -->
 
     <div
         class="lightbox"
         id="lightbox"
-        aria-hidden="true"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Galeria ampliada"
     >
 
         <div
@@ -2445,21 +2345,20 @@
             <img
                 id="lightboxImage"
                 src=""
-                alt="Imagem ampliada"
-                draggable="false"
+                alt=""
             >
 
 
-            <div class="lightbox-info">
+            <div class="lightbox-caption">
+
+                <h3 id="lightboxTitle">
+                    Dream
+                </h3>
+
 
                 <span id="lightboxCounter">
-                    01 / 03
+                    01 / 04
                 </span>
-
-
-                <strong id="lightboxTitle">
-                    Dream
-                </strong>
 
             </div>
 
@@ -2476,9 +2375,7 @@
         </button>
 
     </div>
-
-
-    <!-- ==========================================
+        <!-- ==========================================
          DREAM STUDIO
     =========================================== -->
 
@@ -2486,18 +2383,19 @@
         class="settings-fab"
         id="settingsButton"
         type="button"
-        aria-label="Personalizar"
+        aria-label="Abrir Dream Studio"
     >
-        ⚙
+        ✦
     </button>
 
 
     <aside
         class="settings-panel"
         id="settingsPanel"
+        aria-label="Dream Studio"
     >
 
-        <div class="settings-head">
+        <div class="settings-panel-head">
 
             <div>
 
@@ -2506,15 +2404,17 @@
                 </small>
 
                 <h3>
-                    Personalizar
+                    Personalize sua experiência
                 </h3>
 
             </div>
 
 
             <button
+                class="settings-close"
                 id="closeSettings"
                 type="button"
+                aria-label="Fechar Dream Studio"
             >
                 ×
             </button>
@@ -2522,183 +2422,7 @@
         </div>
 
 
-        <!-- PALETAS -->
-
-        <div class="settings-group">
-
-            <span class="settings-title">
-                Paleta
-            </span>
-
-
-            <div class="palette-grid">
-
-
-                <button
-                    class="palette active"
-                    data-palette="dream"
-                    type="button"
-                >
-
-                    <i
-                        style="
-                            --c1:#df76a8;
-                            --c2:#9562dc;
-                        "
-                    ></i>
-
-                    <span>
-                        Dream
-                    </span>
-                                    </button>
-
-
-                <button
-                    class="palette"
-                    data-palette="roxo"
-                    type="button"
-                >
-
-                    <i
-                        style="
-                            --c1:#a855f7;
-                            --c2:#6d28d9;
-                        "
-                    ></i>
-
-                    <span>
-                        Roxo
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="palette"
-                    data-palette="azul"
-                    type="button"
-                >
-
-                    <i
-                        style="
-                            --c1:#38bdf8;
-                            --c2:#6366f1;
-                        "
-                    ></i>
-
-                    <span>
-                        Azul
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="palette"
-                    data-palette="cherry"
-                    type="button"
-                >
-
-                    <i
-                        style="
-                            --c1:#fb7185;
-                            --c2:#db2777;
-                        "
-                    ></i>
-
-                    <span>
-                        Cherry
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="palette"
-                    data-palette="gold"
-                    type="button"
-                >
-
-                    <i
-                        style="
-                            --c1:#d6a84b;
-                            --c2:#9a6b21;
-                        "
-                    ></i>
-
-                    <span>
-                        Gold
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="palette"
-                    data-palette="menta"
-                    type="button"
-                >
-
-                    <i
-                        style="
-                            --c1:#45c4aa;
-                            --c2:#5285c5;
-                        "
-                    ></i>
-
-                    <span>
-                        Menta
-                    </span>
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- CORES MANUAIS -->
-
-        <div class="settings-group">
-
-            <span class="settings-title">
-                Suas cores
-            </span>
-
-
-            <div class="color-row">
-
-                <label>
-
-                    Principal
-
-                    <input
-                        type="color"
-                        id="primaryColor"
-                        value="#df76a8"
-                    >
-
-                </label>
-
-
-                <label>
-
-                    Secundária
-
-                    <input
-                        type="color"
-                        id="secondaryColor"
-                        value="#9562dc"
-                    >
-
-                </label>
-
-            </div>
-
-        </div>
-
-
-        <!-- APARÊNCIA -->
+        <!-- TEMA -->
 
         <div class="settings-group">
 
@@ -2709,31 +2433,222 @@
 
             <label class="switch-row">
 
-                <span>
+                <div>
 
                     <strong>
                         Modo escuro
                     </strong>
 
                     <small>
-                        Alterar o fundo
+                        Alterar tema da página
                     </small>
 
-                </span>
+                </div>
+
 
                 <input
                     type="checkbox"
                     id="darkToggle"
                 >
 
-                <i></i>
+            </label>
+
+
+            <label class="switch-row">
+
+                <div>
+
+                    <strong>
+                        Glass effect
+                    </strong>
+
+                    <small>
+                        Transparência e blur
+                    </small>
+
+                </div>
+
+
+                <input
+                    type="checkbox"
+                    id="glassToggle"
+                    checked
+                >
 
             </label>
 
 
             <label class="switch-row">
 
-                <span>
+                <div>
+
+                    <strong>
+                        Modo clean
+                    </strong>
+
+                    <small>
+                        Reduz efeitos visuais
+                    </small>
+
+                </div>
+
+
+                <input
+                    type="checkbox"
+                    id="cleanModeToggle"
+                >
+
+            </label>
+
+        </div>
+
+
+        <!-- PALETAS -->
+
+        <div class="settings-group">
+
+            <span class="settings-title">
+                Paletas
+            </span>
+
+
+            <div class="palette-grid">
+
+                <button
+                    type="button"
+                    class="palette active"
+                    data-palette="dream"
+                >
+                    <i></i>
+
+                    <span>
+                        Dream
+                    </span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="palette"
+                    data-palette="roxo"
+                >
+                    <i></i>
+
+                    <span>
+                        Roxo
+                    </span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="palette"
+                    data-palette="azul"
+                >
+                    <i></i>
+
+                    <span>
+                        Azul
+                    </span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="palette"
+                    data-palette="cherry"
+                >
+                    <i></i>
+
+                    <span>
+                        Cherry
+                    </span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="palette"
+                    data-palette="gold"
+                >
+                    <i></i>
+
+                    <span>
+                        Gold
+                    </span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="palette"
+                    data-palette="menta"
+                >
+                    <i></i>
+
+                    <span>
+                        Menta
+                    </span>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- CORES PERSONALIZADAS -->
+
+        <div class="settings-group">
+
+            <span class="settings-title">
+                Cores personalizadas
+            </span>
+
+
+            <div class="color-setting">
+
+                <label for="primaryColor">
+                    Cor principal
+                </label>
+
+                <input
+                    type="color"
+                    id="primaryColor"
+                    value="#df76a8"
+                >
+
+            </div>
+
+
+            <div class="color-setting">
+
+                <label for="secondaryColor">
+                    Cor secundária
+                </label>
+
+                <input
+                    type="color"
+                    id="secondaryColor"
+                    value="#9562dc"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- EFEITOS -->
+
+        <div class="settings-group">
+
+            <span class="settings-title">
+                Efeitos
+            </span>
+
+
+            <label class="switch-row">
+
+                <div>
 
                     <strong>
                         Partículas
@@ -2743,7 +2658,8 @@
                         Elementos flutuantes
                     </small>
 
-                </span>
+                </div>
+
 
                 <input
                     type="checkbox"
@@ -2751,24 +2667,23 @@
                     checked
                 >
 
-                <i></i>
-
             </label>
 
 
             <label class="switch-row">
 
-                <span>
+                <div>
 
                     <strong>
                         Animações
                     </strong>
 
                     <small>
-                        Movimento da página
+                        Movimento geral
                     </small>
 
-                </span>
+                </div>
+
 
                 <input
                     type="checkbox"
@@ -2776,49 +2691,23 @@
                     checked
                 >
 
-                <i></i>
-
             </label>
 
 
             <label class="switch-row">
 
-                <span>
-
-                    <strong>
-                        Glass
-                    </strong>
-
-                    <small>
-                        Efeito transparente
-                    </small>
-
-                </span>
-
-                <input
-                    type="checkbox"
-                    id="glassToggle"
-                    checked
-                >
-
-                <i></i>
-
-            </label>
-
-
-            <label class="switch-row">
-
-                <span>
+                <div>
 
                     <strong>
                         Cursor Glow
                     </strong>
 
                     <small>
-                        Luz no mouse
+                        Brilho seguindo o cursor
                     </small>
 
-                </span>
+                </div>
+
 
                 <input
                     type="checkbox"
@@ -2826,92 +2715,51 @@
                     checked
                 >
 
-                <i></i>
-
             </label>
 
-        </div>
 
+            <label class="switch-row">
 
-        <!-- INTENSIDADE -->
-
-        <div class="settings-group">
-
-            <span class="settings-title">
-                Intensidade
-            </span>
-
-
-            <label class="studio-range">
-
-                <span>
+                <div>
 
                     <strong>
                         Movimento 3D
                     </strong>
 
-                    <b id="motionIntensityValue">
-                        60%
-                    </b>
+                    <small>
+                        Profundidade do produto
+                    </small>
 
-                </span>
+                </div>
+
 
                 <input
-                    type="range"
-                    id="motionIntensity"
-                    min="0"
-                    max="100"
-                    value="60"
+                    type="checkbox"
+                    id="motion3dToggle"
+                    checked
                 >
 
             </label>
 
 
-            <label class="studio-range">
+            <label class="switch-row">
 
-                <span>
-
-                    <strong>
-                        Cursor Glow
-                    </strong>
-
-                    <b id="glowIntensityValue">
-                        60%
-                    </b>
-
-                </span>
-
-                <input
-                    type="range"
-                    id="glowIntensity"
-                    min="0"
-                    max="100"
-                    value="60"
-                >
-
-            </label>
-
-
-            <label class="studio-range">
-
-                <span>
+                <div>
 
                     <strong>
-                        Partículas
+                        Som do borrifador
                     </strong>
 
-                    <b id="particleIntensityValue">
-                        60%
-                    </b>
+                    <small>
+                        Efeito sonoro opcional
+                    </small>
 
-                </span>
+                </div>
+
 
                 <input
-                    type="range"
-                    id="particleIntensity"
-                    min="10"
-                    max="100"
-                    value="60"
+                    type="checkbox"
+                    id="spraySoundToggle"
                 >
 
             </label>
@@ -2919,28 +2767,29 @@
         </div>
 
 
-        <!-- DREAM STUDIO 3.0 -->
+        <!-- VELOCIDADE -->
 
         <div class="settings-group">
 
             <span class="settings-title">
-                Dream Studio 3.0
+                Movimento
             </span>
 
 
-            <label class="studio-range">
+            <div class="range-setting">
 
-                <span>
+                <div>
 
                     <strong>
                         Velocidade das animações
                     </strong>
 
-                    <b id="animationSpeedValue">
+                    <span id="animationSpeedValue">
                         100%
-                    </b>
+                    </span>
 
-                </span>
+                </div>
+
 
                 <input
                     type="range"
@@ -2950,47 +2799,138 @@
                     value="100"
                 >
 
-            </label>
+            </div>
 
 
-            <label class="studio-range">
+            <div class="range-setting">
 
-                <span>
+                <div>
 
                     <strong>
-                        Intensidade do borrifo
+                        Intensidade do 3D
                     </strong>
 
-                    <b id="sprayIntensityValue">
-                        70%
-                    </b>
+                    <span id="motion3dValue">
+                        100%
+                    </span>
 
-                </span>
+                </div>
+
 
                 <input
                     type="range"
-                    id="sprayIntensity"
-                    min="20"
-                    max="100"
-                    value="70"
+                    id="motion3dRange"
+                    min="0"
+                    max="150"
+                    value="100"
                 >
 
-            </label>
+            </div>
 
 
-            <label class="studio-range">
+            <div class="range-setting">
 
-                <span>
+                <div>
+
+                    <strong>
+                        Intensidade Cursor Glow
+                    </strong>
+
+                    <span id="cursorGlowValue">
+                        100%
+                    </span>
+
+                </div>
+
+
+                <input
+                    type="range"
+                    id="cursorGlowRange"
+                    min="0"
+                    max="150"
+                    value="100"
+                >
+
+            </div>
+
+
+            <div class="range-setting">
+
+                <div>
+
+                    <strong>
+                        Intensidade das partículas
+                    </strong>
+
+                    <span id="particleIntensityValue">
+                        100%
+                    </span>
+
+                </div>
+
+
+                <input
+                    type="range"
+                    id="particleIntensityRange"
+                    min="0"
+                    max="150"
+                    value="100"
+                >
+
+            </div>
+
+
+            <div class="range-setting">
+
+                <div>
+
+                    <strong>
+                        Intensidade do borrifador
+                    </strong>
+
+                    <span id="sprayIntensityValue">
+                        100%
+                    </span>
+
+                </div>
+
+
+                <input
+                    type="range"
+                    id="sprayIntensityRange"
+                    min="40"
+                    max="160"
+                    value="100"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- ACESSIBILIDADE -->
+
+        <div class="settings-group">
+
+            <span class="settings-title">
+                Leitura
+            </span>
+
+
+            <div class="range-setting">
+
+                <div>
 
                     <strong>
                         Contraste
                     </strong>
 
-                    <b id="contrastValue">
+                    <span id="contrastValue">
                         100%
-                    </b>
+                    </span>
 
-                </span>
+                </div>
+
 
                 <input
                     type="range"
@@ -3000,98 +2940,50 @@
                     value="100"
                 >
 
-            </label>
+            </div>
 
 
-            <label class="switch-row">
-
-                <span>
-
-                    <strong>
-                        Som do borrifador
-                    </strong>
-
-                    <small>
-                        Efeito sonoro sintetizado
-                    </small>
-
-                </span>
-
-                <input
-                    type="checkbox"
-                    id="spraySoundToggle"
-                    checked
-                >
-
-                <i></i>
-
-            </label>
-
-
-            <label class="switch-row">
+            <div class="font-size-setting">
 
                 <span>
-
-                    <strong>
-                        Modo Clean
-                    </strong>
-
-                    <small>
-                        Visual mais simples
-                    </small>
-
+                    Tamanho do texto
                 </span>
 
-                <input
-                    type="checkbox"
-                    id="cleanModeToggle"
-                >
 
-                <i></i>
-                            </label>
+                <div>
 
-        </div>
-
-
-        <!-- TAMANHO DO TEXTO -->
-
-        <div class="settings-group">
-
-            <span class="settings-title">
-                Tamanho do texto
-            </span>
+                    <button
+                        type="button"
+                        data-font-size="small"
+                    >
+                        A-
+                    </button>
 
 
-            <div class="font-size-buttons">
-
-                <button
-                    data-font-size="small"
-                    type="button"
-                >
-                    A
-                </button>
-
-
-                <button
-                    class="active"
-                    data-font-size="normal"
-                    type="button"
-                >
-                    A
-                </button>
+                    <button
+                        type="button"
+                        data-font-size="normal"
+                        class="active"
+                    >
+                        A
+                    </button>
 
 
-                <button
-                    data-font-size="large"
-                    type="button"
-                >
-                    A
-                </button>
+                    <button
+                        type="button"
+                        data-font-size="large"
+                    >
+                        A+
+                    </button>
+
+                </div>
 
             </div>
 
         </div>
 
+
+        <!-- RESET -->
 
         <button
             class="reset-settings"
@@ -3149,6 +3041,11 @@
         </span>
 
         <span>
+            <kbd>G</kbd>
+            Studio
+        </span>
+
+        <span>
             <kbd>←</kbd>
             <kbd>→</kbd>
             Galeria
@@ -3173,10 +3070,94 @@
 
 
     <!-- ==========================================
+         FOOTER
+    =========================================== -->
+
+    <footer>
+
+        <div class="footer-brand">
+
+            <a
+                href="#inicio"
+                class="logo"
+            >
+                Dream<span>.</span>
+            </a>
+
+
+            <p>
+                Amor no Ar • 350 ml
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="#produto">
+                Produto
+            </a>
+
+            <a href="#notas">
+                Notas
+            </a>
+
+            <a href="#galeria">
+                Galeria
+            </a>
+
+            <a href="#quiz">
+                Quiz
+            </a>
+
+        </div>
+
+
+        <div class="developer-credit">
+
+            <span>
+                DESENVOLVIDO POR
+            </span>
+
+
+            <img
+                src="./img/ASTRO.jpg"
+                alt="Bayerlee"
+                class="developer-photo"
+            >
+
+
+            <strong>
+                BAYERLEE
+            </strong>
+
+
+            <span>
+                E
+            </span>
+
+
+            <img
+                src="./img/BIA.jpg"
+                alt="Beatriz"
+                class="developer-photo"
+            >
+
+
+            <strong>
+                BEATRIZ
+            </strong>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==========================================
          JAVASCRIPT
     =========================================== -->
 
-    <script src="./script.js?v=3.0.1"></script>
+    <script src="./script.js?v=3.0-final"></script>
 
 
 </body>
