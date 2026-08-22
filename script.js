@@ -1,30 +1,83 @@
 /* =========================================
-   ATIVAR JS
+   INICIAR
 ========================================= */
 
 document.body.classList.add("js-ativo");
 
 
 /* =========================================
+   FUNÇÕES AUXILIARES
+========================================= */
+
+function salvarLocal(chave, valor) {
+
+    try {
+
+        localStorage.setItem(
+            chave,
+            valor
+        );
+
+    } catch (erro) {
+
+        console.log(
+            "Não foi possível salvar no navegador."
+        );
+
+    }
+
+}
+
+
+function lerLocal(chave) {
+
+    try {
+
+        return localStorage.getItem(
+            chave
+        );
+
+    } catch (erro) {
+
+        return null;
+
+    }
+
+}
+
+
+/* =========================================
    LOADER
 ========================================= */
 
-window.addEventListener("load", () => {
+window.addEventListener(
+    "load",
+    () => {
 
-    const loader =
-        document.getElementById("loader");
+        const loader =
+            document.getElementById(
+                "loader"
+            );
 
-    setTimeout(() => {
 
-        if (loader) {
+        setTimeout(
+            () => {
 
-            loader.classList.add("sumir");
+                if (loader) {
 
-        }
+                    loader.classList.add(
+                        "sumir"
+                    );
 
-    }, 1000);
+                }
 
-});
+            },
+
+            1000
+        );
+
+    }
+);
 
 
 /* =========================================
@@ -32,7 +85,10 @@ window.addEventListener("load", () => {
 ========================================= */
 
 const toast =
-    document.getElementById("toast");
+    document.getElementById(
+        "toast"
+    );
+
 
 let timerToast;
 
@@ -57,13 +113,17 @@ function mostrarToast(texto) {
 
 
     timerToast =
-        setTimeout(() => {
+        setTimeout(
+            () => {
 
-            toast.classList.remove(
-                "mostrar"
-            );
+                toast.classList.remove(
+                    "mostrar"
+                );
 
-        }, 2200);
+            },
+
+            2200
+        );
 
 }
 
@@ -110,30 +170,32 @@ if (menuMobile && menu) {
         .querySelectorAll(
             ".menu a"
         )
-        .forEach(link => {
+        .forEach(
+            link => {
 
-            link.addEventListener(
-                "click",
-                () => {
+                link.addEventListener(
+                    "click",
+                    () => {
 
-                    menu.classList.remove(
-                        "ativo"
-                    );
+                        menu.classList.remove(
+                            "ativo"
+                        );
 
 
-                    menuMobile.textContent =
-                        "☰";
+                        menuMobile.textContent =
+                            "☰";
 
-                }
-            );
+                    }
+                );
 
-        });
+            }
+        );
 
 }
 
 
 /* =========================================
-   HEADER + PROGRESSO + TOPO
+   HEADER + PROGRESSO
 ========================================= */
 
 const header =
@@ -156,7 +218,7 @@ const voltarTopo =
 
 function atualizarScroll() {
 
-    const y =
+    const scroll =
         window.scrollY;
 
 
@@ -164,7 +226,7 @@ function atualizarScroll() {
 
         header.classList.toggle(
             "scrolled",
-            y > 40
+            scroll > 40
         );
 
     }
@@ -174,7 +236,7 @@ function atualizarScroll() {
 
         voltarTopo.classList.toggle(
             "mostrar",
-            y > 600
+            scroll > 600
         );
 
     }
@@ -200,7 +262,7 @@ function atualizarScroll() {
                 ?
 
                 (
-                    y /
+                    scroll /
                     total
                 ) * 100
 
@@ -219,7 +281,10 @@ function atualizarScroll() {
 
 window.addEventListener(
     "scroll",
-    atualizarScroll
+    atualizarScroll,
+    {
+        passive: true
+    }
 );
 
 
@@ -247,10 +312,10 @@ if (voltarTopo) {
 
 
 /* =========================================
-   REVELAR NO SCROLL
+   REVEAL AO ROLAR
 ========================================= */
 
-const elementos =
+const revelar =
     document.querySelectorAll(
         ".revelar"
     );
@@ -261,7 +326,7 @@ if (
     in window
 ) {
 
-    const observer =
+    const observerReveal =
         new IntersectionObserver(
 
             entradas => {
@@ -273,17 +338,17 @@ if (
                             entrada.isIntersecting
                         ) {
 
-                            entrada
-                                .target
+                            entrada.target
                                 .classList
                                 .add(
                                     "visivel"
                                 );
 
 
-                            observer.unobserve(
-                                entrada.target
-                            );
+                            observerReveal
+                                .unobserve(
+                                    entrada.target
+                                );
 
                         }
 
@@ -299,10 +364,10 @@ if (
         );
 
 
-    elementos.forEach(
+    revelar.forEach(
         elemento => {
 
-            observer.observe(
+            observerReveal.observe(
                 elemento
             );
 
@@ -311,7 +376,7 @@ if (
 
 } else {
 
-    elementos.forEach(
+    revelar.forEach(
         elemento => {
 
             elemento.classList.add(
@@ -354,12 +419,17 @@ if (
                             entrada.target
                                 .style
                                 .width =
-                                entrada
-                                    .target
+                                entrada.target
                                     .dataset
                                     .valor
                                 +
                                 "%";
+
+
+                            observerMedidores
+                                .unobserve(
+                                    entrada.target
+                                );
 
                         }
 
@@ -385,11 +455,24 @@ if (
         }
     );
 
+} else {
+
+    medidores.forEach(
+        medidor => {
+
+            medidor.style.width =
+                medidor.dataset.valor
+                +
+                "%";
+
+        }
+    );
+
 }
 
 
 /* =========================================
-   PARTÍCULAS
+   PARTÍCULAS DO FUNDO
 ========================================= */
 
 const particulas =
@@ -519,8 +602,7 @@ if (
         evento => {
 
             if (
-                window.innerWidth
-                <
+                window.innerWidth <
                 900
             ) {
                 return;
@@ -544,31 +626,27 @@ if (
                 area.top;
 
 
-            const cx =
-                area.width
-                /
-                2;
+            const centroX =
+                area.width / 2;
 
 
-            const cy =
-                area.height
-                /
-                2;
+            const centroY =
+                area.height / 2;
 
 
-            const ry =
+            const rotacaoY =
                 (
                     x -
-                    cx
+                    centroX
                 )
                 /
                 30;
 
 
-            const rx =
+            const rotacaoX =
                 -(
                     y -
-                    cy
+                    centroY
                 )
                 /
                 30;
@@ -577,8 +655,8 @@ if (
             frasco.style.transform =
                 `
                 perspective(900px)
-                rotateX(${rx}deg)
-                rotateY(${ry}deg)
+                rotateX(${rotacaoX}deg)
+                rotateY(${rotacaoY}deg)
                 scale(1.03)
                 `;
 
@@ -640,53 +718,51 @@ function fazerSpray() {
 
     for (
         let i = 0;
-        i < 28;
+        i < 30;
         i++
     ) {
 
-        const p =
+        const gota =
             document.createElement(
                 "span"
             );
 
 
-        p.className =
+        gota.className =
             "spray-particula";
 
 
         const x =
-            (
-                Math.random()
-                *
-                180
-            )
+            Math.random()
+            *
+            190
             -
-            90;
+            95;
 
 
         const y =
             -(
-                30
+                35
                 +
                 Math.random()
                 *
-                150
+                160
             );
 
 
-        p.style.setProperty(
+        gota.style.setProperty(
             "--x",
             x + "px"
         );
 
 
-        p.style.setProperty(
+        gota.style.setProperty(
             "--y",
             y + "px"
         );
 
 
-        p.style.animationDelay =
+        gota.style.animationDelay =
             Math.random()
             *
             0.15
@@ -702,27 +778,31 @@ function fazerSpray() {
             5;
 
 
-        p.style.width =
-            tamanho + "px";
+        gota.style.width =
+            tamanho
+            +
+            "px";
 
 
-        p.style.height =
-            tamanho + "px";
+        gota.style.height =
+            tamanho
+            +
+            "px";
 
 
         sprayArea.appendChild(
-            p
+            gota
         );
 
 
         setTimeout(
             () => {
 
-                p.remove();
+                gota.remove();
 
             },
 
-            1200
+            1300
         );
 
     }
@@ -764,7 +844,7 @@ const favoritarModal =
 function estaFavoritado() {
 
     return (
-        localStorage.getItem(
+        lerLocal(
             "dreamFavorito"
         )
         ===
@@ -842,14 +922,11 @@ function alternarFavorito() {
         !estaFavoritado();
 
 
-    localStorage.setItem(
-
+    salvarLocal(
         "dreamFavorito",
-
         novoEstado
             ? "sim"
             : "nao"
-
     );
 
 
@@ -926,18 +1003,22 @@ async function compartilharSite() {
 
     try {
 
-        if (navigator.share) {
+        if (
+            navigator.share
+        ) {
 
             await navigator.share(
                 dados
             );
 
             return;
+
         }
 
 
         if (
-            navigator.clipboard
+            navigator.clipboard &&
+            navigator.clipboard.writeText
         ) {
 
             await navigator.clipboard
@@ -950,7 +1031,9 @@ async function compartilharSite() {
                 "Link copiado!"
             );
 
+
             return;
+
         }
 
 
@@ -1016,6 +1099,27 @@ if (compartilharModal) {
 
 
 /* =========================================
+   BLOQUEIO DO BODY PARA MODAIS
+========================================= */
+
+function atualizarBloqueioBody() {
+
+    const algumAberto =
+
+        document.querySelector(
+            ".modal.ativo, .lightbox.ativo"
+        );
+
+
+    document.body.classList.toggle(
+        "modal-aberto",
+        Boolean(algumAberto)
+    );
+
+}
+
+
+/* =========================================
    MODAL PRODUTO
 ========================================= */
 
@@ -1047,9 +1151,7 @@ function abrirModalProduto() {
     );
 
 
-    document.body.classList.add(
-        "modal-aberto"
-    );
+    atualizarBloqueioBody();
 
 }
 
@@ -1070,9 +1172,7 @@ function fecharModalProduto() {
     );
 
 
-    document.body.classList.remove(
-        "modal-aberto"
-    );
+    atualizarBloqueioBody();
 
 }
 
@@ -1148,7 +1248,6 @@ const dadosNotas = {
 
     },
 
-
     cassis: {
 
         titulo:
@@ -1161,7 +1260,6 @@ const dadosNotas = {
             "Uma nota frutada de perfil marcante e levemente ácido."
 
     },
-
 
     mandarina: {
 
@@ -1176,7 +1274,6 @@ const dadosNotas = {
 
     },
 
-
     maca: {
 
         titulo:
@@ -1189,7 +1286,6 @@ const dadosNotas = {
             "Contribui com um toque frutado fresco, suave e suculento."
 
     },
-
 
     rosa: {
 
@@ -1204,7 +1300,6 @@ const dadosNotas = {
 
     },
 
-
     lotus: {
 
         titulo:
@@ -1217,7 +1312,6 @@ const dadosNotas = {
             "Traz uma sensação floral leve, suave e delicada."
 
     },
-
 
     freesia: {
 
@@ -1232,7 +1326,6 @@ const dadosNotas = {
 
     },
 
-
     pessego: {
 
         titulo:
@@ -1245,7 +1338,6 @@ const dadosNotas = {
             "Adiciona uma faceta frutada macia, doce e confortável."
 
     },
-
 
     ambar: {
 
@@ -1260,7 +1352,6 @@ const dadosNotas = {
 
     },
 
-
     sandalo: {
 
         titulo:
@@ -1274,7 +1365,6 @@ const dadosNotas = {
 
     },
 
-
     baunilha: {
 
         titulo:
@@ -1287,7 +1377,6 @@ const dadosNotas = {
             "Acrescenta um dulçor macio, envolvente e aconchegante."
 
     },
-
 
     musk: {
 
@@ -1308,7 +1397,9 @@ const dadosNotas = {
 function abrirNota(nome) {
 
     const nota =
-        dadosNotas[nome];
+        dadosNotas[
+            nome
+        ];
 
 
     if (
@@ -1354,9 +1445,7 @@ function abrirNota(nome) {
     );
 
 
-    document.body.classList.add(
-        "modal-aberto"
-    );
+    atualizarBloqueioBody();
 
 }
 
@@ -1377,9 +1466,7 @@ function fecharNota() {
     );
 
 
-    document.body.classList.remove(
-        "modal-aberto"
-    );
+    atualizarBloqueioBody();
 
 }
 
@@ -1420,28 +1507,6 @@ document
 
         }
     );
-
-
-/* ESC FECHA MODAIS */
-
-document.addEventListener(
-    "keydown",
-    evento => {
-
-        if (
-            evento.key
-            ===
-            "Escape"
-        ) {
-
-            fecharNota();
-
-            fecharModalProduto();
-
-        }
-
-    }
-);
 
 
 /* =========================================
@@ -1501,9 +1566,7 @@ function atualizarCarrossel() {
 
                 ponto.classList.toggle(
                     "ativo",
-                    indice
-                    ===
-                    slideAtual
+                    indice === slideAtual
                 );
 
             }
@@ -1579,8 +1642,7 @@ if (
 
             slideAtual =
                 (
-                    slideAtual
-                    +
+                    slideAtual +
                     1
                 )
                 %
@@ -1606,10 +1668,8 @@ if (
 
             slideAtual =
                 (
-                    slideAtual
-                    -
-                    1
-                    +
+                    slideAtual -
+                    1 +
                     slides.length
                 )
                 %
@@ -1632,8 +1692,7 @@ function iniciarCarrossel() {
 
 
     if (
-        slides.length
-        <=
+        slides.length <=
         1
     ) {
         return;
@@ -1646,8 +1705,7 @@ function iniciarCarrossel() {
 
                 slideAtual =
                     (
-                        slideAtual
-                        +
+                        slideAtual +
                         1
                     )
                     %
@@ -1693,6 +1751,482 @@ if (areaCarrossel) {
 
 
 iniciarCarrossel();
+
+
+/* =========================================
+   LIGHTBOX
+========================================= */
+
+const lightbox =
+    document.getElementById(
+        "lightbox"
+    );
+
+
+const lightboxImagem =
+    document.getElementById(
+        "lightboxImagem"
+    );
+
+
+const lightboxFechar =
+    document.getElementById(
+        "lightboxFechar"
+    );
+
+
+const fecharLightboxFundo =
+    document.getElementById(
+        "fecharLightbox"
+    );
+
+
+function abrirGaleriaGrande(imagem) {
+
+    if (
+        !lightbox ||
+        !lightboxImagem
+    ) {
+        return;
+    }
+
+
+    lightboxImagem.src =
+        imagem.src;
+
+
+    lightboxImagem.alt =
+        imagem.alt;
+
+
+    lightbox.classList.add(
+        "ativo"
+    );
+
+
+    lightbox.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    atualizarBloqueioBody();
+
+}
+
+
+function fecharGaleriaGrande() {
+
+    if (!lightbox) return;
+
+
+    lightbox.classList.remove(
+        "ativo"
+    );
+
+
+    lightbox.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    atualizarBloqueioBody();
+
+}
+
+
+document
+    .querySelectorAll(
+        ".slide img"
+    )
+    .forEach(
+        imagem => {
+
+            imagem.addEventListener(
+                "click",
+                () => {
+
+                    abrirGaleriaGrande(
+                        imagem
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+if (lightboxFechar) {
+
+    lightboxFechar.addEventListener(
+        "click",
+        fecharGaleriaGrande
+    );
+
+}
+
+
+if (fecharLightboxFundo) {
+
+    fecharLightboxFundo.addEventListener(
+        "click",
+        fecharGaleriaGrande
+    );
+
+}
+
+
+/* =========================================
+   DREAM MOOD
+========================================= */
+
+const moodBotoes =
+    document.querySelectorAll(
+        ".mood-botao"
+    );
+
+
+const moodCard =
+    document.getElementById(
+        "moodCard"
+    );
+
+
+const moodIcone =
+    document.getElementById(
+        "moodIcone"
+    );
+
+
+const moodTitulo =
+    document.getElementById(
+        "moodTitulo"
+    );
+
+
+const moodTexto =
+    document.getElementById(
+        "moodTexto"
+    );
+
+
+const moods = {
+
+    romantico: {
+
+        icone:
+            "♡",
+
+        titulo:
+            "Amor no Ar",
+
+        texto:
+            "Um clima romântico, delicado e cheio de pequenos momentos especiais."
+
+    },
+
+
+    delicado: {
+
+        icone:
+            "✿",
+
+        titulo:
+            "Leve & Delicado",
+
+        texto:
+            "Uma atmosfera suave para dias tranquilos e cheios de leveza."
+
+    },
+
+
+    noturno: {
+
+        icone:
+            "☾",
+
+        titulo:
+            "Dream After Dark",
+
+        texto:
+            "Uma atmosfera mais intensa e envolvente para momentos especiais à noite."
+
+    }
+
+};
+
+
+moodBotoes.forEach(
+    botao => {
+
+        botao.addEventListener(
+            "click",
+            () => {
+
+                const mood =
+                    botao.dataset.mood;
+
+
+                const dados =
+                    moods[mood];
+
+
+                if (
+                    !dados ||
+                    !moodCard
+                ) {
+                    return;
+                }
+
+
+                moodBotoes.forEach(
+                    outro => {
+
+                        outro.classList.remove(
+                            "ativo"
+                        );
+
+                    }
+                );
+
+
+                botao.classList.add(
+                    "ativo"
+                );
+
+
+                moodCard.classList.remove(
+                    "romantico",
+                    "delicado",
+                    "noturno"
+                );
+
+
+                moodCard.classList.add(
+                    mood
+                );
+
+
+                if (moodIcone) {
+
+                    moodIcone.textContent =
+                        dados.icone;
+
+                }
+
+
+                if (moodTitulo) {
+
+                    moodTitulo.textContent =
+                        dados.titulo;
+
+                }
+
+
+                if (moodTexto) {
+
+                    moodTexto.textContent =
+                        dados.texto;
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================
+   MODO ESCURO
+========================================= */
+
+const botaoTema =
+    document.getElementById(
+        "botaoTema"
+    );
+
+
+function atualizarBotaoTema() {
+
+    if (!botaoTema) return;
+
+
+    const escuro =
+        document.body
+            .classList
+            .contains(
+                "tema-escuro"
+            );
+
+
+    botaoTema.textContent =
+        escuro
+            ? "☀"
+            : "☾";
+
+}
+
+
+const temaSalvo =
+    lerLocal(
+        "dreamTema"
+    );
+
+
+if (
+    temaSalvo ===
+    "escuro"
+) {
+
+    document.body.classList.add(
+        "tema-escuro"
+    );
+
+}
+
+
+atualizarBotaoTema();
+
+
+if (botaoTema) {
+
+    botaoTema.addEventListener(
+        "click",
+        () => {
+
+            document.body
+                .classList
+                .toggle(
+                    "tema-escuro"
+                );
+
+
+            const escuro =
+                document.body
+                    .classList
+                    .contains(
+                        "tema-escuro"
+                    );
+
+
+            salvarLocal(
+                "dreamTema",
+                escuro
+                    ? "escuro"
+                    : "claro"
+            );
+
+
+            atualizarBotaoTema();
+
+
+            mostrarToast(
+                escuro
+                    ? "Modo noturno ativado ☾"
+                    : "Modo claro ativado ☀"
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   MENU MOSTRA SEÇÃO ATUAL
+========================================= */
+
+const secoesMenu =
+    document.querySelectorAll(
+        "main section[id]"
+    );
+
+
+const linksMenu =
+    document.querySelectorAll(
+        ".menu a"
+    );
+
+
+if (
+    "IntersectionObserver"
+    in window
+) {
+
+    const observerMenu =
+        new IntersectionObserver(
+
+            entradas => {
+
+                entradas.forEach(
+                    entrada => {
+
+                        if (
+                            !entrada.isIntersecting
+                        ) {
+                            return;
+                        }
+
+
+                        const id =
+                            entrada.target.id;
+
+
+                        linksMenu.forEach(
+                            link => {
+
+                                link.classList.remove(
+                                    "menu-ativo"
+                                );
+
+
+                                if (
+                                    link.getAttribute(
+                                        "href"
+                                    )
+                                    ===
+                                    "#" + id
+                                ) {
+
+                                    link.classList.add(
+                                        "menu-ativo"
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    }
+                );
+
+            },
+
+            {
+                rootMargin:
+                    "-30% 0px -55% 0px",
+
+                threshold:
+                    0
+            }
+
+        );
+
+
+    secoesMenu.forEach(
+        secao => {
+
+            observerMenu.observe(
+                secao
+            );
+
+        }
+    );
+
+}
 
 
 /* =========================================
@@ -1819,9 +2353,7 @@ function mostrarPergunta() {
 
         <div>
 
-            <span
-                class="quiz-numero"
-            >
+            <span class="quiz-numero">
                 0${perguntaAtual + 1} / 03
             </span>
 
@@ -1904,7 +2436,9 @@ function mostrarResultado() {
 
 
     Object
-        .keys(respostas)
+        .keys(
+            respostas
+        )
         .forEach(
             chave => {
 
@@ -1923,7 +2457,7 @@ function mostrarResultado() {
         );
 
 
-    const dados = {
+    const resultados = {
 
         romantico: {
 
@@ -1962,7 +2496,7 @@ function mostrarResultado() {
                 "Seu momento é Elegante",
 
             texto:
-                "Você gosta de personalidade, presença e momentos especiais."
+                "Você gosta de personalidade, presença e momentos em que cada detalhe faz diferença."
 
         }
 
@@ -1970,16 +2504,14 @@ function mostrarResultado() {
 
 
     const r =
-        dados[
+        resultados[
             resultado
         ];
 
 
     quizCard.innerHTML = `
 
-        <div
-            class="quiz-resultado"
-        >
+        <div class="quiz-resultado">
 
             <span>
                 ${r.icone}
@@ -2018,14 +2550,20 @@ function mostrarResultado() {
             "click",
             () => {
 
-                perguntaAtual = 0;
+                perguntaAtual =
+                    0;
 
 
-                respostas.romantico = 0;
+                respostas.romantico =
+                    0;
 
-                respostas.leve = 0;
 
-                respostas.elegante = 0;
+                respostas.leve =
+                    0;
+
+
+                respostas.elegante =
+                    0;
 
 
                 mostrarPergunta();
@@ -2083,10 +2621,9 @@ document
                         .forEach(
                             outro => {
 
-                                outro.classList
-                                    .remove(
-                                        "ativo"
-                                    );
+                                outro.classList.remove(
+                                    "ativo"
+                                );
 
                             }
                         );
@@ -2105,3 +2642,201 @@ document
 
         }
     );
+
+
+/* =========================================
+   EASTER EGG DO LOGO
+   5 CLIQUES = CHUVA DE CORAÇÕES
+========================================= */
+
+const logos =
+    document.querySelectorAll(
+        ".logo"
+    );
+
+
+let cliquesLogo = 0;
+
+let timerLogo;
+
+
+logos.forEach(
+    logo => {
+
+        logo.addEventListener(
+            "click",
+            () => {
+
+                cliquesLogo++;
+
+
+                clearTimeout(
+                    timerLogo
+                );
+
+
+                timerLogo =
+                    setTimeout(
+                        () => {
+
+                            cliquesLogo =
+                                0;
+
+                        },
+
+                        2500
+                    );
+
+
+                if (
+                    cliquesLogo >=
+                    5
+                ) {
+
+                    cliquesLogo =
+                        0;
+
+
+                    chuvaDeCoracoes();
+
+
+                    mostrarToast(
+                        "Love is in the air ♡"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+function chuvaDeCoracoes() {
+
+    for (
+        let i = 0;
+        i < 45;
+        i++
+    ) {
+
+        const coracao =
+            document.createElement(
+                "span"
+            );
+
+
+        coracao.className =
+            "coracao-explosao";
+
+
+        coracao.textContent =
+            Math.random()
+            >
+            .5
+
+                ? "♡"
+
+                : "♥";
+
+
+        coracao.style.left =
+            Math.random()
+            *
+            100
+            +
+            "vw";
+
+
+        coracao.style.bottom =
+            (
+                -20
+                +
+                Math.random()
+                *
+                80
+            )
+            +
+            "px";
+
+
+        coracao.style.fontSize =
+            (
+                12
+                +
+                Math.random()
+                *
+                28
+            )
+            +
+            "px";
+
+
+        coracao.style.setProperty(
+            "--movimento",
+
+            (
+                Math.random()
+                *
+                200
+                -
+                100
+            )
+            +
+            "px"
+        );
+
+
+        coracao.style.animationDelay =
+            Math.random()
+            *
+            .5
+            +
+            "s";
+
+
+        document.body.appendChild(
+            coracao
+        );
+
+
+        setTimeout(
+            () => {
+
+                coracao.remove();
+
+            },
+
+            3200
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   ESC FECHA TUDO
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    evento => {
+
+        if (
+            evento.key !==
+            "Escape"
+        ) {
+            return;
+        }
+
+
+        fecharNota();
+
+        fecharModalProduto();
+
+        fecharGaleriaGrande();
+
+    }
+);
