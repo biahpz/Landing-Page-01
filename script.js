@@ -3474,3 +3474,2047 @@ updateSectionIndicator();
 console.log(
   "Dream Update 3.0 carregado com sucesso ✦"
 );
+/* =========================================================
+   DREAM UPDATE 3.1
+   ADICIONAR NO FINAL DO SCRIPT.JS
+========================================================= */
+
+(() => {
+
+    "use strict";
+
+
+    /* =====================================================
+       EVITAR CARREGAR DUAS VEZES
+    ===================================================== */
+
+    if (
+        window.DREAM_UPDATE_31
+    ) {
+
+        return;
+
+    }
+
+
+    window.DREAM_UPDATE_31 =
+        true;
+
+
+    /* =====================================================
+       HELPERS 3.1
+    ===================================================== */
+
+    const d31 = (
+        selector,
+        parent = document
+    ) =>
+        parent.querySelector(
+            selector
+        );
+
+
+    const d31All = (
+        selector,
+        parent = document
+    ) =>
+        [
+            ...parent.querySelectorAll(
+                selector
+            )
+        ];
+
+
+    const d31Body =
+        document.body;
+
+
+    const d31Root =
+        document.documentElement;
+
+
+    /* =====================================================
+       CSS DO UPDATE 3.1
+    ===================================================== */
+
+    const dream31Style =
+        document.createElement(
+            "style"
+        );
+
+
+    dream31Style.id =
+        "dreamUpdate31Style";
+
+
+    dream31Style.textContent = `
+
+        :root {
+            --dream31-intensity: 1;
+        }
+
+
+        .dream31-floating {
+            position: fixed;
+
+            left: 22px;
+            bottom: 22px;
+
+            z-index: 9000;
+
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+
+        .dream31-surprise {
+            border: 1px solid rgba(255,255,255,.2);
+
+            border-radius: 999px;
+
+            padding: 13px 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(var(--primary-rgb), .95),
+                    rgba(var(--secondary-rgb), .95)
+                );
+
+            color: #fff;
+
+            font: inherit;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 15px 45px
+                rgba(var(--primary-rgb), .25);
+
+            backdrop-filter:
+                blur(16px);
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+
+        .dream31-surprise:hover {
+            transform:
+                translateY(-3px)
+                scale(1.03);
+
+            box-shadow:
+                0 20px 55px
+                rgba(var(--primary-rgb), .38);
+        }
+
+
+        .dream31-panel {
+            position: fixed;
+
+            right: 22px;
+            bottom: 90px;
+
+            width:
+                min(
+                    330px,
+                    calc(100vw - 32px)
+                );
+
+            max-height:
+                min(
+                    650px,
+                    calc(100vh - 130px)
+                );
+
+            overflow-y: auto;
+
+            z-index: 9001;
+
+            padding: 22px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.16);
+
+            border-radius: 26px;
+
+            background:
+                rgba(20,20,28,.86);
+
+            color: #fff;
+
+            backdrop-filter:
+                blur(25px);
+
+            box-shadow:
+                0 25px 80px
+                rgba(0,0,0,.30);
+
+            transform:
+                translateY(20px)
+                scale(.96);
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transition:
+                opacity .25s ease,
+                transform .25s ease;
+        }
+
+
+        .dream31-panel.open {
+            opacity: 1;
+
+            pointer-events: auto;
+
+            transform:
+                translateY(0)
+                scale(1);
+        }
+
+
+        .dream31-panel h3 {
+            margin:
+                0 0 6px;
+
+            font-size: 25px;
+        }
+
+
+        .dream31-panel > p {
+            margin:
+                0 0 20px;
+
+            opacity: .7;
+
+            font-size: 13px;
+        }
+
+
+        .dream31-block {
+            margin-top: 18px;
+
+            padding-top: 18px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.10);
+        }
+
+
+        .dream31-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 10px;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+
+        .dream31-toggle {
+            appearance: none;
+
+            width: 46px;
+            height: 25px;
+
+            border-radius: 999px;
+
+            background:
+                rgba(255,255,255,.14);
+
+            position: relative;
+
+            cursor: pointer;
+
+            transition:
+                .25s ease;
+        }
+
+
+        .dream31-toggle::before {
+            content: "";
+
+            position: absolute;
+
+            top: 4px;
+            left: 4px;
+
+            width: 17px;
+            height: 17px;
+
+            border-radius: 50%;
+
+            background: #fff;
+
+            transition:
+                .25s ease;
+        }
+
+
+        .dream31-toggle:checked {
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--primary),
+                    var(--secondary)
+                );
+        }
+
+
+        .dream31-toggle:checked::before {
+            transform:
+                translateX(21px);
+        }
+
+
+        .dream31-range {
+            width: 100%;
+
+            accent-color:
+                var(--primary);
+        }
+
+
+        .dream31-stats {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 10px;
+        }
+
+
+        .dream31-stat {
+            padding: 15px;
+
+            border-radius: 17px;
+
+            background:
+                rgba(255,255,255,.07);
+
+            text-align: center;
+        }
+
+
+        .dream31-stat strong {
+            display: block;
+
+            font-size: 25px;
+        }
+
+
+        .dream31-stat small {
+            opacity: .6;
+
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+
+        .dream31-phrase {
+            position: fixed;
+
+            left: 50%;
+            bottom: 100px;
+
+            z-index: 9500;
+
+            width:
+                min(
+                    520px,
+                    calc(100vw - 40px)
+                );
+
+            padding:
+                18px 24px;
+
+            border-radius:
+                22px;
+
+            background:
+                rgba(15,15,23,.88);
+
+            border:
+                1px solid
+                rgba(255,255,255,.12);
+
+            color: #fff;
+
+            text-align: center;
+
+            backdrop-filter:
+                blur(18px);
+
+            transform:
+                translate(
+                    -50%,
+                    30px
+                );
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transition:
+                opacity .35s ease,
+                transform .35s ease;
+        }
+
+
+        .dream31-phrase.show {
+            opacity: 1;
+
+            transform:
+                translate(
+                    -50%,
+                    0
+                );
+        }
+
+
+        .dream31-phrase small {
+            display: block;
+
+            margin-bottom: 5px;
+
+            opacity: .55;
+
+            letter-spacing: 2px;
+
+            font-size: 9px;
+        }
+
+
+        .dream31-phrase strong {
+            font-size:
+                clamp(
+                    16px,
+                    3vw,
+                    21px
+                );
+        }
+
+
+        .dream31-mixer-notes {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 7px;
+        }
+
+
+        .dream31-note {
+            border:
+                1px solid
+                rgba(255,255,255,.13);
+
+            border-radius:
+                999px;
+
+            padding:
+                8px 11px;
+
+            color: #fff;
+
+            background:
+                rgba(255,255,255,.06);
+
+            cursor: pointer;
+
+            font-size: 11px;
+
+            transition:
+                .2s ease;
+        }
+
+
+        .dream31-note.active {
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--secondary)
+                );
+
+            border-color:
+                transparent;
+        }
+
+
+        .dream31-mix-button {
+            width: 100%;
+
+            margin-top: 12px;
+
+            padding:
+                12px;
+
+            border: 0;
+
+            border-radius:
+                14px;
+
+            color: #fff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--secondary)
+                );
+
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+
+        .dream31-mix-result {
+            display: none;
+
+            margin-top: 12px;
+
+            padding:
+                14px;
+
+            border-radius:
+                15px;
+
+            background:
+                rgba(255,255,255,.06);
+        }
+
+
+        .dream31-mix-result.show {
+            display: block;
+        }
+
+
+        .dream31-mix-result strong {
+            display: block;
+
+            margin-bottom: 6px;
+
+            font-size: 17px;
+        }
+
+
+        .dream31-mix-result p {
+            margin: 0;
+
+            opacity: .72;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        .dream31-open-panel {
+            position: fixed;
+
+            right: 22px;
+            bottom: 22px;
+
+            z-index: 9002;
+
+            width: 54px;
+            height: 54px;
+
+            border: 0;
+
+            border-radius: 50%;
+
+            color: #fff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--secondary)
+                );
+
+            font-size: 20px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 15px 45px
+                rgba(var(--primary-rgb), .3);
+        }
+
+
+        body.dream31-cinema-mode header,
+        body.dream31-cinema-mode footer,
+        body.dream31-cinema-mode .settings-fab,
+        body.dream31-cinema-mode .back-top,
+        body.dream31-cinema-mode #sectionIndicator,
+        body.dream31-cinema-mode .dream31-floating,
+        body.dream31-cinema-mode .dream31-open-panel,
+        body.dream31-cinema-mode .dream31-panel {
+            opacity: 0 !important;
+
+            pointer-events: none !important;
+        }
+
+
+        body.dream31-cinema-mode {
+            cursor: none;
+        }
+
+
+        body.dream31-cinema-mode::after {
+            content: "Pressione ESC para sair do modo cinema";
+
+            position: fixed;
+
+            left: 50%;
+            bottom: 22px;
+
+            z-index: 99999;
+
+            transform:
+                translateX(-50%);
+
+            padding:
+                9px 14px;
+
+            border-radius:
+                999px;
+
+            background:
+                rgba(0,0,0,.45);
+
+            color:
+                rgba(255,255,255,.7);
+
+            font-size: 10px;
+
+            pointer-events: none;
+
+            animation:
+                dream31CinemaMessage
+                4s forwards;
+        }
+
+
+        @keyframes dream31CinemaMessage {
+
+            0%,
+            70% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+
+        }
+
+
+        .spray-mist,
+        .spray-symbol-particle,
+        .particle {
+            opacity:
+                calc(
+                    .65 *
+                    var(--dream31-intensity)
+                );
+        }
+
+
+        #cursorGlow {
+            transform:
+                translate(-50%,-50%)
+                scale(
+                    var(--dream31-intensity)
+                );
+        }
+
+
+        @media (
+            max-width: 600px
+        ) {
+
+            .dream31-floating {
+                left: 15px;
+                bottom: 15px;
+            }
+
+
+            .dream31-surprise {
+                padding:
+                    11px 14px;
+
+                font-size: 12px;
+            }
+
+
+            .dream31-open-panel {
+                right: 15px;
+                bottom: 15px;
+
+                width: 49px;
+                height: 49px;
+            }
+
+
+            .dream31-panel {
+                right: 15px;
+                bottom: 78px;
+
+                width:
+                    calc(100vw - 30px);
+            }
+
+        }
+
+    `;
+
+
+    document.head.appendChild(
+        dream31Style
+    );
+
+
+    /* =====================================================
+       ELEMENTOS DO UPDATE
+    ===================================================== */
+
+    const floating =
+        document.createElement(
+            "div"
+        );
+
+
+    floating.className =
+        "dream31-floating";
+
+
+    floating.innerHTML = `
+
+        <button
+            type="button"
+            class="dream31-surprise"
+            id="dream31Surprise"
+        >
+            ✦ Surpreenda-me
+        </button>
+
+    `;
+
+
+    d31Body.appendChild(
+        floating
+    );
+
+
+    const openPanel =
+        document.createElement(
+            "button"
+        );
+
+
+    openPanel.type =
+        "button";
+
+
+    openPanel.className =
+        "dream31-open-panel";
+
+
+    openPanel.id =
+        "dream31OpenPanel";
+
+
+    openPanel.innerHTML =
+        "✧";
+
+
+    openPanel.setAttribute(
+        "aria-label",
+        "Abrir Dream 3.1"
+    );
+
+
+    d31Body.appendChild(
+        openPanel
+    );
+
+
+    const phraseBox =
+        document.createElement(
+            "div"
+        );
+
+
+    phraseBox.className =
+        "dream31-phrase";
+
+
+    phraseBox.id =
+        "dream31Phrase";
+
+
+    phraseBox.innerHTML = `
+
+        <small>
+            DREAM MOMENT
+        </small>
+
+        <strong
+            id="dream31PhraseText"
+        ></strong>
+
+    `;
+
+
+    d31Body.appendChild(
+        phraseBox
+    );
+
+
+    /* =====================================================
+       PAINEL
+    ===================================================== */
+
+    const panel =
+        document.createElement(
+            "aside"
+        );
+
+
+    panel.className =
+        "dream31-panel";
+
+
+    panel.id =
+        "dream31Panel";
+
+
+    panel.innerHTML = `
+
+        <h3>
+            Dream 3.1 ✦
+        </h3>
+
+        <p>
+            Novas experiências e personalizações.
+        </p>
+
+
+        <div
+            class="dream31-block"
+        >
+
+            <label
+                class="dream31-label"
+            >
+
+                <span>
+                    🔊 Som do borrifador
+                </span>
+
+                <input
+                    type="checkbox"
+                    class="dream31-toggle"
+                    id="dream31Sound"
+                >
+
+            </label>
+
+        </div>
+
+
+        <div
+            class="dream31-block"
+        >
+
+            <div
+                class="dream31-label"
+            >
+
+                <span>
+                    ✨ Intensidade
+                </span>
+
+                <strong
+                    id="dream31IntensityValue"
+                >
+                    100%
+                </strong>
+
+            </div>
+
+            <input
+                type="range"
+                min="40"
+                max="160"
+                value="100"
+                class="dream31-range"
+                id="dream31Intensity"
+            >
+
+        </div>
+
+
+        <div
+            class="dream31-block"
+        >
+
+            <div
+                class="dream31-stats"
+            >
+
+                <div
+                    class="dream31-stat"
+                >
+
+                    <strong
+                        id="dream31SprayCount"
+                    >
+                        0
+                    </strong>
+
+                    <small>
+                        sprays
+                    </small>
+
+                </div>
+
+
+                <div
+                    class="dream31-stat"
+                >
+
+                    <strong
+                        id="dream31SurpriseCount"
+                    >
+                        0
+                    </strong>
+
+                    <small>
+                        surpresas
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="dream31-block"
+        >
+
+            <label
+                class="dream31-label"
+            >
+
+                <span>
+                    🎬 Modo cinema
+                </span>
+
+                <input
+                    type="checkbox"
+                    class="dream31-toggle"
+                    id="dream31Cinema"
+                >
+
+            </label>
+
+        </div>
+
+
+        <div
+            class="dream31-block"
+        >
+
+            <div
+                class="dream31-label"
+            >
+
+                <span>
+                    🧪 Dream Mixer
+                </span>
+
+                <span>
+                    3 notas
+                </span>
+
+            </div>
+
+
+            <div
+                class="dream31-mixer-notes"
+                id="dream31MixerNotes"
+            >
+
+                <button
+                    class="dream31-note"
+                    data-mixer-note="Bergamota"
+                >
+                    🍊 Bergamota
+                </button>
+
+                <button
+                    class="dream31-note"
+                    data-mixer-note="Rosa"
+                >
+                    🌹 Rosa
+                </button>
+
+                <button
+                    class="dream31-note"
+                    data-mixer-note="Baunilha"
+                >
+                    🤍 Baunilha
+                </button>
+
+                <button
+                    class="dream31-note"
+                    data-mixer-note="Musk"
+                >
+                    ☁ Musk
+                </button>
+
+                <button
+                    class="dream31-note"
+                    data-mixer-note="Sândalo"
+                >
+                    🪵 Sândalo
+                </button>
+
+                <button
+                    class="dream31-note"
+                    data-mixer-note="Mandarina"
+                >
+                    🍊 Mandarina
+                </button>
+
+                <button
+                    class="dream31-note"
+                    data-mixer-note="Gardênia"
+                >
+                    🌼 Gardênia
+                </button>
+
+                <button
+                    class="dream31-note"
+                    data-mixer-note="Pêssego"
+                >
+                    🍑 Pêssego
+                </button>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="dream31-mix-button"
+                id="dream31Mix"
+            >
+                Criar meu Dream
+            </button>
+
+
+            <div
+                class="dream31-mix-result"
+                id="dream31MixResult"
+            >
+
+                <strong
+                    id="dream31MixTitle"
+                ></strong>
+
+                <p
+                    id="dream31MixText"
+                ></p>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    d31Body.appendChild(
+        panel
+    );
+
+
+    /* =====================================================
+       ABRIR / FECHAR PAINEL
+    ===================================================== */
+
+    openPanel.addEventListener(
+        "click",
+        () => {
+
+            panel.classList.toggle(
+                "open"
+            );
+
+        }
+    );
+
+
+    document.addEventListener(
+        "click",
+        event => {
+
+            if (
+                !panel.classList.contains(
+                    "open"
+                )
+            ) {
+
+                return;
+
+            }
+
+
+            if (
+                panel.contains(
+                    event.target
+                ) ||
+                openPanel.contains(
+                    event.target
+                )
+            ) {
+
+                return;
+
+            }
+
+
+            panel.classList.remove(
+                "open"
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       FRASES
+    ===================================================== */
+
+    const dream31Phrases = [
+
+        "Alguns momentos não precisam durar para serem inesquecíveis.",
+
+        "O extraordinário começa nos pequenos detalhes.",
+
+        "Deixe um pouco de sonho por onde você passar.",
+
+        "Algumas memórias têm cheiro, cor e sentimento.",
+
+        "O amor também mora nos detalhes que ninguém percebe.",
+
+        "Nem todo sonho acontece dormindo.",
+
+        "Seu momento merece uma atmosfera só dele.",
+
+        "Às vezes, tudo que falta é deixar o inesperado acontecer.",
+
+        "Colecione sensações, não apenas momentos.",
+
+        "Onde existe sentimento, sempre existe algo para lembrar."
+
+    ];
+
+
+    let dream31PhraseTimer;
+
+
+    function dream31ShowPhrase(
+        phrase
+    ) {
+
+        const text =
+            d31(
+                "#dream31PhraseText"
+            );
+
+
+        if (
+            !text
+        ) {
+
+            return;
+
+        }
+
+
+        text.textContent =
+            phrase;
+
+
+        phraseBox.classList.add(
+            "show"
+        );
+
+
+        clearTimeout(
+            dream31PhraseTimer
+        );
+
+
+        dream31PhraseTimer =
+            setTimeout(
+                () => {
+
+                    phraseBox.classList.remove(
+                        "show"
+                    );
+
+                },
+                4500
+            );
+
+    }
+
+
+    function dream31RandomPhrase() {
+
+        const phrase =
+            dream31Phrases[
+                Math.floor(
+                    Math.random() *
+                    dream31Phrases.length
+                )
+            ];
+
+
+        dream31ShowPhrase(
+            phrase
+        );
+
+    }
+
+
+    /* =====================================================
+       CONTADOR DE SPRAYS
+    ===================================================== */
+
+    let dream31Sprays =
+        Number(
+            localStorage.getItem(
+                "dream31Sprays"
+            ) ||
+            0
+        );
+
+
+    function dream31UpdateSprayCount() {
+
+        const element =
+            d31(
+                "#dream31SprayCount"
+            );
+
+
+        if (
+            element
+        ) {
+
+            element.textContent =
+                dream31Sprays;
+
+        }
+
+    }
+
+
+    dream31UpdateSprayCount();
+
+
+    const originalSprayButton =
+        d31(
+            "#sprayButton"
+        );
+
+
+    originalSprayButton?.addEventListener(
+        "click",
+        () => {
+
+            dream31Sprays++;
+
+
+            localStorage.setItem(
+                "dream31Sprays",
+                String(
+                    dream31Sprays
+                )
+            );
+
+
+            dream31UpdateSprayCount();
+
+
+            if (
+                d31(
+                    "#dream31Sound"
+                )?.checked
+            ) {
+
+                dream31PlaySpraySound();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       SOM DO SPRAY
+    ===================================================== */
+
+    const soundToggle =
+        d31(
+            "#dream31Sound"
+        );
+
+
+    const savedSound =
+        localStorage.getItem(
+            "dream31Sound"
+        ) ===
+        "true";
+
+
+    soundToggle.checked =
+        savedSound;
+
+
+    soundToggle.addEventListener(
+        "change",
+        event => {
+
+            localStorage.setItem(
+                "dream31Sound",
+                String(
+                    event.target.checked
+                )
+            );
+
+        }
+    );
+
+
+    function dream31PlaySpraySound() {
+
+        try {
+
+            const AudioContextClass =
+                window.AudioContext ||
+                window.webkitAudioContext;
+
+
+            if (
+                !AudioContextClass
+            ) {
+
+                return;
+
+            }
+
+
+            const context =
+                new AudioContextClass();
+
+
+            const bufferSize =
+                context.sampleRate *
+                0.18;
+
+
+            const buffer =
+                context.createBuffer(
+                    1,
+                    bufferSize,
+                    context.sampleRate
+                );
+
+
+            const data =
+                buffer.getChannelData(
+                    0
+                );
+
+
+            for (
+                let i = 0;
+                i < bufferSize;
+                i++
+            ) {
+
+                const progress =
+                    i /
+                    bufferSize;
+
+
+                data[i] =
+                    (
+                        Math.random() *
+                        2 -
+                        1
+                    ) *
+                    (
+                        1 -
+                        progress
+                    ) *
+                    0.20;
+
+            }
+
+
+            const source =
+                context.createBufferSource();
+
+
+            const filter =
+                context.createBiquadFilter();
+
+
+            const gain =
+                context.createGain();
+
+
+            source.buffer =
+                buffer;
+
+
+            filter.type =
+                "highpass";
+
+
+            filter.frequency.value =
+                1800;
+
+
+            gain.gain.value =
+                0.7;
+
+
+            source.connect(
+                filter
+            );
+
+
+            filter.connect(
+                gain
+            );
+
+
+            gain.connect(
+                context.destination
+            );
+
+
+            source.start();
+
+
+            source.onended =
+                () => {
+
+                    context.close();
+
+                };
+
+        } catch {
+
+            /* som opcional */
+
+        }
+
+    }
+
+
+    /* =====================================================
+       INTENSIDADE
+    ===================================================== */
+
+    const intensity =
+        d31(
+            "#dream31Intensity"
+        );
+
+
+    const intensityValue =
+        d31(
+            "#dream31IntensityValue"
+        );
+
+
+    const savedIntensity =
+        Number(
+            localStorage.getItem(
+                "dream31Intensity"
+            ) ||
+            100
+        );
+
+
+    function dream31SetIntensity(
+        value
+    ) {
+
+        const safe =
+            Math.max(
+                40,
+                Math.min(
+                    Number(
+                        value
+                    ),
+                    160
+                )
+            );
+
+
+        intensity.value =
+            safe;
+
+
+        intensityValue.textContent =
+            `${safe}%`;
+
+
+        d31Root.style.setProperty(
+            "--dream31-intensity",
+            safe /
+            100
+        );
+
+
+        localStorage.setItem(
+            "dream31Intensity",
+            String(
+                safe
+            )
+        );
+
+    }
+
+
+    intensity.addEventListener(
+        "input",
+        event => {
+
+            dream31SetIntensity(
+                event.target.value
+            );
+
+        }
+    );
+
+
+    dream31SetIntensity(
+        savedIntensity
+    );
+
+
+    /* =====================================================
+       SALVAR CENÁRIO
+    ===================================================== */
+
+    d31All(
+        ".scene-button"
+    ).forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const scene =
+                        button.dataset.scene;
+
+
+                    if (
+                        scene
+                    ) {
+
+                        localStorage.setItem(
+                            "dream31Scene",
+                            scene
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    const savedScene =
+        localStorage.getItem(
+            "dream31Scene"
+        );
+
+
+    if (
+        savedScene
+    ) {
+
+        setTimeout(
+            () => {
+
+                d31(
+                    `.scene-button[data-scene="${savedScene}"]`
+                )?.click();
+
+            },
+            300
+        );
+
+    }
+
+
+    /* =====================================================
+       SURPREENDA-ME
+    ===================================================== */
+
+    let dream31Surprises =
+        Number(
+            localStorage.getItem(
+                "dream31Surprises"
+            ) ||
+            0
+        );
+
+
+    function dream31UpdateSurpriseCount() {
+
+        const element =
+            d31(
+                "#dream31SurpriseCount"
+            );
+
+
+        if (
+            element
+        ) {
+
+            element.textContent =
+                dream31Surprises;
+
+        }
+
+    }
+
+
+    dream31UpdateSurpriseCount();
+
+
+    d31(
+        "#dream31Surprise"
+    )?.addEventListener(
+        "click",
+        () => {
+
+            dream31Surprises++;
+
+
+            localStorage.setItem(
+                "dream31Surprises",
+                String(
+                    dream31Surprises
+                )
+            );
+
+
+            dream31UpdateSurpriseCount();
+
+
+            /* PALETA */
+
+            const palettes =
+                d31All(
+                    ".palette"
+                );
+
+
+            if (
+                palettes.length
+            ) {
+
+                palettes[
+                    Math.floor(
+                        Math.random() *
+                        palettes.length
+                    )
+                ].click();
+
+            }
+
+
+            /* CENÁRIO */
+
+            const sceneButtons =
+                d31All(
+                    ".scene-button"
+                );
+
+
+            if (
+                sceneButtons.length
+            ) {
+
+                sceneButtons[
+                    Math.floor(
+                        Math.random() *
+                        sceneButtons.length
+                    )
+                ].click();
+
+            }
+
+
+            /* FRASE */
+
+            dream31RandomPhrase();
+
+
+            /* SPRAY */
+
+            if (
+                originalSprayButton
+            ) {
+
+                setTimeout(
+                    () => {
+
+                        originalSprayButton.click();
+
+                    },
+                    250
+                );
+
+            }
+
+
+            /* PEQUENO EFEITO */
+
+            d31Body.animate(
+                [
+                    {
+                        filter:
+                            "brightness(1)"
+                    },
+
+                    {
+                        filter:
+                            "brightness(1.12)"
+                    },
+
+                    {
+                        filter:
+                            "brightness(1)"
+                    }
+                ],
+                {
+                    duration:
+                        700,
+
+                    easing:
+                        "ease"
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       MODO CINEMA
+    ===================================================== */
+
+    const cinemaToggle =
+        d31(
+            "#dream31Cinema"
+        );
+
+
+    function dream31SetCinema(
+        active
+    ) {
+
+        d31Body.classList.toggle(
+            "dream31-cinema-mode",
+            active
+        );
+
+
+        cinemaToggle.checked =
+            active;
+
+    }
+
+
+    cinemaToggle.addEventListener(
+        "change",
+        event => {
+
+            dream31SetCinema(
+                event.target.checked
+            );
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key ===
+                "Escape" &&
+                d31Body.classList.contains(
+                    "dream31-cinema-mode"
+                )
+            ) {
+
+                dream31SetCinema(
+                    false
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       DREAM MIXER
+    ===================================================== */
+
+    let dream31MixerSelection =
+        [];
+
+
+    d31All(
+        ".dream31-note"
+    ).forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const note =
+                        button.dataset.mixerNote;
+
+
+                    if (
+                        dream31MixerSelection.includes(
+                            note
+                        )
+                    ) {
+
+                        dream31MixerSelection =
+                            dream31MixerSelection.filter(
+                                item =>
+                                    item !==
+                                    note
+                            );
+
+
+                        button.classList.remove(
+                            "active"
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    if (
+                        dream31MixerSelection.length >=
+                        3
+                    ) {
+
+                        dream31ShowPhrase(
+                            "Escolha no máximo 3 notas."
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    dream31MixerSelection.push(
+                        note
+                    );
+
+
+                    button.classList.add(
+                        "active"
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    const mixerNames = [
+
+        "Dream Aura",
+
+        "Dream Bloom",
+
+        "Dream Secret",
+
+        "Dream Kiss",
+
+        "Dream Moon",
+
+        "Dream Velvet",
+
+        "Dream Desire",
+
+        "Dream Memories",
+
+        "Dream Infinity",
+
+        "Dream Whisper"
+
+    ];
+
+
+    d31(
+        "#dream31Mix"
+    )?.addEventListener(
+        "click",
+        () => {
+
+            if (
+                dream31MixerSelection.length !==
+                3
+            ) {
+
+                dream31ShowPhrase(
+                    "Escolha exatamente 3 notas para criar seu Dream."
+                );
+
+
+                return;
+
+            }
+
+
+            const title =
+                mixerNames[
+                    Math.floor(
+                        Math.random() *
+                        mixerNames.length
+                    )
+                ];
+
+
+            const [
+                first,
+                second,
+                third
+            ] =
+                dream31MixerSelection;
+
+
+            const description =
+                `${first} abre a composição, ${second} cria o coração da experiência e ${third} deixa uma assinatura confortável e marcante.`;
+
+
+            d31(
+                "#dream31MixTitle"
+            ).textContent =
+                title;
+
+
+            d31(
+                "#dream31MixText"
+            ).textContent =
+                description;
+
+
+            d31(
+                "#dream31MixResult"
+            ).classList.add(
+                "show"
+            );
+
+
+            dream31ShowPhrase(
+                `${title} foi criado ✦`
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       FRASE AUTOMÁTICA AO ENTRAR
+    ===================================================== */
+
+    setTimeout(
+        () => {
+
+            if (
+                !sessionStorage.getItem(
+                    "dream31Welcome"
+                )
+            ) {
+
+                dream31RandomPhrase();
+
+
+                sessionStorage.setItem(
+                    "dream31Welcome",
+                    "true"
+                );
+
+            }
+
+        },
+        3500
+    );
+
+
+    /* =====================================================
+       CONSOLE
+    ===================================================== */
+
+    console.log(
+        "%cDream Update 3.1 carregado ✦",
+        `
+        color:#df76a8;
+        font-weight:900;
+        font-size:14px;
+        `
+    );
+
+
+})();
