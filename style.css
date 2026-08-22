@@ -3850,14 +3850,276 @@ body.font-large {
     }
 
 }
-.developer-credit {
+/* =========================================================
+   BAYERLEE • DEVELOPER
+========================================================= */
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.footer-brand p {
+    color: var(--muted);
     font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
+}
+
+.developer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.developer-text {
+    padding-right: 10px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
     text-transform: uppercase;
 }
 
-.developer-credit::after {
-    content: " ♡";
+.developer-profile {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    min-width: 210px;
+
+    padding: 9px 20px 9px 9px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+    border-radius: 999px;
+
+    background: var(--surface);
+
+    box-shadow:
+        0 12px 35px
+        rgba(
+            var(--primary-rgb),
+            0.15
+        );
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.developer-profile::before {
+    content: "";
+
+    position: absolute;
+
+    top: -100%;
+    left: -50%;
+
+    width: 40%;
+    height: 300%;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform: rotate(25deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.45),
+            transparent
+        );
+
+    transition:
+        left 0.7s ease,
+        opacity 0.3s ease;
+}
+
+.developer-profile:hover::before {
+    left: 120%;
+    opacity: 1;
+}
+
+.developer-profile:hover {
+    transform:
+        translateY(-5px)
+        scale(1.03);
+
+    border-color:
+        rgba(
+            var(--primary-rgb),
+            0.45
+        );
+
+    box-shadow:
+        0 18px 50px
+        rgba(
+            var(--primary-rgb),
+            0.28
+        );
+}
+
+
+/* FOTO */
+
+.developer-photo-wrap {
+    position: relative;
+
+    flex-shrink: 0;
+
+    width: 58px;
+    height: 58px;
+}
+
+.developer-photo {
+    width: 58px;
+    height: 58px;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center 30%;
+
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(
+            var(--primary-rgb),
+            0.12
+        );
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.developer-profile:hover .developer-photo {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 0 5px
+        rgba(
+            var(--primary-rgb),
+            0.15
+        ),
+        0 8px 25px
+        rgba(
+            var(--primary-rgb),
+            0.3
+        );
+}
+
+
+/* STATUS */
+
+.developer-status {
+    position: absolute;
+
+    right: -1px;
+    bottom: 2px;
+
+    width: 14px;
+    height: 14px;
+
+    border: 3px solid var(--surface-solid);
+    border-radius: 50%;
+
+    background: #42d392;
+
+    box-shadow:
+        0 0 10px
+        rgba(
+            66,
+            211,
+            146,
+            0.8
+        );
+}
+
+
+/* TEXTO */
+
+.developer-info {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 4px;
+}
+
+.developer-info strong {
+    color: var(--text);
+
+    font-size: 14px;
+    font-weight: 900;
+
+    line-height: 1;
+
+    letter-spacing: 1.5px;
+
+    transition:
+        color 0.3s ease;
+}
+
+.developer-profile:hover
+.developer-info strong {
     color: var(--primary);
+}
+
+.developer-info small {
+    color: var(--primary);
+
+    font-size: 8px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+/* DARK */
+
+body.dark .developer-profile {
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.04
+        );
+}
+
+
+/* CELULAR */
+
+@media (max-width: 800px) {
+
+    .developer {
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .developer-text {
+        padding-right: 0;
+        padding-left: 8px;
+    }
+
 }
