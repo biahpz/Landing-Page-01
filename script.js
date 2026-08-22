@@ -1,19 +1,29 @@
-document.documentElement.classList.add("js");
+/* =========================================
+   DREAM AMOR NO AR
+========================================= */
 
 
-/* =============================
+/* ATIVAR JS */
+
+document.body.classList.add("js-ativo");
+
+
+/* =========================================
    LOADER
-============================= */
+========================================= */
 
 window.addEventListener("load", () => {
 
     const loader =
         document.getElementById("loader");
 
+
     setTimeout(() => {
 
         if (loader) {
+
             loader.classList.add("sumir");
+
         }
 
     }, 1200);
@@ -21,12 +31,13 @@ window.addEventListener("load", () => {
 });
 
 
-/* =============================
+/* =========================================
    MENU MOBILE
-============================= */
+========================================= */
 
 const menuMobile =
     document.getElementById("menuMobile");
+
 
 const menu =
     document.getElementById("menu");
@@ -34,44 +45,51 @@ const menu =
 
 if (menuMobile && menu) {
 
-    menuMobile.addEventListener("click", () => {
+    menuMobile.addEventListener(
+        "click",
+        () => {
 
-        menu.classList.toggle("ativo");
+            menu.classList.toggle("ativo");
 
-        menuMobile.textContent =
-            menu.classList.contains("ativo")
-                ? "✕"
-                : "☰";
 
-    });
+            menuMobile.textContent =
+                menu.classList.contains("ativo")
+                    ? "✕"
+                    : "☰";
+
+        }
+    );
 
 
     document
         .querySelectorAll(".menu a")
         .forEach(link => {
 
-            link.addEventListener("click", () => {
+            link.addEventListener(
+                "click",
+                () => {
 
-                menu.classList.remove("ativo");
+                    menu.classList.remove("ativo");
 
-                menuMobile.textContent = "☰";
+                    menuMobile.textContent = "☰";
 
-            });
+                }
+            );
 
         });
 
 }
 
 
-/* =============================
+/* =========================================
    HEADER
-============================= */
+========================================= */
 
 const header =
     document.getElementById("header");
 
 
-window.addEventListener("scroll", () => {
+function atualizarHeader() {
 
     if (!header) return;
 
@@ -81,12 +99,18 @@ window.addEventListener("scroll", () => {
         window.scrollY > 40
     );
 
-});
+}
 
 
-/* =============================
+window.addEventListener(
+    "scroll",
+    atualizarHeader
+);
+
+
+/* =========================================
    BARRA DE PROGRESSO
-============================= */
+========================================= */
 
 const barraProgresso =
     document.getElementById(
@@ -96,21 +120,31 @@ const barraProgresso =
 
 function atualizarProgresso() {
 
+    if (!barraProgresso) return;
+
+
     const alturaDocumento =
-        document.documentElement
-            .scrollHeight
+
+        document.documentElement.scrollHeight
+
         -
+
         window.innerHeight;
 
 
     const porcentagem =
+
         alturaDocumento > 0
+
             ?
+
             (
                 window.scrollY /
                 alturaDocumento
             ) * 100
+
             :
+
             0;
 
 
@@ -126,9 +160,9 @@ window.addEventListener(
 );
 
 
-/* =============================
-   REVELAR ELEMENTOS
-============================= */
+/* =========================================
+   ANIMAÇÃO AO ROLAR
+========================================= */
 
 const elementos =
     document.querySelectorAll(
@@ -147,8 +181,7 @@ if ("IntersectionObserver" in window) {
                     entrada => {
 
                         if (
-                            entrada
-                                .isIntersecting
+                            entrada.isIntersecting
                         ) {
 
                             entrada.target
@@ -156,6 +189,7 @@ if ("IntersectionObserver" in window) {
                                 .add(
                                     "visivel"
                                 );
+
 
                             observador
                                 .unobserve(
@@ -170,7 +204,7 @@ if ("IntersectionObserver" in window) {
             },
 
             {
-                threshold: 0.1
+                threshold: 0.08
             }
 
         );
@@ -193,9 +227,9 @@ if ("IntersectionObserver" in window) {
 }
 
 
-/* =============================
+/* =========================================
    MEDIDORES
-============================= */
+========================================= */
 
 const medidores =
     document.querySelectorAll(
@@ -203,50 +237,68 @@ const medidores =
     );
 
 
-const observadorMedidores =
-    new IntersectionObserver(
+if ("IntersectionObserver" in window) {
 
-        entradas => {
+    const observadorMedidores =
+        new IntersectionObserver(
 
-            entradas.forEach(entrada => {
+            entradas => {
 
-                if (
-                    entrada.isIntersecting
-                ) {
+                entradas.forEach(
+                    entrada => {
 
-                    const valor =
-                        entrada.target
-                            .dataset.valor;
+                        if (
+                            entrada.isIntersecting
+                        ) {
 
-                    entrada.target
-                        .style.width =
-                            valor + "%";
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold: 0.4
-        }
-
-    );
+                            const valor =
+                                entrada.target
+                                    .dataset
+                                    .valor;
 
 
-medidores.forEach(medidor => {
+                            entrada.target
+                                .style
+                                .width =
+                                valor + "%";
 
-    observadorMedidores.observe(
-        medidor
-    );
+                        }
 
-});
+                    }
+                );
+
+            },
+
+            {
+                threshold: 0.3
+            }
+
+        );
 
 
-/* =============================
+    medidores.forEach(medidor => {
+
+        observadorMedidores.observe(
+            medidor
+        );
+
+    });
+
+} else {
+
+    medidores.forEach(medidor => {
+
+        medidor.style.width =
+            medidor.dataset.valor + "%";
+
+    });
+
+}
+
+
+/* =========================================
    PARTÍCULAS
-============================= */
+========================================= */
 
 const particulas =
     document.getElementById(
@@ -264,7 +316,9 @@ function criarParticula() {
 
 
     const item =
-        document.createElement("span");
+        document.createElement(
+            "span"
+        );
 
 
     item.className =
@@ -289,7 +343,8 @@ function criarParticula() {
     item.style.fontSize =
         (
             9 +
-            Math.random() * 16
+            Math.random() *
+            16
         )
         +
         "px";
@@ -298,15 +353,14 @@ function criarParticula() {
     item.style.animationDuration =
         (
             8 +
-            Math.random() * 9
+            Math.random() *
+            9
         )
         +
         "s";
 
 
-    particulas.appendChild(
-        item
-    );
+    particulas.appendChild(item);
 
 
     setTimeout(() => {
@@ -324,19 +378,21 @@ setInterval(
 );
 
 
-/* =============================
-   FRASCO 3D
-============================= */
+/* =========================================
+   EFEITO 3D FRASCO
+========================================= */
 
 const heroProduto =
     document.getElementById(
         "heroProduto"
     );
 
+
 const frasco =
     document.getElementById(
         "frascoPrincipal"
     );
+
 
 const brilho =
     document.getElementById(
@@ -351,8 +407,7 @@ if (heroProduto && frasco) {
         evento => {
 
             if (
-                window.innerWidth <
-                900
+                window.innerWidth < 900
             ) {
                 return;
             }
@@ -364,14 +419,12 @@ if (heroProduto && frasco) {
 
 
             const x =
-                evento.clientX
-                -
+                evento.clientX -
                 area.left;
 
 
             const y =
-                evento.clientY
-                -
+                evento.clientY -
                 area.top;
 
 
@@ -387,14 +440,18 @@ if (heroProduto && frasco) {
                 (
                     x -
                     centroX
-                ) / 30;
+                )
+                /
+                30;
 
 
             const rotacaoX =
                 -(
                     y -
                     centroY
-                ) / 30;
+                )
+                /
+                30;
 
 
             frasco.style.transform =
@@ -439,29 +496,33 @@ if (heroProduto && frasco) {
 }
 
 
-/* =============================
+/* =========================================
    CARROSSEL
-============================= */
+========================================= */
 
 const carrossel =
     document.getElementById(
         "carrossel"
     );
 
+
 const anterior =
     document.getElementById(
         "anterior"
     );
+
 
 const proximo =
     document.getElementById(
         "proximo"
     );
 
+
 const pontos =
     document.getElementById(
         "pontos"
     );
+
 
 const slides =
     document.querySelectorAll(
@@ -474,7 +535,12 @@ let slideAtual = 0;
 
 function atualizarCarrossel() {
 
-    if (!carrossel) return;
+    if (
+        !carrossel ||
+        slides.length === 0
+    ) {
+        return;
+    }
 
 
     carrossel.style.transform =
@@ -490,8 +556,7 @@ function atualizarCarrossel() {
 
                 ponto.classList.toggle(
                     "ativo",
-                    indice ===
-                    slideAtual
+                    indice === slideAtual
                 );
 
             }
@@ -506,10 +571,9 @@ if (pontos) {
         (_, indice) => {
 
             const ponto =
-                document
-                    .createElement(
-                        "button"
-                    );
+                document.createElement(
+                    "button"
+                );
 
 
             ponto.setAttribute(
@@ -520,8 +584,9 @@ if (pontos) {
 
             if (indice === 0) {
 
-                ponto.classList
-                    .add("ativo");
+                ponto.classList.add(
+                    "ativo"
+                );
 
             }
 
@@ -532,6 +597,7 @@ if (pontos) {
 
                     slideAtual =
                         indice;
+
 
                     atualizarCarrossel();
 
@@ -549,7 +615,10 @@ if (pontos) {
 }
 
 
-if (proximo) {
+if (
+    proximo &&
+    slides.length
+) {
 
     proximo.addEventListener(
         "click",
@@ -572,7 +641,10 @@ if (proximo) {
 }
 
 
-if (anterior) {
+if (
+    anterior &&
+    slides.length
+) {
 
     anterior.addEventListener(
         "click",
@@ -596,29 +668,35 @@ if (anterior) {
 }
 
 
-/* AUTOMÁTICO */
+/* CARROSSEL AUTOMÁTICO */
 
-let carrosselAutomatico =
-    setInterval(() => {
-
-        if (!slides.length) return;
+let carrosselAutomatico;
 
 
-        slideAtual =
-            (
-                slideAtual +
-                1
-            )
-            %
-            slides.length;
+if (slides.length > 1) {
+
+    carrosselAutomatico =
+        setInterval(
+            () => {
+
+                slideAtual =
+                    (
+                        slideAtual +
+                        1
+                    )
+                    %
+                    slides.length;
 
 
-        atualizarCarrossel();
+                atualizarCarrossel();
 
-    }, 6000);
+            },
 
+            6000
+        );
 
-/* PAUSAR COM MOUSE */
+}
+
 
 const carrosselArea =
     document.querySelector(
@@ -632,9 +710,15 @@ if (carrosselArea) {
         "mouseenter",
         () => {
 
-            clearInterval(
+            if (
                 carrosselAutomatico
-            );
+            ) {
+
+                clearInterval(
+                    carrosselAutomatico
+                );
+
+            }
 
         }
     );
@@ -642,9 +726,9 @@ if (carrosselArea) {
 }
 
 
-/* =============================
+/* =========================================
    QUIZ
-============================= */
+========================================= */
 
 const quizCard =
     document.getElementById(
@@ -656,15 +740,20 @@ let perguntaAtual = 0;
 
 
 const respostas = {
+
     romantico: 0,
+
     leve: 0,
+
     elegante: 0
+
 };
 
 
 const perguntas = [
 
     {
+
         numero:
             "01 / 03",
 
@@ -672,22 +761,29 @@ const perguntas = [
             "Qual clima combina mais com você?",
 
         opcoes: [
+
             [
                 "♡ Romântico",
                 "romantico"
             ],
+
             [
                 "☀ Leve",
                 "leve"
             ],
+
             [
                 "✦ Elegante",
                 "elegante"
             ]
+
         ]
+
     },
 
+
     {
+
         numero:
             "02 / 03",
 
@@ -695,22 +791,29 @@ const perguntas = [
             "Qual é seu momento favorito?",
 
         opcoes: [
+
             [
                 "♡ Um encontro",
                 "romantico"
             ],
+
             [
                 "☀ Depois do banho",
                 "leve"
             ],
+
             [
                 "☾ Sair à noite",
                 "elegante"
             ]
+
         ]
+
     },
 
+
     {
+
         numero:
             "03 / 03",
 
@@ -718,19 +821,24 @@ const perguntas = [
             "Como você gosta de se sentir?",
 
         opcoes: [
+
             [
                 "♡ Apaixonada",
                 "romantico"
             ],
+
             [
                 "☁ Confortável",
                 "leve"
             ],
+
             [
                 "✦ Marcante",
                 "elegante"
             ]
+
         ]
+
     }
 
 ];
@@ -769,13 +877,13 @@ function mostrarPergunta() {
                     .map(
                         opcao => `
 
-                        <button
-                            data-pontos="${opcao[1]}"
-                        >
-                            ${opcao[0]}
-                        </button>
+                            <button
+                                data-pontos="${opcao[1]}"
+                            >
+                                ${opcao[0]}
+                            </button>
 
-                    `
+                        `
                     )
                     .join("")}
 
@@ -790,17 +898,15 @@ function mostrarPergunta() {
         .querySelectorAll(
             ".quiz-opcoes button"
         )
-        .forEach(botao => {
+        .forEach(
+            botao => {
 
-            botao
-                .addEventListener(
+                botao.addEventListener(
                     "click",
                     () => {
 
                         respostas[
-                            botao
-                                .dataset
-                                .pontos
+                            botao.dataset.pontos
                         ]++;
 
 
@@ -824,7 +930,8 @@ function mostrarPergunta() {
                     }
                 );
 
-        });
+            }
+        );
 
 }
 
@@ -863,7 +970,8 @@ function mostrarResultado() {
 
         romantico: {
 
-            icone: "♡",
+            icone:
+                "♡",
 
             titulo:
                 "Seu momento é Romântico",
@@ -873,9 +981,11 @@ function mostrarResultado() {
 
         },
 
+
         leve: {
 
-            icone: "☀",
+            icone:
+                "☀",
 
             titulo:
                 "Seu momento é Leve",
@@ -885,9 +995,11 @@ function mostrarResultado() {
 
         },
 
+
         elegante: {
 
-            icone: "✦",
+            icone:
+                "✦",
 
             titulo:
                 "Seu momento é Elegante",
@@ -936,14 +1048,20 @@ function mostrarResultado() {
     `;
 
 
-    document
-        .getElementById(
+    const reiniciar =
+        document.getElementById(
             "reiniciarQuiz"
-        )
-        .addEventListener(
+        );
+
+
+    if (reiniciar) {
+
+        reiniciar.addEventListener(
             "click",
             reiniciarQuiz
         );
+
+    }
 
 }
 
@@ -952,79 +1070,91 @@ function reiniciarQuiz() {
 
     perguntaAtual = 0;
 
+
     respostas.romantico = 0;
+
     respostas.leve = 0;
+
     respostas.elegante = 0;
+
 
     mostrarPergunta();
 
 }
 
 
-mostrarPergunta();
+if (quizCard) {
+
+    mostrarPergunta();
+
+}
 
 
-/* =============================
+/* =========================================
    FAQ
-============================= */
+========================================= */
 
 document
     .querySelectorAll(
         ".faq-pergunta"
     )
-    .forEach(pergunta => {
+    .forEach(
+        pergunta => {
 
-        pergunta.addEventListener(
-            "click",
-            () => {
+            pergunta.addEventListener(
+                "click",
+                () => {
 
-                const item =
-                    pergunta.closest(
-                        ".faq-item"
-                    );
-
-
-                const estavaAberto =
-                    item.classList
-                        .contains(
-                            "ativo"
+                    const item =
+                        pergunta.closest(
+                            ".faq-item"
                         );
 
 
-                document
-                    .querySelectorAll(
-                        ".faq-item"
-                    )
-                    .forEach(
-                        outro => {
-
-                            outro.classList
-                                .remove(
-                                    "ativo"
-                                );
-
-                        }
-                    );
+                    if (!item) return;
 
 
-                if (!estavaAberto) {
+                    const estavaAberto =
+                        item.classList
+                            .contains(
+                                "ativo"
+                            );
 
-                    item.classList
-                        .add(
+
+                    document
+                        .querySelectorAll(
+                            ".faq-item"
+                        )
+                        .forEach(
+                            outro => {
+
+                                outro.classList
+                                    .remove(
+                                        "ativo"
+                                    );
+
+                            }
+                        );
+
+
+                    if (!estavaAberto) {
+
+                        item.classList.add(
                             "ativo"
                         );
+
+                    }
 
                 }
+            );
 
-            }
-        );
-
-    });
+        }
+    );
 
 
-/* =============================
+/* =========================================
    VOLTAR AO TOPO
-============================= */
+========================================= */
 
 const voltarTopo =
     document.getElementById(
@@ -1055,11 +1185,23 @@ if (voltarTopo) {
         () => {
 
             window.scrollTo({
+
                 top: 0,
+
                 behavior: "smooth"
+
             });
 
         }
     );
 
 }
+
+
+/* =========================================
+   INICIAR
+========================================= */
+
+atualizarHeader();
+
+atualizarProgresso();
