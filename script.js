@@ -76,24 +76,62 @@ const toast =
    LOADER
 ========================================================= */
 
+function hideLoader() {
+
+    const loader =
+        document.querySelector(
+            "#loader"
+        );
+
+    if (
+        !loader
+    ) {
+
+        return;
+
+    }
+
+    loader.classList.add(
+        "hide"
+    );
+
+}
+
+
 window.addEventListener(
     "load",
     () => {
 
         setTimeout(
-            () => {
-
-                loader?.classList.add(
-                    "hide"
-                );
-
-            },
+            hideLoader,
             650
         );
 
     }
 );
 
+
+/* segurança caso o evento load já tenha acontecido */
+
+if (
+    document.readyState ===
+    "complete"
+) {
+
+    setTimeout(
+        hideLoader,
+        650
+    );
+
+}
+
+
+/* segurança extra */
+
+setTimeout(
+    hideLoader,
+    3000
+);
 
 /* =========================================================
    TOAST
@@ -187,7 +225,16 @@ function updateScroll() {
     );
 
 
-    updateSectionIndicator();
+   window.addEventListener(
+    "scroll",
+    updateSectionIndicator,
+    {
+        passive: true
+    }
+);
+
+
+updateSectionIndicator();
 
 }
 
