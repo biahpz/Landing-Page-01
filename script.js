@@ -1,9 +1,13 @@
+/* =========================================
+   ATIVAR JS
+========================================= */
+
 document.body.classList.add("js-ativo");
 
 
-/* ===============================
+/* =========================================
    LOADER
-================================ */
+========================================= */
 
 window.addEventListener("load", () => {
 
@@ -13,17 +17,19 @@ window.addEventListener("load", () => {
     setTimeout(() => {
 
         if (loader) {
+
             loader.classList.add("sumir");
+
         }
 
-    }, 1100);
+    }, 1000);
 
 });
 
 
-/* ===============================
+/* =========================================
    TOAST
-================================ */
+========================================= */
 
 const toast =
     document.getElementById("toast");
@@ -35,74 +41,112 @@ function mostrarToast(texto) {
 
     if (!toast) return;
 
-    toast.textContent = texto;
 
-    toast.classList.add("mostrar");
+    toast.textContent =
+        texto;
 
-    clearTimeout(timerToast);
 
-    timerToast = setTimeout(() => {
+    toast.classList.add(
+        "mostrar"
+    );
 
-        toast.classList.remove("mostrar");
 
-    }, 2200);
+    clearTimeout(
+        timerToast
+    );
+
+
+    timerToast =
+        setTimeout(() => {
+
+            toast.classList.remove(
+                "mostrar"
+            );
+
+        }, 2200);
 
 }
 
 
-/* ===============================
-   MENU
-================================ */
+/* =========================================
+   MENU MOBILE
+========================================= */
 
 const menuMobile =
-    document.getElementById("menuMobile");
+    document.getElementById(
+        "menuMobile"
+    );
+
 
 const menu =
-    document.getElementById("menu");
+    document.getElementById(
+        "menu"
+    );
 
 
 if (menuMobile && menu) {
 
-    menuMobile.addEventListener("click", () => {
+    menuMobile.addEventListener(
+        "click",
+        () => {
 
-        menu.classList.toggle("ativo");
+            menu.classList.toggle(
+                "ativo"
+            );
 
-        menuMobile.textContent =
-            menu.classList.contains("ativo")
-                ? "✕"
-                : "☰";
 
-    });
+            menuMobile.textContent =
+                menu.classList.contains(
+                    "ativo"
+                )
+                    ? "✕"
+                    : "☰";
+
+        }
+    );
 
 
     document
-        .querySelectorAll(".menu a")
+        .querySelectorAll(
+            ".menu a"
+        )
         .forEach(link => {
 
-            link.addEventListener("click", () => {
+            link.addEventListener(
+                "click",
+                () => {
 
-                menu.classList.remove("ativo");
+                    menu.classList.remove(
+                        "ativo"
+                    );
 
-                menuMobile.textContent = "☰";
 
-            });
+                    menuMobile.textContent =
+                        "☰";
+
+                }
+            );
 
         });
 
 }
 
 
-/* ===============================
-   SCROLL
-================================ */
+/* =========================================
+   HEADER + PROGRESSO + TOPO
+========================================= */
 
 const header =
-    document.getElementById("header");
+    document.getElementById(
+        "header"
+    );
+
 
 const barraProgresso =
     document.getElementById(
         "barraProgresso"
     );
+
 
 const voltarTopo =
     document.getElementById(
@@ -139,15 +183,30 @@ function atualizarScroll() {
     if (barraProgresso) {
 
         const total =
-            document.documentElement.scrollHeight
+
+            document
+                .documentElement
+                .scrollHeight
+
             -
+
             window.innerHeight;
 
 
         const porcentagem =
+
             total > 0
-                ? (y / total) * 100
-                : 0;
+
+                ?
+
+                (
+                    y /
+                    total
+                ) * 100
+
+                :
+
+                0;
 
 
         barraProgresso.style.width =
@@ -187,9 +246,9 @@ if (voltarTopo) {
 }
 
 
-/* ===============================
-   REVEAL
-================================ */
+/* =========================================
+   REVELAR NO SCROLL
+========================================= */
 
 const elementos =
     document.querySelectorAll(
@@ -197,7 +256,10 @@ const elementos =
     );
 
 
-if ("IntersectionObserver" in window) {
+if (
+    "IntersectionObserver"
+    in window
+) {
 
     const observer =
         new IntersectionObserver(
@@ -211,7 +273,8 @@ if ("IntersectionObserver" in window) {
                             entrada.isIntersecting
                         ) {
 
-                            entrada.target
+                            entrada
+                                .target
                                 .classList
                                 .add(
                                     "visivel"
@@ -230,34 +293,40 @@ if ("IntersectionObserver" in window) {
             },
 
             {
-                threshold: .08
+                threshold: 0.08
             }
 
         );
 
 
-    elementos.forEach(elemento => {
+    elementos.forEach(
+        elemento => {
 
-        observer.observe(elemento);
+            observer.observe(
+                elemento
+            );
 
-    });
+        }
+    );
 
 } else {
 
-    elementos.forEach(elemento => {
+    elementos.forEach(
+        elemento => {
 
-        elemento.classList.add(
-            "visivel"
-        );
+            elemento.classList.add(
+                "visivel"
+            );
 
-    });
+        }
+    );
 
 }
 
 
-/* ===============================
+/* =========================================
    MEDIDORES
-================================ */
+========================================= */
 
 const medidores =
     document.querySelectorAll(
@@ -265,53 +334,63 @@ const medidores =
     );
 
 
-const observerMedidores =
-    new IntersectionObserver(
+if (
+    "IntersectionObserver"
+    in window
+) {
 
-        entradas => {
+    const observerMedidores =
+        new IntersectionObserver(
 
-            entradas.forEach(
-                entrada => {
+            entradas => {
 
-                    if (
-                        entrada.isIntersecting
-                    ) {
+                entradas.forEach(
+                    entrada => {
 
-                        entrada.target
-                            .style
-                            .width =
+                        if (
+                            entrada.isIntersecting
+                        ) {
+
                             entrada.target
-                                .dataset
-                                .valor
-                            +
-                            "%";
+                                .style
+                                .width =
+                                entrada
+                                    .target
+                                    .dataset
+                                    .valor
+                                +
+                                "%";
+
+                        }
 
                     }
+                );
 
-                }
+            },
+
+            {
+                threshold: 0.25
+            }
+
+        );
+
+
+    medidores.forEach(
+        medidor => {
+
+            observerMedidores.observe(
+                medidor
             );
 
-        },
-
-        {
-            threshold: .25
         }
-
     );
 
-
-medidores.forEach(medidor => {
-
-    observerMedidores.observe(
-        medidor
-    );
-
-});
+}
 
 
-/* ===============================
-   PARTÍCULAS FUNDO
-================================ */
+/* =========================================
+   PARTÍCULAS
+========================================= */
 
 const particulas =
     document.getElementById(
@@ -320,7 +399,11 @@ const particulas =
 
 
 const simbolos =
-    ["♡", "✦", "✿"];
+    [
+        "♡",
+        "✦",
+        "✿"
+    ];
 
 
 function criarParticula() {
@@ -349,14 +432,20 @@ function criarParticula() {
 
 
     elemento.style.left =
-        Math.random() * 100 + "vw";
+        Math.random()
+        *
+        100
+        +
+        "vw";
 
 
     elemento.style.fontSize =
         (
             9
             +
-            Math.random() * 16
+            Math.random()
+            *
+            16
         )
         +
         "px";
@@ -366,7 +455,9 @@ function criarParticula() {
         (
             8
             +
-            Math.random() * 9
+            Math.random()
+            *
+            9
         )
         +
         "s";
@@ -377,11 +468,15 @@ function criarParticula() {
     );
 
 
-    setTimeout(() => {
+    setTimeout(
+        () => {
 
-        elemento.remove();
+            elemento.remove();
 
-    }, 18000);
+        },
+
+        18000
+    );
 
 }
 
@@ -392,19 +487,21 @@ setInterval(
 );
 
 
-/* ===============================
+/* =========================================
    FRASCO 3D
-================================ */
+========================================= */
 
 const heroProduto =
     document.getElementById(
         "heroProduto"
     );
 
+
 const frasco =
     document.getElementById(
         "frascoPrincipal"
     );
+
 
 const brilho =
     document.getElementById(
@@ -412,14 +509,19 @@ const brilho =
     );
 
 
-if (heroProduto && frasco) {
+if (
+    heroProduto &&
+    frasco
+) {
 
     heroProduto.addEventListener(
         "mousemove",
         evento => {
 
             if (
-                window.innerWidth < 900
+                window.innerWidth
+                <
+                900
             ) {
                 return;
             }
@@ -443,19 +545,33 @@ if (heroProduto && frasco) {
 
 
             const cx =
-                area.width / 2;
+                area.width
+                /
+                2;
 
 
             const cy =
-                area.height / 2;
+                area.height
+                /
+                2;
 
 
             const ry =
-                (x - cx) / 30;
+                (
+                    x -
+                    cx
+                )
+                /
+                30;
 
 
             const rx =
-                -(y - cy) / 30;
+                -(
+                    y -
+                    cy
+                )
+                /
+                30;
 
 
             frasco.style.transform =
@@ -470,11 +586,17 @@ if (heroProduto && frasco) {
             if (brilho) {
 
                 brilho.style.left =
-                    x - 100 + "px";
+                    x -
+                    100
+                    +
+                    "px";
 
 
                 brilho.style.top =
-                    y - 100 + "px";
+                    y -
+                    100
+                    +
+                    "px";
 
             }
 
@@ -495,14 +617,15 @@ if (heroProduto && frasco) {
 }
 
 
-/* ===============================
-   EFEITO SPRAY
-================================ */
+/* =========================================
+   SPRAY
+========================================= */
 
 const botaoSpray =
     document.getElementById(
         "botaoSpray"
     );
+
 
 const sprayArea =
     document.getElementById(
@@ -533,7 +656,9 @@ function fazerSpray() {
 
         const x =
             (
-                Math.random() * 180
+                Math.random()
+                *
+                180
             )
             -
             90;
@@ -543,7 +668,9 @@ function fazerSpray() {
             -(
                 30
                 +
-                Math.random() * 150
+                Math.random()
+                *
+                150
             );
 
 
@@ -560,31 +687,43 @@ function fazerSpray() {
 
 
         p.style.animationDelay =
-            Math.random() * .15 + "s";
+            Math.random()
+            *
+            0.15
+            +
+            "s";
+
+
+        const tamanho =
+            3
+            +
+            Math.random()
+            *
+            5;
 
 
         p.style.width =
-            (
-                3
-                +
-                Math.random() * 5
-            )
-            +
-            "px";
+            tamanho + "px";
 
 
         p.style.height =
-            p.style.width;
+            tamanho + "px";
 
 
-        sprayArea.appendChild(p);
+        sprayArea.appendChild(
+            p
+        );
 
 
-        setTimeout(() => {
+        setTimeout(
+            () => {
 
-            p.remove();
+                p.remove();
 
-        }, 1200);
+            },
+
+            1200
+        );
 
     }
 
@@ -606,14 +745,15 @@ if (botaoSpray) {
 }
 
 
-/* ===============================
-   FAVORITOS
-================================ */
+/* =========================================
+   FAVORITO
+========================================= */
 
 const favoritar =
     document.getElementById(
         "favoritar"
     );
+
 
 const favoritarModal =
     document.getElementById(
@@ -648,20 +788,36 @@ function atualizarFavorito() {
         );
 
 
-        favoritar.querySelector(
-            ".coracao-favorito"
-        ).textContent =
-            ativo
-                ? "♥"
-                : "♡";
+        const coracao =
+            favoritar.querySelector(
+                ".coracao-favorito"
+            );
 
 
-        favoritar.querySelector(
-            ".texto-favorito"
-        ).textContent =
-            ativo
-                ? "Favoritado"
-                : "Favoritar";
+        const texto =
+            favoritar.querySelector(
+                ".texto-favorito"
+            );
+
+
+        if (coracao) {
+
+            coracao.textContent =
+                ativo
+                    ? "♥"
+                    : "♡";
+
+        }
+
+
+        if (texto) {
+
+            texto.textContent =
+                ativo
+                    ? "Favoritado"
+                    : "Favoritar";
+
+        }
 
     }
 
@@ -670,7 +826,9 @@ function atualizarFavorito() {
 
         favoritarModal.textContent =
             ativo
+
                 ? "♥ Favoritado"
+
                 : "♡ Favoritar";
 
     }
@@ -685,10 +843,13 @@ function alternarFavorito() {
 
 
     localStorage.setItem(
+
         "dreamFavorito",
+
         novoEstado
             ? "sim"
             : "nao"
+
     );
 
 
@@ -696,9 +857,13 @@ function alternarFavorito() {
 
 
     mostrarToast(
+
         novoEstado
+
             ? "Adicionado aos favoritos ♡"
+
             : "Removido dos favoritos"
+
     );
 
 }
@@ -727,14 +892,15 @@ if (favoritarModal) {
 atualizarFavorito();
 
 
-/* ===============================
+/* =========================================
    COMPARTILHAR
-================================ */
+========================================= */
 
 const compartilhar =
     document.getElementById(
         "compartilhar"
     );
+
 
 const compartilharModal =
     document.getElementById(
@@ -766,12 +932,15 @@ async function compartilharSite() {
                 dados
             );
 
-        } else if (
+            return;
+        }
+
+
+        if (
             navigator.clipboard
         ) {
 
-            await navigator
-                .clipboard
+            await navigator.clipboard
                 .writeText(
                     window.location.href
                 );
@@ -781,39 +950,39 @@ async function compartilharSite() {
                 "Link copiado!"
             );
 
-        } else {
-
-            const input =
-                document.createElement(
-                    "textarea"
-                );
-
-
-            input.value =
-                window.location.href;
-
-
-            document.body.appendChild(
-                input
-            );
-
-
-            input.select();
-
-
-            document.execCommand(
-                "copy"
-            );
-
-
-            input.remove();
-
-
-            mostrarToast(
-                "Link copiado!"
-            );
-
+            return;
         }
+
+
+        const campo =
+            document.createElement(
+                "textarea"
+            );
+
+
+        campo.value =
+            window.location.href;
+
+
+        document.body.appendChild(
+            campo
+        );
+
+
+        campo.select();
+
+
+        document.execCommand(
+            "copy"
+        );
+
+
+        campo.remove();
+
+
+        mostrarToast(
+            "Link copiado!"
+        );
 
     } catch (erro) {
 
@@ -846,9 +1015,9 @@ if (compartilharModal) {
 }
 
 
-/* ===============================
+/* =========================================
    MODAL PRODUTO
-================================ */
+========================================= */
 
 const modalProduto =
     document.getElementById(
@@ -856,7 +1025,7 @@ const modalProduto =
     );
 
 
-const abrirProduto =
+const botoesAbrirProduto =
     document.querySelectorAll(
         ".abrir-produto"
     );
@@ -908,48 +1077,55 @@ function fecharModalProduto() {
 }
 
 
-abrirProduto.forEach(botao => {
+botoesAbrirProduto.forEach(
+    botao => {
 
-    botao.addEventListener(
-        "click",
-        abrirModalProduto
-    );
+        botao.addEventListener(
+            "click",
+            abrirModalProduto
+        );
 
-});
+    }
+);
 
 
 document
     .querySelectorAll(
         ".fechar-modal"
     )
-    .forEach(botao => {
+    .forEach(
+        botao => {
 
-        botao.addEventListener(
-            "click",
-            fecharModalProduto
-        );
+            botao.addEventListener(
+                "click",
+                fecharModalProduto
+            );
 
-    });
+        }
+    );
 
 
-/* ===============================
+/* =========================================
    NOTAS CLICÁVEIS
-================================ */
+========================================= */
 
 const modalNota =
     document.getElementById(
         "modalNota"
     );
 
+
 const notaTitulo =
     document.getElementById(
         "notaTitulo"
     );
 
+
 const notaDescricao =
     document.getElementById(
         "notaDescricao"
     );
+
 
 const notaIcone =
     document.getElementById(
@@ -960,111 +1136,170 @@ const notaIcone =
 const dadosNotas = {
 
     bergamota: {
+
         titulo:
             "Bergamota",
+
         icone:
             "🍋",
+
         descricao:
             "Traz uma sensação cítrica, fresca e luminosa para a abertura da fragrância."
+
     },
+
 
     cassis: {
+
         titulo:
             "Cassis",
+
         icone:
             "🫐",
+
         descricao:
-            "Uma nota frutada de perfil escuro, levemente ácido e marcante."
+            "Uma nota frutada de perfil marcante e levemente ácido."
+
     },
+
 
     mandarina: {
+
         titulo:
             "Mandarina",
+
         icone:
             "🍊",
+
         descricao:
             "Adiciona um frescor cítrico mais doce e alegre."
+
     },
+
 
     maca: {
+
         titulo:
             "Maçã",
+
         icone:
             "🍎",
+
         descricao:
             "Contribui com um toque frutado fresco, suave e suculento."
+
     },
+
 
     rosa: {
+
         titulo:
             "Rosa",
+
         icone:
             "🌹",
+
         descricao:
             "Uma nota floral clássica que reforça o lado romântico e delicado."
+
     },
+
 
     lotus: {
+
         titulo:
             "Flor de Lótus",
+
         icone:
             "🌸",
+
         descricao:
-            "Traz uma sensação floral leve, aquática e delicada."
+            "Traz uma sensação floral leve, suave e delicada."
+
     },
+
 
     freesia: {
+
         titulo:
             "Frésia",
+
         icone:
             "💐",
+
         descricao:
-            "Uma flor de perfil fresco e luminoso que deixa o coração da fragrância mais leve."
+            "Uma flor de perfil fresco e luminoso."
+
     },
+
 
     pessego: {
+
         titulo:
             "Pêssego",
+
         icone:
             "🍑",
+
         descricao:
             "Adiciona uma faceta frutada macia, doce e confortável."
+
     },
+
 
     ambar: {
+
         titulo:
             "Âmbar",
+
         icone:
             "✨",
+
         descricao:
             "Traz calor e profundidade para a base da fragrância."
+
     },
+
 
     sandalo: {
+
         titulo:
             "Sândalo",
+
         icone:
             "🪵",
+
         descricao:
             "Uma nota amadeirada cremosa que aumenta a sensação de conforto."
+
     },
+
 
     baunilha: {
+
         titulo:
             "Baunilha",
+
         icone:
             "🤍",
+
         descricao:
             "Acrescenta um dulçor macio, envolvente e aconchegante."
+
     },
 
+
     musk: {
+
         titulo:
             "Musk",
+
         icone:
             "☁",
+
         descricao:
-            "Ajuda a criar uma sensação limpa, macia e confortável na base."
+            "Ajuda a criar uma sensação limpa, macia e confortável."
+
     }
 
 };
@@ -1084,16 +1319,28 @@ function abrirNota(nome) {
     }
 
 
-    notaTitulo.textContent =
-        nota.titulo;
+    if (notaTitulo) {
+
+        notaTitulo.textContent =
+            nota.titulo;
+
+    }
 
 
-    notaDescricao.textContent =
-        nota.descricao;
+    if (notaDescricao) {
+
+        notaDescricao.textContent =
+            nota.descricao;
+
+    }
 
 
-    notaIcone.textContent =
-        nota.icone;
+    if (notaIcone) {
+
+        notaIcone.textContent =
+            nota.icone;
+
+    }
 
 
     modalNota.classList.add(
@@ -1141,44 +1388,49 @@ document
     .querySelectorAll(
         ".nota-chip"
     )
-    .forEach(chip => {
+    .forEach(
+        chip => {
 
-        chip.addEventListener(
-            "click",
-            () => {
+            chip.addEventListener(
+                "click",
+                () => {
 
-                abrirNota(
-                    chip.dataset.nota
-                );
+                    abrirNota(
+                        chip.dataset.nota
+                    );
 
-            }
-        );
+                }
+            );
 
-    });
+        }
+    );
 
 
 document
     .querySelectorAll(
         ".fechar-nota"
     )
-    .forEach(botao => {
+    .forEach(
+        botao => {
 
-        botao.addEventListener(
-            "click",
-            fecharNota
-        );
+            botao.addEventListener(
+                "click",
+                fecharNota
+            );
 
-    });
+        }
+    );
 
 
-/* ESC fecha modal */
+/* ESC FECHA MODAIS */
 
 document.addEventListener(
     "keydown",
     evento => {
 
         if (
-            evento.key ===
+            evento.key
+            ===
             "Escape"
         ) {
 
@@ -1192,34 +1444,39 @@ document.addEventListener(
 );
 
 
-/* ===============================
+/* =========================================
    CARROSSEL
-================================ */
+========================================= */
 
 const carrossel =
     document.getElementById(
         "carrossel"
     );
 
+
 const slides =
     document.querySelectorAll(
         ".slide"
     );
+
 
 const anterior =
     document.getElementById(
         "anterior"
     );
 
+
 const proximo =
     document.getElementById(
         "proximo"
     );
 
+
 const pontos =
     document.getElementById(
         "pontos"
     );
+
 
 let slideAtual = 0;
 
@@ -1244,7 +1501,8 @@ function atualizarCarrossel() {
 
                 ponto.classList.toggle(
                     "ativo",
-                    indice ===
+                    indice
+                    ===
                     slideAtual
                 );
 
@@ -1265,7 +1523,19 @@ if (pontos) {
                 );
 
 
-            if (indice === 0) {
+            ponto.type =
+                "button";
+
+
+            ponto.setAttribute(
+                "aria-label",
+                `Ir para imagem ${indice + 1}`
+            );
+
+
+            if (
+                indice === 0
+            ) {
 
                 ponto.classList.add(
                     "ativo"
@@ -1298,7 +1568,10 @@ if (pontos) {
 }
 
 
-if (proximo) {
+if (
+    proximo &&
+    slides.length
+) {
 
     proximo.addEventListener(
         "click",
@@ -1306,7 +1579,8 @@ if (proximo) {
 
             slideAtual =
                 (
-                    slideAtual +
+                    slideAtual
+                    +
                     1
                 )
                 %
@@ -1321,7 +1595,10 @@ if (proximo) {
 }
 
 
-if (anterior) {
+if (
+    anterior &&
+    slides.length
+) {
 
     anterior.addEventListener(
         "click",
@@ -1329,7 +1606,8 @@ if (anterior) {
 
             slideAtual =
                 (
-                    slideAtual -
+                    slideAtual
+                    -
                     1
                     +
                     slides.length
@@ -1354,7 +1632,9 @@ function iniciarCarrossel() {
 
 
     if (
-        slides.length <= 1
+        slides.length
+        <=
+        1
     ) {
         return;
     }
@@ -1366,7 +1646,8 @@ function iniciarCarrossel() {
 
                 slideAtual =
                     (
-                        slideAtual +
+                        slideAtual
+                        +
                         1
                     )
                     %
@@ -1414,9 +1695,9 @@ if (areaCarrossel) {
 iniciarCarrossel();
 
 
-/* ===============================
+/* =========================================
    QUIZ
-================================ */
+========================================= */
 
 const quizCard =
     document.getElementById(
@@ -1428,45 +1709,96 @@ let perguntaAtual = 0;
 
 
 const respostas = {
+
     romantico: 0,
+
     leve: 0,
+
     elegante: 0
+
 };
 
 
 const perguntas = [
 
     {
+
         pergunta:
             "Qual clima combina mais com você?",
 
         opcoes: [
-            ["♡ Romântico", "romantico"],
-            ["☀ Leve", "leve"],
-            ["✦ Elegante", "elegante"]
+
+            [
+                "♡ Romântico",
+                "romantico"
+            ],
+
+            [
+                "☀ Leve",
+                "leve"
+            ],
+
+            [
+                "✦ Elegante",
+                "elegante"
+            ]
+
         ]
+
     },
 
+
     {
+
         pergunta:
             "Qual momento você prefere?",
 
         opcoes: [
-            ["♡ Um encontro", "romantico"],
-            ["☀ Depois do banho", "leve"],
-            ["☾ Sair à noite", "elegante"]
+
+            [
+                "♡ Um encontro",
+                "romantico"
+            ],
+
+            [
+                "☀ Depois do banho",
+                "leve"
+            ],
+
+            [
+                "☾ Sair à noite",
+                "elegante"
+            ]
+
         ]
+
     },
 
+
     {
+
         pergunta:
             "Como você gosta de se sentir?",
 
         opcoes: [
-            ["♡ Apaixonada", "romantico"],
-            ["☁ Confortável", "leve"],
-            ["✦ Marcante", "elegante"]
+
+            [
+                "♡ Apaixonada",
+                "romantico"
+            ],
+
+            [
+                "☁ Confortável",
+                "leve"
+            ],
+
+            [
+                "✦ Marcante",
+                "elegante"
+            ]
+
         ]
+
     }
 
 ];
@@ -1487,7 +1819,9 @@ function mostrarPergunta() {
 
         <div>
 
-            <span class="quiz-numero">
+            <span
+                class="quiz-numero"
+            >
                 0${perguntaAtual + 1} / 03
             </span>
 
@@ -1502,6 +1836,7 @@ function mostrarPergunta() {
                         opcao => `
 
                             <button
+                                type="button"
                                 data-resposta="${opcao[1]}"
                             >
                                 ${opcao[0]}
@@ -1522,38 +1857,42 @@ function mostrarPergunta() {
         .querySelectorAll(
             ".quiz-opcoes button"
         )
-        .forEach(botao => {
+        .forEach(
+            botao => {
 
-            botao.addEventListener(
-                "click",
-                () => {
+                botao.addEventListener(
+                    "click",
+                    () => {
 
-                    respostas[
-                        botao.dataset.resposta
-                    ]++;
+                        respostas[
+                            botao
+                                .dataset
+                                .resposta
+                        ]++;
 
 
-                    perguntaAtual++;
+                        perguntaAtual++;
 
 
-                    if (
-                        perguntaAtual
-                        <
-                        perguntas.length
-                    ) {
+                        if (
+                            perguntaAtual
+                            <
+                            perguntas.length
+                        ) {
 
-                        mostrarPergunta();
+                            mostrarPergunta();
 
-                    } else {
+                        } else {
 
-                        mostrarResultado();
+                            mostrarResultado();
+
+                        }
 
                     }
+                );
 
-                }
-            );
-
-        });
+            }
+        );
 
 }
 
@@ -1564,61 +1903,83 @@ function mostrarResultado() {
         "romantico";
 
 
-    Object.keys(
-        respostas
-    )
-    .forEach(chave => {
+    Object
+        .keys(respostas)
+        .forEach(
+            chave => {
 
-        if (
-            respostas[chave]
-            >
-            respostas[resultado]
-        ) {
+                if (
+                    respostas[chave]
+                    >
+                    respostas[resultado]
+                ) {
 
-            resultado =
-                chave;
+                    resultado =
+                        chave;
 
-        }
+                }
 
-    });
+            }
+        );
 
 
     const dados = {
 
         romantico: {
-            icone: "♡",
+
+            icone:
+                "♡",
+
             titulo:
                 "Seu momento é Romântico",
+
             texto:
                 "Você combina com detalhes especiais, encontros e uma atmosfera cheia de amor."
+
         },
+
 
         leve: {
-            icone: "☀",
+
+            icone:
+                "☀",
+
             titulo:
                 "Seu momento é Leve",
+
             texto:
                 "Você combina com dias tranquilos, pós-banho e aquela sensação confortável."
+
         },
 
+
         elegante: {
-            icone: "✦",
+
+            icone:
+                "✦",
+
             titulo:
                 "Seu momento é Elegante",
+
             texto:
                 "Você gosta de personalidade, presença e momentos especiais."
+
         }
 
     };
 
 
     const r =
-        dados[resultado];
+        dados[
+            resultado
+        ];
 
 
     quizCard.innerHTML = `
 
-        <div class="quiz-resultado">
+        <div
+            class="quiz-resultado"
+        >
 
             <span>
                 ${r.icone}
@@ -1633,6 +1994,7 @@ function mostrarResultado() {
             </p>
 
             <button
+                type="button"
                 class="quiz-reiniciar"
                 id="reiniciarQuiz"
             >
@@ -1644,81 +2006,102 @@ function mostrarResultado() {
     `;
 
 
-    document
-        .getElementById(
+    const reiniciar =
+        document.getElementById(
             "reiniciarQuiz"
-        )
-        .addEventListener(
+        );
+
+
+    if (reiniciar) {
+
+        reiniciar.addEventListener(
             "click",
             () => {
 
                 perguntaAtual = 0;
 
+
                 respostas.romantico = 0;
+
                 respostas.leve = 0;
+
                 respostas.elegante = 0;
+
 
                 mostrarPergunta();
 
             }
         );
 
+    }
+
 }
 
 
-mostrarPergunta();
+if (quizCard) {
+
+    mostrarPergunta();
+
+}
 
 
-/* ===============================
+/* =========================================
    FAQ
-================================ */
+========================================= */
 
 document
     .querySelectorAll(
         ".faq-pergunta"
     )
-    .forEach(pergunta => {
+    .forEach(
+        pergunta => {
 
-        pergunta.addEventListener(
-            "click",
-            () => {
+            pergunta.addEventListener(
+                "click",
+                () => {
 
-                const item =
-                    pergunta.closest(
-                        ".faq-item"
-                    );
-
-
-                const aberto =
-                    item.classList
-                        .contains(
-                            "ativo"
+                    const item =
+                        pergunta.closest(
+                            ".faq-item"
                         );
 
 
-                document
-                    .querySelectorAll(
-                        ".faq-item"
-                    )
-                    .forEach(outro => {
+                    if (!item) return;
 
-                        outro.classList
-                            .remove(
+
+                    const aberto =
+                        item.classList
+                            .contains(
                                 "ativo"
                             );
 
-                    });
+
+                    document
+                        .querySelectorAll(
+                            ".faq-item"
+                        )
+                        .forEach(
+                            outro => {
+
+                                outro.classList
+                                    .remove(
+                                        "ativo"
+                                    );
+
+                            }
+                        );
 
 
-                if (!aberto) {
+                    if (!aberto) {
 
-                    item.classList.add(
-                        "ativo"
-                    );
+                        item.classList.add(
+                            "ativo"
+                        );
+
+                    }
 
                 }
+            );
 
-            }
-        );
-
-    });
+        }
+    );
