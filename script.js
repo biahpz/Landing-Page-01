@@ -1,12 +1,10 @@
 "use strict";
 
-
 /* =========================================================
    DREAM • AMOR NO AR
    SCRIPT.JS
    UPDATE 3.0
 ========================================================= */
-
 
 /* =========================================================
    HELPERS
@@ -20,7 +18,6 @@ const $ = (
         selector
     );
 
-
 const $$ = (
     selector,
     parent = document
@@ -31,14 +28,11 @@ const $$ = (
         )
     ];
 
-
 const body =
     document.body;
 
-
 const root =
     document.documentElement;
-
 
 /* =========================================================
    ELEMENTOS PRINCIPAIS
@@ -47,30 +41,23 @@ const root =
 const loader =
     $("#loader");
 
-
 const header =
     $("#header");
-
 
 const menu =
     $("#menu");
 
-
 const menuMobile =
     $("#menuMobile");
-
 
 const scrollProgress =
     $("#scrollProgress");
 
-
 const backTop =
     $("#backTop");
 
-
 const toast =
     $("#toast");
-
 
 /* =========================================================
    LOADER
@@ -94,36 +81,34 @@ window.addEventListener(
     }
 );
 
-
 /* =========================================================
    TOAST
 ========================================================= */
 
 let toastTimer;
 
-
 function showToast(
     message
 ) {
 
-    if (!toast) {
-        return;
-    }
+    if (
+        !toast
+    ) {
 
+        return;
+
+    }
 
     toast.textContent =
         message;
-
 
     toast.classList.add(
         "show"
     );
 
-
     clearTimeout(
         toastTimer
     );
-
 
     toastTimer =
         setTimeout(
@@ -139,7 +124,6 @@ function showToast(
 
 }
 
-
 /* =========================================================
    SCROLL
 ========================================================= */
@@ -149,42 +133,35 @@ function updateScroll() {
     const top =
         window.scrollY;
 
-
     const total =
         document.documentElement.scrollHeight -
         window.innerHeight;
-
 
     const percent =
         total > 0
             ? top / total * 100
             : 0;
 
-
-    if (scrollProgress) {
+    if (
+        scrollProgress
+    ) {
 
         scrollProgress.style.width =
             `${percent}%`;
 
     }
 
-
     header?.classList.toggle(
         "scrolled",
         top > 30
     );
-
 
     backTop?.classList.toggle(
         "show",
         top > 450
     );
 
-
-    updateSectionIndicator();
-
 }
-
 
 window.addEventListener(
     "scroll",
@@ -194,9 +171,7 @@ window.addEventListener(
     }
 );
 
-
 updateScroll();
-
 
 /* =========================================================
    VOLTAR AO TOPO
@@ -207,13 +182,16 @@ backTop?.addEventListener(
     () => {
 
         window.scrollTo({
+
             top: 0,
-            behavior: "smooth"
+
+            behavior:
+                "smooth"
+
         });
 
     }
 );
-
 
 /* =========================================================
    MENU MOBILE
@@ -229,7 +207,6 @@ menuMobile?.addEventListener(
 
     }
 );
-
 
 $$(
     ".menu a"
@@ -250,7 +227,6 @@ $$(
     }
 );
 
-
 /* =========================================================
    FECHAR MENU CLICANDO FORA
 ========================================================= */
@@ -263,17 +239,23 @@ document.addEventListener(
             !menu ||
             !menuMobile
         ) {
-            return;
-        }
 
+            return;
+
+        }
 
         if (
-            menu.contains(event.target) ||
-            menuMobile.contains(event.target)
+            menu.contains(
+                event.target
+            ) ||
+            menuMobile.contains(
+                event.target
+            )
         ) {
-            return;
-        }
 
+            return;
+
+        }
 
         menu.classList.remove(
             "open"
@@ -282,14 +264,12 @@ document.addEventListener(
     }
 );
 
-
 /* =========================================================
    REVEAL
 ========================================================= */
 
 const revealElements =
     $$(".reveal");
-
 
 if (
     "IntersectionObserver" in window
@@ -311,7 +291,6 @@ if (
                                 "visible"
                             );
 
-
                             revealObserver.unobserve(
                                 entry.target
                             );
@@ -328,7 +307,6 @@ if (
             }
 
         );
-
 
     revealElements.forEach(
         element => {
@@ -354,14 +332,14 @@ if (
 
 }
 
-
 /* =========================================================
    METERS
 ========================================================= */
 
 const meterElements =
-    $$("[data-meter]");
-
+    $$(
+        "[data-meter]"
+    );
 
 if (
     "IntersectionObserver" in window
@@ -385,7 +363,6 @@ if (
                                     0
                                 );
 
-
                             entry.target.style.width =
                                 `${Math.min(
                                     100,
@@ -394,7 +371,6 @@ if (
                                         value
                                     )
                                 )}%`;
-
 
                             meterObserver.unobserve(
                                 entry.target
@@ -413,7 +389,6 @@ if (
 
         );
 
-
     meterElements.forEach(
         meter => {
 
@@ -430,16 +405,17 @@ if (
         meter => {
 
             meter.style.width =
-                `${Number(
-                    meter.dataset.meter ||
-                    0
-                )}%`;
+                `${
+                    Number(
+                        meter.dataset.meter ||
+                        0
+                    )
+                }%`;
 
         }
     );
 
 }
-
 
 /* =========================================================
    CURSOR GLOW
@@ -448,22 +424,17 @@ if (
 const cursorGlow =
     $("#cursorGlow");
 
-
 let cursorX =
     window.innerWidth / 2;
-
 
 let cursorY =
     window.innerHeight / 2;
 
-
 let glowX =
     cursorX;
 
-
 let glowY =
     cursorY;
-
 
 document.addEventListener(
     "mousemove",
@@ -472,13 +443,11 @@ document.addEventListener(
         cursorX =
             event.clientX;
 
-
         cursorY =
             event.clientY;
 
     }
 );
-
 
 function animateCursorGlow() {
 
@@ -496,7 +465,6 @@ function animateCursorGlow() {
             ) *
             0.12;
 
-
         glowY +=
             (
                 cursorY -
@@ -504,16 +472,13 @@ function animateCursorGlow() {
             ) *
             0.12;
 
-
         cursorGlow.style.left =
             `${glowX}px`;
-
 
         cursorGlow.style.top =
             `${glowY}px`;
 
     }
-
 
     requestAnimationFrame(
         animateCursorGlow
@@ -521,9 +486,7 @@ function animateCursorGlow() {
 
 }
 
-
 animateCursorGlow();
-
 
 /* =========================================================
    BORRIFADOR PREMIUM
@@ -532,30 +495,23 @@ animateCursorGlow();
 const heroProduct =
     $("#heroProduct");
 
-
 const mainBottle =
     $("#mainBottle");
-
 
 const productHalo =
     $("#productHalo");
 
-
 const sprayArea =
     $("#sprayArea");
-
 
 const sprayButton =
     $("#sprayButton");
 
-
 const sprayWave =
     $("#sprayWave");
 
-
 let spraying =
     false;
-
 
 function sprayDream() {
 
@@ -563,50 +519,57 @@ function sprayDream() {
         spraying ||
         !sprayArea
     ) {
-        return;
-    }
 
+        return;
+
+    }
 
     spraying =
         true;
-
 
     heroProduct?.classList.add(
         "spraying"
     );
 
+    /* =====================================================
+       ONDA
+    ===================================================== */
 
     sprayWave?.classList.remove(
         "active"
     );
 
+    if (
+        sprayWave
+    ) {
 
-    if (sprayWave) {
         void sprayWave.offsetWidth;
-    }
 
+    }
 
     sprayWave?.classList.add(
         "active"
     );
 
+    /* =====================================================
+       FLASH
+    ===================================================== */
 
     const flash =
         document.createElement(
             "span"
         );
 
-
     flash.className =
         "spray-flash active";
-
 
     sprayArea.appendChild(
         flash
     );
 
-
-    /* NÉVOA */
+    /* =====================================================
+       NÉVOA
+    ===================================================== */
 
     for (
         let i = 0;
@@ -619,10 +582,8 @@ function sprayDream() {
                 "span"
             );
 
-
         mist.className =
             "spray-mist";
-
 
         const x =
             (
@@ -631,7 +592,6 @@ function sprayDream() {
             ) *
             430;
 
-
         const y =
             (
                 Math.random() -
@@ -639,74 +599,69 @@ function sprayDream() {
             ) *
             360;
 
-
         const size =
             3 +
             Math.random() *
             13;
 
-
         const blur =
             Math.random() *
             3;
-
 
         const duration =
             0.8 +
             Math.random() *
             0.9;
 
-
         mist.style.setProperty(
             "--mist-x",
             `${x}px`
         );
-
 
         mist.style.setProperty(
             "--mist-y",
             `${y}px`
         );
 
-
         mist.style.setProperty(
             "--mist-size",
             `${size}px`
         );
-
 
         mist.style.setProperty(
             "--mist-blur",
             `${blur}px`
         );
 
-
         mist.style.setProperty(
             "--mist-duration",
             `${duration}s`
         );
 
-
         mist.style.animationDelay =
-            `${Math.random() * 0.13}s`;
-
+            `${
+                Math.random() *
+                0.13
+            }s`;
 
         sprayArea.appendChild(
             mist
         );
 
-
         setTimeout(
             () => {
+
                 mist.remove();
+
             },
             2000
         );
 
     }
 
-
-    /* CORAÇÕES E ESTRELAS */
+    /* =====================================================
+       CORAÇÕES E ESTRELAS
+    ===================================================== */
 
     const symbols = [
         "♡",
@@ -714,7 +669,6 @@ function sprayDream() {
         "♡",
         "✧"
     ];
-
 
     for (
         let i = 0;
@@ -727,10 +681,8 @@ function sprayDream() {
                 "span"
             );
 
-
         particle.className =
             "spray-symbol-particle";
-
 
         particle.textContent =
             symbols[
@@ -740,10 +692,12 @@ function sprayDream() {
                 )
             ];
 
-
         particle.style.fontSize =
-            `${9 + Math.random() * 14}px`;
-
+            `${
+                9 +
+                Math.random() *
+                14
+            }px`;
 
         particle.style.setProperty(
             "--symbol-x",
@@ -756,7 +710,6 @@ function sprayDream() {
             }px`
         );
 
-
         particle.style.setProperty(
             "--symbol-y",
             `${
@@ -765,7 +718,6 @@ function sprayDream() {
                 280
             }px`
         );
-
 
         particle.style.setProperty(
             "--symbol-rotate",
@@ -778,41 +730,39 @@ function sprayDream() {
             }deg`
         );
 
-
         particle.style.animationDelay =
-            `${Math.random() * 0.2}s`;
-
+            `${
+                Math.random() *
+                0.2
+            }s`;
 
         sprayArea.appendChild(
             particle
         );
 
-
         setTimeout(
             () => {
+
                 particle.remove();
+
             },
             2000
         );
 
     }
 
-
     showToast(
         "Dream está no ar ♡"
     );
-
 
     setTimeout(
         () => {
 
             flash.remove();
 
-
             heroProduct?.classList.remove(
                 "spraying"
             );
-
 
             spraying =
                 false;
@@ -823,12 +773,10 @@ function sprayDream() {
 
 }
 
-
 sprayButton?.addEventListener(
     "click",
     sprayDream
 );
-
 
 /* =========================================================
    FRASCO 3D
@@ -842,22 +790,23 @@ heroProduct?.addEventListener(
             spraying ||
             !mainBottle
         ) {
-            return;
-        }
 
+            return;
+
+        }
 
         if (
             window.matchMedia(
                 "(pointer: coarse)"
             ).matches
         ) {
-            return;
-        }
 
+            return;
+
+        }
 
         const rect =
             heroProduct.getBoundingClientRect();
-
 
         const x =
             (
@@ -866,14 +815,12 @@ heroProduct?.addEventListener(
             ) /
             rect.width;
 
-
         const y =
             (
                 event.clientY -
                 rect.top
             ) /
             rect.height;
-
 
         const rotateY =
             (
@@ -882,14 +829,12 @@ heroProduct?.addEventListener(
             ) *
             16;
 
-
         const rotateX =
             (
                 0.5 -
                 y
             ) *
             12;
-
 
         mainBottle.style.transform = `
             translate3d(
@@ -916,7 +861,6 @@ heroProduct?.addEventListener(
                 ${rotateY}deg
             )
         `;
-
 
         if (
             productHalo
@@ -946,7 +890,6 @@ heroProduct?.addEventListener(
     }
 );
 
-
 heroProduct?.addEventListener(
     "mouseleave",
     () => {
@@ -961,7 +904,6 @@ heroProduct?.addEventListener(
 
         }
 
-
         if (
             productHalo
         ) {
@@ -974,7 +916,6 @@ heroProduct?.addEventListener(
     }
 );
 
-
 /* =========================================================
    PRODUTO MODAL
 ========================================================= */
@@ -982,13 +923,11 @@ heroProduct?.addEventListener(
 const productModal =
     $("#productModal");
 
-
 function openProduct() {
 
     productModal?.classList.add(
         "open"
     );
-
 
     body.classList.add(
         "modal-open"
@@ -996,18 +935,15 @@ function openProduct() {
 
 }
 
-
 function closeProduct() {
 
     productModal?.classList.remove(
         "open"
     );
 
-
     updateModalBodyState();
 
 }
-
 
 $$(
     ".open-product"
@@ -1022,7 +958,6 @@ $$(
     }
 );
 
-
 $$(
     ".close-product"
 ).forEach(
@@ -1036,7 +971,6 @@ $$(
     }
 );
 
-
 /* =========================================================
    FAVORITO
 ========================================================= */
@@ -1046,7 +980,6 @@ let favorite =
         "dreamFavorite"
     ) ===
     "true";
-
 
 const favoriteButtons = [
 
@@ -1058,7 +991,6 @@ const favoriteButtons = [
     Boolean
 );
 
-
 function updateFavorite() {
 
     favoriteButtons.forEach(
@@ -1068,7 +1000,6 @@ function updateFavorite() {
                 favorite
                     ? "♥ Favoritado"
                     : "♡ Favoritar";
-
 
             button.classList.toggle(
                 "active",
@@ -1080,7 +1011,6 @@ function updateFavorite() {
 
 }
 
-
 favoriteButtons.forEach(
     button => {
 
@@ -1091,7 +1021,6 @@ favoriteButtons.forEach(
                 favorite =
                     !favorite;
 
-
                 localStorage.setItem(
                     "dreamFavorite",
                     String(
@@ -1099,9 +1028,7 @@ favoriteButtons.forEach(
                     )
                 );
 
-
                 updateFavorite();
-
 
                 showToast(
                     favorite
@@ -1115,9 +1042,7 @@ favoriteButtons.forEach(
     }
 );
 
-
 updateFavorite();
-
 
 /* =========================================================
    COMPARTILHAR
@@ -1144,11 +1069,9 @@ async function shareDream() {
 
             });
 
-
             return;
 
         }
-
 
         if (
             navigator.clipboard
@@ -1158,16 +1081,13 @@ async function shareDream() {
                 location.href
             );
 
-
             showToast(
                 "Link copiado ♡"
             );
 
-
             return;
 
         }
-
 
         showToast(
             "Copie o link do navegador ♡"
@@ -1183,18 +1103,15 @@ async function shareDream() {
 
 }
 
-
 $("#shareButton")?.addEventListener(
     "click",
     shareDream
 );
 
-
 $("#shareModal")?.addEventListener(
     "click",
     shareDream
 );
-
 
 /* =========================================================
    NOTAS
@@ -1306,10 +1223,8 @@ const notes = {
 
 };
 
-
 const noteModal =
     $("#noteModal");
-
 
 $$(
     ".note-chip"
@@ -1325,48 +1240,53 @@ $$(
                         button.dataset.note
                     ];
 
-
                 if (
                     !note
                 ) {
-                    return;
-                }
 
+                    return;
+
+                }
 
                 const icon =
                     $("#noteModalIcon");
 
-
                 const title =
                     $("#noteModalTitle");
-
 
                 const text =
                     $("#noteModalText");
 
+                if (
+                    icon
+                ) {
 
-                if (icon) {
                     icon.textContent =
                         note[0];
+
                 }
 
+                if (
+                    title
+                ) {
 
-                if (title) {
                     title.textContent =
                         note[1];
+
                 }
 
+                if (
+                    text
+                ) {
 
-                if (text) {
                     text.textContent =
                         note[2];
-                }
 
+                }
 
                 noteModal?.classList.add(
                     "open"
                 );
-
 
                 body.classList.add(
                     "modal-open"
@@ -1378,18 +1298,15 @@ $$(
     }
 );
 
-
 function closeNote() {
 
     noteModal?.classList.remove(
         "open"
     );
 
-
     updateModalBodyState();
 
 }
-
 
 $$(
     ".close-note"
@@ -1404,14 +1321,12 @@ $$(
     }
 );
 
-
 /* =========================================================
    TIMELINE
 ========================================================= */
 
 const timelineSlider =
     $("#timelineSlider");
-
 
 const timelineStages = [
 
@@ -1445,15 +1360,15 @@ const timelineStages = [
 
 ];
 
-
 function updateTimeline() {
 
     if (
         !timelineSlider
     ) {
-        return;
-    }
 
+        return;
+
+    }
 
     const value =
         Number(
@@ -1461,10 +1376,8 @@ function updateTimeline() {
             0
         );
 
-
     const hour =
         $("#timelineHour");
-
 
     if (
         hour
@@ -1474,7 +1387,6 @@ function updateTimeline() {
             `${value}h`;
 
     }
-
 
     const stage =
         timelineStages.find(
@@ -1486,44 +1398,48 @@ function updateTimeline() {
             1
         ];
 
-
     const icon =
         $("#timelineIcon");
-
 
     const title =
         $("#timelineTitle");
 
-
     const text =
         $("#timelineText");
 
+    if (
+        icon
+    ) {
 
-    if (icon) {
         icon.textContent =
             stage[1];
+
     }
 
+    if (
+        title
+    ) {
 
-    if (title) {
         title.textContent =
             stage[2];
+
     }
 
+    if (
+        text
+    ) {
 
-    if (text) {
         text.textContent =
             stage[3];
+
     }
 
 }
-
 
 timelineSlider?.addEventListener(
     "input",
     updateTimeline
 );
-
 
 updateTimeline();
 /* =========================================================
@@ -1533,18 +1449,14 @@ updateTimeline();
 const galleryTrack =
     $("#galleryTrack");
 
-
 const galleryItems =
     $$(".gallery-item");
-
 
 const galleryDots =
     $("#galleryDots");
 
-
 let galleryIndex =
     0;
-
 
 function updateGalleryUI() {
 
@@ -1564,14 +1476,11 @@ function updateGalleryUI() {
             }
         );
 
-
     const current =
         $("#galleryCurrent");
 
-
     const total =
         $("#galleryTotal");
-
 
     if (
         current
@@ -1587,7 +1496,6 @@ function updateGalleryUI() {
             );
 
     }
-
 
     if (
         total
@@ -1605,7 +1513,6 @@ function updateGalleryUI() {
 
 }
 
-
 function goGallery(
     index
 ) {
@@ -1618,7 +1525,6 @@ function goGallery(
 
     }
 
-
     galleryIndex =
         Math.max(
             0,
@@ -1629,12 +1535,10 @@ function goGallery(
             )
         );
 
-
     const item =
         galleryItems[
             galleryIndex
         ];
-
 
     if (
         galleryTrack &&
@@ -1654,11 +1558,9 @@ function goGallery(
 
     }
 
-
     updateGalleryUI();
 
 }
-
 
 if (
     galleryDots
@@ -1668,7 +1570,6 @@ if (
         "";
 
 }
-
 
 galleryItems.forEach(
     (
@@ -1681,20 +1582,16 @@ galleryItems.forEach(
                 "button"
             );
 
-
         dot.className =
             "gallery-dot";
 
-
         dot.type =
             "button";
-
 
         dot.setAttribute(
             "aria-label",
             `Ir para imagem ${index + 1}`
         );
-
 
         dot.addEventListener(
             "click",
@@ -1707,7 +1604,6 @@ galleryItems.forEach(
             }
         );
 
-
         galleryDots?.appendChild(
             dot
         );
@@ -1715,9 +1611,7 @@ galleryItems.forEach(
     }
 );
 
-
 updateGalleryUI();
-
 
 $("#galleryNext")?.addEventListener(
     "click",
@@ -1735,7 +1629,6 @@ $("#galleryNext")?.addEventListener(
     }
 );
 
-
 $("#galleryPrev")?.addEventListener(
     "click",
     () => {
@@ -1751,7 +1644,6 @@ $("#galleryPrev")?.addEventListener(
     }
 );
 
-
 /* =========================================================
    ARRASTAR GALERIA
 ========================================================= */
@@ -1759,18 +1651,14 @@ $("#galleryPrev")?.addEventListener(
 let dragging =
     false;
 
-
 let dragMoved =
     false;
-
 
 let startX =
     0;
 
-
 let startScroll =
     0;
-
 
 galleryTrack?.addEventListener(
     "mousedown",
@@ -1779,18 +1667,14 @@ galleryTrack?.addEventListener(
         dragging =
             true;
 
-
         dragMoved =
             false;
-
 
         startX =
             event.pageX;
 
-
         startScroll =
             galleryTrack.scrollLeft;
-
 
         galleryTrack.classList.add(
             "dragging"
@@ -1798,7 +1682,6 @@ galleryTrack?.addEventListener(
 
     }
 );
-
 
 window.addEventListener(
     "mouseup",
@@ -1811,11 +1694,9 @@ window.addEventListener(
             dragging =
                 false;
 
-
             galleryTrack?.classList.remove(
                 "dragging"
             );
-
 
             setTimeout(
                 () => {
@@ -1832,7 +1713,6 @@ window.addEventListener(
     }
 );
 
-
 galleryTrack?.addEventListener(
     "mousemove",
     event => {
@@ -1845,11 +1725,9 @@ galleryTrack?.addEventListener(
 
         }
 
-
         const distance =
             event.pageX -
             startX;
-
 
         if (
             Math.abs(
@@ -1863,9 +1741,7 @@ galleryTrack?.addEventListener(
 
         }
 
-
         event.preventDefault();
-
 
         galleryTrack.scrollLeft =
             startScroll -
@@ -1874,13 +1750,11 @@ galleryTrack?.addEventListener(
     }
 );
 
-
 /* =========================================================
    SINCRONIZAR ÍNDICE DA GALERIA NO SCROLL
 ========================================================= */
 
 let galleryScrollTimer;
-
 
 galleryTrack?.addEventListener(
     "scroll",
@@ -1889,7 +1763,6 @@ galleryTrack?.addEventListener(
         clearTimeout(
             galleryScrollTimer
         );
-
 
         galleryScrollTimer =
             setTimeout(
@@ -1904,20 +1777,16 @@ galleryTrack?.addEventListener(
 
                     }
 
-
                     const center =
                         galleryTrack.scrollLeft +
                         galleryTrack.clientWidth /
                         2;
 
-
                     let closest =
                         0;
 
-
                     let closestDistance =
                         Infinity;
-
 
                     galleryItems.forEach(
                         (
@@ -1930,13 +1799,11 @@ galleryTrack?.addEventListener(
                                 item.offsetWidth /
                                 2;
 
-
                             const distance =
                                 Math.abs(
                                     center -
                                     itemCenter
                                 );
-
 
                             if (
                                 distance <
@@ -1946,7 +1813,6 @@ galleryTrack?.addEventListener(
                                 closestDistance =
                                     distance;
 
-
                                 closest =
                                     index;
 
@@ -1955,10 +1821,8 @@ galleryTrack?.addEventListener(
                         }
                     );
 
-
                     galleryIndex =
                         closest;
-
 
                     updateGalleryUI();
 
@@ -1972,7 +1836,6 @@ galleryTrack?.addEventListener(
     }
 );
 
-
 /* =========================================================
    AUTOPLAY GALERIA
 ========================================================= */
@@ -1980,14 +1843,11 @@ galleryTrack?.addEventListener(
 let autoplay =
     null;
 
-
 const autoplayButton =
     $("#galleryAutoplay");
 
-
 const autoplayProgress =
     $(".gallery-autoplay-progress i");
-
 
 function resetAutoplayProgress() {
 
@@ -1999,17 +1859,13 @@ function resetAutoplayProgress() {
 
     }
 
-
     autoplayProgress.style.transition =
         "none";
-
 
     autoplayProgress.style.width =
         "0%";
 
-
     void autoplayProgress.offsetWidth;
-
 
     if (
         autoplay
@@ -2018,14 +1874,12 @@ function resetAutoplayProgress() {
         autoplayProgress.style.transition =
             "width 3.5s linear";
 
-
         autoplayProgress.style.width =
             "100%";
 
     }
 
 }
-
 
 function autoplayNext() {
 
@@ -2038,11 +1892,9 @@ function autoplayNext() {
 
     );
 
-
     resetAutoplayProgress();
 
 }
-
 
 function startGalleryAutoplay() {
 
@@ -2055,13 +1907,11 @@ function startGalleryAutoplay() {
 
     }
 
-
     autoplay =
         setInterval(
             autoplayNext,
             3500
         );
-
 
     if (
         autoplayButton
@@ -2072,11 +1922,9 @@ function startGalleryAutoplay() {
 
     }
 
-
     resetAutoplayProgress();
 
 }
-
 
 function stopGalleryAutoplay() {
 
@@ -2090,10 +1938,8 @@ function stopGalleryAutoplay() {
 
     }
 
-
     autoplay =
         null;
-
 
     if (
         autoplayButton
@@ -2104,7 +1950,6 @@ function stopGalleryAutoplay() {
 
     }
 
-
     if (
         autoplayProgress
     ) {
@@ -2112,14 +1957,12 @@ function stopGalleryAutoplay() {
         autoplayProgress.style.transition =
             "none";
 
-
         autoplayProgress.style.width =
             "0%";
 
     }
 
 }
-
 
 autoplayButton?.addEventListener(
     "click",
@@ -2140,7 +1983,6 @@ autoplayButton?.addEventListener(
     }
 );
 
-
 /* =========================================================
    LIGHTBOX
 ========================================================= */
@@ -2148,10 +1990,8 @@ autoplayButton?.addEventListener(
 const lightbox =
     $("#lightbox");
 
-
 let lightboxIndex =
     0;
-
 
 function updateLightbox() {
 
@@ -2163,32 +2003,25 @@ function updateLightbox() {
 
     }
 
-
     const item =
         galleryItems[
             lightboxIndex
         ];
 
-
     const image =
         $("img", item);
-
 
     const title =
         $("h3", item);
 
-
     const lightboxImage =
         $("#lightboxImage");
-
 
     const lightboxTitle =
         $("#lightboxTitle");
 
-
     const lightboxCounter =
         $("#lightboxCounter");
-
 
     if (
         lightboxImage &&
@@ -2198,13 +2031,11 @@ function updateLightbox() {
         lightboxImage.src =
             image.src;
 
-
         lightboxImage.alt =
             image.alt ||
             "Dream Amor no Ar";
 
     }
-
 
     if (
         lightboxTitle
@@ -2215,7 +2046,6 @@ function updateLightbox() {
             "Dream";
 
     }
-
 
     if (
         lightboxCounter
@@ -2242,7 +2072,6 @@ function updateLightbox() {
 
 }
 
-
 function openLightbox(
     index
 ) {
@@ -2256,18 +2085,14 @@ function openLightbox(
 
     }
 
-
     lightboxIndex =
         index;
 
-
     updateLightbox();
-
 
     lightbox.classList.add(
         "open"
     );
-
 
     body.classList.add(
         "modal-open"
@@ -2275,18 +2100,15 @@ function openLightbox(
 
 }
 
-
 function closeLightbox() {
 
     lightbox?.classList.remove(
         "open"
     );
 
-
     updateModalBodyState();
 
 }
-
 
 function nextLightbox() {
 
@@ -2298,7 +2120,6 @@ function nextLightbox() {
 
     }
 
-
     lightboxIndex =
         (
             lightboxIndex +
@@ -2306,11 +2127,9 @@ function nextLightbox() {
         ) %
         galleryItems.length;
 
-
     updateLightbox();
 
 }
-
 
 function prevLightbox() {
 
@@ -2322,7 +2141,6 @@ function prevLightbox() {
 
     }
 
-
     lightboxIndex =
         (
             lightboxIndex -
@@ -2331,11 +2149,9 @@ function prevLightbox() {
         ) %
         galleryItems.length;
 
-
     updateLightbox();
 
 }
-
 
 galleryItems.forEach(
     (
@@ -2355,7 +2171,6 @@ galleryItems.forEach(
 
                 }
 
-
                 openLightbox(
                     index
                 );
@@ -2366,30 +2181,25 @@ galleryItems.forEach(
     }
 );
 
-
 $("#lightboxNext")?.addEventListener(
     "click",
     nextLightbox
 );
-
 
 $("#lightboxPrev")?.addEventListener(
     "click",
     prevLightbox
 );
 
-
 $("#lightboxClose")?.addEventListener(
     "click",
     closeLightbox
 );
 
-
 $("#lightboxBackdrop")?.addEventListener(
     "click",
     closeLightbox
 );
-
 
 /* =========================================================
    MOODS
@@ -2424,7 +2234,6 @@ const moods = {
 
 };
 
-
 /* =========================================================
    HEX PARA RGB
 ========================================================= */
@@ -2441,7 +2250,6 @@ function hexToRgb(
             "#",
             ""
         );
-
 
     if (
         clean.length ===
@@ -2464,13 +2272,11 @@ function hexToRgb(
 
     }
 
-
     const value =
         parseInt(
             clean,
             16
         );
-
 
     return {
 
@@ -2487,7 +2293,6 @@ function hexToRgb(
 
 }
 
-
 /* =========================================================
    APLICAR CORES
 ========================================================= */
@@ -2503,44 +2308,36 @@ function applyColors(
         primary
     );
 
-
     root.style.setProperty(
         "--secondary",
         secondary
     );
-
 
     const p =
         hexToRgb(
             primary
         );
 
-
     const s =
         hexToRgb(
             secondary
         );
-
 
     root.style.setProperty(
         "--primary-rgb",
         `${p.r}, ${p.g}, ${p.b}`
     );
 
-
     root.style.setProperty(
         "--secondary-rgb",
         `${s.r}, ${s.g}, ${s.b}`
     );
 
-
     const primaryInput =
         $("#primaryColor");
 
-
     const secondaryInput =
         $("#secondaryColor");
-
 
     if (
         primaryInput
@@ -2551,7 +2348,6 @@ function applyColors(
 
     }
 
-
     if (
         secondaryInput
     ) {
@@ -2560,7 +2356,6 @@ function applyColors(
             secondary;
 
     }
-
 
     if (
         save
@@ -2571,7 +2366,6 @@ function applyColors(
             primary
         );
 
-
         localStorage.setItem(
             "dreamSecondary",
             secondary
@@ -2580,7 +2374,6 @@ function applyColors(
     }
 
 }
-
 
 /* =========================================================
    MOOD BUTTONS
@@ -2604,17 +2397,14 @@ $$(
                         )
                 );
 
-
                 button.classList.add(
                     "active"
                 );
-
 
                 const mood =
                     moods[
                         button.dataset.mood
                     ];
-
 
                 if (
                     mood
@@ -2631,7 +2421,6 @@ $$(
 
     }
 );
-
 
 /* =========================================================
    QUIZ
@@ -2668,7 +2457,6 @@ const questions = [
         ]
     },
 
-
     {
         q:
             "Escolha uma sensação.",
@@ -2698,7 +2486,6 @@ const questions = [
         ]
     },
 
-
     {
         q:
             "Escolha um símbolo.",
@@ -2727,7 +2514,6 @@ const questions = [
 
         ]
     },
-
 
     {
         q:
@@ -2760,7 +2546,6 @@ const questions = [
 
 ];
 
-
 const results = {
 
     romantico: [
@@ -2789,20 +2574,16 @@ const results = {
 
 };
 
-
 let quizIndex =
     0;
 
-
 let score =
     {};
-
 
 function startQuiz() {
 
     quizIndex =
         0;
-
 
     score = {
 
@@ -2813,18 +2594,14 @@ function startQuiz() {
 
     };
 
-
     const start =
         $("#quizStart");
-
 
     const result =
         $("#quizResult");
 
-
     const questionsBox =
         $("#quizQuestions");
-
 
     if (
         start
@@ -2835,7 +2612,6 @@ function startQuiz() {
 
     }
 
-
     if (
         result
     ) {
@@ -2844,7 +2620,6 @@ function startQuiz() {
             true;
 
     }
-
 
     if (
         questionsBox
@@ -2855,11 +2630,9 @@ function startQuiz() {
 
     }
 
-
     renderQuiz();
 
 }
-
 
 function renderQuiz() {
 
@@ -2867,7 +2640,6 @@ function renderQuiz() {
         questions[
             quizIndex
         ];
-
 
     if (
         !current
@@ -2877,18 +2649,14 @@ function renderQuiz() {
 
     }
 
-
     const question =
         $("#quizQuestion");
-
 
     const step =
         $("#quizStep");
 
-
     const progress =
         $("#quizProgressBar");
-
 
     if (
         question
@@ -2899,7 +2667,6 @@ function renderQuiz() {
 
     }
 
-
     if (
         step
     ) {
@@ -2908,7 +2675,6 @@ function renderQuiz() {
             `${quizIndex + 1} / ${questions.length}`;
 
     }
-
 
     if (
         progress
@@ -2926,10 +2692,8 @@ function renderQuiz() {
 
     }
 
-
     const container =
         $("#quizOptions");
-
 
     if (
         !container
@@ -2939,10 +2703,8 @@ function renderQuiz() {
 
     }
 
-
     container.innerHTML =
         "";
-
 
     current.answers.forEach(
         answer => {
@@ -2952,14 +2714,11 @@ function renderQuiz() {
                     "button"
                 );
 
-
             button.type =
                 "button";
 
-
             button.textContent =
                 answer[0];
-
 
             button.addEventListener(
                 "click",
@@ -2969,9 +2728,7 @@ function renderQuiz() {
                         answer[1]
                     ]++;
 
-
                     quizIndex++;
-
 
                     if (
                         quizIndex >=
@@ -2989,7 +2746,6 @@ function renderQuiz() {
                 }
             );
 
-
             container.appendChild(
                 button
             );
@@ -2999,16 +2755,13 @@ function renderQuiz() {
 
 }
 
-
 function finishQuiz() {
 
     const questionsBox =
         $("#quizQuestions");
 
-
     const resultBox =
         $("#quizResult");
-
 
     if (
         questionsBox
@@ -3019,7 +2772,6 @@ function finishQuiz() {
 
     }
 
-
     if (
         resultBox
     ) {
@@ -3028,7 +2780,6 @@ function finishQuiz() {
             false;
 
     }
-
 
     const winner =
         Object.entries(
@@ -3043,7 +2794,6 @@ function finishQuiz() {
                 a[1]
         )[0]?.[0];
 
-
     if (
         !winner
     ) {
@@ -3052,24 +2802,19 @@ function finishQuiz() {
 
     }
 
-
     const result =
         results[
             winner
         ];
 
-
     const icon =
         $("#quizResultIcon");
-
 
     const title =
         $("#quizResultTitle");
 
-
     const text =
         $("#quizResultText");
-
 
     if (
         icon
@@ -3080,7 +2825,6 @@ function finishQuiz() {
 
     }
 
-
     if (
         title
     ) {
@@ -3089,7 +2833,6 @@ function finishQuiz() {
             result[1];
 
     }
-
 
     if (
         text
@@ -3100,12 +2843,10 @@ function finishQuiz() {
 
     }
 
-
     const mood =
         moods[
             winner
         ];
-
 
     if (
         mood
@@ -3119,18 +2860,15 @@ function finishQuiz() {
 
 }
 
-
 $("#startQuiz")?.addEventListener(
     "click",
     startQuiz
 );
 
-
 $("#restartQuiz")?.addEventListener(
     "click",
     startQuiz
 );
-
 
 /* =========================================================
    DREAM STUDIO
@@ -3139,14 +2877,11 @@ $("#restartQuiz")?.addEventListener(
 const settingsPanel =
     $("#settingsPanel");
 
-
 const settingsButton =
     $("#settingsButton");
 
-
 const closeSettingsButton =
     $("#closeSettings");
-
 
 settingsButton?.addEventListener(
     "click",
@@ -3159,7 +2894,6 @@ settingsButton?.addEventListener(
     }
 );
 
-
 closeSettingsButton?.addEventListener(
     "click",
     () => {
@@ -3170,7 +2904,6 @@ closeSettingsButton?.addEventListener(
 
     }
 );
-
 
 /* =========================================================
    PALETAS
@@ -3210,7 +2943,6 @@ const palettes = {
 
 };
 
-
 $$(
     ".palette"
 ).forEach(
@@ -3229,17 +2961,14 @@ $$(
                         )
                 );
 
-
                 button.classList.add(
                     "active"
                 );
-
 
                 const palette =
                     palettes[
                         button.dataset.palette
                     ];
-
 
                 if (
                     palette
@@ -3256,7 +2985,6 @@ $$(
 
     }
 );
-
 
 /* =========================================================
    CORES PERSONALIZADAS
@@ -3277,7 +3005,6 @@ $("#primaryColor")?.addEventListener(
 
     }
 );
-
 
 $("#secondaryColor")?.addEventListener(
     "input",
@@ -3308,14 +3035,11 @@ function setDark(
         active
     );
 
-
     const toggle =
         $("#darkToggle");
 
-
     const themeButton =
         $("#themeButton");
-
 
     if (
         toggle
@@ -3325,7 +3049,6 @@ function setDark(
             active;
 
     }
-
 
     if (
         themeButton
@@ -3337,7 +3060,6 @@ function setDark(
                 : "☾";
 
     }
-
 
     if (
         save
@@ -3354,7 +3076,6 @@ function setDark(
 
 }
 
-
 $("#themeButton")?.addEventListener(
     "click",
     () => {
@@ -3368,7 +3089,6 @@ $("#themeButton")?.addEventListener(
     }
 );
 
-
 $("#darkToggle")?.addEventListener(
     "change",
     event => {
@@ -3380,7 +3100,6 @@ $("#darkToggle")?.addEventListener(
     }
 );
 
-
 /* =========================================================
    PARTÍCULAS
 ========================================================= */
@@ -3390,7 +3109,6 @@ function generateParticles() {
     const container =
         $("#particles");
 
-
     if (
         !container
     ) {
@@ -3399,10 +3117,8 @@ function generateParticles() {
 
     }
 
-
     container.innerHTML =
         "";
-
 
     const symbols = [
         "♡",
@@ -3410,7 +3126,6 @@ function generateParticles() {
         "·",
         "✿"
     ];
-
 
     for (
         let i = 0;
@@ -3423,10 +3138,8 @@ function generateParticles() {
                 "span"
             );
 
-
         particle.className =
             "particle";
-
 
         particle.textContent =
             symbols[
@@ -3436,13 +3149,11 @@ function generateParticles() {
                 )
             ];
 
-
         particle.style.left =
             `${
                 Math.random() *
                 100
             }%`;
-
 
         particle.style.fontSize =
             `${
@@ -3450,7 +3161,6 @@ function generateParticles() {
                 Math.random() *
                 17
             }px`;
-
 
         particle.style.setProperty(
             "--duration",
@@ -3461,7 +3171,6 @@ function generateParticles() {
             }s`
         );
 
-
         particle.style.setProperty(
             "--delay",
             `${
@@ -3469,7 +3178,6 @@ function generateParticles() {
                 15
             }s`
         );
-
 
         container.appendChild(
             particle
@@ -3479,9 +3187,7 @@ function generateParticles() {
 
 }
 
-
 generateParticles();
-
 
 /* =========================================================
    TOGGLE PARTÍCULAS
@@ -3496,7 +3202,6 @@ $("#particlesToggle")?.addEventListener(
             !event.target.checked
         );
 
-
         localStorage.setItem(
             "dreamParticles",
             String(
@@ -3506,7 +3211,6 @@ $("#particlesToggle")?.addEventListener(
 
     }
 );
-
 
 /* =========================================================
    TOGGLE ANIMAÇÕES
@@ -3521,7 +3225,6 @@ $("#animationsToggle")?.addEventListener(
             !event.target.checked
         );
 
-
         localStorage.setItem(
             "dreamAnimations",
             String(
@@ -3531,7 +3234,6 @@ $("#animationsToggle")?.addEventListener(
 
     }
 );
-
 
 /* =========================================================
    TOGGLE CURSOR
@@ -3546,7 +3248,6 @@ $("#cursorToggle")?.addEventListener(
             !event.target.checked
         );
 
-
         localStorage.setItem(
             "dreamCursor",
             String(
@@ -3557,14 +3258,12 @@ $("#cursorToggle")?.addEventListener(
     }
 );
 
-
 /* =========================================================
    GLASS EFFECT
 ========================================================= */
 
 const glassToggle =
     $("#glassToggle");
-
 
 glassToggle?.addEventListener(
     "change",
@@ -3574,7 +3273,6 @@ glassToggle?.addEventListener(
             "no-glass",
             !event.target.checked
         );
-
 
         localStorage.setItem(
             "dreamGlass",
@@ -3586,14 +3284,12 @@ glassToggle?.addEventListener(
     }
 );
 
-
 /* =========================================================
    CLEAN MODE
 ========================================================= */
 
 const cleanToggle =
     $("#cleanModeToggle");
-
 
 cleanToggle?.addEventListener(
     "change",
@@ -3603,7 +3299,6 @@ cleanToggle?.addEventListener(
             "clean-mode",
             event.target.checked
         );
-
 
         localStorage.setItem(
             "dreamClean",
@@ -3615,14 +3310,12 @@ cleanToggle?.addEventListener(
     }
 );
 
-
 /* =========================================================
    VELOCIDADE DAS ANIMAÇÕES
 ========================================================= */
 
 const animationSpeed =
     $("#animationSpeed");
-
 
 function setAnimationSpeed(
     value
@@ -3632,7 +3325,6 @@ function setAnimationSpeed(
         Number(
             value
         );
-
 
     if (
         !Number.isFinite(
@@ -3644,7 +3336,6 @@ function setAnimationSpeed(
 
     }
 
-
     const safePercent =
         Math.max(
             40,
@@ -3654,21 +3345,17 @@ function setAnimationSpeed(
             )
         );
 
-
     const cssSpeed =
         safePercent /
         100;
-
 
     root.style.setProperty(
         "--animation-speed",
         cssSpeed
     );
 
-
     const label =
         $("#animationSpeedValue");
-
 
     if (
         label
@@ -3681,7 +3368,6 @@ function setAnimationSpeed(
 
     }
 
-
     if (
         animationSpeed
     ) {
@@ -3691,7 +3377,6 @@ function setAnimationSpeed(
 
     }
 
-
     localStorage.setItem(
         "dreamAnimationSpeed",
         String(
@@ -3700,7 +3385,6 @@ function setAnimationSpeed(
     );
 
 }
-
 
 animationSpeed?.addEventListener(
     "input",
@@ -3713,14 +3397,12 @@ animationSpeed?.addEventListener(
     }
 );
 
-
 /* =========================================================
    CONTRASTE
 ========================================================= */
 
 const contrastRange =
     $("#contrastControl");
-
 
 function setContrast(
     value
@@ -3730,7 +3412,6 @@ function setContrast(
         Number(
             value
         );
-
 
     if (
         !Number.isFinite(
@@ -3742,7 +3423,6 @@ function setContrast(
 
     }
 
-
     const safePercent =
         Math.max(
             80,
@@ -3752,25 +3432,20 @@ function setContrast(
             )
         );
 
-
     const safe =
         safePercent /
         100;
-
 
     root.style.setProperty(
         "--contrast-level",
         safe
     );
 
-
     body.style.filter =
         `contrast(${safe})`;
 
-
     const label =
         $("#contrastValue");
-
 
     if (
         label
@@ -3783,7 +3458,6 @@ function setContrast(
 
     }
 
-
     if (
         contrastRange
     ) {
@@ -3793,7 +3467,6 @@ function setContrast(
 
     }
 
-
     localStorage.setItem(
         "dreamContrast",
         String(
@@ -3802,7 +3475,6 @@ function setContrast(
     );
 
 }
-
 
 contrastRange?.addEventListener(
     "input",
@@ -3815,7 +3487,6 @@ contrastRange?.addEventListener(
     }
 );
 
-
 /* =========================================================
    TAMANHO DA FONTE
 ========================================================= */
@@ -3824,7 +3495,6 @@ const fontButtons =
     $$(
         "[data-font-size]"
     );
-
 
 function setFontSize(
     size
@@ -3836,13 +3506,11 @@ function setFontSize(
         "font-large"
     );
 
-
     const allowed = [
         "small",
         "normal",
         "large"
     ];
-
 
     const safe =
         allowed.includes(
@@ -3851,11 +3519,9 @@ function setFontSize(
             ? size
             : "normal";
 
-
     body.classList.add(
         `font-${safe}`
     );
-
 
     fontButtons.forEach(
         button => {
@@ -3869,14 +3535,12 @@ function setFontSize(
         }
     );
 
-
     localStorage.setItem(
         "dreamFontSize",
         safe
     );
 
 }
-
 
 fontButtons.forEach(
     button => {
@@ -3894,7 +3558,6 @@ fontButtons.forEach(
 
     }
 );
-
 
 /* =========================================================
    DREAM SCENE
@@ -3934,7 +3597,6 @@ const scenes = {
 
     },
 
-
     ceu: {
 
         icon:
@@ -3967,7 +3629,6 @@ const scenes = {
 
     },
 
-
     flores: {
 
         icon:
@@ -3999,7 +3660,6 @@ const scenes = {
             `
 
     },
-
 
     energia: {
 
@@ -4035,10 +3695,8 @@ const scenes = {
 
 };
 
-
 const dreamSceneBg =
     $(".dream-scene-bg");
-
 
 $$(
     ".scene-button"
@@ -4054,7 +3712,6 @@ $$(
                         button.dataset.scene
                     ];
 
-
                 if (
                     !scene
                 ) {
@@ -4062,7 +3719,6 @@ $$(
                     return;
 
                 }
-
 
                 $$(
                     ".scene-button"
@@ -4076,11 +3732,9 @@ $$(
                     }
                 );
 
-
                 button.classList.add(
                     "active"
                 );
-
 
                 if (
                     dreamSceneBg
@@ -4091,18 +3745,14 @@ $$(
 
                 }
 
-
                 const icon =
                     $("#sceneResultIcon");
-
 
                 const title =
                     $("#sceneResultTitle");
 
-
                 const text =
                     $("#sceneResultText");
-
 
                 if (
                     icon
@@ -4113,7 +3763,6 @@ $$(
 
                 }
 
-
                 if (
                     title
                 ) {
@@ -4122,7 +3771,6 @@ $$(
                         scene.title;
 
                 }
-
 
                 if (
                     text
@@ -4138,7 +3786,6 @@ $$(
 
     }
 );
-
 
 /* =========================================================
    MOMENT CARDS
@@ -4163,10 +3810,8 @@ $$(
 
                 }
 
-
                 const rect =
                     card.getBoundingClientRect();
-
 
                 const x =
                     (
@@ -4175,14 +3820,12 @@ $$(
                     ) /
                     rect.width;
 
-
                 const y =
                     (
                         event.clientY -
                         rect.top
                     ) /
                     rect.height;
-
 
                 const rotateX =
                     (
@@ -4191,14 +3834,12 @@ $$(
                     ) *
                     7;
 
-
                 const rotateY =
                     (
                         x -
                         0.5
                     ) *
                     7;
-
 
                 card.style.transform =
                     `
@@ -4210,7 +3851,6 @@ $$(
 
             }
         );
-
 
         card.addEventListener(
             "mouseleave",
@@ -4225,7 +3865,6 @@ $$(
     }
 );
 
-
 /* =========================================================
    SECTION INDICATOR
 ========================================================= */
@@ -4233,12 +3872,10 @@ $$(
 const sectionIndicator =
     $("#sectionIndicator");
 
-
 const sections =
     $$(
         "main section[id]"
     );
-
 
 function updateSectionIndicator() {
 
@@ -4251,16 +3888,13 @@ function updateSectionIndicator() {
 
     }
 
-
     const position =
         window.scrollY +
         window.innerHeight *
         0.35;
 
-
     let current =
         sections[0];
-
 
     sections.forEach(
         section => {
@@ -4278,7 +3912,6 @@ function updateSectionIndicator() {
         }
     );
 
-
     const label =
         current.dataset.sectionName ||
         current.getAttribute(
@@ -4286,13 +3919,11 @@ function updateSectionIndicator() {
         ) ||
         current.id;
 
-
     const number =
         sections.indexOf(
             current
         ) +
         1;
-
 
     sectionIndicator.innerHTML =
         `
@@ -4305,6 +3936,16 @@ function updateSectionIndicator() {
 
 }
 
+/* CORREÇÃO IMPORTANTE:
+   o listener só é criado depois das declarações acima */
+
+window.addEventListener(
+    "scroll",
+    updateSectionIndicator,
+    {
+        passive: true
+    }
+);
 
 /* =========================================================
    MODAL BODY STATE
@@ -4323,7 +3964,6 @@ function updateModalBodyState() {
             "open"
         );
 
-
     body.classList.toggle(
         "modal-open",
         Boolean(
@@ -4332,7 +3972,6 @@ function updateModalBodyState() {
     );
 
 }
-
 
 /* =========================================================
    RESET DREAM STUDIO
@@ -4347,11 +3986,9 @@ $("#resetSettings")?.addEventListener(
             "#9562dc"
         );
 
-
         setDark(
             false
         );
-
 
         body.classList.remove(
             "no-particles",
@@ -4363,31 +4000,24 @@ $("#resetSettings")?.addEventListener(
             "font-large"
         );
 
-
         body.classList.add(
             "font-normal"
         );
 
-
         const particlesToggle =
             $("#particlesToggle");
-
 
         const animationsToggle =
             $("#animationsToggle");
 
-
         const cursorToggle =
             $("#cursorToggle");
-
 
         const glass =
             $("#glassToggle");
 
-
         const clean =
             $("#cleanModeToggle");
-
 
         if (
             particlesToggle
@@ -4398,7 +4028,6 @@ $("#resetSettings")?.addEventListener(
 
         }
 
-
         if (
             animationsToggle
         ) {
@@ -4407,7 +4036,6 @@ $("#resetSettings")?.addEventListener(
                 true;
 
         }
-
 
         if (
             cursorToggle
@@ -4418,7 +4046,6 @@ $("#resetSettings")?.addEventListener(
 
         }
 
-
         if (
             glass
         ) {
@@ -4427,7 +4054,6 @@ $("#resetSettings")?.addEventListener(
                 true;
 
         }
-
 
         if (
             clean
@@ -4438,46 +4064,37 @@ $("#resetSettings")?.addEventListener(
 
         }
 
-
         setAnimationSpeed(
             100
         );
-
 
         setContrast(
             100
         );
 
-
         setFontSize(
             "normal"
         );
-
 
         localStorage.removeItem(
             "dreamParticles"
         );
 
-
         localStorage.removeItem(
             "dreamAnimations"
         );
-
 
         localStorage.removeItem(
             "dreamCursor"
         );
 
-
         localStorage.removeItem(
             "dreamGlass"
         );
 
-
         localStorage.removeItem(
             "dreamClean"
         );
-
 
         showToast(
             "Configurações restauradas ♡"
@@ -4485,7 +4102,6 @@ $("#resetSettings")?.addEventListener(
 
     }
 );
-
 
 /* =========================================================
    CARREGAR CONFIGURAÇÕES
@@ -4499,13 +4115,11 @@ function loadSettings() {
         ) ||
         "#df76a8";
 
-
     const savedSecondary =
         localStorage.getItem(
             "dreamSecondary"
         ) ||
         "#9562dc";
-
 
     applyColors(
         savedPrimary,
@@ -4513,25 +4127,21 @@ function loadSettings() {
         false
     );
 
-
     const dark =
         localStorage.getItem(
             "dreamDark"
         ) ===
         "true";
 
-
     setDark(
         dark,
         false
     );
 
-
     const particles =
         localStorage.getItem(
             "dreamParticles"
         );
-
 
     const particlesEnabled =
         particles ===
@@ -4540,12 +4150,10 @@ function loadSettings() {
             : particles ===
                 "true";
 
-
     body.classList.toggle(
         "no-particles",
         !particlesEnabled
     );
-
 
     if (
         $("#particlesToggle")
@@ -4556,12 +4164,10 @@ function loadSettings() {
 
     }
 
-
     const animations =
         localStorage.getItem(
             "dreamAnimations"
         );
-
 
     const animationsEnabled =
         animations ===
@@ -4570,12 +4176,10 @@ function loadSettings() {
             : animations ===
                 "true";
 
-
     body.classList.toggle(
         "no-animations",
         !animationsEnabled
     );
-
 
     if (
         $("#animationsToggle")
@@ -4586,12 +4190,10 @@ function loadSettings() {
 
     }
 
-
     const cursor =
         localStorage.getItem(
             "dreamCursor"
         );
-
 
     const cursorEnabled =
         cursor ===
@@ -4600,12 +4202,10 @@ function loadSettings() {
             : cursor ===
                 "true";
 
-
     body.classList.toggle(
         "no-cursor",
         !cursorEnabled
     );
-
 
     if (
         $("#cursorToggle")
@@ -4616,12 +4216,10 @@ function loadSettings() {
 
     }
 
-
     const glass =
         localStorage.getItem(
             "dreamGlass"
         );
-
 
     const glassEnabled =
         glass ===
@@ -4630,12 +4228,10 @@ function loadSettings() {
             : glass ===
                 "true";
 
-
     body.classList.toggle(
         "no-glass",
         !glassEnabled
     );
-
 
     if (
         $("#glassToggle")
@@ -4646,19 +4242,16 @@ function loadSettings() {
 
     }
 
-
     const clean =
         localStorage.getItem(
             "dreamClean"
         ) ===
         "true";
 
-
     body.classList.toggle(
         "clean-mode",
         clean
     );
-
 
     if (
         $("#cleanModeToggle")
@@ -4669,7 +4262,6 @@ function loadSettings() {
 
     }
 
-
     const speed =
         Number(
             localStorage.getItem(
@@ -4678,11 +4270,9 @@ function loadSettings() {
             100
         );
 
-
     setAnimationSpeed(
         speed
     );
-
 
     const contrast =
         Number(
@@ -4692,11 +4282,9 @@ function loadSettings() {
             100
         );
 
-
     setContrast(
         contrast
     );
-
 
     const fontSize =
         localStorage.getItem(
@@ -4704,13 +4292,11 @@ function loadSettings() {
         ) ||
         "normal";
 
-
     setFontSize(
         fontSize
     );
 
 }
-
 
 /* =========================================================
    ATALHOS
@@ -4723,7 +4309,6 @@ document.addEventListener(
         const target =
             event.target;
 
-
         const typing =
             target instanceof
                 HTMLElement &&
@@ -4731,12 +4316,10 @@ document.addEventListener(
                 "input, textarea, select, [contenteditable='true']"
             );
 
-
         const lightboxOpen =
             lightbox?.classList.contains(
                 "open"
             );
-
 
         if (
             event.key ===
@@ -4745,27 +4328,21 @@ document.addEventListener(
 
             closeProduct();
 
-
             closeNote();
 
-
             closeLightbox();
-
 
             settingsPanel?.classList.remove(
                 "open"
             );
 
-
             menu?.classList.remove(
                 "open"
             );
 
-
             return;
 
         }
-
 
         if (
             typing
@@ -4774,7 +4351,6 @@ document.addEventListener(
             return;
 
         }
-
 
         if (
             lightboxOpen &&
@@ -4788,7 +4364,6 @@ document.addEventListener(
 
         }
 
-
         if (
             lightboxOpen &&
             event.key ===
@@ -4800,7 +4375,6 @@ document.addEventListener(
             return;
 
         }
-
 
         if (
             !lightboxOpen &&
@@ -4817,11 +4391,9 @@ document.addEventListener(
 
             );
 
-
             return;
 
         }
-
 
         if (
             !lightboxOpen &&
@@ -4838,11 +4410,9 @@ document.addEventListener(
 
             );
 
-
             return;
 
         }
-
 
         if (
             event.key.toLowerCase() ===
@@ -4855,7 +4425,6 @@ document.addEventListener(
 
         }
 
-
         if (
             event.key.toLowerCase() ===
             "s"
@@ -4866,7 +4435,6 @@ document.addEventListener(
             return;
 
         }
-
 
         if (
             event.key.toLowerCase() ===
@@ -4881,7 +4449,6 @@ document.addEventListener(
 
     }
 );
-
 
 /* =========================================================
    VISIBILIDADE DA PÁGINA
@@ -4900,10 +4467,8 @@ document.addEventListener(
                 autoplay
             );
 
-
             autoplay =
                 null;
-
 
             if (
                 autoplayButton
@@ -4919,13 +4484,11 @@ document.addEventListener(
     }
 );
 
-
 /* =========================================================
    RESIZE
 ========================================================= */
 
 let resizeTimer;
-
 
 window.addEventListener(
     "resize",
@@ -4935,13 +4498,13 @@ window.addEventListener(
             resizeTimer
         );
 
-
         resizeTimer =
             setTimeout(
                 () => {
 
                     updateScroll();
 
+                    updateSectionIndicator();
 
                     if (
                         window.innerWidth >
@@ -4961,7 +4524,6 @@ window.addEventListener(
     }
 );
 
-
 /* =========================================================
    SMOOTH LINKS
 ========================================================= */
@@ -4980,7 +4542,6 @@ $$(
                         "href"
                     );
 
-
                 if (
                     !href ||
                     href ===
@@ -4991,12 +4552,10 @@ $$(
 
                 }
 
-
                 const target =
                     document.querySelector(
                         href
                     );
-
 
                 if (
                     !target
@@ -5006,21 +4565,17 @@ $$(
 
                 }
 
-
                 event.preventDefault();
-
 
                 const headerOffset =
                     header?.offsetHeight ||
                     0;
-
 
                 const position =
                     target.getBoundingClientRect().top +
                     window.scrollY -
                     headerOffset -
                     15;
-
 
                 window.scrollTo({
 
@@ -5038,22 +4593,19 @@ $$(
     }
 );
 
-
 /* =========================================================
    INICIALIZAÇÃO
 ========================================================= */
 
 loadSettings();
 
-
 updateTimeline();
-
 
 updateGalleryUI();
 
+updateScroll();
 
 updateSectionIndicator();
-
 
 /* =========================================================
    CONSOLE
@@ -5068,7 +4620,6 @@ console.log(
     `
 );
 
-
 console.log(
     "%cDream Update 3.0 carregado com sucesso ✦",
     `
@@ -5077,7 +4628,6 @@ console.log(
     font-weight:700;
     `
 );
-
 
 /* =========================================================
    FIM • DREAM UPDATE 3.0
