@@ -2,8 +2,7 @@
 
 /* =========================================================
    DREAM • AMOR NO AR
-   SCRIPT.JS FINAL
-   MOONLIGHT + SPRAY 1 BORRIFADA
+   SCRIPT.JS PREMIUM
 ========================================================= */
 
 
@@ -11,15 +10,32 @@
    HELPERS
 ========================================================= */
 
-const $ = (selector, parent = document) =>
-    parent.querySelector(selector);
+const $ = (
+    selector,
+    parent = document
+) =>
+    parent.querySelector(
+        selector
+    );
 
-const $$ = (selector, parent = document) =>
-    [...parent.querySelectorAll(selector)];
 
-const body = document.body;
+const $$ = (
+    selector,
+    parent = document
+) =>
+    [
+        ...parent.querySelectorAll(
+            selector
+        )
+    ];
 
-const root = document.documentElement;
+
+const body =
+    document.body;
+
+
+const root =
+    document.documentElement;
 
 
 /* =========================================================
@@ -29,23 +45,34 @@ const root = document.documentElement;
 const loader =
     $("#loader");
 
+
 const header =
     $("#header");
+
 
 const menu =
     $("#menu");
 
+
 const menuMobile =
     $("#menuMobile");
+
 
 const scrollProgress =
     $("#scrollProgress");
 
+
 const backTop =
     $("#backTop");
 
+
 const toast =
     $("#toast");
+
+
+const sectionIndicator =
+    $("#sectionIndicator");
+
 
 let toastTimer;
 
@@ -60,9 +87,11 @@ function hideLoader() {
         return;
     }
 
+
     loader.classList.add(
         "hide"
     );
+
 
     setTimeout(
         () => {
@@ -90,11 +119,11 @@ window.addEventListener(
 );
 
 
-/* segurança */
+/* segurança extra */
 
 setTimeout(
     hideLoader,
-    3500
+    4500
 );
 
 
@@ -102,22 +131,28 @@ setTimeout(
    TOAST
 ========================================================= */
 
-function showToast(message) {
+function showToast(
+    message
+) {
 
     if (!toast) {
         return;
     }
 
+
     toast.textContent =
         message;
+
 
     toast.classList.add(
         "show"
     );
 
+
     clearTimeout(
         toastTimer
     );
+
 
     toastTimer =
         setTimeout(
@@ -143,26 +178,37 @@ function updateScroll() {
     const current =
         window.scrollY;
 
+
     const total =
         document.documentElement.scrollHeight -
         window.innerHeight;
 
+
     const percentage =
         total > 0
-            ? (current / total) * 100
+            ? (
+                current /
+                total
+            ) *
+            100
             : 0;
 
-    if (scrollProgress) {
+
+    if (
+        scrollProgress
+    ) {
 
         scrollProgress.style.width =
             `${percentage}%`;
 
     }
 
+
     header?.classList.toggle(
         "scrolled",
         current > 30
     );
+
 
     backTop?.classList.toggle(
         "show",
@@ -213,29 +259,64 @@ backTop?.addEventListener(
    MENU MOBILE
 ========================================================= */
 
+function setMenuOpen(
+    open
+) {
+
+    menu?.classList.toggle(
+        "open",
+        open
+    );
+
+
+    if (
+        menuMobile
+    ) {
+
+        menuMobile.setAttribute(
+            "aria-expanded",
+            String(
+                open
+            )
+        );
+
+    }
+
+}
+
+
 menuMobile?.addEventListener(
     "click",
     event => {
 
         event.stopPropagation();
 
-        menu?.classList.toggle(
-            "open"
+
+        const open =
+            !menu?.classList.contains(
+                "open"
+            );
+
+
+        setMenuOpen(
+            open
         );
 
     }
 );
 
 
-$$(".menu a").forEach(
+$$(
+    ".menu a"
+).forEach(
     link => {
 
         link.addEventListener(
             "click",
             () => {
 
-                menu?.classList.remove(
-                    "open"
+                setMenuOpen(
+                    false
                 );
 
             }
@@ -256,6 +337,7 @@ document.addEventListener(
             return;
         }
 
+
         if (
             menu.contains(
                 event.target
@@ -267,8 +349,9 @@ document.addEventListener(
             return;
         }
 
-        menu.classList.remove(
-            "open"
+
+        setMenuOpen(
+            false
         );
 
     }
@@ -301,9 +384,11 @@ if (
                             return;
                         }
 
+
                         entry.target.classList.add(
                             "visible"
                         );
+
 
                         revealObserver.unobserve(
                             entry.target
@@ -345,10 +430,10 @@ if (
 
 
 /* =========================================================
-   BARRAS
+   BARRAS ANIMADAS
 ========================================================= */
 
-function setMeterWidth(
+function animateMeter(
     element,
     key
 ) {
@@ -359,11 +444,14 @@ function setMeterWidth(
             Math.min(
                 100,
                 Number(
-                    element.dataset[key] ||
+                    element.dataset[
+                        key
+                    ] ||
                     0
                 )
             )
         );
+
 
     element.style.width =
         `${value}%`;
@@ -371,11 +459,15 @@ function setMeterWidth(
 }
 
 
-const animatedMeters = [
+const meterElements = [
 
-    ...$$("[data-meter]"),
+    ...$$(
+        "[data-meter]"
+    ),
 
-    ...$$("[data-feeling]")
+    ...$$(
+        "[data-feeling]"
+    )
 
 ];
 
@@ -398,28 +490,34 @@ if (
                             return;
                         }
 
+
                         const element =
                             entry.target;
+
 
                         if (
                             element.dataset.meter
                         ) {
 
-                            setMeterWidth(
+                            animateMeter(
                                 element,
                                 "meter"
                             );
 
-                        } else if (
+                        }
+
+
+                        if (
                             element.dataset.feeling
                         ) {
 
-                            setMeterWidth(
+                            animateMeter(
                                 element,
                                 "feeling"
                             );
 
                         }
+
 
                         meterObserver.unobserve(
                             element
@@ -430,17 +528,48 @@ if (
 
             },
             {
-                threshold: 0.25
+                threshold: 0.2
             }
         );
 
 
-    animatedMeters.forEach(
+    meterElements.forEach(
         element => {
 
             meterObserver.observe(
                 element
             );
+
+        }
+    );
+
+} else {
+
+    meterElements.forEach(
+        element => {
+
+            if (
+                element.dataset.meter
+            ) {
+
+                animateMeter(
+                    element,
+                    "meter"
+                );
+
+            }
+
+
+            if (
+                element.dataset.feeling
+            ) {
+
+                animateMeter(
+                    element,
+                    "feeling"
+                );
+
+            }
 
         }
     );
@@ -455,28 +584,42 @@ if (
 const cursorGlow =
     $("#cursorGlow");
 
+
 let cursorX =
     window.innerWidth / 2;
+
 
 let cursorY =
     window.innerHeight / 2;
 
+
 let glowX =
     cursorX;
 
+
 let glowY =
     cursorY;
+
 
 let cursorGlowIntensity =
     1;
 
 
 document.addEventListener(
-    "mousemove",
+    "pointermove",
     event => {
+
+        if (
+            event.pointerType ===
+            "touch"
+        ) {
+            return;
+        }
+
 
         cursorX =
             event.clientX;
+
 
         cursorY =
             event.clientY;
@@ -501,6 +644,7 @@ function animateCursorGlow() {
             ) *
             0.12;
 
+
         glowY +=
             (
                 cursorY -
@@ -512,17 +656,20 @@ function animateCursorGlow() {
         cursorGlow.style.left =
             `${glowX}px`;
 
+
         cursorGlow.style.top =
             `${glowY}px`;
+
 
         cursorGlow.style.opacity =
             String(
                 Math.min(
-                    0.75,
+                    0.8,
                     0.42 *
                     cursorGlowIntensity
                 )
             );
+
 
         cursorGlow.style.transform =
             `
@@ -531,6 +678,7 @@ function animateCursorGlow() {
             `;
 
     }
+
 
     requestAnimationFrame(
         animateCursorGlow
@@ -555,12 +703,15 @@ function generateParticles() {
     const container =
         $("#particles");
 
+
     if (!container) {
         return;
     }
 
+
     container.innerHTML =
         "";
+
 
     if (
         particleIntensity <=
@@ -580,11 +731,22 @@ function generateParticles() {
     ];
 
 
+    const mobile =
+        window.innerWidth <
+        650;
+
+
+    const baseAmount =
+        mobile
+            ? 14
+            : 26;
+
+
     const amount =
         Math.max(
-            4,
+            3,
             Math.round(
-                25 *
+                baseAmount *
                 particleIntensity
             )
         );
@@ -659,55 +821,72 @@ generateParticles();
 
 
 /* =========================================================
-   PRODUTO
+   PRODUTO PRINCIPAL
 ========================================================= */
 
 const heroProduct =
     $("#heroProduct");
 
+
 const mainBottle =
     $("#mainBottle");
+
 
 const productHalo =
     $("#productHalo");
 
-const sprayArea =
-    $("#sprayArea");
-
-const sprayButton =
-    $("#sprayButton");
-
-const sprayWave =
-    $("#sprayWave");
-
-const sprayGlow =
-    $(".spray-glow");
-
-
-let spraying =
-    false;
-
-let sprayIntensity =
-    1;
-
-let spraySoundEnabled =
-    false;
 
 let motion3dEnabled =
     true;
+
 
 let motion3dIntensity =
     1;
 
 
 /* =========================================================
-   ÁUDIO REAL DO SPRAY
-   1 ARQUIVO = 1 BORRIFADA
+   BORRIFADOR
+========================================================= */
+
+const sprayArea =
+    $("#sprayArea");
+
+
+const sprayButton =
+    $("#sprayButton");
+
+
+const sprayWave =
+    $("#sprayWave");
+
+
+const sprayGlow =
+    $(".spray-glow");
+
+
+const sprayCounter =
+    $("#sprayCounter");
+
+
+let spraying =
+    false;
+
+
+let sprayIntensity =
+    1;
+
+
+let spraySoundEnabled =
+    false;
+
+
+/* =========================================================
+   ÁUDIO DO SPRAY
 ========================================================= */
 
 const sprayAudio =
     new Audio(
-        "./audio/spray.mp3?v=2"
+        "./audio/spray.mp3?v=3"
     );
 
 
@@ -716,26 +895,113 @@ sprayAudio.preload =
 
 
 sprayAudio.volume =
-    0.45;
+    0.48;
 
 
 /* =========================================================
-   REINICIAR EFEITOS DO SPRAY
+   CONTADOR DE BORRIFADAS
+========================================================= */
+
+function getSprayCount() {
+
+    return Number(
+        localStorage.getItem(
+            "dreamSprayCount"
+        ) ||
+        0
+    );
+
+}
+
+
+function updateSprayCounter() {
+
+    if (
+        !sprayCounter
+    ) {
+        return;
+    }
+
+
+    sprayCounter.textContent =
+        String(
+            getSprayCount()
+        );
+
+}
+
+
+function incrementSprayCounter() {
+
+    const count =
+        getSprayCount() +
+        1;
+
+
+    localStorage.setItem(
+        "dreamSprayCount",
+        String(
+            count
+        )
+    );
+
+
+    updateSprayCounter();
+
+
+    if (
+        sprayCounter
+    ) {
+
+        sprayCounter.animate(
+            [
+                {
+                    transform:
+                        "scale(1)"
+                },
+                {
+                    transform:
+                        "scale(1.35)"
+                },
+                {
+                    transform:
+                        "scale(1)"
+                }
+            ],
+            {
+                duration:
+                    320,
+
+                easing:
+                    "ease-out"
+            }
+        );
+
+    }
+
+}
+
+
+updateSprayCounter();
+
+
+/* =========================================================
+   REINICIAR EFEITOS
 ========================================================= */
 
 function restartSprayEffects() {
 
-    /*
-       BRILHO
-    */
-
-    if (sprayGlow) {
+    if (
+        sprayGlow
+    ) {
 
         sprayGlow.classList.remove(
             "active"
         );
 
+
         void sprayGlow.offsetWidth;
+
 
         sprayGlow.classList.add(
             "active"
@@ -744,17 +1010,17 @@ function restartSprayEffects() {
     }
 
 
-    /*
-       ONDA
-    */
-
-    if (sprayWave) {
+    if (
+        sprayWave
+    ) {
 
         sprayWave.classList.remove(
             "active"
         );
 
+
         void sprayWave.offsetWidth;
+
 
         sprayWave.classList.add(
             "active"
@@ -766,7 +1032,7 @@ function restartSprayEffects() {
 
 
 /* =========================================================
-   TOCAR UMA BORRIFADA
+   TOCAR SPRAY
 ========================================================= */
 
 function playSpraySound() {
@@ -780,12 +1046,8 @@ function playSpraySound() {
 
     try {
 
-        /*
-           Nunca deixa dois sprays
-           tocarem ao mesmo tempo.
-        */
-
         sprayAudio.pause();
+
 
         sprayAudio.currentTime =
             0;
@@ -805,7 +1067,7 @@ function playSpraySound() {
                 error => {
 
                     console.warn(
-                        "Não foi possível tocar o spray:",
+                        "Spray bloqueado:",
                         error
                     );
 
@@ -819,7 +1081,7 @@ function playSpraySound() {
     ) {
 
         console.warn(
-            "Erro no áudio do spray:",
+            "Erro no spray:",
             error
         );
 
@@ -829,21 +1091,34 @@ function playSpraySound() {
 
 
 /* =========================================================
-   NÉVOA
+   CRIAR NÉVOA
 ========================================================= */
 
 function createSprayMist() {
 
-    if (!sprayArea) {
+    if (
+        !sprayArea
+    ) {
         return;
     }
 
 
+    const mobile =
+        window.innerWidth <
+        650;
+
+
+    const baseAmount =
+        mobile
+            ? 34
+            : 58;
+
+
     const amount =
         Math.max(
-            20,
+            18,
             Math.round(
-                60 *
+                baseAmount *
                 sprayIntensity
             )
         );
@@ -872,7 +1147,7 @@ function createSprayMist() {
                     Math.random() -
                     0.5
                 ) *
-                420 *
+                430 *
                 sprayIntensity
             }px`
         );
@@ -883,7 +1158,7 @@ function createSprayMist() {
             `${
                 (
                     Math.random() -
-                    0.65
+                    0.72
                 ) *
                 350 *
                 sprayIntensity
@@ -896,7 +1171,7 @@ function createSprayMist() {
             `${
                 3 +
                 Math.random() *
-                12
+                11
             }px`
         );
 
@@ -905,7 +1180,7 @@ function createSprayMist() {
             "--mist-blur",
             `${
                 Math.random() *
-                3
+                2.6
             }px`
         );
 
@@ -913,9 +1188,9 @@ function createSprayMist() {
         mist.style.setProperty(
             "--mist-duration",
             `${
-                0.75 +
+                0.72 +
                 Math.random() *
-                0.7
+                0.65
             }s`
         );
 
@@ -931,7 +1206,7 @@ function createSprayMist() {
                 mist.remove();
 
             },
-            1700
+            1600
         );
 
     }
@@ -940,12 +1215,14 @@ function createSprayMist() {
 
 
 /* =========================================================
-   PARTÍCULAS DO SPRAY
+   SÍMBOLOS DO SPRAY
 ========================================================= */
 
 function createSpraySymbols() {
 
-    if (!sprayArea) {
+    if (
+        !sprayArea
+    ) {
         return;
     }
 
@@ -961,9 +1238,9 @@ function createSpraySymbols() {
 
     const amount =
         Math.max(
-            5,
+            4,
             Math.round(
-                10 *
+                9 *
                 sprayIntensity
             )
         );
@@ -994,6 +1271,14 @@ function createSpraySymbols() {
             ];
 
 
+        symbol.style.fontSize =
+            `${
+                9 +
+                Math.random() *
+                11
+            }px`;
+
+
         symbol.style.setProperty(
             "--symbol-x",
             `${
@@ -1001,7 +1286,7 @@ function createSpraySymbols() {
                     Math.random() -
                     0.5
                 ) *
-                360 *
+                350 *
                 sprayIntensity
             }px`
         );
@@ -1013,7 +1298,7 @@ function createSpraySymbols() {
                 (
                     -70 -
                     Math.random() *
-                    230
+                    220
                 ) *
                 sprayIntensity
             }px`
@@ -1043,10 +1328,43 @@ function createSpraySymbols() {
                 symbol.remove();
 
             },
-            1600
+            1500
         );
 
     }
+
+}
+
+
+/* =========================================================
+   FLASH DO SPRAY
+========================================================= */
+
+function createSprayFlash() {
+
+    if (
+        !sprayArea
+    ) {
+        return null;
+    }
+
+
+    const flash =
+        document.createElement(
+            "span"
+        );
+
+
+    flash.className =
+        "spray-flash active";
+
+
+    sprayArea.appendChild(
+        flash
+    );
+
+
+    return flash;
 
 }
 
@@ -1056,11 +1374,6 @@ function createSpraySymbols() {
 ========================================================= */
 
 function sprayDream() {
-
-    /*
-       Bloqueia spam enquanto
-       a borrifada principal acontece.
-    */
 
     if (
         spraying ||
@@ -1079,59 +1392,23 @@ function sprayDream() {
     );
 
 
-    /*
-       TUDO COMEÇA JUNTO:
-       áudio + brilho + onda + névoa
-    */
-
     restartSprayEffects();
+
 
     playSpraySound();
 
+
     createSprayMist();
+
 
     createSpraySymbols();
 
 
-    /*
-       FLASH
-    */
-
     const flash =
-        document.createElement(
-            "span"
-        );
+        createSprayFlash();
 
 
-    flash.className =
-        "spray-flash active";
-
-
-    sprayArea.appendChild(
-        flash
-    );
-
-
-    /*
-       CONTADOR
-    */
-
-    const sprayCount =
-        Number(
-            localStorage.getItem(
-                "dreamSprayCount"
-            ) ||
-            0
-        ) +
-        1;
-
-
-    localStorage.setItem(
-        "dreamSprayCount",
-        String(
-            sprayCount
-        )
-    );
+    incrementSprayCounter();
 
 
     showToast(
@@ -1139,19 +1416,16 @@ function sprayDream() {
     );
 
 
-    /*
-       Libera a próxima borrifada
-       depois do efeito.
-    */
-
     setTimeout(
         () => {
 
-            flash.remove();
+            flash?.remove();
+
 
             heroProduct?.classList.remove(
                 "spraying"
             );
+
 
             spraying =
                 false;
@@ -1162,10 +1436,6 @@ function sprayDream() {
 
 }
 
-
-/* =========================================================
-   BOTÃO BORRIFAR
-========================================================= */
 
 sprayButton?.addEventListener(
     "click",
@@ -1178,7 +1448,7 @@ sprayButton?.addEventListener(
 ========================================================= */
 
 heroProduct?.addEventListener(
-    "mousemove",
+    "pointermove",
     event => {
 
         if (
@@ -1191,9 +1461,8 @@ heroProduct?.addEventListener(
 
 
         if (
-            window.matchMedia(
-                "(pointer: coarse)"
-            ).matches
+            event.pointerType ===
+            "touch"
         ) {
             return;
         }
@@ -1252,7 +1521,7 @@ heroProduct?.addEventListener(
                 y -
                 0.5
             ) *
-            8 *
+            9 *
             motion3dIntensity;
 
 
@@ -1283,14 +1552,16 @@ heroProduct?.addEventListener(
                             x -
                             0.5
                         ) *
-                        -25
+                        -26 *
+                        motion3dIntensity
                     }px,
                     ${
                         (
                             y -
                             0.5
                         ) *
-                        -20
+                        -20 *
+                        motion3dIntensity
                     }px
                 )
                 `;
@@ -1302,7 +1573,7 @@ heroProduct?.addEventListener(
 
 
 heroProduct?.addEventListener(
-    "mouseleave",
+    "pointerleave",
     () => {
 
         if (
@@ -1333,25 +1604,27 @@ heroProduct?.addEventListener(
    CARDS 3D
 ========================================================= */
 
-$$(".moment-card").forEach(
+$$(
+    ".moment-card"
+).forEach(
     card => {
 
         card.addEventListener(
-            "mousemove",
+            "pointermove",
             event => {
 
                 if (
                     !motion3dEnabled ||
-                    window.matchMedia(
-                        "(pointer: coarse)"
-                    ).matches
+                    event.pointerType ===
+                    "touch"
                 ) {
                     return;
                 }
 
 
                 const rect =
-                    card.getBoundingClientRect();
+                    card
+                        .getBoundingClientRect();
 
 
                 const x =
@@ -1390,7 +1663,7 @@ $$(".moment-card").forEach(
 
                 card.style.transform =
                     `
-                    perspective(800px)
+                    perspective(900px)
                     translateY(-7px)
                     rotateX(${rotateX}deg)
                     rotateY(${rotateY}deg)
@@ -1401,7 +1674,7 @@ $$(".moment-card").forEach(
 
 
         card.addEventListener(
-            "mouseleave",
+            "pointerleave",
             () => {
 
                 card.style.transform =
@@ -1414,6 +1687,108 @@ $$(".moment-card").forEach(
 );
 
 
+/* =========================================================
+   FEELING 3D
+========================================================= */
+
+const feelingOrbit =
+    $(".feeling-orbit");
+
+
+const feelingCenter =
+    $(".feeling-center");
+
+
+feelingOrbit?.addEventListener(
+    "pointermove",
+    event => {
+
+        if (
+            !motion3dEnabled ||
+            !feelingCenter ||
+            event.pointerType ===
+            "touch"
+        ) {
+            return;
+        }
+
+
+        const rect =
+            feelingOrbit
+                .getBoundingClientRect();
+
+
+        const x =
+            (
+                event.clientX -
+                rect.left
+            ) /
+            rect.width -
+            0.5;
+
+
+        const y =
+            (
+                event.clientY -
+                rect.top
+            ) /
+            rect.height -
+            0.5;
+
+
+        feelingCenter.style.transform =
+            `
+            translate3d(
+                ${
+                    x *
+                    13 *
+                    motion3dIntensity
+                }px,
+                ${
+                    y *
+                    13 *
+                    motion3dIntensity
+                }px,
+                ${
+                    25 *
+                    motion3dIntensity
+                }px
+            )
+            rotateX(
+                ${
+                    y *
+                    -7 *
+                    motion3dIntensity
+                }deg
+            )
+            rotateY(
+                ${
+                    x *
+                    7 *
+                    motion3dIntensity
+                }deg
+            )
+            `;
+
+    }
+);
+
+
+feelingOrbit?.addEventListener(
+    "pointerleave",
+    () => {
+
+        if (
+            feelingCenter
+        ) {
+
+            feelingCenter.style.transform =
+                "";
+
+        }
+
+    }
+);
 /* =========================================================
    MODAIS
 ========================================================= */
@@ -1458,9 +1833,17 @@ function updateModalBodyState() {
 
 function openProduct() {
 
-    productModal?.classList.add(
+    if (
+        !productModal
+    ) {
+        return;
+    }
+
+
+    productModal.classList.add(
         "open"
     );
+
 
     body.classList.add(
         "modal-open"
@@ -1475,12 +1858,15 @@ function closeProduct() {
         "open"
     );
 
+
     updateModalBodyState();
 
 }
 
 
-$$(".open-product").forEach(
+$$(
+    ".open-product"
+).forEach(
     button => {
 
         button.addEventListener(
@@ -1492,7 +1878,9 @@ $$(".open-product").forEach(
 );
 
 
-$$(".close-product").forEach(
+$$(
+    ".close-product"
+).forEach(
     button => {
 
         button.addEventListener(
@@ -1505,7 +1893,7 @@ $$(".close-product").forEach(
 
 
 /* =========================================================
-   FAVORITO
+   FAVORITOS
 ========================================================= */
 
 let favorite =
@@ -1548,35 +1936,38 @@ function updateFavorite() {
 }
 
 
+function toggleFavorite() {
+
+    favorite =
+        !favorite;
+
+
+    localStorage.setItem(
+        "dreamFavorite",
+        String(
+            favorite
+        )
+    );
+
+
+    updateFavorite();
+
+
+    showToast(
+        favorite
+            ? "Adicionado aos favoritos ♡"
+            : "Removido dos favoritos"
+    );
+
+}
+
+
 favoriteButtons.forEach(
     button => {
 
         button.addEventListener(
             "click",
-            () => {
-
-                favorite =
-                    !favorite;
-
-
-                localStorage.setItem(
-                    "dreamFavorite",
-                    String(
-                        favorite
-                    )
-                );
-
-
-                updateFavorite();
-
-
-                showToast(
-                    favorite
-                        ? "Adicionado aos favoritos ♡"
-                        : "Removido dos favoritos"
-                );
-
-            }
+            toggleFavorite
         );
 
     }
@@ -1590,7 +1981,14 @@ updateFavorite();
    COMPARTILHAR
 ========================================================= */
 
-async function shareDream() {
+async function shareDream(
+    customText = null
+) {
+
+    const text =
+        customText ||
+        "Conheça Dream Amor no Ar ♡";
+
 
     try {
 
@@ -1603,8 +2001,7 @@ async function shareDream() {
                 title:
                     "Dream Amor no Ar",
 
-                text:
-                    "Conheça Dream Amor no Ar ♡",
+                text,
 
                 url:
                     location.href
@@ -1621,10 +2018,9 @@ async function shareDream() {
             navigator.clipboard
         ) {
 
-            await navigator.clipboard
-                .writeText(
-                    location.href
-                );
+            await navigator.clipboard.writeText(
+                `${text} ${location.href}`
+            );
 
 
             showToast(
@@ -1638,14 +2034,24 @@ async function shareDream() {
 
 
         showToast(
-            "Copie o link do navegador"
+            "Compartilhamento indisponível"
         );
 
-    } catch {
+    } catch (
+        error
+    ) {
 
-        showToast(
-            "Compartilhamento cancelado"
-        );
+        if (
+            error?.name !==
+            "AbortError"
+        ) {
+
+            console.warn(
+                "Erro ao compartilhar:",
+                error
+            );
+
+        }
 
     }
 
@@ -1654,14 +2060,24 @@ async function shareDream() {
 
 $("#shareButton")?.addEventListener(
     "click",
-    shareDream
+    () => {
+
+        shareDream();
+
+    }
 );
 
 
 $("#shareModal")?.addEventListener(
     "click",
-    shareDream
+    () => {
+
+        shareDream();
+
+    }
 );
+
+
 /* =========================================================
    NOTAS
 ========================================================= */
@@ -1669,8 +2085,10 @@ $("#shareModal")?.addEventListener(
 const noteModalIcon =
     $("#noteModalIcon");
 
+
 const noteModalTitle =
     $("#noteModalTitle");
+
 
 const noteModalText =
     $("#noteModalText");
@@ -1679,114 +2097,204 @@ const noteModalText =
 const noteData = {
 
     bergamota: {
-        icon: "🍊",
-        title: "Bergamota",
-        text: "Cítrica, fresca e luminosa."
+        icon:
+            "🍊",
+
+        title:
+            "Bergamota",
+
+        text:
+            "Cítrica, fresca e luminosa."
     },
 
     laranja: {
-        icon: "🍊",
-        title: "Laranja",
-        text: "Cítrica, alegre e confortável."
+        icon:
+            "🍊",
+
+        title:
+            "Laranja",
+
+        text:
+            "Cítrica, alegre e confortável."
     },
 
     mandarina: {
-        icon: "🍊",
-        title: "Mandarina",
-        text: "Frutada e delicadamente adocicada."
+        icon:
+            "🍊",
+
+        title:
+            "Mandarina",
+
+        text:
+            "Frutada e delicadamente adocicada."
     },
 
     limao: {
-        icon: "🍋",
-        title: "Limão",
-        text: "Traz brilho e frescor à abertura."
+        icon:
+            "🍋",
+
+        title:
+            "Limão",
+
+        text:
+            "Traz brilho e frescor à abertura."
     },
 
     cassis: {
-        icon: "🫐",
-        title: "Cassis",
-        text: "Frutado com leve acidez."
+        icon:
+            "🫐",
+
+        title:
+            "Cassis",
+
+        text:
+            "Frutado com leve acidez."
     },
 
     maca: {
-        icon: "🍎",
-        title: "Maçã",
-        text: "Fresca, suculenta e suavemente doce."
+        icon:
+            "🍎",
+
+        title:
+            "Maçã",
+
+        text:
+            "Fresca, suculenta e suavemente doce."
     },
 
     rosa: {
-        icon: "🌹",
-        title: "Rosa",
-        text: "Floral clássico, elegante e romântico."
+        icon:
+            "🌹",
+
+        title:
+            "Rosa",
+
+        text:
+            "Floral clássico, elegante e romântico."
     },
 
     tilia: {
-        icon: "🌼",
-        title: "Tília",
-        text: "Floral delicado e confortável."
+        icon:
+            "🌼",
+
+        title:
+            "Tília",
+
+        text:
+            "Floral delicado e confortável."
     },
 
     freesia: {
-        icon: "🌸",
-        title: "Frésia",
-        text: "Floral leve e luminoso."
+        icon:
+            "🌸",
+
+        title:
+            "Frésia",
+
+        text:
+            "Floral leve e luminoso."
     },
 
     lotus: {
-        icon: "🪷",
-        title: "Flor de Lótus",
-        text: "Suave, limpa e levemente aquática."
+        icon:
+            "🪷",
+
+        title:
+            "Flor de Lótus",
+
+        text:
+            "Suave, limpa e levemente aquática."
     },
 
     gardenia: {
-        icon: "🌼",
-        title: "Gardênia",
-        text: "Floral cremoso e sofisticado."
+        icon:
+            "🌼",
+
+        title:
+            "Gardênia",
+
+        text:
+            "Floral cremoso e sofisticado."
     },
 
     pessego: {
-        icon: "🍑",
-        title: "Pêssego",
-        text: "Frutado macio e delicadamente doce."
+        icon:
+            "🍑",
+
+        title:
+            "Pêssego",
+
+        text:
+            "Frutado macio e delicadamente doce."
     },
 
     ambar: {
-        icon: "✨",
-        title: "Âmbar",
-        text: "Quente e envolvente."
+        icon:
+            "✨",
+
+        title:
+            "Âmbar",
+
+        text:
+            "Quente e envolvente."
     },
 
     sandalo: {
-        icon: "🪵",
-        title: "Sândalo",
-        text: "Madeira cremosa e confortável."
+        icon:
+            "🪵",
+
+        title:
+            "Sândalo",
+
+        text:
+            "Madeira cremosa e confortável."
     },
 
     baunilha: {
-        icon: "🤍",
-        title: "Baunilha",
-        text: "Doce, cremosa e aconchegante."
+        icon:
+            "🤍",
+
+        title:
+            "Baunilha",
+
+        text:
+            "Doce, cremosa e aconchegante."
     },
 
     tonka: {
-        icon: "✨",
-        title: "Tonka",
-        text: "Quente e suavemente adocicada."
+        icon:
+            "✨",
+
+        title:
+            "Tonka",
+
+        text:
+            "Quente e suavemente adocicada."
     },
 
     musk: {
-        icon: "☁",
-        title: "Musk",
-        text: "Macio, confortável e envolvente."
+        icon:
+            "☁",
+
+        title:
+            "Musk",
+
+        text:
+            "Macio, confortável e envolvente."
     }
 
 };
 
 
-function openNoteModal(key) {
+function openNoteModal(
+    key
+) {
 
     const note =
-        noteData[key];
+        noteData[
+            key
+        ];
+
 
     if (
         !note ||
@@ -1796,25 +2304,40 @@ function openNoteModal(key) {
     }
 
 
-    if (noteModalIcon) {
+    if (
+        noteModalIcon
+    ) {
+
         noteModalIcon.textContent =
             note.icon;
+
     }
 
-    if (noteModalTitle) {
+
+    if (
+        noteModalTitle
+    ) {
+
         noteModalTitle.textContent =
             note.title;
+
     }
 
-    if (noteModalText) {
+
+    if (
+        noteModalText
+    ) {
+
         noteModalText.textContent =
             note.text;
+
     }
 
 
     noteModal.classList.add(
         "open"
     );
+
 
     body.classList.add(
         "modal-open"
@@ -1829,12 +2352,15 @@ function closeNoteModal() {
         "open"
     );
 
+
     updateModalBodyState();
 
 }
 
 
-$$(".note-chip").forEach(
+$$(
+    ".note-chip"
+).forEach(
     chip => {
 
         chip.addEventListener(
@@ -1852,7 +2378,9 @@ $$(".note-chip").forEach(
 );
 
 
-$$(".close-note").forEach(
+$$(
+    ".close-note"
+).forEach(
     button => {
 
         button.addEventListener(
@@ -1871,14 +2399,18 @@ $$(".close-note").forEach(
 const timelineSlider =
     $("#timelineSlider");
 
+
 const timelineHour =
     $("#timelineHour");
+
 
 const timelineIcon =
     $("#timelineIcon");
 
+
 const timelineTitle =
     $("#timelineTitle");
+
 
 const timelineText =
     $("#timelineText");
@@ -1886,7 +2418,9 @@ const timelineText =
 
 function updateTimeline() {
 
-    if (!timelineSlider) {
+    if (
+        !timelineSlider
+    ) {
         return;
     }
 
@@ -1900,59 +2434,115 @@ function updateTimeline() {
     let stage;
 
 
-    if (hour <= 1) {
+    if (
+        hour <=
+        1
+    ) {
 
         stage = {
-            icon: "🍊",
-            title: "Abertura fresca",
-            text: "Cítricos e frutas aparecem primeiro."
+
+            icon:
+                "🍊",
+
+            title:
+                "Abertura fresca",
+
+            text:
+                "Cítricos e frutas aparecem primeiro."
+
         };
 
-    } else if (hour <= 3) {
+    } else if (
+        hour <=
+        3
+    ) {
 
         stage = {
-            icon: "🌸",
-            title: "Coração floral",
-            text: "As flores assumem o centro da fragrância."
+
+            icon:
+                "🌸",
+
+            title:
+                "Coração floral",
+
+            text:
+                "As flores assumem o centro da fragrância."
+
         };
 
-    } else if (hour <= 5) {
+    } else if (
+        hour <=
+        5
+    ) {
 
         stage = {
-            icon: "♡",
-            title: "Romântico e confortável",
-            text: "O floral fica mais macio e envolvente."
+
+            icon:
+                "♡",
+
+            title:
+                "Romântico e confortável",
+
+            text:
+                "O floral fica mais macio e envolvente."
+
         };
 
     } else {
 
         stage = {
-            icon: "✨",
-            title: "Fundo aconchegante",
-            text: "Madeiras e notas doces permanecem."
+
+            icon:
+                "✨",
+
+            title:
+                "Fundo aconchegante",
+
+            text:
+                "Madeiras e notas doces permanecem."
+
         };
 
     }
 
 
-    if (timelineHour) {
+    if (
+        timelineHour
+    ) {
+
         timelineHour.textContent =
             `${hour}h`;
+
     }
 
-    if (timelineIcon) {
+
+    if (
+        timelineIcon
+    ) {
+
         timelineIcon.textContent =
             stage.icon;
+
     }
 
-    if (timelineTitle) {
+
+    if (
+        timelineTitle
+    ) {
+
         timelineTitle.textContent =
             stage.title;
+
     }
 
-    if (timelineText) {
+
+    if (
+        timelineText
+    ) {
+
         timelineText.textContent =
             stage.text;
+
     }
 
 }
@@ -1974,14 +2564,18 @@ updateTimeline();
 const sceneBackground =
     $(".dream-scene-bg");
 
+
 const sceneResultIcon =
     $("#sceneResultIcon");
+
 
 const sceneResultMini =
     $("#sceneResultMini");
 
+
 const sceneResultTitle =
     $("#sceneResultTitle");
+
 
 const sceneResultText =
     $("#sceneResultText");
@@ -1990,11 +2584,21 @@ const sceneResultText =
 const sceneData = {
 
     romance: {
-        icon: "♡",
-        mini: "ROMANCE DREAM",
-        title: "Amor está no ar.",
-        text: "Uma atmosfera delicada, rosa e envolvente.",
-        background: `
+
+        icon:
+            "♡",
+
+        mini:
+            "ROMANCE DREAM",
+
+        title:
+            "Amor está no ar.",
+
+        text:
+            "Uma atmosfera delicada, rosa e envolvente.",
+
+        background:
+            `
             radial-gradient(
                 circle at 20% 50%,
                 rgba(255,111,169,.46),
@@ -2010,64 +2614,113 @@ const sceneData = {
                 #1c0d18,
                 #35152c
             )
-        `
+            `
+
     },
 
     ceu: {
-        icon: "☾",
-        mini: "DREAM SKY",
-        title: "Sonhe mais alto.",
-        text: "Uma atmosfera noturna e tranquila.",
-        background: `
+
+        icon:
+            "☾",
+
+        mini:
+            "DREAM SKY",
+
+        title:
+            "Sonhe mais alto.",
+
+        text:
+            "Uma atmosfera noturna, calma e sonhadora.",
+
+        background:
+            `
             radial-gradient(
                 circle at 70% 20%,
-                rgba(112,142,255,.38),
+                rgba(112,142,255,.40),
                 transparent 35%
+            ),
+            radial-gradient(
+                circle at 20% 70%,
+                rgba(131,95,212,.22),
+                transparent 40%
             ),
             linear-gradient(
                 135deg,
-                #090c20,
-                #1d1d49
+                #080b1f,
+                #1c1f52
             )
-        `
+            `
+
     },
 
     flores: {
-        icon: "✿",
-        mini: "FLOWER DREAM",
-        title: "Flores no ar.",
-        text: "Uma atmosfera floral e delicada.",
-        background: `
+
+        icon:
+            "✿",
+
+        mini:
+            "FLOWER DREAM",
+
+        title:
+            "Flores no ar.",
+
+        text:
+            "Uma atmosfera floral, leve e delicada.",
+
+        background:
+            `
             radial-gradient(
                 circle at 20% 40%,
-                rgba(255,164,198,.42),
+                rgba(255,164,198,.43),
                 transparent 37%
+            ),
+            radial-gradient(
+                circle at 78% 62%,
+                rgba(255,219,232,.13),
+                transparent 38%
             ),
             linear-gradient(
                 135deg,
                 #28121f,
                 #5a2941
             )
-        `
+            `
+
     },
 
     energia: {
-        icon: "✦",
-        mini: "ENERGY DREAM",
-        title: "Brilhe do seu jeito.",
-        text: "Uma atmosfera intensa e vibrante.",
-        background: `
+
+        icon:
+            "✦",
+
+        mini:
+            "ENERGY DREAM",
+
+        title:
+            "Brilhe do seu jeito.",
+
+        text:
+            "Uma atmosfera intensa, viva e cheia de personalidade.",
+
+        background:
+            `
             radial-gradient(
                 circle at 20% 50%,
                 rgba(255,80,158,.45),
                 transparent 38%
+            ),
+            radial-gradient(
+                circle at 82% 30%,
+                rgba(119,69,255,.42),
+                transparent 39%
             ),
             linear-gradient(
                 135deg,
                 #170b1c,
                 #3b164e
             )
-        `
+            `
+
     }
 
 };
@@ -2083,12 +2736,17 @@ function setScene(
             sceneName
         ];
 
-    if (!scene) {
+
+    if (
+        !scene
+    ) {
         return;
     }
 
 
-    $$(".scene-button").forEach(
+    $$(
+        ".scene-button"
+    ).forEach(
         button => {
 
             button.classList.toggle(
@@ -2101,33 +2759,59 @@ function setScene(
     );
 
 
-    if (sceneResultIcon) {
+    if (
+        sceneResultIcon
+    ) {
+
         sceneResultIcon.textContent =
             scene.icon;
+
     }
 
-    if (sceneResultMini) {
+
+    if (
+        sceneResultMini
+    ) {
+
         sceneResultMini.textContent =
             scene.mini;
+
     }
 
-    if (sceneResultTitle) {
+
+    if (
+        sceneResultTitle
+    ) {
+
         sceneResultTitle.textContent =
             scene.title;
+
     }
 
-    if (sceneResultText) {
+
+    if (
+        sceneResultText
+    ) {
+
         sceneResultText.textContent =
             scene.text;
+
     }
 
-    if (sceneBackground) {
+
+    if (
+        sceneBackground
+    ) {
+
         sceneBackground.style.background =
             scene.background;
+
     }
 
 
-    if (save) {
+    if (
+        save
+    ) {
 
         localStorage.setItem(
             "dreamScene",
@@ -2139,7 +2823,9 @@ function setScene(
 }
 
 
-$$(".scene-button").forEach(
+$$(
+    ".scene-button"
+).forEach(
     button => {
 
         button.addEventListener(
@@ -2164,26 +2850,34 @@ $$(".scene-button").forEach(
 const galleryTrack =
     $("#galleryTrack");
 
+
 const galleryItems =
     $$(".gallery-item");
+
 
 const galleryPrev =
     $("#galleryPrev");
 
+
 const galleryNext =
     $("#galleryNext");
+
 
 const galleryCurrent =
     $("#galleryCurrent");
 
+
 const galleryTotal =
     $("#galleryTotal");
+
 
 const galleryDots =
     $("#galleryDots");
 
+
 const galleryAutoplay =
     $("#galleryAutoplay");
+
 
 const galleryAutoplayProgress =
     $("#galleryAutoplayProgress");
@@ -2192,17 +2886,26 @@ const galleryAutoplayProgress =
 let galleryIndex =
     0;
 
+
 let galleryPlaying =
     false;
 
+
 let galleryTimer =
     null;
+
 
 const galleryDelay =
     4500;
 
 
-if (galleryTotal) {
+/* =========================================================
+   TOTAL
+========================================================= */
+
+if (
+    galleryTotal
+) {
 
     galleryTotal.textContent =
         String(
@@ -2221,7 +2924,9 @@ if (galleryTotal) {
 
 function createGalleryDots() {
 
-    if (!galleryDots) {
+    if (
+        !galleryDots
+    ) {
         return;
     }
 
@@ -2231,7 +2936,10 @@ function createGalleryDots() {
 
 
     galleryItems.forEach(
-        (_, index) => {
+        (
+            item,
+            index
+        ) => {
 
             const dot =
                 document.createElement(
@@ -2261,6 +2969,7 @@ function createGalleryDots() {
                         index
                     );
 
+
                     restartGalleryAutoplay();
 
                 }
@@ -2281,7 +2990,7 @@ createGalleryDots();
 
 
 /* =========================================================
-   ATUALIZAR GALERIA
+   GALERIA UI
 ========================================================= */
 
 function updateGalleryUI() {
@@ -2302,11 +3011,14 @@ function updateGalleryUI() {
         galleryItems.length;
 
 
-    if (galleryCurrent) {
+    if (
+        galleryCurrent
+    ) {
 
         galleryCurrent.textContent =
             String(
-                galleryIndex + 1
+                galleryIndex +
+                1
             ).padStart(
                 2,
                 "0"
@@ -2315,8 +3027,15 @@ function updateGalleryUI() {
     }
 
 
-    $$(".gallery-dot").forEach(
-        (dot, index) => {
+    $$(
+        ".gallery-dot",
+        galleryDots ||
+        document
+    ).forEach(
+        (
+            dot,
+            index
+        ) => {
 
             dot.classList.toggle(
                 "active",
@@ -2396,7 +3115,7 @@ function goToGallery(
 
 
 /* =========================================================
-   SETAS GALERIA
+   SETAS
 ========================================================= */
 
 galleryPrev?.addEventListener(
@@ -2404,8 +3123,10 @@ galleryPrev?.addEventListener(
     () => {
 
         goToGallery(
-            galleryIndex - 1
+            galleryIndex -
+            1
         );
+
 
         restartGalleryAutoplay();
 
@@ -2418,8 +3139,10 @@ galleryNext?.addEventListener(
     () => {
 
         goToGallery(
-            galleryIndex + 1
+            galleryIndex +
+            1
         );
+
 
         restartGalleryAutoplay();
 
@@ -2428,7 +3151,104 @@ galleryNext?.addEventListener(
 
 
 /* =========================================================
-   AUTOPLAY GALERIA
+   ATUALIZAR ÍNDICE PELO SCROLL
+========================================================= */
+
+let galleryScrollTimer;
+
+
+galleryTrack?.addEventListener(
+    "scroll",
+    () => {
+
+        clearTimeout(
+            galleryScrollTimer
+        );
+
+
+        galleryScrollTimer =
+            setTimeout(
+                () => {
+
+                    if (
+                        !galleryTrack ||
+                        galleryItems.length ===
+                        0
+                    ) {
+                        return;
+                    }
+
+
+                    const center =
+                        galleryTrack.scrollLeft +
+                        galleryTrack.clientWidth /
+                        2;
+
+
+                    let closestIndex =
+                        0;
+
+
+                    let closestDistance =
+                        Infinity;
+
+
+                    galleryItems.forEach(
+                        (
+                            item,
+                            index
+                        ) => {
+
+                            const itemCenter =
+                                item.offsetLeft +
+                                item.clientWidth /
+                                2;
+
+
+                            const distance =
+                                Math.abs(
+                                    center -
+                                    itemCenter
+                                );
+
+
+                            if (
+                                distance <
+                                closestDistance
+                            ) {
+
+                                closestDistance =
+                                    distance;
+
+
+                                closestIndex =
+                                    index;
+
+                            }
+
+                        }
+                    );
+
+
+                    galleryIndex =
+                        closestIndex;
+
+
+                    updateGalleryUI();
+
+                },
+                90
+            );
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+/* =========================================================
+   AUTOPLAY
 ========================================================= */
 
 function stopGalleryAutoplay() {
@@ -2448,6 +3268,7 @@ function stopGalleryAutoplay() {
 
         galleryAutoplayProgress.style.transition =
             "none";
+
 
         galleryAutoplayProgress.style.width =
             "0%";
@@ -2488,6 +3309,7 @@ function scheduleGalleryAutoplay() {
         galleryAutoplayProgress.style.transition =
             "none";
 
+
         galleryAutoplayProgress.style.width =
             "0%";
 
@@ -2497,6 +3319,7 @@ function scheduleGalleryAutoplay() {
 
         galleryAutoplayProgress.style.transition =
             `width ${galleryDelay}ms linear`;
+
 
         galleryAutoplayProgress.style.width =
             "100%";
@@ -2516,7 +3339,8 @@ function scheduleGalleryAutoplay() {
 
 
                 goToGallery(
-                    galleryIndex + 1
+                    galleryIndex +
+                    1
                 );
 
 
@@ -2601,20 +3425,26 @@ updateGalleryUI();
 const lightboxImage =
     $("#lightboxImage");
 
+
 const lightboxTitle =
     $("#lightboxTitle");
+
 
 const lightboxCounter =
     $("#lightboxCounter");
 
+
 const lightboxClose =
     $("#lightboxClose");
+
 
 const lightboxBackdrop =
     $("#lightboxBackdrop");
 
+
 const lightboxPrev =
     $("#lightboxPrev");
+
 
 const lightboxNext =
     $("#lightboxNext");
@@ -2662,7 +3492,9 @@ function updateLightbox() {
     ) {
 
         lightboxImage.src =
+            image.currentSrc ||
             image.src;
+
 
         lightboxImage.alt =
             image.alt ||
@@ -2689,7 +3521,8 @@ function updateLightbox() {
         lightboxCounter.textContent =
             `${
                 String(
-                    lightboxIndex + 1
+                    lightboxIndex +
+                    1
                 ).padStart(
                     2,
                     "0"
@@ -2754,7 +3587,10 @@ function closeLightbox() {
 
 
 galleryItems.forEach(
-    (item, index) => {
+    (
+        item,
+        index
+    ) => {
 
         item.addEventListener(
             "click",
@@ -2789,6 +3625,7 @@ lightboxPrev?.addEventListener(
 
         lightboxIndex--;
 
+
         updateLightbox();
 
     }
@@ -2800,6 +3637,7 @@ lightboxNext?.addEventListener(
     () => {
 
         lightboxIndex++;
+
 
         updateLightbox();
 
@@ -2883,10 +3721,14 @@ lightbox?.addEventListener(
    CORES
 ========================================================= */
 
-function hexToRgb(hex) {
+function hexToRgb(
+    hex
+) {
 
     let clean =
-        String(hex)
+        String(
+            hex
+        )
             .replace(
                 "#",
                 ""
@@ -2901,13 +3743,17 @@ function hexToRgb(hex) {
 
         clean =
             clean
-                .split("")
+                .split(
+                    ""
+                )
                 .map(
                     character =>
                         character +
                         character
                 )
-                .join("");
+                .join(
+                    ""
+                );
 
     }
 
@@ -2918,9 +3764,11 @@ function hexToRgb(hex) {
     ) {
 
         return {
+
             r: 223,
             g: 118,
             b: 168
+
         };
 
     }
@@ -2940,9 +3788,11 @@ function hexToRgb(hex) {
     ) {
 
         return {
+
             r: 223,
             g: 118,
             b: 168
+
         };
 
     }
@@ -3015,6 +3865,18 @@ function setThemeColors(
     );
 
 
+    const themeMeta =
+        document.querySelector(
+            'meta[name="theme-color"]'
+        );
+
+
+    themeMeta?.setAttribute(
+        "content",
+        primary
+    );
+
+
     if (
         save
     ) {
@@ -3042,38 +3904,53 @@ function setThemeColors(
 const moodData = {
 
     romantico: {
+
         primary:
             "#df76a8",
+
         secondary:
             "#9562dc"
+
     },
 
     sonhador: {
+
         primary:
             "#b678d6",
+
         secondary:
             "#7588e8"
+
     },
 
     noturno: {
+
         primary:
             "#7259c7",
+
         secondary:
             "#354a8d"
+
     },
 
     energia: {
+
         primary:
             "#ee6494",
+
         secondary:
             "#9853db"
+
     },
 
     calmo: {
+
         primary:
             "#7bbdb6",
+
         secondary:
             "#8798cf"
+
     }
 
 };
@@ -3097,7 +3974,9 @@ function setMood(
     }
 
 
-    $$(".mood-button").forEach(
+    $$(
+        ".mood-button"
+    ).forEach(
         button => {
 
             button.classList.toggle(
@@ -3112,7 +3991,8 @@ function setMood(
 
     setThemeColors(
         data.primary,
-        data.secondary
+        data.secondary,
+        save
     );
 
 
@@ -3130,7 +4010,9 @@ function setMood(
 }
 
 
-$$(".mood-button").forEach(
+$$(
+    ".mood-button"
+).forEach(
     button => {
 
         button.addEventListener(
@@ -3155,35 +4037,50 @@ $$(".mood-button").forEach(
 const quizStart =
     $("#quizStart");
 
+
 const quizQuestions =
     $("#quizQuestions");
+
 
 const quizResult =
     $("#quizResult");
 
+
 const startQuiz =
     $("#startQuiz");
+
 
 const restartQuiz =
     $("#restartQuiz");
 
+
+const shareQuizResult =
+    $("#shareQuizResult");
+
+
 const quizStep =
     $("#quizStep");
+
 
 const quizProgressBar =
     $("#quizProgressBar");
 
+
 const quizQuestion =
     $("#quizQuestion");
+
 
 const quizOptions =
     $("#quizOptions");
 
+
 const quizResultIcon =
     $("#quizResultIcon");
 
+
 const quizResultTitle =
     $("#quizResultTitle");
+
 
 const quizResultText =
     $("#quizResultText");
@@ -3192,51 +4089,127 @@ const quizResultText =
 const quizData = [
 
     {
+
         question:
             "Qual atmosfera combina mais com você?",
 
         answers: [
-            ["♡ Romântica", "lover"],
-            ["☾ Sonhadora", "dreamer"],
-            ["✦ Marcante", "night"],
-            ["☁ Tranquila", "soft"]
+
+            [
+                "♡ Romântica",
+                "lover"
+            ],
+
+            [
+                "☾ Sonhadora",
+                "dreamer"
+            ],
+
+            [
+                "✦ Marcante",
+                "night"
+            ],
+
+            [
+                "☁ Tranquila",
+                "soft"
+            ]
+
         ]
+
     },
 
     {
+
         question:
             "Qual momento você prefere?",
 
         answers: [
-            ["Encontro especial", "lover"],
-            ["Fim de tarde", "dreamer"],
-            ["Noite inesquecível", "night"],
-            ["Momento só meu", "soft"]
+
+            [
+                "Encontro especial",
+                "lover"
+            ],
+
+            [
+                "Fim de tarde",
+                "dreamer"
+            ],
+
+            [
+                "Noite inesquecível",
+                "night"
+            ],
+
+            [
+                "Momento só meu",
+                "soft"
+            ]
+
         ]
+
     },
 
     {
+
         question:
             "O que uma fragrância deve transmitir?",
 
         answers: [
-            ["Delicadeza", "lover"],
-            ["Imaginação", "dreamer"],
-            ["Personalidade", "night"],
-            ["Conforto", "soft"]
+
+            [
+                "Delicadeza",
+                "lover"
+            ],
+
+            [
+                "Imaginação",
+                "dreamer"
+            ],
+
+            [
+                "Personalidade",
+                "night"
+            ],
+
+            [
+                "Conforto",
+                "soft"
+            ]
+
         ]
+
     },
 
     {
+
         question:
-            "Escolha um símbolo.",
+            "Escolha um símbolo Dream.",
 
         answers: [
-            ["♡ Coração", "lover"],
-            ["☾ Lua", "dreamer"],
-            ["✦ Estrela", "night"],
-            ["☁ Nuvem", "soft"]
+
+            [
+                "♡ Coração",
+                "lover"
+            ],
+
+            [
+                "☾ Lua",
+                "dreamer"
+            ],
+
+            [
+                "✦ Estrela",
+                "night"
+            ],
+
+            [
+                "☁ Nuvem",
+                "soft"
+            ]
+
         ]
+
     }
 
 ];
@@ -3244,29 +4217,57 @@ const quizData = [
 
 const quizResults = {
 
-    lover: [
-        "♡",
-        "Dream Lover",
-        "Seu Dream é romântico, delicado e envolvente."
-    ],
+    lover: {
 
-    dreamer: [
-        "☾",
-        "Dreamer",
-        "Seu Dream é leve, criativo e sonhador."
-    ],
+        icon:
+            "♡",
 
-    night: [
-        "✦",
-        "Night Dream",
-        "Seu Dream tem presença e personalidade."
-    ],
+        title:
+            "Dream Lover",
 
-    soft: [
-        "☁",
-        "Soft Dream",
-        "Seu Dream é confortável e tranquilo."
-    ]
+        text:
+            "Seu Dream é romântico, delicado e envolvente."
+
+    },
+
+    dreamer: {
+
+        icon:
+            "☾",
+
+        title:
+            "Dreamer",
+
+        text:
+            "Seu Dream é leve, criativo e sonhador."
+
+    },
+
+    night: {
+
+        icon:
+            "✦",
+
+        title:
+            "Night Dream",
+
+        text:
+            "Seu Dream tem presença e personalidade."
+
+    },
+
+    soft: {
+
+        icon:
+            "☁",
+
+        title:
+            "Soft Dream",
+
+        text:
+            "Seu Dream é confortável, leve e tranquilo."
+
+    }
 
 };
 
@@ -3285,24 +4286,32 @@ let quizScores = {
 };
 
 
-function renderQuiz() {
+let lastQuizResult =
+    null;
 
-    if (
-        quizIndex >=
-        quizData.length
-    ) {
 
-        finishQuiz();
+/* =========================================================
+   RENDER QUIZ
+========================================================= */
 
-        return;
-
-    }
-
+function renderQuizQuestion() {
 
     const current =
         quizData[
             quizIndex
         ];
+
+
+    if (
+        !current
+    ) {
+
+        finishQuiz();
+
+
+        return;
+
+    }
 
 
     if (
@@ -3323,7 +4332,8 @@ function renderQuiz() {
             `${
                 (
                     (
-                        quizIndex + 1
+                        quizIndex +
+                        1
                     ) /
                     quizData.length
                 ) *
@@ -3355,7 +4365,13 @@ function renderQuiz() {
 
 
     current.answers.forEach(
-        ([text, type]) => {
+        (
+            [
+                text,
+                type
+            ],
+            index
+        ) => {
 
             const button =
                 document.createElement(
@@ -3371,15 +4387,23 @@ function renderQuiz() {
                 text;
 
 
+            button.style.animationDelay =
+                `${index * 55}ms`;
+
+
             button.addEventListener(
                 "click",
                 () => {
 
-                    quizScores[type]++;
+                    quizScores[
+                        type
+                    ]++;
+
 
                     quizIndex++;
 
-                    renderQuiz();
+
+                    renderQuizQuestion();
 
                 }
             );
@@ -3395,6 +4419,10 @@ function renderQuiz() {
 }
 
 
+/* =========================================================
+   RESULTADO QUIZ
+========================================================= */
+
 function finishQuiz() {
 
     const winner =
@@ -3402,15 +4430,24 @@ function finishQuiz() {
             quizScores
         )
             .sort(
-                (a, b) =>
-                    b[1] - a[1]
-            )[0][0];
+                (
+                    a,
+                    b
+                ) =>
+                    b[1] -
+                    a[1]
+            )[0]?.[0] ||
+        "lover";
 
 
     const result =
         quizResults[
             winner
         ];
+
+
+    lastQuizResult =
+        result;
 
 
     if (
@@ -3438,7 +4475,7 @@ function finishQuiz() {
     ) {
 
         quizResultIcon.textContent =
-            result[0];
+            result.icon;
 
     }
 
@@ -3448,7 +4485,7 @@ function finishQuiz() {
     ) {
 
         quizResultTitle.textContent =
-            result[1];
+            result.title;
 
     }
 
@@ -3458,12 +4495,27 @@ function finishQuiz() {
     ) {
 
         quizResultText.textContent =
-            result[2];
+            result.text;
 
     }
 
+
+    localStorage.setItem(
+        "dreamQuizResult",
+        winner
+    );
+
+
+    showToast(
+        `Seu resultado: ${result.title} ♡`
+    );
+
 }
 
+
+/* =========================================================
+   COMEÇAR QUIZ
+========================================================= */
 
 function beginQuiz() {
 
@@ -3479,6 +4531,10 @@ function beginQuiz() {
         soft: 0
 
     };
+
+
+    lastQuizResult =
+        null;
 
 
     if (
@@ -3511,7 +4567,7 @@ function beginQuiz() {
     }
 
 
-    renderQuiz();
+    renderQuizQuestion();
 
 }
 
@@ -3525,6 +4581,36 @@ startQuiz?.addEventListener(
 restartQuiz?.addEventListener(
     "click",
     beginQuiz
+);
+
+
+/* =========================================================
+   COMPARTILHAR RESULTADO QUIZ
+========================================================= */
+
+shareQuizResult?.addEventListener(
+    "click",
+    () => {
+
+        if (
+            !lastQuizResult
+        ) {
+
+            shareDream(
+                "Descubra qual é o seu Dream ♡"
+            );
+
+
+            return;
+
+        }
+
+
+        shareDream(
+            `Meu resultado no Dream Quiz foi ${lastQuizResult.title} ✦`
+        );
+
+    }
 );
 /* =========================================================
    DREAM STUDIO
@@ -3613,8 +4699,20 @@ const resetSettings =
 
 
 /* =========================================================
-   ABRIR / FECHAR DREAM STUDIO
+   ABRIR / FECHAR STUDIO
 ========================================================= */
+
+function setSettingsOpen(
+    open
+) {
+
+    settingsPanel?.classList.toggle(
+        "open",
+        open
+    );
+
+}
+
 
 settingsButton?.addEventListener(
     "click",
@@ -3622,8 +4720,10 @@ settingsButton?.addEventListener(
 
         event.stopPropagation();
 
-        settingsPanel?.classList.toggle(
-            "open"
+        setSettingsOpen(
+            !settingsPanel?.classList.contains(
+                "open"
+            )
         );
 
     }
@@ -3634,8 +4734,8 @@ closeSettings?.addEventListener(
     "click",
     () => {
 
-        settingsPanel?.classList.remove(
-            "open"
+        setSettingsOpen(
+            false
         );
 
     }
@@ -3647,8 +4747,7 @@ document.addEventListener(
     event => {
 
         if (
-            !settingsPanel ||
-            !settingsPanel.classList.contains(
+            !settingsPanel?.classList.contains(
                 "open"
             )
         ) {
@@ -3668,8 +4767,8 @@ document.addEventListener(
         }
 
 
-        settingsPanel.classList.remove(
-            "open"
+        setSettingsOpen(
+            false
         );
 
     }
@@ -3721,10 +4820,14 @@ function setPalette(
 ) {
 
     const palette =
-        palettes[name];
+        palettes[
+            name
+        ];
 
 
-    if (!palette) {
+    if (
+        !palette
+    ) {
         return;
     }
 
@@ -3736,15 +4839,23 @@ function setPalette(
     );
 
 
-    if (primaryColor) {
+    if (
+        primaryColor
+    ) {
+
         primaryColor.value =
             palette.primary;
+
     }
 
 
-    if (secondaryColor) {
+    if (
+        secondaryColor
+    ) {
+
         secondaryColor.value =
             palette.secondary;
+
     }
 
 
@@ -3761,7 +4872,9 @@ function setPalette(
     );
 
 
-    if (save) {
+    if (
+        save
+    ) {
 
         localStorage.setItem(
             "dreamPalette",
@@ -3856,7 +4969,7 @@ secondaryColor?.addEventListener(
 
 
 /* =========================================================
-   DARK MODE
+   MODO ESCURO
 ========================================================= */
 
 function setDarkMode(
@@ -3870,7 +4983,9 @@ function setDarkMode(
     );
 
 
-    if (darkToggle) {
+    if (
+        darkToggle
+    ) {
 
         darkToggle.checked =
             enabled;
@@ -3878,7 +4993,9 @@ function setDarkMode(
     }
 
 
-    if (themeButton) {
+    if (
+        themeButton
+    ) {
 
         themeButton.textContent =
             enabled
@@ -3888,7 +5005,9 @@ function setDarkMode(
     }
 
 
-    if (save) {
+    if (
+        save
+    ) {
 
         localStorage.setItem(
             "dreamDark",
@@ -3943,7 +5062,9 @@ function setGlass(
     );
 
 
-    if (glassToggle) {
+    if (
+        glassToggle
+    ) {
 
         glassToggle.checked =
             enabled;
@@ -3951,7 +5072,9 @@ function setGlass(
     }
 
 
-    if (save) {
+    if (
+        save
+    ) {
 
         localStorage.setItem(
             "dreamGlass",
@@ -3992,7 +5115,9 @@ function setCleanMode(
     );
 
 
-    if (cleanModeToggle) {
+    if (
+        cleanModeToggle
+    ) {
 
         cleanModeToggle.checked =
             enabled;
@@ -4000,7 +5125,9 @@ function setCleanMode(
     }
 
 
-    if (save) {
+    if (
+        save
+    ) {
 
         localStorage.setItem(
             "dreamClean",
@@ -4041,7 +5168,9 @@ function setParticles(
     );
 
 
-    if (particlesToggle) {
+    if (
+        particlesToggle
+    ) {
 
         particlesToggle.checked =
             enabled;
@@ -4049,7 +5178,9 @@ function setParticles(
     }
 
 
-    if (save) {
+    if (
+        save
+    ) {
 
         localStorage.setItem(
             "dreamParticles",
@@ -4090,7 +5221,9 @@ function setAnimations(
     );
 
 
-    if (animationsToggle) {
+    if (
+        animationsToggle
+    ) {
 
         animationsToggle.checked =
             enabled;
@@ -4098,7 +5231,9 @@ function setAnimations(
     }
 
 
-    if (save) {
+    if (
+        save
+    ) {
 
         localStorage.setItem(
             "dreamAnimations",
@@ -4125,7 +5260,7 @@ animationsToggle?.addEventListener(
 
 
 /* =========================================================
-   CURSOR GLOW
+   CURSOR
 ========================================================= */
 
 function setCursorGlow(
@@ -4139,7 +5274,9 @@ function setCursorGlow(
     );
 
 
-    if (cursorToggle) {
+    if (
+        cursorToggle
+    ) {
 
         cursorToggle.checked =
             enabled;
@@ -4147,7 +5284,9 @@ function setCursorGlow(
     }
 
 
-    if (save) {
+    if (
+        save
+    ) {
 
         localStorage.setItem(
             "dreamCursor",
@@ -4188,7 +5327,9 @@ function setMotion3d(
         );
 
 
-    if (motion3dToggle) {
+    if (
+        motion3dToggle
+    ) {
 
         motion3dToggle.checked =
             motion3dEnabled;
@@ -4200,7 +5341,9 @@ function setMotion3d(
         !motion3dEnabled
     ) {
 
-        if (mainBottle) {
+        if (
+            mainBottle
+        ) {
 
             mainBottle.style.transform =
                 "";
@@ -4208,9 +5351,21 @@ function setMotion3d(
         }
 
 
-        if (productHalo) {
+        if (
+            productHalo
+        ) {
 
             productHalo.style.transform =
+                "";
+
+        }
+
+
+        if (
+            feelingCenter
+        ) {
+
+            feelingCenter.style.transform =
                 "";
 
         }
@@ -4228,7 +5383,9 @@ function setMotion3d(
     }
 
 
-    if (save) {
+    if (
+        save
+    ) {
 
         localStorage.setItem(
             "dreamMotion3d",
@@ -4255,7 +5412,7 @@ motion3dToggle?.addEventListener(
 
 
 /* =========================================================
-   SOM DO BORRIFADOR
+   SOM DO SPRAY
 ========================================================= */
 
 function setSpraySound(
@@ -4269,7 +5426,9 @@ function setSpraySound(
         );
 
 
-    if (spraySoundToggle) {
+    if (
+        spraySoundToggle
+    ) {
 
         spraySoundToggle.checked =
             spraySoundEnabled;
@@ -4277,7 +5436,9 @@ function setSpraySound(
     }
 
 
-    if (save) {
+    if (
+        save
+    ) {
 
         localStorage.setItem(
             "dreamSpraySound",
@@ -4311,7 +5472,7 @@ spraySoundToggle?.addEventListener(
 
 
 /* =========================================================
-   VELOCIDADE DAS ANIMAÇÕES
+   VELOCIDADE
 ========================================================= */
 
 function setAnimationSpeed(
@@ -4338,7 +5499,9 @@ function setAnimationSpeed(
     );
 
 
-    if (animationSpeed) {
+    if (
+        animationSpeed
+    ) {
 
         animationSpeed.value =
             safe;
@@ -4346,7 +5509,9 @@ function setAnimationSpeed(
     }
 
 
-    if (animationSpeedValue) {
+    if (
+        animationSpeedValue
+    ) {
 
         animationSpeedValue.textContent =
             `${safe}%`;
@@ -4354,7 +5519,9 @@ function setAnimationSpeed(
     }
 
 
-    if (save) {
+    if (
+        save
+    ) {
 
         localStorage.setItem(
             "dreamAnimationSpeed",
@@ -4406,7 +5573,9 @@ function setMotion3dIntensity(
         safe / 100;
 
 
-    if (motion3dRange) {
+    if (
+        motion3dRange
+    ) {
 
         motion3dRange.value =
             safe;
@@ -4414,7 +5583,9 @@ function setMotion3dIntensity(
     }
 
 
-    if (motion3dValue) {
+    if (
+        motion3dValue
+    ) {
 
         motion3dValue.textContent =
             `${safe}%`;
@@ -4422,7 +5593,9 @@ function setMotion3dIntensity(
     }
 
 
-    if (save) {
+    if (
+        save
+    ) {
 
         localStorage.setItem(
             "dreamMotion3dIntensity",
@@ -4474,7 +5647,9 @@ function setCursorGlowIntensity(
         safe / 100;
 
 
-    if (cursorGlowRange) {
+    if (
+        cursorGlowRange
+    ) {
 
         cursorGlowRange.value =
             safe;
@@ -4482,7 +5657,9 @@ function setCursorGlowIntensity(
     }
 
 
-    if (cursorGlowValue) {
+    if (
+        cursorGlowValue
+    ) {
 
         cursorGlowValue.textContent =
             `${safe}%`;
@@ -4490,7 +5667,9 @@ function setCursorGlowIntensity(
     }
 
 
-    if (save) {
+    if (
+        save
+    ) {
 
         localStorage.setItem(
             "dreamCursorGlowIntensity",
@@ -4520,7 +5699,7 @@ cursorGlowRange?.addEventListener(
    INTENSIDADE PARTÍCULAS
 ========================================================= */
 
-let particleTimer;
+let particleUpdateTimer;
 
 
 function setParticleIntensity(
@@ -4545,7 +5724,9 @@ function setParticleIntensity(
         safe / 100;
 
 
-    if (particleIntensityRange) {
+    if (
+        particleIntensityRange
+    ) {
 
         particleIntensityRange.value =
             safe;
@@ -4553,7 +5734,9 @@ function setParticleIntensity(
     }
 
 
-    if (particleIntensityValue) {
+    if (
+        particleIntensityValue
+    ) {
 
         particleIntensityValue.textContent =
             `${safe}%`;
@@ -4562,18 +5745,20 @@ function setParticleIntensity(
 
 
     clearTimeout(
-        particleTimer
+        particleUpdateTimer
     );
 
 
-    particleTimer =
+    particleUpdateTimer =
         setTimeout(
             generateParticles,
             80
         );
 
 
-    if (save) {
+    if (
+        save
+    ) {
 
         localStorage.setItem(
             "dreamParticleIntensity",
@@ -4600,7 +5785,7 @@ particleIntensityRange?.addEventListener(
 
 
 /* =========================================================
-   INTENSIDADE DO SPRAY
+   INTENSIDADE SPRAY
 ========================================================= */
 
 function setSprayIntensity(
@@ -4625,7 +5810,9 @@ function setSprayIntensity(
         safe / 100;
 
 
-    if (sprayIntensityRange) {
+    if (
+        sprayIntensityRange
+    ) {
 
         sprayIntensityRange.value =
             safe;
@@ -4633,7 +5820,9 @@ function setSprayIntensity(
     }
 
 
-    if (sprayIntensityValue) {
+    if (
+        sprayIntensityValue
+    ) {
 
         sprayIntensityValue.textContent =
             `${safe}%`;
@@ -4641,7 +5830,9 @@ function setSprayIntensity(
     }
 
 
-    if (save) {
+    if (
+        save
+    ) {
 
         localStorage.setItem(
             "dreamSprayIntensity",
@@ -4690,12 +5881,15 @@ function setContrast(
 
 
     root.style.filter =
-        safe === 100
+        safe ===
+        100
             ? ""
             : `contrast(${safe / 100})`;
 
 
-    if (contrastControl) {
+    if (
+        contrastControl
+    ) {
 
         contrastControl.value =
             safe;
@@ -4703,7 +5897,9 @@ function setContrast(
     }
 
 
-    if (contrastValue) {
+    if (
+        contrastValue
+    ) {
 
         contrastValue.textContent =
             `${safe}%`;
@@ -4711,7 +5907,9 @@ function setContrast(
     }
 
 
-    if (save) {
+    if (
+        save
+    ) {
 
         localStorage.setItem(
             "dreamContrast",
@@ -4738,7 +5936,7 @@ contrastControl?.addEventListener(
 
 
 /* =========================================================
-   TAMANHO DO TEXTO
+   TAMANHO TEXTO
 ========================================================= */
 
 function setFontSize(
@@ -4775,7 +5973,9 @@ function setFontSize(
     );
 
 
-    $$("[data-font-size]").forEach(
+    $$(
+        "[data-font-size]"
+    ).forEach(
         button => {
 
             button.classList.toggle(
@@ -4788,7 +5988,9 @@ function setFontSize(
     );
 
 
-    if (save) {
+    if (
+        save
+    ) {
 
         localStorage.setItem(
             "dreamFontSize",
@@ -4800,7 +6002,9 @@ function setFontSize(
 }
 
 
-$$("[data-font-size]").forEach(
+$$(
+    "[data-font-size]"
+).forEach(
     button => {
 
         button.addEventListener(
@@ -4857,7 +6061,9 @@ function updateMusicUI() {
     );
 
 
-    if (dreamMusicButton) {
+    if (
+        dreamMusicButton
+    ) {
 
         dreamMusicButton.textContent =
             dreamMusicPlaying
@@ -4875,7 +6081,9 @@ function updateMusicUI() {
     }
 
 
-    if (musicToggle) {
+    if (
+        musicToggle
+    ) {
 
         musicToggle.checked =
             dreamMusicPlaying;
@@ -4891,7 +6099,9 @@ function updateMusicUI() {
 
 async function playDreamMusic() {
 
-    if (!dreamMusic) {
+    if (
+        !dreamMusic
+    ) {
         return;
     }
 
@@ -4930,8 +6140,13 @@ async function playDreamMusic() {
 
 
         console.warn(
-            "Áudio bloqueado pelo navegador:",
+            "Moonlight bloqueada pelo navegador:",
             error
+        );
+
+
+        showToast(
+            "Toque novamente para iniciar a música"
         );
 
     }
@@ -4947,7 +6162,9 @@ function pauseDreamMusic(
     save = true
 ) {
 
-    if (!dreamMusic) {
+    if (
+        !dreamMusic
+    ) {
         return;
     }
 
@@ -4959,7 +6176,9 @@ function pauseDreamMusic(
         false;
 
 
-    if (save) {
+    if (
+        save
+    ) {
 
         localStorage.setItem(
             "dreamMusicEnabled",
@@ -5022,7 +6241,7 @@ musicToggle?.addEventListener(
 
 
 /* =========================================================
-   VOLUME MOONLIGHT
+   VOLUME
 ========================================================= */
 
 function setDreamMusicVolume(
@@ -5043,7 +6262,9 @@ function setDreamMusicVolume(
         );
 
 
-    if (dreamMusic) {
+    if (
+        dreamMusic
+    ) {
 
         dreamMusic.volume =
             safe / 100;
@@ -5051,7 +6272,9 @@ function setDreamMusicVolume(
     }
 
 
-    if (musicVolumeRange) {
+    if (
+        musicVolumeRange
+    ) {
 
         musicVolumeRange.value =
             safe;
@@ -5059,7 +6282,9 @@ function setDreamMusicVolume(
     }
 
 
-    if (musicVolumeValue) {
+    if (
+        musicVolumeValue
+    ) {
 
         musicVolumeValue.textContent =
             `${safe}%`;
@@ -5067,7 +6292,9 @@ function setDreamMusicVolume(
     }
 
 
-    if (save) {
+    if (
+        save
+    ) {
 
         localStorage.setItem(
             "dreamMusicVolume",
@@ -5119,13 +6346,31 @@ dreamMusic?.addEventListener(
 );
 
 
+dreamMusic?.addEventListener(
+    "error",
+    () => {
+
+        dreamMusicPlaying =
+            false;
+
+        updateMusicUI();
+
+
+        console.warn(
+            "Moonlight.mp3 não foi encontrada."
+        );
+
+    }
+);
+
+
 /* =========================================================
-   BOOLEAN SETTINGS
+   BOOL SETTINGS
 ========================================================= */
 
 function readBooleanSetting(
     key,
-    defaultValue
+    fallback
 ) {
 
     const value =
@@ -5138,9 +6383,7 @@ function readBooleanSetting(
         value ===
         null
     ) {
-
-        return defaultValue;
-
+        return fallback;
     }
 
 
@@ -5197,15 +6440,23 @@ function loadSettings() {
         );
 
 
-        if (primaryColor) {
+        if (
+            primaryColor
+        ) {
+
             primaryColor.value =
                 savedPrimary;
+
         }
 
 
-        if (secondaryColor) {
+        if (
+            secondaryColor
+        ) {
+
             secondaryColor.value =
                 savedSecondary;
+
         }
 
     }
@@ -5413,11 +6664,14 @@ function loadSettings() {
 
     }
 
+
+    updateSprayCounter();
+
 }
 
 
 /* =========================================================
-   RESET DREAM STUDIO
+   RESET
 ========================================================= */
 
 resetSettings?.addEventListener(
@@ -5596,9 +6850,6 @@ resetSettings?.addEventListener(
    INDICADOR DE SEÇÃO
 ========================================================= */
 
-const sectionIndicator =
-    $("#sectionIndicator");
-
 const trackedSections =
     $$(".section-track[id]");
 
@@ -5621,7 +6872,9 @@ function updateSectionIndicator() {
 
 
     let current =
-        trackedSections[0];
+        trackedSections[
+            0
+        ];
 
 
     trackedSections.forEach(
@@ -5668,11 +6921,22 @@ function updateSectionIndicator() {
 }
 
 
+window.addEventListener(
+    "scroll",
+    updateSectionIndicator,
+    {
+        passive: true
+    }
+);
+
+
 /* =========================================================
    SMOOTH SCROLL
 ========================================================= */
 
-$$('a[href^="#"]').forEach(
+$$(
+    'a[href^="#"]'
+).forEach(
     anchor => {
 
         anchor.addEventListener(
@@ -5729,16 +6993,17 @@ $$('a[href^="#"]').forEach(
                     12;
 
 
-                const targetTop =
-                    target.getBoundingClientRect().top +
+                const top =
+                    target
+                        .getBoundingClientRect()
+                        .top +
                     window.scrollY -
                     offset;
 
 
                 window.scrollTo({
 
-                    top:
-                        targetTop,
+                    top,
 
                     behavior:
                         body.classList.contains(
@@ -5783,8 +7048,6 @@ document.addEventListener(
         }
 
 
-        /* ESC */
-
         if (
             event.key ===
             "Escape"
@@ -5796,20 +7059,18 @@ document.addEventListener(
 
             closeLightbox();
 
-            menu?.classList.remove(
-                "open"
+            setMenuOpen(
+                false
             );
 
-            settingsPanel?.classList.remove(
-                "open"
+            setSettingsOpen(
+                false
             );
 
             return;
 
         }
 
-
-        /* S = BORRIFAR */
 
         if (
             event.key.toLowerCase() ===
@@ -5822,8 +7083,6 @@ document.addEventListener(
 
         }
 
-
-        /* D = DARK */
 
         if (
             event.key.toLowerCase() ===
@@ -5841,23 +7100,21 @@ document.addEventListener(
         }
 
 
-        /* G = STUDIO */
-
         if (
             event.key.toLowerCase() ===
             "g"
         ) {
 
-            settingsPanel?.classList.toggle(
-                "open"
+            setSettingsOpen(
+                !settingsPanel?.classList.contains(
+                    "open"
+                )
             );
 
             return;
 
         }
 
-
-        /* GALERIA / LIGHTBOX */
 
         if (
             event.key ===
@@ -5930,15 +7187,9 @@ document.addEventListener(
             document.hidden
         ) {
 
-            if (
-                galleryPlaying
-            ) {
-
-                clearTimeout(
-                    galleryTimer
-                );
-
-            }
+            clearTimeout(
+                galleryTimer
+            );
 
 
             return;
@@ -5959,7 +7210,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   RESIZE
+   RESIZE / PERFORMANCE
 ========================================================= */
 
 let resizeTimer;
@@ -5982,24 +7233,81 @@ window.addEventListener(
 
                     updateSectionIndicator();
 
+                    generateParticles();
+
 
                     if (
                         window.innerWidth >
-                        900
+                        920
                     ) {
 
-                        menu?.classList.remove(
-                            "open"
+                        setMenuOpen(
+                            false
                         );
 
                     }
 
                 },
-                120
+                130
             );
 
     }
 );
+
+
+/* =========================================================
+   RETOMAR MÚSICA SALVA
+========================================================= */
+
+const shouldResumeMusic =
+    localStorage.getItem(
+        "dreamMusicEnabled"
+    ) ===
+    "true";
+
+
+if (
+    shouldResumeMusic
+) {
+
+    const resumeMusicOnInteraction =
+        () => {
+
+            playDreamMusic();
+
+
+            document.removeEventListener(
+                "pointerdown",
+                resumeMusicOnInteraction
+            );
+
+
+            document.removeEventListener(
+                "keydown",
+                resumeMusicOnInteraction
+            );
+
+        };
+
+
+    document.addEventListener(
+        "pointerdown",
+        resumeMusicOnInteraction,
+        {
+            once: true
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        resumeMusicOnInteraction,
+        {
+            once: true
+        }
+    );
+
+}
 
 
 /* =========================================================
@@ -6025,11 +7333,6 @@ try {
 
     updateMusicUI();
 
-
-    /*
-       Garante que elementos já visíveis
-       apareçam mesmo antes do observer.
-    */
 
     setTimeout(
         () => {
@@ -6063,12 +7366,12 @@ try {
 
 
     console.log(
-        "Dream carregado com sucesso ♡"
+        "Dream Premium carregado ♡"
     );
 
 
     console.log(
-        "Spray sincronizado: 1 áudio + 1 brilho + 1 efeito ✦"
+        "Spray: 1 borrifada + brilho + névoa sincronizados ✦"
     );
 
 } catch (
