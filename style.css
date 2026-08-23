@@ -1,6 +1,6 @@
 /* =========================================================
    DREAM • AMOR NO AR
-   STYLE.CSS v60
+   STYLE.CSS v60.1
 ========================================================= */
 
 
@@ -91,9 +91,7 @@ img {
 
 ::selection {
     color: #fff;
-
-    background:
-        var(--primary);
+    background: var(--primary);
 }
 
 
@@ -225,8 +223,7 @@ body.dark {
 .gradient-text {
     color: transparent;
 
-    background:
-        var(--gradient-wide);
+    background: var(--gradient-wide);
 
     -webkit-background-clip: text;
     background-clip: text;
@@ -284,15 +281,12 @@ body.dark {
 }
 
 ::-webkit-scrollbar-track {
-    background:
-        var(--background);
+    background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
     border-radius: 999px;
-
-    background:
-        var(--gradient);
+    background: var(--gradient);
 }
 
 
@@ -318,8 +312,7 @@ body.dark {
     width: 0;
     height: 100%;
 
-    background:
-        var(--gradient);
+    background: var(--gradient);
 
     box-shadow:
         0 0 14px
@@ -378,8 +371,7 @@ body.dark {
             transparent 72%
         );
 
-    filter:
-        blur(20px);
+    filter: blur(20px);
 
     animation:
         loaderAmbient
@@ -416,7 +408,6 @@ body.dark {
         );
 
     font-weight: 950;
-
     letter-spacing: -4px;
 }
 
@@ -475,8 +466,7 @@ body.dark {
 
     border-radius: inherit;
 
-    background:
-        var(--gradient);
+    background: var(--gradient);
 
     animation:
         loaderBar
@@ -486,27 +476,23 @@ body.dark {
 
 @keyframes loaderHeart {
     50% {
-        transform:
-            scale(1.16);
+        transform: scale(1.16);
     }
 }
 
 @keyframes loaderBar {
     from {
-        transform:
-            translateX(-140%);
+        transform: translateX(-140%);
     }
 
     to {
-        transform:
-            translateX(360%);
+        transform: translateX(360%);
     }
 }
 
 @keyframes loaderAmbient {
     50% {
-        transform:
-            scale(1.08);
+        transform: scale(1.08);
     }
 }
 
@@ -531,8 +517,7 @@ body.dark {
 
     border-radius: 50%;
 
-    filter:
-        blur(18px);
+    filter: blur(18px);
 
     opacity: .50;
 
@@ -700,8 +685,7 @@ body.dark {
             transparent 70%
         );
 
-    filter:
-        blur(18px);
+    filter: blur(18px);
 
     transform:
         translate(-50%,-50%);
@@ -765,6 +749,8 @@ body.dark .premium-card {
     align-items: center;
     justify-content: space-between;
 
+    gap: 16px;
+
     padding:
         0
         max(
@@ -783,14 +769,12 @@ body.dark .premium-card {
 }
 
 .header.scrolled {
-    border-color:
-        var(--border);
+    border-color: var(--border);
 
     background:
         rgba(255,250,252,.82);
 
-    backdrop-filter:
-        blur(22px);
+    backdrop-filter: blur(22px);
 
     box-shadow:
         0 10px 35px
@@ -812,6 +796,8 @@ body.dark .header.scrolled {
 
     z-index: 4;
 
+    flex-shrink: 0;
+
     font-size: 29px;
     font-weight: 950;
 
@@ -830,12 +816,26 @@ body.dark .header.scrolled {
 .menu {
     display: flex;
     align-items: center;
+    justify-content: center;
 
-    gap: 20px;
+    gap:
+        clamp(
+            8px,
+            1vw,
+            18px
+        );
+
+    flex: 1;
+
+    min-width: 0;
 }
 
 .menu a {
     position: relative;
+
+    flex-shrink: 0;
+
+    white-space: nowrap;
 
     color: var(--text-soft);
 
@@ -859,11 +859,9 @@ body.dark .header.scrolled {
 
     border-radius: 999px;
 
-    background:
-        var(--gradient);
+    background: var(--gradient);
 
-    transform:
-        translateX(-50%);
+    transform: translateX(-50%);
 
     transition:
         width .25s ease;
@@ -883,10 +881,18 @@ body.dark .header.scrolled {
 ========================================================= */
 
 .header-actions {
-    display: flex;
+    position: relative;
+
+    z-index: 20;
+
+    display: flex !important;
     align-items: center;
 
     gap: 8px;
+
+    flex-shrink: 0;
+
+    min-width: max-content;
 }
 
 .icon-btn,
@@ -934,16 +940,27 @@ body.dark .header.scrolled {
 
 /* =========================================================
    LANGUAGE SWITCHER
+   FIX DESKTOP + MOBILE
 ========================================================= */
 
 .language-switcher {
-    display: flex;
+    position: relative;
+
+    z-index: 1000;
+
+    display: flex !important;
     align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
 
     gap: 3px;
 
     padding:
         4px 5px;
+
+    opacity: 1 !important;
+    visibility: visible !important;
 
     border:
         1px solid
@@ -968,10 +985,14 @@ body.dark .header.scrolled {
     width: 35px;
     height: 35px;
 
-    display: grid;
+    display: grid !important;
     place-items: center;
 
+    flex-shrink: 0;
+
     cursor: pointer;
+
+    visibility: visible !important;
 
     border-radius: 50%;
 
@@ -979,8 +1000,7 @@ body.dark .header.scrolled {
 
     opacity: .48;
 
-    transform:
-        scale(.90);
+    transform: scale(.90);
 
     transition:
         opacity .22s ease,
@@ -989,6 +1009,8 @@ body.dark .header.scrolled {
 }
 
 .language-button .flag {
+    display: block !important;
+
     font-size: 20px;
 
     line-height: 1;
@@ -997,15 +1019,13 @@ body.dark .header.scrolled {
 .language-button:hover {
     opacity: .85;
 
-    transform:
-        scale(1);
+    transform: scale(1);
 }
 
 .language-button.active {
     opacity: 1;
 
-    transform:
-        scale(1.08);
+    transform: scale(1.08);
 
     background:
         linear-gradient(
@@ -1020,6 +1040,8 @@ body.dark .header.scrolled {
 }
 
 .language-divider {
+    flex-shrink: 0;
+
     color:
         rgba(var(--primary-rgb), .28);
 
@@ -1139,8 +1161,7 @@ body.dark .header.scrolled {
 }
 
 .gradient-border-btn:hover {
-    transform:
-        translateY(-2px);
+    transform: translateY(-2px);
 
     color: var(--primary);
 }
@@ -1211,8 +1232,7 @@ body.dark .header.scrolled {
         var(--gradient)
         border-box;
 
-    backdrop-filter:
-        blur(22px);
+    backdrop-filter: blur(22px);
 
     box-shadow:
         0 17px 48px
@@ -1266,8 +1286,7 @@ body.dark .dream-music-player {
 
 @keyframes musicCoverSpin {
     to {
-        transform:
-            rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
@@ -1289,8 +1308,7 @@ body.dark .dream-music-player {
 .dream-music-button {
     color: #fff;
 
-    background:
-        var(--gradient);
+    background: var(--gradient);
 
     box-shadow:
         0 7px 20px
@@ -1312,7 +1330,6 @@ body.dark .dream-music-player {
 
 .dream-music-center {
     min-width: 0;
-
     flex: 1;
 }
 
@@ -1368,8 +1385,7 @@ body.dark .dream-music-player {
 #musicProgress {
     width: 100%;
 
-    accent-color:
-        var(--primary);
+    accent-color: var(--primary);
 }
 
 .dream-music-bars {
@@ -1389,8 +1405,7 @@ body.dark .dream-music-player {
 
     border-radius: 999px;
 
-    background:
-        var(--gradient);
+    background: var(--gradient);
 
     animation:
         dreamMusicBar
@@ -1475,8 +1490,7 @@ section {
     width: 23px;
     height: 1px;
 
-    background:
-        var(--gradient);
+    background: var(--gradient);
 }
 
 .reveal {
@@ -1498,8 +1512,7 @@ section {
 .reveal.visible {
     opacity: 1;
 
-    transform:
-        translateY(0);
+    transform: translateY(0);
 }
 
 
@@ -1558,8 +1571,7 @@ section {
     background:
         var(--surface-glass);
 
-    backdrop-filter:
-        blur(12px);
+    backdrop-filter: blur(12px);
 
     color: var(--text-soft);
 
@@ -1581,8 +1593,7 @@ section {
 
     border-radius: 50%;
 
-    background:
-        var(--gradient);
+    background: var(--gradient);
 
     box-shadow:
         0 0 0 5px
@@ -1674,8 +1685,7 @@ section {
     width: 1px;
     height: 28px;
 
-    background:
-        var(--border);
+    background: var(--border);
 
     transform:
         translateY(-50%);
@@ -1776,8 +1786,7 @@ section {
             transparent 70%
         );
 
-    filter:
-        blur(6px);
+    filter: blur(6px);
 }
 
 .product-ring {
@@ -1809,11 +1818,8 @@ section {
     border-color:
         rgba(var(--secondary-rgb), .13);
 
-    animation-direction:
-        reverse;
-
-    animation-duration:
-        15s;
+    animation-direction: reverse;
+    animation-duration: 15s;
 }
 
 .product-ring::before {
@@ -1828,14 +1834,12 @@ section {
 
     font-size: 11px;
 
-    transform:
-        translateX(-50%);
+    transform: translateX(-50%);
 }
 
 @keyframes productRingSpin {
     to {
-        transform:
-            rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
@@ -1857,8 +1861,7 @@ section {
             transparent
         );
 
-    filter:
-        blur(44px);
+    filter: blur(44px);
 }
 
 .product-shine {
@@ -1884,8 +1887,7 @@ section {
             transparent
         );
 
-    filter:
-        blur(14px);
+    filter: blur(14px);
 
     transform:
         translate(-50%,-50%)
@@ -1953,8 +1955,7 @@ section {
     transform-style:
         preserve-3d;
 
-    will-change:
-        transform;
+    will-change: transform;
 
     animation:
         bottleIdle
@@ -1994,11 +1995,9 @@ section {
             transparent
         );
 
-    filter:
-        blur(8px);
+    filter: blur(8px);
 
-    transform:
-        rotate(10deg);
+    transform: rotate(10deg);
 }
 
 .bottle-floor-shadow {
@@ -2015,8 +2014,7 @@ section {
     background:
         rgba(63,34,55,.16);
 
-    filter:
-        blur(18px);
+    filter: blur(18px);
 
     transform:
         translateX(-50%);
@@ -2124,11 +2122,9 @@ section {
     background:
         var(--surface-glass);
 
-    backdrop-filter:
-        blur(17px);
+    backdrop-filter: blur(17px);
 
-    box-shadow:
-        var(--shadow-soft);
+    box-shadow: var(--shadow-soft);
 }
 
 .spray-counter-card strong {
@@ -2174,11 +2170,9 @@ section {
     background:
         var(--surface-glass);
 
-    backdrop-filter:
-        blur(17px);
+    backdrop-filter: blur(17px);
 
-    box-shadow:
-        var(--shadow-soft);
+    box-shadow: var(--shadow-soft);
 }
 
 .volume-badge > span {
@@ -2333,8 +2327,7 @@ section {
             transparent 76%
         );
 
-    filter:
-        blur(20px);
+    filter: blur(20px);
 
     transform:
         translate(-50%,-50%)
@@ -2543,6 +2536,8 @@ section {
             scale(1.012);
     }
 }
+
+
 /* =========================================================
    TICKER
 ========================================================= */
@@ -2707,8 +2702,7 @@ section {
             transparent 70%
         );
 
-    filter:
-        blur(10px);
+    filter: blur(10px);
 
     z-index: -1;
 }
@@ -2931,8 +2925,7 @@ section {
 .favorite-btn.active {
     color: #fff;
 
-    background:
-        var(--gradient);
+    background: var(--gradient);
 }
 
 
@@ -3121,8 +3114,7 @@ section {
     transform:
         translateY(-6px);
 
-    box-shadow:
-        var(--shadow);
+    box-shadow: var(--shadow);
 }
 
 .note-card-featured {
@@ -3257,8 +3249,7 @@ body.dark .note-card-featured {
 
     border-color: transparent;
 
-    background:
-        var(--gradient);
+    background: var(--gradient);
 
     transform:
         translateY(-2px);
@@ -3570,8 +3561,6 @@ body.dark .note-card-featured {
 .mood-hint p {
     font-size: 8px;
 }
-
-
 /* =========================================================
    DREAM MOMENT
 ========================================================= */
@@ -4746,6 +4735,8 @@ body.dark .note-card-featured {
     background:
         var(--gradient);
 }
+
+
 /* =========================================================
    QUIZ
 ========================================================= */
@@ -4773,11 +4764,9 @@ body.dark .note-card-featured {
 
     overflow: hidden;
 
-    padding:
-        52px;
+    padding: 52px;
 
-    border-radius:
-        40px;
+    border-radius: 40px;
 
     box-shadow:
         var(--shadow);
@@ -5051,8 +5040,7 @@ body.dark .note-card-featured {
     padding:
         74px 56px;
 
-    border-radius:
-        44px;
+    border-radius: 44px;
 
     box-shadow:
         var(--shadow-premium);
@@ -5262,8 +5250,7 @@ body.dark .note-card-featured {
 }
 
 .product-modal-copy {
-    padding:
-        50px;
+    padding: 50px;
 }
 
 .product-modal-copy h2 {
@@ -5887,8 +5874,7 @@ body.dark .settings-panel {
 
     column-gap: 10px;
 
-    padding:
-        13px;
+    padding: 13px;
 
     cursor: pointer;
 
@@ -6507,6 +6493,7 @@ body.dark .settings-panel {
         var(--surface-glass);
 
     font-size: 7px;
+
     font-family: inherit;
 }
 
@@ -6571,7 +6558,7 @@ body.dark .settings-panel {
 
 
 /* =========================================================
-   FOOTER v60
+   FOOTER
 ========================================================= */
 
 .footer-v60 {
@@ -6683,9 +6670,9 @@ body.dark .settings-panel {
 .developer-name {
     font-size:
         clamp(
-            18px,
-            2vw,
-            25px
+            20px,
+            2.2vw,
+            29px
         );
 
     font-weight: 1000;
@@ -6839,18 +6826,142 @@ body.no-animations *::after {
 
 
 /* =========================================================
+   DESKTOP FIX
+   garante bandeiras em notebooks e PCs
+========================================================= */
+
+@media (min-width: 921px) {
+
+    .header {
+        gap:
+            clamp(
+                8px,
+                1.1vw,
+                18px
+            );
+    }
+
+    .menu {
+        flex: 1;
+
+        min-width: 0;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        gap:
+            clamp(
+                6px,
+                .8vw,
+                14px
+            );
+    }
+
+    .menu a {
+        font-size:
+            clamp(
+                7px,
+                .72vw,
+                10px
+            );
+    }
+
+    .header-actions {
+        display: flex !important;
+
+        flex-shrink: 0;
+
+        min-width: max-content;
+    }
+
+    .language-switcher {
+        display: flex !important;
+
+        opacity: 1 !important;
+        visibility: visible !important;
+
+        flex-shrink: 0;
+    }
+
+    .language-button {
+        display: grid !important;
+
+        visibility: visible !important;
+    }
+
+    .language-button .flag {
+        display: block !important;
+    }
+
+}
+
+
+/* =========================================================
+   NOTEBOOK 1350
+========================================================= */
+
+@media (
+    min-width: 921px
+)
+and (
+    max-width: 1380px
+) {
+
+    .header {
+        padding:
+            0 18px;
+
+        gap: 8px;
+    }
+
+    .logo {
+        font-size: 25px;
+    }
+
+    .menu {
+        gap: 7px;
+    }
+
+    .menu a {
+        font-size: 7.5px;
+    }
+
+    .language-switcher {
+        padding:
+            3px 4px;
+    }
+
+    .language-button {
+        width: 31px;
+        height: 31px;
+    }
+
+    .language-button .flag {
+        font-size: 17px;
+    }
+
+    .icon-btn {
+        width: 38px;
+        height: 38px;
+    }
+
+    .pill-btn {
+        min-height: 40px;
+
+        padding:
+            0 14px;
+
+        font-size: 8px;
+    }
+
+}
+
+
+/* =========================================================
    RESPONSIVE 1140
 ========================================================= */
 
 @media (max-width: 1140px) {
-
-    .menu {
-        gap: 13px;
-    }
-
-    .menu a {
-        font-size: 8px;
-    }
 
     .hero {
         grid-template-columns:
@@ -6905,12 +7016,10 @@ body.no-animations *::after {
             );
     }
 
-
     .header {
         padding:
             0 16px;
     }
-
 
     .menu {
         position: fixed;
@@ -6996,7 +7105,6 @@ body.no-animations *::after {
         display: grid;
     }
 
-
     .hero {
         grid-template-columns:
             1fr;
@@ -7029,7 +7137,6 @@ body.no-animations *::after {
         text-align: left;
     }
 
-
     .two-col,
     .feeling-layout,
     .scene-layout {
@@ -7042,7 +7149,6 @@ body.no-animations *::after {
         grid-template-columns:
             1fr;
     }
-
 
     .dream-moment-card {
         grid-template-columns:
@@ -7057,22 +7163,18 @@ body.no-animations *::after {
             start;
     }
 
-
     .scene-buttons {
         grid-template-columns:
             repeat(2,1fr);
     }
 
-
     .gallery-arrow {
         display: none;
     }
 
-
     .keyboard-hints {
         display: none;
     }
-
 
     .footer-v60 {
         grid-template-columns:
@@ -7099,29 +7201,32 @@ body.no-animations *::after {
             calc(100% - 24px);
     }
 
-
     .header-actions {
         gap: 5px;
     }
 
     .language-switcher {
-        padding:
-            3px;
+        display: flex !important;
+
+        padding: 3px;
     }
 
     .language-button {
+        display: grid !important;
+
         width: 31px;
         height: 31px;
     }
 
     .language-button .flag {
+        display: block !important;
+
         font-size: 17px;
     }
 
     .language-divider {
         display: none;
     }
-
 
     .hero-copy h1 {
         font-size:
@@ -7137,7 +7242,6 @@ body.no-animations *::after {
     .hero-copy > p {
         font-size: 13px;
     }
-
 
     .hero-product {
         min-height: 465px;
@@ -7189,7 +7293,6 @@ body.no-animations *::after {
         height: 140px;
     }
 
-
     .product-section,
     .notes-section,
     .experience-section,
@@ -7207,7 +7310,6 @@ body.no-animations *::after {
             20px 0 78px;
     }
 
-
     .dream-moment-card {
         grid-template-columns:
             1fr;
@@ -7223,13 +7325,11 @@ body.no-animations *::after {
         justify-self: center;
     }
 
-
     .moments-grid,
     .mood-grid {
         grid-template-columns:
             1fr;
     }
-
 
     .scene-buttons {
         grid-template-columns:
@@ -7245,11 +7345,11 @@ body.no-animations *::after {
     .scene-result {
         flex-direction: column;
 
-        align-items: flex-start;
+        align-items:
+            flex-start;
 
         padding: 27px;
     }
-
 
     .feeling-orbit {
         min-height: 400px;
@@ -7258,13 +7358,11 @@ body.no-animations *::after {
             scale(.82);
     }
 
-
     .gallery-item {
         min-width: 86vw;
 
         height: 325px;
     }
-
 
     .gallery-bottom {
         flex-wrap: wrap;
@@ -7277,7 +7375,6 @@ body.no-animations *::after {
 
         justify-content: center;
     }
-
 
     .quiz-card {
         min-height: 495px;
@@ -7292,7 +7389,6 @@ body.no-animations *::after {
         grid-template-columns:
             1fr;
     }
-
 
     .product-modal-card {
         grid-template-columns:
@@ -7317,17 +7413,14 @@ body.no-animations *::after {
             1fr;
     }
 
-
     .lightbox {
         padding:
             20px 10px;
     }
 
-
     .section-indicator {
         display: none;
     }
-
 
     .settings-fab {
         right: 14px;
@@ -7341,7 +7434,6 @@ body.no-animations *::after {
         right: 17px;
         bottom: 76px;
     }
-
 
     .dream-music-player {
         left: 10px;
@@ -7359,12 +7451,10 @@ body.no-animations *::after {
         display: none;
     }
 
-
     .final-cta-copy {
         padding:
             53px 21px;
     }
-
 
     .developers {
         gap: 12px;
@@ -7406,7 +7496,6 @@ body.no-animations *::after {
         height: 38px;
     }
 
-
     .language-button {
         width: 29px;
         height: 29px;
@@ -7415,7 +7504,6 @@ body.no-animations *::after {
     .language-button .flag {
         font-size: 16px;
     }
-
 
     .hero-product {
         min-height: 415px;
@@ -7435,13 +7523,11 @@ body.no-animations *::after {
         height: 250px;
     }
 
-
     .note-card,
     .experience-card,
     .moment-card {
         padding: 24px;
     }
-
 
     .feeling-ring-one {
         width: 345px;
@@ -7458,11 +7544,9 @@ body.no-animations *::after {
         height: 205px;
     }
 
-
     .gallery-item {
         height: 295px;
     }
-
 
     .settings-panel {
         padding:
@@ -7483,7 +7567,6 @@ body.no-animations *::after {
         grid-template-columns:
             1fr;
     }
-
 
     .developer-x {
         width: 100%;
