@@ -7846,36 +7846,3 @@ and
     }
 
 }
-
-/* =========================================================
-   COMPATIBILIDADE v60.2 + SCRIPT v61
-========================================================= */
-
-:root {
-    --site-contrast: 1;
-    --animation-speed: 1;
-}
-
-/* Contraste sem aplicar filter no body inteiro. */
-main,
-.header,
-footer,
-.settings-panel,
-.modal > *,
-.lightbox > * {
-    filter: contrast(var(--site-contrast));
-}
-
-/* A velocidade do Dream Studio passa a afetar as principais transições. */
-.reveal {
-    transition-duration: calc(.8s / var(--animation-speed));
-}
-
-.particle {
-    animation-duration: calc(var(--duration, 12s) / var(--animation-speed));
-}
-
-/* Garantia para o HTML que usa hidden no quiz. */
-[hidden] {
-    display: none !important;
-}
