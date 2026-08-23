@@ -3367,3 +3367,26 @@
 </body>
 
 </html>
+<script src="./script.js?v=12"></script>
+
+<script>
+    /*
+       Segurança:
+       nunca deixar o loader preso mesmo
+       se houver algum erro no script.js
+    */
+    setTimeout(() => {
+        const loader = document.getElementById("loader");
+
+        if (loader) {
+            loader.classList.add("hide");
+
+            setTimeout(() => {
+                loader.style.display = "none";
+            }, 700);
+        }
+    }, 3000);
+</script>
+
+</body>
+</html>
