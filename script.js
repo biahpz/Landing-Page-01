@@ -2,7 +2,7 @@
 
 /* =========================================================
    DREAM • AMOR NO AR
-   SCRIPT.JS v50
+   SCRIPT.JS v60
 ========================================================= */
 
 
@@ -20,8 +20,11 @@ const $$ = (
     parent = document
 ) => [...parent.querySelectorAll(selector)];
 
-const body = document.body;
-const root = document.documentElement;
+const body =
+    document.body;
+
+const root =
+    document.documentElement;
 
 
 /* =========================================================
@@ -56,12 +59,1789 @@ let toastTimer;
 
 
 /* =========================================================
+   I18N
+========================================================= */
+
+const translations = {
+
+    "pt-BR": {
+
+        "loader.subtitle":
+            "Amor no Ar",
+
+        "loader.loading":
+            "preparando sua experiência",
+
+
+        "nav.home":
+            "Início",
+
+        "nav.product":
+            "Produto",
+
+        "nav.campaign":
+            "Campanha",
+
+        "nav.notes":
+            "Notas",
+
+        "nav.experience":
+            "Experiência",
+
+        "nav.feel":
+            "Sensação",
+
+        "nav.moments":
+            "Momentos",
+
+        "nav.gallery":
+            "Galeria",
+
+        "nav.mood":
+            "Mood",
+
+        "nav.quiz":
+            "Quiz",
+
+        "nav.discover":
+            "Conhecer",
+
+
+        "music.playing":
+            "TOCANDO AGORA",
+
+
+        "hero.status":
+            "experiência interativa",
+
+        "hero.eyebrow":
+            "O BOTICÁRIO • DREAM",
+
+        "hero.title2":
+            "Amor no Ar",
+
+        "hero.description":
+            "Uma fragrância delicada, romântica e envolvente para transformar pequenos momentos em lembranças especiais.",
+
+        "hero.discover":
+            "Descobrir o Dream",
+
+        "hero.viewProduct":
+            "Ver produto",
+
+        "hero.fact1":
+            "Body Splash",
+
+        "hero.fact2Title":
+            "Floral",
+
+        "hero.fact2":
+            "Amadeirado",
+
+        "hero.fact3":
+            "Amor no Ar",
+
+        "hero.tip":
+            "Toque em borrifar para ativar o efeito, áudio e animação.",
+
+        "hero.productName":
+            "Amor no Ar",
+
+        "hero.bodySplash":
+            "Body Splash",
+
+
+        "spray.button":
+            "Borrifar",
+
+        "spray.experience":
+            "experimentar",
+
+        "spray.counter":
+            "BORRIFADAS",
+
+
+        "ticker.floral":
+            "✿ Floral Amadeirado",
+
+        "ticker.love":
+            "♡ Amor no Ar",
+
+        "ticker.delicate":
+            "☁ Delicado",
+
+        "ticker.romantic":
+            "☾ Romântico",
+
+
+        "section.home":
+            "Início",
+
+        "section.product":
+            "Produto",
+
+        "section.campaign":
+            "Campanha",
+
+        "section.notes":
+            "Notas",
+
+        "section.experience":
+            "Experiência",
+
+        "section.dreamMoment":
+            "Dream Moment",
+
+        "section.feeling":
+            "Sensação",
+
+        "section.moments":
+            "Momentos",
+
+        "section.scene":
+            "Dream Scene",
+
+        "section.gallery":
+            "Galeria",
+
+        "section.mood":
+            "Mood",
+
+        "section.quiz":
+            "Quiz",
+
+
+        "product.collection":
+            "DREAM COLLECTION",
+
+        "product.eyebrow":
+            "DREAM AMOR NO AR",
+
+        "product.title1":
+            "Um toque de",
+
+        "product.title2":
+            "amor",
+
+        "product.title3":
+            "na sua rotina.",
+
+        "product.description":
+            "Dream Amor no Ar combina delicadeza, romantismo e personalidade em uma fragrância confortável para diferentes momentos.",
+
+        "product.point1Title":
+            "Floral delicado",
+
+        "product.point1Text":
+            "Uma assinatura leve, elegante e romântica.",
+
+        "product.point2Title":
+            "Sensação confortável",
+
+        "product.point2Text":
+            "Para usar de forma leve durante o dia.",
+
+        "product.point3Title":
+            "Frasco de 350 ml",
+
+        "product.point3Text":
+            "Um Dream para acompanhar sua rotina.",
+
+        "product.details":
+            "Ver detalhes",
+
+        "product.favorite":
+            "♡ Favoritar",
+
+        "product.favorited":
+            "♥ Favoritado",
+
+
+        "campaign.mini":
+            "DREAM • AMOR NO AR",
+
+        "campaign.title1":
+            "O amor está",
+
+        "campaign.title2":
+            "nos detalhes.",
+
+        "campaign.description":
+            "Uma atmosfera romântica, sofisticada e cheia de personalidade.",
+
+        "campaign.explore":
+            "Explorar universo Dream",
+
+        "campaign.product":
+            "Conhecer produto",
+
+
+        "notes.eyebrow":
+            "PIRÂMIDE OLFATIVA",
+
+        "notes.title1":
+            "Descubra cada",
+
+        "notes.title2":
+            "nota.",
+
+        "notes.description":
+            "Explore as diferentes camadas e descubra como a fragrância evolui.",
+
+        "notes.top":
+            "saída",
+
+        "notes.heart":
+            "corpo",
+
+        "notes.base":
+            "fundo",
+
+        "notes.card1Title":
+            "Frescor frutado",
+
+        "notes.card1Text":
+            "A primeira impressão da fragrância: luminosa, fresca e vibrante.",
+
+        "notes.card2Title":
+            "Coração floral",
+
+        "notes.card2Text":
+            "O lado romântico, delicado e elegante de Amor no Ar.",
+
+        "notes.card3Title":
+            "Conforto envolvente",
+
+        "notes.card3Text":
+            "As notas que permanecem e deixam a assinatura final da fragrância.",
+
+
+        "note.bergamot":
+            "Bergamota",
+
+        "note.orange":
+            "Laranja",
+
+        "note.mandarin":
+            "Mandarina",
+
+        "note.lemon":
+            "Limão",
+
+        "note.apple":
+            "Maçã",
+
+        "note.rose":
+            "Rosa",
+
+        "note.linden":
+            "Tília",
+
+        "note.freesia":
+            "Frésia",
+
+        "note.lotus":
+            "Flor de Lótus",
+
+        "note.gardenia":
+            "Gardênia",
+
+        "note.peach":
+            "Pêssego",
+
+        "note.amber":
+            "Âmbar",
+
+        "note.sandalwood":
+            "Sândalo",
+
+        "note.vanilla":
+            "Baunilha",
+
+
+        "experience.eyebrow":
+            "SINTA A FRAGRÂNCIA",
+
+        "experience.title1":
+            "Explore o Dream de",
+
+        "experience.title2":
+            "outro jeito.",
+
+        "experience.description":
+            "Descubra a evolução da fragrância, compare sensações e personalize a experiência.",
+
+        "experience.evolution":
+            "EVOLUÇÃO",
+
+        "experience.timelineTitle":
+            "Timeline da fragrância",
+
+        "experience.timelineIntro":
+            "Arraste para acompanhar a evolução ao longo das horas.",
+
+        "experience.evolutionLower":
+            "evolução",
+
+        "experience.profile":
+            "PERFIL",
+
+        "experience.personality":
+            "Personalidade",
+
+        "experience.personalityIntro":
+            "Uma leitura visual das principais sensações de Dream.",
+
+        "experience.moment":
+            "MOMENTO",
+
+        "experience.feelQuestion":
+            "Como você quer se sentir?",
+
+        "experience.feelIntro":
+            "Escolha uma atmosfera para transformar o visual da página.",
+
+        "experience.moodHint":
+            "A identidade visual muda automaticamente com o mood.",
+
+
+        "meter.floral":
+            "Floral",
+
+        "meter.romantic":
+            "Romântico",
+
+        "meter.comfort":
+            "Confortável",
+
+        "meter.presence":
+            "Presença",
+
+        "meter.intensity":
+            "Intensidade",
+
+
+        "dreamMoment.defaultTitle":
+            "Seu momento começa aqui.",
+
+        "dreamMoment.defaultText":
+            "Toque no botão para receber uma pequena mensagem Dream.",
+
+        "dreamMoment.button":
+            "Novo momento",
+
+
+        "feeling.eyebrow":
+            "SENSAÇÃO DA FRAGRÂNCIA",
+
+        "feeling.title1":
+            "Entre leveza e",
+
+        "feeling.title2":
+            "presença.",
+
+        "feeling.description":
+            "Uma representação visual do equilíbrio de Dream Amor no Ar.",
+
+        "feeling.amorNoAr":
+            "AMOR NO AR",
+
+        "feeling.profile":
+            "PERFIL SENSORIAL",
+
+        "feeling.bigTitle":
+            "Delicado sem passar despercebido.",
+
+        "feeling.text":
+            "Dream equilibra um coração romântico com uma base confortável, criando uma presença suave.",
+
+
+        "moments.eyebrow":
+            "QUANDO USAR",
+
+        "moments.title1":
+            "Um Dream para cada",
+
+        "moments.title2":
+            "momento.",
+
+        "moments.description":
+            "Escolha o cenário que mais combina com a sua experiência.",
+
+        "moments.day":
+            "DIA",
+
+        "moments.date":
+            "ENCONTRO",
+
+        "moments.night":
+            "NOITE",
+
+        "moments.special":
+            "ESPECIAL",
+
+        "moments.card1Title":
+            "Rotina leve",
+
+        "moments.card1Text":
+            "Para começar o dia com uma sensação fresca, delicada e confortável.",
+
+        "moments.card2Title":
+            "Momento romântico",
+
+        "moments.card2Text":
+            "Uma atmosfera delicada para encontros e ocasiões especiais.",
+
+        "moments.card3Title":
+            "Noite Dream",
+
+        "moments.card3Text":
+            "Para quando você quer uma presença suave, envolvente e elegante.",
+
+        "moments.card4Title":
+            "Seu momento",
+
+        "moments.card4Text":
+            "Alguns momentos não precisam de ocasião. Basta serem seus.",
+
+        "moments.tagLight":
+            "leve",
+
+        "moments.tagRomantic":
+            "romântico",
+
+        "moments.tagNight":
+            "noturno",
+
+        "moments.tagSpecial":
+            "especial",
+
+
+        "scene.title1":
+            "Escolha sua",
+
+        "scene.title2":
+            "atmosfera.",
+
+        "scene.description":
+            "Mude o cenário e descubra diferentes lados de Dream.",
+
+        "scene.romance":
+            "Romance",
+
+        "scene.delicate":
+            "delicado",
+
+        "scene.sky":
+            "Céu",
+
+        "scene.dreamy":
+            "sonhador",
+
+        "scene.flowers":
+            "Flores",
+
+        "scene.romantic":
+            "romântico",
+
+        "scene.energy":
+            "Energia",
+
+        "scene.intense":
+            "intenso",
+
+
+        "quote.start":
+            "Feito para deixar",
+
+        "quote.end":
+            "o amor no ar.",
+
+
+        "gallery.eyebrow":
+            "GALERIA DREAM",
+
+        "gallery.title1":
+            "Entre no universo",
+
+        "gallery.title2":
+            "Dream.",
+
+        "gallery.description":
+            "Arraste com o mouse, deslize no celular ou use as setas.",
+
+        "gallery.item1":
+            "Dream World",
+
+        "gallery.item2":
+            "Amor no Ar",
+
+        "gallery.item3":
+            "Romance Dream",
+
+        "gallery.explore":
+            "explorar ↗",
+
+        "gallery.autoplay":
+            "▶ Autoplay",
+
+        "gallery.pause":
+            "❚❚ Pausar",
+
+
+        "mood.eyebrow":
+            "ESCOLHA SEU MOOD",
+
+        "mood.title1":
+            "Qual é o seu",
+
+        "mood.title2":
+            "Dream de hoje?",
+
+        "mood.description":
+            "Cada mood muda a identidade visual da experiência.",
+
+        "mood.romantic":
+            "Romântico",
+
+        "mood.dreamy":
+            "Sonhador",
+
+        "mood.night":
+            "Noturno",
+
+        "mood.energy":
+            "Energia",
+
+        "mood.calm":
+            "Calmo",
+
+        "mood.delicate":
+            "delicado",
+
+        "mood.light":
+            "leve",
+
+        "mood.mysterious":
+            "misterioso",
+
+        "mood.intense":
+            "intenso",
+
+        "mood.comfortable":
+            "confortável",
+
+
+        "quiz.title":
+            "Qual é o seu Dream?",
+
+        "quiz.description":
+            "Responda quatro perguntas e descubra qual atmosfera combina mais com você.",
+
+        "quiz.start":
+            "Começar quiz",
+
+        "quiz.questionLabel":
+            "DREAM QUESTION",
+
+        "quiz.resultLabel":
+            "SEU RESULTADO",
+
+        "quiz.restart":
+            "Refazer quiz",
+
+        "quiz.applyMood":
+            "Aplicar meu mood",
+
+        "quiz.share":
+            "Compartilhar",
+
+
+        "final.eyebrow":
+            "DREAM • AMOR NO AR",
+
+        "final.title1":
+            "Deixe seu momento",
+
+        "final.title2":
+            "no ar.",
+
+        "final.description":
+            "Explore as notas, encontre seu mood e crie sua própria experiência Dream.",
+
+        "final.product":
+            "Ver produto",
+
+        "final.share":
+            "Compartilhar",
+
+        "final.fullscreen":
+            "⛶ Tela cheia",
+
+        "final.exitFullscreen":
+            "⤢ Sair da tela cheia",
+
+
+        "modal.productEyebrow":
+            "DREAM AMOR NO AR",
+
+        "modal.productDescription":
+            "Uma fragrância floral, romântica e envolvente, pensada para acompanhar momentos leves e especiais.",
+
+        "modal.floral":
+            "✿ Floral",
+
+        "modal.romantic":
+            "♡ Romântico",
+
+        "modal.comfortable":
+            "☁ Confortável",
+
+        "modal.profile":
+            "PERFIL",
+
+        "modal.profileValue":
+            "Floral amadeirado",
+
+        "modal.experience":
+            "EXPERIÊNCIA",
+
+        "modal.experienceValue":
+            "Leve e envolvente",
+
+        "modal.noteLabel":
+            "NOTA DREAM",
+
+
+        "lightbox.label":
+            "DREAM GALLERY",
+
+
+        "studio.title":
+            "Sua experiência, do seu jeito.",
+
+        "studio.description":
+            "Personalize visual, áudio e movimento.",
+
+        "studio.language":
+            "Idioma",
+
+        "studio.presets":
+            "Estilos rápidos",
+
+        "studio.appearance":
+            "Aparência",
+
+        "studio.dark":
+            "Modo escuro",
+
+        "studio.darkDesc":
+            "Alternar tema",
+
+        "studio.glassDesc":
+            "Transparência e desfoque",
+
+        "studio.clean":
+            "Modo clean",
+
+        "studio.cleanDesc":
+            "Experiência mais minimalista",
+
+        "studio.performance":
+            "Modo performance",
+
+        "studio.performanceDesc":
+            "Reduz efeitos mais pesados",
+
+        "studio.palettes":
+            "Paletas",
+
+        "studio.customColors":
+            "Cores personalizadas",
+
+        "studio.primary":
+            "Principal",
+
+        "studio.secondary":
+            "Secundária",
+
+        "studio.effects":
+            "Efeitos",
+
+        "studio.particles":
+            "Partículas",
+
+        "studio.particlesDesc":
+            "Elementos flutuantes",
+
+        "studio.animations":
+            "Animações",
+
+        "studio.animationsDesc":
+            "Transições da experiência",
+
+        "studio.cursorDesc":
+            "Iluminação que acompanha o mouse",
+
+        "studio.motion":
+            "Movimento 3D",
+
+        "studio.motionDesc":
+            "Profundidade do frasco",
+
+        "studio.haptic":
+            "Vibração do spray",
+
+        "studio.hapticDesc":
+            "Feedback em aparelhos compatíveis",
+
+        "studio.spraySound":
+            "Som do borrifador",
+
+        "studio.spraySoundDesc":
+            "Reproduzir efeito ao borrifar",
+
+        "studio.music":
+            "Música",
+
+        "studio.backgroundMusic":
+            "Música de fundo",
+
+        "studio.backgroundMusicDesc":
+            "Ativar ou pausar Moonlight",
+
+        "studio.volume":
+            "Volume",
+
+        "studio.movement":
+            "Movimento",
+
+        "studio.speed":
+            "Velocidade",
+
+        "studio.motionIntensity":
+            "Intensidade 3D",
+
+        "studio.particleIntensity":
+            "Partículas",
+
+        "studio.sprayIntensity":
+            "Borrifador",
+
+        "studio.reading":
+            "Leitura",
+
+        "studio.contrast":
+            "Contraste",
+
+        "studio.textSize":
+            "Tamanho do texto",
+
+        "studio.reset":
+            "↻ Restaurar padrão",
+
+
+        "footer.subtitle":
+            "Amor no Ar • 350 ml",
+
+        "footer.developed":
+            "DESENVOLVIDO POR",
+
+
+        "toast.spray":
+            "Dream está no ar ♡",
+
+        "toast.favorite":
+            "Dream favoritado ♡",
+
+        "toast.unfavorite":
+            "Removido dos favoritos",
+
+        "toast.linkCopied":
+            "Link copiado ♡",
+
+        "toast.newMoment":
+            "Novo Dream Moment ✦",
+
+        "toast.moodApplied":
+            "Seu mood foi aplicado ♡",
+
+        "toast.musicPlaying":
+            "Moonlight tocando ♫",
+
+        "toast.performanceOn":
+            "Modo performance ativado ⚡",
+
+        "toast.performanceOff":
+            "Modo performance desligado",
+
+        "toast.spraySoundOn":
+            "Som do borrifador ativado ✦",
+
+        "toast.spraySoundOff":
+            "Som do borrifador desligado",
+
+        "toast.reset":
+            "Dream Studio restaurado ♡"
+
+    },
+
+
+    "en-US": {
+
+        "loader.subtitle":
+            "Love in the Air",
+
+        "loader.loading":
+            "preparing your experience",
+
+
+        "nav.home":
+            "Home",
+
+        "nav.product":
+            "Product",
+
+        "nav.campaign":
+            "Campaign",
+
+        "nav.notes":
+            "Notes",
+
+        "nav.experience":
+            "Experience",
+
+        "nav.feel":
+            "Feeling",
+
+        "nav.moments":
+            "Moments",
+
+        "nav.gallery":
+            "Gallery",
+
+        "nav.mood":
+            "Mood",
+
+        "nav.quiz":
+            "Quiz",
+
+        "nav.discover":
+            "Discover",
+
+
+        "music.playing":
+            "NOW PLAYING",
+
+
+        "hero.status":
+            "interactive experience",
+
+        "hero.eyebrow":
+            "O BOTICÁRIO • DREAM",
+
+        "hero.title2":
+            "Love in the Air",
+
+        "hero.description":
+            "A delicate, romantic and enveloping fragrance designed to turn small moments into special memories.",
+
+        "hero.discover":
+            "Discover Dream",
+
+        "hero.viewProduct":
+            "View product",
+
+        "hero.fact1":
+            "Body Splash",
+
+        "hero.fact2Title":
+            "Floral",
+
+        "hero.fact2":
+            "Woody",
+
+        "hero.fact3":
+            "Love in the Air",
+
+        "hero.tip":
+            "Tap Spray to activate the effect, sound and animation.",
+
+        "hero.productName":
+            "Love in the Air",
+
+        "hero.bodySplash":
+            "Body Splash",
+
+
+        "spray.button":
+            "Spray",
+
+        "spray.experience":
+            "experience",
+
+        "spray.counter":
+            "SPRAYS",
+
+
+        "ticker.floral":
+            "✿ Floral Woody",
+
+        "ticker.love":
+            "♡ Love in the Air",
+
+        "ticker.delicate":
+            "☁ Delicate",
+
+        "ticker.romantic":
+            "☾ Romantic",
+
+
+        "section.home":
+            "Home",
+
+        "section.product":
+            "Product",
+
+        "section.campaign":
+            "Campaign",
+
+        "section.notes":
+            "Notes",
+
+        "section.experience":
+            "Experience",
+
+        "section.dreamMoment":
+            "Dream Moment",
+
+        "section.feeling":
+            "Feeling",
+
+        "section.moments":
+            "Moments",
+
+        "section.scene":
+            "Dream Scene",
+
+        "section.gallery":
+            "Gallery",
+
+        "section.mood":
+            "Mood",
+
+        "section.quiz":
+            "Quiz",
+
+
+        "product.collection":
+            "DREAM COLLECTION",
+
+        "product.eyebrow":
+            "DREAM LOVE IN THE AIR",
+
+        "product.title1":
+            "A touch of",
+
+        "product.title2":
+            "love",
+
+        "product.title3":
+            "in your routine.",
+
+        "product.description":
+            "Dream Love in the Air combines delicacy, romance and personality in a comfortable fragrance for different moments.",
+
+        "product.point1Title":
+            "Delicate floral",
+
+        "product.point1Text":
+            "A light, elegant and romantic signature.",
+
+        "product.point2Title":
+            "Comforting feeling",
+
+        "product.point2Text":
+            "Made for a light and easy daytime experience.",
+
+        "product.point3Title":
+            "350 ml bottle",
+
+        "product.point3Text":
+            "A Dream made to follow your routine.",
+
+        "product.details":
+            "View details",
+
+        "product.favorite":
+            "♡ Favorite",
+
+        "product.favorited":
+            "♥ Favorited",
+
+
+        "campaign.mini":
+            "DREAM • LOVE IN THE AIR",
+
+        "campaign.title1":
+            "Love lives",
+
+        "campaign.title2":
+            "in the details.",
+
+        "campaign.description":
+            "A romantic, sophisticated atmosphere full of personality.",
+
+        "campaign.explore":
+            "Explore the Dream universe",
+
+        "campaign.product":
+            "Discover product",
+
+
+        "notes.eyebrow":
+            "OLFACTORY PYRAMID",
+
+        "notes.title1":
+            "Discover every",
+
+        "notes.title2":
+            "note.",
+
+        "notes.description":
+            "Explore the different layers and discover how the fragrance evolves.",
+
+        "notes.top":
+            "top",
+
+        "notes.heart":
+            "heart",
+
+        "notes.base":
+            "base",
+
+        "notes.card1Title":
+            "Fruity freshness",
+
+        "notes.card1Text":
+            "The fragrance opens bright, fresh and vibrant.",
+
+        "notes.card2Title":
+            "Floral heart",
+
+        "notes.card2Text":
+            "The romantic, delicate and elegant side of Love in the Air.",
+
+        "notes.card3Title":
+            "Enveloping comfort",
+
+        "notes.card3Text":
+            "The notes that linger and create the fragrance's final signature.",
+
+
+        "note.bergamot":
+            "Bergamot",
+
+        "note.orange":
+            "Orange",
+
+        "note.mandarin":
+            "Mandarin",
+
+        "note.lemon":
+            "Lemon",
+
+        "note.apple":
+            "Apple",
+
+        "note.rose":
+            "Rose",
+
+        "note.linden":
+            "Linden",
+
+        "note.freesia":
+            "Freesia",
+
+        "note.lotus":
+            "Lotus Flower",
+
+        "note.gardenia":
+            "Gardenia",
+
+        "note.peach":
+            "Peach",
+
+        "note.amber":
+            "Amber",
+
+        "note.sandalwood":
+            "Sandalwood",
+
+        "note.vanilla":
+            "Vanilla",
+
+
+        "experience.eyebrow":
+            "FEEL THE FRAGRANCE",
+
+        "experience.title1":
+            "Explore Dream in",
+
+        "experience.title2":
+            "a new way.",
+
+        "experience.description":
+            "Discover how the fragrance evolves, compare sensations and personalize the experience.",
+
+        "experience.evolution":
+            "EVOLUTION",
+
+        "experience.timelineTitle":
+            "Fragrance timeline",
+
+        "experience.timelineIntro":
+            "Drag to follow the fragrance throughout the hours.",
+
+        "experience.evolutionLower":
+            "evolution",
+
+        "experience.profile":
+            "PROFILE",
+
+        "experience.personality":
+            "Personality",
+
+        "experience.personalityIntro":
+            "A visual reading of Dream's main sensations.",
+
+        "experience.moment":
+            "MOMENT",
+
+        "experience.feelQuestion":
+            "How do you want to feel?",
+
+        "experience.feelIntro":
+            "Choose an atmosphere to transform the page.",
+
+        "experience.moodHint":
+            "The visual identity changes automatically with your mood.",
+
+
+        "meter.floral":
+            "Floral",
+
+        "meter.romantic":
+            "Romantic",
+
+        "meter.comfort":
+            "Comfort",
+
+        "meter.presence":
+            "Presence",
+
+        "meter.intensity":
+            "Intensity",
+
+
+        "dreamMoment.defaultTitle":
+            "Your moment starts here.",
+
+        "dreamMoment.defaultText":
+            "Tap the button to receive a small Dream message.",
+
+        "dreamMoment.button":
+            "New moment",
+
+
+        "feeling.eyebrow":
+            "FRAGRANCE FEELING",
+
+        "feeling.title1":
+            "Between softness and",
+
+        "feeling.title2":
+            "presence.",
+
+        "feeling.description":
+            "A visual representation of the balance behind Dream Love in the Air.",
+
+        "feeling.amorNoAr":
+            "LOVE IN THE AIR",
+
+        "feeling.profile":
+            "SENSORY PROFILE",
+
+        "feeling.bigTitle":
+            "Delicate without going unnoticed.",
+
+        "feeling.text":
+            "Dream balances a romantic heart with a comforting base, creating a soft presence.",
+
+
+        "moments.eyebrow":
+            "WHEN TO WEAR",
+
+        "moments.title1":
+            "A Dream for every",
+
+        "moments.title2":
+            "moment.",
+
+        "moments.description":
+            "Choose the setting that best matches your experience.",
+
+        "moments.day":
+            "DAY",
+
+        "moments.date":
+            "DATE",
+
+        "moments.night":
+            "NIGHT",
+
+        "moments.special":
+            "SPECIAL",
+
+        "moments.card1Title":
+            "Light routine",
+
+        "moments.card1Text":
+            "Start your day with a fresh, delicate and comfortable feeling.",
+
+        "moments.card2Title":
+            "Romantic moment",
+
+        "moments.card2Text":
+            "A delicate atmosphere for dates and special occasions.",
+
+        "moments.card3Title":
+            "Dream night",
+
+        "moments.card3Text":
+            "For moments when you want a soft, enveloping and elegant presence.",
+
+        "moments.card4Title":
+            "Your moment",
+
+        "moments.card4Text":
+            "Some moments do not need an occasion. They only need to be yours.",
+
+        "moments.tagLight":
+            "light",
+
+        "moments.tagRomantic":
+            "romantic",
+
+        "moments.tagNight":
+            "night",
+
+        "moments.tagSpecial":
+            "special",
+
+
+        "scene.title1":
+            "Choose your",
+
+        "scene.title2":
+            "atmosphere.",
+
+        "scene.description":
+            "Change the scene and discover different sides of Dream.",
+
+        "scene.romance":
+            "Romance",
+
+        "scene.delicate":
+            "delicate",
+
+        "scene.sky":
+            "Sky",
+
+        "scene.dreamy":
+            "dreamy",
+
+        "scene.flowers":
+            "Flowers",
+
+        "scene.romantic":
+            "romantic",
+
+        "scene.energy":
+            "Energy",
+
+        "scene.intense":
+            "intense",
+
+
+        "quote.start":
+            "Made to leave",
+
+        "quote.end":
+            "love in the air.",
+
+
+        "gallery.eyebrow":
+            "DREAM GALLERY",
+
+        "gallery.title1":
+            "Enter the",
+
+        "gallery.title2":
+            "Dream universe.",
+
+        "gallery.description":
+            "Drag with your mouse, swipe on mobile or use the arrows.",
+
+        "gallery.item1":
+            "Dream World",
+
+        "gallery.item2":
+            "Love in the Air",
+
+        "gallery.item3":
+            "Romance Dream",
+
+        "gallery.explore":
+            "explore ↗",
+
+        "gallery.autoplay":
+            "▶ Autoplay",
+
+        "gallery.pause":
+            "❚❚ Pause",
+
+
+        "mood.eyebrow":
+            "CHOOSE YOUR MOOD",
+
+        "mood.title1":
+            "What's your",
+
+        "mood.title2":
+            "Dream today?",
+
+        "mood.description":
+            "Each mood changes the visual identity of the experience.",
+
+        "mood.romantic":
+            "Romantic",
+
+        "mood.dreamy":
+            "Dreamy",
+
+        "mood.night":
+            "Night",
+
+        "mood.energy":
+            "Energy",
+
+        "mood.calm":
+            "Calm",
+
+        "mood.delicate":
+            "delicate",
+
+        "mood.light":
+            "light",
+
+        "mood.mysterious":
+            "mysterious",
+
+        "mood.intense":
+            "intense",
+
+        "mood.comfortable":
+            "comfortable",
+
+
+        "quiz.title":
+            "What's your Dream?",
+
+        "quiz.description":
+            "Answer four questions and discover which atmosphere matches you best.",
+
+        "quiz.start":
+            "Start quiz",
+
+        "quiz.questionLabel":
+            "DREAM QUESTION",
+
+        "quiz.resultLabel":
+            "YOUR RESULT",
+
+        "quiz.restart":
+            "Restart quiz",
+
+        "quiz.applyMood":
+            "Apply my mood",
+
+        "quiz.share":
+            "Share",
+
+
+        "final.eyebrow":
+            "DREAM • LOVE IN THE AIR",
+
+        "final.title1":
+            "Leave your moment",
+
+        "final.title2":
+            "in the air.",
+
+        "final.description":
+            "Explore the notes, find your mood and create your own Dream experience.",
+
+        "final.product":
+            "View product",
+
+        "final.share":
+            "Share",
+
+        "final.fullscreen":
+            "⛶ Fullscreen",
+
+        "final.exitFullscreen":
+            "⤢ Exit fullscreen",
+
+
+        "modal.productEyebrow":
+            "DREAM LOVE IN THE AIR",
+
+        "modal.productDescription":
+            "A floral, romantic and enveloping fragrance designed for light and special moments.",
+
+        "modal.floral":
+            "✿ Floral",
+
+        "modal.romantic":
+            "♡ Romantic",
+
+        "modal.comfortable":
+            "☁ Comfortable",
+
+        "modal.profile":
+            "PROFILE",
+
+        "modal.profileValue":
+            "Floral woody",
+
+        "modal.experience":
+            "EXPERIENCE",
+
+        "modal.experienceValue":
+            "Light and enveloping",
+
+        "modal.noteLabel":
+            "DREAM NOTE",
+
+
+        "lightbox.label":
+            "DREAM GALLERY",
+
+
+        "studio.title":
+            "Your experience, your way.",
+
+        "studio.description":
+            "Customize visuals, audio and motion.",
+
+        "studio.language":
+            "Language",
+
+        "studio.presets":
+            "Quick styles",
+
+        "studio.appearance":
+            "Appearance",
+
+        "studio.dark":
+            "Dark mode",
+
+        "studio.darkDesc":
+            "Switch theme",
+
+        "studio.glassDesc":
+            "Transparency and blur",
+
+        "studio.clean":
+            "Clean mode",
+
+        "studio.cleanDesc":
+            "A more minimal experience",
+
+        "studio.performance":
+            "Performance mode",
+
+        "studio.performanceDesc":
+            "Reduces heavier effects",
+
+        "studio.palettes":
+            "Palettes",
+
+        "studio.customColors":
+            "Custom colors",
+
+        "studio.primary":
+            "Primary",
+
+        "studio.secondary":
+            "Secondary",
+
+        "studio.effects":
+            "Effects",
+
+        "studio.particles":
+            "Particles",
+
+        "studio.particlesDesc":
+            "Floating elements",
+
+        "studio.animations":
+            "Animations",
+
+        "studio.animationsDesc":
+            "Experience transitions",
+
+        "studio.cursorDesc":
+            "Glow that follows the mouse",
+
+        "studio.motion":
+            "3D motion",
+
+        "studio.motionDesc":
+            "Bottle depth effect",
+
+        "studio.haptic":
+            "Spray vibration",
+
+        "studio.hapticDesc":
+            "Feedback on supported devices",
+
+        "studio.spraySound":
+            "Spray sound",
+
+        "studio.spraySoundDesc":
+            "Play an effect when spraying",
+
+        "studio.music":
+            "Music",
+
+        "studio.backgroundMusic":
+            "Background music",
+
+        "studio.backgroundMusicDesc":
+            "Play or pause Moonlight",
+
+        "studio.volume":
+            "Volume",
+
+        "studio.movement":
+            "Motion",
+
+        "studio.speed":
+            "Speed",
+
+        "studio.motionIntensity":
+            "3D intensity",
+
+        "studio.particleIntensity":
+            "Particles",
+
+        "studio.sprayIntensity":
+            "Spray",
+
+        "studio.reading":
+            "Reading",
+
+        "studio.contrast":
+            "Contrast",
+
+        "studio.textSize":
+            "Text size",
+
+        "studio.reset":
+            "↻ Restore default",
+
+
+        "footer.subtitle":
+            "Love in the Air • 350 ml",
+
+        "footer.developed":
+            "DEVELOPED BY",
+
+
+        "toast.spray":
+            "Dream is in the air ♡",
+
+        "toast.favorite":
+            "Dream added to favorites ♡",
+
+        "toast.unfavorite":
+            "Removed from favorites",
+
+        "toast.linkCopied":
+            "Link copied ♡",
+
+        "toast.newMoment":
+            "New Dream Moment ✦",
+
+        "toast.moodApplied":
+            "Your mood has been applied ♡",
+
+        "toast.musicPlaying":
+            "Moonlight is playing ♫",
+
+        "toast.performanceOn":
+            "Performance mode enabled ⚡",
+
+        "toast.performanceOff":
+            "Performance mode disabled",
+
+        "toast.spraySoundOn":
+            "Spray sound enabled ✦",
+
+        "toast.spraySoundOff":
+            "Spray sound disabled",
+
+        "toast.reset":
+            "Dream Studio restored ♡"
+
+    }
+
+};
+
+
+let currentLanguage =
+    localStorage.getItem(
+        "dreamLanguage"
+    ) ||
+    "pt-BR";
+
+
+function t(
+    key
+) {
+
+    return (
+        translations[currentLanguage]?.[key] ??
+        translations["pt-BR"]?.[key] ??
+        key
+    );
+
+}
+
+
+/* =========================================================
+   TROCAR IDIOMA
+========================================================= */
+
+function setLanguage(
+    language,
+    save = true
+) {
+
+    if (
+        !translations[language]
+    ) {
+        return;
+    }
+
+    currentLanguage =
+        language;
+
+    document.documentElement.lang =
+        language;
+
+    $$("[data-i18n]").forEach(
+        element => {
+
+            const key =
+                element.dataset.i18n;
+
+            const value =
+                t(key);
+
+            if (
+                value !== undefined
+            ) {
+
+                element.textContent =
+                    value;
+
+            }
+
+        }
+    );
+
+
+    $$("[data-lang]").forEach(
+        button => {
+
+            button.classList.toggle(
+                "active",
+                button.dataset.lang ===
+                currentLanguage
+            );
+
+        }
+    );
+
+
+    updateFavorite();
+
+    updateTimeline();
+
+    updateGalleryUI();
+
+    updateSectionIndicator();
+
+    updateFullscreenButton();
+
+    updateDynamicLanguageContent();
+
+
+    if (
+        save
+    ) {
+
+        localStorage.setItem(
+            "dreamLanguage",
+            currentLanguage
+        );
+
+    }
+
+}
+
+
+$$("[data-lang]").forEach(
+    button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                setLanguage(
+                    button.dataset.lang
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
    LOADER
 ========================================================= */
 
 function hideLoader() {
 
-    if (!loader) {
+    if (
+        !loader
+    ) {
         return;
     }
 
@@ -81,17 +1861,19 @@ function hideLoader() {
 
 }
 
+
 window.addEventListener(
     "load",
     () => {
 
         setTimeout(
             hideLoader,
-            600
+            500
         );
 
     }
 );
+
 
 setTimeout(
     hideLoader,
@@ -103,9 +1885,13 @@ setTimeout(
    TOAST
 ========================================================= */
 
-function showToast(message) {
+function showToast(
+    message
+) {
 
-    if (!toast) {
+    if (
+        !toast
+    ) {
         return;
     }
 
@@ -136,10 +1922,12 @@ function showToast(message) {
 
 
 /* =========================================================
-   MENU MOBILE
+   MENU
 ========================================================= */
 
-function setMenuOpen(open) {
+function setMenuOpen(
+    open
+) {
 
     menu?.classList.toggle(
         "open",
@@ -152,6 +1940,7 @@ function setMenuOpen(open) {
     );
 
 }
+
 
 menuMobile?.addEventListener(
     "click",
@@ -167,6 +1956,7 @@ menuMobile?.addEventListener(
 
     }
 );
+
 
 $$(".menu a").forEach(
     link => {
@@ -184,6 +1974,7 @@ $$(".menu a").forEach(
 
     }
 );
+
 
 document.addEventListener(
     "click",
@@ -233,7 +2024,9 @@ function updateScroll() {
             ? current / total * 100
             : 0;
 
-    if (scrollProgress) {
+    if (
+        scrollProgress
+    ) {
 
         scrollProgress.style.width =
             `${percentage}%`;
@@ -252,6 +2045,7 @@ function updateScroll() {
 
 }
 
+
 window.addEventListener(
     "scroll",
     updateScroll,
@@ -260,12 +2054,6 @@ window.addEventListener(
     }
 );
 
-updateScroll();
-
-
-/* =========================================================
-   VOLTAR AO TOPO
-========================================================= */
 
 backTop?.addEventListener(
     "click",
@@ -294,6 +2082,7 @@ backTop?.addEventListener(
 
 const revealElements =
     $$(".reveal");
+
 
 if (
     "IntersectionObserver" in
@@ -356,30 +2145,8 @@ if (
 
 
 /* =========================================================
-   BARRAS
+   METERS
 ========================================================= */
-
-function animateMeter(
-    element,
-    key
-) {
-
-    const value =
-        Math.max(
-            0,
-            Math.min(
-                100,
-                Number(
-                    element.dataset[key] ||
-                    0
-                )
-            )
-        );
-
-    element.style.width =
-        `${value}%`;
-
-}
 
 const meterElements = [
 
@@ -387,6 +2154,7 @@ const meterElements = [
     ...$$("[data-feeling]")
 
 ];
+
 
 if (
     "IntersectionObserver" in
@@ -409,27 +2177,15 @@ if (
                         const element =
                             entry.target;
 
-                        if (
-                            element.dataset.meter
-                        ) {
-
-                            animateMeter(
-                                element,
-                                "meter"
+                        const value =
+                            Number(
+                                element.dataset.meter ??
+                                element.dataset.feeling ??
+                                0
                             );
 
-                        }
-
-                        if (
-                            element.dataset.feeling
-                        ) {
-
-                            animateMeter(
-                                element,
-                                "feeling"
-                            );
-
-                        }
+                        element.style.width =
+                            `${Math.max(0, Math.min(100, value))}%`;
 
                         meterObserver.unobserve(
                             element
@@ -458,7 +2214,7 @@ if (
 
 
 /* =========================================================
-   CURSOR GLOW
+   CURSOR
 ========================================================= */
 
 const cursorGlow =
@@ -478,6 +2234,7 @@ let glowY =
 
 let cursorGlowIntensity =
     1;
+
 
 document.addEventListener(
     "pointermove",
@@ -499,6 +2256,7 @@ document.addEventListener(
     }
 );
 
+
 function animateCursorGlow() {
 
     if (
@@ -513,29 +2271,20 @@ function animateCursorGlow() {
                 cursorX -
                 glowX
             ) *
-            0.12;
+            .11;
 
         glowY +=
             (
                 cursorY -
                 glowY
             ) *
-            0.12;
+            .11;
 
         cursorGlow.style.left =
             `${glowX}px`;
 
         cursorGlow.style.top =
             `${glowY}px`;
-
-        cursorGlow.style.opacity =
-            String(
-                Math.min(
-                    0.8,
-                    0.42 *
-                    cursorGlowIntensity
-                )
-            );
 
         cursorGlow.style.transform =
             `
@@ -551,22 +2300,26 @@ function animateCursorGlow() {
 
 }
 
+
 animateCursorGlow();
 
 
 /* =========================================================
-   PARTÍCULAS
+   PARTICLES
 ========================================================= */
 
 let particleIntensity =
     1;
+
 
 function generateParticles() {
 
     const container =
         $("#particles");
 
-    if (!container) {
+    if (
+        !container
+    ) {
         return;
     }
 
@@ -587,28 +2340,28 @@ function generateParticles() {
         "✿"
     ];
 
+    const mobile =
+        window.innerWidth <
+        650;
+
     const performanceMode =
         body.classList.contains(
             "performance-mode"
         );
 
-    const mobile =
-        window.innerWidth <
-        650;
-
-    let baseAmount =
+    let base =
         mobile
-            ? 12
-            : 25;
+            ? 10
+            : 20;
 
     if (
         performanceMode
     ) {
 
-        baseAmount =
+        base =
             Math.min(
-                baseAmount,
-                7
+                base,
+                6
             );
 
     }
@@ -617,7 +2370,7 @@ function generateParticles() {
         Math.max(
             2,
             Math.round(
-                baseAmount *
+                base *
                 particleIntensity
             )
         );
@@ -651,13 +2404,13 @@ function generateParticles() {
             `${
                 8 +
                 Math.random() *
-                16
+                14
             }px`;
 
         particle.style.setProperty(
             "--duration",
             `${
-                8 +
+                9 +
                 Math.random() *
                 12
             }s`
@@ -679,141 +2432,12 @@ function generateParticles() {
 
 }
 
+
 generateParticles();
 
 
 /* =========================================================
-   SHINE DOS CARDS
-========================================================= */
-
-let shineEnabled =
-    true;
-
-function bindShineCards() {
-
-    $$(".shine-card").forEach(
-        card => {
-
-            card.addEventListener(
-                "pointermove",
-                event => {
-
-                    if (
-                        !shineEnabled ||
-                        event.pointerType ===
-                        "touch"
-                    ) {
-                        return;
-                    }
-
-                    const rect =
-                        card.getBoundingClientRect();
-
-                    const x =
-                        (
-                            event.clientX -
-                            rect.left
-                        ) /
-                        rect.width *
-                        100;
-
-                    const y =
-                        (
-                            event.clientY -
-                            rect.top
-                        ) /
-                        rect.height *
-                        100;
-
-                    card.style.setProperty(
-                        "--shine-x",
-                        `${x}%`
-                    );
-
-                    card.style.setProperty(
-                        "--shine-y",
-                        `${y}%`
-                    );
-
-                }
-            );
-
-        }
-    );
-
-}
-
-bindShineCards();
-
-
-/* =========================================================
-   MAGNETIC BUTTONS
-========================================================= */
-
-function bindMagneticButtons() {
-
-    $$(".magnetic").forEach(
-        element => {
-
-            element.addEventListener(
-                "pointermove",
-                event => {
-
-                    if (
-                        event.pointerType ===
-                        "touch" ||
-                        body.classList.contains(
-                            "performance-mode"
-                        )
-                    ) {
-                        return;
-                    }
-
-                    const rect =
-                        element
-                            .getBoundingClientRect();
-
-                    const x =
-                        event.clientX -
-                        rect.left -
-                        rect.width / 2;
-
-                    const y =
-                        event.clientY -
-                        rect.top -
-                        rect.height / 2;
-
-                    element.style.transform =
-                        `
-                        translate(
-                            ${x * 0.08}px,
-                            ${y * 0.08}px
-                        )
-                        `;
-
-                }
-            );
-
-            element.addEventListener(
-                "pointerleave",
-                () => {
-
-                    element.style.transform =
-                        "";
-
-                }
-            );
-
-        }
-    );
-
-}
-
-bindMagneticButtons();
-
-
-/* =========================================================
-   PRODUTO PRINCIPAL
+   PRODUCT / 3D
 ========================================================= */
 
 const heroProduct =
@@ -827,6 +2451,12 @@ const productHalo =
 
 const productShine =
     $("#productShine");
+
+const feelingOrbit =
+    $(".feeling-orbit");
+
+const feelingCenter =
+    $(".feeling-center");
 
 let motion3dEnabled =
     true;
@@ -861,19 +2491,15 @@ let sprayIntensity =
     1;
 
 let spraySoundEnabled =
-    false;
+    true;
 
 let hapticEnabled =
     true;
 
 
-/* =========================================================
-   ÁUDIO SPRAY
-========================================================= */
-
 const sprayAudio =
     new Audio(
-        "./audio/spray.mp3?v=4"
+        "./audio/spray.mp3?v=60"
     );
 
 sprayAudio.preload =
@@ -882,10 +2508,6 @@ sprayAudio.preload =
 sprayAudio.volume =
     0.48;
 
-
-/* =========================================================
-   CONTADOR
-========================================================= */
 
 function getSprayCount() {
 
@@ -898,18 +2520,22 @@ function getSprayCount() {
 
 }
 
+
 function updateSprayCounter() {
 
-    if (!sprayCounter) {
-        return;
+    if (
+        sprayCounter
+    ) {
+
+        sprayCounter.textContent =
+            String(
+                getSprayCount()
+            );
+
     }
 
-    sprayCounter.textContent =
-        String(
-            getSprayCount()
-        );
-
 }
+
 
 function incrementSprayCounter() {
 
@@ -932,7 +2558,7 @@ function incrementSprayCounter() {
             },
             {
                 transform:
-                    "scale(1.42)"
+                    "scale(1.4)"
             },
             {
                 transform:
@@ -941,7 +2567,7 @@ function incrementSprayCounter() {
         ],
         {
             duration:
-                330,
+                320,
 
             easing:
                 "ease-out"
@@ -950,53 +2576,36 @@ function incrementSprayCounter() {
 
 }
 
-updateSprayCounter();
-
-
-/* =========================================================
-   SPRAY FX RESET
-========================================================= */
 
 function restartSprayEffects() {
 
-    if (
-        sprayGlow
-    ) {
-
-        sprayGlow.classList.remove(
-            "active"
-        );
-
-        void sprayGlow.offsetWidth;
-
-        sprayGlow.classList.add(
-            "active"
-        );
-
-    }
-
-    if (
+    [
+        sprayGlow,
         sprayWave
-    ) {
+    ].forEach(
+        element => {
 
-        sprayWave.classList.remove(
-            "active"
-        );
+            if (
+                !element
+            ) {
+                return;
+            }
 
-        void sprayWave.offsetWidth;
+            element.classList.remove(
+                "active"
+            );
 
-        sprayWave.classList.add(
-            "active"
-        );
+            void element.offsetWidth;
 
-    }
+            element.classList.add(
+                "active"
+            );
+
+        }
+    );
 
 }
 
-
-/* =========================================================
-   SPRAY SOUND
-========================================================= */
 
 function playSpraySound() {
 
@@ -1013,52 +2622,11 @@ function playSpraySound() {
         sprayAudio.currentTime =
             0;
 
-        const promise =
-            sprayAudio.play();
-
-        promise?.catch?.(
-            error => {
-
-                console.warn(
-                    "Não foi possível tocar o spray:",
-                    error
-                );
-
-            }
-        );
-
-    } catch (
-        error
-    ) {
-
-        console.warn(
-            "Erro no áudio do spray:",
-            error
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   VIBRAÇÃO
-========================================================= */
-
-function triggerSprayHaptic() {
-
-    if (
-        !hapticEnabled ||
-        !navigator.vibrate
-    ) {
-        return;
-    }
-
-    try {
-
-        navigator.vibrate(
-            28
-        );
+        sprayAudio
+            .play()
+            .catch(
+                () => {}
+            );
 
     } catch {
         /* silencioso */
@@ -1067,47 +2635,42 @@ function triggerSprayHaptic() {
 }
 
 
-/* =========================================================
-   SPRAY MIST
-========================================================= */
-
 function createSprayMist() {
 
-    if (!sprayArea) {
+    if (
+        !sprayArea
+    ) {
         return;
     }
+
+    const mobile =
+        window.innerWidth <
+        650;
 
     const performanceMode =
         body.classList.contains(
             "performance-mode"
         );
 
-    const mobile =
-        window.innerWidth <
-        650;
-
-    let base =
+    let amount =
         mobile
-            ? 30
-            : 56;
+            ? 27
+            : 46;
 
     if (
         performanceMode
     ) {
 
-        base =
-            Math.min(
-                base,
-                18
-            );
+        amount =
+            16;
 
     }
 
-    const amount =
+    amount =
         Math.max(
-            12,
+            10,
             Math.round(
-                base *
+                amount *
                 sprayIntensity
             )
         );
@@ -1126,30 +2689,28 @@ function createSprayMist() {
         mist.className =
             "spray-mist";
 
-        const spreadX =
-            (
-                Math.random() -
-                0.5
-            ) *
-            430 *
-            sprayIntensity;
-
-        const spreadY =
-            (
-                Math.random() -
-                0.74
-            ) *
-            350 *
-            sprayIntensity;
-
         mist.style.setProperty(
             "--mist-x",
-            `${spreadX}px`
+            `${
+                (
+                    Math.random() -
+                    .5
+                ) *
+                390 *
+                sprayIntensity
+            }px`
         );
 
         mist.style.setProperty(
             "--mist-y",
-            `${spreadY}px`
+            `${
+                (
+                    Math.random() -
+                    .76
+                ) *
+                330 *
+                sprayIntensity
+            }px`
         );
 
         mist.style.setProperty(
@@ -1157,7 +2718,7 @@ function createSprayMist() {
             `${
                 3 +
                 Math.random() *
-                10
+                9
             }px`
         );
 
@@ -1165,16 +2726,16 @@ function createSprayMist() {
             "--mist-blur",
             `${
                 Math.random() *
-                2.7
+                2.5
             }px`
         );
 
         mist.style.setProperty(
             "--mist-duration",
             `${
-                0.7 +
+                .7 +
                 Math.random() *
-                0.65
+                .55
             }s`
         );
 
@@ -1188,7 +2749,7 @@ function createSprayMist() {
                 mist.remove();
 
             },
-            1600
+            1500
         );
 
     }
@@ -1196,17 +2757,10 @@ function createSprayMist() {
 }
 
 
-/* =========================================================
-   SPRAY SYMBOLS
-========================================================= */
-
 function createSpraySymbols() {
 
-    if (!sprayArea) {
-        return;
-    }
-
     if (
+        !sprayArea ||
         body.classList.contains(
             "performance-mode"
         )
@@ -1224,7 +2778,7 @@ function createSpraySymbols() {
         Math.max(
             4,
             Math.round(
-                9 *
+                7 *
                 sprayIntensity
             )
         );
@@ -1255,7 +2809,7 @@ function createSpraySymbols() {
             `${
                 9 +
                 Math.random() *
-                11
+                10
             }px`;
 
         symbol.style.setProperty(
@@ -1263,9 +2817,9 @@ function createSpraySymbols() {
             `${
                 (
                     Math.random() -
-                    0.5
+                    .5
                 ) *
-                350 *
+                330 *
                 sprayIntensity
             }px`
         );
@@ -1274,9 +2828,9 @@ function createSpraySymbols() {
             "--symbol-y",
             `${
                 (
-                    -70 -
+                    -65 -
                     Math.random() *
-                    220
+                    210
                 ) *
                 sprayIntensity
             }px`
@@ -1287,9 +2841,9 @@ function createSpraySymbols() {
             `${
                 (
                     Math.random() -
-                    0.5
+                    .5
                 ) *
-                450
+                420
             }deg`
         );
 
@@ -1303,7 +2857,7 @@ function createSpraySymbols() {
                 symbol.remove();
 
             },
-            1500
+            1450
         );
 
     }
@@ -1311,13 +2865,11 @@ function createSpraySymbols() {
 }
 
 
-/* =========================================================
-   SPRAY FLASH
-========================================================= */
-
 function createSprayFlash() {
 
-    if (!sprayArea) {
+    if (
+        !sprayArea
+    ) {
         return null;
     }
 
@@ -1337,10 +2889,6 @@ function createSprayFlash() {
 
 }
 
-
-/* =========================================================
-   BORRIFADA
-========================================================= */
 
 function sprayDream() {
 
@@ -1362,7 +2910,16 @@ function sprayDream() {
 
     playSpraySound();
 
-    triggerSprayHaptic();
+    if (
+        hapticEnabled &&
+        navigator.vibrate
+    ) {
+
+        navigator.vibrate(
+            25
+        );
+
+    }
 
     createSprayMist();
 
@@ -1374,7 +2931,9 @@ function sprayDream() {
     incrementSprayCounter();
 
     showToast(
-        "Dream está no ar ♡"
+        t(
+            "toast.spray"
+        )
     );
 
     setTimeout(
@@ -1390,10 +2949,11 @@ function sprayDream() {
                 false;
 
         },
-        850
+        820
     );
 
 }
+
 
 sprayButton?.addEventListener(
     "click",
@@ -1402,7 +2962,7 @@ sprayButton?.addEventListener(
 
 
 /* =========================================================
-   FRASCO 3D
+   HERO 3D
 ========================================================= */
 
 heroProduct?.addEventListener(
@@ -1423,8 +2983,7 @@ heroProduct?.addEventListener(
         }
 
         const rect =
-            heroProduct
-                .getBoundingClientRect();
+            heroProduct.getBoundingClientRect();
 
         const x =
             (
@@ -1443,42 +3002,40 @@ heroProduct?.addEventListener(
         const rotateY =
             (
                 x -
-                0.5
+                .5
             ) *
-            16 *
+            13 *
             motion3dIntensity;
 
         const rotateX =
             (
-                0.5 -
+                .5 -
                 y
             ) *
-            12 *
-            motion3dIntensity;
-
-        const translateX =
-            (
-                x -
-                0.5
-            ) *
-            15 *
-            motion3dIntensity;
-
-        const translateY =
-            (
-                y -
-                0.5
-            ) *
-            9 *
+            10 *
             motion3dIntensity;
 
         mainBottle.style.transform =
             `
             translate3d(
-                ${translateX}px,
-                ${translateY}px,
                 ${
-                    30 *
+                    (
+                        x -
+                        .5
+                    ) *
+                    12 *
+                    motion3dIntensity
+                }px,
+                ${
+                    (
+                        y -
+                        .5
+                    ) *
+                    7 *
+                    motion3dIntensity
+                }px,
+                ${
+                    25 *
                     motion3dIntensity
                 }px
             )
@@ -1496,18 +3053,16 @@ heroProduct?.addEventListener(
                     ${
                         (
                             x -
-                            0.5
+                            .5
                         ) *
-                        -26 *
-                        motion3dIntensity
+                        -20
                     }px,
                     ${
                         (
                             y -
-                            0.5
+                            .5
                         ) *
-                        -20 *
-                        motion3dIntensity
+                        -16
                     }px
                 )
                 `;
@@ -1519,12 +3074,13 @@ heroProduct?.addEventListener(
         ) {
 
             productShine.style.left =
-                `${30 + x * 40}%`;
+                `${33 + x * 34}%`;
 
         }
 
     }
 );
+
 
 heroProduct?.addEventListener(
     "pointerleave",
@@ -1563,7 +3119,7 @@ heroProduct?.addEventListener(
 
 
 /* =========================================================
-   MOMENT CARDS 3D
+   CARDS 3D
 ========================================================= */
 
 $$(".moment-card").forEach(
@@ -1601,28 +3157,26 @@ $$(".moment-card").forEach(
                     ) /
                     rect.height;
 
-                const rotateX =
-                    (
-                        0.5 -
-                        y
-                    ) *
-                    7 *
-                    motion3dIntensity;
-
-                const rotateY =
-                    (
-                        x -
-                        0.5
-                    ) *
-                    7 *
-                    motion3dIntensity;
-
                 card.style.transform =
                     `
                     perspective(900px)
-                    translateY(-7px)
-                    rotateX(${rotateX}deg)
-                    rotateY(${rotateY}deg)
+                    translateY(-5px)
+                    rotateX(${
+                        (
+                            .5 -
+                            y
+                        ) *
+                        5 *
+                        motion3dIntensity
+                    }deg)
+                    rotateY(${
+                        (
+                            x -
+                            .5
+                        ) *
+                        5 *
+                        motion3dIntensity
+                    }deg)
                     `;
 
             }
@@ -1642,16 +3196,6 @@ $$(".moment-card").forEach(
 );
 
 
-/* =========================================================
-   FEELING 3D
-========================================================= */
-
-const feelingOrbit =
-    $(".feeling-orbit");
-
-const feelingCenter =
-    $(".feeling-center");
-
 feelingOrbit?.addEventListener(
     "pointermove",
     event => {
@@ -1660,17 +3204,13 @@ feelingOrbit?.addEventListener(
             !motion3dEnabled ||
             !feelingCenter ||
             event.pointerType ===
-            "touch" ||
-            body.classList.contains(
-                "performance-mode"
-            )
+            "touch"
         ) {
             return;
         }
 
         const rect =
-            feelingOrbit
-                .getBoundingClientRect();
+            feelingOrbit.getBoundingClientRect();
 
         const x =
             (
@@ -1678,7 +3218,7 @@ feelingOrbit?.addEventListener(
                 rect.left
             ) /
             rect.width -
-            0.5;
+            .5;
 
         const y =
             (
@@ -1686,44 +3226,31 @@ feelingOrbit?.addEventListener(
                 rect.top
             ) /
             rect.height -
-            0.5;
+            .5;
 
         feelingCenter.style.transform =
             `
             translate3d(
                 ${
                     x *
-                    13 *
+                    10 *
                     motion3dIntensity
                 }px,
                 ${
                     y *
-                    13 *
+                    10 *
                     motion3dIntensity
                 }px,
                 ${
-                    25 *
+                    20 *
                     motion3dIntensity
                 }px
-            )
-            rotateX(
-                ${
-                    y *
-                    -7 *
-                    motion3dIntensity
-                }deg
-            )
-            rotateY(
-                ${
-                    x *
-                    7 *
-                    motion3dIntensity
-                }deg
             )
             `;
 
     }
 );
+
 
 feelingOrbit?.addEventListener(
     "pointerleave",
@@ -1756,7 +3283,7 @@ const lightbox =
 
 function updateModalBodyState() {
 
-    const opened =
+    const open =
         productModal?.classList.contains(
             "open"
         ) ||
@@ -1769,31 +3296,27 @@ function updateModalBodyState() {
 
     body.classList.toggle(
         "modal-open",
-        Boolean(opened)
+        Boolean(open)
     );
 
 }
 
 
-/* =========================================================
-   MODAL PRODUTO
-========================================================= */
-
 function openProduct() {
 
-    productModal?.classList.add(
+    if (
+        !productModal
+    ) {
+        return;
+    }
+
+    productModal.classList.add(
         "open"
     );
 
-    if (
-        productModal
-    ) {
-
-        body.classList.add(
-            "modal-open"
-        );
-
-    }
+    body.classList.add(
+        "modal-open"
+    );
 
 }
 
@@ -1859,8 +3382,12 @@ function updateFavorite() {
 
             button.textContent =
                 favorite
-                    ? "♥ Favoritado"
-                    : "♡ Favoritar";
+                    ? t(
+                        "product.favorited"
+                    )
+                    : t(
+                        "product.favorite"
+                    );
 
             button.classList.toggle(
                 "active",
@@ -1887,8 +3414,8 @@ function toggleFavorite() {
 
     showToast(
         favorite
-            ? "Dream favoritado ♡"
-            : "Removido dos favoritos"
+            ? t("toast.favorite")
+            : t("toast.unfavorite")
     );
 
 }
@@ -1906,11 +3433,8 @@ favoriteButtons.forEach(
 );
 
 
-updateFavorite();
-
-
 /* =========================================================
-   COMPARTILHAR
+   SHARE
 ========================================================= */
 
 async function shareDream(
@@ -1919,7 +3443,12 @@ async function shareDream(
 
     const text =
         customText ||
-        "Conheça Dream Amor no Ar ♡";
+        (
+            currentLanguage ===
+            "en-US"
+                ? "Discover Dream Love in the Air ♡"
+                : "Conheça Dream Amor no Ar ♡"
+        );
 
     try {
 
@@ -1930,7 +3459,10 @@ async function shareDream(
             await navigator.share({
 
                 title:
-                    "Dream Amor no Ar",
+                    currentLanguage ===
+                    "en-US"
+                        ? "Dream Love in the Air"
+                        : "Dream Amor no Ar",
 
                 text,
 
@@ -1952,16 +3484,12 @@ async function shareDream(
             );
 
             showToast(
-                "Link copiado ♡"
+                t(
+                    "toast.linkCopied"
+                )
             );
 
-            return;
-
         }
-
-        showToast(
-            "Compartilhamento indisponível"
-        );
 
     } catch (
         error
@@ -1973,7 +3501,6 @@ async function shareDream(
         ) {
 
             console.warn(
-                "Erro ao compartilhar:",
                 error
             );
 
@@ -2005,7 +3532,7 @@ $("#shareModal")?.addEventListener(
 
 
 /* =========================================================
-   TELA CHEIA
+   FULLSCREEN
 ========================================================= */
 
 const fullscreenButton =
@@ -2022,8 +3549,12 @@ function updateFullscreenButton() {
 
     fullscreenButton.textContent =
         document.fullscreenElement
-            ? "⤢ Sair da tela cheia"
-            : "⛶ Tela cheia";
+            ? t(
+                "final.exitFullscreen"
+            )
+            : t(
+                "final.fullscreen"
+            );
 
 }
 
@@ -2046,19 +3577,8 @@ fullscreenButton?.addEventListener(
 
             }
 
-        } catch (
-            error
-        ) {
-
-            console.warn(
-                "Tela cheia indisponível:",
-                error
-            );
-
-            showToast(
-                "Tela cheia indisponível"
-            );
-
+        } catch {
+            /* browser sem suporte */
         }
 
     }
@@ -2072,7 +3592,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   NOTAS
+   NOTE DATA
 ========================================================= */
 
 const noteModalIcon =
@@ -2088,123 +3608,326 @@ const noteModalText =
 const noteData = {
 
     bergamota: {
-        icon: "🍊",
-        title: "Bergamota",
-        text: "Cítrica, fresca e luminosa."
+
+        icon:
+            "🍊",
+
+        pt: [
+            "Bergamota",
+            "Cítrica, fresca e luminosa."
+        ],
+
+        en: [
+            "Bergamot",
+            "Citrusy, fresh and luminous."
+        ]
+
     },
 
     laranja: {
-        icon: "🍊",
-        title: "Laranja",
-        text: "Cítrica, alegre e confortável."
+
+        icon:
+            "🍊",
+
+        pt: [
+            "Laranja",
+            "Cítrica, alegre e confortável."
+        ],
+
+        en: [
+            "Orange",
+            "Citrusy, bright and comforting."
+        ]
+
     },
 
     mandarina: {
-        icon: "🍊",
-        title: "Mandarina",
-        text: "Frutada e delicadamente adocicada."
+
+        icon:
+            "🍊",
+
+        pt: [
+            "Mandarina",
+            "Frutada e delicadamente adocicada."
+        ],
+
+        en: [
+            "Mandarin",
+            "Fruity and delicately sweet."
+        ]
+
     },
 
     limao: {
-        icon: "🍋",
-        title: "Limão",
-        text: "Traz brilho e frescor à abertura."
+
+        icon:
+            "🍋",
+
+        pt: [
+            "Limão",
+            "Traz brilho e frescor à abertura."
+        ],
+
+        en: [
+            "Lemon",
+            "Adds brightness and freshness to the opening."
+        ]
+
     },
 
     cassis: {
-        icon: "🫐",
-        title: "Cassis",
-        text: "Frutado com leve acidez."
+
+        icon:
+            "🫐",
+
+        pt: [
+            "Cassis",
+            "Frutado com leve acidez."
+        ],
+
+        en: [
+            "Cassis",
+            "Fruity with a slightly tart character."
+        ]
+
     },
 
     maca: {
-        icon: "🍎",
-        title: "Maçã",
-        text: "Fresca, suculenta e suavemente doce."
+
+        icon:
+            "🍎",
+
+        pt: [
+            "Maçã",
+            "Fresca, suculenta e suavemente doce."
+        ],
+
+        en: [
+            "Apple",
+            "Fresh, juicy and softly sweet."
+        ]
+
     },
 
     rosa: {
-        icon: "🌹",
-        title: "Rosa",
-        text: "Floral clássico, elegante e romântico."
+
+        icon:
+            "🌹",
+
+        pt: [
+            "Rosa",
+            "Floral clássico, elegante e romântico."
+        ],
+
+        en: [
+            "Rose",
+            "Classic, elegant and romantic floral."
+        ]
+
     },
 
     tilia: {
-        icon: "🌼",
-        title: "Tília",
-        text: "Floral delicado e confortável."
+
+        icon:
+            "🌼",
+
+        pt: [
+            "Tília",
+            "Floral delicado e confortável."
+        ],
+
+        en: [
+            "Linden",
+            "A delicate and comforting floral note."
+        ]
+
     },
 
     freesia: {
-        icon: "🌸",
-        title: "Frésia",
-        text: "Floral leve e luminoso."
+
+        icon:
+            "🌸",
+
+        pt: [
+            "Frésia",
+            "Floral leve e luminoso."
+        ],
+
+        en: [
+            "Freesia",
+            "Light and luminous floral."
+        ]
+
     },
 
     lotus: {
-        icon: "🪷",
-        title: "Flor de Lótus",
-        text: "Suave, limpa e levemente aquática."
+
+        icon:
+            "🪷",
+
+        pt: [
+            "Flor de Lótus",
+            "Suave, limpa e levemente aquática."
+        ],
+
+        en: [
+            "Lotus Flower",
+            "Soft, clean and subtly aquatic."
+        ]
+
     },
 
     gardenia: {
-        icon: "🌼",
-        title: "Gardênia",
-        text: "Floral cremoso e sofisticado."
+
+        icon:
+            "🌼",
+
+        pt: [
+            "Gardênia",
+            "Floral cremoso e sofisticado."
+        ],
+
+        en: [
+            "Gardenia",
+            "Creamy and sophisticated floral."
+        ]
+
     },
 
     pessego: {
-        icon: "🍑",
-        title: "Pêssego",
-        text: "Frutado macio e delicadamente doce."
+
+        icon:
+            "🍑",
+
+        pt: [
+            "Pêssego",
+            "Frutado macio e delicadamente doce."
+        ],
+
+        en: [
+            "Peach",
+            "Soft, fruity and delicately sweet."
+        ]
+
     },
 
     ambar: {
-        icon: "✨",
-        title: "Âmbar",
-        text: "Quente e envolvente."
+
+        icon:
+            "✨",
+
+        pt: [
+            "Âmbar",
+            "Quente e envolvente."
+        ],
+
+        en: [
+            "Amber",
+            "Warm and enveloping."
+        ]
+
     },
 
     sandalo: {
-        icon: "🪵",
-        title: "Sândalo",
-        text: "Madeira cremosa e confortável."
+
+        icon:
+            "🪵",
+
+        pt: [
+            "Sândalo",
+            "Madeira cremosa e confortável."
+        ],
+
+        en: [
+            "Sandalwood",
+            "Creamy and comforting wood."
+        ]
+
     },
 
     baunilha: {
-        icon: "🤍",
-        title: "Baunilha",
-        text: "Doce, cremosa e aconchegante."
+
+        icon:
+            "🤍",
+
+        pt: [
+            "Baunilha",
+            "Doce, cremosa e aconchegante."
+        ],
+
+        en: [
+            "Vanilla",
+            "Sweet, creamy and cozy."
+        ]
+
     },
 
     tonka: {
-        icon: "✨",
-        title: "Tonka",
-        text: "Quente e suavemente adocicada."
+
+        icon:
+            "✨",
+
+        pt: [
+            "Tonka",
+            "Quente e suavemente adocicada."
+        ],
+
+        en: [
+            "Tonka",
+            "Warm and softly sweet."
+        ]
+
     },
 
     musk: {
-        icon: "☁",
-        title: "Musk",
-        text: "Macio, confortável e envolvente."
+
+        icon:
+            "☁",
+
+        pt: [
+            "Musk",
+            "Macio, confortável e envolvente."
+        ],
+
+        en: [
+            "Musk",
+            "Soft, comforting and enveloping."
+        ]
+
     }
 
 };
 
 
-function openNoteModal(
-    key
-) {
+let currentNoteKey =
+    null;
 
-    const note =
-        noteData[key];
+
+function renderNoteModal() {
 
     if (
-        !note ||
-        !noteModal
+        !currentNoteKey
     ) {
         return;
     }
+
+    const note =
+        noteData[currentNoteKey];
+
+    if (
+        !note
+    ) {
+        return;
+    }
+
+    const [
+        title,
+        text
+    ] =
+        currentLanguage ===
+        "en-US"
+            ? note.en
+            : note.pt;
 
     if (
         noteModalIcon
@@ -2220,7 +3943,7 @@ function openNoteModal(
     ) {
 
         noteModalTitle.textContent =
-            note.title;
+            title;
 
     }
 
@@ -2229,11 +3952,23 @@ function openNoteModal(
     ) {
 
         noteModalText.textContent =
-            note.text;
+            text;
 
     }
 
-    noteModal.classList.add(
+}
+
+
+function openNoteModal(
+    key
+) {
+
+    currentNoteKey =
+        key;
+
+    renderNoteModal();
+
+    noteModal?.classList.add(
         "open"
     );
 
@@ -2321,42 +4056,77 @@ function updateTimeline() {
     let stage;
 
     if (
-        hour <= 1
+        hour <=
+        1
     ) {
 
-        stage = {
-            icon: "🍊",
-            title: "Abertura fresca",
-            text: "Cítricos e frutas aparecem primeiro."
-        };
+        stage =
+            currentLanguage ===
+            "en-US"
+                ? [
+                    "🍊",
+                    "Fresh opening",
+                    "Citrus and fruit notes appear first."
+                ]
+                : [
+                    "🍊",
+                    "Abertura fresca",
+                    "Cítricos e frutas aparecem primeiro."
+                ];
 
     } else if (
-        hour <= 3
+        hour <=
+        3
     ) {
 
-        stage = {
-            icon: "🌸",
-            title: "Coração floral",
-            text: "As flores assumem o centro da fragrância."
-        };
+        stage =
+            currentLanguage ===
+            "en-US"
+                ? [
+                    "🌸",
+                    "Floral heart",
+                    "The floral notes become the center of the fragrance."
+                ]
+                : [
+                    "🌸",
+                    "Coração floral",
+                    "As flores assumem o centro da fragrância."
+                ];
 
     } else if (
-        hour <= 5
+        hour <=
+        5
     ) {
 
-        stage = {
-            icon: "♡",
-            title: "Romântico e confortável",
-            text: "O floral fica mais macio e envolvente."
-        };
+        stage =
+            currentLanguage ===
+            "en-US"
+                ? [
+                    "♡",
+                    "Romantic and comfortable",
+                    "The floral character becomes softer and more enveloping."
+                ]
+                : [
+                    "♡",
+                    "Romântico e confortável",
+                    "O floral fica mais macio e envolvente."
+                ];
 
     } else {
 
-        stage = {
-            icon: "✨",
-            title: "Fundo aconchegante",
-            text: "Madeiras e notas doces permanecem."
-        };
+        stage =
+            currentLanguage ===
+            "en-US"
+                ? [
+                    "✨",
+                    "Comforting drydown",
+                    "Woody and sweet notes remain on the skin."
+                ]
+                : [
+                    "✨",
+                    "Fundo aconchegante",
+                    "Madeiras e notas doces permanecem."
+                ];
 
     }
 
@@ -2374,7 +4144,7 @@ function updateTimeline() {
     ) {
 
         timelineIcon.textContent =
-            stage.icon;
+            stage[0];
 
     }
 
@@ -2383,7 +4153,7 @@ function updateTimeline() {
     ) {
 
         timelineTitle.textContent =
-            stage.title;
+            stage[1];
 
     }
 
@@ -2392,7 +4162,7 @@ function updateTimeline() {
     ) {
 
         timelineText.textContent =
-            stage.text;
+            stage[2];
 
     }
 
@@ -2403,9 +4173,6 @@ timelineSlider?.addEventListener(
     "input",
     updateTimeline
 );
-
-
-updateTimeline();
 
 
 /* =========================================================
@@ -2422,57 +4189,67 @@ const newDreamMoment =
     $("#newDreamMoment");
 
 
-const dreamMoments = [
+const dreamMoments = {
 
-    {
-        title:
+    "pt-BR": [
+
+        [
             "Hoje combina com leveza.",
-
-        text:
             "Escolha um detalhe simples do seu dia e transforme em uma lembrança especial."
-    },
+        ],
 
-    {
-        title:
+        [
             "Deixe o amor no ar.",
-
-        text:
             "Um pequeno gesto pode mudar completamente a atmosfera de um momento."
-    },
+        ],
 
-    {
-        title:
+        [
             "Seu Dream pode começar agora.",
-
-        text:
             "Coloque sua música favorita, escolha seu mood e aproveite alguns minutos só seus."
-    },
+        ],
 
-    {
-        title:
+        [
             "Romantize os detalhes.",
-
-        text:
             "Nem todo momento especial precisa ser planejado."
-    },
+        ],
 
-    {
-        title:
+        [
             "Brilhe do seu jeito.",
-
-        text:
             "A melhor atmosfera é aquela que combina com quem você é hoje."
-    },
+        ]
 
-    {
-        title:
-            "Um pouco de calma também é Dream.",
+    ],
 
-        text:
-            "Desacelere por alguns minutos e aproveite o que está acontecendo agora."
-    }
+    "en-US": [
 
-];
+        [
+            "Today calls for softness.",
+            "Choose one simple detail from your day and turn it into a special memory."
+        ],
+
+        [
+            "Leave love in the air.",
+            "A small gesture can completely change the atmosphere of a moment."
+        ],
+
+        [
+            "Your Dream can start now.",
+            "Play your favorite song, choose your mood and enjoy a few minutes for yourself."
+        ],
+
+        [
+            "Romanticize the details.",
+            "Not every special moment needs to be planned."
+        ],
+
+        [
+            "Shine your own way.",
+            "The best atmosphere is the one that matches who you are today."
+        ]
+
+    ]
+
+};
 
 
 let lastDreamMoment =
@@ -2481,12 +4258,8 @@ let lastDreamMoment =
 
 function generateDreamMoment() {
 
-    if (
-        dreamMoments.length ===
-        0
-    ) {
-        return;
-    }
+    const list =
+        dreamMoments[currentLanguage];
 
     let index;
 
@@ -2495,11 +4268,11 @@ function generateDreamMoment() {
         index =
             Math.floor(
                 Math.random() *
-                dreamMoments.length
+                list.length
             );
 
     } while (
-        dreamMoments.length > 1 &&
+        list.length > 1 &&
         index === lastDreamMoment
     );
 
@@ -2507,31 +4280,14 @@ function generateDreamMoment() {
         index;
 
     const moment =
-        dreamMoments[index];
+        list[index];
 
     if (
         dreamMomentTitle
     ) {
 
-        dreamMomentTitle.animate(
-            [
-                {
-                    opacity: 0,
-                    transform: "translateY(8px)"
-                },
-                {
-                    opacity: 1,
-                    transform: "translateY(0)"
-                }
-            ],
-            {
-                duration: 350,
-                easing: "ease-out"
-            }
-        );
-
         dreamMomentTitle.textContent =
-            moment.title;
+            moment[0];
 
     }
 
@@ -2540,12 +4296,14 @@ function generateDreamMoment() {
     ) {
 
         dreamMomentText.textContent =
-            moment.text;
+            moment[1];
 
     }
 
     showToast(
-        "Novo Dream Moment ✦"
+        t(
+            "toast.newMoment"
+        )
     );
 
 }
@@ -2558,7 +4316,7 @@ newDreamMoment?.addEventListener(
 
 
 /* =========================================================
-   DREAM SCENE
+   SCENE
 ========================================================= */
 
 const sceneBackground =
@@ -2581,133 +4339,116 @@ const sceneData = {
 
     romance: {
 
-        icon: "♡",
+        icon:
+            "♡",
 
-        mini: "ROMANCE DREAM",
+        pt: [
+            "ROMANCE DREAM",
+            "Amor está no ar.",
+            "Uma atmosfera delicada, rosa e envolvente."
+        ],
 
-        title: "Amor está no ar.",
-
-        text:
-            "Uma atmosfera delicada, rosa e envolvente.",
+        en: [
+            "ROMANCE DREAM",
+            "Love is in the air.",
+            "A delicate, pink and enveloping atmosphere."
+        ],
 
         background:
             `
-            radial-gradient(
-                circle at 20% 50%,
-                rgba(255,111,169,.46),
-                transparent 38%
-            ),
-            radial-gradient(
-                circle at 80% 40%,
-                rgba(169,92,221,.30),
-                transparent 42%
-            ),
-            linear-gradient(
-                135deg,
-                #1c0d18,
-                #35152c
-            )
+            radial-gradient(circle at 20% 50%, rgba(255,111,169,.46), transparent 38%),
+            radial-gradient(circle at 80% 40%, rgba(169,92,221,.30), transparent 42%),
+            linear-gradient(135deg,#1c0d18,#35152c)
             `
 
     },
 
     ceu: {
 
-        icon: "☾",
+        icon:
+            "☾",
 
-        mini: "DREAM SKY",
+        pt: [
+            "DREAM SKY",
+            "Sonhe mais alto.",
+            "Uma atmosfera noturna, calma e sonhadora."
+        ],
 
-        title: "Sonhe mais alto.",
-
-        text:
-            "Uma atmosfera noturna, calma e sonhadora.",
+        en: [
+            "DREAM SKY",
+            "Dream higher.",
+            "A calm, dreamy nighttime atmosphere."
+        ],
 
         background:
             `
-            radial-gradient(
-                circle at 70% 20%,
-                rgba(112,142,255,.40),
-                transparent 35%
-            ),
-            radial-gradient(
-                circle at 20% 70%,
-                rgba(131,95,212,.22),
-                transparent 40%
-            ),
-            linear-gradient(
-                135deg,
-                #080b1f,
-                #1c1f52
-            )
+            radial-gradient(circle at 70% 20%, rgba(112,142,255,.40), transparent 35%),
+            radial-gradient(circle at 20% 70%, rgba(131,95,212,.22), transparent 40%),
+            linear-gradient(135deg,#080b1f,#1c1f52)
             `
 
     },
 
     flores: {
 
-        icon: "✿",
+        icon:
+            "✿",
 
-        mini: "FLOWER DREAM",
+        pt: [
+            "FLOWER DREAM",
+            "Flores no ar.",
+            "Uma atmosfera floral, leve e delicada."
+        ],
 
-        title: "Flores no ar.",
-
-        text:
-            "Uma atmosfera floral, leve e delicada.",
+        en: [
+            "FLOWER DREAM",
+            "Flowers in the air.",
+            "A light and delicate floral atmosphere."
+        ],
 
         background:
             `
-            radial-gradient(
-                circle at 20% 40%,
-                rgba(255,164,198,.43),
-                transparent 37%
-            ),
-            radial-gradient(
-                circle at 78% 62%,
-                rgba(255,219,232,.13),
-                transparent 38%
-            ),
-            linear-gradient(
-                135deg,
-                #28121f,
-                #5a2941
-            )
+            radial-gradient(circle at 20% 40%, rgba(255,164,198,.43), transparent 37%),
+            radial-gradient(circle at 78% 62%, rgba(255,219,232,.13), transparent 38%),
+            linear-gradient(135deg,#28121f,#5a2941)
             `
 
     },
 
     energia: {
 
-        icon: "✦",
+        icon:
+            "✦",
 
-        mini: "ENERGY DREAM",
+        pt: [
+            "ENERGY DREAM",
+            "Brilhe do seu jeito.",
+            "Uma atmosfera intensa, viva e cheia de personalidade."
+        ],
 
-        title: "Brilhe do seu jeito.",
-
-        text:
-            "Uma atmosfera intensa, viva e cheia de personalidade.",
+        en: [
+            "ENERGY DREAM",
+            "Shine your own way.",
+            "A vivid, intense atmosphere full of personality."
+        ],
 
         background:
             `
-            radial-gradient(
-                circle at 20% 50%,
-                rgba(255,80,158,.45),
-                transparent 38%
-            ),
-            radial-gradient(
-                circle at 82% 30%,
-                rgba(119,69,255,.42),
-                transparent 39%
-            ),
-            linear-gradient(
-                135deg,
-                #170b1c,
-                #3b164e
-            )
+            radial-gradient(circle at 20% 50%, rgba(255,80,158,.45), transparent 38%),
+            radial-gradient(circle at 82% 30%, rgba(119,69,255,.42), transparent 39%),
+            linear-gradient(135deg,#170b1c,#3b164e)
             `
 
     }
 
 };
+
+
+let currentScene =
+    localStorage.getItem(
+        "dreamScene"
+    ) ||
+    "romance";
 
 
 function setScene(
@@ -2724,6 +4465,9 @@ function setScene(
         return;
     }
 
+    currentScene =
+        sceneName;
+
     $$(".scene-button").forEach(
         button => {
 
@@ -2735,6 +4479,12 @@ function setScene(
 
         }
     );
+
+    const content =
+        currentLanguage ===
+        "en-US"
+            ? scene.en
+            : scene.pt;
 
     if (
         sceneResultIcon
@@ -2750,7 +4500,7 @@ function setScene(
     ) {
 
         sceneResultMini.textContent =
-            scene.mini;
+            content[0];
 
     }
 
@@ -2759,7 +4509,7 @@ function setScene(
     ) {
 
         sceneResultTitle.textContent =
-            scene.title;
+            content[1];
 
     }
 
@@ -2768,7 +4518,7 @@ function setScene(
     ) {
 
         sceneResultText.textContent =
-            scene.text;
+            content[2];
 
     }
 
@@ -2814,7 +4564,7 @@ $$(".scene-button").forEach(
 
 
 /* =========================================================
-   GALERIA
+   GALLERY
 ========================================================= */
 
 const galleryTrack =
@@ -2858,25 +4608,6 @@ const galleryDelay =
     4500;
 
 
-if (
-    galleryTotal
-) {
-
-    galleryTotal.textContent =
-        String(
-            galleryItems.length
-        ).padStart(
-            2,
-            "0"
-        );
-
-}
-
-
-/* =========================================================
-   DOTS GALERIA
-========================================================= */
-
 function createGalleryDots() {
 
     if (
@@ -2905,11 +4636,6 @@ function createGalleryDots() {
             dot.className =
                 "gallery-dot";
 
-            dot.setAttribute(
-                "aria-label",
-                `Ir para imagem ${index + 1}`
-            );
-
             dot.addEventListener(
                 "click",
                 () => {
@@ -2933,14 +4659,21 @@ function createGalleryDots() {
 }
 
 
-createGalleryDots();
-
-
-/* =========================================================
-   GALERIA UI
-========================================================= */
-
 function updateGalleryUI() {
+
+    if (
+        galleryTotal
+    ) {
+
+        galleryTotal.textContent =
+            String(
+                galleryItems.length
+            ).padStart(
+                2,
+                "0"
+            );
+
+    }
 
     if (
         galleryItems.length ===
@@ -2986,12 +4719,23 @@ function updateGalleryUI() {
         }
     );
 
+    if (
+        galleryAutoplay
+    ) {
+
+        galleryAutoplay.textContent =
+            galleryPlaying
+                ? t(
+                    "gallery.pause"
+                )
+                : t(
+                    "gallery.autoplay"
+                );
+
+    }
+
 }
 
-
-/* =========================================================
-   IR PARA ITEM
-========================================================= */
 
 function goToGallery(
     index,
@@ -3013,9 +4757,7 @@ function goToGallery(
         galleryItems.length;
 
     const item =
-        galleryItems[
-            galleryIndex
-        ];
+        galleryItems[galleryIndex];
 
     if (
         galleryTrack &&
@@ -3049,16 +4791,13 @@ function goToGallery(
 }
 
 
-/* =========================================================
-   SETAS GALERIA
-========================================================= */
-
 galleryPrev?.addEventListener(
     "click",
     () => {
 
         goToGallery(
-            galleryIndex - 1
+            galleryIndex -
+            1
         );
 
         restartGalleryAutoplay();
@@ -3072,7 +4811,8 @@ galleryNext?.addEventListener(
     () => {
 
         goToGallery(
-            galleryIndex + 1
+            galleryIndex +
+            1
         );
 
         restartGalleryAutoplay();
@@ -3081,9 +4821,7 @@ galleryNext?.addEventListener(
 );
 
 
-/* =========================================================
-   DRAG REAL GALERIA
-========================================================= */
+/* DRAG */
 
 let galleryDragging =
     false;
@@ -3125,10 +4863,6 @@ galleryTrack?.addEventListener(
             "dragging"
         );
 
-        galleryTrack.setPointerCapture?.(
-            event.pointerId
-        );
-
         stopGalleryAutoplay();
 
     }
@@ -3165,12 +4899,6 @@ galleryTrack?.addEventListener(
 
 function finishGalleryDrag() {
 
-    if (
-        !galleryDragging
-    ) {
-        return;
-    }
-
     galleryDragging =
         false;
 
@@ -3195,63 +4923,13 @@ galleryTrack?.addEventListener(
 );
 
 
-galleryTrack?.addEventListener(
-    "pointerleave",
-    event => {
-
-        if (
-            event.buttons ===
-            0
-        ) {
-
-            finishGalleryDrag();
-
-        }
-
-    }
-);
-
-
-/* impedir lightbox ao arrastar */
-
-galleryItems.forEach(
-    item => {
-
-        item.addEventListener(
-            "click",
-            event => {
-
-                if (
-                    galleryDraggedDistance >
-                    12
-                ) {
-
-                    event.preventDefault();
-                    event.stopImmediatePropagation();
-
-                }
-
-            },
-            true
-        );
-
-    }
-);
-
-
-/* =========================================================
-   ÍNDICE PELO SCROLL
-========================================================= */
-
 let galleryScrollTimer;
 
 
 function updateGalleryFromScroll() {
 
     if (
-        !galleryTrack ||
-        galleryItems.length ===
-        0
+        !galleryTrack
     ) {
         return;
     }
@@ -3261,10 +4939,10 @@ function updateGalleryFromScroll() {
         galleryTrack.clientWidth /
         2;
 
-    let closestIndex =
+    let nearest =
         0;
 
-    let closestDistance =
+    let distance =
         Infinity;
 
     galleryItems.forEach(
@@ -3278,21 +4956,21 @@ function updateGalleryFromScroll() {
                 item.clientWidth /
                 2;
 
-            const distance =
+            const currentDistance =
                 Math.abs(
                     center -
                     itemCenter
                 );
 
             if (
-                distance <
-                closestDistance
+                currentDistance <
+                distance
             ) {
 
-                closestDistance =
-                    distance;
+                distance =
+                    currentDistance;
 
-                closestIndex =
+                nearest =
                     index;
 
             }
@@ -3301,7 +4979,7 @@ function updateGalleryFromScroll() {
     );
 
     galleryIndex =
-        closestIndex;
+        nearest;
 
     updateGalleryUI();
 
@@ -3329,9 +5007,7 @@ galleryTrack?.addEventListener(
 );
 
 
-/* =========================================================
-   AUTOPLAY GALERIA
-========================================================= */
+/* AUTOPLAY */
 
 function stopGalleryAutoplay() {
 
@@ -3354,14 +5030,7 @@ function stopGalleryAutoplay() {
 
     }
 
-    if (
-        galleryAutoplay
-    ) {
-
-        galleryAutoplay.textContent =
-            "▶ Autoplay";
-
-    }
+    updateGalleryUI();
 
 }
 
@@ -3402,14 +5071,9 @@ function scheduleGalleryAutoplay() {
         setTimeout(
             () => {
 
-                if (
-                    !galleryPlaying
-                ) {
-                    return;
-                }
-
                 goToGallery(
-                    galleryIndex + 1
+                    galleryIndex +
+                    1
                 );
 
                 scheduleGalleryAutoplay();
@@ -3433,14 +5097,7 @@ function startGalleryAutoplay() {
     galleryPlaying =
         true;
 
-    if (
-        galleryAutoplay
-    ) {
-
-        galleryAutoplay.textContent =
-            "❚❚ Pausar";
-
-    }
+    updateGalleryUI();
 
     scheduleGalleryAutoplay();
 
@@ -3480,9 +5137,6 @@ galleryAutoplay?.addEventListener(
 );
 
 
-updateGalleryUI();
-
-
 /* =========================================================
    LIGHTBOX
 ========================================================= */
@@ -3508,31 +5162,22 @@ const lightboxPrev =
 const lightboxNext =
     $("#lightboxNext");
 
-
 let lightboxIndex =
     0;
 
 
 function updateLightbox() {
 
-    if (
-        galleryItems.length ===
-        0
-    ) {
-        return;
-    }
-
-    lightboxIndex =
-        (
-            lightboxIndex +
-            galleryItems.length
-        ) %
-        galleryItems.length;
-
     const item =
         galleryItems[
             lightboxIndex
         ];
+
+    if (
+        !item
+    ) {
+        return;
+    }
 
     const image =
         $("img", item);
@@ -3572,7 +5217,8 @@ function updateLightbox() {
         lightboxCounter.textContent =
             `${
                 String(
-                    lightboxIndex + 1
+                    lightboxIndex +
+                    1
                 ).padStart(
                     2,
                     "0"
@@ -3595,12 +5241,6 @@ function openLightbox(
     index
 ) {
 
-    if (
-        !lightbox
-    ) {
-        return;
-    }
-
     lightboxIndex =
         index;
 
@@ -3608,7 +5248,7 @@ function openLightbox(
 
     stopGalleryAutoplay();
 
-    lightbox.classList.add(
+    lightbox?.classList.add(
         "open"
     );
 
@@ -3674,7 +5314,13 @@ lightboxPrev?.addEventListener(
     "click",
     () => {
 
-        lightboxIndex--;
+        lightboxIndex =
+            (
+                lightboxIndex -
+                1 +
+                galleryItems.length
+            ) %
+            galleryItems.length;
 
         updateLightbox();
 
@@ -3686,7 +5332,12 @@ lightboxNext?.addEventListener(
     "click",
     () => {
 
-        lightboxIndex++;
+        lightboxIndex =
+            (
+                lightboxIndex +
+                1
+            ) %
+            galleryItems.length;
 
         updateLightbox();
 
@@ -3695,77 +5346,14 @@ lightboxNext?.addEventListener(
 
 
 /* =========================================================
-   SWIPE LIGHTBOX
-========================================================= */
-
-let lightboxTouchStartX =
-    0;
-
-
-lightbox?.addEventListener(
-    "touchstart",
-    event => {
-
-        lightboxTouchStartX =
-            event.changedTouches[0]
-                .screenX;
-
-    },
-    {
-        passive: true
-    }
-);
-
-
-lightbox?.addEventListener(
-    "touchend",
-    event => {
-
-        const distance =
-            event.changedTouches[0]
-                .screenX -
-            lightboxTouchStartX;
-
-        if (
-            Math.abs(
-                distance
-            ) <
-            50
-        ) {
-            return;
-        }
-
-        if (
-            distance <
-            0
-        ) {
-
-            lightboxIndex++;
-
-        } else {
-
-            lightboxIndex--;
-
-        }
-
-        updateLightbox();
-
-    },
-    {
-        passive: true
-    }
-);
-
-
-/* =========================================================
-   CORES
+   COLORS / MOODS
 ========================================================= */
 
 function hexToRgb(
     hex
 ) {
 
-    let clean =
+    const clean =
         String(hex)
             .replace(
                 "#",
@@ -3773,54 +5361,11 @@ function hexToRgb(
             )
             .trim();
 
-    if (
-        clean.length ===
-        3
-    ) {
-
-        clean =
-            clean
-                .split("")
-                .map(
-                    char =>
-                        char + char
-                )
-                .join("");
-
-    }
-
-    if (
-        clean.length !==
-        6
-    ) {
-
-        return {
-            r: 223,
-            g: 118,
-            b: 168
-        };
-
-    }
-
     const value =
         Number.parseInt(
             clean,
             16
         );
-
-    if (
-        Number.isNaN(
-            value
-        )
-    ) {
-
-        return {
-            r: 223,
-            g: 118,
-            b: 168
-        };
-
-    }
 
     return {
 
@@ -3853,12 +5398,12 @@ function setThemeColors(
     save = true
 ) {
 
-    const primaryRgb =
+    const a =
         hexToRgb(
             primary
         );
 
-    const secondaryRgb =
+    const b =
         hexToRgb(
             secondary
         );
@@ -3875,22 +5420,13 @@ function setThemeColors(
 
     root.style.setProperty(
         "--primary-rgb",
-        `${primaryRgb.r}, ${primaryRgb.g}, ${primaryRgb.b}`
+        `${a.r}, ${a.g}, ${a.b}`
     );
 
     root.style.setProperty(
         "--secondary-rgb",
-        `${secondaryRgb.r}, ${secondaryRgb.g}, ${secondaryRgb.b}`
+        `${b.r}, ${b.g}, ${b.b}`
     );
-
-    document
-        .querySelector(
-            'meta[name="theme-color"]'
-        )
-        ?.setAttribute(
-            "content",
-            primary
-        );
 
     if (
         save
@@ -3911,36 +5447,32 @@ function setThemeColors(
 }
 
 
-/* =========================================================
-   MOODS
-========================================================= */
-
 const moodData = {
 
-    romantico: {
-        primary: "#df76a8",
-        secondary: "#9562dc"
-    },
+    romantico: [
+        "#df76a8",
+        "#9562dc"
+    ],
 
-    sonhador: {
-        primary: "#b678d6",
-        secondary: "#7588e8"
-    },
+    sonhador: [
+        "#b678d6",
+        "#7588e8"
+    ],
 
-    noturno: {
-        primary: "#7259c7",
-        secondary: "#354a8d"
-    },
+    noturno: [
+        "#7259c7",
+        "#354a8d"
+    ],
 
-    energia: {
-        primary: "#ee6494",
-        secondary: "#9853db"
-    },
+    energia: [
+        "#ee6494",
+        "#9853db"
+    ],
 
-    calmo: {
-        primary: "#7bbdb6",
-        secondary: "#8798cf"
-    }
+    calmo: [
+        "#7bbdb6",
+        "#8798cf"
+    ]
 
 };
 
@@ -3972,8 +5504,8 @@ function setMood(
     );
 
     setThemeColors(
-        data.primary,
-        data.secondary,
+        data[0],
+        data[1],
         save
     );
 
@@ -4056,134 +5588,194 @@ const quizResultText =
     $("#quizResultText");
 
 
-const quizData = [
+const quizData = {
 
-    {
+    "pt-BR": [
 
-        question:
-            "Qual atmosfera combina mais com você?",
+        {
+            q:
+                "Qual atmosfera combina mais com você?",
 
-        answers: [
+            a: [
+                ["♡ Romântica", "lover"],
+                ["☾ Sonhadora", "dreamer"],
+                ["✦ Marcante", "night"],
+                ["☁ Tranquila", "soft"]
+            ]
+        },
 
-            ["♡ Romântica", "lover"],
-            ["☾ Sonhadora", "dreamer"],
-            ["✦ Marcante", "night"],
-            ["☁ Tranquila", "soft"]
+        {
+            q:
+                "Qual momento você prefere?",
 
-        ]
+            a: [
+                ["Encontro especial", "lover"],
+                ["Fim de tarde", "dreamer"],
+                ["Noite inesquecível", "night"],
+                ["Momento só meu", "soft"]
+            ]
+        },
 
-    },
+        {
+            q:
+                "O que uma fragrância deve transmitir?",
 
-    {
+            a: [
+                ["Delicadeza", "lover"],
+                ["Imaginação", "dreamer"],
+                ["Personalidade", "night"],
+                ["Conforto", "soft"]
+            ]
+        },
 
-        question:
-            "Qual momento você prefere?",
+        {
+            q:
+                "Escolha um símbolo Dream.",
 
-        answers: [
+            a: [
+                ["♡ Coração", "lover"],
+                ["☾ Lua", "dreamer"],
+                ["✦ Estrela", "night"],
+                ["☁ Nuvem", "soft"]
+            ]
+        }
 
-            ["Encontro especial", "lover"],
-            ["Fim de tarde", "dreamer"],
-            ["Noite inesquecível", "night"],
-            ["Momento só meu", "soft"]
+    ],
 
-        ]
+    "en-US": [
 
-    },
+        {
+            q:
+                "Which atmosphere matches you best?",
 
-    {
+            a: [
+                ["♡ Romantic", "lover"],
+                ["☾ Dreamy", "dreamer"],
+                ["✦ Striking", "night"],
+                ["☁ Peaceful", "soft"]
+            ]
+        },
 
-        question:
-            "O que uma fragrância deve transmitir?",
+        {
+            q:
+                "Which moment do you prefer?",
 
-        answers: [
+            a: [
+                ["Special date", "lover"],
+                ["Late afternoon", "dreamer"],
+                ["Unforgettable night", "night"],
+                ["Time for myself", "soft"]
+            ]
+        },
 
-            ["Delicadeza", "lover"],
-            ["Imaginação", "dreamer"],
-            ["Personalidade", "night"],
-            ["Conforto", "soft"]
+        {
+            q:
+                "What should a fragrance express?",
 
-        ]
+            a: [
+                ["Delicacy", "lover"],
+                ["Imagination", "dreamer"],
+                ["Personality", "night"],
+                ["Comfort", "soft"]
+            ]
+        },
 
-    },
+        {
+            q:
+                "Choose a Dream symbol.",
 
-    {
+            a: [
+                ["♡ Heart", "lover"],
+                ["☾ Moon", "dreamer"],
+                ["✦ Star", "night"],
+                ["☁ Cloud", "soft"]
+            ]
+        }
 
-        question:
-            "Escolha um símbolo Dream.",
+    ]
 
-        answers: [
-
-            ["♡ Coração", "lover"],
-            ["☾ Lua", "dreamer"],
-            ["✦ Estrela", "night"],
-            ["☁ Nuvem", "soft"]
-
-        ]
-
-    }
-
-];
+};
 
 
 const quizResults = {
 
     lover: {
 
-        icon: "♡",
-
-        title:
-            "Dream Lover",
-
-        text:
-            "Seu Dream é romântico, delicado e envolvente.",
+        icon:
+            "♡",
 
         mood:
-            "romantico"
+            "romantico",
+
+        pt: [
+            "Dream Lover",
+            "Seu Dream é romântico, delicado e envolvente."
+        ],
+
+        en: [
+            "Dream Lover",
+            "Your Dream is romantic, delicate and enveloping."
+        ]
 
     },
 
     dreamer: {
 
-        icon: "☾",
-
-        title:
-            "Dreamer",
-
-        text:
-            "Seu Dream é leve, criativo e sonhador.",
+        icon:
+            "☾",
 
         mood:
-            "sonhador"
+            "sonhador",
+
+        pt: [
+            "Dreamer",
+            "Seu Dream é leve, criativo e sonhador."
+        ],
+
+        en: [
+            "Dreamer",
+            "Your Dream is light, creative and dreamy."
+        ]
 
     },
 
     night: {
 
-        icon: "✦",
-
-        title:
-            "Night Dream",
-
-        text:
-            "Seu Dream tem presença e personalidade.",
+        icon:
+            "✦",
 
         mood:
-            "noturno"
+            "noturno",
+
+        pt: [
+            "Night Dream",
+            "Seu Dream tem presença e personalidade."
+        ],
+
+        en: [
+            "Night Dream",
+            "Your Dream has presence and personality."
+        ]
 
     },
 
     soft: {
 
-        icon: "☁",
-
-        title:
-            "Soft Dream",
-
-        text:
-            "Seu Dream é confortável, leve e tranquilo.",
+        icon:
+            "☁",
 
         mood:
-            "calmo"
+            "calmo",
+
+        pt: [
+            "Soft Dream",
+            "Seu Dream é confortável, leve e tranquilo."
+        ],
+
+        en: [
+            "Soft Dream",
+            "Your Dream is comfortable, light and peaceful."
+        ]
 
     }
 
@@ -4202,20 +5794,17 @@ let quizScores = {
 
 };
 
-let lastQuizResult =
+let lastQuizWinner =
     null;
 
 
-/* =========================================================
-   RENDER QUIZ
-========================================================= */
-
 function renderQuizQuestion() {
 
+    const data =
+        quizData[currentLanguage];
+
     const current =
-        quizData[
-            quizIndex
-        ];
+        data[quizIndex];
 
     if (
         !current
@@ -4232,7 +5821,7 @@ function renderQuizQuestion() {
     ) {
 
         quizStep.textContent =
-            `${quizIndex + 1} / ${quizData.length}`;
+            `${quizIndex + 1} / ${data.length}`;
 
     }
 
@@ -4247,7 +5836,7 @@ function renderQuizQuestion() {
                         quizIndex +
                         1
                     ) /
-                    quizData.length
+                    data.length
                 ) *
                 100
             }%`;
@@ -4258,27 +5847,8 @@ function renderQuizQuestion() {
         quizQuestion
     ) {
 
-        quizQuestion.animate(
-            [
-                {
-                    opacity: 0,
-                    transform:
-                        "translateY(8px)"
-                },
-                {
-                    opacity: 1,
-                    transform:
-                        "translateY(0)"
-                }
-            ],
-            {
-                duration: 280,
-                easing: "ease-out"
-            }
-        );
-
         quizQuestion.textContent =
-            current.question;
+            current.q;
 
     }
 
@@ -4291,13 +5861,12 @@ function renderQuizQuestion() {
     quizOptions.innerHTML =
         "";
 
-    current.answers.forEach(
+    current.a.forEach(
         (
             [
                 text,
                 type
-            ],
-            index
+            ]
         ) => {
 
             const button =
@@ -4310,9 +5879,6 @@ function renderQuizQuestion() {
 
             button.textContent =
                 text;
-
-            button.style.animationDelay =
-                `${index * 55}ms`;
 
             button.addEventListener(
                 "click",
@@ -4337,13 +5903,56 @@ function renderQuizQuestion() {
 }
 
 
-/* =========================================================
-   RESULTADO
-========================================================= */
+function renderQuizResult() {
+
+    if (
+        !lastQuizWinner
+    ) {
+        return;
+    }
+
+    const result =
+        quizResults[lastQuizWinner];
+
+    const content =
+        currentLanguage ===
+        "en-US"
+            ? result.en
+            : result.pt;
+
+    if (
+        quizResultIcon
+    ) {
+
+        quizResultIcon.textContent =
+            result.icon;
+
+    }
+
+    if (
+        quizResultTitle
+    ) {
+
+        quizResultTitle.textContent =
+            content[0];
+
+    }
+
+    if (
+        quizResultText
+    ) {
+
+        quizResultText.textContent =
+            content[1];
+
+    }
+
+}
+
 
 function finishQuiz() {
 
-    const winner =
+    lastQuizWinner =
         Object.entries(
             quizScores
         )
@@ -4357,82 +5966,13 @@ function finishQuiz() {
             )[0]?.[0] ||
         "lover";
 
-    lastQuizResult =
-        quizResults[winner];
+    quizQuestions.hidden =
+        true;
 
-    if (
-        quizQuestions
-    ) {
+    quizResult.hidden =
+        false;
 
-        quizQuestions.hidden =
-            true;
-
-    }
-
-    if (
-        quizResult
-    ) {
-
-        quizResult.hidden =
-            false;
-
-        quizResult.animate(
-            [
-                {
-                    opacity: 0,
-                    transform:
-                        "scale(.96)"
-                },
-                {
-                    opacity: 1,
-                    transform:
-                        "scale(1)"
-                }
-            ],
-            {
-                duration: 420,
-                easing:
-                    "cubic-bezier(.2,.8,.2,1)"
-            }
-        );
-
-    }
-
-    if (
-        quizResultIcon
-    ) {
-
-        quizResultIcon.textContent =
-            lastQuizResult.icon;
-
-    }
-
-    if (
-        quizResultTitle
-    ) {
-
-        quizResultTitle.textContent =
-            lastQuizResult.title;
-
-    }
-
-    if (
-        quizResultText
-    ) {
-
-        quizResultText.textContent =
-            lastQuizResult.text;
-
-    }
-
-    localStorage.setItem(
-        "dreamQuizResult",
-        winner
-    );
-
-    showToast(
-        `Seu resultado: ${lastQuizResult.title} ♡`
-    );
+    renderQuizResult();
 
 }
 
@@ -4451,35 +5991,17 @@ function beginQuiz() {
 
     };
 
-    lastQuizResult =
+    lastQuizWinner =
         null;
 
-    if (
-        quizStart
-    ) {
+    quizStart.hidden =
+        true;
 
-        quizStart.hidden =
-            true;
+    quizResult.hidden =
+        true;
 
-    }
-
-    if (
-        quizResult
-    ) {
-
-        quizResult.hidden =
-            true;
-
-    }
-
-    if (
-        quizQuestions
-    ) {
-
-        quizQuestions.hidden =
-            false;
-
-    }
+    quizQuestions.hidden =
+        false;
 
     renderQuizQuestion();
 
@@ -4498,68 +6020,63 @@ restartQuiz?.addEventListener(
 );
 
 
-/* =========================================================
-   APLICAR MOOD DO QUIZ
-========================================================= */
-
 applyQuizMood?.addEventListener(
     "click",
     () => {
 
         if (
-            !lastQuizResult
+            !lastQuizWinner
         ) {
-
-            showToast(
-                "Faça o quiz primeiro ✦"
-            );
-
             return;
-
         }
 
         setMood(
-            lastQuizResult.mood
+            quizResults[lastQuizWinner]
+                .mood
         );
 
         showToast(
-            "Seu mood foi aplicado ♡"
+            t(
+                "toast.moodApplied"
+            )
         );
 
     }
 );
 
-
-/* =========================================================
-   COMPARTILHAR RESULTADO
-========================================================= */
 
 shareQuizResult?.addEventListener(
     "click",
     () => {
 
         if (
-            !lastQuizResult
+            !lastQuizWinner
         ) {
-
-            shareDream(
-                "Descubra qual é o seu Dream ♡"
-            );
-
             return;
-
         }
 
+        const result =
+            quizResults[lastQuizWinner];
+
+        const title =
+            (
+                currentLanguage ===
+                "en-US"
+                    ? result.en
+                    : result.pt
+            )[0];
+
         shareDream(
-            `Meu resultado no Dream Quiz foi ${lastQuizResult.title} ✦`
+            currentLanguage ===
+            "en-US"
+                ? `My Dream Quiz result is ${title} ✦`
+                : `Meu resultado no Dream Quiz foi ${title} ✦`
         );
 
     }
 );
-
-
 /* =========================================================
-   MOONLIGHT
+   MUSIC
 ========================================================= */
 
 const dreamMusic =
@@ -4592,17 +6109,12 @@ const musicVolumeRange =
 const musicVolumeValue =
     $("#musicVolumeValue");
 
-
 let dreamMusicPlaying =
     false;
 
 let previousMusicVolume =
-    0.35;
+    .35;
 
-
-/* =========================================================
-   FORMATAR TEMPO
-========================================================= */
 
 function formatMusicTime(
     seconds
@@ -4613,9 +6125,7 @@ function formatMusicTime(
             seconds
         )
     ) {
-
         return "0:00";
-
     }
 
     const minutes =
@@ -4624,20 +6134,16 @@ function formatMusicTime(
             60
         );
 
-    const remainingSeconds =
+    const remaining =
         Math.floor(
             seconds %
             60
         );
 
-    return `${minutes}:${String(remainingSeconds).padStart(2,"0")}`;
+    return `${minutes}:${String(remaining).padStart(2,"0")}`;
 
 }
 
-
-/* =========================================================
-   MUSIC UI
-========================================================= */
 
 function updateMusicUI() {
 
@@ -4654,13 +6160,6 @@ function updateMusicUI() {
             dreamMusicPlaying
                 ? "❚❚"
                 : "▶";
-
-        dreamMusicButton.setAttribute(
-            "aria-label",
-            dreamMusicPlaying
-                ? "Pausar Moonlight"
-                : "Tocar Moonlight"
-        );
 
     }
 
@@ -4680,7 +6179,8 @@ function updateMusicUI() {
 
         musicMuteButton.textContent =
             dreamMusic.muted ||
-            dreamMusic.volume === 0
+            dreamMusic.volume ===
+            0
                 ? "🔇"
                 : "🔊";
 
@@ -4688,10 +6188,6 @@ function updateMusicUI() {
 
 }
 
-
-/* =========================================================
-   PLAY / PAUSE
-========================================================= */
 
 async function playDreamMusic() {
 
@@ -4716,23 +6212,13 @@ async function playDreamMusic() {
         updateMusicUI();
 
         showToast(
-            "Moonlight tocando ♫"
+            t(
+                "toast.musicPlaying"
+            )
         );
 
-    } catch (
-        error
-    ) {
-
-        dreamMusicPlaying =
-            false;
-
-        updateMusicUI();
-
-        console.warn(
-            "Moonlight bloqueada:",
-            error
-        );
-
+    } catch {
+        /* autoplay bloqueado */
     }
 
 }
@@ -4742,13 +6228,7 @@ function pauseDreamMusic(
     save = true
 ) {
 
-    if (
-        !dreamMusic
-    ) {
-        return;
-    }
-
-    dreamMusic.pause();
+    dreamMusic?.pause();
 
     dreamMusicPlaying =
         false;
@@ -4771,17 +6251,9 @@ function pauseDreamMusic(
 
 function toggleDreamMusic() {
 
-    if (
-        dreamMusicPlaying
-    ) {
-
-        pauseDreamMusic();
-
-    } else {
-
-        playDreamMusic();
-
-    }
+    dreamMusicPlaying
+        ? pauseDreamMusic()
+        : playDreamMusic();
 
 }
 
@@ -4796,25 +6268,13 @@ musicToggle?.addEventListener(
     "change",
     () => {
 
-        if (
-            musicToggle.checked
-        ) {
-
-            playDreamMusic();
-
-        } else {
-
-            pauseDreamMusic();
-
-        }
+        musicToggle.checked
+            ? playDreamMusic()
+            : pauseDreamMusic();
 
     }
 );
 
-
-/* =========================================================
-   PROGRESSO MÚSICA
-========================================================= */
 
 function updateMusicProgress() {
 
@@ -4908,10 +6368,6 @@ musicProgress?.addEventListener(
 );
 
 
-/* =========================================================
-   VOLUME MÚSICA
-========================================================= */
-
 function setDreamMusicVolume(
     value,
     save = true
@@ -4940,12 +6396,11 @@ function setDreamMusicVolume(
             0
         ) {
 
+            previousMusicVolume =
+                dreamMusic.volume;
+
             dreamMusic.muted =
                 false;
-
-            previousMusicVolume =
-                safe /
-                100;
 
         }
 
@@ -4997,10 +6452,6 @@ musicVolumeRange?.addEventListener(
 );
 
 
-/* =========================================================
-   MUTE
-========================================================= */
-
 musicMuteButton?.addEventListener(
     "click",
     () => {
@@ -5013,7 +6464,8 @@ musicMuteButton?.addEventListener(
 
         if (
             dreamMusic.muted ||
-            dreamMusic.volume === 0
+            dreamMusic.volume ===
+            0
         ) {
 
             dreamMusic.muted =
@@ -5024,19 +6476,13 @@ musicMuteButton?.addEventListener(
                 0
             ) {
 
-                const volume =
-                    Math.max(
-                        0.05,
-                        previousMusicVolume
-                    );
-
-                dreamMusic.volume =
-                    volume;
-
                 setDreamMusicVolume(
-                    Math.round(
-                        volume *
-                        100
+                    Math.max(
+                        5,
+                        Math.round(
+                            previousMusicVolume *
+                            100
+                        )
                     )
                 );
 
@@ -5082,6 +6528,8 @@ dreamMusic?.addEventListener(
 
     }
 );
+
+
 /* =========================================================
    DREAM STUDIO
 ========================================================= */
@@ -5121,9 +6569,6 @@ const cursorToggle =
 
 const motion3dToggle =
     $("#motion3dToggle");
-
-const shineToggle =
-    $("#shineToggle");
 
 const hapticToggle =
     $("#hapticToggle");
@@ -5177,10 +6622,6 @@ const resetSettings =
     $("#resetSettings");
 
 
-/* =========================================================
-   ABRIR / FECHAR STUDIO
-========================================================= */
-
 function setSettingsOpen(
     open
 ) {
@@ -5221,72 +6662,41 @@ closeSettings?.addEventListener(
 );
 
 
-document.addEventListener(
-    "click",
-    event => {
-
-        if (
-            !settingsPanel?.classList.contains(
-                "open"
-            )
-        ) {
-            return;
-        }
-
-        if (
-            settingsPanel.contains(
-                event.target
-            ) ||
-            settingsButton?.contains(
-                event.target
-            )
-        ) {
-            return;
-        }
-
-        setSettingsOpen(
-            false
-        );
-
-    }
-);
-
-
 /* =========================================================
-   PALETAS
+   PALETTES
 ========================================================= */
 
 const palettes = {
 
-    dream: {
-        primary: "#df76a8",
-        secondary: "#9562dc"
-    },
+    dream: [
+        "#df76a8",
+        "#9562dc"
+    ],
 
-    roxo: {
-        primary: "#a855f7",
-        secondary: "#6d28d9"
-    },
+    roxo: [
+        "#a855f7",
+        "#6d28d9"
+    ],
 
-    azul: {
-        primary: "#38bdf8",
-        secondary: "#6366f1"
-    },
+    azul: [
+        "#38bdf8",
+        "#6366f1"
+    ],
 
-    cherry: {
-        primary: "#fb7185",
-        secondary: "#db2777"
-    },
+    cherry: [
+        "#fb7185",
+        "#db2777"
+    ],
 
-    gold: {
-        primary: "#d6a84b",
-        secondary: "#9a6b21"
-    },
+    gold: [
+        "#d6a84b",
+        "#9a6b21"
+    ],
 
-    menta: {
-        primary: "#45c4aa",
-        secondary: "#5285c5"
-    }
+    menta: [
+        "#45c4aa",
+        "#5285c5"
+    ]
 
 };
 
@@ -5296,18 +6706,18 @@ function setPalette(
     save = true
 ) {
 
-    const palette =
+    const data =
         palettes[name];
 
     if (
-        !palette
+        !data
     ) {
         return;
     }
 
     setThemeColors(
-        palette.primary,
-        palette.secondary,
+        data[0],
+        data[1],
         save
     );
 
@@ -5316,7 +6726,7 @@ function setPalette(
     ) {
 
         primaryColor.value =
-            palette.primary;
+            data[0];
 
     }
 
@@ -5325,7 +6735,7 @@ function setPalette(
     ) {
 
         secondaryColor.value =
-            palette.secondary;
+            data[1];
 
     }
 
@@ -5350,10 +6760,6 @@ function setPalette(
             name
         );
 
-        localStorage.removeItem(
-            "dreamMood"
-        );
-
     }
 
 }
@@ -5370,8 +6776,6 @@ $$(".palette").forEach(
                     button.dataset.palette
                 );
 
-                clearActivePreset();
-
             }
         );
 
@@ -5379,39 +6783,14 @@ $$(".palette").forEach(
 );
 
 
-/* =========================================================
-   CORES PERSONALIZADAS
-========================================================= */
-
 primaryColor?.addEventListener(
     "input",
     () => {
 
         setThemeColors(
             primaryColor.value,
-            secondaryColor?.value ||
-            "#9562dc"
+            secondaryColor.value
         );
-
-        localStorage.removeItem(
-            "dreamPalette"
-        );
-
-        localStorage.removeItem(
-            "dreamMood"
-        );
-
-        $$(".palette").forEach(
-            button => {
-
-                button.classList.remove(
-                    "active"
-                );
-
-            }
-        );
-
-        clearActivePreset();
 
     }
 );
@@ -5422,37 +6801,16 @@ secondaryColor?.addEventListener(
     () => {
 
         setThemeColors(
-            primaryColor?.value ||
-            "#df76a8",
+            primaryColor.value,
             secondaryColor.value
         );
-
-        localStorage.removeItem(
-            "dreamPalette"
-        );
-
-        localStorage.removeItem(
-            "dreamMood"
-        );
-
-        $$(".palette").forEach(
-            button => {
-
-                button.classList.remove(
-                    "active"
-                );
-
-            }
-        );
-
-        clearActivePreset();
 
     }
 );
 
 
 /* =========================================================
-   MODO ESCURO
+   MODES
 ========================================================= */
 
 function setDarkMode(
@@ -5509,8 +6867,6 @@ themeButton?.addEventListener(
             )
         );
 
-        clearActivePreset();
-
     }
 );
 
@@ -5523,596 +6879,167 @@ darkToggle?.addEventListener(
             darkToggle.checked
         );
 
-        clearActivePreset();
-
     }
 );
 
 
-/* =========================================================
-   GLASS
-========================================================= */
-
-function setGlass(
-    enabled,
-    save = true
+function bindBooleanToggle(
+    element,
+    className,
+    key,
+    invert = false
 ) {
 
-    body.classList.toggle(
-        "no-glass",
-        !enabled
-    );
+    element?.addEventListener(
+        "change",
+        () => {
 
-    if (
-        glassToggle
-    ) {
+            const enabled =
+                element.checked;
 
-        glassToggle.checked =
-            enabled;
-
-    }
-
-    if (
-        save
-    ) {
-
-        localStorage.setItem(
-            "dreamGlass",
-            String(enabled)
-        );
-
-    }
-
-}
-
-
-glassToggle?.addEventListener(
-    "change",
-    () => {
-
-        setGlass(
-            glassToggle.checked
-        );
-
-        clearActivePreset();
-
-    }
-);
-
-
-/* =========================================================
-   CLEAN MODE
-========================================================= */
-
-function setCleanMode(
-    enabled,
-    save = true
-) {
-
-    body.classList.toggle(
-        "clean-mode",
-        enabled
-    );
-
-    if (
-        cleanModeToggle
-    ) {
-
-        cleanModeToggle.checked =
-            enabled;
-
-    }
-
-    if (
-        save
-    ) {
-
-        localStorage.setItem(
-            "dreamClean",
-            String(enabled)
-        );
-
-    }
-
-}
-
-
-cleanModeToggle?.addEventListener(
-    "change",
-    () => {
-
-        setCleanMode(
-            cleanModeToggle.checked
-        );
-
-        clearActivePreset();
-
-    }
-);
-
-
-/* =========================================================
-   PERFORMANCE MODE
-========================================================= */
-
-function setPerformanceMode(
-    enabled,
-    save = true
-) {
-
-    body.classList.toggle(
-        "performance-mode",
-        enabled
-    );
-
-    if (
-        performanceToggle
-    ) {
-
-        performanceToggle.checked =
-            enabled;
-
-    }
-
-    if (
-        enabled
-    ) {
-
-        setMotion3d(
-            false,
-            false
-        );
-
-        setCursorGlow(
-            false,
-            false
-        );
-
-        setShine(
-            false,
-            false
-        );
-
-        particleIntensity =
-            Math.min(
-                particleIntensity,
-                0.5
+            body.classList.toggle(
+                className,
+                invert
+                    ? !enabled
+                    : enabled
             );
 
-    }
+            localStorage.setItem(
+                key,
+                String(enabled)
+            );
 
-    generateParticles();
-
-    if (
-        save
-    ) {
-
-        localStorage.setItem(
-            "dreamPerformance",
-            String(enabled)
-        );
-
-    }
+        }
+    );
 
 }
+
+
+bindBooleanToggle(
+    glassToggle,
+    "no-glass",
+    "dreamGlass",
+    true
+);
+
+bindBooleanToggle(
+    cleanModeToggle,
+    "clean-mode",
+    "dreamClean"
+);
+
+bindBooleanToggle(
+    particlesToggle,
+    "no-particles",
+    "dreamParticles",
+    true
+);
+
+bindBooleanToggle(
+    animationsToggle,
+    "no-animations",
+    "dreamAnimations",
+    true
+);
+
+bindBooleanToggle(
+    cursorToggle,
+    "no-cursor",
+    "dreamCursor",
+    true
+);
 
 
 performanceToggle?.addEventListener(
     "change",
     () => {
 
-        setPerformanceMode(
+        body.classList.toggle(
+            "performance-mode",
             performanceToggle.checked
         );
 
-        clearActivePreset();
+        localStorage.setItem(
+            "dreamPerformance",
+            String(
+                performanceToggle.checked
+            )
+        );
+
+        generateParticles();
 
         showToast(
             performanceToggle.checked
-                ? "Modo performance ativado ⚡"
-                : "Modo performance desligado"
+                ? t(
+                    "toast.performanceOn"
+                )
+                : t(
+                    "toast.performanceOff"
+                )
         );
 
     }
 );
-
-
-/* =========================================================
-   PARTÍCULAS
-========================================================= */
-
-function setParticles(
-    enabled,
-    save = true
-) {
-
-    body.classList.toggle(
-        "no-particles",
-        !enabled
-    );
-
-    if (
-        particlesToggle
-    ) {
-
-        particlesToggle.checked =
-            enabled;
-
-    }
-
-    if (
-        save
-    ) {
-
-        localStorage.setItem(
-            "dreamParticles",
-            String(enabled)
-        );
-
-    }
-
-}
-
-
-particlesToggle?.addEventListener(
-    "change",
-    () => {
-
-        setParticles(
-            particlesToggle.checked
-        );
-
-        clearActivePreset();
-
-    }
-);
-
-
-/* =========================================================
-   ANIMAÇÕES
-========================================================= */
-
-function setAnimations(
-    enabled,
-    save = true
-) {
-
-    body.classList.toggle(
-        "no-animations",
-        !enabled
-    );
-
-    if (
-        animationsToggle
-    ) {
-
-        animationsToggle.checked =
-            enabled;
-
-    }
-
-    if (
-        save
-    ) {
-
-        localStorage.setItem(
-            "dreamAnimations",
-            String(enabled)
-        );
-
-    }
-
-}
-
-
-animationsToggle?.addEventListener(
-    "change",
-    () => {
-
-        setAnimations(
-            animationsToggle.checked
-        );
-
-        clearActivePreset();
-
-    }
-);
-
-
-/* =========================================================
-   CURSOR
-========================================================= */
-
-function setCursorGlow(
-    enabled,
-    save = true
-) {
-
-    body.classList.toggle(
-        "no-cursor",
-        !enabled
-    );
-
-    if (
-        cursorToggle
-    ) {
-
-        cursorToggle.checked =
-            enabled;
-
-    }
-
-    if (
-        save
-    ) {
-
-        localStorage.setItem(
-            "dreamCursor",
-            String(enabled)
-        );
-
-    }
-
-}
-
-
-cursorToggle?.addEventListener(
-    "change",
-    () => {
-
-        setCursorGlow(
-            cursorToggle.checked
-        );
-
-        clearActivePreset();
-
-    }
-);
-
-
-/* =========================================================
-   MOVIMENTO 3D
-========================================================= */
-
-function setMotion3d(
-    enabled,
-    save = true
-) {
-
-    motion3dEnabled =
-        Boolean(enabled);
-
-    if (
-        motion3dToggle
-    ) {
-
-        motion3dToggle.checked =
-            motion3dEnabled;
-
-    }
-
-    if (
-        !motion3dEnabled
-    ) {
-
-        if (
-            mainBottle
-        ) {
-
-            mainBottle.style.transform =
-                "";
-
-        }
-
-        if (
-            productHalo
-        ) {
-
-            productHalo.style.transform =
-                "";
-
-        }
-
-        if (
-            feelingCenter
-        ) {
-
-            feelingCenter.style.transform =
-                "";
-
-        }
-
-        $$(".moment-card").forEach(
-            card => {
-
-                card.style.transform =
-                    "";
-
-            }
-        );
-
-    }
-
-    if (
-        save
-    ) {
-
-        localStorage.setItem(
-            "dreamMotion3d",
-            String(motion3dEnabled)
-        );
-
-    }
-
-}
 
 
 motion3dToggle?.addEventListener(
     "change",
     () => {
 
-        setMotion3d(
-            motion3dToggle.checked
-        );
+        motion3dEnabled =
+            motion3dToggle.checked;
 
-        clearActivePreset();
+        localStorage.setItem(
+            "dreamMotion3d",
+            String(
+                motion3dEnabled
+            )
+        );
 
     }
 );
-
-
-/* =========================================================
-   SHINE
-========================================================= */
-
-function setShine(
-    enabled,
-    save = true
-) {
-
-    shineEnabled =
-        Boolean(enabled);
-
-    body.classList.toggle(
-        "no-shine",
-        !shineEnabled
-    );
-
-    if (
-        shineToggle
-    ) {
-
-        shineToggle.checked =
-            shineEnabled;
-
-    }
-
-    if (
-        save
-    ) {
-
-        localStorage.setItem(
-            "dreamShine",
-            String(shineEnabled)
-        );
-
-    }
-
-}
-
-
-shineToggle?.addEventListener(
-    "change",
-    () => {
-
-        setShine(
-            shineToggle.checked
-        );
-
-        clearActivePreset();
-
-    }
-);
-
-
-/* =========================================================
-   HAPTIC
-========================================================= */
-
-function setHaptic(
-    enabled,
-    save = true
-) {
-
-    hapticEnabled =
-        Boolean(enabled);
-
-    if (
-        hapticToggle
-    ) {
-
-        hapticToggle.checked =
-            hapticEnabled;
-
-    }
-
-    if (
-        save
-    ) {
-
-        localStorage.setItem(
-            "dreamHaptic",
-            String(hapticEnabled)
-        );
-
-    }
-
-}
 
 
 hapticToggle?.addEventListener(
     "change",
     () => {
 
-        setHaptic(
-            hapticToggle.checked
-        );
+        hapticEnabled =
+            hapticToggle.checked;
 
-        clearActivePreset();
+        localStorage.setItem(
+            "dreamHaptic",
+            String(
+                hapticEnabled
+            )
+        );
 
     }
 );
-
-
-/* =========================================================
-   SOM SPRAY
-========================================================= */
-
-function setSpraySound(
-    enabled,
-    save = true
-) {
-
-    spraySoundEnabled =
-        Boolean(enabled);
-
-    if (
-        spraySoundToggle
-    ) {
-
-        spraySoundToggle.checked =
-            spraySoundEnabled;
-
-    }
-
-    if (
-        save
-    ) {
-
-        localStorage.setItem(
-            "dreamSpraySound",
-            String(spraySoundEnabled)
-        );
-
-    }
-
-}
 
 
 spraySoundToggle?.addEventListener(
     "change",
     () => {
 
-        setSpraySound(
-            spraySoundToggle.checked
-        );
+        spraySoundEnabled =
+            spraySoundToggle.checked;
 
-        clearActivePreset();
+        localStorage.setItem(
+            "dreamSpraySound",
+            String(
+                spraySoundEnabled
+            )
+        );
 
         showToast(
             spraySoundEnabled
-                ? "Som do borrifador ativado ✦"
-                : "Som do borrifador desligado"
+                ? t(
+                    "toast.spraySoundOn"
+                )
+                : t(
+                    "toast.spraySoundOff"
+                )
         );
 
     }
@@ -6120,455 +7047,146 @@ spraySoundToggle?.addEventListener(
 
 
 /* =========================================================
-   VELOCIDADE
+   RANGES
 ========================================================= */
 
-function setAnimationSpeed(
-    value,
-    save = true
+function bindRange(
+    input,
+    label,
+    key,
+    callback
 ) {
 
-    const safe =
-        Math.max(
-            40,
-            Math.min(
-                160,
-                Number(value) ||
-                100
-            )
-        );
+    input?.addEventListener(
+        "input",
+        () => {
 
-    root.style.setProperty(
-        "--animation-speed",
-        100 / safe
+            const value =
+                Number(
+                    input.value
+                );
+
+            if (
+                label
+            ) {
+
+                label.textContent =
+                    `${value}%`;
+
+            }
+
+            callback(
+                value
+            );
+
+            localStorage.setItem(
+                key,
+                String(value)
+            );
+
+        }
     );
 
-    if (
-        animationSpeed
-    ) {
-
-        animationSpeed.value =
-            safe;
-
-    }
-
-    if (
-        animationSpeedValue
-    ) {
-
-        animationSpeedValue.textContent =
-            `${safe}%`;
-
-    }
-
-    if (
-        save
-    ) {
-
-        localStorage.setItem(
-            "dreamAnimationSpeed",
-            String(safe)
-        );
-
-    }
-
 }
 
 
-animationSpeed?.addEventListener(
-    "input",
-    () => {
+bindRange(
+    animationSpeed,
+    animationSpeedValue,
+    "dreamAnimationSpeed",
+    value => {
 
-        setAnimationSpeed(
-            animationSpeed.value
+        root.style.setProperty(
+            "--animation-speed",
+            100 /
+            value
         );
 
-        clearActivePreset();
+    }
+);
+
+
+bindRange(
+    motion3dRange,
+    motion3dValue,
+    "dreamMotion3dIntensity",
+    value => {
+
+        motion3dIntensity =
+            value /
+            100;
+
+    }
+);
+
+
+bindRange(
+    cursorGlowRange,
+    cursorGlowValue,
+    "dreamCursorGlowIntensity",
+    value => {
+
+        cursorGlowIntensity =
+            value /
+            100;
+
+    }
+);
+
+
+bindRange(
+    particleIntensityRange,
+    particleIntensityValue,
+    "dreamParticleIntensity",
+    value => {
+
+        particleIntensity =
+            value /
+            100;
+
+        generateParticles();
+
+    }
+);
+
+
+bindRange(
+    sprayIntensityRange,
+    sprayIntensityValue,
+    "dreamSprayIntensity",
+    value => {
+
+        sprayIntensity =
+            value /
+            100;
+
+    }
+);
+
+
+bindRange(
+    contrastControl,
+    contrastValue,
+    "dreamContrast",
+    value => {
+
+        root.style.filter =
+            value ===
+            100
+                ? ""
+                : `contrast(${value / 100})`;
 
     }
 );
 
 
 /* =========================================================
-   INTENSIDADE 3D
-========================================================= */
-
-function setMotion3dIntensity(
-    value,
-    save = true
-) {
-
-    const safe =
-        Math.max(
-            0,
-            Math.min(
-                150,
-                Number(value) ||
-                0
-            )
-        );
-
-    motion3dIntensity =
-        safe /
-        100;
-
-    if (
-        motion3dRange
-    ) {
-
-        motion3dRange.value =
-            safe;
-
-    }
-
-    if (
-        motion3dValue
-    ) {
-
-        motion3dValue.textContent =
-            `${safe}%`;
-
-    }
-
-    if (
-        save
-    ) {
-
-        localStorage.setItem(
-            "dreamMotion3dIntensity",
-            String(safe)
-        );
-
-    }
-
-}
-
-
-motion3dRange?.addEventListener(
-    "input",
-    () => {
-
-        setMotion3dIntensity(
-            motion3dRange.value
-        );
-
-        clearActivePreset();
-
-    }
-);
-
-
-/* =========================================================
-   INTENSIDADE CURSOR
-========================================================= */
-
-function setCursorGlowIntensity(
-    value,
-    save = true
-) {
-
-    const safe =
-        Math.max(
-            0,
-            Math.min(
-                150,
-                Number(value) ||
-                0
-            )
-        );
-
-    cursorGlowIntensity =
-        safe /
-        100;
-
-    if (
-        cursorGlowRange
-    ) {
-
-        cursorGlowRange.value =
-            safe;
-
-    }
-
-    if (
-        cursorGlowValue
-    ) {
-
-        cursorGlowValue.textContent =
-            `${safe}%`;
-
-    }
-
-    if (
-        save
-    ) {
-
-        localStorage.setItem(
-            "dreamCursorGlowIntensity",
-            String(safe)
-        );
-
-    }
-
-}
-
-
-cursorGlowRange?.addEventListener(
-    "input",
-    () => {
-
-        setCursorGlowIntensity(
-            cursorGlowRange.value
-        );
-
-        clearActivePreset();
-
-    }
-);
-
-
-/* =========================================================
-   INTENSIDADE PARTÍCULAS
-========================================================= */
-
-let particleUpdateTimer;
-
-
-function setParticleIntensity(
-    value,
-    save = true
-) {
-
-    const safe =
-        Math.max(
-            0,
-            Math.min(
-                150,
-                Number(value) ||
-                0
-            )
-        );
-
-    particleIntensity =
-        safe /
-        100;
-
-    if (
-        particleIntensityRange
-    ) {
-
-        particleIntensityRange.value =
-            safe;
-
-    }
-
-    if (
-        particleIntensityValue
-    ) {
-
-        particleIntensityValue.textContent =
-            `${safe}%`;
-
-    }
-
-    clearTimeout(
-        particleUpdateTimer
-    );
-
-    particleUpdateTimer =
-        setTimeout(
-            generateParticles,
-            80
-        );
-
-    if (
-        save
-    ) {
-
-        localStorage.setItem(
-            "dreamParticleIntensity",
-            String(safe)
-        );
-
-    }
-
-}
-
-
-particleIntensityRange?.addEventListener(
-    "input",
-    () => {
-
-        setParticleIntensity(
-            particleIntensityRange.value
-        );
-
-        clearActivePreset();
-
-    }
-);
-
-
-/* =========================================================
-   INTENSIDADE SPRAY
-========================================================= */
-
-function setSprayIntensity(
-    value,
-    save = true
-) {
-
-    const safe =
-        Math.max(
-            40,
-            Math.min(
-                160,
-                Number(value) ||
-                100
-            )
-        );
-
-    sprayIntensity =
-        safe /
-        100;
-
-    if (
-        sprayIntensityRange
-    ) {
-
-        sprayIntensityRange.value =
-            safe;
-
-    }
-
-    if (
-        sprayIntensityValue
-    ) {
-
-        sprayIntensityValue.textContent =
-            `${safe}%`;
-
-    }
-
-    if (
-        save
-    ) {
-
-        localStorage.setItem(
-            "dreamSprayIntensity",
-            String(safe)
-        );
-
-    }
-
-}
-
-
-sprayIntensityRange?.addEventListener(
-    "input",
-    () => {
-
-        setSprayIntensity(
-            sprayIntensityRange.value
-        );
-
-        clearActivePreset();
-
-    }
-);
-
-
-/* =========================================================
-   CONTRASTE
-========================================================= */
-
-function setContrast(
-    value,
-    save = true
-) {
-
-    const safe =
-        Math.max(
-            80,
-            Math.min(
-                130,
-                Number(value) ||
-                100
-            )
-        );
-
-    root.style.filter =
-        safe === 100
-            ? ""
-            : `contrast(${safe / 100})`;
-
-    if (
-        contrastControl
-    ) {
-
-        contrastControl.value =
-            safe;
-
-    }
-
-    if (
-        contrastValue
-    ) {
-
-        contrastValue.textContent =
-            `${safe}%`;
-
-    }
-
-    if (
-        save
-    ) {
-
-        localStorage.setItem(
-            "dreamContrast",
-            String(safe)
-        );
-
-    }
-
-}
-
-
-contrastControl?.addEventListener(
-    "input",
-    () => {
-
-        setContrast(
-            contrastControl.value
-        );
-
-        clearActivePreset();
-
-    }
-);
-
-
-/* =========================================================
-   TAMANHO TEXTO
+   FONT SIZE
 ========================================================= */
 
 function setFontSize(
-    size,
-    save = true
+    size
 ) {
-
-    const allowed = [
-        "small",
-        "normal",
-        "large"
-    ];
-
-    const finalSize =
-        allowed.includes(
-            size
-        )
-            ? size
-            : "normal";
 
     body.classList.remove(
         "font-small",
@@ -6577,7 +7195,7 @@ function setFontSize(
     );
 
     body.classList.add(
-        `font-${finalSize}`
+        `font-${size}`
     );
 
     $$("[data-font-size]").forEach(
@@ -6586,22 +7204,16 @@ function setFontSize(
             button.classList.toggle(
                 "active",
                 button.dataset.fontSize ===
-                finalSize
+                size
             );
 
         }
     );
 
-    if (
-        save
-    ) {
-
-        localStorage.setItem(
-            "dreamFontSize",
-            finalSize
-        );
-
-    }
+    localStorage.setItem(
+        "dreamFontSize",
+        size
+    );
 
 }
 
@@ -6617,8 +7229,6 @@ $$("[data-font-size]").forEach(
                     button.dataset.fontSize
                 );
 
-                clearActivePreset();
-
             }
         );
 
@@ -6630,382 +7240,109 @@ $$("[data-font-size]").forEach(
    PRESETS
 ========================================================= */
 
-const presetButtons =
-    $$(".preset-button");
-
-
-function clearActivePreset() {
-
-    presetButtons.forEach(
-        button => {
-
-            button.classList.remove(
-                "active"
-            );
-
-        }
-    );
-
-}
-
-
-function markPreset(
-    preset
-) {
-
-    presetButtons.forEach(
-        button => {
-
-            button.classList.toggle(
-                "active",
-                button.dataset.preset ===
-                preset
-            );
-
-        }
-    );
-
-}
-
-
-function applyPreset(
-    preset,
-    save = true
-) {
-
-    switch (
-        preset
-    ) {
-
-        case "dream":
-
-            setPalette(
-                "dream",
-                false
-            );
-
-            setDarkMode(
-                false,
-                false
-            );
-
-            setGlass(
-                true,
-                false
-            );
-
-            setCleanMode(
-                false,
-                false
-            );
-
-            setPerformanceMode(
-                false,
-                false
-            );
-
-            setParticles(
-                true,
-                false
-            );
-
-            setAnimations(
-                true,
-                false
-            );
-
-            setCursorGlow(
-                true,
-                false
-            );
-
-            setMotion3d(
-                true,
-                false
-            );
-
-            setShine(
-                true,
-                false
-            );
-
-            setHaptic(
-                true,
-                false
-            );
-
-            setAnimationSpeed(
-                100,
-                false
-            );
-
-            setMotion3dIntensity(
-                100,
-                false
-            );
-
-            setCursorGlowIntensity(
-                100,
-                false
-            );
-
-            setParticleIntensity(
-                100,
-                false
-            );
-
-            break;
-
-
-        case "cinematic":
-
-            setPalette(
-                "cherry",
-                false
-            );
-
-            setDarkMode(
-                true,
-                false
-            );
-
-            setGlass(
-                true,
-                false
-            );
-
-            setCleanMode(
-                false,
-                false
-            );
-
-            setPerformanceMode(
-                false,
-                false
-            );
-
-            setParticles(
-                true,
-                false
-            );
-
-            setAnimations(
-                true,
-                false
-            );
-
-            setCursorGlow(
-                true,
-                false
-            );
-
-            setMotion3d(
-                true,
-                false
-            );
-
-            setShine(
-                true,
-                false
-            );
-
-            setAnimationSpeed(
-                85,
-                false
-            );
-
-            setMotion3dIntensity(
-                125,
-                false
-            );
-
-            setCursorGlowIntensity(
-                125,
-                false
-            );
-
-            setParticleIntensity(
-                120,
-                false
-            );
-
-            break;
-
-
-        case "soft":
-
-            setPalette(
-                "menta",
-                false
-            );
-
-            setDarkMode(
-                false,
-                false
-            );
-
-            setGlass(
-                true,
-                false
-            );
-
-            setCleanMode(
-                false,
-                false
-            );
-
-            setPerformanceMode(
-                false,
-                false
-            );
-
-            setParticles(
-                true,
-                false
-            );
-
-            setAnimations(
-                true,
-                false
-            );
-
-            setCursorGlow(
-                true,
-                false
-            );
-
-            setMotion3d(
-                true,
-                false
-            );
-
-            setShine(
-                true,
-                false
-            );
-
-            setAnimationSpeed(
-                115,
-                false
-            );
-
-            setMotion3dIntensity(
-                65,
-                false
-            );
-
-            setCursorGlowIntensity(
-                70,
-                false
-            );
-
-            setParticleIntensity(
-                65,
-                false
-            );
-
-            break;
-
-
-        case "performance":
-
-            setPalette(
-                "dream",
-                false
-            );
-
-            setDarkMode(
-                false,
-                false
-            );
-
-            setGlass(
-                false,
-                false
-            );
-
-            setCleanMode(
-                true,
-                false
-            );
-
-            setPerformanceMode(
-                true,
-                false
-            );
-
-            setParticles(
-                true,
-                false
-            );
-
-            setAnimations(
-                true,
-                false
-            );
-
-            setCursorGlow(
-                false,
-                false
-            );
-
-            setMotion3d(
-                false,
-                false
-            );
-
-            setShine(
-                false,
-                false
-            );
-
-            setParticleIntensity(
-                35,
-                false
-            );
-
-            break;
-
-
-        default:
-            return;
-
-    }
-
-    markPreset(
-        preset
-    );
-
-    generateParticles();
-
-    if (
-        save
-    ) {
-
-        localStorage.setItem(
-            "dreamPreset",
-            preset
-        );
-
-    }
-
-    showToast(
-        `Preset ${preset} aplicado ✦`
-    );
-
-}
-
-
-presetButtons.forEach(
+$$(".preset-button").forEach(
     button => {
 
         button.addEventListener(
             "click",
             () => {
 
-                applyPreset(
-                    button.dataset.preset
+                const preset =
+                    button.dataset.preset;
+
+                $$(".preset-button").forEach(
+                    item => {
+
+                        item.classList.toggle(
+                            "active",
+                            item ===
+                            button
+                        );
+
+                    }
                 );
+
+                if (
+                    preset ===
+                    "dream"
+                ) {
+
+                    setPalette(
+                        "dream"
+                    );
+
+                    setDarkMode(
+                        false
+                    );
+
+                    performanceToggle.checked =
+                        false;
+
+                    body.classList.remove(
+                        "performance-mode"
+                    );
+
+                }
+
+                if (
+                    preset ===
+                    "cinematic"
+                ) {
+
+                    setPalette(
+                        "cherry"
+                    );
+
+                    setDarkMode(
+                        true
+                    );
+
+                    motion3dEnabled =
+                        true;
+
+                }
+
+                if (
+                    preset ===
+                    "soft"
+                ) {
+
+                    setPalette(
+                        "menta"
+                    );
+
+                    setDarkMode(
+                        false
+                    );
+
+                    particleIntensity =
+                        .55;
+
+                    generateParticles();
+
+                }
+
+                if (
+                    preset ===
+                    "performance"
+                ) {
+
+                    performanceToggle.checked =
+                        true;
+
+                    body.classList.add(
+                        "performance-mode"
+                    );
+
+                    motion3dEnabled =
+                        false;
+
+                    particleIntensity =
+                        .3;
+
+                    generateParticles();
+
+                }
 
             }
         );
@@ -7015,470 +7352,86 @@ presetButtons.forEach(
 
 
 /* =========================================================
-   SETTINGS HELPERS
-========================================================= */
-
-function readBooleanSetting(
-    key,
-    fallback
-) {
-
-    const value =
-        localStorage.getItem(
-            key
-        );
-
-    if (
-        value === null
-    ) {
-        return fallback;
-    }
-
-    return value ===
-        "true";
-
-}
-
-
-/* =========================================================
-   AUTO PERFORMANCE MOBILE
-========================================================= */
-
-function shouldUseAutoPerformance() {
-
-    const manualSetting =
-        localStorage.getItem(
-            "dreamPerformance"
-        );
-
-    if (
-        manualSetting !==
-        null
-    ) {
-
-        return manualSetting ===
-            "true";
-
-    }
-
-    const lowMemory =
-        typeof navigator.deviceMemory ===
-        "number" &&
-        navigator.deviceMemory <=
-        4;
-
-    const lowCpu =
-        typeof navigator.hardwareConcurrency ===
-        "number" &&
-        navigator.hardwareConcurrency <=
-        4;
-
-    const narrowScreen =
-        window.innerWidth <=
-        520;
-
-    return (
-        narrowScreen &&
-        (
-            lowMemory ||
-            lowCpu
-        )
-    );
-
-}
-
-
-/* =========================================================
-   CARREGAR SETTINGS
-========================================================= */
-
-function loadSettings() {
-
-    const savedPreset =
-        localStorage.getItem(
-            "dreamPreset"
-        );
-
-    const savedPalette =
-        localStorage.getItem(
-            "dreamPalette"
-        );
-
-    const savedPrimary =
-        localStorage.getItem(
-            "dreamPrimary"
-        ) ||
-        "#df76a8";
-
-    const savedSecondary =
-        localStorage.getItem(
-            "dreamSecondary"
-        ) ||
-        "#9562dc";
-
-
-    if (
-        savedPalette &&
-        palettes[savedPalette]
-    ) {
-
-        setPalette(
-            savedPalette,
-            false
-        );
-
-    } else {
-
-        setThemeColors(
-            savedPrimary,
-            savedSecondary,
-            false
-        );
-
-        if (
-            primaryColor
-        ) {
-
-            primaryColor.value =
-                savedPrimary;
-
-        }
-
-        if (
-            secondaryColor
-        ) {
-
-            secondaryColor.value =
-                savedSecondary;
-
-        }
-
-    }
-
-
-    setDarkMode(
-        readBooleanSetting(
-            "dreamDark",
-            false
-        ),
-        false
-    );
-
-    setGlass(
-        readBooleanSetting(
-            "dreamGlass",
-            true
-        ),
-        false
-    );
-
-    setCleanMode(
-        readBooleanSetting(
-            "dreamClean",
-            false
-        ),
-        false
-    );
-
-    setParticles(
-        readBooleanSetting(
-            "dreamParticles",
-            true
-        ),
-        false
-    );
-
-    setAnimations(
-        readBooleanSetting(
-            "dreamAnimations",
-            true
-        ),
-        false
-    );
-
-    setCursorGlow(
-        readBooleanSetting(
-            "dreamCursor",
-            true
-        ),
-        false
-    );
-
-    setMotion3d(
-        readBooleanSetting(
-            "dreamMotion3d",
-            true
-        ),
-        false
-    );
-
-    setShine(
-        readBooleanSetting(
-            "dreamShine",
-            true
-        ),
-        false
-    );
-
-    setHaptic(
-        readBooleanSetting(
-            "dreamHaptic",
-            true
-        ),
-        false
-    );
-
-    setSpraySound(
-        readBooleanSetting(
-            "dreamSpraySound",
-            false
-        ),
-        false
-    );
-
-    setAnimationSpeed(
-        Number(
-            localStorage.getItem(
-                "dreamAnimationSpeed"
-            ) ||
-            100
-        ),
-        false
-    );
-
-    setMotion3dIntensity(
-        Number(
-            localStorage.getItem(
-                "dreamMotion3dIntensity"
-            ) ||
-            100
-        ),
-        false
-    );
-
-    setCursorGlowIntensity(
-        Number(
-            localStorage.getItem(
-                "dreamCursorGlowIntensity"
-            ) ||
-            100
-        ),
-        false
-    );
-
-    setParticleIntensity(
-        Number(
-            localStorage.getItem(
-                "dreamParticleIntensity"
-            ) ||
-            100
-        ),
-        false
-    );
-
-    setSprayIntensity(
-        Number(
-            localStorage.getItem(
-                "dreamSprayIntensity"
-            ) ||
-            100
-        ),
-        false
-    );
-
-    setContrast(
-        Number(
-            localStorage.getItem(
-                "dreamContrast"
-            ) ||
-            100
-        ),
-        false
-    );
-
-    setFontSize(
-        localStorage.getItem(
-            "dreamFontSize"
-        ) ||
-        "normal",
-        false
-    );
-
-    setDreamMusicVolume(
-        Number(
-            localStorage.getItem(
-                "dreamMusicVolume"
-            ) ||
-            35
-        ),
-        false
-    );
-
-
-    const autoPerformance =
-        shouldUseAutoPerformance();
-
-    setPerformanceMode(
-        autoPerformance,
-        false
-    );
-
-
-    const savedScene =
-        localStorage.getItem(
-            "dreamScene"
-        );
-
-    setScene(
-        savedScene &&
-        sceneData[savedScene]
-            ? savedScene
-            : "romance",
-        false
-    );
-
-
-    const savedMood =
-        localStorage.getItem(
-            "dreamMood"
-        );
-
-    if (
-        savedMood &&
-        moodData[savedMood]
-    ) {
-
-        setMood(
-            savedMood,
-            false
-        );
-
-    }
-
-
-    if (
-        savedPreset
-    ) {
-
-        markPreset(
-            savedPreset
-        );
-
-    } else {
-
-        clearActivePreset();
-
-    }
-
-
-    updateSprayCounter();
-
-}
-
-
-/* =========================================================
-   RESET SETTINGS
+   RESET
 ========================================================= */
 
 resetSettings?.addEventListener(
     "click",
     () => {
 
-        const keys = [
+        const language =
+            currentLanguage;
 
-            "dreamPrimary",
-            "dreamSecondary",
-            "dreamPalette",
-            "dreamPreset",
-
-            "dreamDark",
-            "dreamGlass",
-            "dreamClean",
-            "dreamPerformance",
-
-            "dreamParticles",
-            "dreamAnimations",
-            "dreamCursor",
-
-            "dreamMotion3d",
-            "dreamMotion3dIntensity",
-
-            "dreamShine",
-            "dreamHaptic",
-
-            "dreamSpraySound",
-            "dreamSprayIntensity",
-
-            "dreamCursorGlowIntensity",
-            "dreamParticleIntensity",
-
-            "dreamAnimationSpeed",
-            "dreamContrast",
-            "dreamFontSize",
-
-            "dreamScene",
-            "dreamMood",
-
-            "dreamMusicVolume",
-            "dreamMusicEnabled"
-
-        ];
-
-        keys.forEach(
+        Object.keys(
+            localStorage
+        ).forEach(
             key => {
 
-                localStorage.removeItem(
-                    key
-                );
+                if (
+                    key.startsWith(
+                        "dream"
+                    ) &&
+                    key !==
+                    "dreamLanguage" &&
+                    key !==
+                    "dreamSprayCount"
+                ) {
+
+                    localStorage.removeItem(
+                        key
+                    );
+
+                }
 
             }
         );
 
-        applyPreset(
-            "dream",
+        setThemeColors(
+            "#df76a8",
+            "#9562dc",
             false
         );
 
-        setSpraySound(
+        setDarkMode(
             false,
             false
         );
 
-        setSprayIntensity(
-            100,
-            false
-        );
+        body.className =
+            "font-normal";
 
-        setContrast(
-            100,
-            false
-        );
+        particleIntensity =
+            1;
 
-        setFontSize(
-            "normal",
-            false
-        );
+        sprayIntensity =
+            1;
 
-        setScene(
-            "romance",
-            false
-        );
+        motion3dIntensity =
+            1;
 
-        setDreamMusicVolume(
-            35,
-            false
-        );
+        cursorGlowIntensity =
+            1;
 
-        pauseDreamMusic(
-            false
-        );
+        motion3dEnabled =
+            true;
 
-        markPreset(
-            "dream"
+        hapticEnabled =
+            true;
+
+        spraySoundEnabled =
+            true;
+
+        generateParticles();
+
+        setLanguage(
+            language,
+            false
         );
 
         showToast(
-            "Dream Studio restaurado ♡"
+            t(
+                "toast.reset"
+            )
         );
 
     }
@@ -7486,7 +7439,7 @@ resetSettings?.addEventListener(
 
 
 /* =========================================================
-   INDICADOR DE SEÇÃO
+   SECTION INDICATOR
 ========================================================= */
 
 const trackedSections =
@@ -7506,7 +7459,7 @@ function updateSectionIndicator() {
     const position =
         window.scrollY +
         window.innerHeight *
-        0.4;
+        .4;
 
     let current =
         trackedSections[0];
@@ -7532,6 +7485,15 @@ function updateSectionIndicator() {
             current
         );
 
+    const key =
+        current.dataset
+            .sectionI18n;
+
+    const name =
+        key
+            ? t(key)
+            : current.dataset.sectionName;
+
     sectionIndicator.innerHTML =
         `
         <span>
@@ -7544,22 +7506,44 @@ function updateSectionIndicator() {
                 )
             }
         </span>
-        ${
-            current.dataset.sectionName ||
-            current.id
-        }
+        ${name}
         `;
 
 }
 
 
-window.addEventListener(
-    "scroll",
-    updateSectionIndicator,
-    {
-        passive: true
+/* =========================================================
+   DYNAMIC LANGUAGE CONTENT
+========================================================= */
+
+function updateDynamicLanguageContent() {
+
+    renderNoteModal();
+
+    setScene(
+        currentScene,
+        false
+    );
+
+    if (
+        quizQuestions &&
+        !quizQuestions.hidden
+    ) {
+
+        renderQuizQuestion();
+
     }
-);
+
+    if (
+        quizResult &&
+        !quizResult.hidden
+    ) {
+
+        renderQuizResult();
+
+    }
+
+}
 
 
 /* =========================================================
@@ -7580,25 +7564,16 @@ $$('a[href^="#"]').forEach(
 
                 if (
                     !href ||
-                    href === "#"
+                    href ===
+                    "#"
                 ) {
                     return;
                 }
 
-                let target;
-
-                try {
-
-                    target =
-                        document.querySelector(
-                            href
-                        );
-
-                } catch {
-
-                    return;
-
-                }
+                const target =
+                    document.querySelector(
+                        href
+                    );
 
                 if (
                     !target
@@ -7615,16 +7590,14 @@ $$('a[href^="#"]').forEach(
                     ) +
                     12;
 
-                const top =
-                    target
-                        .getBoundingClientRect()
-                        .top +
-                    window.scrollY -
-                    offset;
-
                 window.scrollTo({
 
-                    top,
+                    top:
+                        target
+                            .getBoundingClientRect()
+                            .top +
+                        window.scrollY -
+                        offset,
 
                     behavior:
                         body.classList.contains(
@@ -7643,19 +7616,17 @@ $$('a[href^="#"]').forEach(
 
 
 /* =========================================================
-   ATALHOS
+   KEYBOARD
 ========================================================= */
 
 document.addEventListener(
     "keydown",
     event => {
 
-        const target =
-            event.target;
-
         const typing =
-            target instanceof HTMLElement &&
-            target.matches(
+            event.target instanceof
+            HTMLElement &&
+            event.target.matches(
                 "input, textarea, select, [contenteditable='true']"
             );
 
@@ -7665,6 +7636,8 @@ document.addEventListener(
             return;
         }
 
+        const key =
+            event.key.toLowerCase();
 
         if (
             event.key ===
@@ -7685,37 +7658,28 @@ document.addEventListener(
                 false
             );
 
-            return;
-
         }
 
-
         if (
-            event.key.toLowerCase() ===
+            key ===
             "s"
         ) {
 
             sprayDream();
 
-            return;
-
         }
 
-
         if (
-            event.key.toLowerCase() ===
+            key ===
             "m"
         ) {
 
             toggleDreamMusic();
 
-            return;
-
         }
 
-
         if (
-            event.key.toLowerCase() ===
+            key ===
             "d"
         ) {
 
@@ -7725,13 +7689,10 @@ document.addEventListener(
                 )
             );
 
-            return;
-
         }
 
-
         if (
-            event.key.toLowerCase() ===
+            key ===
             "g"
         ) {
 
@@ -7741,64 +7702,6 @@ document.addEventListener(
                 )
             );
 
-            return;
-
-        }
-
-
-        if (
-            event.key ===
-            "ArrowLeft"
-        ) {
-
-            if (
-                lightbox?.classList.contains(
-                    "open"
-                )
-            ) {
-
-                lightboxIndex--;
-
-                updateLightbox();
-
-            } else {
-
-                goToGallery(
-                    galleryIndex - 1
-                );
-
-                restartGalleryAutoplay();
-
-            }
-
-        }
-
-
-        if (
-            event.key ===
-            "ArrowRight"
-        ) {
-
-            if (
-                lightbox?.classList.contains(
-                    "open"
-                )
-            ) {
-
-                lightboxIndex++;
-
-                updateLightbox();
-
-            } else {
-
-                goToGallery(
-                    galleryIndex + 1
-                );
-
-                restartGalleryAutoplay();
-
-            }
-
         }
 
     }
@@ -7806,8 +7709,413 @@ document.addEventListener(
 
 
 /* =========================================================
-   ABA OCULTA
+   LOAD SAVED SETTINGS
 ========================================================= */
+
+function readBool(
+    key,
+    fallback
+) {
+
+    const value =
+        localStorage.getItem(
+            key
+        );
+
+    if (
+        value ===
+        null
+    ) {
+        return fallback;
+    }
+
+    return value ===
+        "true";
+
+}
+
+
+function loadSettings() {
+
+    const savedPalette =
+        localStorage.getItem(
+            "dreamPalette"
+        );
+
+    if (
+        savedPalette &&
+        palettes[savedPalette]
+    ) {
+
+        setPalette(
+            savedPalette,
+            false
+        );
+
+    } else {
+
+        setThemeColors(
+            localStorage.getItem(
+                "dreamPrimary"
+            ) ||
+            "#df76a8",
+
+            localStorage.getItem(
+                "dreamSecondary"
+            ) ||
+            "#9562dc",
+
+            false
+        );
+
+    }
+
+
+    setDarkMode(
+        readBool(
+            "dreamDark",
+            false
+        ),
+        false
+    );
+
+
+    const glass =
+        readBool(
+            "dreamGlass",
+            true
+        );
+
+    glassToggle.checked =
+        glass;
+
+    body.classList.toggle(
+        "no-glass",
+        !glass
+    );
+
+
+    const clean =
+        readBool(
+            "dreamClean",
+            false
+        );
+
+    cleanModeToggle.checked =
+        clean;
+
+    body.classList.toggle(
+        "clean-mode",
+        clean
+    );
+
+
+    const performance =
+        readBool(
+            "dreamPerformance",
+            false
+        );
+
+    performanceToggle.checked =
+        performance;
+
+    body.classList.toggle(
+        "performance-mode",
+        performance
+    );
+
+
+    const particles =
+        readBool(
+            "dreamParticles",
+            true
+        );
+
+    particlesToggle.checked =
+        particles;
+
+    body.classList.toggle(
+        "no-particles",
+        !particles
+    );
+
+
+    const animations =
+        readBool(
+            "dreamAnimations",
+            true
+        );
+
+    animationsToggle.checked =
+        animations;
+
+    body.classList.toggle(
+        "no-animations",
+        !animations
+    );
+
+
+    const cursor =
+        readBool(
+            "dreamCursor",
+            true
+        );
+
+    cursorToggle.checked =
+        cursor;
+
+    body.classList.toggle(
+        "no-cursor",
+        !cursor
+    );
+
+
+    motion3dEnabled =
+        readBool(
+            "dreamMotion3d",
+            true
+        );
+
+    motion3dToggle.checked =
+        motion3dEnabled;
+
+
+    hapticEnabled =
+        readBool(
+            "dreamHaptic",
+            true
+        );
+
+    hapticToggle.checked =
+        hapticEnabled;
+
+
+    spraySoundEnabled =
+        readBool(
+            "dreamSpraySound",
+            true
+        );
+
+    spraySoundToggle.checked =
+        spraySoundEnabled;
+
+
+    const animationValue =
+        Number(
+            localStorage.getItem(
+                "dreamAnimationSpeed"
+            ) ||
+            100
+        );
+
+    animationSpeed.value =
+        animationValue;
+
+    animationSpeedValue.textContent =
+        `${animationValue}%`;
+
+    root.style.setProperty(
+        "--animation-speed",
+        100 /
+        animationValue
+    );
+
+
+    const motionValue =
+        Number(
+            localStorage.getItem(
+                "dreamMotion3dIntensity"
+            ) ||
+            100
+        );
+
+    motion3dRange.value =
+        motionValue;
+
+    motion3dValue.textContent =
+        `${motionValue}%`;
+
+    motion3dIntensity =
+        motionValue /
+        100;
+
+
+    const cursorValue =
+        Number(
+            localStorage.getItem(
+                "dreamCursorGlowIntensity"
+            ) ||
+            100
+        );
+
+    cursorGlowRange.value =
+        cursorValue;
+
+    cursorGlowValue.textContent =
+        `${cursorValue}%`;
+
+    cursorGlowIntensity =
+        cursorValue /
+        100;
+
+
+    const particleValue =
+        Number(
+            localStorage.getItem(
+                "dreamParticleIntensity"
+            ) ||
+            100
+        );
+
+    particleIntensityRange.value =
+        particleValue;
+
+    particleIntensityValue.textContent =
+        `${particleValue}%`;
+
+    particleIntensity =
+        particleValue /
+        100;
+
+
+    const sprayValue =
+        Number(
+            localStorage.getItem(
+                "dreamSprayIntensity"
+            ) ||
+            100
+        );
+
+    sprayIntensityRange.value =
+        sprayValue;
+
+    sprayIntensityValue.textContent =
+        `${sprayValue}%`;
+
+    sprayIntensity =
+        sprayValue /
+        100;
+
+
+    const contrast =
+        Number(
+            localStorage.getItem(
+                "dreamContrast"
+            ) ||
+            100
+        );
+
+    contrastControl.value =
+        contrast;
+
+    contrastValue.textContent =
+        `${contrast}%`;
+
+
+    setFontSize(
+        localStorage.getItem(
+            "dreamFontSize"
+        ) ||
+        "normal"
+    );
+
+
+    setDreamMusicVolume(
+        Number(
+            localStorage.getItem(
+                "dreamMusicVolume"
+            ) ||
+            35
+        ),
+        false
+    );
+
+
+    currentScene =
+        localStorage.getItem(
+            "dreamScene"
+        ) ||
+        "romance";
+
+    setScene(
+        currentScene,
+        false
+    );
+
+
+    const savedMood =
+        localStorage.getItem(
+            "dreamMood"
+        );
+
+    if (
+        savedMood &&
+        moodData[savedMood]
+    ) {
+
+        setMood(
+            savedMood,
+            false
+        );
+
+    }
+
+
+    generateParticles();
+
+}
+
+
+/* =========================================================
+   RESUME MUSIC
+========================================================= */
+
+function bindMusicResumeGesture() {
+
+    if (
+        localStorage.getItem(
+            "dreamMusicEnabled"
+        ) !==
+        "true"
+    ) {
+        return;
+    }
+
+    const resume =
+        () => {
+
+            playDreamMusic();
+
+        };
+
+    document.addEventListener(
+        "pointerdown",
+        resume,
+        {
+            once: true
+        }
+    );
+
+}
+
+
+/* =========================================================
+   RESIZE / VISIBILITY
+========================================================= */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        updateScroll();
+
+        updateSectionIndicator();
+
+        generateParticles();
+
+    }
+);
+
 
 document.addEventListener(
     "visibilitychange",
@@ -7821,11 +8129,7 @@ document.addEventListener(
                 galleryTimer
             );
 
-            return;
-
-        }
-
-        if (
+        } else if (
             galleryPlaying
         ) {
 
@@ -7838,118 +8142,29 @@ document.addEventListener(
 
 
 /* =========================================================
-   RETOMAR MÚSICA SALVA
-========================================================= */
-
-function bindMusicResumeGesture() {
-
-    const shouldResume =
-        localStorage.getItem(
-            "dreamMusicEnabled"
-        ) ===
-        "true";
-
-    if (
-        !shouldResume
-    ) {
-        return;
-    }
-
-    const resume =
-        () => {
-
-            playDreamMusic();
-
-            document.removeEventListener(
-                "pointerdown",
-                resume
-            );
-
-            document.removeEventListener(
-                "keydown",
-                resume
-            );
-
-        };
-
-    document.addEventListener(
-        "pointerdown",
-        resume,
-        {
-            once: true
-        }
-    );
-
-    document.addEventListener(
-        "keydown",
-        resume,
-        {
-            once: true
-        }
-    );
-
-}
-
-
-/* =========================================================
-   RESIZE
-========================================================= */
-
-let resizeTimer;
-
-
-window.addEventListener(
-    "resize",
-    () => {
-
-        clearTimeout(
-            resizeTimer
-        );
-
-        resizeTimer =
-            setTimeout(
-                () => {
-
-                    updateScroll();
-
-                    updateSectionIndicator();
-
-                    generateParticles();
-
-                    if (
-                        window.innerWidth >
-                        920
-                    ) {
-
-                        setMenuOpen(
-                            false
-                        );
-
-                    }
-
-                },
-                130
-            );
-
-    }
-);
-
-
-/* =========================================================
-   INICIALIZAÇÃO
+   INIT
 ========================================================= */
 
 try {
 
+    createGalleryDots();
+
     loadSettings();
 
-    updateTimeline();
+    setLanguage(
+        currentLanguage,
+        false
+    );
 
-    updateGalleryUI();
+    updateSprayCounter();
 
     updateScroll();
 
     updateSectionIndicator();
+
+    updateTimeline();
+
+    updateGalleryUI();
 
     updateMusicUI();
 
@@ -7966,12 +8181,10 @@ try {
             $$(".reveal").forEach(
                 element => {
 
-                    const rect =
-                        element
-                            .getBoundingClientRect();
-
                     if (
-                        rect.top <
+                        element
+                            .getBoundingClientRect()
+                            .top <
                         window.innerHeight *
                         1.1
                     ) {
@@ -7991,11 +8204,7 @@ try {
 
 
     console.log(
-        "Dream v50 carregado ♡"
-    );
-
-    console.log(
-        "Moonlight, spray, presets e performance ativos ✦"
+        "Dream v60 carregado ♡"
     );
 
 } catch (
@@ -8003,7 +8212,7 @@ try {
 ) {
 
     console.error(
-        "Erro ao iniciar Dream:",
+        "Erro ao iniciar Dream v60:",
         error
     );
 
