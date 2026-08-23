@@ -42,13 +42,13 @@
 
     <link
         rel="stylesheet"
-        href="./style.css?v=60"
+        href="./style.css?v=60.1"
     >
 
 </head>
 
 
-<body>
+<body class="font-normal">
 
 
     <!-- =====================================================
@@ -84,9 +84,7 @@
                 Dream<span>.</span>
             </h1>
 
-            <p
-                data-i18n="loader.subtitle"
-            >
+            <p data-i18n="loader.subtitle">
                 Amor no Ar
             </p>
 
@@ -94,9 +92,7 @@
                 <i></i>
             </div>
 
-            <small
-                data-i18n="loader.loading"
-            >
+            <small data-i18n="loader.loading">
                 preparando sua experiência
             </small>
 
@@ -113,11 +109,9 @@
         class="ambient-bg"
         aria-hidden="true"
     >
-
         <span class="ambient-orb ambient-orb-1"></span>
         <span class="ambient-orb ambient-orb-2"></span>
         <span class="ambient-orb ambient-orb-3"></span>
-
     </div>
 
 
@@ -159,83 +153,57 @@
             aria-label="Navegação principal"
         >
 
-            <a
-                href="#inicio"
-                data-i18n="nav.home"
-            >
+            <a href="#inicio" data-i18n="nav.home">
                 Início
             </a>
 
-            <a
-                href="#produto"
-                data-i18n="nav.product"
-            >
+            <a href="#produto" data-i18n="nav.product">
                 Produto
             </a>
 
-            <a
-                href="#campanha"
-                data-i18n="nav.campaign"
-            >
+            <a href="#campanha" data-i18n="nav.campaign">
                 Campanha
             </a>
 
-            <a
-                href="#notas"
-                data-i18n="nav.notes"
-            >
+            <a href="#notas" data-i18n="nav.notes">
                 Notas
             </a>
 
-            <a
-                href="#experiencia"
-                data-i18n="nav.experience"
-            >
+            <a href="#experiencia" data-i18n="nav.experience">
                 Experiência
             </a>
 
-            <a
-                href="#sensacao"
-                data-i18n="nav.feel"
-            >
+            <a href="#sensacao" data-i18n="nav.feel">
                 Sensação
             </a>
 
-            <a
-                href="#quando-usar"
-                data-i18n="nav.moments"
-            >
+            <a href="#quando-usar" data-i18n="nav.moments">
                 Momentos
             </a>
 
-            <a
-                href="#galeria"
-                data-i18n="nav.gallery"
-            >
+            <a href="#galeria" data-i18n="nav.gallery">
                 Galeria
             </a>
 
-            <a
-                href="#mood"
-                data-i18n="nav.mood"
-            >
+            <a href="#mood" data-i18n="nav.mood">
                 Mood
             </a>
 
-            <a
-                href="#quiz"
-                data-i18n="nav.quiz"
-            >
+            <a href="#quiz" data-i18n="nav.quiz">
                 Quiz
             </a>
 
         </nav>
 
 
+        <!--
+            IMPORTANTE:
+            O seletor de idioma está dentro de header-actions.
+            Não remover essa div.
+        -->
+
         <div class="header-actions">
 
-
-            <!-- LANGUAGE -->
 
             <div
                 class="language-switcher"
@@ -256,7 +224,10 @@
                 </button>
 
 
-                <span class="language-divider">
+                <span
+                    class="language-divider"
+                    aria-hidden="true"
+                >
                     /
                 </span>
 
@@ -276,13 +247,12 @@
             </div>
 
 
-            <!-- THEME -->
-
             <button
                 class="icon-btn"
                 id="themeButton"
                 type="button"
                 aria-label="Alternar tema"
+                title="Tema"
             >
                 ☾
             </button>
@@ -313,7 +283,7 @@
 
 
     <!-- =====================================================
-         MUSIC PLAYER
+         MUSIC
     ====================================================== -->
 
     <audio
@@ -350,9 +320,7 @@
 
             <div class="dream-music-info">
 
-                <span
-                    data-i18n="music.playing"
-                >
+                <span data-i18n="music.playing">
                     TOCANDO AGORA
                 </span>
 
@@ -373,7 +341,6 @@
                     0:00
                 </span>
 
-
                 <input
                     type="range"
                     id="musicProgress"
@@ -382,7 +349,6 @@
                     value="0"
                     aria-label="Progresso da música"
                 >
-
 
                 <span id="musicDuration">
                     0:00
@@ -435,26 +401,13 @@
             data-section-i18n="section.home"
         >
 
-            <div
-                class="hero-decoration hero-decoration-left"
-                aria-hidden="true"
-            ></div>
-
-            <div
-                class="hero-decoration hero-decoration-right"
-                aria-hidden="true"
-            ></div>
-
-
             <div class="hero-copy reveal">
 
                 <div class="hero-status">
 
                     <span></span>
 
-                    <b
-                        data-i18n="hero.status"
-                    >
+                    <b data-i18n="hero.status">
                         experiência interativa
                     </b>
 
@@ -483,14 +436,11 @@
                 </h1>
 
 
-                <p
-                    data-i18n="hero.description"
-                >
+                <p data-i18n="hero.description">
                     Uma fragrância delicada,
                     romântica e envolvente
                     para transformar pequenos
-                    momentos em lembranças
-                    especiais.
+                    momentos em lembranças especiais.
                 </p>
 
 
@@ -501,9 +451,7 @@
                         href="#produto"
                     >
 
-                        <span
-                            data-i18n="hero.discover"
-                        >
+                        <span data-i18n="hero.discover">
                             Descobrir o Dream
                         </span>
 
@@ -533,9 +481,7 @@
                             350 ml
                         </strong>
 
-                        <span
-                            data-i18n="hero.fact1"
-                        >
+                        <span data-i18n="hero.fact1">
                             Body Splash
                         </span>
 
@@ -551,9 +497,7 @@
                             Floral
                         </strong>
 
-                        <span
-                            data-i18n="hero.fact2"
-                        >
+                        <span data-i18n="hero.fact2">
                             Amadeirado
                         </span>
 
@@ -566,9 +510,7 @@
                             Dream
                         </strong>
 
-                        <span
-                            data-i18n="hero.fact3"
-                        >
+                        <span data-i18n="hero.fact3">
                             Amor no Ar
                         </span>
 
@@ -583,9 +525,7 @@
                         ✦
                     </span>
 
-                    <p
-                        data-i18n="hero.tip"
-                    >
+                    <p data-i18n="hero.tip">
                         Toque em borrifar para ativar
                         o efeito, áudio e animação.
                     </p>
@@ -607,29 +547,14 @@
                     id="productHalo"
                 ></div>
 
+                <div class="product-ring product-ring-one"></div>
+                <div class="product-ring product-ring-two"></div>
 
-                <div
-                    class="product-ring product-ring-one"
-                    aria-hidden="true"
-                ></div>
-
-
-                <div
-                    class="product-ring product-ring-two"
-                    aria-hidden="true"
-                ></div>
-
-
-                <div
-                    class="product-light"
-                    aria-hidden="true"
-                ></div>
-
+                <div class="product-light"></div>
 
                 <div
                     class="product-shine"
                     id="productShine"
-                    aria-hidden="true"
                 ></div>
 
 
@@ -641,29 +566,18 @@
                 </span>
 
 
-                <!-- SPRAY FX -->
-
                 <div
                     class="spray-area"
                     id="sprayArea"
-                    aria-hidden="true"
                 ></div>
-
 
                 <div
                     class="spray-wave"
                     id="sprayWave"
-                    aria-hidden="true"
                 ></div>
 
+                <div class="spray-glow"></div>
 
-                <div
-                    class="spray-glow"
-                    aria-hidden="true"
-                ></div>
-
-
-                <!-- BOTTLE -->
 
                 <div class="bottle-wrapper">
 
@@ -675,20 +589,12 @@
                         draggable="false"
                     >
 
-                    <div
-                        class="bottle-reflection"
-                        aria-hidden="true"
-                    ></div>
+                    <div class="bottle-reflection"></div>
 
-                    <div
-                        class="bottle-floor-shadow"
-                        aria-hidden="true"
-                    ></div>
+                    <div class="bottle-floor-shadow"></div>
 
                 </div>
 
-
-                <!-- SPRAY BUTTON -->
 
                 <button
                     class="spray-button"
@@ -702,15 +608,11 @@
 
                     <span class="spray-button-copy">
 
-                        <strong
-                            data-i18n="spray.button"
-                        >
+                        <strong data-i18n="spray.button">
                             Borrifar
                         </strong>
 
-                        <small
-                            data-i18n="spray.experience"
-                        >
+                        <small data-i18n="spray.experience">
                             experimentar
                         </small>
 
@@ -718,8 +620,6 @@
 
                 </button>
 
-
-                <!-- COUNTER -->
 
                 <div class="spray-counter-card">
 
@@ -736,9 +636,7 @@
                             0
                         </strong>
 
-                        <small
-                            data-i18n="spray.counter"
-                        >
+                        <small data-i18n="spray.counter">
                             BORRIFADAS
                         </small>
 
@@ -746,8 +644,6 @@
 
                 </div>
 
-
-                <!-- VOLUME -->
 
                 <div class="volume-badge">
 
@@ -772,15 +668,11 @@
                         DREAM
                     </span>
 
-                    <strong
-                        data-i18n="hero.productName"
-                    >
+                    <strong data-i18n="hero.productName">
                         Amor no Ar
                     </strong>
 
-                    <small
-                        data-i18n="hero.bodySplash"
-                    >
+                    <small data-i18n="hero.bodySplash">
                         Body Splash
                     </small>
 
@@ -795,20 +687,13 @@
              TICKER
         ================================================== -->
 
-        <section
-            class="ticker"
-            aria-label="Características"
-        >
+        <section class="ticker">
 
-            <div
-                data-i18n="ticker.floral"
-            >
+            <div data-i18n="ticker.floral">
                 ✿ Floral Amadeirado
             </div>
 
-            <div
-                data-i18n="ticker.love"
-            >
+            <div data-i18n="ticker.love">
                 ♡ Amor no Ar
             </div>
 
@@ -816,15 +701,11 @@
                 ✦ 350 ml
             </div>
 
-            <div
-                data-i18n="ticker.delicate"
-            >
+            <div data-i18n="ticker.delicate">
                 ☁ Delicado
             </div>
 
-            <div
-                data-i18n="ticker.romantic"
-            >
+            <div data-i18n="ticker.romantic">
                 ☾ Romântico
             </div>
 
@@ -858,7 +739,6 @@
 
                     <span
                         class="huge-word gradient-text-soft"
-                        aria-hidden="true"
                     >
                         LOVE
                     </span>
@@ -920,14 +800,11 @@
                     </h2>
 
 
-                    <p
-                        data-i18n="product.description"
-                    >
+                    <p data-i18n="product.description">
                         Dream Amor no Ar combina
-                        delicadeza, romantismo
-                        e personalidade em uma
-                        fragrância confortável
-                        para diferentes momentos.
+                        delicadeza, romantismo e
+                        personalidade em uma fragrância
+                        confortável para diferentes momentos.
                     </p>
 
 
@@ -948,9 +825,7 @@
                                     Floral delicado
                                 </strong>
 
-                                <p
-                                    data-i18n="product.point1Text"
-                                >
+                                <p data-i18n="product.point1Text">
                                     Uma assinatura leve,
                                     elegante e romântica.
                                 </p>
@@ -975,9 +850,7 @@
                                     Sensação confortável
                                 </strong>
 
-                                <p
-                                    data-i18n="product.point2Text"
-                                >
+                                <p data-i18n="product.point2Text">
                                     Para usar de forma
                                     leve durante o dia.
                                 </p>
@@ -1002,9 +875,7 @@
                                     Frasco de 350 ml
                                 </strong>
 
-                                <p
-                                    data-i18n="product.point3Text"
-                                >
+                                <p data-i18n="product.point3Text">
                                     Um Dream para acompanhar
                                     sua rotina.
                                 </p>
@@ -1063,9 +934,7 @@
                 loading="lazy"
             >
 
-
             <div class="campaign-overlay"></div>
-
             <div class="campaign-noise"></div>
 
 
@@ -1081,9 +950,7 @@
 
                 <h2>
 
-                    <span
-                        data-i18n="campaign.title1"
-                    >
+                    <span data-i18n="campaign.title1">
                         O amor está
                     </span>
 
@@ -1097,9 +964,7 @@
                 </h2>
 
 
-                <p
-                    data-i18n="campaign.description"
-                >
+                <p data-i18n="campaign.description">
                     Uma atmosfera romântica,
                     sofisticada e cheia
                     de personalidade.
@@ -1169,12 +1034,9 @@
                 </h2>
 
 
-                <p
-                    data-i18n="notes.description"
-                >
-                    Explore as diferentes
-                    camadas e descubra como
-                    a fragrância evolui.
+                <p data-i18n="notes.description">
+                    Explore as diferentes camadas
+                    e descubra como a fragrância evolui.
                 </p>
 
             </div>
@@ -1214,12 +1076,9 @@
                     </h3>
 
 
-                    <p
-                        data-i18n="notes.card1Text"
-                    >
-                        A primeira impressão
-                        da fragrância: luminosa,
-                        fresca e vibrante.
+                    <p data-i18n="notes.card1Text">
+                        A primeira impressão da fragrância:
+                        luminosa, fresca e vibrante.
                     </p>
 
 
@@ -1268,9 +1127,7 @@
                     </h3>
 
 
-                    <p
-                        data-i18n="notes.card2Text"
-                    >
+                    <p data-i18n="notes.card2Text">
                         O lado romântico,
                         delicado e elegante
                         de Amor no Ar.
@@ -1322,9 +1179,7 @@
                     </h3>
 
 
-                    <p
-                        data-i18n="notes.card3Text"
-                    >
+                    <p data-i18n="notes.card3Text">
                         As notas que permanecem
                         e deixam a assinatura final
                         da fragrância.
@@ -1346,7 +1201,9 @@
             </div>
 
         </section>
-                <!-- =================================================
+
+
+        <!-- =================================================
              EXPERIENCE
         ================================================== -->
 
@@ -1366,6 +1223,7 @@
                     SINTA A FRAGRÂNCIA
                 </span>
 
+
                 <h2>
 
                     <span data-i18n="experience.title1">
@@ -1381,9 +1239,8 @@
 
                 </h2>
 
-                <p
-                    data-i18n="experience.description"
-                >
+
+                <p data-i18n="experience.description">
                     Descubra a evolução da fragrância,
                     compare sensações e personalize
                     a experiência.
@@ -1394,8 +1251,6 @@
 
             <div class="experience-grid">
 
-
-                <!-- TIMELINE -->
 
                 <article class="experience-card reveal premium-card">
 
@@ -1414,12 +1269,14 @@
 
                     </div>
 
+
                     <h3
                         class="gradient-text"
                         data-i18n="experience.timelineTitle"
                     >
                         Timeline da fragrância
                     </h3>
+
 
                     <p
                         class="experience-intro"
@@ -1428,6 +1285,7 @@
                         Arraste para acompanhar
                         a evolução ao longo das horas.
                     </p>
+
 
                     <div class="timeline-display">
 
@@ -1438,13 +1296,12 @@
                             0h
                         </span>
 
-                        <small
-                            data-i18n="experience.evolutionLower"
-                        >
+                        <small data-i18n="experience.evolutionLower">
                             evolução
                         </small>
 
                     </div>
+
 
                     <input
                         id="timelineSlider"
@@ -1454,16 +1311,25 @@
                         max="8"
                         step="1"
                         value="0"
-                        aria-label="Evolução da fragrância"
                     >
+
 
                     <div class="timeline-labels">
 
-                        <span>0h</span>
-                        <span>4h</span>
-                        <span>8h</span>
+                        <span>
+                            0h
+                        </span>
+
+                        <span>
+                            4h
+                        </span>
+
+                        <span>
+                            8h
+                        </span>
 
                     </div>
+
 
                     <div class="timeline-stage premium-card">
 
@@ -1494,8 +1360,6 @@
                 </article>
 
 
-                <!-- PROFILE -->
-
                 <article class="experience-card reveal premium-card">
 
                     <div class="experience-card-head">
@@ -1513,6 +1377,7 @@
 
                     </div>
 
+
                     <h3
                         class="gradient-text"
                         data-i18n="experience.personality"
@@ -1520,14 +1385,15 @@
                         Personalidade
                     </h3>
 
+
                     <p
                         class="experience-intro"
                         data-i18n="experience.personalityIntro"
                     >
-                        Uma leitura visual
-                        das principais sensações
-                        de Dream.
+                        Uma leitura visual das principais
+                        sensações de Dream.
                     </p>
+
 
                     <div class="meters">
 
@@ -1640,8 +1506,6 @@
                 </article>
 
 
-                <!-- QUICK MOOD -->
-
                 <article class="experience-card reveal premium-card">
 
                     <div class="experience-card-head">
@@ -1659,6 +1523,7 @@
 
                     </div>
 
+
                     <h3
                         class="gradient-text"
                         data-i18n="experience.feelQuestion"
@@ -1666,14 +1531,15 @@
                         Como você quer se sentir?
                     </h3>
 
+
                     <p
                         class="experience-intro"
                         data-i18n="experience.feelIntro"
                     >
-                        Escolha uma atmosfera
-                        para transformar o visual
-                        da página.
+                        Escolha uma atmosfera para
+                        transformar o visual da página.
                     </p>
+
 
                     <div class="mood-buttons">
 
@@ -1683,9 +1549,7 @@
                             data-mood="romantico"
                         >
                             <span>♡</span>
-                            <span data-i18n="mood.romantic">
-                                Romântico
-                            </span>
+                            <span data-i18n="mood.romantic">Romântico</span>
                         </button>
 
                         <button
@@ -1694,9 +1558,7 @@
                             data-mood="sonhador"
                         >
                             <span>☾</span>
-                            <span data-i18n="mood.dreamy">
-                                Sonhador
-                            </span>
+                            <span data-i18n="mood.dreamy">Sonhador</span>
                         </button>
 
                         <button
@@ -1705,9 +1567,7 @@
                             data-mood="noturno"
                         >
                             <span>✦</span>
-                            <span data-i18n="mood.night">
-                                Noturno
-                            </span>
+                            <span data-i18n="mood.night">Noturno</span>
                         </button>
 
                         <button
@@ -1716,9 +1576,7 @@
                             data-mood="energia"
                         >
                             <span>⚡</span>
-                            <span data-i18n="mood.energy">
-                                Energia
-                            </span>
+                            <span data-i18n="mood.energy">Energia</span>
                         </button>
 
                         <button
@@ -1727,12 +1585,11 @@
                             data-mood="calmo"
                         >
                             <span>☁</span>
-                            <span data-i18n="mood.calm">
-                                Calmo
-                            </span>
+                            <span data-i18n="mood.calm">Calmo</span>
                         </button>
 
                     </div>
+
 
                     <div class="mood-hint">
 
@@ -1740,9 +1597,7 @@
                             ✦
                         </span>
 
-                        <p
-                            data-i18n="experience.moodHint"
-                        >
+                        <p data-i18n="experience.moodHint">
                             A identidade visual muda
                             automaticamente com o mood.
                         </p>
@@ -1754,9 +1609,7 @@
             </div>
 
         </section>
-
-
-        <!-- =================================================
+                <!-- =================================================
              DREAM MOMENT
         ================================================== -->
 
@@ -1772,6 +1625,7 @@
                 <div class="dream-moment-icon">
                     ✦
                 </div>
+
 
                 <div class="dream-moment-copy">
 
@@ -1796,6 +1650,7 @@
                     </p>
 
                 </div>
+
 
                 <button
                     class="secondary-btn gradient-border-btn"
@@ -1831,6 +1686,7 @@
                     SENSAÇÃO DA FRAGRÂNCIA
                 </span>
 
+
                 <h2>
 
                     <span data-i18n="feeling.title1">
@@ -1846,9 +1702,8 @@
 
                 </h2>
 
-                <p
-                    data-i18n="feeling.description"
-                >
+
+                <p data-i18n="feeling.description">
                     Uma representação visual
                     do equilíbrio de Dream Amor no Ar.
                 </p>
@@ -1860,23 +1715,13 @@
 
                 <div class="feeling-orbit reveal">
 
-                    <div
-                        class="feeling-ring feeling-ring-one"
-                        aria-hidden="true"
-                    ></div>
-
-                    <div
-                        class="feeling-ring feeling-ring-two"
-                        aria-hidden="true"
-                    ></div>
-
-                    <div
-                        class="feeling-ring feeling-ring-three"
-                        aria-hidden="true"
-                    ></div>
+                    <div class="feeling-ring feeling-ring-one"></div>
+                    <div class="feeling-ring feeling-ring-two"></div>
+                    <div class="feeling-ring feeling-ring-three"></div>
 
                     <div class="feeling-orbit-dot orbit-dot-one"></div>
                     <div class="feeling-orbit-dot orbit-dot-two"></div>
+
 
                     <div class="feeling-center premium-card">
 
@@ -1888,9 +1733,7 @@
                             DREAM
                         </strong>
 
-                        <small
-                            data-i18n="feeling.amorNoAr"
-                        >
+                        <small data-i18n="feeling.amorNoAr">
                             AMOR NO AR
                         </small>
 
@@ -1910,6 +1753,7 @@
                             PERFIL SENSORIAL
                         </span>
 
+
                         <h3
                             class="gradient-text"
                             data-i18n="feeling.bigTitle"
@@ -1917,9 +1761,8 @@
                             Delicado sem passar despercebido.
                         </h3>
 
-                        <p
-                            data-i18n="feeling.text"
-                        >
+
+                        <p data-i18n="feeling.text">
                             Dream equilibra um coração romântico
                             com uma base confortável,
                             criando uma presença suave.
@@ -1945,12 +1788,10 @@
                             </div>
 
                             <div class="feeling-meter-track">
-
                                 <i
                                     class="feeling-meter-fill"
                                     data-feeling="90"
                                 ></i>
-
                             </div>
 
                         </div>
@@ -1971,12 +1812,10 @@
                             </div>
 
                             <div class="feeling-meter-track">
-
                                 <i
                                     class="feeling-meter-fill"
                                     data-feeling="92"
                                 ></i>
-
                             </div>
 
                         </div>
@@ -1997,12 +1836,10 @@
                             </div>
 
                             <div class="feeling-meter-track">
-
                                 <i
                                     class="feeling-meter-fill"
                                     data-feeling="84"
                                 ></i>
-
                             </div>
 
                         </div>
@@ -2023,12 +1860,10 @@
                             </div>
 
                             <div class="feeling-meter-track">
-
                                 <i
                                     class="feeling-meter-fill"
                                     data-feeling="62"
                                 ></i>
-
                             </div>
 
                         </div>
@@ -2049,12 +1884,10 @@
                             </div>
 
                             <div class="feeling-meter-track">
-
                                 <i
                                     class="feeling-meter-fill"
                                     data-feeling="58"
                                 ></i>
-
                             </div>
 
                         </div>
@@ -2103,9 +1936,7 @@
 
                 </h2>
 
-                <p
-                    data-i18n="moments.description"
-                >
+                <p data-i18n="moments.description">
                     Escolha o cenário que mais combina
                     com a sua experiência.
                 </p>
@@ -2139,12 +1970,10 @@
                         Rotina leve
                     </h3>
 
-                    <p
-                        data-i18n="moments.card1Text"
-                    >
-                        Para começar o dia
-                        com uma sensação fresca,
-                        delicada e confortável.
+                    <p data-i18n="moments.card1Text">
+                        Para começar o dia com uma
+                        sensação fresca, delicada
+                        e confortável.
                     </p>
 
                     <div
@@ -2181,12 +2010,9 @@
                         Momento romântico
                     </h3>
 
-                    <p
-                        data-i18n="moments.card2Text"
-                    >
+                    <p data-i18n="moments.card2Text">
                         Uma atmosfera delicada
-                        para encontros e ocasiões
-                        especiais.
+                        para encontros e ocasiões especiais.
                     </p>
 
                     <div
@@ -2223,12 +2049,9 @@
                         Noite Dream
                     </h3>
 
-                    <p
-                        data-i18n="moments.card3Text"
-                    >
-                        Para quando você quer
-                        uma presença suave,
-                        envolvente e elegante.
+                    <p data-i18n="moments.card3Text">
+                        Para quando você quer uma presença
+                        suave, envolvente e elegante.
                     </p>
 
                     <div
@@ -2265,9 +2088,7 @@
                         Seu momento
                     </h3>
 
-                    <p
-                        data-i18n="moments.card4Text"
-                    >
+                    <p data-i18n="moments.card4Text">
                         Alguns momentos não precisam
                         de ocasião. Basta serem seus.
                     </p>
@@ -2299,17 +2120,13 @@
 
             <div class="dream-scene-bg"></div>
 
-            <div
-                class="dream-scene-stars"
-                aria-hidden="true"
-            >
 
+            <div class="dream-scene-stars">
                 <i></i>
                 <i></i>
                 <i></i>
                 <i></i>
                 <i></i>
-
             </div>
 
 
@@ -2334,9 +2151,7 @@
 
                 </h2>
 
-                <p
-                    data-i18n="scene.description"
-                >
+                <p data-i18n="scene.description">
                     Mude o cenário e descubra
                     diferentes lados de Dream.
                 </p>
@@ -2360,15 +2175,11 @@
 
                         <div>
 
-                            <strong
-                                data-i18n="scene.romance"
-                            >
+                            <strong data-i18n="scene.romance">
                                 Romance
                             </strong>
 
-                            <small
-                                data-i18n="scene.delicate"
-                            >
+                            <small data-i18n="scene.delicate">
                                 delicado
                             </small>
 
@@ -2389,15 +2200,11 @@
 
                         <div>
 
-                            <strong
-                                data-i18n="scene.sky"
-                            >
+                            <strong data-i18n="scene.sky">
                                 Céu
                             </strong>
 
-                            <small
-                                data-i18n="scene.dreamy"
-                            >
+                            <small data-i18n="scene.dreamy">
                                 sonhador
                             </small>
 
@@ -2418,15 +2225,11 @@
 
                         <div>
 
-                            <strong
-                                data-i18n="scene.flowers"
-                            >
+                            <strong data-i18n="scene.flowers">
                                 Flores
                             </strong>
 
-                            <small
-                                data-i18n="scene.romantic"
-                            >
+                            <small data-i18n="scene.romantic">
                                 romântico
                             </small>
 
@@ -2447,15 +2250,11 @@
 
                         <div>
 
-                            <strong
-                                data-i18n="scene.energy"
-                            >
+                            <strong data-i18n="scene.energy">
                                 Energia
                             </strong>
 
-                            <small
-                                data-i18n="scene.intense"
-                            >
+                            <small data-i18n="scene.intense">
                                 intenso
                             </small>
 
@@ -2468,14 +2267,13 @@
 
                 <div class="scene-result reveal premium-card">
 
-                    <div class="scene-result-decoration"></div>
-
                     <span
                         class="scene-result-icon"
                         id="sceneResultIcon"
                     >
                         ♡
                     </span>
+
 
                     <div class="scene-result-copy">
 
@@ -2574,9 +2372,7 @@
 
                 </h2>
 
-                <p
-                    data-i18n="gallery.description"
-                >
+                <p data-i18n="gallery.description">
                     Arraste com o mouse,
                     deslize no celular
                     ou use as setas.
@@ -2591,7 +2387,6 @@
                     class="gallery-arrow gallery-arrow-left"
                     id="galleryPrev"
                     type="button"
-                    aria-label="Imagem anterior"
                 >
                     ‹
                 </button>
@@ -2603,10 +2398,7 @@
                     tabindex="0"
                 >
 
-                    <article
-                        class="gallery-item premium-card"
-                        data-gallery-index="0"
-                    >
+                    <article class="gallery-item premium-card">
 
                         <img
                             src="./img/DREAM.png"
@@ -2630,9 +2422,7 @@
                                 Dream World
                             </h3>
 
-                            <span
-                                data-i18n="gallery.explore"
-                            >
+                            <span data-i18n="gallery.explore">
                                 explorar ↗
                             </span>
 
@@ -2641,10 +2431,7 @@
                     </article>
 
 
-                    <article
-                        class="gallery-item premium-card"
-                        data-gallery-index="1"
-                    >
+                    <article class="gallery-item premium-card">
 
                         <img
                             src="./img/DREAM (2).png"
@@ -2668,9 +2455,7 @@
                                 Amor no Ar
                             </h3>
 
-                            <span
-                                data-i18n="gallery.explore"
-                            >
+                            <span data-i18n="gallery.explore">
                                 explorar ↗
                             </span>
 
@@ -2679,10 +2464,7 @@
                     </article>
 
 
-                    <article
-                        class="gallery-item premium-card"
-                        data-gallery-index="2"
-                    >
+                    <article class="gallery-item premium-card">
 
                         <img
                             src="./img/DREAM AMOR NO AR.png"
@@ -2706,9 +2488,7 @@
                                 Romance Dream
                             </h3>
 
-                            <span
-                                data-i18n="gallery.explore"
-                            >
+                            <span data-i18n="gallery.explore">
                                 explorar ↗
                             </span>
 
@@ -2717,10 +2497,7 @@
                     </article>
 
 
-                    <article
-                        class="gallery-item premium-card"
-                        data-gallery-index="3"
-                    >
+                    <article class="gallery-item premium-card">
 
                         <img
                             src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
@@ -2741,9 +2518,7 @@
                                 Dream 350 ml
                             </h3>
 
-                            <span
-                                data-i18n="gallery.explore"
-                            >
+                            <span data-i18n="gallery.explore">
                                 explorar ↗
                             </span>
 
@@ -2758,7 +2533,6 @@
                     class="gallery-arrow gallery-arrow-right"
                     id="galleryNext"
                     type="button"
-                    aria-label="Próxima imagem"
                 >
                     ›
                 </button>
@@ -2848,9 +2622,7 @@
 
                 </h2>
 
-                <p
-                    data-i18n="mood.description"
-                >
+                <p data-i18n="mood.description">
                     Cada mood muda a identidade
                     visual da experiência.
                 </p>
@@ -2865,24 +2637,10 @@
                     class="mood-card mood-button active premium-card"
                     data-mood="romantico"
                 >
-
                     <span>♡</span>
-
-                    <strong
-                        class="gradient-text"
-                        data-i18n="mood.romantic"
-                    >
-                        Romântico
-                    </strong>
-
-                    <small
-                        data-i18n="mood.delicate"
-                    >
-                        delicado
-                    </small>
-
+                    <strong class="gradient-text" data-i18n="mood.romantic">Romântico</strong>
+                    <small data-i18n="mood.delicate">delicado</small>
                     <i></i>
-
                 </button>
 
 
@@ -2891,24 +2649,10 @@
                     class="mood-card mood-button premium-card"
                     data-mood="sonhador"
                 >
-
                     <span>☾</span>
-
-                    <strong
-                        class="gradient-text"
-                        data-i18n="mood.dreamy"
-                    >
-                        Sonhador
-                    </strong>
-
-                    <small
-                        data-i18n="mood.light"
-                    >
-                        leve
-                    </small>
-
+                    <strong class="gradient-text" data-i18n="mood.dreamy">Sonhador</strong>
+                    <small data-i18n="mood.light">leve</small>
                     <i></i>
-
                 </button>
 
 
@@ -2917,24 +2661,10 @@
                     class="mood-card mood-button premium-card"
                     data-mood="noturno"
                 >
-
                     <span>✦</span>
-
-                    <strong
-                        class="gradient-text"
-                        data-i18n="mood.night"
-                    >
-                        Noturno
-                    </strong>
-
-                    <small
-                        data-i18n="mood.mysterious"
-                    >
-                        misterioso
-                    </small>
-
+                    <strong class="gradient-text" data-i18n="mood.night">Noturno</strong>
+                    <small data-i18n="mood.mysterious">misterioso</small>
                     <i></i>
-
                 </button>
 
 
@@ -2943,24 +2673,10 @@
                     class="mood-card mood-button premium-card"
                     data-mood="energia"
                 >
-
                     <span>⚡</span>
-
-                    <strong
-                        class="gradient-text"
-                        data-i18n="mood.energy"
-                    >
-                        Energia
-                    </strong>
-
-                    <small
-                        data-i18n="mood.intense"
-                    >
-                        intenso
-                    </small>
-
+                    <strong class="gradient-text" data-i18n="mood.energy">Energia</strong>
+                    <small data-i18n="mood.intense">intenso</small>
                     <i></i>
-
                 </button>
 
 
@@ -2969,24 +2685,10 @@
                     class="mood-card mood-button premium-card"
                     data-mood="calmo"
                 >
-
                     <span>☁</span>
-
-                    <strong
-                        class="gradient-text"
-                        data-i18n="mood.calm"
-                    >
-                        Calmo
-                    </strong>
-
-                    <small
-                        data-i18n="mood.comfortable"
-                    >
-                        confortável
-                    </small>
-
+                    <strong class="gradient-text" data-i18n="mood.calm">Calmo</strong>
+                    <small data-i18n="mood.comfortable">confortável</small>
                     <i></i>
-
                 </button>
 
             </div>
@@ -3031,9 +2733,7 @@
                         Qual é o seu Dream?
                     </h2>
 
-                    <p
-                        data-i18n="quiz.description"
-                    >
+                    <p data-i18n="quiz.description">
                         Responda quatro perguntas
                         e descubra qual atmosfera
                         combina mais com você.
@@ -3068,7 +2768,6 @@
                         </div>
 
                     </div>
-
 
                     <div
                         class="quiz-question-number gradient-text"
@@ -3159,7 +2858,9 @@
             </div>
 
         </section>
-                <!-- =================================================
+
+
+        <!-- =================================================
              FINAL CTA
         ================================================== -->
 
@@ -3193,9 +2894,7 @@
 
                 </h2>
 
-                <p
-                    data-i18n="final.description"
-                >
+                <p data-i18n="final.description">
                     Explore as notas,
                     encontre seu mood
                     e crie sua própria
@@ -3236,7 +2935,6 @@
 
         </section>
 
-
     </main>
 
 
@@ -3249,12 +2947,9 @@
         id="productModal"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="productModalTitle"
     >
 
-        <div
-            class="product-modal-backdrop close-product"
-        ></div>
+        <div class="product-modal-backdrop close-product"></div>
 
 
         <div class="product-modal-card premium-card">
@@ -3262,7 +2957,6 @@
             <button
                 class="modal-close close-product"
                 type="button"
-                aria-label="Fechar"
             >
                 ×
             </button>
@@ -3271,14 +2965,11 @@
             <div class="product-modal-image">
 
                 <div class="product-modal-halo"></div>
-
                 <div class="product-modal-ring"></div>
-
 
                 <img
                     src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
                     alt="Dream Amor no Ar 350 ml"
-                    loading="lazy"
                 >
 
             </div>
@@ -3293,25 +2984,16 @@
                     DREAM AMOR NO AR
                 </span>
 
-                <h2
-                    id="productModalTitle"
-                >
-
+                <h2>
                     Dream
-
                     <span class="gradient-text-light">
                         350 ml
                     </span>
-
                 </h2>
 
-                <p
-                    data-i18n="modal.productDescription"
-                >
+                <p data-i18n="modal.productDescription">
                     Uma fragrância floral,
-                    romântica e envolvente,
-                    pensada para acompanhar
-                    momentos leves e especiais.
+                    romântica e envolvente.
                 </p>
 
 
@@ -3343,9 +3025,7 @@
 
                     <div>
 
-                        <small
-                            data-i18n="modal.profile"
-                        >
+                        <small data-i18n="modal.profile">
                             PERFIL
                         </small>
 
@@ -3361,9 +3041,7 @@
 
                     <div>
 
-                        <small
-                            data-i18n="modal.experience"
-                        >
+                        <small data-i18n="modal.experience">
                             EXPERIÊNCIA
                         </small>
 
@@ -3415,14 +3093,9 @@
     <div
         class="note-modal"
         id="noteModal"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="noteModalTitle"
     >
 
-        <div
-            class="note-modal-backdrop close-note"
-        ></div>
+        <div class="note-modal-backdrop close-note"></div>
 
 
         <div class="note-modal-card premium-card">
@@ -3430,14 +3103,11 @@
             <button
                 class="modal-close close-note"
                 type="button"
-                aria-label="Fechar"
             >
                 ×
             </button>
 
-
             <div class="note-modal-decoration"></div>
-
 
             <span
                 class="note-modal-icon"
@@ -3446,7 +3116,6 @@
                 ✿
             </span>
 
-
             <small
                 class="gradient-text-light"
                 data-i18n="modal.noteLabel"
@@ -3454,14 +3123,12 @@
                 NOTA DREAM
             </small>
 
-
             <h3
                 class="gradient-text-light"
                 id="noteModalTitle"
             >
                 Nota
             </h3>
-
 
             <p id="noteModalText">
                 Descrição da nota.
@@ -3479,9 +3146,6 @@
     <div
         class="lightbox"
         id="lightbox"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Galeria ampliada"
     >
 
         <div
@@ -3494,7 +3158,6 @@
             class="lightbox-close"
             id="lightboxClose"
             type="button"
-            aria-label="Fechar imagem"
         >
             ×
         </button>
@@ -3504,7 +3167,6 @@
             class="lightbox-nav lightbox-prev"
             id="lightboxPrev"
             type="button"
-            aria-label="Imagem anterior"
         >
             ‹
         </button>
@@ -3543,7 +3205,6 @@
 
                 </div>
 
-
                 <span id="lightboxCounter">
                     01 / 04
                 </span>
@@ -3557,7 +3218,6 @@
             class="lightbox-nav lightbox-next"
             id="lightboxNext"
             type="button"
-            aria-label="Próxima imagem"
         >
             ›
         </button>
@@ -3566,14 +3226,13 @@
 
 
     <!-- =====================================================
-         DREAM STUDIO BUTTON
+         DREAM STUDIO FAB
     ====================================================== -->
 
     <button
         class="settings-fab"
         id="settingsButton"
         type="button"
-        aria-label="Abrir Dream Studio"
     >
         <span>
             ✦
@@ -3588,7 +3247,6 @@
     <aside
         class="settings-panel"
         id="settingsPanel"
-        aria-label="Dream Studio"
     >
 
         <div class="settings-panel-head">
@@ -3607,9 +3265,7 @@
                     do seu jeito.
                 </h3>
 
-                <p
-                    data-i18n="studio.description"
-                >
+                <p data-i18n="studio.description">
                     Personalize visual,
                     áudio e movimento.
                 </p>
@@ -3621,7 +3277,6 @@
                 class="settings-close"
                 id="closeSettings"
                 type="button"
-                aria-label="Fechar Dream Studio"
             >
                 ×
             </button>
@@ -3648,7 +3303,6 @@
                     type="button"
                     data-lang="pt-BR"
                 >
-
                     <span>
                         🇧🇷
                     </span>
@@ -3660,7 +3314,6 @@
                     <small>
                         Brasil
                     </small>
-
                 </button>
 
 
@@ -3669,7 +3322,6 @@
                     type="button"
                     data-lang="en-US"
                 >
-
                     <span>
                         🇺🇸
                     </span>
@@ -3681,7 +3333,6 @@
                     <small>
                         United States
                     </small>
-
                 </button>
 
             </div>
@@ -3711,7 +3362,6 @@
                     ✦ Dream
                 </button>
 
-
                 <button
                     class="preset-button"
                     data-preset="cinematic"
@@ -3720,7 +3370,6 @@
                     ◉ Cinematic
                 </button>
 
-
                 <button
                     class="preset-button"
                     data-preset="soft"
@@ -3728,7 +3377,6 @@
                 >
                     ☁ Soft
                 </button>
-
 
                 <button
                     class="preset-button"
@@ -3758,19 +3406,13 @@
             <label class="switch-row">
 
                 <div>
-
-                    <strong
-                        data-i18n="studio.dark"
-                    >
+                    <strong data-i18n="studio.dark">
                         Modo escuro
                     </strong>
 
-                    <small
-                        data-i18n="studio.darkDesc"
-                    >
+                    <small data-i18n="studio.darkDesc">
                         Alternar tema
                     </small>
-
                 </div>
 
                 <input
@@ -3784,17 +3426,13 @@
             <label class="switch-row">
 
                 <div>
-
                     <strong>
                         Glass effect
                     </strong>
 
-                    <small
-                        data-i18n="studio.glassDesc"
-                    >
+                    <small data-i18n="studio.glassDesc">
                         Transparência e desfoque
                     </small>
-
                 </div>
 
                 <input
@@ -3809,19 +3447,13 @@
             <label class="switch-row">
 
                 <div>
-
-                    <strong
-                        data-i18n="studio.clean"
-                    >
+                    <strong data-i18n="studio.clean">
                         Modo clean
                     </strong>
 
-                    <small
-                        data-i18n="studio.cleanDesc"
-                    >
+                    <small data-i18n="studio.cleanDesc">
                         Experiência mais minimalista
                     </small>
-
                 </div>
 
                 <input
@@ -3835,19 +3467,13 @@
             <label class="switch-row">
 
                 <div>
-
-                    <strong
-                        data-i18n="studio.performance"
-                    >
+                    <strong data-i18n="studio.performance">
                         Modo performance
                     </strong>
 
-                    <small
-                        data-i18n="studio.performanceDesc"
-                    >
+                    <small data-i18n="studio.performanceDesc">
                         Reduz efeitos mais pesados
                     </small>
-
                 </div>
 
                 <input
@@ -3874,61 +3500,32 @@
 
             <div class="palette-grid">
 
-                <button
-                    type="button"
-                    class="palette active"
-                    data-palette="dream"
-                >
+                <button class="palette active" data-palette="dream" type="button">
                     <i></i>
                     <span>Dream</span>
                 </button>
 
-
-                <button
-                    type="button"
-                    class="palette"
-                    data-palette="roxo"
-                >
+                <button class="palette" data-palette="roxo" type="button">
                     <i></i>
                     <span>Roxo</span>
                 </button>
 
-
-                <button
-                    type="button"
-                    class="palette"
-                    data-palette="azul"
-                >
+                <button class="palette" data-palette="azul" type="button">
                     <i></i>
                     <span>Azul</span>
                 </button>
 
-
-                <button
-                    type="button"
-                    class="palette"
-                    data-palette="cherry"
-                >
+                <button class="palette" data-palette="cherry" type="button">
                     <i></i>
                     <span>Cherry</span>
                 </button>
 
-
-                <button
-                    type="button"
-                    class="palette"
-                    data-palette="gold"
-                >
+                <button class="palette" data-palette="gold" type="button">
                     <i></i>
                     <span>Gold</span>
                 </button>
 
-
-                <button
-                    type="button"
-                    class="palette"
-                    data-palette="menta"
-                >
+                <button class="palette" data-palette="menta" type="button">
                     <i></i>
                     <span>Menta</span>
                 </button>
@@ -4003,19 +3600,13 @@
             <label class="switch-row">
 
                 <div>
-
-                    <strong
-                        data-i18n="studio.particles"
-                    >
+                    <strong data-i18n="studio.particles">
                         Partículas
                     </strong>
 
-                    <small
-                        data-i18n="studio.particlesDesc"
-                    >
+                    <small data-i18n="studio.particlesDesc">
                         Elementos flutuantes
                     </small>
-
                 </div>
 
                 <input
@@ -4030,19 +3621,13 @@
             <label class="switch-row">
 
                 <div>
-
-                    <strong
-                        data-i18n="studio.animations"
-                    >
+                    <strong data-i18n="studio.animations">
                         Animações
                     </strong>
 
-                    <small
-                        data-i18n="studio.animationsDesc"
-                    >
+                    <small data-i18n="studio.animationsDesc">
                         Transições da experiência
                     </small>
-
                 </div>
 
                 <input
@@ -4057,17 +3642,13 @@
             <label class="switch-row">
 
                 <div>
-
                     <strong>
                         Cursor Glow
                     </strong>
 
-                    <small
-                        data-i18n="studio.cursorDesc"
-                    >
+                    <small data-i18n="studio.cursorDesc">
                         Iluminação que acompanha o mouse
                     </small>
-
                 </div>
 
                 <input
@@ -4082,19 +3663,13 @@
             <label class="switch-row">
 
                 <div>
-
-                    <strong
-                        data-i18n="studio.motion"
-                    >
+                    <strong data-i18n="studio.motion">
                         Movimento 3D
                     </strong>
 
-                    <small
-                        data-i18n="studio.motionDesc"
-                    >
+                    <small data-i18n="studio.motionDesc">
                         Profundidade do frasco
                     </small>
-
                 </div>
 
                 <input
@@ -4109,19 +3684,13 @@
             <label class="switch-row">
 
                 <div>
-
-                    <strong
-                        data-i18n="studio.haptic"
-                    >
+                    <strong data-i18n="studio.haptic">
                         Vibração do spray
                     </strong>
 
-                    <small
-                        data-i18n="studio.hapticDesc"
-                    >
+                    <small data-i18n="studio.hapticDesc">
                         Feedback em aparelhos compatíveis
                     </small>
-
                 </div>
 
                 <input
@@ -4136,19 +3705,13 @@
             <label class="switch-row">
 
                 <div>
-
-                    <strong
-                        data-i18n="studio.spraySound"
-                    >
+                    <strong data-i18n="studio.spraySound">
                         Som do borrifador
                     </strong>
 
-                    <small
-                        data-i18n="studio.spraySoundDesc"
-                    >
+                    <small data-i18n="studio.spraySoundDesc">
                         Reproduzir efeito ao borrifar
                     </small>
-
                 </div>
 
                 <input
@@ -4198,19 +3761,13 @@
             <label class="switch-row">
 
                 <div>
-
-                    <strong
-                        data-i18n="studio.backgroundMusic"
-                    >
+                    <strong data-i18n="studio.backgroundMusic">
                         Música de fundo
                     </strong>
 
-                    <small
-                        data-i18n="studio.backgroundMusicDesc"
-                    >
+                    <small data-i18n="studio.backgroundMusicDesc">
                         Ativar ou pausar Moonlight
                     </small>
-
                 </div>
 
                 <input
@@ -4224,17 +3781,13 @@
             <div class="range-setting">
 
                 <div>
-
-                    <strong
-                        data-i18n="studio.volume"
-                    >
+                    <strong data-i18n="studio.volume">
                         Volume
                     </strong>
 
                     <span id="musicVolumeValue">
                         35%
                     </span>
-
                 </div>
 
                 <input
@@ -4265,17 +3818,13 @@
             <div class="range-setting">
 
                 <div>
-
-                    <strong
-                        data-i18n="studio.speed"
-                    >
+                    <strong data-i18n="studio.speed">
                         Velocidade
                     </strong>
 
                     <span id="animationSpeedValue">
                         100%
                     </span>
-
                 </div>
 
                 <input
@@ -4292,17 +3841,13 @@
             <div class="range-setting">
 
                 <div>
-
-                    <strong
-                        data-i18n="studio.motionIntensity"
-                    >
+                    <strong data-i18n="studio.motionIntensity">
                         Intensidade 3D
                     </strong>
 
                     <span id="motion3dValue">
                         100%
                     </span>
-
                 </div>
 
                 <input
@@ -4319,7 +3864,6 @@
             <div class="range-setting">
 
                 <div>
-
                     <strong>
                         Cursor Glow
                     </strong>
@@ -4327,7 +3871,6 @@
                     <span id="cursorGlowValue">
                         100%
                     </span>
-
                 </div>
 
                 <input
@@ -4344,17 +3887,13 @@
             <div class="range-setting">
 
                 <div>
-
-                    <strong
-                        data-i18n="studio.particleIntensity"
-                    >
+                    <strong data-i18n="studio.particleIntensity">
                         Partículas
                     </strong>
 
                     <span id="particleIntensityValue">
                         100%
                     </span>
-
                 </div>
 
                 <input
@@ -4371,17 +3910,13 @@
             <div class="range-setting">
 
                 <div>
-
-                    <strong
-                        data-i18n="studio.sprayIntensity"
-                    >
+                    <strong data-i18n="studio.sprayIntensity">
                         Borrifador
                     </strong>
 
                     <span id="sprayIntensityValue">
                         100%
                     </span>
-
                 </div>
 
                 <input
@@ -4397,7 +3932,7 @@
         </div>
 
 
-        <!-- ACCESSIBILITY -->
+        <!-- READING -->
 
         <div class="settings-group">
 
@@ -4412,17 +3947,13 @@
             <div class="range-setting">
 
                 <div>
-
-                    <strong
-                        data-i18n="studio.contrast"
-                    >
+                    <strong data-i18n="studio.contrast">
                         Contraste
                     </strong>
 
                     <span id="contrastValue">
                         100%
                     </span>
-
                 </div>
 
                 <input
@@ -4438,9 +3969,7 @@
 
             <div class="font-size-setting">
 
-                <span
-                    data-i18n="studio.textSize"
-                >
+                <span data-i18n="studio.textSize">
                     Tamanho do texto
                 </span>
 
@@ -4505,20 +4034,15 @@
         class="section-indicator"
         id="sectionIndicator"
     >
-
         <span>
             01
         </span>
 
         Início
-
     </div>
 
 
-    <div
-        class="keyboard-hints"
-        aria-hidden="true"
-    >
+    <div class="keyboard-hints">
 
         <span>
             <kbd>S</kbd>
@@ -4547,14 +4071,13 @@
         class="back-top"
         id="backTop"
         type="button"
-        aria-label="Voltar ao topo"
     >
         ↑
     </button>
 
 
     <!-- =====================================================
-         FOOTER NOVO
+         FOOTER
     ====================================================== -->
 
     <footer class="footer-v60">
@@ -4569,22 +4092,11 @@
                 Dream<span>.</span>
             </a>
 
-            <p
-                data-i18n="footer.subtitle"
-            >
+            <p data-i18n="footer.subtitle">
                 Amor no Ar • 350 ml
             </p>
 
         </div>
-
-
-        <!--
-            REMOVIDO:
-            Produto
-            Notas
-            Galeria
-            Quiz
-        -->
 
 
         <div class="developer-area">
@@ -4644,7 +4156,6 @@
 
                 </div>
 
-
             </div>
 
         </div>
@@ -4679,7 +4190,7 @@
          SCRIPT
     ====================================================== -->
 
-    <script src="./script.js?v=60"></script>
+    <script src="./script.js?v=60.1"></script>
 
 
     <!-- =====================================================
