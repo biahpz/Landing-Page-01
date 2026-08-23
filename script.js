@@ -1358,10 +1358,6 @@ document.addEventListener("DOMContentLoaded", () => {
         },
 
 
-        /* =================================================
-           ENGLISH
-        ================================================= */
-
         "en-US": {
 
             "loader.subtitle":
@@ -1857,7 +1853,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 "↻ Reset settings"
         }
     };
-        let currentLanguage =
+
+
+    let currentLanguage =
         storage.get(
             "dreamLanguage",
             "pt-BR"
@@ -2736,19 +2734,6 @@ document.addEventListener("DOMContentLoaded", () => {
             )
         ) || 100;
 
-
-    /* =====================================================
-       ÁUDIO DO BORRIFADOR
-
-       PRIMEIRO tenta achar:
-       <audio id="sprayAudio">
-
-       Se não existir, cria usando:
-       ./audio/spray.mp3
-
-       Então coloque seu MP3 nessa pasta com
-       o nome spray.mp3.
-    ===================================================== */
 
     const sprayAudio =
         $("#sprayAudio") ||
@@ -3689,11 +3674,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       CONTINUA NA PARTE 2
-    ===================================================== */
-
-
-    /* =====================================================
        DREAM MOMENT
     ===================================================== */
 
@@ -4082,68 +4062,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     updateTimeline();
-
-
-    /* =====================================================
-       MOMENT CARDS
-    ===================================================== */
-
-    const momentCards =
-        $$(
-            ".moment-card, [data-moment]"
-        );
-
-
-    momentCards.forEach(
-        card => {
-
-            card.addEventListener(
-                "click",
-                () => {
-
-                    momentCards.forEach(
-                        item => {
-
-                            item.classList.remove(
-                                "active"
-                            );
-                        }
-                    );
-
-
-                    card.classList.add(
-                        "active"
-                    );
-
-
-                    const mood =
-                        card.dataset.mood;
-
-
-                    if (
-                        mood
-                    ) {
-
-                        applyMood(
-                            mood
-                        );
-                    }
-                }
-            );
-        }
-    );
-
-
-    /* =====================================================
+        /* =====================================================
        FAVORITO
     ===================================================== */
 
     const favoriteButton =
         $("#favoriteButton");
-
-
-    const favoriteModal =
-        $("#favoriteModal");
 
 
     let favorite =
@@ -4158,35 +4082,28 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
 
         if (
-            favoriteButton
+            !favoriteButton
         ) {
-
-            favoriteButton.classList.toggle(
-                "active",
-                favorite
-            );
-
-
-            const icon =
-                $(".favorite-icon", favoriteButton);
-
-
-            if (
-                icon
-            ) {
-
-                icon.textContent =
-                    favorite
-                        ? "♥"
-                        : "♡";
-            }
-
-
-            favoriteButton.setAttribute(
-                "aria-pressed",
-                String(favorite)
-            );
+            return;
         }
+
+
+        favoriteButton.classList.toggle(
+            "active",
+            favorite
+        );
+
+
+        favoriteButton.textContent =
+            favorite
+                ? "♥"
+                : "♡";
+
+
+        favoriteButton.setAttribute(
+            "aria-pressed",
+            String(favorite)
+        );
 
 
         storage.set(
@@ -4200,17 +4117,18 @@ document.addEventListener("DOMContentLoaded", () => {
         ) {
 
             showToast(
-                currentLanguage ===
-                    "pt-BR"
+                favorite
                     ? (
-                        favorite
-                            ? "Dream adicionado aos favoritos ♡"
-                            : "Dream removido dos favoritos"
+                        currentLanguage ===
+                            "pt-BR"
+                            ? "Adicionado aos favoritos ♡"
+                            : "Added to favorites ♡"
                     )
                     : (
-                        favorite
-                            ? "Dream added to favorites ♡"
-                            : "Dream removed from favorites"
+                        currentLanguage ===
+                            "pt-BR"
+                            ? "Removido dos favoritos"
+                            : "Removed from favorites"
                     )
             );
         }
@@ -4228,23 +4146,6 @@ document.addEventListener("DOMContentLoaded", () => {
             updateFavorite(
                 true
             );
-
-
-            if (
-                favorite &&
-                favoriteModal
-            ) {
-
-                favoriteModal.classList.add(
-                    "open"
-                );
-
-
-                favoriteModal.setAttribute(
-                    "aria-hidden",
-                    "false"
-                );
-            }
         }
     );
 
@@ -4306,20 +4207,17 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        if (
-            !$(".modal.open")
-        ) {
-
-            body.classList.remove(
-                "modal-open"
-            );
-        }
+        body.classList.remove(
+            "modal-open"
+        );
     }
 
 
     const productModal =
         $("#productModal");
-            $$(
+
+
+    $$(
         "#productDetailsButton, #viewProductButton, [data-open-product]"
     ).forEach(
         button => {
@@ -4849,11 +4747,6 @@ document.addEventListener("DOMContentLoaded", () => {
             item.addEventListener(
                 "click",
                 event => {
-
-                    /*
-                       Evita abrir ao terminar
-                       um drag grande.
-                    */
 
                     if (
                         galleryTrack?.classList.contains(
@@ -6110,8 +6003,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function restoreSettings() {
 
-        /* DARK */
-
         const dark =
             storage.get(
                 "dreamDark",
@@ -6124,8 +6015,6 @@ document.addEventListener("DOMContentLoaded", () => {
             false
         );
 
-
-        /* GLASS */
 
         const glass =
             storage.get(
@@ -6149,8 +6038,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /* CLEAN */
-
         const clean =
             storage.get(
                 "dreamClean",
@@ -6172,8 +6059,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 clean;
         }
 
-
-        /* PERFORMANCE */
 
         const performance =
             storage.get(
@@ -6197,8 +6082,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /* PARTICLES */
-
         const particles =
             storage.get(
                 "dreamParticles",
@@ -6220,8 +6103,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 particles;
         }
 
-
-        /* ANIMATIONS */
 
         const animations =
             storage.get(
@@ -6245,8 +6126,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /* CURSOR */
-
         const cursor =
             storage.get(
                 "dreamCursor",
@@ -6268,8 +6147,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 cursor;
         }
 
-
-        /* 3D */
 
         motion3dEnabled =
             storage.get(
@@ -6313,8 +6190,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 `${motionIntensity}%`;
         }
 
-
-        /* SPRAY */
 
         spraySoundEnabled =
             storage.get(
@@ -6375,8 +6250,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /* COLORS */
-
         const primary =
             storage.get(
                 "dreamPrimary",
@@ -6435,8 +6308,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        /* TEXT */
-
         const textSize =
             Number(
                 storage.get(
@@ -6467,8 +6338,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 `${textSize}%`;
         }
 
-
-        /* CONTRAST */
 
         const contrast =
             Number(
@@ -6503,8 +6372,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /* PARTICLE INTENSITY */
-
         const particleIntensity =
             Number(
                 storage.get(
@@ -6537,8 +6404,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 `${particleIntensity}%`;
         }
 
-
-        /* MOTION SPEED */
 
         const motionSpeed =
             Number(
@@ -6697,10 +6562,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /*
-               ESC
-            */
-
             if (
                 event.key ===
                 "Escape"
@@ -6728,10 +6589,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /*
-               S = SPRAY
-            */
-
             if (
                 event.key.toLowerCase() ===
                 "s"
@@ -6744,10 +6601,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-
-            /*
-               M = MUSIC
-            */
 
             if (
                 event.key.toLowerCase() ===
@@ -6762,10 +6615,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /*
-               D = DARK
-            */
-
             if (
                 event.key.toLowerCase() ===
                 "d"
@@ -6778,10 +6627,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-
-            /*
-               G = GALLERY
-            */
 
             if (
                 event.key.toLowerCase() ===
@@ -6796,10 +6641,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
             }
 
-
-            /*
-               LIGHTBOX ARROWS
-            */
 
             if (
                 lightbox?.classList.contains(
@@ -6947,10 +6788,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateFavorite();
 
 
-    /*
-       Libera funções úteis globalmente.
-    */
-
     window.Dream = {
 
         spray:
@@ -6979,12 +6816,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
-    /*
-       Se o DOM já terminou de carregar
-       e o loader ainda estiver presente,
-       ele será removido.
-    */
-
     if (
         document.readyState ===
             "complete"
@@ -7007,5 +6838,1033 @@ document.addEventListener("DOMContentLoaded", () => {
         "Dream experience initialized."
     );
 
+
+    /* =====================================================
+       COMPATIBILIDADE COM O INDEX DESTA VERSÃO
+       Corrige IDs/classes que mudaram no HTML sem alterar
+       o visual original.
+    ===================================================== */
+
+    const compatProductModal = $("#productModal");
+    const compatNoteModal = $("#noteModal");
+    const compatLightboxBackdrop = $("#lightboxBackdrop");
+
+    function compatOpenLayer(element) {
+        if (!element) return;
+
+        element.classList.add("open");
+        element.setAttribute("aria-hidden", "false");
+        body.classList.add("modal-open");
+    }
+
+    function compatCloseLayer(element) {
+        if (!element) return;
+
+        element.classList.remove("open");
+        element.setAttribute("aria-hidden", "true");
+
+        if (
+            !$(".product-modal.open") &&
+            !$(".note-modal.open") &&
+            !$(".lightbox.open") &&
+            !$(".modal.open")
+        ) {
+            body.classList.remove("modal-open");
+        }
+    }
+
+
+    /* =====================================================
+       PRODUTO — .open-product / .close-product
+    ===================================================== */
+
+    $$(".open-product").forEach(button => {
+        button.addEventListener("click", event => {
+            event.preventDefault();
+            compatOpenLayer(compatProductModal);
+        });
+    });
+
+    $$(".close-product").forEach(button => {
+        button.addEventListener("click", () => {
+            compatCloseLayer(compatProductModal);
+        });
+    });
+
+
+    /* =====================================================
+       FAVORITO DO MODAL
+    ===================================================== */
+
+    const compatFavoriteModalButton = $("#favoriteModal");
+
+    function compatSyncFavoriteModal() {
+        if (!compatFavoriteModalButton) return;
+
+        compatFavoriteModalButton.classList.toggle(
+            "active",
+            favorite
+        );
+
+        compatFavoriteModalButton.textContent =
+            favorite
+                ? (
+                    currentLanguage === "pt-BR"
+                        ? "♥ Favoritado"
+                        : "♥ Favorited"
+                )
+                : (
+                    currentLanguage === "pt-BR"
+                        ? "♡ Favoritar"
+                        : "♡ Favorite"
+                );
+    }
+
+    compatFavoriteModalButton?.addEventListener(
+        "click",
+        event => {
+            event.preventDefault();
+            event.stopPropagation();
+
+            favorite = !favorite;
+            updateFavorite(true);
+            compatSyncFavoriteModal();
+        }
+    );
+
+    favoriteButton?.addEventListener(
+        "click",
+        compatSyncFavoriteModal
+    );
+
+
+    /* =====================================================
+       COMPARTILHAR PELO MODAL / QUIZ
+    ===================================================== */
+
+    $("#shareModal")?.addEventListener(
+        "click",
+        shareDream
+    );
+
+    $("#shareQuizResult")?.addEventListener(
+        "click",
+        shareDream
+    );
+
+
+    /* =====================================================
+       NOTE MODAL
+    ===================================================== */
+
+    const compatNoteTitle = $("#noteModalTitle");
+    const compatNoteText = $("#noteModalText");
+    const compatNoteIcon = $("#noteModalIcon");
+
+    const compatNoteData = {
+        bergamota: ["Bergamota", "🍊", "Cítrica, fresca e luminosa."],
+        laranja: ["Laranja", "🍊", "Alegre, cítrica e suculenta."],
+        mandarina: ["Mandarina", "🍊", "Doce, cítrica e vibrante."],
+        limao: ["Limão", "🍋", "Fresco, limpo e brilhante."],
+        cassis: ["Cassis", "●", "Frutado marcante e levemente ácido."],
+        maca: ["Maçã", "🍎", "Fresca, frutada e delicada."],
+        rosa: ["Rosa", "🌹", "Floral clássico, elegante e romântico."],
+        tilia: ["Tília", "✿", "Floral suave e confortável."],
+        freesia: ["Frésia", "🌸", "Floral leve, transparente e moderno."],
+        lotus: ["Flor de Lótus", "🪷", "Aquática, delicada e leve."],
+        gardenia: ["Gardênia", "✿", "Floral branco, cremoso e envolvente."],
+        pessego: ["Pêssego", "🍑", "Frutado macio e aveludado."],
+        ambar: ["Âmbar", "✦", "Quente, confortável e envolvente."],
+        sandalo: ["Sândalo", "☾", "Madeira cremosa, macia e elegante."],
+        baunilha: ["Baunilha", "♡", "Doce, cremosa e aconchegante."],
+        tonka: ["Tonka", "✧", "Quente, adocicada e confortável."],
+        musk: ["Musk", "☁", "Limpo, macio e próximo da pele."]
+    };
+
+    $$(".note-chip").forEach(button => {
+        button.addEventListener("click", () => {
+            const data = compatNoteData[button.dataset.note];
+
+            if (!data) return;
+
+            if (compatNoteTitle) compatNoteTitle.textContent = data[0];
+            if (compatNoteIcon) compatNoteIcon.textContent = data[1];
+            if (compatNoteText) compatNoteText.textContent = data[2];
+
+            compatOpenLayer(compatNoteModal);
+        });
+    });
+
+    $$(".close-note").forEach(button => {
+        button.addEventListener("click", () => {
+            compatCloseLayer(compatNoteModal);
+        });
+    });
+
+
+    /* =====================================================
+       DREAM MOMENT — #newDreamMoment
+    ===================================================== */
+
+    $("#newDreamMoment")?.addEventListener(
+        "click",
+        () => {
+            const list =
+                dreamMoments[currentLanguage] ||
+                dreamMoments["pt-BR"];
+
+            const moment =
+                list[
+                    Math.floor(
+                        Math.random() *
+                        list.length
+                    )
+                ];
+
+            if (dreamMomentTitle) {
+                dreamMomentTitle.textContent =
+                    moment.title;
+            }
+
+            if (dreamMomentText) {
+                dreamMomentText.textContent =
+                    moment.text;
+            }
+
+            const card =
+                dreamMomentTitle?.closest(
+                    ".dream-moment-card"
+                );
+
+            if (card) {
+                card.classList.remove("changing");
+                void card.offsetWidth;
+                card.classList.add("changing");
+            }
+        }
+    );
+
+
+    /* =====================================================
+       TIMELINE — #timelineSlider
+    ===================================================== */
+
+    const compatTimelineSlider =
+        $("#timelineSlider");
+
+    const compatTimelineHour =
+        $("#timelineHour");
+
+    const compatTimelineIcon =
+        $("#timelineIcon");
+
+    const compatTimelineTitle =
+        $("#timelineTitle");
+
+    const compatTimelineText =
+        $("#timelineText");
+
+    const compatTimelineStages = {
+        "pt-BR": [
+            {
+                max: 1,
+                hour: "0h",
+                icon: "🍊",
+                title: "Abertura fresca",
+                text: "Cítricos e frutas aparecem primeiro."
+            },
+            {
+                max: 3,
+                hour: "2h",
+                icon: "🌸",
+                title: "Coração floral",
+                text: "As flores ganham espaço e deixam a fragrância mais romântica."
+            },
+            {
+                max: 5,
+                hour: "4h",
+                icon: "♡",
+                title: "Doçura confortável",
+                text: "O lado delicado e envolvente aparece com mais força."
+            },
+            {
+                max: 7,
+                hour: "6h",
+                icon: "✦",
+                title: "Fundo envolvente",
+                text: "As notas de fundo ficam mais próximas da pele."
+            },
+            {
+                max: 8,
+                hour: "8h",
+                icon: "☾",
+                title: "Rastro Dream",
+                text: "Uma sensação suave permanece na memória."
+            }
+        ],
+
+        "en-US": [
+            {
+                max: 1,
+                hour: "0h",
+                icon: "🍊",
+                title: "Fresh opening",
+                text: "Citrus and fruity notes appear first."
+            },
+            {
+                max: 3,
+                hour: "2h",
+                icon: "🌸",
+                title: "Floral heart",
+                text: "Flowers take over and make the fragrance more romantic."
+            },
+            {
+                max: 5,
+                hour: "4h",
+                icon: "♡",
+                title: "Comforting sweetness",
+                text: "The delicate and enveloping side becomes stronger."
+            },
+            {
+                max: 7,
+                hour: "6h",
+                icon: "✦",
+                title: "Enveloping base",
+                text: "Base notes settle closer to the skin."
+            },
+            {
+                max: 8,
+                hour: "8h",
+                icon: "☾",
+                title: "Dream trail",
+                text: "A soft feeling remains in memory."
+            }
+        ]
+    };
+
+    function compatUpdateTimeline() {
+        if (!compatTimelineSlider) return;
+
+        const value =
+            clamp(
+                Number(compatTimelineSlider.value),
+                0,
+                8
+            );
+
+        const data =
+            compatTimelineStages[currentLanguage] ||
+            compatTimelineStages["pt-BR"];
+
+        const stage =
+            data.find(item => value <= item.max) ||
+            data[data.length - 1];
+
+        if (compatTimelineHour) {
+            compatTimelineHour.textContent =
+                `${value}h`;
+        }
+
+        if (compatTimelineIcon) {
+            compatTimelineIcon.textContent =
+                stage.icon;
+        }
+
+        if (compatTimelineTitle) {
+            compatTimelineTitle.textContent =
+                stage.title;
+        }
+
+        if (compatTimelineText) {
+            compatTimelineText.textContent =
+                stage.text;
+        }
+    }
+
+    compatTimelineSlider?.addEventListener(
+        "input",
+        compatUpdateTimeline
+    );
+
+    window.addEventListener(
+        "dream-language-change",
+        compatUpdateTimeline
+    );
+
+
+    /* =====================================================
+       QUIZ — IDs DO HTML ATUAL
+    ===================================================== */
+
+    const compatQuizStart =
+        $("#startQuiz");
+
+    const compatQuizQuestions =
+        $("#quizQuestions");
+
+    const compatQuizQuestion =
+        $("#quizQuestion");
+
+    const compatQuizOptions =
+        $("#quizOptions");
+
+    const compatQuizProgress =
+        $("#quizProgressBar");
+
+    const compatQuizStep =
+        $("#quizStep");
+
+    const compatQuizResult =
+        $("#quizResult");
+
+    const compatQuizResultIcon =
+        $("#quizResultIcon");
+
+    const compatQuizResultTitle =
+        $("#quizResultTitle");
+
+    const compatQuizResultText =
+        $("#quizResultText");
+
+    const compatQuizRestart =
+        $("#restartQuiz");
+
+    const compatQuizApplyMood =
+        $("#applyQuizMood");
+
+    let compatQuizIndex = 0;
+
+    let compatQuizScores = {
+        romantic: 0,
+        dreamy: 0,
+        night: 0,
+        energy: 0
+    };
+
+    let compatQuizFinalMood =
+        "romantic";
+
+    const compatMoodMap = {
+        romantic: "romantico",
+        dreamy: "sonhador",
+        night: "noturno",
+        energy: "energia"
+    };
+
+    function compatResetQuiz() {
+        compatQuizIndex = 0;
+
+        compatQuizScores = {
+            romantic: 0,
+            dreamy: 0,
+            night: 0,
+            energy: 0
+        };
+
+        compatQuizFinalMood =
+            "romantic";
+
+        if (compatQuizQuestions) {
+            compatQuizQuestions.hidden =
+                false;
+        }
+
+        if (compatQuizResult) {
+            compatQuizResult.hidden =
+                true;
+
+            compatQuizResult.classList.remove(
+                "active"
+            );
+        }
+
+        compatRenderQuizQuestion();
+    }
+
+    function compatRenderQuizQuestion() {
+        const data =
+            quizData[currentLanguage] ||
+            quizData["pt-BR"];
+
+        const question =
+            data[compatQuizIndex];
+
+        if (!question) {
+            compatFinishQuiz();
+            return;
+        }
+
+        if (compatQuizQuestion) {
+            compatQuizQuestion.textContent =
+                question.question;
+        }
+
+        if (compatQuizStep) {
+            compatQuizStep.textContent =
+                `${compatQuizIndex + 1} / ${data.length}`;
+        }
+
+        if (compatQuizProgress) {
+            compatQuizProgress.style.width =
+                `${(compatQuizIndex / data.length) * 100}%`;
+        }
+
+        if (!compatQuizOptions) return;
+
+        compatQuizOptions.innerHTML =
+            "";
+
+        question.options.forEach(option => {
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+            button.type =
+                "button";
+
+            button.className =
+                "quiz-option";
+
+            button.textContent =
+                option.text;
+
+            button.addEventListener(
+                "click",
+                () => {
+                    $$(".quiz-option", compatQuizOptions)
+                        .forEach(item => {
+                            item.disabled = true;
+                        });
+
+                    button.classList.add(
+                        "selected"
+                    );
+
+                    compatQuizScores[
+                        option.mood
+                    ]++;
+
+                    setTimeout(
+                        () => {
+                            compatQuizIndex++;
+
+                            if (
+                                compatQuizIndex >=
+                                data.length
+                            ) {
+                                compatFinishQuiz();
+                            } else {
+                                compatRenderQuizQuestion();
+                            }
+                        },
+                        260
+                    );
+                }
+            );
+
+            compatQuizOptions.appendChild(
+                button
+            );
+        });
+    }
+
+    function compatFinishQuiz() {
+        const entries =
+            Object.entries(
+                compatQuizScores
+            ).sort(
+                (a, b) =>
+                    b[1] - a[1]
+            );
+
+        compatQuizFinalMood =
+            entries[0]?.[0] ||
+            "romantic";
+
+        const result =
+            quizResults[
+                compatQuizFinalMood
+            ][
+                currentLanguage
+            ];
+
+        if (compatQuizQuestions) {
+            compatQuizQuestions.hidden =
+                true;
+        }
+
+        if (compatQuizProgress) {
+            compatQuizProgress.style.width =
+                "100%";
+        }
+
+        if (compatQuizResultIcon) {
+            compatQuizResultIcon.textContent =
+                compatQuizFinalMood === "romantic"
+                    ? "♡"
+                    : compatQuizFinalMood === "dreamy"
+                        ? "☾"
+                        : compatQuizFinalMood === "night"
+                            ? "✦"
+                            : "⚡";
+        }
+
+        if (compatQuizResultTitle) {
+            compatQuizResultTitle.textContent =
+                result.title;
+        }
+
+        if (compatQuizResultText) {
+            compatQuizResultText.textContent =
+                result.text;
+        }
+
+        if (compatQuizResult) {
+            compatQuizResult.hidden =
+                false;
+
+            compatQuizResult.classList.add(
+                "active"
+            );
+        }
+    }
+
+    compatQuizStart?.addEventListener(
+        "click",
+        compatResetQuiz
+    );
+
+    compatQuizRestart?.addEventListener(
+        "click",
+        compatResetQuiz
+    );
+
+    compatQuizApplyMood?.addEventListener(
+        "click",
+        () => {
+            applyMood(
+                compatMoodMap[
+                    compatQuizFinalMood
+                ] ||
+                "romantico"
+            );
+
+            showToast(
+                currentLanguage === "pt-BR"
+                    ? "Seu mood foi aplicado ♡"
+                    : "Your mood has been applied ♡"
+            );
+        }
+    );
+
+
+    /* =====================================================
+       CONTRASTE — #contrastControl
+    ===================================================== */
+
+    const compatContrast =
+        $("#contrastControl");
+
+    function compatApplyContrast(value) {
+        const safe =
+            clamp(
+                Number(value),
+                80,
+                130
+            );
+
+        const factor =
+            safe / 100;
+
+        root.style.setProperty(
+            "--contrast",
+            factor
+        );
+
+        root.style.setProperty(
+            "--contrast-level",
+            factor
+        );
+
+        root.style.setProperty(
+            "--site-contrast",
+            factor
+        );
+
+        body.style.filter =
+            `contrast(${factor})`;
+
+        const label =
+            $("#contrastValue");
+
+        if (label) {
+            label.textContent =
+                `${safe}%`;
+        }
+
+        if (compatContrast) {
+            compatContrast.value =
+                safe;
+        }
+
+        storage.set(
+            "dreamContrast",
+            safe
+        );
+    }
+
+    compatContrast?.addEventListener(
+        "input",
+        event => {
+            compatApplyContrast(
+                event.target.value
+            );
+        }
+    );
+
+
+    /* =====================================================
+       TAMANHO DO TEXTO — BOTÕES A-/A/A+
+    ===================================================== */
+
+    const compatFontButtons =
+        $$("[data-font-size]");
+
+    function compatSetFontSize(size) {
+        const allowed = [
+            "small",
+            "normal",
+            "large"
+        ];
+
+        const safe =
+            allowed.includes(size)
+                ? size
+                : "normal";
+
+        body.classList.remove(
+            "font-small",
+            "font-normal",
+            "font-large"
+        );
+
+        body.classList.add(
+            `font-${safe}`
+        );
+
+        body.style.fontSize =
+            "";
+
+        compatFontButtons.forEach(
+            button => {
+                button.classList.toggle(
+                    "active",
+                    button.dataset.fontSize ===
+                        safe
+                );
+            }
+        );
+
+        storage.set(
+            "dreamFontSize",
+            safe
+        );
+    }
+
+    compatFontButtons.forEach(
+        button => {
+            button.addEventListener(
+                "click",
+                () => {
+                    compatSetFontSize(
+                        button.dataset.fontSize
+                    );
+                }
+            );
+        }
+    );
+
+
+    /* =====================================================
+       VELOCIDADE DAS ANIMAÇÕES — #animationSpeed
+    ===================================================== */
+
+    const compatAnimationSpeed =
+        $("#animationSpeed");
+
+    function compatSetAnimationSpeed(value) {
+        const safe =
+            clamp(
+                Number(value),
+                40,
+                160
+            );
+
+        root.style.setProperty(
+            "--animation-speed",
+            safe / 100
+        );
+
+        const label =
+            $("#animationSpeedValue");
+
+        if (label) {
+            label.textContent =
+                `${safe}%`;
+        }
+
+        if (compatAnimationSpeed) {
+            compatAnimationSpeed.value =
+                safe;
+        }
+
+        storage.set(
+            "dreamAnimationSpeed",
+            safe
+        );
+    }
+
+    compatAnimationSpeed?.addEventListener(
+        "input",
+        event => {
+            compatSetAnimationSpeed(
+                event.target.value
+            );
+        }
+    );
+
+
+    /* =====================================================
+       CURSOR GLOW — #cursorGlowRange
+    ===================================================== */
+
+    const compatCursorGlowRange =
+        $("#cursorGlowRange");
+
+    function compatSetCursorGlow(value) {
+        const safe =
+            clamp(
+                Number(value),
+                0,
+                150
+            );
+
+        if (cursorGlow) {
+            cursorGlow.style.opacity =
+                String(
+                    safe / 285
+                );
+        }
+
+        const label =
+            $("#cursorGlowValue");
+
+        if (label) {
+            label.textContent =
+                `${safe}%`;
+        }
+
+        storage.set(
+            "dreamCursorGlow",
+            safe
+        );
+    }
+
+    compatCursorGlowRange?.addEventListener(
+        "input",
+        event => {
+            compatSetCursorGlow(
+                event.target.value
+            );
+        }
+    );
+
+
+    /* =====================================================
+       GALERIA — CONTADOR / LIGHTBOX
+    ===================================================== */
+
+    const compatGalleryCurrent =
+        $("#galleryCurrent");
+
+    const compatGalleryTotal =
+        $("#galleryTotal");
+
+    const compatLightboxTitle =
+        $("#lightboxTitle");
+
+    const compatLightboxCounter =
+        $("#lightboxCounter");
+
+    function compatUpdateGalleryCounter() {
+        if (!galleryTrack || !galleryItems.length) {
+            return;
+        }
+
+        const center =
+            galleryTrack.scrollLeft +
+            galleryTrack.clientWidth / 2;
+
+        let bestIndex = 0;
+        let bestDistance = Infinity;
+
+        galleryItems.forEach(
+            (item, index) => {
+                const itemCenter =
+                    item.offsetLeft +
+                    item.offsetWidth / 2;
+
+                const distance =
+                    Math.abs(
+                        center -
+                        itemCenter
+                    );
+
+                if (
+                    distance <
+                    bestDistance
+                ) {
+                    bestDistance =
+                        distance;
+
+                    bestIndex =
+                        index;
+                }
+            }
+        );
+
+        if (compatGalleryCurrent) {
+            compatGalleryCurrent.textContent =
+                String(
+                    bestIndex + 1
+                ).padStart(
+                    2,
+                    "0"
+                );
+        }
+
+        if (compatGalleryTotal) {
+            compatGalleryTotal.textContent =
+                String(
+                    galleryItems.length
+                ).padStart(
+                    2,
+                    "0"
+                );
+        }
+    }
+
+    galleryTrack?.addEventListener(
+        "scroll",
+        () => {
+            requestAnimationFrame(
+                compatUpdateGalleryCounter
+            );
+        },
+        {
+            passive: true
+        }
+    );
+
+    galleryItems.forEach(
+        (item, index) => {
+            item.addEventListener(
+                "click",
+                () => {
+                    const image =
+                        $("img", item);
+
+                    if (compatLightboxTitle) {
+                        compatLightboxTitle.textContent =
+                            image?.alt ||
+                            "Dream";
+                    }
+
+                    if (compatLightboxCounter) {
+                        compatLightboxCounter.textContent =
+                            `${String(index + 1).padStart(2, "0")} / ${String(galleryItems.length).padStart(2, "0")}`;
+                    }
+                }
+            );
+        }
+    );
+
+    compatLightboxBackdrop?.addEventListener(
+        "click",
+        closeLightbox
+    );
+
+
+    /* =====================================================
+       ESTADO INICIAL COMPATÍVEL
+    ===================================================== */
+
+    const compatSavedMood =
+        storage.get(
+            "dreamMood",
+            "romantico"
+        );
+
+    const compatValidMoods =
+        moodButtons.map(
+            button =>
+                button.dataset.mood
+        );
+
+    applyMood(
+        compatValidMoods.includes(
+            compatSavedMood
+        )
+            ? compatSavedMood
+            : "romantico",
+        false
+    );
+
+    compatSyncFavoriteModal();
+
+    compatUpdateTimeline();
+
+    compatUpdateGalleryCounter();
+
+    compatApplyContrast(
+        storage.get(
+            "dreamContrast",
+            100
+        )
+    );
+
+    const compatSavedFont =
+        storage.get(
+            "dreamFontSize",
+            "normal"
+        );
+
+    compatSetFontSize(
+        ["small", "normal", "large"]
+            .includes(
+                compatSavedFont
+            )
+            ? compatSavedFont
+            : "normal"
+    );
+
+    compatSetAnimationSpeed(
+        storage.get(
+            "dreamAnimationSpeed",
+            100
+        )
+    );
+
+    compatSetCursorGlow(
+        storage.get(
+            "dreamCursorGlow",
+            100
+        )
+    );
+
+    console.log(
+        "Dream compatibility layer initialized."
+    );
 
 }); // FIM DO DOMContentLoaded
