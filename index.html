@@ -42,7 +42,7 @@
 
     <link
         rel="stylesheet"
-        href="./style.css?v=40"
+        href="./style.css?v=50"
     >
 
 </head>
@@ -74,7 +74,6 @@
 
         <div class="loader-ambient"></div>
 
-
         <div class="loader-box">
 
             <div class="loader-heart">
@@ -103,7 +102,7 @@
 
 
     <!-- =====================================================
-         BACKGROUND FX
+         AMBIENTE
     ====================================================== -->
 
     <div
@@ -156,45 +155,16 @@
             aria-label="Navegação principal"
         >
 
-            <a href="#inicio">
-                Início
-            </a>
-
-            <a href="#produto">
-                Produto
-            </a>
-
-            <a href="#campanha">
-                Campanha
-            </a>
-
-            <a href="#notas">
-                Notas
-            </a>
-
-            <a href="#experiencia">
-                Experiência
-            </a>
-
-            <a href="#sensacao">
-                Sensação
-            </a>
-
-            <a href="#quando-usar">
-                Momentos
-            </a>
-
-            <a href="#galeria">
-                Galeria
-            </a>
-
-            <a href="#mood">
-                Mood
-            </a>
-
-            <a href="#quiz">
-                Quiz
-            </a>
+            <a href="#inicio">Início</a>
+            <a href="#produto">Produto</a>
+            <a href="#campanha">Campanha</a>
+            <a href="#notas">Notas</a>
+            <a href="#experiencia">Experiência</a>
+            <a href="#sensacao">Sensação</a>
+            <a href="#quando-usar">Momentos</a>
+            <a href="#galeria">Galeria</a>
+            <a href="#mood">Mood</a>
+            <a href="#quiz">Quiz</a>
 
         </nav>
 
@@ -206,7 +176,6 @@
                 id="themeButton"
                 type="button"
                 aria-label="Alternar tema"
-                title="Alternar tema"
             >
                 ☾
             </button>
@@ -253,11 +222,7 @@
     >
 
         <div class="music-cover">
-
-            <span>
-                ☾
-            </span>
-
+            <span>☾</span>
         </div>
 
 
@@ -271,21 +236,59 @@
         </button>
 
 
-        <div class="dream-music-info">
+        <div class="dream-music-center">
 
-            <span>
-                NOW PLAYING
-            </span>
+            <div class="dream-music-info">
 
-            <strong>
-                Moonlight
-            </strong>
+                <span>
+                    NOW PLAYING
+                </span>
 
-            <small>
-                Ariana Grande
-            </small>
+                <strong>
+                    Moonlight
+                </strong>
+
+                <small>
+                    Ariana Grande
+                </small>
+
+            </div>
+
+
+            <div class="music-progress-row">
+
+                <span id="musicCurrentTime">
+                    0:00
+                </span>
+
+
+                <input
+                    type="range"
+                    id="musicProgress"
+                    min="0"
+                    max="100"
+                    value="0"
+                    aria-label="Progresso da música"
+                >
+
+
+                <span id="musicDuration">
+                    0:00
+                </span>
+
+            </div>
 
         </div>
+
+
+        <button
+            class="music-mute-button"
+            id="musicMuteButton"
+            type="button"
+            aria-label="Silenciar música"
+        >
+            🔊
+        </button>
 
 
         <div
@@ -360,9 +363,10 @@
 
 
                 <p>
-                    Uma fragrância delicada, romântica
-                    e envolvente para transformar
-                    pequenos momentos em lembranças
+                    Uma fragrância delicada,
+                    romântica e envolvente
+                    para transformar pequenos
+                    momentos em lembranças
                     especiais.
                 </p>
 
@@ -370,7 +374,7 @@
                 <div class="hero-buttons">
 
                     <a
-                        class="primary-btn"
+                        class="primary-btn magnetic"
                         href="#produto"
                     >
 
@@ -386,14 +390,10 @@
 
 
                     <button
-                        class="secondary-btn open-product"
+                        class="secondary-btn open-product magnetic"
                         type="button"
                     >
-
-                        <span>
-                            Ver produto
-                        </span>
-
+                        Ver produto
                     </button>
 
                 </div>
@@ -449,8 +449,9 @@
                     </span>
 
                     <p>
-                        Experimente o borrifador
-                        interativo ao lado.
+                        Toque em borrifar
+                        para ativar o efeito,
+                        áudio e animação.
                     </p>
 
                 </div>
@@ -478,6 +479,7 @@
                     aria-hidden="true"
                 ></div>
 
+
                 <div
                     class="product-ring product-ring-two"
                     aria-hidden="true"
@@ -486,6 +488,13 @@
 
                 <div
                     class="product-light"
+                    aria-hidden="true"
+                ></div>
+
+
+                <div
+                    class="product-shine"
+                    id="productShine"
                     aria-hidden="true"
                 ></div>
 
@@ -533,6 +542,12 @@
                     >
 
                     <div
+                        class="bottle-reflection"
+                        aria-hidden="true"
+                    ></div>
+
+
+                    <div
                         class="bottle-floor-shadow"
                         aria-hidden="true"
                     ></div>
@@ -543,7 +558,7 @@
                 <!-- BORRIFAR -->
 
                 <button
-                    class="spray-button"
+                    class="spray-button magnetic"
                     id="sprayButton"
                     type="button"
                 >
@@ -642,29 +657,12 @@
             aria-label="Características"
         >
 
-            <div>
-                ✿ Floral Amadeirado
-            </div>
-
-            <div>
-                ♡ Amor no Ar
-            </div>
-
-            <div>
-                ✦ 350 ml
-            </div>
-
-            <div>
-                ☁ Delicado
-            </div>
-
-            <div>
-                ☾ Romântico
-            </div>
-
-            <div>
-                ∞ Dream
-            </div>
+            <div>✿ Floral Amadeirado</div>
+            <div>♡ Amor no Ar</div>
+            <div>✦ 350 ml</div>
+            <div>☁ Delicado</div>
+            <div>☾ Romântico</div>
+            <div>∞ Dream</div>
 
         </section>
 
@@ -682,13 +680,9 @@
             <div class="two-col">
 
 
-                <div class="product-showcase reveal">
+                <div class="product-showcase reveal shine-card">
 
-                    <div
-                        class="product-showcase-glow"
-                        aria-hidden="true"
-                    ></div>
-
+                    <div class="product-showcase-glow"></div>
 
                     <div class="arch"></div>
 
@@ -746,16 +740,16 @@
 
                     <p>
                         Dream Amor no Ar combina
-                        delicadeza, romantismo e
-                        personalidade em uma fragrância
-                        confortável para diferentes
-                        momentos.
+                        delicadeza, romantismo
+                        e personalidade em uma
+                        fragrância confortável
+                        para diferentes momentos.
                     </p>
 
 
                     <div class="product-points">
 
-                        <div>
+                        <div class="shine-card">
 
                             <span>
                                 ✿
@@ -777,7 +771,7 @@
                         </div>
 
 
-                        <div>
+                        <div class="shine-card">
 
                             <span>
                                 ♡
@@ -799,7 +793,7 @@
                         </div>
 
 
-                        <div>
+                        <div class="shine-card">
 
                             <span>
                                 ✦
@@ -826,7 +820,7 @@
                     <div class="product-actions">
 
                         <button
-                            class="primary-btn open-product"
+                            class="primary-btn open-product magnetic"
                             type="button"
                         >
                             Ver detalhes
@@ -834,7 +828,7 @@
 
 
                         <button
-                            class="favorite-btn"
+                            class="favorite-btn magnetic"
                             id="favoriteButton"
                             type="button"
                         >
@@ -870,7 +864,6 @@
 
             <div class="campaign-overlay"></div>
 
-
             <div class="campaign-noise"></div>
 
 
@@ -894,8 +887,8 @@
 
                 <p>
                     Uma atmosfera romântica,
-                    sofisticada e cheia de
-                    personalidade.
+                    sofisticada e cheia
+                    de personalidade.
                 </p>
 
 
@@ -903,13 +896,14 @@
 
                     <a
                         href="#galeria"
-                        class="white-btn"
+                        class="white-btn magnetic"
                     >
                         Explorar universo Dream
                     </a>
 
+
                     <button
-                        class="campaign-ghost-btn open-product"
+                        class="campaign-ghost-btn open-product magnetic"
                         type="button"
                     >
                         Conhecer produto
@@ -951,9 +945,9 @@
 
 
                 <p>
-                    Explore as diferentes camadas
-                    e descubra como a fragrância
-                    evolui.
+                    Explore as diferentes
+                    camadas e descubra como
+                    a fragrância evolui.
                 </p>
 
             </div>
@@ -962,7 +956,7 @@
             <div class="notes-grid">
 
 
-                <article class="note-card reveal">
+                <article class="note-card reveal shine-card">
 
                     <div class="note-card-top">
 
@@ -988,70 +982,27 @@
 
 
                     <p>
-                        A primeira impressão da
-                        fragrância: luminosa,
+                        A primeira impressão
+                        da fragrância: luminosa,
                         fresca e vibrante.
                     </p>
 
 
                     <div class="chips">
 
-                        <button
-                            class="note-chip"
-                            data-note="bergamota"
-                            type="button"
-                        >
-                            Bergamota
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="laranja"
-                            type="button"
-                        >
-                            Laranja
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="mandarina"
-                            type="button"
-                        >
-                            Mandarina
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="limao"
-                            type="button"
-                        >
-                            Limão
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="cassis"
-                            type="button"
-                        >
-                            Cassis
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="maca"
-                            type="button"
-                        >
-                            Maçã
-                        </button>
+                        <button class="note-chip" data-note="bergamota" type="button">Bergamota</button>
+                        <button class="note-chip" data-note="laranja" type="button">Laranja</button>
+                        <button class="note-chip" data-note="mandarina" type="button">Mandarina</button>
+                        <button class="note-chip" data-note="limao" type="button">Limão</button>
+                        <button class="note-chip" data-note="cassis" type="button">Cassis</button>
+                        <button class="note-chip" data-note="maca" type="button">Maçã</button>
 
                     </div>
 
                 </article>
 
 
-                <article
-                    class="note-card note-card-featured reveal"
-                >
+                <article class="note-card note-card-featured reveal shine-card">
 
                     <div class="note-card-top">
 
@@ -1085,60 +1036,19 @@
 
                     <div class="chips">
 
-                        <button
-                            class="note-chip"
-                            data-note="rosa"
-                            type="button"
-                        >
-                            Rosa
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="tilia"
-                            type="button"
-                        >
-                            Tília
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="freesia"
-                            type="button"
-                        >
-                            Frésia
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="lotus"
-                            type="button"
-                        >
-                            Flor de Lótus
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="gardenia"
-                            type="button"
-                        >
-                            Gardênia
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="pessego"
-                            type="button"
-                        >
-                            Pêssego
-                        </button>
+                        <button class="note-chip" data-note="rosa" type="button">Rosa</button>
+                        <button class="note-chip" data-note="tilia" type="button">Tília</button>
+                        <button class="note-chip" data-note="freesia" type="button">Frésia</button>
+                        <button class="note-chip" data-note="lotus" type="button">Flor de Lótus</button>
+                        <button class="note-chip" data-note="gardenia" type="button">Gardênia</button>
+                        <button class="note-chip" data-note="pessego" type="button">Pêssego</button>
 
                     </div>
 
                 </article>
 
 
-                <article class="note-card reveal">
+                <article class="note-card reveal shine-card">
 
                     <div class="note-card-top">
 
@@ -1165,52 +1075,18 @@
 
                     <p>
                         As notas que permanecem
-                        e deixam a assinatura
-                        final da fragrância.
+                        e deixam a assinatura final
+                        da fragrância.
                     </p>
 
 
                     <div class="chips">
 
-                        <button
-                            class="note-chip"
-                            data-note="ambar"
-                            type="button"
-                        >
-                            Âmbar
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="sandalo"
-                            type="button"
-                        >
-                            Sândalo
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="baunilha"
-                            type="button"
-                        >
-                            Baunilha
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="tonka"
-                            type="button"
-                        >
-                            Tonka
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="musk"
-                            type="button"
-                        >
-                            Musk
-                        </button>
+                        <button class="note-chip" data-note="ambar" type="button">Âmbar</button>
+                        <button class="note-chip" data-note="sandalo" type="button">Sândalo</button>
+                        <button class="note-chip" data-note="baunilha" type="button">Baunilha</button>
+                        <button class="note-chip" data-note="tonka" type="button">Tonka</button>
+                        <button class="note-chip" data-note="musk" type="button">Musk</button>
 
                     </div>
 
@@ -1243,9 +1119,9 @@
                 </h2>
 
                 <p>
-                    Descubra como a fragrância evolui,
-                    compare sensações e escolha o mood
-                    que mais combina com você.
+                    Descubra a evolução da fragrância,
+                    compare sensações e personalize
+                    a experiência.
                 </p>
 
             </div>
@@ -1253,9 +1129,10 @@
 
             <div class="experience-grid">
 
+
                 <!-- TIMELINE -->
 
-                <article class="experience-card reveal">
+                <article class="experience-card reveal shine-card">
 
                     <div class="experience-card-head">
 
@@ -1301,7 +1178,7 @@
                         max="8"
                         step="1"
                         value="0"
-                        aria-label="Evolução da fragrância em horas"
+                        aria-label="Evolução da fragrância"
                     >
 
                     <div class="timeline-labels">
@@ -1348,7 +1225,7 @@
 
                 <!-- PERSONALIDADE -->
 
-                <article class="experience-card reveal">
+                <article class="experience-card reveal shine-card">
 
                     <div class="experience-card-head">
 
@@ -1367,8 +1244,9 @@
                     </h3>
 
                     <p class="experience-intro">
-                        Uma leitura visual das
-                        principais sensações de Dream.
+                        Uma leitura visual
+                        das principais sensações
+                        de Dream.
                     </p>
 
                     <div class="meters">
@@ -1377,9 +1255,7 @@
 
                             <span>
                                 Floral
-                                <b>
-                                    90%
-                                </b>
+                                <b>90%</b>
                             </span>
 
                             <div>
@@ -1388,14 +1264,11 @@
 
                         </div>
 
-
                         <div>
 
                             <span>
                                 Romântico
-                                <b>
-                                    92%
-                                </b>
+                                <b>92%</b>
                             </span>
 
                             <div>
@@ -1404,14 +1277,11 @@
 
                         </div>
 
-
                         <div>
 
                             <span>
                                 Confortável
-                                <b>
-                                    84%
-                                </b>
+                                <b>84%</b>
                             </span>
 
                             <div>
@@ -1420,14 +1290,11 @@
 
                         </div>
 
-
                         <div>
 
                             <span>
                                 Presença
-                                <b>
-                                    62%
-                                </b>
+                                <b>62%</b>
                             </span>
 
                             <div>
@@ -1436,14 +1303,11 @@
 
                         </div>
 
-
                         <div>
 
                             <span>
                                 Intensidade
-                                <b>
-                                    58%
-                                </b>
+                                <b>58%</b>
                             </span>
 
                             <div>
@@ -1459,7 +1323,7 @@
 
                 <!-- MOOD RÁPIDO -->
 
-                <article class="experience-card reveal">
+                <article class="experience-card reveal shine-card">
 
                     <div class="experience-card-head">
 
@@ -1479,7 +1343,8 @@
 
                     <p class="experience-intro">
                         Escolha uma atmosfera
-                        para mudar a experiência visual.
+                        para transformar o visual
+                        da página.
                     </p>
 
                     <div class="mood-buttons">
@@ -1533,13 +1398,59 @@
                         </span>
 
                         <p>
-                            A cor do site muda junto
-                            com o mood escolhido.
+                            A identidade visual muda
+                            automaticamente com o mood.
                         </p>
 
                     </div>
 
                 </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             DREAM MOMENT
+        ================================================== -->
+
+        <section
+            class="dream-moment section-track"
+            id="dream-moment"
+            data-section-name="Dream Moment"
+        >
+
+            <div class="dream-moment-card reveal shine-card">
+
+                <div class="dream-moment-icon">
+                    ✦
+                </div>
+
+                <div class="dream-moment-copy">
+
+                    <span>
+                        DREAM MOMENT
+                    </span>
+
+                    <h2 id="dreamMomentTitle">
+                        Seu momento começa aqui.
+                    </h2>
+
+                    <p id="dreamMomentText">
+                        Toque no botão para receber
+                        uma pequena mensagem Dream.
+                    </p>
+
+                </div>
+
+                <button
+                    class="secondary-btn magnetic"
+                    id="newDreamMoment"
+                    type="button"
+                >
+                    Novo momento
+                </button>
 
             </div>
 
@@ -1596,10 +1507,8 @@
                         aria-hidden="true"
                     ></div>
 
-
                     <div class="feeling-orbit-dot orbit-dot-one"></div>
                     <div class="feeling-orbit-dot orbit-dot-two"></div>
-
 
                     <div class="feeling-center">
 
@@ -1633,8 +1542,8 @@
                         </h3>
 
                         <p>
-                            Dream equilibra um coração
-                            romântico com uma base confortável,
+                            Dream equilibra um coração romântico
+                            com uma base confortável,
                             criando uma presença suave.
                         </p>
 
@@ -1814,7 +1723,7 @@
 
             <div class="moments-grid">
 
-                <article class="moment-card reveal">
+                <article class="moment-card reveal shine-card">
 
                     <div class="moment-number">
                         01
@@ -1845,7 +1754,7 @@
                 </article>
 
 
-                <article class="moment-card reveal">
+                <article class="moment-card reveal shine-card">
 
                     <div class="moment-number">
                         02
@@ -1876,7 +1785,7 @@
                 </article>
 
 
-                <article class="moment-card reveal">
+                <article class="moment-card reveal shine-card">
 
                     <div class="moment-number">
                         03
@@ -1907,7 +1816,7 @@
                 </article>
 
 
-                <article class="moment-card reveal">
+                <article class="moment-card reveal shine-card">
 
                     <div class="moment-number">
                         04
@@ -2003,12 +1912,15 @@
                         </span>
 
                         <div>
+
                             <strong>
                                 Romance
                             </strong>
+
                             <small>
                                 delicado
                             </small>
+
                         </div>
 
                     </button>
@@ -2025,12 +1937,15 @@
                         </span>
 
                         <div>
+
                             <strong>
                                 Céu
                             </strong>
+
                             <small>
                                 sonhador
                             </small>
+
                         </div>
 
                     </button>
@@ -2047,12 +1962,15 @@
                         </span>
 
                         <div>
+
                             <strong>
                                 Flores
                             </strong>
+
                             <small>
                                 romântico
                             </small>
+
                         </div>
 
                     </button>
@@ -2069,12 +1987,15 @@
                         </span>
 
                         <div>
+
                             <strong>
                                 Energia
                             </strong>
+
                             <small>
                                 intenso
                             </small>
+
                         </div>
 
                     </button>
@@ -2082,7 +2003,7 @@
                 </div>
 
 
-                <div class="scene-result reveal">
+                <div class="scene-result reveal shine-card">
 
                     <div class="scene-result-decoration"></div>
 
@@ -2092,7 +2013,6 @@
                     >
                         ♡
                     </span>
-
 
                     <div class="scene-result-copy">
 
@@ -2166,8 +2086,9 @@
                 </h2>
 
                 <p>
-                    Arraste, use as setas ou
-                    toque nas imagens para ampliar.
+                    Arraste com o mouse,
+                    deslize no celular
+                    ou use as setas.
                 </p>
 
             </div>
@@ -2374,9 +2295,7 @@
 
 
             <div class="gallery-autoplay-progress">
-
                 <i id="galleryAutoplayProgress"></i>
-
             </div>
 
         </section>
@@ -2406,8 +2325,8 @@
                 </h2>
 
                 <p>
-                    Cada mood muda a identidade visual
-                    da experiência.
+                    Cada mood muda a identidade
+                    visual da experiência.
                 </p>
 
             </div>
@@ -2417,13 +2336,11 @@
 
                 <button
                     type="button"
-                    class="mood-card mood-button active"
+                    class="mood-card mood-button active shine-card"
                     data-mood="romantico"
                 >
 
-                    <span>
-                        ♡
-                    </span>
+                    <span>♡</span>
 
                     <strong>
                         Romântico
@@ -2440,13 +2357,11 @@
 
                 <button
                     type="button"
-                    class="mood-card mood-button"
+                    class="mood-card mood-button shine-card"
                     data-mood="sonhador"
                 >
 
-                    <span>
-                        ☾
-                    </span>
+                    <span>☾</span>
 
                     <strong>
                         Sonhador
@@ -2463,13 +2378,11 @@
 
                 <button
                     type="button"
-                    class="mood-card mood-button"
+                    class="mood-card mood-button shine-card"
                     data-mood="noturno"
                 >
 
-                    <span>
-                        ✦
-                    </span>
+                    <span>✦</span>
 
                     <strong>
                         Noturno
@@ -2486,13 +2399,11 @@
 
                 <button
                     type="button"
-                    class="mood-card mood-button"
+                    class="mood-card mood-button shine-card"
                     data-mood="energia"
                 >
 
-                    <span>
-                        ⚡
-                    </span>
+                    <span>⚡</span>
 
                     <strong>
                         Energia
@@ -2509,13 +2420,11 @@
 
                 <button
                     type="button"
-                    class="mood-card mood-button"
+                    class="mood-card mood-button shine-card"
                     data-mood="calmo"
                 >
 
-                    <span>
-                        ☁
-                    </span>
+                    <span>☁</span>
 
                     <strong>
                         Calmo
@@ -2550,8 +2459,6 @@
                 <div class="quiz-decoration quiz-decoration-two"></div>
 
 
-                <!-- INÍCIO -->
-
                 <div
                     class="quiz-start"
                     id="quizStart"
@@ -2566,18 +2473,17 @@
                     </small>
 
                     <h2>
-                        Qual é o seu
-                        Dream?
+                        Qual é o seu Dream?
                     </h2>
 
                     <p>
                         Responda quatro perguntas
-                        rápidas e descubra qual atmosfera
+                        e descubra qual atmosfera
                         combina mais com você.
                     </p>
 
                     <button
-                        class="primary-btn"
+                        class="primary-btn magnetic"
                         id="startQuiz"
                         type="button"
                     >
@@ -2586,8 +2492,6 @@
 
                 </div>
 
-
-                <!-- PERGUNTAS -->
 
                 <div
                     class="quiz-questions"
@@ -2602,9 +2506,7 @@
                         </span>
 
                         <div class="quiz-progress">
-
                             <i id="quizProgressBar"></i>
-
                         </div>
 
                     </div>
@@ -2614,11 +2516,9 @@
                         DREAM QUESTION
                     </div>
 
-
                     <h3 id="quizQuestion">
                         Pergunta
                     </h3>
-
 
                     <div
                         class="quiz-options"
@@ -2627,8 +2527,6 @@
 
                 </div>
 
-
-                <!-- RESULTADO -->
 
                 <div
                     class="quiz-result"
@@ -2658,7 +2556,7 @@
                     <div class="quiz-result-actions">
 
                         <button
-                            class="primary-btn"
+                            class="primary-btn magnetic"
                             id="restartQuiz"
                             type="button"
                         >
@@ -2666,7 +2564,15 @@
                         </button>
 
                         <button
-                            class="secondary-btn"
+                            class="secondary-btn magnetic"
+                            id="applyQuizMood"
+                            type="button"
+                        >
+                            Aplicar meu mood
+                        </button>
+
+                        <button
+                            class="secondary-btn magnetic"
                             id="shareQuizResult"
                             type="button"
                         >
@@ -2680,9 +2586,7 @@
             </div>
 
         </section>
-
-
-        <!-- =================================================
+                <!-- =================================================
              CTA FINAL
         ================================================== -->
 
@@ -2715,18 +2619,26 @@
                 <div class="hero-buttons">
 
                     <button
-                        class="primary-btn open-product"
+                        class="primary-btn open-product magnetic"
                         type="button"
                     >
                         Ver produto
                     </button>
 
                     <button
-                        class="secondary-btn"
+                        class="secondary-btn magnetic"
                         id="shareButton"
                         type="button"
                     >
                         Compartilhar
+                    </button>
+
+                    <button
+                        class="secondary-btn magnetic"
+                        id="fullscreenButton"
+                        type="button"
+                    >
+                        ⛶ Tela cheia
                     </button>
 
                 </div>
@@ -2737,7 +2649,9 @@
 
 
     </main>
-        <!-- =====================================================
+
+
+    <!-- =====================================================
          MODAL PRODUTO
     ====================================================== -->
 
@@ -2767,17 +2681,9 @@
 
             <div class="product-modal-image">
 
-                <div
-                    class="product-modal-halo"
-                    aria-hidden="true"
-                ></div>
+                <div class="product-modal-halo"></div>
 
-
-                <div
-                    class="product-modal-ring"
-                    aria-hidden="true"
-                ></div>
-
+                <div class="product-modal-ring"></div>
 
                 <img
                     src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
@@ -2794,14 +2700,12 @@
                     DREAM AMOR NO AR
                 </span>
 
-
                 <h2 id="productModalTitle">
                     Dream
                     <span>
                         350 ml
                     </span>
                 </h2>
-
 
                 <p>
                     Uma fragrância floral,
@@ -2810,34 +2714,21 @@
                     momentos leves e especiais.
                 </p>
 
-
                 <div class="modal-features">
 
-                    <span>
-                        ✿ Floral
-                    </span>
-
-                    <span>
-                        ♡ Romântico
-                    </span>
-
-                    <span>
-                        ☁ Confortável
-                    </span>
-
-                    <span>
-                        ✦ 350 ml
-                    </span>
+                    <span>✿ Floral</span>
+                    <span>♡ Romântico</span>
+                    <span>☁ Confortável</span>
+                    <span>✦ 350 ml</span>
 
                 </div>
 
-
                 <div class="modal-divider"></div>
-
 
                 <div class="modal-mini-info">
 
                     <div>
+
                         <small>
                             PERFIL
                         </small>
@@ -2845,9 +2736,11 @@
                         <strong>
                             Floral amadeirado
                         </strong>
+
                     </div>
 
                     <div>
+
                         <small>
                             EXPERIÊNCIA
                         </small>
@@ -2855,10 +2748,10 @@
                         <strong>
                             Leve e envolvente
                         </strong>
+
                     </div>
 
                 </div>
-
 
                 <div class="modal-actions">
 
@@ -2888,7 +2781,7 @@
 
 
     <!-- =====================================================
-         MODAL NOTAS
+         MODAL NOTA
     ====================================================== -->
 
     <div
@@ -2914,9 +2807,7 @@
                 ×
             </button>
 
-
             <div class="note-modal-decoration"></div>
-
 
             <span
                 class="note-modal-icon"
@@ -2925,16 +2816,13 @@
                 ✿
             </span>
 
-
             <small>
                 NOTA DREAM
             </small>
 
-
             <h3 id="noteModalTitle">
                 Nota
             </h3>
-
 
             <p id="noteModalText">
                 Descrição da nota.
@@ -2962,7 +2850,6 @@
             id="lightboxBackdrop"
         ></div>
 
-
         <button
             class="lightbox-close"
             id="lightboxClose"
@@ -2972,7 +2859,6 @@
             ×
         </button>
 
-
         <button
             class="lightbox-nav lightbox-prev"
             id="lightboxPrev"
@@ -2981,7 +2867,6 @@
         >
             ‹
         </button>
-
 
         <div class="lightbox-content">
 
@@ -2994,7 +2879,6 @@
                 >
 
             </div>
-
 
             <div class="lightbox-caption">
 
@@ -3010,7 +2894,6 @@
 
                 </div>
 
-
                 <span id="lightboxCounter">
                     01 / 04
                 </span>
@@ -3018,7 +2901,6 @@
             </div>
 
         </div>
-
 
         <button
             class="lightbox-nav lightbox-next"
@@ -3042,11 +2924,7 @@
         type="button"
         aria-label="Abrir Dream Studio"
     >
-
-        <span>
-            ✦
-        </span>
-
+        <span>✦</span>
     </button>
 
 
@@ -3070,12 +2948,12 @@
                 </h3>
 
                 <p>
-                    Personalize cores,
-                    efeitos, música e movimento.
+                    Personalize visual,
+                    áudio, movimento
+                    e performance.
                 </p>
 
             </div>
-
 
             <button
                 class="settings-close"
@@ -3089,6 +2967,53 @@
         </div>
 
 
+        <!-- PRESETS -->
+
+        <div class="settings-group">
+
+            <span class="settings-title">
+                Presets rápidos
+            </span>
+
+            <div class="preset-grid">
+
+                <button
+                    class="preset-button active"
+                    data-preset="dream"
+                    type="button"
+                >
+                    ✦ Dream
+                </button>
+
+                <button
+                    class="preset-button"
+                    data-preset="cinematic"
+                    type="button"
+                >
+                    ◉ Cinematic
+                </button>
+
+                <button
+                    class="preset-button"
+                    data-preset="soft"
+                    type="button"
+                >
+                    ☁ Soft
+                </button>
+
+                <button
+                    class="preset-button"
+                    data-preset="performance"
+                    type="button"
+                >
+                    ⚡ Performance
+                </button>
+
+            </div>
+
+        </div>
+
+
         <!-- APARÊNCIA -->
 
         <div class="settings-group">
@@ -3096,7 +3021,6 @@
             <span class="settings-title">
                 Aparência
             </span>
-
 
             <label class="switch-row">
 
@@ -3107,7 +3031,7 @@
                     </strong>
 
                     <small>
-                        Alternar entre claro e escuro
+                        Alternar tema
                     </small>
 
                 </div>
@@ -3118,7 +3042,6 @@
                 >
 
             </label>
-
 
             <label class="switch-row">
 
@@ -3142,7 +3065,6 @@
 
             </label>
 
-
             <label class="switch-row">
 
                 <div>
@@ -3152,7 +3074,7 @@
                     </strong>
 
                     <small>
-                        Reduz elementos decorativos
+                        Reduz efeitos decorativos
                     </small>
 
                 </div>
@@ -3160,6 +3082,27 @@
                 <input
                     type="checkbox"
                     id="cleanModeToggle"
+                >
+
+            </label>
+
+            <label class="switch-row">
+
+                <div>
+
+                    <strong>
+                        Modo performance
+                    </strong>
+
+                    <small>
+                        Melhor para celulares
+                    </small>
+
+                </div>
+
+                <input
+                    type="checkbox"
+                    id="performanceToggle"
                 >
 
             </label>
@@ -3175,7 +3118,6 @@
                 Paletas
             </span>
 
-
             <div class="palette-grid">
 
                 <button
@@ -3187,7 +3129,6 @@
                     <span>Dream</span>
                 </button>
 
-
                 <button
                     type="button"
                     class="palette"
@@ -3196,7 +3137,6 @@
                     <i></i>
                     <span>Roxo</span>
                 </button>
-
 
                 <button
                     type="button"
@@ -3207,7 +3147,6 @@
                     <span>Azul</span>
                 </button>
 
-
                 <button
                     type="button"
                     class="palette"
@@ -3217,7 +3156,6 @@
                     <span>Cherry</span>
                 </button>
 
-
                 <button
                     type="button"
                     class="palette"
@@ -3226,7 +3164,6 @@
                     <i></i>
                     <span>Gold</span>
                 </button>
-
 
                 <button
                     type="button"
@@ -3250,7 +3187,6 @@
                 Cores personalizadas
             </span>
 
-
             <div class="color-setting">
 
                 <label for="primaryColor">
@@ -3264,7 +3200,6 @@
                 >
 
             </div>
-
 
             <div class="color-setting">
 
@@ -3291,7 +3226,6 @@
                 Efeitos
             </span>
 
-
             <label class="switch-row">
 
                 <div>
@@ -3301,7 +3235,7 @@
                     </strong>
 
                     <small>
-                        Símbolos flutuantes
+                        Elementos flutuantes
                     </small>
 
                 </div>
@@ -3313,7 +3247,6 @@
                 >
 
             </label>
-
 
             <label class="switch-row">
 
@@ -3337,7 +3270,6 @@
 
             </label>
 
-
             <label class="switch-row">
 
                 <div>
@@ -3347,7 +3279,7 @@
                     </strong>
 
                     <small>
-                        Brilho que acompanha o mouse
+                        Brilho do cursor
                     </small>
 
                 </div>
@@ -3359,7 +3291,6 @@
                 >
 
             </label>
-
 
             <label class="switch-row">
 
@@ -3383,6 +3314,49 @@
 
             </label>
 
+            <label class="switch-row">
+
+                <div>
+
+                    <strong>
+                        Efeito shine
+                    </strong>
+
+                    <small>
+                        Reflexo nos cards
+                    </small>
+
+                </div>
+
+                <input
+                    type="checkbox"
+                    id="shineToggle"
+                    checked
+                >
+
+            </label>
+
+            <label class="switch-row">
+
+                <div>
+
+                    <strong>
+                        Vibração do spray
+                    </strong>
+
+                    <small>
+                        Feedback no celular
+                    </small>
+
+                </div>
+
+                <input
+                    type="checkbox"
+                    id="hapticToggle"
+                    checked
+                >
+
+            </label>
 
             <label class="switch-row">
 
@@ -3393,7 +3367,7 @@
                     </strong>
 
                     <small>
-                        Uma borrifada real por clique
+                        Uma borrifada por clique
                     </small>
 
                 </div>
@@ -3416,13 +3390,11 @@
                 Música
             </span>
 
-
             <div class="settings-music-card">
 
                 <div class="settings-music-icon">
                     ☾
                 </div>
-
 
                 <div>
 
@@ -3438,7 +3410,6 @@
 
             </div>
 
-
             <label class="switch-row">
 
                 <div>
@@ -3448,7 +3419,7 @@
                     </strong>
 
                     <small>
-                        Ativar ou pausar a música
+                        Ativar ou pausar
                     </small>
 
                 </div>
@@ -3459,7 +3430,6 @@
                 >
 
             </label>
-
 
             <div class="range-setting">
 
@@ -3474,7 +3444,6 @@
                     </span>
 
                 </div>
-
 
                 <input
                     type="range"
@@ -3496,7 +3465,6 @@
             <span class="settings-title">
                 Movimento
             </span>
-
 
             <div class="range-setting">
 
@@ -3522,7 +3490,6 @@
 
             </div>
 
-
             <div class="range-setting">
 
                 <div>
@@ -3546,7 +3513,6 @@
                 >
 
             </div>
-
 
             <div class="range-setting">
 
@@ -3572,7 +3538,6 @@
 
             </div>
 
-
             <div class="range-setting">
 
                 <div>
@@ -3596,7 +3561,6 @@
                 >
 
             </div>
-
 
             <div class="range-setting">
 
@@ -3633,7 +3597,6 @@
                 Leitura
             </span>
 
-
             <div class="range-setting">
 
                 <div>
@@ -3658,13 +3621,11 @@
 
             </div>
 
-
             <div class="font-size-setting">
 
                 <span>
                     Tamanho do texto
                 </span>
-
 
                 <div>
 
@@ -3697,8 +3658,6 @@
         </div>
 
 
-        <!-- RESET -->
-
         <button
             class="reset-settings"
             id="resetSettings"
@@ -3711,7 +3670,7 @@
 
 
     <!-- =====================================================
-         TOAST
+         UI FIXA
     ====================================================== -->
 
     <div
@@ -3724,10 +3683,6 @@
     </div>
 
 
-    <!-- =====================================================
-         INDICADOR DE SEÇÃO
-    ====================================================== -->
-
     <div
         class="section-indicator"
         id="sectionIndicator"
@@ -3739,10 +3694,6 @@
     </div>
 
 
-    <!-- =====================================================
-         ATALHOS
-    ====================================================== -->
-
     <div
         class="keyboard-hints"
         aria-hidden="true"
@@ -3750,7 +3701,12 @@
 
         <span>
             <kbd>S</kbd>
-            borrifar
+            spray
+        </span>
+
+        <span>
+            <kbd>M</kbd>
+            música
         </span>
 
         <span>
@@ -3765,10 +3721,6 @@
 
     </div>
 
-
-    <!-- =====================================================
-         VOLTAR AO TOPO
-    ====================================================== -->
 
     <button
         class="back-top"
@@ -3875,15 +3827,13 @@
 
     <!-- =====================================================
          SCRIPT
-         SOMENTE UMA CHAMADA
     ====================================================== -->
 
-    <script src="./script.js?v=40"></script>
+    <script src="./script.js?v=50"></script>
 
 
     <!-- =====================================================
-         FAILSAFE DO LOADER
-         INDEPENDENTE DO SCRIPT PRINCIPAL
+         FAILSAFE LOADER
     ====================================================== -->
 
     <script>
@@ -3895,22 +3845,22 @@
                     "loader"
                 );
 
-            if (loader) {
-
-                loader.classList.add(
-                    "hide"
-                );
-
-                setTimeout(() => {
-
-                    loader.style.display =
-                        "none";
-
-                }, 700);
-
+            if (!loader) {
+                return;
             }
 
-        }, 4500);
+            loader.classList.add(
+                "hide"
+            );
+
+            setTimeout(() => {
+
+                loader.style.display =
+                    "none";
+
+            }, 700);
+
+        }, 5000);
 
     </script>
 
