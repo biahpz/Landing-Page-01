@@ -40,7 +40,7 @@
 
     <link
         rel="stylesheet"
-        href="./style.css?v=61.3-compat"
+        href="./style.css?v=61.4-fixed"
     >
 
 </head>
@@ -3921,7 +3921,7 @@
          SCRIPT
     ====================================================== -->
 
-    <script src="./script.js?v=61.3-compat"></script>
+    <script src="./script.js?v=61.4-fixed"></script>
 
 
     <!-- LOADER FAILSAFE -->
@@ -3938,6 +3938,12 @@
             }
 
             loader.classList.add("hide");
+
+            document
+                .querySelectorAll(".reveal")
+                .forEach(element => {
+                    element.classList.add("visible");
+                });
 
             setTimeout(() => {
 
