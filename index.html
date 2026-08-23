@@ -40,9 +40,9 @@
 <body>
 
 
-    <!-- ==========================================
-         BARRA DE PROGRESSO
-    =========================================== -->
+    <!-- =====================================================
+         PROGRESSO
+    ====================================================== -->
 
     <div class="progress">
 
@@ -51,9 +51,9 @@
     </div>
 
 
-    <!-- ==========================================
-         LOADING
-    =========================================== -->
+    <!-- =====================================================
+         LOADER
+    ====================================================== -->
 
     <div
         class="loader"
@@ -83,9 +83,9 @@
     </div>
 
 
-    <!-- ==========================================
+    <!-- =====================================================
          EFEITOS
-    =========================================== -->
+    ====================================================== -->
 
     <div
         class="particles"
@@ -100,9 +100,9 @@
     ></div>
 
 
-    <!-- ==========================================
+    <!-- =====================================================
          HEADER
-    =========================================== -->
+    ====================================================== -->
 
     <header
         class="header"
@@ -172,7 +172,6 @@
                 id="themeButton"
                 type="button"
                 aria-label="Alterar tema"
-                title="Alternar tema"
             >
                 ☾
             </button>
@@ -200,16 +199,72 @@
     </header>
 
 
-    <!-- ==========================================
+    <!-- =====================================================
+         PLAYER • MOONLIGHT
+    ====================================================== -->
+
+    
+    <audio id="dreamMusic" src="./audio/Moonlight.mp3" preload="metadata" loop></audio>
+
+
+    <div
+        class="dream-music-player"
+        id="dreamMusicPlayer"
+    >
+
+        <button
+            class="dream-music-button"
+            id="dreamMusicButton"
+            type="button"
+            aria-label="Tocar Moonlight"
+        >
+            ▶
+        </button>
+
+
+        <div class="dream-music-info">
+
+            <span>
+                NOW PLAYING
+            </span>
+
+            <strong>
+                Moonlight
+            </strong>
+
+            <small>
+                Ariana Grande
+            </small>
+
+        </div>
+
+
+        <div
+            class="dream-music-bars"
+            id="dreamMusicBars"
+            aria-hidden="true"
+        >
+
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
          CONTEÚDO
-    =========================================== -->
+    ====================================================== -->
 
     <main>
 
 
-        <!-- ======================================
+        <!-- =================================================
              HERO
-        ======================================= -->
+        ================================================== -->
 
         <section
             class="hero section-track"
@@ -230,11 +285,13 @@
 
 
                 <h1>
+
                     Dream
 
                     <span>
                         Amor no Ar
                     </span>
+
                 </h1>
 
 
@@ -311,9 +368,7 @@
             </div>
 
 
-            <!-- ==================================
-                 PRODUTO PRINCIPAL
-            =================================== -->
+            <!-- PRODUTO PRINCIPAL -->
 
             <div
                 class="hero-product reveal"
@@ -336,8 +391,6 @@
                     DREAM
                 </span>
 
-
-                <!-- BORRIFADOR -->
 
                 <div
                     class="spray-area"
@@ -373,7 +426,6 @@
                     class="spray-button"
                     id="sprayButton"
                     type="button"
-                    aria-label="Borrifar Dream Amor no Ar"
                 >
 
                     <span class="spray-button-icon">
@@ -404,10 +456,7 @@
                 </div>
 
 
-                <div
-                    class="spray-shortcut"
-                    aria-hidden="true"
-                >
+                <div class="spray-shortcut">
 
                     pressione
 
@@ -422,9 +471,9 @@
         </section>
 
 
-        <!-- ======================================
+        <!-- =================================================
              TICKER
-        ======================================= -->
+        ================================================== -->
 
         <section class="ticker">
 
@@ -451,9 +500,9 @@
         </section>
 
 
-        <!-- ======================================
+        <!-- =================================================
              PRODUTO
-        ======================================= -->
+        ================================================== -->
 
         <section
             class="product-section section-track"
@@ -476,7 +525,7 @@
 
                     <img
                         src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
-                        alt="Dream Amor no Ar 350 ml"
+                        alt="Dream Amor no Ar"
                         draggable="false"
                     >
 
@@ -491,6 +540,7 @@
 
 
                     <h2>
+
                         Um toque de
 
                         <span>
@@ -498,6 +548,7 @@
                         </span>
 
                         na sua rotina.
+
                     </h2>
 
 
@@ -549,7 +600,7 @@
                             <p>
                                 Um body splash de
                                 350 ml para acompanhar
-                                a rotina.
+                                sua rotina.
                             </p>
 
                         </div>
@@ -584,9 +635,9 @@
         </section>
 
 
-        <!-- ======================================
+        <!-- =================================================
              CAMPANHA
-        ======================================= -->
+        ================================================== -->
 
         <section
             class="campaign section-track"
@@ -612,11 +663,13 @@
 
 
                 <h2>
+
                     O amor está
 
                     <span>
                         nos detalhes.
                     </span>
+
                 </h2>
 
 
@@ -639,9 +692,9 @@
         </section>
 
 
-        <!-- ======================================
+        <!-- =================================================
              NOTAS
-        ======================================= -->
+        ================================================== -->
 
         <section
             class="notes-section section-track"
@@ -657,11 +710,13 @@
 
 
                 <h2>
+
                     Descubra cada
 
                     <span>
                         nota.
                     </span>
+
                 </h2>
 
 
@@ -761,7 +816,7 @@
                 </article>
 
 
-                <!-- CORAÇÃO -->
+                <!-- CORPO -->
 
                 <article
                     class="note-card note-card-featured reveal"
@@ -929,9 +984,9 @@
         </section>
 
 
-        <!-- ======================================
+        <!-- =================================================
              EXPERIÊNCIA
-        ======================================= -->
+        ================================================== -->
 
         <section
             class="experience-section section-track"
@@ -947,11 +1002,13 @@
 
 
                 <h2>
+
                     Explore o Dream de
 
                     <span>
                         outro jeito.
                     </span>
+
                 </h2>
 
             </div>
@@ -986,6 +1043,7 @@
                         type="range"
                         min="0"
                         max="8"
+                        step="1"
                         value="0"
                     >
 
@@ -1153,9 +1211,9 @@
             </div>
 
         </section>
-                <!-- ======================================
+                <!-- =================================================
              SENSAÇÃO
-        ======================================= -->
+        ================================================== -->
 
         <section
             class="feeling-section section-track"
@@ -1169,13 +1227,17 @@
                     SENSAÇÃO DA FRAGRÂNCIA
                 </span>
 
+
                 <h2>
+
                     Um equilíbrio entre
 
                     <span>
                         leveza e presença.
                     </span>
+
                 </h2>
+
 
                 <p>
                     Uma leitura visual da sensação
@@ -1231,6 +1293,7 @@
 
                         </div>
 
+
                         <div class="feeling-meter-track">
 
                             <i
@@ -1256,6 +1319,7 @@
                             </strong>
 
                         </div>
+
 
                         <div class="feeling-meter-track">
 
@@ -1283,6 +1347,7 @@
 
                         </div>
 
+
                         <div class="feeling-meter-track">
 
                             <i
@@ -1308,6 +1373,7 @@
                             </strong>
 
                         </div>
+
 
                         <div class="feeling-meter-track">
 
@@ -1335,6 +1401,7 @@
 
                         </div>
 
+
                         <div class="feeling-meter-track">
 
                             <i
@@ -1353,9 +1420,9 @@
         </section>
 
 
-        <!-- ======================================
+        <!-- =================================================
              QUANDO USAR
-        ======================================= -->
+        ================================================== -->
 
         <section
             class="moments-section section-track"
@@ -1371,11 +1438,13 @@
 
 
                 <h2>
+
                     Um Dream para cada
 
                     <span>
                         momento.
                     </span>
+
                 </h2>
 
             </div>
@@ -1475,9 +1544,9 @@
         </section>
 
 
-        <!-- ======================================
+        <!-- =================================================
              DREAM SCENE
-        ======================================= -->
+        ================================================== -->
 
         <section
             class="dream-scene section-track"
@@ -1496,11 +1565,13 @@
 
 
                 <h2>
+
                     Escolha sua
 
                     <span>
                         atmosfera.
                     </span>
+
                 </h2>
 
             </div>
@@ -1584,9 +1655,9 @@
         </section>
 
 
-        <!-- ======================================
+        <!-- =================================================
              FRASE
-        ======================================= -->
+        ================================================== -->
 
         <section class="quote-strip">
 
@@ -1595,19 +1666,21 @@
             </span>
 
             <p>
+
                 Feito para deixar
 
                 <strong>
                     o amor no ar.
                 </strong>
+
             </p>
 
         </section>
 
 
-        <!-- ======================================
+        <!-- =================================================
              GALERIA
-        ======================================= -->
+        ================================================== -->
 
         <section
             class="gallery-section section-track"
@@ -1623,11 +1696,13 @@
 
 
                 <h2>
+
                     Um universo
 
                     <span>
                         romântico.
                     </span>
+
                 </h2>
 
 
@@ -1668,6 +1743,7 @@
                             draggable="false"
                         >
 
+
                         <div class="gallery-caption">
 
                             <small>
@@ -1693,6 +1769,7 @@
                             alt="Amor no Ar"
                             draggable="false"
                         >
+
 
                         <div class="gallery-caption">
 
@@ -1720,6 +1797,7 @@
                             draggable="false"
                         >
 
+
                         <div class="gallery-caption">
 
                             <small>
@@ -1745,6 +1823,7 @@
                             alt="Dream Rosa"
                             draggable="false"
                         >
+
 
                         <div class="gallery-caption">
 
@@ -1812,15 +1891,17 @@
 
 
             <div class="gallery-autoplay-progress">
+
                 <i id="galleryAutoplayProgress"></i>
+
             </div>
 
         </section>
 
 
-        <!-- ======================================
+        <!-- =================================================
              MOOD
-        ======================================= -->
+        ================================================== -->
 
         <section
             class="mood-section section-track"
@@ -1836,11 +1917,13 @@
 
 
                 <h2>
+
                     Qual é o seu
 
                     <span>
                         Dream de hoje?
                     </span>
+
                 </h2>
 
             </div>
@@ -1957,9 +2040,9 @@
         </section>
 
 
-        <!-- ======================================
+        <!-- =================================================
              QUIZ
-        ======================================= -->
+        ================================================== -->
 
         <section
             class="quiz-section section-track"
@@ -2021,8 +2104,11 @@
                             1 / 4
                         </span>
 
+
                         <div class="quiz-progress">
+
                             <i id="quizProgressBar"></i>
+
                         </div>
 
                     </div>
@@ -2085,9 +2171,9 @@
         </section>
 
 
-        <!-- ======================================
+        <!-- =================================================
              CTA FINAL
-        ======================================= -->
+        ================================================== -->
 
         <section class="final-cta">
 
@@ -2099,11 +2185,13 @@
 
 
                 <h2>
+
                     Deixe seu momento
 
                     <span>
                         no ar.
                     </span>
+
                 </h2>
 
 
@@ -2142,9 +2230,9 @@
     </main>
 
 
-    <!-- ==========================================
+    <!-- =====================================================
          MODAL PRODUTO
-    =========================================== -->
+    ====================================================== -->
 
     <div
         class="product-modal"
@@ -2172,6 +2260,7 @@
 
                 <div class="product-modal-halo"></div>
 
+
                 <img
                     src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
                     alt="Dream Amor no Ar 350 ml"
@@ -2188,8 +2277,13 @@
 
 
                 <h2>
+
                     Dream
-                    <span>350 ml</span>
+
+                    <span>
+                        350 ml
+                    </span>
+
                 </h2>
 
 
@@ -2249,9 +2343,9 @@
     </div>
 
 
-    <!-- ==========================================
+    <!-- =====================================================
          MODAL NOTAS
-    =========================================== -->
+    ====================================================== -->
 
     <div
         class="note-modal"
@@ -2302,9 +2396,9 @@
     </div>
 
 
-    <!-- ==========================================
+    <!-- =====================================================
          LIGHTBOX
-    =========================================== -->
+    ====================================================== -->
 
     <div
         class="lightbox"
@@ -2355,7 +2449,6 @@
                     Dream
                 </h3>
 
-
                 <span id="lightboxCounter">
                     01 / 04
                 </span>
@@ -2375,9 +2468,9 @@
         </button>
 
     </div>
-        <!-- ==========================================
+        <!-- =====================================================
          DREAM STUDIO
-    =========================================== -->
+    ====================================================== -->
 
     <button
         class="settings-fab"
@@ -2422,7 +2515,7 @@
         </div>
 
 
-        <!-- TEMA -->
+        <!-- APARÊNCIA -->
 
         <div class="settings-group">
 
@@ -2444,7 +2537,6 @@
                     </small>
 
                 </div>
-
 
                 <input
                     type="checkbox"
@@ -2468,7 +2560,6 @@
 
                 </div>
 
-
                 <input
                     type="checkbox"
                     id="glassToggle"
@@ -2491,7 +2582,6 @@
                     </small>
 
                 </div>
-
 
                 <input
                     type="checkbox"
@@ -2519,11 +2609,13 @@
                     class="palette active"
                     data-palette="dream"
                 >
+
                     <i></i>
 
                     <span>
                         Dream
                     </span>
+
                 </button>
 
 
@@ -2532,11 +2624,13 @@
                     class="palette"
                     data-palette="roxo"
                 >
+
                     <i></i>
 
                     <span>
                         Roxo
                     </span>
+
                 </button>
 
 
@@ -2545,11 +2639,13 @@
                     class="palette"
                     data-palette="azul"
                 >
+
                     <i></i>
 
                     <span>
                         Azul
                     </span>
+
                 </button>
 
 
@@ -2558,11 +2654,13 @@
                     class="palette"
                     data-palette="cherry"
                 >
+
                     <i></i>
 
                     <span>
                         Cherry
                     </span>
+
                 </button>
 
 
@@ -2571,11 +2669,13 @@
                     class="palette"
                     data-palette="gold"
                 >
+
                     <i></i>
 
                     <span>
                         Gold
                     </span>
+
                 </button>
 
 
@@ -2584,11 +2684,13 @@
                     class="palette"
                     data-palette="menta"
                 >
+
                     <i></i>
 
                     <span>
                         Menta
                     </span>
+
                 </button>
 
             </div>
@@ -2596,7 +2698,7 @@
         </div>
 
 
-        <!-- CORES PERSONALIZADAS -->
+        <!-- CORES -->
 
         <div class="settings-group">
 
@@ -2660,7 +2762,6 @@
 
                 </div>
 
-
                 <input
                     type="checkbox"
                     id="particlesToggle"
@@ -2683,7 +2784,6 @@
                     </small>
 
                 </div>
-
 
                 <input
                     type="checkbox"
@@ -2708,7 +2808,6 @@
 
                 </div>
 
-
                 <input
                     type="checkbox"
                     id="cursorToggle"
@@ -2731,7 +2830,6 @@
                     </small>
 
                 </div>
-
 
                 <input
                     type="checkbox"
@@ -2756,7 +2854,6 @@
 
                 </div>
 
-
                 <input
                     type="checkbox"
                     id="spraySoundToggle"
@@ -2767,7 +2864,66 @@
         </div>
 
 
-        <!-- VELOCIDADE -->
+        <!-- MÚSICA -->
+
+        <div class="settings-group">
+
+            <span class="settings-title">
+                Música
+            </span>
+
+
+            <label class="switch-row">
+
+                <div>
+
+                    <strong>
+                        Música de fundo
+                    </strong>
+
+                    <small>
+                        Moonlight • Ariana Grande
+                    </small>
+
+                </div>
+
+                <input
+                    type="checkbox"
+                    id="musicToggle"
+                >
+
+            </label>
+
+
+            <div class="range-setting">
+
+                <div>
+
+                    <strong>
+                        Volume da música
+                    </strong>
+
+                    <span id="musicVolumeValue">
+                        35%
+                    </span>
+
+                </div>
+
+
+                <input
+                    type="range"
+                    id="musicVolumeRange"
+                    min="0"
+                    max="100"
+                    value="35"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- MOVIMENTO -->
 
         <div class="settings-group">
 
@@ -2908,7 +3064,7 @@
         </div>
 
 
-        <!-- ACESSIBILIDADE -->
+        <!-- LEITURA -->
 
         <div class="settings-group">
 
@@ -2996,9 +3152,9 @@
     </aside>
 
 
-    <!-- ==========================================
-         OUTROS
-    =========================================== -->
+    <!-- =====================================================
+         TOAST
+    ====================================================== -->
 
     <div
         class="toast"
@@ -3009,6 +3165,10 @@
         Dream ♡
     </div>
 
+
+    <!-- =====================================================
+         INDICADOR DE SEÇÃO
+    ====================================================== -->
 
     <div
         class="section-indicator"
@@ -3024,6 +3184,10 @@
     </div>
 
 
+    <!-- =====================================================
+         ATALHOS
+    ====================================================== -->
+
     <div
         class="keyboard-hints"
         id="keyboardHints"
@@ -3031,33 +3195,69 @@
     >
 
         <span>
-            <kbd>S</kbd>
+
+            <kbd>
+                S
+            </kbd>
+
             Borrifar
+
         </span>
 
+
         <span>
-            <kbd>D</kbd>
+
+            <kbd>
+                D
+            </kbd>
+
             Tema
+
         </span>
 
+
         <span>
-            <kbd>G</kbd>
+
+            <kbd>
+                G
+            </kbd>
+
             Studio
+
         </span>
 
+
         <span>
-            <kbd>←</kbd>
-            <kbd>→</kbd>
+
+            <kbd>
+                ←
+            </kbd>
+
+            <kbd>
+                →
+            </kbd>
+
             Galeria
+
         </span>
 
+
         <span>
-            <kbd>ESC</kbd>
+
+            <kbd>
+                ESC
+            </kbd>
+
             Fechar
+
         </span>
 
     </div>
 
+
+    <!-- =====================================================
+         VOLTAR AO TOPO
+    ====================================================== -->
 
     <button
         class="back-top"
@@ -3069,9 +3269,9 @@
     </button>
 
 
-    <!-- ==========================================
+    <!-- =====================================================
          FOOTER
-    =========================================== -->
+    ====================================================== -->
 
     <footer>
 
@@ -3124,6 +3324,8 @@
                 src="./img/ASTRO.jpg"
                 alt="Bayerlee"
                 class="developer-photo"
+                loading="lazy"
+                draggable="false"
             >
 
 
@@ -3141,6 +3343,8 @@
                 src="./img/BIA.jpg"
                 alt="Beatriz"
                 class="developer-photo"
+                loading="lazy"
+                draggable="false"
             >
 
 
@@ -3153,11 +3357,11 @@
     </footer>
 
 
-    <!-- ==========================================
+    <!-- =====================================================
          JAVASCRIPT
-    =========================================== -->
+    ====================================================== -->
 
-    <script src="./script.js?v=3.0-final"></script>
+    <script src="./script.js?v=moonlight-final"></script>
 
 
 </body>
