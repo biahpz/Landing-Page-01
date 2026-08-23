@@ -511,10 +511,7 @@ let motion3dIntensity = 1;
    SOM REAL DO BORRIFADOR
 ========================================================= */
 
-const sprayAudio =
-    new Audio(
-        "./audio/spray.mp3"
-    );
+const sprayAudio = new Audio("./audio/spray.mp3?v=2");
 
 sprayAudio.preload = "auto";
 sprayAudio.volume = 0.30;
