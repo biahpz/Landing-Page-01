@@ -8948,3 +8948,1271 @@ document.addEventListener("DOMContentLoaded", () => {
             "input",
             updateCompatibleTimeline
         );
+            /* =====================================================
+       CONTROLES DE TAMANHO DE TEXTO
+    ===================================================== */
+
+    const textSizeButtons =
+        $$(
+            "[data-text-size]"
+        );
+
+
+    function applyTextSize(
+        size
+    ) {
+
+        const sizes = [
+            "small",
+            "normal",
+            "large"
+        ];
+
+
+        if (
+            !sizes.includes(
+                size
+            )
+        ) {
+
+            size =
+                "normal";
+        }
+
+
+        body.classList.remove(
+            "text-small",
+            "text-normal",
+            "text-large"
+        );
+
+
+        body.classList.add(
+            `text-${size}`
+        );
+
+
+        root.dataset.textSize =
+            size;
+
+
+        textSizeButtons.forEach(
+            button => {
+
+                const active =
+                    button.dataset.textSize ===
+                    size;
+
+
+                button.classList.toggle(
+                    "active",
+                    active
+                );
+
+
+                button.setAttribute(
+                    "aria-pressed",
+                    String(active)
+                );
+            }
+        );
+
+
+        storage.set(
+            "dreamTextSize",
+            size
+        );
+    }
+
+
+    textSizeButtons.forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    applyTextSize(
+                        button.dataset.textSize
+                    );
+                }
+            );
+        }
+    );
+
+
+    applyTextSize(
+        storage.get(
+            "dreamTextSize",
+            "normal"
+        )
+    );
+
+
+    /* =====================================================
+       CONTRASTE — COMPATIBILIDADE
+    ===================================================== */
+
+    const contrastSlider =
+        $("#contrastSlider") ||
+        $("#contrastControl") ||
+        $("#contrastRange");
+
+
+    const compatibleContrastValue =
+        $("#contrastValue");
+
+
+    function applyCompatibleContrast() {
+
+        if (
+            !contrastSlider
+        ) {
+
+            return;
+        }
+
+
+        const value =
+            clamp(
+                Number(
+                    contrastSlider.value
+                ),
+                70,
+                140
+            );
+
+
+        contrast =
+            value;
+
+
+        root.style.setProperty(
+            "--site-contrast",
+            value /
+                100
+        );
+
+
+        root.style.setProperty(
+            "--contrast-level",
+            value /
+                100
+        );
+
+
+        root.style.setProperty(
+            "--contrast",
+            value /
+                100
+        );
+
+
+        body.dataset.contrast =
+            String(value);
+
+
+        if (
+            compatibleContrastValue
+        ) {
+
+            compatibleContrastValue.textContent =
+                `${value}%`;
+        }
+
+
+        storage.set(
+            "dreamContrast",
+            value
+        );
+    }
+
+
+    contrastSlider?.addEventListener(
+        "input",
+        applyCompatibleContrast
+    );
+
+
+    applyCompatibleContrast();
+
+
+    /* =====================================================
+       MODO ESCURO — COMPATIBILIDADE
+    ===================================================== */
+
+    const darkModeToggle =
+        $("#darkModeToggle") ||
+        $("#themeToggle");
+
+
+    function syncDarkModeControls() {
+
+        if (
+            darkModeToggle
+        ) {
+
+            if (
+                darkModeToggle.matches(
+                    'input[type="checkbox"]'
+                )
+            ) {
+
+                darkModeToggle.checked =
+                    darkMode;
+
+            } else {
+
+                darkModeToggle.classList.toggle(
+                    "active",
+                    darkMode
+                );
+
+
+                darkModeToggle.setAttribute(
+                    "aria-pressed",
+                    String(darkMode)
+                );
+            }
+        }
+    }
+
+
+    darkModeToggle?.addEventListener(
+        "change",
+        event => {
+
+            darkMode =
+                event.target.checked;
+
+
+            applyTheme();
+
+            syncDarkModeControls();
+        }
+    );
+
+
+    if (
+        darkModeToggle &&
+        !darkModeToggle.matches(
+            'input[type="checkbox"]'
+        )
+    ) {
+
+        darkModeToggle.addEventListener(
+            "click",
+            () => {
+
+                darkMode =
+                    !darkMode;
+
+
+                applyTheme();
+
+                syncDarkModeControls();
+            }
+        );
+    }
+
+
+    syncDarkModeControls();
+
+
+    /* =====================================================
+       PERFORMANCE — COMPATIBILIDADE
+    ===================================================== */
+
+    const performanceModeButton =
+        $("#performanceMode") ||
+        $("#performanceButton");
+
+
+    performanceModeButton
+        ?.addEventListener(
+            "click",
+            () => {
+
+                performanceMode =
+                    !performanceMode;
+
+
+                applyPerformanceMode();
+
+
+                performanceModeButton
+                    .classList
+                    .toggle(
+                        "active",
+                        performanceMode
+                    );
+
+
+                performanceModeButton
+                    .setAttribute(
+                        "aria-pressed",
+                        String(
+                            performanceMode
+                        )
+                    );
+            }
+        );
+
+
+    /* =====================================================
+       CURSOR GLOW — COMPATIBILIDADE
+    ===================================================== */
+
+    const cursorGlowToggle =
+        $("#cursorGlowToggle");
+
+
+    cursorGlowToggle
+        ?.addEventListener(
+            "change",
+            event => {
+
+                cursorEnabled =
+                    event.target.checked;
+
+
+                applyCursor();
+            }
+        );
+
+
+    if (
+        cursorGlowToggle
+    ) {
+
+        cursorGlowToggle.checked =
+            cursorEnabled;
+    }
+
+
+    /* =====================================================
+       INTENSIDADE 3D — COMPATIBILIDADE
+    ===================================================== */
+
+    const compatible3DRange =
+        $("#threeDRange") ||
+        $("#intensity3D") ||
+        $("#threeDIntensity");
+
+
+    const compatible3DValue =
+        $("#threeDValue") ||
+        $("#intensity3DValue") ||
+        $("#threeDIntensityValue");
+
+
+    function applyCompatible3D() {
+
+        if (
+            !compatible3DRange
+        ) {
+
+            return;
+        }
+
+
+        const value =
+            clamp(
+                Number(
+                    compatible3DRange.value
+                ),
+                0,
+                100
+            );
+
+
+        root.style.setProperty(
+            "--dream-3d-intensity",
+            value /
+                100
+        );
+
+
+        root.style.setProperty(
+            "--three-d-intensity",
+            value /
+                100
+        );
+
+
+        if (
+            compatible3DValue
+        ) {
+
+            compatible3DValue.textContent =
+                `${value}%`;
+        }
+
+
+        storage.set(
+            "dream3DIntensity",
+            value
+        );
+    }
+
+
+    compatible3DRange
+        ?.addEventListener(
+            "input",
+            applyCompatible3D
+        );
+
+
+    applyCompatible3D();
+
+
+    /* =====================================================
+       MUTE / SOM
+    ===================================================== */
+
+    const muteButton =
+        $("#muteButton") ||
+        $("#muteToggle");
+
+
+    function updateMuteButton() {
+
+        if (
+            !muteButton
+        ) {
+
+            return;
+        }
+
+
+        const muted =
+            !soundEnabled ||
+            !!dreamMusic?.muted;
+
+
+        muteButton.classList.toggle(
+            "muted",
+            muted
+        );
+
+
+        muteButton.classList.toggle(
+            "active",
+            !muted
+        );
+
+
+        muteButton.setAttribute(
+            "aria-pressed",
+            String(muted)
+        );
+
+
+        const icon =
+            $(".mute-icon", muteButton);
+
+
+        if (
+            icon
+        ) {
+
+            icon.textContent =
+                muted
+                    ? "🔇"
+                    : "🔊";
+        }
+    }
+
+
+    muteButton?.addEventListener(
+        "click",
+        () => {
+
+            soundEnabled =
+                !soundEnabled;
+
+
+            applySound();
+
+            updateMuteButton();
+        }
+    );
+
+
+    updateMuteButton();
+
+
+    /* =====================================================
+       BOTÃO PRINCIPAL DE MÚSICA
+    ===================================================== */
+
+    const mainMusicButton =
+        $("#mainMusicButton") ||
+        $("#playMusic") ||
+        $("#musicPlay");
+
+
+    mainMusicButton?.addEventListener(
+        "click",
+        async () => {
+
+            if (
+                !dreamMusic
+            ) {
+
+                return;
+            }
+
+
+            try {
+
+                if (
+                    dreamMusic.paused
+                ) {
+
+                    await dreamMusic.play();
+
+                } else {
+
+                    dreamMusic.pause();
+                }
+
+
+                updateMusicButton();
+
+            } catch {
+
+                showToast(
+                    currentLanguage ===
+                        "pt-BR"
+                        ? "Não foi possível reproduzir a música."
+                        : "Unable to play the music."
+                );
+            }
+        }
+    );
+
+
+    dreamMusic?.addEventListener(
+        "volumechange",
+        () => {
+
+            updateMuteButton();
+        }
+    );
+
+
+    /* =====================================================
+       FAVORITO DO MODAL
+    ===================================================== */
+
+    const modalFavoriteButton =
+        $("#modalFavorite") ||
+        $("#productModalFavorite");
+
+
+    function syncModalFavorite() {
+
+        if (
+            !modalFavoriteButton
+        ) {
+
+            return;
+        }
+
+
+        modalFavoriteButton.classList.toggle(
+            "active",
+            favorite
+        );
+
+
+        modalFavoriteButton.setAttribute(
+            "aria-pressed",
+            String(favorite)
+        );
+
+
+        const icon =
+            $(".favorite-icon", modalFavoriteButton);
+
+
+        if (
+            icon
+        ) {
+
+            icon.textContent =
+                favorite
+                    ? "♥"
+                    : "♡";
+        }
+    }
+
+
+    modalFavoriteButton
+        ?.addEventListener(
+            "click",
+            () => {
+
+                favorite =
+                    !favorite;
+
+
+                updateFavorite(
+                    true
+                );
+
+
+                syncModalFavorite();
+            }
+        );
+
+
+    favoriteButton?.addEventListener(
+        "click",
+        syncModalFavorite
+    );
+
+
+    syncModalFavorite();
+
+
+    /* =====================================================
+       COMPARTILHAR PELO MODAL
+    ===================================================== */
+
+    const modalShareButton =
+        $("#modalShare") ||
+        $("#productModalShare");
+
+
+    modalShareButton
+        ?.addEventListener(
+            "click",
+            shareDream
+        );
+
+
+    /* =====================================================
+       COPIAR LINK
+    ===================================================== */
+
+    const copyLinkButtons =
+        $$(
+            "[data-copy-link], #copyLink"
+        );
+
+
+    copyLinkButtons.forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                async () => {
+
+                    try {
+
+                        await navigator
+                            .clipboard
+                            .writeText(
+                                location.href
+                            );
+
+
+                        showToast(
+                            translations[
+                                currentLanguage
+                            ].copied
+                        );
+
+                    } catch {
+
+                        showToast(
+                            currentLanguage ===
+                                "pt-BR"
+                                ? "Não foi possível copiar o link."
+                                : "Unable to copy the link."
+                        );
+                    }
+                }
+            );
+        }
+    );
+
+
+    /* =====================================================
+       SCROLL SUAVE
+    ===================================================== */
+
+    $$(
+        'a[href^="#"]'
+    ).forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                event => {
+
+                    const href =
+                        link.getAttribute(
+                            "href"
+                        );
+
+
+                    if (
+                        !href ||
+                        href ===
+                            "#"
+                    ) {
+
+                        return;
+                    }
+
+
+                    const target =
+                        $(
+                            href
+                        );
+
+
+                    if (
+                        !target
+                    ) {
+
+                        return;
+                    }
+
+
+                    event.preventDefault();
+
+
+                    target.scrollIntoView({
+
+                        behavior:
+                            animationsEnabled
+                                ? "smooth"
+                                : "auto",
+
+                        block:
+                            "start"
+
+                    });
+
+
+                    menu?.classList.remove(
+                        "open"
+                    );
+
+
+                    menuMobile?.classList.remove(
+                        "active"
+                    );
+                }
+            );
+        }
+    );
+
+
+    /* =====================================================
+       ACTIVE MENU
+    ===================================================== */
+
+    const menuLinks =
+        $$(
+            '.menu a[href^="#"]'
+        );
+
+
+    function updateActiveMenu() {
+
+        if (
+            !indicatorSections.length
+        ) {
+
+            return;
+        }
+
+
+        let activeId =
+            indicatorSections[
+                0
+            ]?.id;
+
+
+        const marker =
+            window.innerHeight *
+            0.38;
+
+
+        indicatorSections.forEach(
+            section => {
+
+                const rect =
+                    section.getBoundingClientRect();
+
+
+                if (
+                    rect.top <=
+                    marker
+                ) {
+
+                    activeId =
+                        section.id;
+                }
+            }
+        );
+
+
+        menuLinks.forEach(
+            link => {
+
+                const href =
+                    link.getAttribute(
+                        "href"
+                    );
+
+
+                link.classList.toggle(
+                    "active",
+                    href ===
+                        `#${activeId}`
+                );
+            }
+        );
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        updateActiveMenu,
+        {
+            passive: true
+        }
+    );
+
+
+    updateActiveMenu();
+
+
+    /* =====================================================
+       PARALLAX LEVE
+    ===================================================== */
+
+    const parallaxElements =
+        $$(
+            "[data-parallax]"
+        );
+
+
+    function updateParallax() {
+
+        if (
+            performanceMode ||
+            !animationsEnabled
+        ) {
+
+            return;
+        }
+
+
+        const viewportHeight =
+            window.innerHeight;
+
+
+        parallaxElements.forEach(
+            element => {
+
+                const rect =
+                    element.getBoundingClientRect();
+
+
+                if (
+                    rect.bottom <
+                        0 ||
+                    rect.top >
+                        viewportHeight
+                ) {
+
+                    return;
+                }
+
+
+                const speed =
+                    Number(
+                        element.dataset
+                            .parallax ||
+                        0.08
+                    );
+
+
+                const center =
+                    rect.top +
+                    rect.height /
+                        2;
+
+
+                const offset =
+                    (
+                        center -
+                        viewportHeight /
+                            2
+                    ) *
+                    speed;
+
+
+                element.style.transform =
+                    `translate3d(0, ${offset}px, 0)`;
+            }
+        );
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        () => {
+
+            requestAnimationFrame(
+                updateParallax
+            );
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    updateParallax();
+
+
+    /* =====================================================
+       TILT CARDS
+    ===================================================== */
+
+    const tiltCards =
+        $$(
+            "[data-tilt], .tilt-card"
+        );
+
+
+    tiltCards.forEach(
+        card => {
+
+            card.addEventListener(
+                "pointermove",
+                event => {
+
+                    if (
+                        performanceMode ||
+                        !animationsEnabled ||
+                        event.pointerType ===
+                            "touch"
+                    ) {
+
+                        return;
+                    }
+
+
+                    const rect =
+                        card.getBoundingClientRect();
+
+
+                    const x =
+                        (
+                            event.clientX -
+                            rect.left
+                        ) /
+                        rect.width;
+
+
+                    const y =
+                        (
+                            event.clientY -
+                            rect.top
+                        ) /
+                        rect.height;
+
+
+                    const rotateY =
+                        (
+                            x -
+                            0.5
+                        ) *
+                        8;
+
+
+                    const rotateX =
+                        (
+                            0.5 -
+                            y
+                        ) *
+                        8;
+
+
+                    card.style.transform =
+                        `
+                        perspective(900px)
+                        rotateX(${rotateX}deg)
+                        rotateY(${rotateY}deg)
+                        translateZ(4px)
+                        `;
+                }
+            );
+
+
+            card.addEventListener(
+                "pointerleave",
+                () => {
+
+                    card.style.transform =
+                        "";
+                }
+            );
+        }
+    );
+
+
+    /* =====================================================
+       ACESSIBILIDADE — ENTER / SPACE
+    ===================================================== */
+
+    $$(
+        '[role="button"]:not(button)'
+    ).forEach(
+        element => {
+
+            if (
+                !element.hasAttribute(
+                    "tabindex"
+                )
+            ) {
+
+                element.tabIndex =
+                    0;
+            }
+
+
+            element.addEventListener(
+                "keydown",
+                event => {
+
+                    if (
+                        event.key ===
+                            "Enter" ||
+                        event.key ===
+                            " "
+                    ) {
+
+                        event.preventDefault();
+
+                        element.click();
+                    }
+                }
+            );
+        }
+    );
+
+
+    /* =====================================================
+       VISIBILIDADE DA ABA
+    ===================================================== */
+
+    document.addEventListener(
+        "visibilitychange",
+        () => {
+
+            if (
+                document.hidden
+            ) {
+
+                if (
+                    galleryAutoplayActive
+                ) {
+
+                    clearInterval(
+                        galleryAutoplayTimer
+                    );
+
+
+                    galleryAutoplayTimer =
+                        null;
+                }
+
+
+                return;
+            }
+
+
+            if (
+                galleryAutoplayActive
+            ) {
+
+                stopGalleryAutoplay();
+
+                startGalleryAutoplay();
+            }
+        }
+    );
+
+
+    /* =====================================================
+       IMAGENS — EVITAR DRAG NATIVO
+    ===================================================== */
+
+    $$(
+        "img"
+    ).forEach(
+        image => {
+
+            image.setAttribute(
+                "draggable",
+                "false"
+            );
+        }
+    );
+
+
+    /* =====================================================
+       FALLBACK REVEAL
+    ===================================================== */
+
+    setTimeout(
+        () => {
+
+            $$(
+                ".reveal"
+            ).forEach(
+                element => {
+
+                    element.classList.add(
+                        "visible"
+                    );
+                }
+            );
+
+        },
+        1800
+    );
+
+
+    /* =====================================================
+       FALLBACK DO LOADER
+    ===================================================== */
+
+    setTimeout(
+        () => {
+
+            if (
+                loader
+            ) {
+
+                loader.classList.add(
+                    "hide"
+                );
+
+
+                setTimeout(
+                    () => {
+
+                        loader.style.display =
+                            "none";
+
+                    },
+                    700
+                );
+            }
+
+
+            $$(
+                ".reveal"
+            ).forEach(
+                element => {
+
+                    element.classList.add(
+                        "visible"
+                    );
+                }
+            );
+
+        },
+        5000
+    );
+
+
+    /* =====================================================
+       INICIALIZAÇÃO DE COMPATIBILIDADE
+    ===================================================== */
+
+    updateLanguageButtons();
+
+    updateCompatibleTimeline();
+
+    applyCompatibleContrast();
+
+    applyCompatible3D();
+
+    syncDarkModeControls();
+
+    syncModalFavorite();
+
+    updateMuteButton();
+
+    updateActiveMenu();
+
+
+    /* =====================================================
+       RESIZE FINAL
+    ===================================================== */
+
+    const finalResizeHandler =
+        debounce(
+            () => {
+
+                updateScroll();
+
+                updateSectionIndicator();
+
+                updateActiveMenu();
+
+                updateGalleryUI();
+
+                updateParallax();
+
+            },
+            100
+        );
+
+
+    window.addEventListener(
+        "resize",
+        finalResizeHandler,
+        {
+            passive: true
+        }
+    );
+
+
+    /* =====================================================
+       ESTADO FINAL
+    ===================================================== */
+
+    requestAnimationFrame(
+        () => {
+
+            requestAnimationFrame(
+                () => {
+
+                    body.classList.add(
+                        "loaded"
+                    );
+
+
+                    body.classList.add(
+                        "dream-ready"
+                    );
+                }
+            );
+        }
+    );
+
+
+}); // FIM DO DOMContentLoaded
