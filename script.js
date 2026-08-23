@@ -868,18 +868,46 @@ let spraySoundEnabled =
    VERSÃO MAIS SUAVE E REALISTA
 ========================================================= */
 
-let sprayAudioContext =
-    null;
+/* =========================================================
+   SOM REAL DO BORRIFADOR
+========================================================= */
 
+const sprayAudio = new Audio("./audio/spray.mp3");
+
+sprayAudio.preload = "auto";
+sprayAudio.volume = 0.32;
 
 function playSpraySound() {
 
-    if (
-        !spraySoundEnabled
-    ) {
+    if (!spraySoundEnabled) {
         return;
     }
 
+    try {
+
+        sprayAudio.pause();
+        sprayAudio.currentTime = 0;
+
+        const playPromise = sprayAudio.play();
+
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                console.warn(
+                    "Não foi possível tocar o spray:",
+                    error
+                );
+            });
+        }
+
+    } catch (error) {
+
+        console.warn(
+            "Erro no som do borrifador:",
+            error
+        );
+
+    }
+}
 
     try {
 
