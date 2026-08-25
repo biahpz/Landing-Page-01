@@ -6568,8 +6568,6 @@ document.addEventListener("DOMContentLoaded", () => {
     /* =========================================================
        RENDERIZAR PERGUNTA
     ========================================================= */
-           RENDERIZAR PERGUNTA
-    ========================================================= */
 
     function renderQuizQuestion() {
 
