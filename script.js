@@ -12,20 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const $$ = (selector, parent = document) =>
     [...parent.querySelectorAll(selector)];
 
-  const body =
-    document.body;
-
-  const root =
-    document.documentElement;
+  const body = document.body;
+  const root = document.documentElement;
 
   const clamp = (value, min, max) =>
-    Math.min(
-      max,
-      Math.max(
-        min,
-        value
-      )
-    );
+    Math.min(max, Math.max(min, Number(value) || 0));
 
 
   /* =========================================================
@@ -53,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     },
 
-
     set(key, value) {
 
       try {
@@ -66,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
       } catch {}
 
     },
-
 
     remove(key) {
 
@@ -123,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
      TOAST
   ========================================================= */
 
-  let toastTimer;
+  let toastTimer = null;
 
 
   function showToast(message) {
@@ -132,28 +121,22 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-
     toast.textContent =
       message;
-
 
     toast.classList.remove(
       "show"
     );
 
-
     void toast.offsetWidth;
-
 
     toast.classList.add(
       "show"
     );
 
-
     clearTimeout(
       toastTimer
     );
-
 
     toastTimer =
       setTimeout(
@@ -184,21 +167,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-
     loader.classList.add(
       "hide"
     );
 
-
     setTimeout(
       () => {
 
-        if (loader) {
-
-          loader.style.display =
-            "none";
-
-        }
+        loader.style.display =
+          "none";
 
       },
       700
@@ -227,1444 +204,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     IDIOMAS
+     IDIOMA
   ========================================================= */
-
-  const translations = {
-
-    "pt-BR": {
-
-      "loader.subtitle":
-        "Amor no Ar",
-
-      "loader.loading":
-        "preparando sua experiência",
-
-      "nav.home":
-        "Início",
-
-      "nav.product":
-        "Produto",
-
-      "nav.campaign":
-        "Campanha",
-
-      "nav.notes":
-        "Notas",
-
-      "nav.experience":
-        "Experiência",
-
-      "nav.feel":
-        "Sensação",
-
-      "nav.moments":
-        "Momentos",
-
-      "nav.gallery":
-        "Galeria",
-
-      "nav.mood":
-        "Mood",
-
-      "nav.quiz":
-        "Quiz",
-
-      "nav.discover":
-        "Conhecer",
-
-      "music.playing":
-        "TOCANDO AGORA",
-
-      "hero.status":
-        "experiência interativa",
-
-      "hero.eyebrow":
-        "O BOTICÁRIO • DREAM",
-
-      "hero.title2":
-        "Amor no Ar",
-
-      "hero.description":
-        "Uma fragrância delicada, romântica e envolvente para transformar pequenos momentos em lembranças especiais.",
-
-      "hero.discover":
-        "Descobrir o Dream",
-
-      "hero.viewProduct":
-        "Ver produto",
-
-      "hero.fact1":
-        "Body Splash",
-
-      "hero.fact2Title":
-        "Floral",
-
-      "hero.fact2":
-        "Amadeirado",
-
-      "hero.fact3":
-        "Amor no Ar",
-
-      "hero.tip":
-        "Toque em borrifar para ativar o efeito, áudio e animação.",
-
-      "hero.productName":
-        "Amor no Ar",
-
-      "hero.bodySplash":
-        "Body Splash",
-
-      "spray.button":
-        "Borrifar",
-
-      "spray.experience":
-        "experimentar",
-
-      "spray.counter":
-        "BORRIFADAS",
-
-      "ticker.floral":
-        "✿ Floral Amadeirado",
-
-      "ticker.love":
-        "♡ Amor no Ar",
-
-      "ticker.delicate":
-        "☁ Delicado",
-
-      "ticker.romantic":
-        "☾ Romântico",
-
-      "product.collection":
-        "DREAM COLLECTION",
-
-      "product.eyebrow":
-        "DREAM AMOR NO AR",
-
-      "product.title1":
-        "Um toque de",
-
-      "product.title2":
-        "amor",
-
-      "product.title3":
-        "na sua rotina.",
-
-      "product.description":
-        "Dream Amor no Ar combina delicadeza, romantismo e personalidade em uma fragrância confortável para diferentes momentos.",
-
-      "product.point1Title":
-        "Floral delicado",
-
-      "product.point1Text":
-        "Uma assinatura leve, elegante e romântica.",
-
-      "product.point2Title":
-        "Sensação confortável",
-
-      "product.point2Text":
-        "Para usar de forma leve durante o dia.",
-
-      "product.point3Title":
-        "Frasco de 350 ml",
-
-      "product.point3Text":
-        "Um Dream para acompanhar sua rotina.",
-
-      "product.details":
-        "Ver detalhes",
-
-      "product.favorite":
-        "♡ Favoritar",
-
-      "campaign.mini":
-        "DREAM • AMOR NO AR",
-
-      "campaign.title1":
-        "O amor está",
-
-      "campaign.title2":
-        "nos detalhes.",
-
-      "campaign.description":
-        "Uma atmosfera romântica, sofisticada e cheia de personalidade.",
-
-      "campaign.explore":
-        "Explorar universo Dream",
-
-      "campaign.product":
-        "Conhecer produto",
-
-      "notes.eyebrow":
-        "PIRÂMIDE OLFATIVA",
-
-      "notes.title1":
-        "Descubra cada",
-
-      "notes.title2":
-        "nota.",
-
-      "notes.description":
-        "Explore as diferentes camadas e descubra como a fragrância evolui.",
-
-      "notes.top":
-        "saída",
-
-      "notes.heart":
-        "corpo",
-
-      "notes.base":
-        "fundo",
-
-      "notes.card1Title":
-        "Frescor frutado",
-
-      "notes.card1Text":
-        "A primeira impressão da fragrância: luminosa, fresca e vibrante.",
-
-      "notes.card2Title":
-        "Coração floral",
-
-      "notes.card2Text":
-        "O lado romântico, delicado e elegante de Amor no Ar.",
-
-      "notes.card3Title":
-        "Conforto envolvente",
-
-      "notes.card3Text":
-        "As notas que permanecem e deixam a assinatura final da fragrância.",
-
-      "note.bergamot":
-        "Bergamota",
-
-      "note.orange":
-        "Laranja",
-
-      "note.mandarin":
-        "Mandarina",
-
-      "note.lemon":
-        "Limão",
-
-      "note.apple":
-        "Maçã",
-
-      "note.rose":
-        "Rosa",
-
-      "note.linden":
-        "Tília",
-
-      "note.freesia":
-        "Frésia",
-
-      "note.lotus":
-        "Flor de Lótus",
-
-      "note.gardenia":
-        "Gardênia",
-
-      "note.peach":
-        "Pêssego",
-
-      "note.amber":
-        "Âmbar",
-
-      "note.sandalwood":
-        "Sândalo",
-
-      "note.vanilla":
-        "Baunilha",
-
-      "experience.eyebrow":
-        "SINTA A FRAGRÂNCIA",
-
-      "experience.title1":
-        "Explore o Dream de",
-
-      "experience.title2":
-        "outro jeito.",
-
-      "experience.description":
-        "Descubra a evolução da fragrância, compare sensações e personalize a experiência.",
-
-      "experience.evolution":
-        "EVOLUÇÃO",
-
-      "experience.timelineTitle":
-        "Timeline da fragrância",
-
-      "experience.timelineIntro":
-        "Arraste para acompanhar a evolução ao longo das horas.",
-
-      "experience.evolutionLower":
-        "evolução",
-
-      "experience.profile":
-        "PERFIL",
-
-      "experience.personality":
-        "Personalidade",
-
-      "experience.personalityIntro":
-        "Uma leitura visual das principais sensações de Dream.",
-
-      "experience.moment":
-        "MOMENTO",
-
-      "experience.feelQuestion":
-        "Como você quer se sentir?",
-
-      "experience.feelIntro":
-        "Escolha uma atmosfera para transformar o visual da página.",
-
-      "experience.moodHint":
-        "A identidade visual muda automaticamente com o mood.",
-
-      "meter.floral":
-        "Floral",
-
-      "meter.romantic":
-        "Romântico",
-
-      "meter.comfort":
-        "Confortável",
-
-      "meter.presence":
-        "Presença",
-
-      "meter.intensity":
-        "Intensidade",
-
-      "mood.eyebrow":
-        "ESCOLHA SEU MOOD",
-
-      "mood.title1":
-        "Qual é o seu",
-
-      "mood.title2":
-        "Dream de hoje?",
-
-      "mood.description":
-        "Cada mood muda a identidade visual da experiência.",
-
-      "mood.romantic":
-        "Romântico",
-
-      "mood.dreamy":
-        "Sonhador",
-
-      "mood.night":
-        "Noturno",
-
-      "mood.energy":
-        "Energia",
-
-      "mood.calm":
-        "Calmo",
-
-      "mood.delicate":
-        "delicado",
-
-      "mood.light":
-        "leve",
-
-      "mood.mysterious":
-        "misterioso",
-
-      "mood.intense":
-        "intenso",
-
-      "mood.comfortable":
-        "confortável",
-
-      "dreamMoment.defaultTitle":
-        "Seu momento começa aqui.",
-
-      "dreamMoment.defaultText":
-        "Toque no botão para receber uma pequena mensagem Dream.",
-
-      "dreamMoment.button":
-        "Novo momento",
-
-      "feeling.eyebrow":
-        "SENSAÇÃO DA FRAGRÂNCIA",
-
-      "feeling.title1":
-        "Entre leveza e",
-
-      "feeling.title2":
-        "presença.",
-
-      "feeling.description":
-        "Uma representação visual do equilíbrio de Dream Amor no Ar.",
-
-      "feeling.amorNoAr":
-        "AMOR NO AR",
-
-      "feeling.profile":
-        "PERFIL SENSORIAL",
-
-      "feeling.bigTitle":
-        "Delicado sem passar despercebido.",
-
-      "feeling.text":
-        "Dream equilibra um coração romântico com uma base confortável, criando uma presença suave.",
-
-      "moments.eyebrow":
-        "QUANDO USAR",
-
-      "moments.title1":
-        "Um Dream para cada",
-
-      "moments.title2":
-        "momento.",
-
-      "moments.description":
-        "Escolha o cenário que mais combina com a sua experiência.",
-
-      "moments.day":
-        "DIA",
-
-      "moments.date":
-        "ENCONTRO",
-
-      "moments.night":
-        "NOITE",
-
-      "moments.special":
-        "ESPECIAL",
-
-      "moments.card1Title":
-        "Rotina leve",
-
-      "moments.card1Text":
-        "Para começar o dia com uma sensação fresca, delicada e confortável.",
-
-      "moments.card2Title":
-        "Momento romântico",
-
-      "moments.card2Text":
-        "Uma atmosfera delicada para encontros e ocasiões especiais.",
-
-      "moments.card3Title":
-        "Noite Dream",
-
-      "moments.card3Text":
-        "Para quando você quer uma presença suave, envolvente e elegante.",
-
-      "moments.card4Title":
-        "Seu momento",
-
-      "moments.card4Text":
-        "Alguns momentos não precisam de ocasião. Basta serem seus.",
-
-      "moments.tagLight":
-        "leve",
-
-      "moments.tagRomantic":
-        "romântico",
-
-      "moments.tagNight":
-        "noturno",
-
-      "moments.tagSpecial":
-        "especial",
-
-      "scene.title1":
-        "Escolha sua",
-
-      "scene.title2":
-        "atmosfera.",
-
-      "scene.description":
-        "Mude o cenário e descubra diferentes lados de Dream.",
-
-      "scene.romance":
-        "Romance",
-
-      "scene.delicate":
-        "delicado",
-
-      "scene.sky":
-        "Céu",
-
-      "scene.dreamy":
-        "sonhador",
-
-      "scene.flowers":
-        "Flores",
-
-      "scene.romantic":
-        "romântico",
-
-      "scene.energy":
-        "Energia",
-
-      "scene.intense":
-        "intenso",
-
-      "quote.start":
-        "Feito para deixar",
-
-      "quote.end":
-        "o amor no ar.",
-
-      "gallery.eyebrow":
-        "GALERIA DREAM",
-
-      "gallery.title1":
-        "Entre no universo",
-
-      "gallery.title2":
-        "Dream.",
-
-      "gallery.description":
-        "Arraste com o mouse, deslize no celular ou use as setas.",
-
-      "gallery.item1":
-        "Dream World",
-
-      "gallery.item2":
-        "Amor no Ar",
-
-      "gallery.item3":
-        "Romance Dream",
-
-      "gallery.explore":
-        "explorar ↗",
-
-      "gallery.autoplay":
-        "▶ Autoplay",
-
-      "quiz.title":
-        "Qual é o seu Dream?",
-
-      "quiz.description":
-        "Responda quatro perguntas e descubra qual atmosfera combina mais com você.",
-
-      "quiz.start":
-        "Começar quiz",
-
-      "quiz.questionLabel":
-        "DREAM QUESTION",
-
-      "quiz.resultLabel":
-        "SEU RESULTADO",
-
-      "quiz.restart":
-        "Refazer quiz",
-
-      "quiz.applyMood":
-        "Aplicar meu mood",
-
-      "quiz.share":
-        "Compartilhar",
-
-      "final.eyebrow":
-        "DREAM • AMOR NO AR",
-
-      "final.title1":
-        "Deixe seu momento",
-
-      "final.title2":
-        "no ar.",
-
-      "final.description":
-        "Explore as notas, encontre seu mood e crie sua própria experiência Dream.",
-
-      "final.product":
-        "Ver produto",
-
-      "final.share":
-        "Compartilhar",
-
-      "final.fullscreen":
-        "⛶ Tela cheia",
-
-      "modal.productEyebrow":
-        "DREAM AMOR NO AR",
-
-      "modal.productDescription":
-        "Uma fragrância floral, romântica e envolvente.",
-
-      "modal.floral":
-        "✿ Floral",
-
-      "modal.romantic":
-        "♡ Romântico",
-
-      "modal.comfortable":
-        "☁ Confortável",
-
-      "modal.profile":
-        "PERFIL",
-
-      "modal.profileValue":
-        "Floral amadeirado",
-
-      "modal.experience":
-        "EXPERIÊNCIA",
-
-      "modal.experienceValue":
-        "Leve e envolvente",
-
-      "modal.noteLabel":
-        "NOTA DREAM",
-
-      "lightbox.label":
-        "DREAM GALLERY",
-
-      "footer.subtitle":
-        "Amor no Ar • 350 ml",
-
-      "footer.developed":
-        "DESENVOLVIDO POR",
-
-      "studio.title":
-        "Sua experiência, do seu jeito.",
-
-      "studio.description":
-        "Personalize visual, áudio e movimento.",
-
-      "studio.language":
-        "Idioma",
-
-      "studio.presets":
-        "Estilos rápidos",
-
-      "studio.appearance":
-        "Aparência",
-
-      "studio.dark":
-        "Modo escuro",
-
-      "studio.darkDesc":
-        "Alternar tema",
-
-      "studio.glassDesc":
-        "Transparência e desfoque",
-
-      "studio.clean":
-        "Modo clean",
-
-      "studio.cleanDesc":
-        "Experiência mais minimalista",
-
-      "studio.performance":
-        "Modo performance",
-
-      "studio.performanceDesc":
-        "Reduz efeitos mais pesados",
-
-      "studio.palettes":
-        "Paletas",
-
-      "studio.customColors":
-        "Cores personalizadas",
-
-      "studio.primary":
-        "Principal",
-
-      "studio.secondary":
-        "Secundária",
-
-      "studio.effects":
-        "Efeitos",
-
-      "studio.particles":
-        "Partículas",
-
-      "studio.particlesDesc":
-        "Elementos flutuantes",
-
-      "studio.animations":
-        "Animações",
-
-      "studio.animationsDesc":
-        "Transições da experiência",
-
-      "studio.cursorDesc":
-        "Iluminação que acompanha o mouse",
-
-      "studio.motion":
-        "Movimento 3D",
-
-      "studio.motionDesc":
-        "Profundidade do frasco",
-
-      "studio.haptic":
-        "Vibração do spray",
-
-      "studio.hapticDesc":
-        "Feedback em aparelhos compatíveis",
-
-      "studio.spraySound":
-        "Som do borrifador",
-
-      "studio.spraySoundDesc":
-        "Reproduzir efeito ao borrifar",
-
-      "studio.music":
-        "Música",
-
-      "studio.backgroundMusic":
-        "Música de fundo",
-
-      "studio.backgroundMusicDesc":
-        "Ativar ou pausar Moonlight",
-
-      "studio.volume":
-        "Volume",
-
-      "studio.movement":
-        "Movimento",
-
-      "studio.speed":
-        "Velocidade",
-
-      "studio.motionIntensity":
-        "Intensidade 3D",
-
-      "studio.particleIntensity":
-        "Partículas",
-
-      "studio.sprayIntensity":
-        "Borrifador",
-
-      "studio.reading":
-        "Leitura",
-
-      "studio.contrast":
-        "Contraste",
-
-      "studio.textSize":
-        "Tamanho do texto",
-
-      "studio.reset":
-        "↻ Restaurar padrão"
-
-    },
-
-
-    "en-US": {
-
-      "loader.subtitle":
-        "Love in the Air",
-
-      "loader.loading":
-        "preparing your experience",
-
-      "nav.home":
-        "Home",
-
-      "nav.product":
-        "Product",
-
-      "nav.campaign":
-        "Campaign",
-
-      "nav.notes":
-        "Notes",
-
-      "nav.experience":
-        "Experience",
-
-      "nav.feel":
-        "Feeling",
-
-      "nav.moments":
-        "Moments",
-
-      "nav.gallery":
-        "Gallery",
-
-      "nav.mood":
-        "Mood",
-
-      "nav.quiz":
-        "Quiz",
-
-      "nav.discover":
-        "Discover",
-
-      "music.playing":
-        "NOW PLAYING",
-
-      "hero.status":
-        "interactive experience",
-
-      "hero.eyebrow":
-        "O BOTICÁRIO • DREAM",
-
-      "hero.title2":
-        "Love in the Air",
-
-      "hero.description":
-        "A delicate, romantic and captivating fragrance designed to turn little moments into special memories.",
-
-      "hero.discover":
-        "Discover Dream",
-
-      "hero.viewProduct":
-        "View product",
-
-      "hero.fact1":
-        "Body Splash",
-
-      "hero.fact2Title":
-        "Floral",
-
-      "hero.fact2":
-        "Woody",
-
-      "hero.fact3":
-        "Love in the Air",
-
-      "hero.tip":
-        "Press spray to activate the effect, sound and animation.",
-
-      "hero.productName":
-        "Love in the Air",
-
-      "hero.bodySplash":
-        "Body Splash",
-
-      "spray.button":
-        "Spray",
-
-      "spray.experience":
-        "try it",
-
-      "spray.counter":
-        "SPRAYS",
-
-      "ticker.floral":
-        "✿ Floral Woody",
-
-      "ticker.love":
-        "♡ Love in the Air",
-
-      "ticker.delicate":
-        "☁ Delicate",
-
-      "ticker.romantic":
-        "☾ Romantic",
-
-      "product.collection":
-        "DREAM COLLECTION",
-
-      "product.eyebrow":
-        "DREAM LOVE IN THE AIR",
-
-      "product.title1":
-        "A touch of",
-
-      "product.title2":
-        "love",
-
-      "product.title3":
-        "in your routine.",
-
-      "product.description":
-        "Dream Love in the Air combines delicacy, romance and personality in a comfortable fragrance for different moments.",
-
-      "product.point1Title":
-        "Delicate floral",
-
-      "product.point1Text":
-        "A light, elegant and romantic signature.",
-
-      "product.point2Title":
-        "Comfortable feeling",
-
-      "product.point2Text":
-        "Perfect for light everyday wear.",
-
-      "product.point3Title":
-        "350 ml bottle",
-
-      "product.point3Text":
-        "A Dream to accompany your routine.",
-
-      "product.details":
-        "View details",
-
-      "product.favorite":
-        "♡ Favorite",
-
-      "campaign.mini":
-        "DREAM • LOVE IN THE AIR",
-
-      "campaign.title1":
-        "Love is",
-
-      "campaign.title2":
-        "in the details.",
-
-      "campaign.description":
-        "A romantic, sophisticated atmosphere full of personality.",
-
-      "campaign.explore":
-        "Explore the Dream universe",
-
-      "campaign.product":
-        "Discover product",
-
-      "notes.eyebrow":
-        "OLFACTORY PYRAMID",
-
-      "notes.title1":
-        "Discover every",
-
-      "notes.title2":
-        "note.",
-
-      "notes.description":
-        "Explore the different layers and discover how the fragrance evolves.",
-
-      "notes.top":
-        "top",
-
-      "notes.heart":
-        "heart",
-
-      "notes.base":
-        "base",
-
-      "notes.card1Title":
-        "Fruity freshness",
-
-      "notes.card1Text":
-        "The fragrance's first impression: bright, fresh and vibrant.",
-
-      "notes.card2Title":
-        "Floral heart",
-
-      "notes.card2Text":
-        "The romantic, delicate and elegant side of Love in the Air.",
-
-      "notes.card3Title":
-        "Enveloping comfort",
-
-      "notes.card3Text":
-        "The notes that remain and create the fragrance's final signature.",
-
-      "note.bergamot":
-        "Bergamot",
-
-      "note.orange":
-        "Orange",
-
-      "note.mandarin":
-        "Mandarin",
-
-      "note.lemon":
-        "Lemon",
-
-      "note.apple":
-        "Apple",
-
-      "note.rose":
-        "Rose",
-
-      "note.linden":
-        "Linden",
-
-      "note.freesia":
-        "Freesia",
-
-      "note.lotus":
-        "Lotus Flower",
-
-      "note.gardenia":
-        "Gardenia",
-
-      "note.peach":
-        "Peach",
-
-      "note.amber":
-        "Amber",
-
-      "note.sandalwood":
-        "Sandalwood",
-
-      "note.vanilla":
-        "Vanilla",
-
-      "experience.eyebrow":
-        "FEEL THE FRAGRANCE",
-
-      "experience.title1":
-        "Explore Dream in",
-
-      "experience.title2":
-        "a new way.",
-
-      "experience.description":
-        "Discover how the fragrance evolves, compare sensations and personalize your experience.",
-
-      "experience.evolution":
-        "EVOLUTION",
-
-      "experience.timelineTitle":
-        "Fragrance timeline",
-
-      "experience.timelineIntro":
-        "Drag to follow the fragrance evolution throughout the hours.",
-
-      "experience.evolutionLower":
-        "evolution",
-
-      "experience.profile":
-        "PROFILE",
-
-      "experience.personality":
-        "Personality",
-
-      "experience.personalityIntro":
-        "A visual reading of Dream's main sensations.",
-
-      "experience.moment":
-        "MOMENT",
-
-      "experience.feelQuestion":
-        "How do you want to feel?",
-
-      "experience.feelIntro":
-        "Choose an atmosphere to transform the page.",
-
-      "experience.moodHint":
-        "The visual identity automatically changes with your mood.",
-
-      "meter.floral":
-        "Floral",
-
-      "meter.romantic":
-        "Romantic",
-
-      "meter.comfort":
-        "Comfortable",
-
-      "meter.presence":
-        "Presence",
-
-      "meter.intensity":
-        "Intensity",
-
-      "mood.eyebrow":
-        "CHOOSE YOUR MOOD",
-
-      "mood.title1":
-        "What's your",
-
-      "mood.title2":
-        "Dream today?",
-
-      "mood.description":
-        "Each mood changes the visual identity of the experience.",
-
-      "mood.romantic":
-        "Romantic",
-
-      "mood.dreamy":
-        "Dreamy",
-
-      "mood.night":
-        "Night",
-
-      "mood.energy":
-        "Energy",
-
-      "mood.calm":
-        "Calm",
-
-      "mood.delicate":
-        "delicate",
-
-      "mood.light":
-        "light",
-
-      "mood.mysterious":
-        "mysterious",
-
-      "mood.intense":
-        "intense",
-
-      "mood.comfortable":
-        "comfortable",
-
-      "dreamMoment.defaultTitle":
-        "Your moment starts here.",
-
-      "dreamMoment.defaultText":
-        "Tap the button to receive a little Dream message.",
-
-      "dreamMoment.button":
-        "New moment",
-
-      "feeling.eyebrow":
-        "FRAGRANCE FEELING",
-
-      "feeling.title1":
-        "Between softness and",
-
-      "feeling.title2":
-        "presence.",
-
-      "feeling.description":
-        "A visual representation of the balance of Dream Love in the Air.",
-
-      "feeling.amorNoAr":
-        "LOVE IN THE AIR",
-
-      "feeling.profile":
-        "SENSORY PROFILE",
-
-      "feeling.bigTitle":
-        "Delicate without going unnoticed.",
-
-      "feeling.text":
-        "Dream balances a romantic heart with a comfortable base, creating a soft presence.",
-
-      "moments.eyebrow":
-        "WHEN TO WEAR",
-
-      "moments.title1":
-        "A Dream for every",
-
-      "moments.title2":
-        "moment.",
-
-      "moments.description":
-        "Choose the setting that best matches your experience.",
-
-      "moments.day":
-        "DAY",
-
-      "moments.date":
-        "DATE",
-
-      "moments.night":
-        "NIGHT",
-
-      "moments.special":
-        "SPECIAL",
-
-      "moments.card1Title":
-        "Light routine",
-
-      "moments.card1Text":
-        "Start your day with a fresh, delicate and comfortable feeling.",
-
-      "moments.card2Title":
-        "Romantic moment",
-
-      "moments.card2Text":
-        "A delicate atmosphere for dates and special occasions.",
-
-      "moments.card3Title":
-        "Dream night",
-
-      "moments.card3Text":
-        "For moments when you want a soft, captivating and elegant presence.",
-
-      "moments.card4Title":
-        "Your moment",
-
-      "moments.card4Text":
-        "Some moments need no occasion. They just need to be yours.",
-
-      "moments.tagLight":
-        "light",
-
-      "moments.tagRomantic":
-        "romantic",
-
-      "moments.tagNight":
-        "night",
-
-      "moments.tagSpecial":
-        "special",
-
-      "scene.title1":
-        "Choose your",
-
-      "scene.title2":
-        "atmosphere.",
-
-      "scene.description":
-        "Change the setting and discover different sides of Dream.",
-
-      "scene.romance":
-        "Romance",
-
-      "scene.delicate":
-        "delicate",
-
-      "scene.sky":
-        "Sky",
-
-      "scene.dreamy":
-        "dreamy",
-
-      "scene.flowers":
-        "Flowers",
-
-      "scene.romantic":
-        "romantic",
-
-      "scene.energy":
-        "Energy",
-
-      "scene.intense":
-        "intense",
-
-      "quote.start":
-        "Made to leave",
-
-      "quote.end":
-        "love in the air.",
-
-      "gallery.eyebrow":
-        "DREAM GALLERY",
-
-      "gallery.title1":
-        "Enter the",
-
-      "gallery.title2":
-        "Dream universe.",
-
-      "gallery.description":
-        "Drag with your mouse, swipe on mobile or use the arrows.",
-
-      "gallery.item1":
-        "Dream World",
-
-      "gallery.item2":
-        "Love in the Air",
-
-      "gallery.item3":
-        "Dream Romance",
-
-      "gallery.explore":
-        "explore ↗",
-
-      "gallery.autoplay":
-        "▶ Autoplay",
-
-      "quiz.title":
-        "What is your Dream?",
-
-      "quiz.description":
-        "Answer four questions and discover which atmosphere suits you best.",
-
-      "quiz.start":
-        "Start quiz",
-
-      "quiz.questionLabel":
-        "DREAM QUESTION",
-
-      "quiz.resultLabel":
-        "YOUR RESULT",
-
-      "quiz.restart":
-        "Restart quiz",
-
-      "quiz.applyMood":
-        "Apply my mood",
-
-      "quiz.share":
-        "Share",
-
-      "final.eyebrow":
-        "DREAM • LOVE IN THE AIR",
-
-      "final.title1":
-        "Leave your moment",
-
-      "final.title2":
-        "in the air.",
-
-      "final.description":
-        "Explore the notes, find your mood and create your own Dream experience.",
-
-      "final.product":
-        "View product",
-
-      "final.share":
-        "Share",
-
-      "final.fullscreen":
-        "⛶ Fullscreen",
-
-      "modal.productEyebrow":
-        "DREAM LOVE IN THE AIR",
-
-      "modal.productDescription":
-        "A floral, romantic and captivating fragrance.",
-
-      "modal.floral":
-        "✿ Floral",
-
-      "modal.romantic":
-        "♡ Romantic",
-
-      "modal.comfortable":
-        "☁ Comfortable",
-
-      "modal.profile":
-        "PROFILE",
-
-      "modal.profileValue":
-        "Floral woody",
-
-      "modal.experience":
-        "EXPERIENCE",
-
-      "modal.experienceValue":
-        "Light and captivating",
-
-      "modal.noteLabel":
-        "DREAM NOTE",
-
-      "lightbox.label":
-        "DREAM GALLERY",
-
-      "footer.subtitle":
-        "Love in the Air • 350 ml",
-
-      "footer.developed":
-        "DEVELOPED BY",
-
-      "studio.title":
-        "Your experience, your way.",
-
-      "studio.description":
-        "Customize visuals, audio and motion.",
-
-      "studio.language":
-        "Language",
-
-      "studio.presets":
-        "Quick styles",
-
-      "studio.appearance":
-        "Appearance",
-
-      "studio.dark":
-        "Dark mode",
-
-      "studio.darkDesc":
-        "Switch theme",
-
-      "studio.glassDesc":
-        "Transparency and blur",
-
-      "studio.clean":
-        "Clean mode",
-
-      "studio.cleanDesc":
-        "A more minimal experience",
-
-      "studio.performance":
-        "Performance mode",
-
-      "studio.performanceDesc":
-        "Reduces heavier effects",
-
-      "studio.palettes":
-        "Palettes",
-
-      "studio.customColors":
-        "Custom colors",
-
-      "studio.primary":
-        "Primary",
-
-      "studio.secondary":
-        "Secondary",
-
-      "studio.effects":
-        "Effects",
-
-      "studio.particles":
-        "Particles",
-
-      "studio.particlesDesc":
-        "Floating elements",
-
-      "studio.animations":
-        "Animations",
-
-      "studio.animationsDesc":
-        "Experience transitions",
-
-      "studio.cursorDesc":
-        "Light that follows the mouse",
-
-      "studio.motion":
-        "3D motion",
-
-      "studio.motionDesc":
-        "Bottle depth effect",
-
-      "studio.haptic":
-        "Spray vibration",
-
-      "studio.hapticDesc":
-        "Feedback on supported devices",
-
-      "studio.spraySound":
-        "Spray sound",
-
-      "studio.spraySoundDesc":
-        "Play an effect when spraying",
-
-      "studio.music":
-        "Music",
-
-      "studio.backgroundMusic":
-        "Background music",
-
-      "studio.backgroundMusicDesc":
-        "Play or pause Moonlight",
-
-      "studio.volume":
-        "Volume",
-
-      "studio.movement":
-        "Motion",
-
-      "studio.speed":
-        "Speed",
-
-      "studio.motionIntensity":
-        "3D intensity",
-
-      "studio.particleIntensity":
-        "Particles",
-
-      "studio.sprayIntensity":
-        "Spray",
-
-      "studio.reading":
-        "Reading",
-
-      "studio.contrast":
-        "Contrast",
-
-      "studio.textSize":
-        "Text size",
-
-      "studio.reset":
-        "↻ Reset settings"
-
-    }
-
-  };
-
 
   let currentLanguage =
     storage.get(
@@ -1673,30 +214,18 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-  if (
-    !translations[
-      currentLanguage
-    ]
-  ) {
-
-    currentLanguage =
-      "pt-BR";
-
-  }
-
-
   function setLanguage(
     language,
     notify = false
   ) {
 
     if (
-      !translations[
-        language
-      ]
+      language !== "pt-BR" &&
+      language !== "en-US"
     ) {
 
-      return;
+      language =
+        "pt-BR";
 
     }
 
@@ -1715,67 +244,33 @@ document.addEventListener("DOMContentLoaded", () => {
       language;
 
 
-    document.title =
-      language ===
-      "pt-BR"
-        ? "Dream Amor no Ar • 350 ml"
-        : "Dream Love in the Air • 350 ml";
+    /*
+      IMPORTANTE:
+      isso NÃO usa tradução automática do navegador.
+      Apenas altera elementos que possuem traduções
+      cadastradas no próprio site.
+    */
 
 
-    $$(
-      "[data-i18n]"
-    ).forEach(
-      element => {
-
-        const key =
-          element.dataset.i18n;
-
-
-        const translation =
-          translations[
-            language
-          ][key];
-
-
-        if (
-          translation !==
-          undefined
-        ) {
-
-          element.textContent =
-            translation;
-
-        }
-
-      }
-    );
-
-
-    $$(
-      "[data-lang]"
-    ).forEach(
+    $$("[data-lang]").forEach(
       button => {
 
         button.classList.toggle(
           "active",
-          button.dataset.lang ===
-            language
+          button.dataset.lang === language
         );
 
       }
     );
 
 
-    if (
-      notify
-    ) {
+    if (notify) {
 
       showToast(
 
-        language ===
-        "pt-BR"
-          ? "Idioma alterado para Português 🇧🇷"
-          : "Language changed to English 🇺🇸"
+        language === "pt-BR"
+          ? "Português selecionado 🇧🇷"
+          : "English selected 🇺🇸"
 
       );
 
@@ -1784,9 +279,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  $$(
-    "[data-lang]"
-  ).forEach(
+  $$("[data-lang]").forEach(
     button => {
 
       button.addEventListener(
@@ -1794,7 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
         event => {
 
           event.preventDefault();
-
+          event.stopPropagation();
 
           setLanguage(
             button.dataset.lang,
@@ -1809,8 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   setLanguage(
-    currentLanguage,
-    false
+    currentLanguage
   );
 
 
@@ -1834,20 +326,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const percent =
       total > 0
         ? clamp(
-            (
-              top /
-              total
-            ) *
-            100,
+            top / total * 100,
             0,
             100
           )
         : 0;
 
 
-    if (
-      scrollProgress
-    ) {
+    if (scrollProgress) {
 
       scrollProgress.style.width =
         `${percent}%`;
@@ -1886,12 +372,8 @@ document.addEventListener("DOMContentLoaded", () => {
     () => {
 
       window.scrollTo({
-
         top: 0,
-
-        behavior:
-          "smooth"
-
+        behavior: "smooth"
       });
 
     }
@@ -1906,6 +388,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "click",
     event => {
 
+      event.preventDefault();
       event.stopPropagation();
 
 
@@ -1926,9 +409,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
 
-  $$(
-    ".menu a"
-  ).forEach(
+  $$(".menu a").forEach(
     link => {
 
       link.addEventListener(
@@ -1952,48 +433,6 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
 
-  document.addEventListener(
-    "click",
-    event => {
-
-      if (
-        !menu ||
-        !menuMobile
-      ) {
-
-        return;
-
-      }
-
-
-      if (
-        menu.contains(
-          event.target
-        ) ||
-        menuMobile.contains(
-          event.target
-        )
-      ) {
-
-        return;
-
-      }
-
-
-      menu.classList.remove(
-        "open"
-      );
-
-
-      menuMobile.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
-    }
-  );
-
-
   /* =========================================================
      REVEAL
   ========================================================= */
@@ -2003,13 +442,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   if (
-    "IntersectionObserver" in
-    window
+    "IntersectionObserver" in window
   ) {
 
     const revealObserver =
       new IntersectionObserver(
-
         entries => {
 
           entries.forEach(
@@ -2037,11 +474,9 @@ document.addEventListener("DOMContentLoaded", () => {
           );
 
         },
-
         {
           threshold: 0.1
         }
-
       );
 
 
@@ -2071,98 +506,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     METERS
-  ========================================================= */
-
-  const meters =
-    $$(
-      "[data-meter], [data-feeling]"
-    );
-
-
-  if (
-    "IntersectionObserver" in
-    window
-  ) {
-
-    const meterObserver =
-      new IntersectionObserver(
-
-        entries => {
-
-          entries.forEach(
-            entry => {
-
-              if (
-                !entry.isIntersecting
-              ) {
-
-                return;
-
-              }
-
-
-              const value =
-                Number(
-                  entry.target.dataset.meter ??
-                  entry.target.dataset.feeling ??
-                  0
-                );
-
-
-              entry.target.style.width =
-                `${
-                  clamp(
-                    value,
-                    0,
-                    100
-                  )
-                }%`;
-
-
-              meterObserver.unobserve(
-                entry.target
-              );
-
-            }
-          );
-
-        },
-
-        {
-          threshold: 0.25
-        }
-
-      );
-
-
-    meters.forEach(
-      element => {
-
-        meterObserver.observe(
-          element
-        );
-
-      }
-    );
-
-  }
-
-
-  /* =========================================================
      MODAIS
   ========================================================= */
 
-  function openLayer(
-    element
-  ) {
+  function openLayer(element) {
 
-    if (
-      !element
-    ) {
-
+    if (!element) {
       return;
-
     }
 
 
@@ -2177,6 +527,22 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
+    /*
+      Garantia extra para o modal aparecer
+      mesmo se alguma regra antiga do CSS
+      estiver interferindo.
+    */
+
+    element.style.visibility =
+      "visible";
+
+    element.style.opacity =
+      "1";
+
+    element.style.pointerEvents =
+      "auto";
+
+
     body.classList.add(
       "modal-open"
     );
@@ -2184,16 +550,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  function closeLayer(
-    element
-  ) {
+  function closeLayer(element) {
 
-    if (
-      !element
-    ) {
-
+    if (!element) {
       return;
-
     }
 
 
@@ -2206,6 +566,16 @@ document.addEventListener("DOMContentLoaded", () => {
       "aria-hidden",
       "true"
     );
+
+
+    element.style.visibility =
+      "";
+
+    element.style.opacity =
+      "";
+
+    element.style.pointerEvents =
+      "";
 
 
     if (
@@ -2224,16 +594,117 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     PRODUTO
+     VER PRODUTO / CONHECER PRODUTO
   ========================================================= */
 
-  const productOpenButtons =
-    $$(
-      ".open-product, #productDetailsButton, #viewProductButton, [data-open-product]"
+  function openProductModal() {
+
+    if (!productModal) {
+
+      console.error(
+        "Dream: #productModal não foi encontrado no index.html."
+      );
+
+
+      showToast(
+        "Não foi possível abrir o produto."
+      );
+
+
+      return;
+
+    }
+
+
+    openLayer(
+      productModal
     );
 
+  }
 
-  productOpenButtons.forEach(
+
+  function closeProductModal() {
+
+    closeLayer(
+      productModal
+    );
+
+  }
+
+
+  /*
+    EVENT DELEGATION EM CAPTURE.
+
+    Essa parte é importante.
+
+    Ela permite que TODOS estes botões funcionem:
+
+    - Conhecer
+    - Ver produto
+    - Ver detalhes
+    - Conhecer produto
+    - Botão final Ver produto
+
+    desde que possuam:
+
+    class="open-product"
+
+    ou:
+
+    data-open-product
+  */
+
+  document.addEventListener(
+    "click",
+    event => {
+
+      const openButton =
+        event.target.closest(
+          ".open-product, [data-open-product]"
+        );
+
+
+      if (openButton) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+
+        openProductModal();
+
+
+        return;
+
+      }
+
+
+      const closeButton =
+        event.target.closest(
+          ".close-product"
+        );
+
+
+      if (closeButton) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+
+        closeProductModal();
+
+      }
+
+    },
+    true
+  );
+
+
+  /*
+    Também adicionamos listener direto
+    como segunda camada de segurança.
+  */
+
+  $$(".open-product").forEach(
     button => {
 
       button.addEventListener(
@@ -2242,31 +713,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
           event.preventDefault();
 
-          event.stopPropagation();
 
-
-          if (
-            !productModal
-          ) {
-
-            console.error(
-              "#productModal não encontrado."
-            );
-
-
-            showToast(
-              "Produto indisponível"
-            );
-
-
-            return;
-
-          }
-
-
-          openLayer(
-            productModal
-          );
+          openProductModal();
 
         }
       );
@@ -2275,9 +723,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
 
-  $$(
-    ".close-product"
-  ).forEach(
+  $$(".close-product").forEach(
     button => {
 
       button.addEventListener(
@@ -2286,38 +732,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
           event.preventDefault();
 
-          event.stopPropagation();
 
-
-          closeLayer(
-            productModal
-          );
+          closeProductModal();
 
         }
       );
+
+    }
+  );
+
+
+  productModal?.addEventListener(
+    "click",
+    event => {
+
+      if (
+        event.target === productModal ||
+        event.target.classList.contains(
+          "product-modal-backdrop"
+        )
+      ) {
+
+        closeProductModal();
+
+      }
 
     }
   );
 
 
   /* =========================================================
-     FAVORITOS
+     FAVORITO
   ========================================================= */
 
   let favorite =
     storage.get(
       "dreamFavorite",
       "false"
-    ) ===
-    "true";
+    ) === "true";
 
 
   const favoriteButtons = [
-
     $("#favoriteButton"),
-
     $("#favoriteModal")
-
   ].filter(Boolean);
 
 
@@ -2335,11 +792,7 @@ document.addEventListener("DOMContentLoaded", () => {
         button.textContent =
           favorite
             ? "♥ Favoritado"
-            : translations[
-                currentLanguage
-              ][
-                "product.favorite"
-              ];
+            : "♡ Favoritar";
 
       }
     );
@@ -2373,14 +826,8 @@ document.addEventListener("DOMContentLoaded", () => {
           showToast(
 
             favorite
-              ? currentLanguage ===
-                "pt-BR"
-                ? "Adicionado aos favoritos ♡"
-                : "Added to favorites ♡"
-              : currentLanguage ===
-                "pt-BR"
-                ? "Removido dos favoritos"
-                : "Removed from favorites"
+              ? "Adicionado aos favoritos ♡"
+              : "Removido dos favoritos"
 
           );
 
@@ -2395,7 +842,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     SPRAY MP3 REAL
+     SPRAY — ÁUDIO
   ========================================================= */
 
   const sprayAudio =
@@ -2409,7 +856,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   sprayAudio.volume =
-    0.78;
+    0.8;
 
 
   let sprayAudioStopTimer =
@@ -2418,10 +865,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function playSprayAudio() {
 
+    const soundToggle =
+      $("#spraySoundToggle");
+
+
     if (
-      $("#spraySoundToggle")
-        ?.checked ===
-        false
+      soundToggle &&
+      soundToggle.checked === false
     ) {
 
       return;
@@ -2438,13 +888,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       sprayAudio.pause();
 
-
       sprayAudio.currentTime =
         0;
-
-
-      sprayAudio.volume =
-        0.78;
 
 
       const promise =
@@ -2453,15 +898,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (
         promise &&
-        typeof promise.catch ===
-          "function"
+        typeof promise.catch === "function"
       ) {
 
         promise.catch(
           error => {
 
             console.warn(
-              "spray.mp3 não pôde tocar:",
+              "Dream: não foi possível tocar ./audio/spray.mp3",
               error
             );
 
@@ -2475,10 +919,9 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(
           () => {
 
-            sprayAudio.pause();
-
-
             try {
+
+              sprayAudio.pause();
 
               sprayAudio.currentTime =
                 0;
@@ -2486,13 +929,13 @@ document.addEventListener("DOMContentLoaded", () => {
             } catch {}
 
           },
-          430
+          500
         );
 
     } catch (error) {
 
       console.warn(
-        "Erro ao reproduzir spray.mp3:",
+        "Dream: erro no áudio do borrifador.",
         error
       );
 
@@ -2540,13 +983,10 @@ document.addEventListener("DOMContentLoaded", () => {
         "dreamSprayCount",
         0
       )
-    ) ||
-    0;
+    ) || 0;
 
 
-  if (
-    sprayCounter
-  ) {
+  if (sprayCounter) {
 
     sprayCounter.textContent =
       sprayCount;
@@ -2582,9 +1022,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    if (
-      sprayCounter
-    ) {
+    if (sprayCounter) {
 
       sprayCounter.textContent =
         sprayCount;
@@ -2602,9 +1040,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    if (
-      sprayWave
-    ) {
+    if (sprayWave) {
 
       void sprayWave.offsetWidth;
 
@@ -2631,9 +1067,24 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
+    const intensity =
+      clamp(
+        $("#sprayIntensityRange")
+          ?.value || 100,
+        40,
+        160
+      ) / 100;
+
+
+    const mistAmount =
+      Math.round(
+        60 * intensity
+      );
+
+
     for (
       let i = 0;
-      i < 60;
+      i < mistAmount;
       i++
     ) {
 
@@ -2803,8 +1254,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (
       navigator.vibrate &&
       $("#hapticToggle")
-        ?.checked !==
-        false
+        ?.checked !== false
     ) {
 
       navigator.vibrate(
@@ -2815,12 +1265,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     showToast(
-
-      currentLanguage ===
-      "pt-BR"
+      currentLanguage === "pt-BR"
         ? "Dream está no ar ♡"
         : "Dream is in the air ♡"
-
     );
 
 
@@ -2847,9 +1294,107 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sprayButton?.addEventListener(
     "click",
-    sprayDream
+    event => {
+
+      event.preventDefault();
+
+
+      sprayDream();
+
+    }
   );
-    /* =========================================================
+
+
+  /* =========================================================
+     DREAM STUDIO — ABRIR / FECHAR
+  ========================================================= */
+
+  function openStudio() {
+
+    if (!settingsPanel) {
+
+      console.error(
+        "Dream: #settingsPanel não encontrado."
+      );
+
+      return;
+
+    }
+
+
+    settingsPanel.classList.add(
+      "open"
+    );
+
+
+    settingsPanel.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+  }
+
+
+  function closeStudio() {
+
+    if (!settingsPanel) {
+      return;
+    }
+
+
+    settingsPanel.classList.remove(
+      "open"
+    );
+
+
+    settingsPanel.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+  }
+
+
+  $("#settingsButton")?.addEventListener(
+    "click",
+    event => {
+
+      event.preventDefault();
+      event.stopPropagation();
+
+
+      if (
+        settingsPanel?.classList.contains(
+          "open"
+        )
+      ) {
+
+        closeStudio();
+
+      } else {
+
+        openStudio();
+
+      }
+
+    }
+  );
+
+
+  $("#closeSettings")?.addEventListener(
+    "click",
+    event => {
+
+      event.preventDefault();
+
+
+      closeStudio();
+
+    }
+  );
+
+
+  /* =========================================================
      CURSOR GLOW
   ========================================================= */
 
@@ -2942,12 +1487,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function generateParticles() {
 
-    if (
-      !particlesContainer
-    ) {
-
+    if (!particlesContainer) {
       return;
-
     }
 
 
@@ -2956,21 +1497,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     const intensity =
-      Number(
+      clamp(
         $("#particleIntensityRange")
-          ?.value ||
-        100
+          ?.value || 100,
+        0,
+        150
       );
 
 
     const amount =
-      Math.max(
-        0,
-        Math.round(
-          25 *
-          intensity /
-          100
-        )
+      Math.round(
+        25 *
+        intensity /
+        100
       );
 
 
@@ -3009,10 +1548,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       particle.style.left =
-        `${
-          Math.random() *
-          100
-        }%`;
+        `${Math.random() * 100}%`;
 
 
       particle.style.fontSize =
@@ -3074,8 +1610,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (
         $("#motion3dToggle")
-          ?.checked ===
-        false
+          ?.checked === false
       ) {
 
         return;
@@ -3117,12 +1652,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       const intensity =
-        Number(
+        clamp(
           $("#motion3dRange")
-            ?.value ||
-          100
-        ) /
-        100;
+            ?.value || 100,
+          0,
+          150
+        ) / 100;
 
 
       mainBottle.style.transform =
@@ -3137,9 +1672,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
 
-      if (
-        productHalo
-      ) {
+      if (productHalo) {
 
         productHalo.style.transform =
           `
@@ -3152,9 +1685,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
 
-      if (
-        productShine
-      ) {
+      if (productShine) {
 
         productShine.style.transform =
           `
@@ -3174,33 +1705,16 @@ document.addEventListener("DOMContentLoaded", () => {
     "pointerleave",
     () => {
 
-      if (
-        mainBottle
-      ) {
-
-        mainBottle.style.transform =
-          "";
-
+      if (mainBottle) {
+        mainBottle.style.transform = "";
       }
 
-
-      if (
-        productHalo
-      ) {
-
-        productHalo.style.transform =
-          "";
-
+      if (productHalo) {
+        productHalo.style.transform = "";
       }
 
-
-      if (
-        productShine
-      ) {
-
-        productShine.style.transform =
-          "";
-
+      if (productShine) {
+        productShine.style.transform = "";
       }
 
     }
@@ -3318,9 +1832,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
 
-  $$(
-    ".note-chip"
-  ).forEach(
+  $$(".note-chip").forEach(
     button => {
 
       button.addEventListener(
@@ -3333,42 +1845,31 @@ document.addEventListener("DOMContentLoaded", () => {
             ];
 
 
-          if (
-            !note
-          ) {
-
+          if (!note) {
             return;
-
           }
 
 
-          if (
-            $("#noteModalIcon")
-          ) {
+          const icon =
+            $("#noteModalIcon");
 
-            $("#noteModalIcon").textContent =
-              note[0];
+          const title =
+            $("#noteModalTitle");
 
+          const text =
+            $("#noteModalText");
+
+
+          if (icon) {
+            icon.textContent = note[0];
           }
 
-
-          if (
-            $("#noteModalTitle")
-          ) {
-
-            $("#noteModalTitle").textContent =
-              note[1];
-
+          if (title) {
+            title.textContent = note[1];
           }
 
-
-          if (
-            $("#noteModalText")
-          ) {
-
-            $("#noteModalText").textContent =
-              note[2];
-
+          if (text) {
+            text.textContent = note[2];
           }
 
 
@@ -3383,9 +1884,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
 
-  $$(
-    ".close-note"
-  ).forEach(
+  $$(".close-note").forEach(
     button => {
 
       button.addEventListener(
@@ -3401,6 +1900,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
       );
+
+    }
+  );
+
+
+  noteModal?.addEventListener(
+    "click",
+    event => {
+
+      if (
+        event.target === noteModal
+      ) {
+
+        closeLayer(
+          noteModal
+        );
+
+      }
 
     }
   );
@@ -3449,12 +1966,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateTimeline() {
 
-    if (
-      !timelineSlider
-    ) {
-
+    if (!timelineSlider) {
       return;
-
     }
 
 
@@ -3465,11 +1978,13 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
 
-    if (
-      $("#timelineHour")
-    ) {
+    const hour =
+      $("#timelineHour");
 
-      $("#timelineHour").textContent =
+
+    if (hour) {
+
+      hour.textContent =
         `${value}h`;
 
     }
@@ -3486,9 +2001,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ];
 
 
-    if (
-      $("#timelineIcon")
-    ) {
+    if ($("#timelineIcon")) {
 
       $("#timelineIcon").textContent =
         stage[1];
@@ -3496,9 +2009,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      $("#timelineTitle")
-    ) {
+    if ($("#timelineTitle")) {
 
       $("#timelineTitle").textContent =
         stage[2];
@@ -3506,9 +2017,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      $("#timelineText")
-    ) {
+    if ($("#timelineText")) {
 
       $("#timelineText").textContent =
         stage[3];
@@ -3525,56 +2034,72 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   updateTimeline();
-
-
-  /* =========================================================
+    /* =========================================================
      GALERIA
   ========================================================= */
 
   const galleryTrack =
     $("#galleryTrack");
 
-
   const galleryItems =
     $$(".gallery-item");
 
-
   const galleryDots =
     $("#galleryDots");
+
+  const galleryAutoplay =
+    $("#galleryAutoplay");
+
+  const galleryAutoplayProgress =
+    $("#galleryAutoplayProgress") ||
+    $(".gallery-autoplay-progress i");
 
 
   let galleryIndex =
     0;
 
+  let galleryDragging =
+    false;
+
+  let galleryMoved =
+    false;
+
+  let galleryStartX =
+    0;
+
+  let galleryStartScroll =
+    0;
+
+  let galleryAutoplayTimer =
+    null;
+
 
   function updateGalleryUI() {
 
-    $$(
-      ".gallery-dot"
-    ).forEach(
-      (
-        dot,
-        index
-      ) => {
+    $$(".gallery-dot").forEach(
+      (dot, index) => {
 
         dot.classList.toggle(
           "active",
-          index ===
-            galleryIndex
+          index === galleryIndex
         );
 
       }
     );
 
 
-    if (
-      $("#galleryCurrent")
-    ) {
+    const current =
+      $("#galleryCurrent");
 
-      $("#galleryCurrent").textContent =
+    const total =
+      $("#galleryTotal");
+
+
+    if (current) {
+
+      current.textContent =
         String(
-          galleryIndex +
-          1
+          galleryIndex + 1
         ).padStart(
           2,
           "0"
@@ -3583,11 +2108,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      $("#galleryTotal")
-    ) {
+    if (total) {
 
-      $("#galleryTotal").textContent =
+      total.textContent =
         String(
           galleryItems.length
         ).padStart(
@@ -3600,9 +2123,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  function goGallery(
-    index
-  ) {
+  function goGallery(index) {
 
     if (
       !galleryTrack ||
@@ -3615,12 +2136,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     galleryIndex =
-      clamp(
-        index,
-        0,
-        galleryItems.length -
-        1
-      );
+      (
+        index +
+        galleryItems.length
+      ) %
+      galleryItems.length;
 
 
     const item =
@@ -3646,19 +2166,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  if (
-    galleryDots
-  ) {
+  if (galleryDots) {
 
     galleryDots.innerHTML =
       "";
 
 
     galleryItems.forEach(
-      (
-        _,
-        index
-      ) => {
+      (_, index) => {
 
         const dot =
           document.createElement(
@@ -3706,22 +2221,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "click",
     () => {
 
-      if (
-        !galleryItems.length
-      ) {
-
-        return;
-
-      }
-
-
       goGallery(
-
-        galleryIndex >=
-        galleryItems.length - 1
-          ? 0
-          : galleryIndex + 1
-
+        galleryIndex + 1
       );
 
     }
@@ -3732,191 +2233,158 @@ document.addEventListener("DOMContentLoaded", () => {
     "click",
     () => {
 
-      if (
-        !galleryItems.length
-      ) {
-
-        return;
-
-      }
-
-
       goGallery(
-
-        galleryIndex <= 0
-          ? galleryItems.length - 1
-          : galleryIndex - 1
-
+        galleryIndex - 1
       );
 
     }
   );
 
 
-  updateGalleryUI();
+  if (galleryTrack) {
+
+    galleryTrack.addEventListener(
+      "pointerdown",
+      event => {
+
+        if (
+          event.pointerType === "touch"
+        ) {
+
+          return;
+
+        }
 
 
-  /* =========================================================
-     DRAG GALERIA
-  ========================================================= */
-
-  let galleryDragging =
-    false;
-
-
-  let galleryMoved =
-    false;
-
-
-  let galleryStartX =
-    0;
-
-
-  let galleryStartScroll =
-    0;
-
-
-  galleryTrack?.addEventListener(
-    "pointerdown",
-    event => {
-
-      if (
-        event.pointerType ===
-        "touch"
-      ) {
-
-        return;
-
-      }
-
-
-      galleryDragging =
-        true;
-
-
-      galleryMoved =
-        false;
-
-
-      galleryStartX =
-        event.clientX;
-
-
-      galleryStartScroll =
-        galleryTrack.scrollLeft;
-
-
-      galleryTrack.classList.add(
-        "dragging"
-      );
-
-
-      galleryTrack.setPointerCapture?.(
-        event.pointerId
-      );
-
-    }
-  );
-
-
-  galleryTrack?.addEventListener(
-    "pointermove",
-    event => {
-
-      if (
-        !galleryDragging
-      ) {
-
-        return;
-
-      }
-
-
-      const delta =
-        event.clientX -
-        galleryStartX;
-
-
-      if (
-        Math.abs(delta) >
-        5
-      ) {
-
-        galleryMoved =
+        galleryDragging =
           true;
-
-      }
-
-
-      galleryTrack.scrollLeft =
-        galleryStartScroll -
-        delta;
-
-    }
-  );
-
-
-  function endGalleryDrag() {
-
-    galleryDragging =
-      false;
-
-
-    galleryTrack?.classList.remove(
-      "dragging"
-    );
-
-
-    setTimeout(
-      () => {
 
         galleryMoved =
           false;
 
-      },
-      80
+        galleryStartX =
+          event.clientX;
+
+        galleryStartScroll =
+          galleryTrack.scrollLeft;
+
+
+        galleryTrack.classList.add(
+          "dragging"
+        );
+
+
+        try {
+
+          galleryTrack.setPointerCapture(
+            event.pointerId
+          );
+
+        } catch {}
+
+      }
+    );
+
+
+    galleryTrack.addEventListener(
+      "pointermove",
+      event => {
+
+        if (!galleryDragging) {
+          return;
+        }
+
+
+        const distance =
+          event.clientX -
+          galleryStartX;
+
+
+        if (
+          Math.abs(distance) > 5
+        ) {
+
+          galleryMoved =
+            true;
+
+        }
+
+
+        galleryTrack.scrollLeft =
+          galleryStartScroll -
+          distance;
+
+      }
+    );
+
+
+    const stopGalleryDrag =
+      () => {
+
+        galleryDragging =
+          false;
+
+
+        galleryTrack.classList.remove(
+          "dragging"
+        );
+
+
+        setTimeout(
+          () => {
+
+            galleryMoved =
+              false;
+
+          },
+          80
+        );
+
+      };
+
+
+    galleryTrack.addEventListener(
+      "pointerup",
+      stopGalleryDrag
+    );
+
+
+    galleryTrack.addEventListener(
+      "pointercancel",
+      stopGalleryDrag
     );
 
   }
 
 
-  galleryTrack?.addEventListener(
-    "pointerup",
-    endGalleryDrag
-  );
+  function updateGalleryAutoplayLabel() {
+
+    if (!galleryAutoplay) {
+      return;
+    }
 
 
-  galleryTrack?.addEventListener(
-    "pointercancel",
-    endGalleryDrag
-  );
+    if (galleryAutoplayTimer) {
 
+      galleryAutoplay.textContent =
+        currentLanguage === "pt-BR"
+          ? "❚❚ Pausar"
+          : "❚❚ Pause";
 
-  /* =========================================================
-     AUTOPLAY GALERIA
-  ========================================================= */
+    } else {
 
-  const galleryAutoplay =
-    $("#galleryAutoplay");
+      galleryAutoplay.textContent =
+        "▶ Autoplay";
 
+    }
 
-  const galleryAutoplayProgress =
-    $("#galleryAutoplayProgress") ||
-    $(".gallery-autoplay-progress i");
-
-
-  let galleryAutoplayTimer =
-    null;
+  }
 
 
   function resetGalleryAutoplayProgress() {
 
-    if (
-      !galleryAutoplayProgress
-    ) {
-
+    if (!galleryAutoplayProgress) {
       return;
-
     }
 
 
@@ -3931,9 +2399,7 @@ document.addEventListener("DOMContentLoaded", () => {
     void galleryAutoplayProgress.offsetWidth;
 
 
-    if (
-      galleryAutoplayTimer
-    ) {
+    if (galleryAutoplayTimer) {
 
       galleryAutoplayProgress.style.transition =
         "width 3.5s linear";
@@ -3949,9 +2415,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function stopGalleryAutoplay() {
 
-    if (
-      galleryAutoplayTimer
-    ) {
+    if (galleryAutoplayTimer) {
 
       clearInterval(
         galleryAutoplayTimer
@@ -3964,32 +2428,10 @@ document.addEventListener("DOMContentLoaded", () => {
       null;
 
 
-    if (
-      galleryAutoplay
-    ) {
-
-      galleryAutoplay.textContent =
-        translations[
-          currentLanguage
-        ][
-          "gallery.autoplay"
-        ];
-
-    }
+    updateGalleryAutoplayLabel();
 
 
-    if (
-      galleryAutoplayProgress
-    ) {
-
-      galleryAutoplayProgress.style.transition =
-        "none";
-
-
-      galleryAutoplayProgress.style.width =
-        "0%";
-
-    }
+    resetGalleryAutoplayProgress();
 
   }
 
@@ -4011,12 +2453,7 @@ document.addEventListener("DOMContentLoaded", () => {
         () => {
 
           goGallery(
-
-            galleryIndex >=
-            galleryItems.length - 1
-              ? 0
-              : galleryIndex + 1
-
+            galleryIndex + 1
           );
 
 
@@ -4027,17 +2464,7 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
 
-    if (
-      galleryAutoplay
-    ) {
-
-      galleryAutoplay.textContent =
-        currentLanguage ===
-        "pt-BR"
-          ? "❚❚ Pausar"
-          : "❚❚ Pause";
-
-    }
+    updateGalleryAutoplayLabel();
 
 
     resetGalleryAutoplayProgress();
@@ -4049,9 +2476,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "click",
     () => {
 
-      if (
-        galleryAutoplayTimer
-      ) {
+      if (galleryAutoplayTimer) {
 
         stopGalleryAutoplay();
 
@@ -4065,6 +2490,11 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
 
+  updateGalleryUI();
+
+  updateGalleryAutoplayLabel();
+
+
   /* =========================================================
      LIGHTBOX
   ========================================================= */
@@ -4075,12 +2505,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateLightbox() {
 
-    if (
-      !galleryItems.length
-    ) {
-
+    if (!galleryItems.length) {
       return;
-
     }
 
 
@@ -4090,51 +2516,60 @@ document.addEventListener("DOMContentLoaded", () => {
       ];
 
 
+    if (!item) {
+      return;
+    }
+
+
     const image =
       $("img", item);
-
 
     const title =
       $("h3", item);
 
 
+    const lightboxImage =
+      $("#lightboxImage");
+
+    const lightboxTitle =
+      $("#lightboxTitle");
+
+    const lightboxCounter =
+      $("#lightboxCounter");
+
+
     if (
-      $("#lightboxImage") &&
+      lightboxImage &&
       image
     ) {
 
-      $("#lightboxImage").src =
+      lightboxImage.src =
         image.currentSrc ||
         image.src;
 
 
-      $("#lightboxImage").alt =
+      lightboxImage.alt =
         image.alt ||
-        "Dream";
+        "Dream Amor no Ar";
 
     }
 
 
-    if (
-      $("#lightboxTitle")
-    ) {
+    if (lightboxTitle) {
 
-      $("#lightboxTitle").textContent =
+      lightboxTitle.textContent =
         title?.textContent?.trim() ||
         "Dream";
 
     }
 
 
-    if (
-      $("#lightboxCounter")
-    ) {
+    if (lightboxCounter) {
 
-      $("#lightboxCounter").textContent =
+      lightboxCounter.textContent =
         `${
           String(
-            lightboxIndex +
-            1
+            lightboxIndex + 1
           ).padStart(
             2,
             "0"
@@ -4153,9 +2588,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  function openLightbox(
-    index
-  ) {
+  function openLightbox(index) {
 
     if (
       !lightbox ||
@@ -4168,12 +2601,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     lightboxIndex =
-      clamp(
-        index,
-        0,
-        galleryItems.length -
-        1
-      );
+      (
+        index +
+        galleryItems.length
+      ) %
+      galleryItems.length;
 
 
     updateLightbox();
@@ -4197,70 +2629,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function nextLightbox() {
 
-    if (
-      !galleryItems.length
-    ) {
-
-      return;
-
-    }
-
-
-    lightboxIndex =
-      (
-        lightboxIndex +
-        1
-      ) %
-      galleryItems.length;
-
-
-    updateLightbox();
+    openLightbox(
+      lightboxIndex + 1
+    );
 
   }
 
 
   function prevLightbox() {
 
-    if (
-      !galleryItems.length
-    ) {
-
-      return;
-
-    }
-
-
-    lightboxIndex =
-      (
-        lightboxIndex -
-        1 +
-        galleryItems.length
-      ) %
-      galleryItems.length;
-
-
-    updateLightbox();
+    openLightbox(
+      lightboxIndex - 1
+    );
 
   }
 
 
   galleryItems.forEach(
-    (
-      item,
-      index
-    ) => {
+    (item, index) => {
 
       item.addEventListener(
         "click",
-        () => {
+        event => {
 
-          if (
-            galleryMoved
-          ) {
-
+          if (galleryMoved) {
             return;
-
           }
+
+
+          event.preventDefault();
 
 
           openLightbox(
@@ -4298,8 +2695,24 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
 
+  lightbox?.addEventListener(
+    "click",
+    event => {
+
+      if (
+        event.target === lightbox
+      ) {
+
+        closeLightbox();
+
+      }
+
+    }
+  );
+
+
   /* =========================================================
-     MOODS E PALETAS
+     MOODS
   ========================================================= */
 
   const moods = {
@@ -4371,26 +2784,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let clean =
       String(hex)
-      .replace(
-        "#",
-        ""
-      )
-      .trim();
+        .replace(
+          "#",
+          ""
+        )
+        .trim();
 
 
     if (
-      clean.length ===
-      3
+      clean.length === 3
     ) {
 
       clean =
         clean
-        .split("")
-        .map(
-          char =>
-            char + char
-        )
-        .join("");
+          .split("")
+          .map(
+            char =>
+              char + char
+          )
+          .join("");
 
     }
 
@@ -4473,9 +2885,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    if (
-      $("#primaryColor")
-    ) {
+    if ($("#primaryColor")) {
 
       $("#primaryColor").value =
         primary;
@@ -4483,9 +2893,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      $("#secondaryColor")
-    ) {
+    if ($("#secondaryColor")) {
 
       $("#secondaryColor").value =
         secondary;
@@ -4493,9 +2901,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      save
-    ) {
+    if (save) {
 
       storage.set(
         "dreamPrimary",
@@ -4513,18 +2919,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  $$(
-    ".mood-button"
-  ).forEach(
+  $$(".mood-button").forEach(
     button => {
 
       button.addEventListener(
         "click",
         () => {
 
-          $$(
-            ".mood-button"
-          ).forEach(
+          const mood =
+            moods[
+              button.dataset.mood
+            ];
+
+
+          if (!mood) {
+            return;
+          }
+
+
+          $$(".mood-button").forEach(
             item => {
 
               item.classList.remove(
@@ -4540,22 +2953,10 @@ document.addEventListener("DOMContentLoaded", () => {
           );
 
 
-          const mood =
-            moods[
-              button.dataset.mood
-            ];
-
-
-          if (
-            mood
-          ) {
-
-            applyColors(
-              mood[0],
-              mood[1]
-            );
-
-          }
+          applyColors(
+            mood[0],
+            mood[1]
+          );
 
         }
       );
@@ -4564,18 +2965,25 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
 
-  $$(
-    ".palette"
-  ).forEach(
+  $$(".palette").forEach(
     button => {
 
       button.addEventListener(
         "click",
         () => {
 
-          $$(
-            ".palette"
-          ).forEach(
+          const palette =
+            palettes[
+              button.dataset.palette
+            ];
+
+
+          if (!palette) {
+            return;
+          }
+
+
+          $$(".palette").forEach(
             item => {
 
               item.classList.remove(
@@ -4591,22 +2999,10 @@ document.addEventListener("DOMContentLoaded", () => {
           );
 
 
-          const palette =
-            palettes[
-              button.dataset.palette
-            ];
-
-
-          if (
-            palette
-          ) {
-
-            applyColors(
-              palette[0],
-              palette[1]
-            );
-
-          }
+          applyColors(
+            palette[0],
+            palette[1]
+          );
 
         }
       );
@@ -4652,49 +3048,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     DREAM STUDIO ABRIR / FECHAR
-  ========================================================= */
-
-  function openStudio() {
-
-    settingsPanel?.classList.add(
-      "open"
-    );
-
-  }
-
-
-  function closeStudio() {
-
-    settingsPanel?.classList.remove(
-      "open"
-    );
-
-  }
-
-
-  $("#settingsButton")?.addEventListener(
-    "click",
-    event => {
-
-      event.preventDefault();
-
-
-      settingsPanel?.classList.toggle(
-        "open"
-      );
-
-    }
-  );
-
-
-  $("#closeSettings")?.addEventListener(
-    "click",
-    closeStudio
-  );
-
-
-  /* =========================================================
      TEMA
   ========================================================= */
 
@@ -4709,21 +3062,25 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    if (
-      $("#darkToggle")
-    ) {
+    const darkToggle =
+      $("#darkToggle");
 
-      $("#darkToggle").checked =
+
+    const themeButton =
+      $("#themeButton");
+
+
+    if (darkToggle) {
+
+      darkToggle.checked =
         active;
 
     }
 
 
-    if (
-      $("#themeButton")
-    ) {
+    if (themeButton) {
 
-      $("#themeButton").textContent =
+      themeButton.textContent =
         active
           ? "☀"
           : "☾";
@@ -4731,9 +3088,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      save
-    ) {
+    if (save) {
 
       storage.set(
         "dreamDark",
@@ -4772,7 +3127,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     TOGGLES DREAM STUDIO
+     TOGGLES
   ========================================================= */
 
   $("#particlesToggle")?.addEventListener(
@@ -4935,19 +3290,19 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    if (
-      $("#performanceToggle")
-    ) {
+    const toggle =
+      $("#performanceToggle");
 
-      $("#performanceToggle").checked =
+
+    if (toggle) {
+
+      toggle.checked =
         active;
 
     }
 
 
-    if (
-      save
-    ) {
+    if (save) {
 
       storage.set(
         "dreamPerformance",
@@ -4975,210 +3330,180 @@ document.addEventListener("DOMContentLoaded", () => {
      RANGES
   ========================================================= */
 
-  function applyRange(
-    inputSelector,
-    labelSelector,
+  function bindRange(
+    inputId,
+    valueId,
     storageKey,
-    value,
     min,
     max,
     callback
   ) {
 
-    const safe =
-      clamp(
-        Number(value) ||
-        0,
-        min,
-        max
-      );
-
-
     const input =
-      $(
-        inputSelector
-      );
+      $(`#${inputId}`);
+
+    const output =
+      $(`#${valueId}`);
 
 
-    const label =
-      $(
-        labelSelector
-      );
+    if (!input) {
+      return;
+    }
 
 
-    if (
-      input
+    function apply(
+      value,
+      save = true
     ) {
+
+      const safe =
+        clamp(
+          value,
+          min,
+          max
+        );
+
 
       input.value =
         safe;
 
-    }
+
+      if (output) {
+
+        output.textContent =
+          `${Math.round(safe)}%`;
+
+      }
 
 
-    if (
-      label
-    ) {
+      if (save) {
 
-      label.textContent =
-        `${Math.round(
+        storage.set(
+          storageKey,
           safe
-        )}%`;
+        );
+
+      }
+
+
+      if (callback) {
+
+        callback(
+          safe
+        );
+
+      }
 
     }
 
 
-    storage.set(
-      storageKey,
-      safe
+    input.addEventListener(
+      "input",
+      event => {
+
+        apply(
+          event.target.value
+        );
+
+      }
     );
 
 
-    callback?.(
-      safe
+    apply(
+      storage.get(
+        storageKey,
+        input.value
+      ),
+      false
     );
 
   }
 
 
-  $("#animationSpeed")?.addEventListener(
-    "input",
-    event => {
+  bindRange(
+    "animationSpeed",
+    "animationSpeedValue",
+    "dreamAnimationSpeed",
+    40,
+    160,
+    value => {
 
-      applyRange(
-        "#animationSpeed",
-        "#animationSpeedValue",
-        "dreamAnimationSpeed",
-        event.target.value,
-        40,
-        160,
-        safe => {
-
-          root.style.setProperty(
-            "--animation-speed",
-            safe /
-            100
-          );
-
-        }
+      root.style.setProperty(
+        "--animation-speed",
+        value / 100
       );
 
     }
   );
 
 
-  $("#motion3dRange")?.addEventListener(
-    "input",
-    event => {
+  bindRange(
+    "motion3dRange",
+    "motion3dValue",
+    "dreamMotion3DIntensity",
+    0,
+    150
+  );
 
-      applyRange(
-        "#motion3dRange",
-        "#motion3dValue",
-        "dreamMotion3DIntensity",
-        event.target.value,
-        0,
-        150
+
+  bindRange(
+    "cursorGlowRange",
+    "cursorGlowValue",
+    "dreamCursorGlowIntensity",
+    0,
+    150,
+    value => {
+
+      root.style.setProperty(
+        "--cursor-glow-intensity",
+        value / 100
       );
 
     }
   );
 
 
-  $("#cursorGlowRange")?.addEventListener(
-    "input",
-    event => {
+  bindRange(
+    "particleIntensityRange",
+    "particleIntensityValue",
+    "dreamParticleIntensity",
+    0,
+    150,
+    () => {
 
-      applyRange(
-        "#cursorGlowRange",
-        "#cursorGlowValue",
-        "dreamCursorGlowIntensity",
-        event.target.value,
-        0,
-        150,
-        safe => {
+      generateParticles();
 
-          root.style.setProperty(
-            "--cursor-glow-intensity",
-            safe /
-            100
-          );
+    }
+  );
 
-        }
+
+  bindRange(
+    "sprayIntensityRange",
+    "sprayIntensityValue",
+    "dreamSprayIntensity",
+    40,
+    160,
+    value => {
+
+      root.style.setProperty(
+        "--spray-intensity",
+        value / 100
       );
 
     }
   );
 
 
-  $("#particleIntensityRange")?.addEventListener(
-    "input",
-    event => {
+  bindRange(
+    "contrastControl",
+    "contrastValue",
+    "dreamContrast",
+    80,
+    130,
+    value => {
 
-      applyRange(
-        "#particleIntensityRange",
-        "#particleIntensityValue",
-        "dreamParticleIntensity",
-        event.target.value,
-        0,
-        150,
-        () => {
-
-          generateParticles();
-
-        }
-      );
-
-    }
-  );
-
-
-  $("#sprayIntensityRange")?.addEventListener(
-    "input",
-    event => {
-
-      applyRange(
-        "#sprayIntensityRange",
-        "#sprayIntensityValue",
-        "dreamSprayIntensity",
-        event.target.value,
-        40,
-        160,
-        safe => {
-
-          root.style.setProperty(
-            "--spray-intensity",
-            safe /
-            100
-          );
-
-        }
-      );
-
-    }
-  );
-
-
-  $("#contrastControl")?.addEventListener(
-    "input",
-    event => {
-
-      applyRange(
-        "#contrastControl",
-        "#contrastValue",
-        "dreamContrast",
-        event.target.value,
-        80,
-        130,
-        safe => {
-
-          body.style.filter =
-            `contrast(${
-              safe /
-              100
-            })`;
-
-        }
-      );
+      body.style.filter =
+        `contrast(${value / 100})`;
 
     }
   );
@@ -5188,15 +3513,7 @@ document.addEventListener("DOMContentLoaded", () => {
      TAMANHO DA FONTE
   ========================================================= */
 
-  const fontButtons =
-    $$(
-      "[data-font-size]"
-    );
-
-
-  function setFontSize(
-    size
-  ) {
+  function setFontSize(size) {
 
     const allowed = [
       "small",
@@ -5225,13 +3542,12 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    fontButtons.forEach(
+    $$("[data-font-size]").forEach(
       button => {
 
         button.classList.toggle(
           "active",
-          button.dataset.fontSize ===
-            safe
+          button.dataset.fontSize === safe
         );
 
       }
@@ -5246,7 +3562,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  fontButtons.forEach(
+  $$("[data-font-size]").forEach(
     button => {
 
       button.addEventListener(
@@ -5267,119 +3583,265 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================================================= */
 
   const quizQuestions = [
+
     {
-      pt: "Qual momento combina mais com você?",
-      en: "Which moment suits you best?",
+      pt:
+        "Qual momento combina mais com você?",
+
+      en:
+        "Which moment suits you best?",
+
       answers: [
-        ["Encontro romântico ♡", "Romantic date ♡", "romantico"],
-        ["Noite olhando o céu ☾", "Night under the sky ☾", "sonhador"],
-        ["Uma festa ✦", "A party ✦", "energia"],
-        ["Momento tranquilo ☁", "A peaceful moment ☁", "calmo"]
+
+        [
+          "Encontro romântico ♡",
+          "Romantic date ♡",
+          "romantico"
+        ],
+
+        [
+          "Noite olhando o céu ☾",
+          "Night under the sky ☾",
+          "sonhador"
+        ],
+
+        [
+          "Uma festa ✦",
+          "A party ✦",
+          "energia"
+        ],
+
+        [
+          "Momento tranquilo ☁",
+          "A peaceful moment ☁",
+          "calmo"
+        ]
+
       ]
+
     },
 
     {
-      pt: "Escolha uma sensação.",
-      en: "Choose a feeling.",
+      pt:
+        "Escolha uma sensação.",
+
+      en:
+        "Choose a feeling.",
+
       answers: [
-        ["Romance", "Romance", "romantico"],
-        ["Liberdade", "Freedom", "sonhador"],
-        ["Intensidade", "Intensity", "energia"],
-        ["Conforto", "Comfort", "calmo"]
+
+        [
+          "Romance",
+          "Romance",
+          "romantico"
+        ],
+
+        [
+          "Liberdade",
+          "Freedom",
+          "sonhador"
+        ],
+
+        [
+          "Intensidade",
+          "Intensity",
+          "energia"
+        ],
+
+        [
+          "Conforto",
+          "Comfort",
+          "calmo"
+        ]
+
       ]
+
     },
 
     {
-      pt: "Escolha um símbolo.",
-      en: "Choose a symbol.",
+      pt:
+        "Escolha um símbolo.",
+
+      en:
+        "Choose a symbol.",
+
       answers: [
-        ["♡ Coração", "♡ Heart", "romantico"],
-        ["☾ Lua", "☾ Moon", "sonhador"],
-        ["✦ Estrela", "✦ Star", "energia"],
-        ["☁ Nuvem", "☁ Cloud", "calmo"]
+
+        [
+          "♡ Coração",
+          "♡ Heart",
+          "romantico"
+        ],
+
+        [
+          "☾ Lua",
+          "☾ Moon",
+          "sonhador"
+        ],
+
+        [
+          "✦ Estrela",
+          "✦ Star",
+          "energia"
+        ],
+
+        [
+          "☁ Nuvem",
+          "☁ Cloud",
+          "calmo"
+        ]
+
       ]
+
     },
 
     {
-      pt: "Escolha seu cenário Dream.",
-      en: "Choose your Dream setting.",
+      pt:
+        "Escolha seu cenário Dream.",
+
+      en:
+        "Choose your Dream setting.",
+
       answers: [
-        ["Jardim florido", "Flower garden", "romantico"],
-        ["Céu estrelado", "Starry sky", "sonhador"],
-        ["Cidade iluminada", "City lights", "energia"],
-        ["Fim de tarde", "Sunset", "calmo"]
+
+        [
+          "Jardim florido",
+          "Flower garden",
+          "romantico"
+        ],
+
+        [
+          "Céu estrelado",
+          "Starry sky",
+          "sonhador"
+        ],
+
+        [
+          "Cidade iluminada",
+          "City lights",
+          "energia"
+        ],
+
+        [
+          "Fim de tarde",
+          "Sunset",
+          "calmo"
+        ]
+
       ]
+
     }
+
   ];
 
 
   const quizResults = {
+
     romantico: {
-      icon: "♡",
-      ptTitle: "Dream Lover",
-      enTitle: "Dream Lover",
-      ptText:
+
+      icon:
+        "♡",
+
+      title:
+        "Dream Lover",
+
+      pt:
         "Romântico, delicado e apaixonado pelos pequenos detalhes.",
-      enText:
+
+      en:
         "Romantic, delicate and in love with the little details."
+
     },
 
     sonhador: {
-      icon: "☾",
-      ptTitle: "Dreamer",
-      enTitle: "Dreamer",
-      ptText:
+
+      icon:
+        "☾",
+
+      title:
+        "Dreamer",
+
+      pt:
         "Você gosta de imaginar e transformar momentos em lembranças.",
-      enText:
+
+      en:
         "You love imagining and turning moments into memories."
+
     },
 
     energia: {
-      icon: "✦",
-      ptTitle: "Dream Energy",
-      enTitle: "Dream Energy",
-      ptText:
+
+      icon:
+        "✦",
+
+      title:
+        "Dream Energy",
+
+      pt:
         "Uma personalidade vibrante e cheia de energia.",
-      enText:
+
+      en:
         "A vibrant personality full of energy."
+
     },
 
     calmo: {
-      icon: "☁",
-      ptTitle: "Soft Dream",
-      enTitle: "Soft Dream",
-      ptText:
+
+      icon:
+        "☁",
+
+      title:
+        "Soft Dream",
+
+      pt:
         "Você valoriza conforto, tranquilidade e leveza.",
-      enText:
+
+      en:
         "You value comfort, tranquility and softness."
+
     }
+
   };
 
 
-  let quizIndex = 0;
+  let quizIndex =
+    0;
 
-  let quizScore = {};
+  let quizScore =
+    {};
 
-  let quizWinner = null;
+  let quizWinner =
+    null;
 
 
   function startQuiz() {
 
-    quizIndex = 0;
+    quizIndex =
+      0;
 
-    quizWinner = null;
+
+    quizWinner =
+      null;
+
 
     quizScore = {
-      romantico: 0,
-      sonhador: 0,
-      energia: 0,
-      calmo: 0
+
+      romantico:
+        0,
+
+      sonhador:
+        0,
+
+      energia:
+        0,
+
+      calmo:
+        0
+
     };
 
 
-    if (
-      $("#quizStart")
-    ) {
+    if ($("#quizStart")) {
 
       $("#quizStart").hidden =
         true;
@@ -5387,9 +3849,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      $("#quizQuestions")
-    ) {
+    if ($("#quizQuestions")) {
 
       $("#quizQuestions").hidden =
         false;
@@ -5397,9 +3857,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      $("#quizResult")
-    ) {
+    if ($("#quizResult")) {
 
       $("#quizResult").hidden =
         true;
@@ -5420,33 +3878,33 @@ document.addEventListener("DOMContentLoaded", () => {
       ];
 
 
-    if (
-      !question
-    ) {
-
+    if (!question) {
       return;
-
     }
 
 
-    if (
-      $("#quizQuestion")
-    ) {
+    const questionElement =
+      $("#quizQuestion");
 
-      $("#quizQuestion").textContent =
-        currentLanguage ===
-        "pt-BR"
+
+    if (questionElement) {
+
+      questionElement.textContent =
+        currentLanguage === "pt-BR"
           ? question.pt
           : question.en;
 
     }
 
 
-    if (
-      $("#quizStep")
-    ) {
+    const step =
+      $("#quizStep") ||
+      $("#quizCounter");
 
-      $("#quizStep").textContent =
+
+    if (step) {
+
+      step.textContent =
         `${
           quizIndex + 1
         } / ${
@@ -5456,20 +3914,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      $("#quizProgressBar")
-    ) {
+    const progress =
+      $("#quizProgressBar") ||
+      $("#quizProgress");
 
-      $("#quizProgressBar").style.width =
-        `${
+
+    if (progress) {
+
+      const percent =
+        (
           (
-            (
-              quizIndex + 1
-            ) /
-            quizQuestions.length
-          ) *
-          100
-        }%`;
+            quizIndex + 1
+          ) /
+          quizQuestions.length
+        ) *
+        100;
+
+
+      if (
+        progress.tagName === "PROGRESS"
+      ) {
+
+        progress.value =
+          percent;
+
+      } else {
+
+        progress.style.width =
+          `${percent}%`;
+
+      }
 
     }
 
@@ -5478,12 +3952,8 @@ document.addEventListener("DOMContentLoaded", () => {
       $("#quizOptions");
 
 
-    if (
-      !options
-    ) {
-
+    if (!options) {
       return;
-
     }
 
 
@@ -5505,8 +3975,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         button.textContent =
-          currentLanguage ===
-          "pt-BR"
+          currentLanguage === "pt-BR"
             ? answer[0]
             : answer[1];
 
@@ -5552,9 +4021,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function finishQuiz() {
 
-    if (
-      $("#quizQuestions")
-    ) {
+    if ($("#quizQuestions")) {
 
       $("#quizQuestions").hidden =
         true;
@@ -5562,9 +4029,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      $("#quizResult")
-    ) {
+    if ($("#quizResult")) {
 
       $("#quizResult").hidden =
         false;
@@ -5577,10 +4042,7 @@ document.addEventListener("DOMContentLoaded", () => {
         quizScore
       )
       .sort(
-        (
-          a,
-          b
-        ) =>
+        (a, b) =>
           b[1] -
           a[1]
       )[0]?.[0] ||
@@ -5593,9 +4055,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ];
 
 
-    if (
-      $("#quizResultIcon")
-    ) {
+    if ($("#quizResultIcon")) {
 
       $("#quizResultIcon").textContent =
         result.icon;
@@ -5603,28 +4063,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      $("#quizResultTitle")
-    ) {
+    if ($("#quizResultTitle")) {
 
       $("#quizResultTitle").textContent =
-        currentLanguage ===
-        "pt-BR"
-          ? result.ptTitle
-          : result.enTitle;
+        result.title;
 
     }
 
 
-    if (
-      $("#quizResultText")
-    ) {
+    if ($("#quizResultText")) {
 
       $("#quizResultText").textContent =
-        currentLanguage ===
-        "pt-BR"
-          ? result.ptText
-          : result.enText;
+        currentLanguage === "pt-BR"
+          ? result.pt
+          : result.en;
 
     }
 
@@ -5643,12 +4095,21 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
 
+  $("#quizRestart")?.addEventListener(
+    "click",
+    startQuiz
+  );
+
+
   $("#applyQuizMood")?.addEventListener(
     "click",
     () => {
 
       if (
-        !quizWinner
+        !quizWinner ||
+        !moods[
+          quizWinner
+        ]
       ) {
 
         return;
@@ -5662,24 +4123,27 @@ document.addEventListener("DOMContentLoaded", () => {
         ];
 
 
-      if (
-        mood
-      ) {
-
-        applyColors(
-          mood[0],
-          mood[1]
-        );
+      applyColors(
+        mood[0],
+        mood[1]
+      );
 
 
-        showToast(
-          currentLanguage ===
-          "pt-BR"
-            ? "Seu mood foi aplicado ♡"
-            : "Your mood was applied ♡"
-        );
+      showToast(
+        currentLanguage === "pt-BR"
+          ? "Seu mood foi aplicado ♡"
+          : "Your mood was applied ♡"
+      );
 
-      }
+    }
+  );
+
+
+  $("#quizApplyMood")?.addEventListener(
+    "click",
+    () => {
+
+      $("#applyQuizMood")?.click();
 
     }
   );
@@ -5689,12 +4153,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "click",
     async () => {
 
-      if (
-        !quizWinner
-      ) {
-
+      if (!quizWinner) {
         return;
-
       }
 
 
@@ -5704,34 +4164,26 @@ document.addEventListener("DOMContentLoaded", () => {
         ];
 
 
-      const resultTitle =
-        currentLanguage ===
-        "pt-BR"
-          ? result.ptTitle
-          : result.enTitle;
-
-
       const text =
-        currentLanguage ===
-        "pt-BR"
-          ? `Meu resultado no Dream Quiz foi ${resultTitle} ♡`
-          : `My Dream Quiz result is ${resultTitle} ♡`;
+        currentLanguage === "pt-BR"
+          ? `Meu resultado no Dream Quiz foi ${result.title} ♡`
+          : `My Dream Quiz result is ${result.title} ♡`;
 
 
       try {
 
-        if (
-          navigator.share
-        ) {
+        if (navigator.share) {
 
           await navigator.share({
+
             title:
               "Dream Quiz",
 
             text,
 
             url:
-              location.href
+              window.location.href
+
           });
 
         } else if (
@@ -5744,36 +4196,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
           showToast(
-            currentLanguage ===
-            "pt-BR"
+            currentLanguage === "pt-BR"
               ? "Resultado copiado ♡"
               : "Result copied ♡"
           );
 
         }
 
-      } catch {
-
-        showToast(
-          currentLanguage ===
-          "pt-BR"
-            ? "Compartilhamento cancelado"
-            : "Sharing cancelled"
-        );
-
-      }
+      } catch {}
 
     }
   );
 
 
   /* =========================================================
-     DREAM SCENE
+     CENÁRIOS
   ========================================================= */
 
   const scenes = {
+
     romance: {
-      icon: "♡",
+
+      icon:
+        "♡",
 
       ptTitle:
         "Amor está no ar.",
@@ -5805,10 +4250,13 @@ document.addEventListener("DOMContentLoaded", () => {
           #35152c
         )
         `
+
     },
 
     ceu: {
-      icon: "☾",
+
+      icon:
+        "☾",
 
       ptTitle:
         "Noite estrelada",
@@ -5840,10 +4288,13 @@ document.addEventListener("DOMContentLoaded", () => {
           #211346
         )
         `
+
     },
 
     flores: {
-      icon: "✿",
+
+      icon:
+        "✿",
 
       ptTitle:
         "Jardim Dream",
@@ -5875,10 +4326,13 @@ document.addEventListener("DOMContentLoaded", () => {
           #35211c
         )
         `
+
     },
 
     energia: {
-      icon: "✦",
+
+      icon:
+        "✦",
 
       ptTitle:
         "Dream Energy",
@@ -5910,7 +4364,9 @@ document.addEventListener("DOMContentLoaded", () => {
           #172c35
         )
         `
+
     }
+
   };
 
 
@@ -5918,9 +4374,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $(".dream-scene-bg");
 
 
-  $$(
-    ".scene-button"
-  ).forEach(
+  $$(".scene-button").forEach(
     button => {
 
       button.addEventListener(
@@ -5933,18 +4387,12 @@ document.addEventListener("DOMContentLoaded", () => {
             ];
 
 
-          if (
-            !scene
-          ) {
-
+          if (!scene) {
             return;
-
           }
 
 
-          $$(
-            ".scene-button"
-          ).forEach(
+          $$(".scene-button").forEach(
             item => {
 
               item.classList.remove(
@@ -5960,9 +4408,7 @@ document.addEventListener("DOMContentLoaded", () => {
           );
 
 
-          if (
-            dreamSceneBg
-          ) {
+          if (dreamSceneBg) {
 
             dreamSceneBg.style.background =
               scene.background;
@@ -5970,9 +4416,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
 
-          if (
-            $("#sceneResultIcon")
-          ) {
+          if ($("#sceneResultIcon")) {
 
             $("#sceneResultIcon").textContent =
               scene.icon;
@@ -5980,26 +4424,20 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
 
-          if (
-            $("#sceneResultTitle")
-          ) {
+          if ($("#sceneResultTitle")) {
 
             $("#sceneResultTitle").textContent =
-              currentLanguage ===
-              "pt-BR"
+              currentLanguage === "pt-BR"
                 ? scene.ptTitle
                 : scene.enTitle;
 
           }
 
 
-          if (
-            $("#sceneResultText")
-          ) {
+          if ($("#sceneResultText")) {
 
             $("#sceneResultText").textContent =
-              currentLanguage ===
-              "pt-BR"
+              currentLanguage === "pt-BR"
                 ? scene.ptText
                 : scene.enText;
 
@@ -6017,65 +4455,75 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================================================= */
 
   const dreamMoments = [
+
     {
-      icon: "♡",
+      icon:
+        "♡",
+
       ptTitle:
         "O amor mora nos detalhes.",
+
       enTitle:
         "Love lives in the details.",
+
       ptText:
         "Alguns momentos ficam especiais justamente porque parecem simples.",
+
       enText:
         "Some moments become special precisely because they seem simple."
     },
 
     {
-      icon: "✦",
+      icon:
+        "✦",
+
       ptTitle:
         "Transforme o comum.",
+
       enTitle:
         "Transform the ordinary.",
+
       ptText:
         "Uma fragrância pode fazer um instante comum virar uma lembrança.",
+
       enText:
         "A fragrance can turn an ordinary instant into a memory."
     },
 
     {
-      icon: "☾",
+      icon:
+        "☾",
+
       ptTitle:
         "Leve o Dream com você.",
+
       enTitle:
         "Take Dream with you.",
+
       ptText:
         "Crie sua própria atmosfera e deixe o momento falar por si.",
+
       enText:
         "Create your own atmosphere and let the moment speak for itself."
     },
 
     {
-      icon: "☁",
+      icon:
+        "☁",
+
       ptTitle:
         "Desacelere um pouco.",
+
       enTitle:
         "Slow down for a moment.",
+
       ptText:
         "Nem todo momento especial precisa ser planejado.",
+
       enText:
         "Not every special moment needs to be planned."
-    },
-
-    {
-      icon: "✧",
-      ptTitle:
-        "Guarde o instante.",
-      enTitle:
-        "Keep the moment.",
-      ptText:
-        "Às vezes uma lembrança começa com um detalhe quase imperceptível.",
-      enText:
-        "Sometimes a memory begins with an almost imperceptible detail."
     }
+
   ];
 
 
@@ -6092,9 +4540,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ];
 
 
-      if (
-        $(".dream-moment-icon")
-      ) {
+      if ($(".dream-moment-icon")) {
 
         $(".dream-moment-icon").textContent =
           moment.icon;
@@ -6102,38 +4548,24 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
 
-      if (
-        $("#dreamMomentTitle")
-      ) {
+      if ($("#dreamMomentTitle")) {
 
         $("#dreamMomentTitle").textContent =
-          currentLanguage ===
-          "pt-BR"
+          currentLanguage === "pt-BR"
             ? moment.ptTitle
             : moment.enTitle;
 
       }
 
 
-      if (
-        $("#dreamMomentText")
-      ) {
+      if ($("#dreamMomentText")) {
 
         $("#dreamMomentText").textContent =
-          currentLanguage ===
-          "pt-BR"
+          currentLanguage === "pt-BR"
             ? moment.ptText
             : moment.enText;
 
       }
-
-
-      showToast(
-        currentLanguage ===
-        "pt-BR"
-          ? "Novo Dream Moment ✦"
-          : "New Dream Moment ✦"
-      );
 
     }
   );
@@ -6143,9 +4575,7 @@ document.addEventListener("DOMContentLoaded", () => {
      CARDS 3D
   ========================================================= */
 
-  $$(
-    ".moment-card"
-  ).forEach(
+  $$(".moment-card").forEach(
     card => {
 
       card.addEventListener(
@@ -6165,8 +4595,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           if (
             $("#motion3dToggle")
-              ?.checked ===
-            false
+              ?.checked === false
           ) {
 
             return;
@@ -6197,10 +4626,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
           const factor =
-            Number(
+            clamp(
               $("#motion3dRange")
-                ?.value ||
-              100
+                ?.value || 100,
+              0,
+              150
             ) /
             100;
 
@@ -6238,42 +4668,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const dreamMusic =
     $("#dreamMusic");
 
-
   const dreamMusicButton =
     $("#dreamMusicButton");
-
 
   const musicMuteButton =
     $("#musicMuteButton");
 
-
   const musicProgress =
     $("#musicProgress");
-
 
   const musicCurrentTime =
     $("#musicCurrentTime");
 
-
   const musicDuration =
     $("#musicDuration");
-
 
   const musicToggle =
     $("#musicToggle");
 
-
   const musicVolumeRange =
     $("#musicVolumeRange");
-
 
   const musicVolumeValue =
     $("#musicVolumeValue");
 
 
-  function formatTime(
-    seconds
-  ) {
+  function formatTime(seconds) {
 
     if (
       !Number.isFinite(
@@ -6288,15 +4708,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const minutes =
       Math.floor(
-        seconds /
-        60
+        seconds / 60
       );
 
 
     const secs =
       Math.floor(
-        seconds %
-        60
+        seconds % 60
       );
 
 
@@ -6312,12 +4730,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateMusicUI() {
 
-    if (
-      !dreamMusic
-    ) {
-
+    if (!dreamMusic) {
       return;
-
     }
 
 
@@ -6338,9 +4752,7 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
 
-    if (
-      dreamMusicButton
-    ) {
+    if (dreamMusicButton) {
 
       dreamMusicButton.textContent =
         playing
@@ -6350,9 +4762,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      musicToggle
-    ) {
+    if (musicToggle) {
 
       musicToggle.checked =
         playing;
@@ -6364,12 +4774,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function playMusic() {
 
-    if (
-      !dreamMusic
-    ) {
-
+    if (!dreamMusic) {
       return;
-
     }
 
 
@@ -6380,17 +4786,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       updateMusicUI();
 
-
-      storage.set(
-        "dreamMusicEnabled",
-        true
-      );
-
     } catch {
 
       showToast(
-        currentLanguage ===
-        "pt-BR"
+        currentLanguage === "pt-BR"
           ? "Clique novamente para tocar a música"
           : "Click again to play the music"
       );
@@ -6402,25 +4801,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function pauseMusic() {
 
-    if (
-      !dreamMusic
-    ) {
-
-      return;
-
-    }
-
-
-    dreamMusic.pause();
+    dreamMusic?.pause();
 
 
     updateMusicUI();
-
-
-    storage.set(
-      "dreamMusicEnabled",
-      false
-    );
 
   }
 
@@ -6429,18 +4813,12 @@ document.addEventListener("DOMContentLoaded", () => {
     "click",
     () => {
 
-      if (
-        !dreamMusic
-      ) {
-
+      if (!dreamMusic) {
         return;
-
       }
 
 
-      if (
-        dreamMusic.paused
-      ) {
+      if (dreamMusic.paused) {
 
         playMusic();
 
@@ -6458,9 +4836,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "change",
     event => {
 
-      if (
-        event.target.checked
-      ) {
+      if (event.target.checked) {
 
         playMusic();
 
@@ -6490,9 +4866,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "loadedmetadata",
     () => {
 
-      if (
-        musicDuration
-      ) {
+      if (musicDuration) {
 
         musicDuration.textContent =
           formatTime(
@@ -6509,9 +4883,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "timeupdate",
     () => {
 
-      if (
-        musicCurrentTime
-      ) {
+      if (musicCurrentTime) {
 
         musicCurrentTime.textContent =
           formatTime(
@@ -6523,18 +4895,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (
         musicProgress &&
-        Number.isFinite(
-          dreamMusic.duration
-        ) &&
-        dreamMusic.duration >
-        0
+        dreamMusic.duration
       ) {
 
         musicProgress.value =
-          (
-            dreamMusic.currentTime /
-            dreamMusic.duration
-          ) *
+          dreamMusic.currentTime /
+          dreamMusic.duration *
           100;
 
       }
@@ -6549,11 +4915,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (
         !dreamMusic ||
-        !Number.isFinite(
-          dreamMusic.duration
-        ) ||
-        dreamMusic.duration <=
-        0
+        !dreamMusic.duration
       ) {
 
         return;
@@ -6562,12 +4924,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       dreamMusic.currentTime =
-        (
-          Number(
-            event.target.value
-          ) /
-          100
-        ) *
+        Number(
+          event.target.value
+        ) /
+        100 *
         dreamMusic.duration;
 
     }
@@ -6578,12 +4938,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "click",
     () => {
 
-      if (
-        !dreamMusic
-      ) {
-
+      if (!dreamMusic) {
         return;
-
       }
 
 
@@ -6607,27 +4963,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const safe =
       clamp(
-        Number(value) ||
-        0,
+        value,
         0,
         100
       );
 
 
-    if (
-      dreamMusic
-    ) {
+    if (dreamMusic) {
 
       dreamMusic.volume =
-        safe /
-        100;
+        safe / 100;
 
     }
 
 
-    if (
-      musicVolumeRange
-    ) {
+    if (musicVolumeRange) {
 
       musicVolumeRange.value =
         safe;
@@ -6635,9 +4985,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      musicVolumeValue
-    ) {
+    if (musicVolumeValue) {
 
       musicVolumeValue.textContent =
         `${Math.round(
@@ -6647,9 +4995,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      save
-    ) {
+    if (save) {
 
       storage.set(
         "dreamMusicVolume",
@@ -6678,43 +5024,87 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================================================= */
 
   const presets = {
+
     dream: {
-      primary: "#df76a8",
-      secondary: "#9562dc",
-      dark: false,
-      clean: false,
-      performance: false
+
+      primary:
+        "#df76a8",
+
+      secondary:
+        "#9562dc",
+
+      dark:
+        false,
+
+      clean:
+        false,
+
+      performance:
+        false
+
     },
 
     cinematic: {
-      primary: "#a855f7",
-      secondary: "#312e81",
-      dark: true,
-      clean: false,
-      performance: false
+
+      primary:
+        "#a855f7",
+
+      secondary:
+        "#312e81",
+
+      dark:
+        true,
+
+      clean:
+        false,
+
+      performance:
+        false
+
     },
 
     soft: {
-      primary: "#f2a6c8",
-      secondary: "#a78bfa",
-      dark: false,
-      clean: true,
-      performance: false
+
+      primary:
+        "#f2a6c8",
+
+      secondary:
+        "#a78bfa",
+
+      dark:
+        false,
+
+      clean:
+        true,
+
+      performance:
+        false
+
     },
 
     performance: {
-      primary: "#df76a8",
-      secondary: "#9562dc",
-      dark: false,
-      clean: false,
-      performance: true
+
+      primary:
+        "#df76a8",
+
+      secondary:
+        "#9562dc",
+
+      dark:
+        false,
+
+      clean:
+        false,
+
+      performance:
+        true
+
     }
+
   };
 
 
-  $$(
-    ".preset-button"
-  ).forEach(
+  $$(".preset-button").forEach(
     button => {
 
       button.addEventListener(
@@ -6727,18 +5117,12 @@ document.addEventListener("DOMContentLoaded", () => {
             ];
 
 
-          if (
-            !preset
-          ) {
-
+          if (!preset) {
             return;
-
           }
 
 
-          $$(
-            ".preset-button"
-          ).forEach(
+          $$(".preset-button").forEach(
             item => {
 
               item.classList.remove(
@@ -6771,9 +5155,7 @@ document.addEventListener("DOMContentLoaded", () => {
           );
 
 
-          if (
-            $("#cleanModeToggle")
-          ) {
+          if ($("#cleanModeToggle")) {
 
             $("#cleanModeToggle").checked =
               preset.clean;
@@ -6791,16 +5173,111 @@ document.addEventListener("DOMContentLoaded", () => {
             preset.performance
           );
 
-
-          showToast(
-            currentLanguage ===
-            "pt-BR"
-              ? "Estilo aplicado ✦"
-              : "Style applied ✦"
-          );
-
         }
       );
+
+    }
+  );
+
+
+  /* =========================================================
+     COMPARTILHAR
+  ========================================================= */
+
+  async function sharePage() {
+
+    const data = {
+
+      title:
+        document.title,
+
+      text:
+        currentLanguage === "pt-BR"
+          ? "Dream Amor no Ar"
+          : "Dream Love in the Air",
+
+      url:
+        window.location.href
+
+    };
+
+
+    try {
+
+      if (navigator.share) {
+
+        await navigator.share(
+          data
+        );
+
+      } else if (
+        navigator.clipboard &&
+        window.isSecureContext
+      ) {
+
+        await navigator.clipboard.writeText(
+          window.location.href
+        );
+
+
+        showToast(
+          currentLanguage === "pt-BR"
+            ? "Link copiado ♡"
+            : "Link copied ♡"
+        );
+
+      } else {
+
+        window.prompt(
+          currentLanguage === "pt-BR"
+            ? "Copie o link:"
+            : "Copy the link:",
+          window.location.href
+        );
+
+      }
+
+    } catch {}
+
+  }
+
+
+  $("#shareButton")?.addEventListener(
+    "click",
+    sharePage
+  );
+
+
+  $("#shareModal")?.addEventListener(
+    "click",
+    sharePage
+  );
+
+
+  /* =========================================================
+     TELA CHEIA
+  ========================================================= */
+
+  $("#fullscreenButton")?.addEventListener(
+    "click",
+    async () => {
+
+      try {
+
+        if (
+          !document.fullscreenElement
+        ) {
+
+          await document.documentElement
+            .requestFullscreen();
+
+        } else {
+
+          await document.exitFullscreen();
+
+        }
+
+      } catch {}
 
     }
   );
@@ -6868,33 +5345,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let label =
       current.dataset.sectionName ||
-      current.getAttribute(
-        "aria-label"
-      ) ||
       current.id;
 
 
     if (
-      currentLanguage ===
-      "en-US"
+      currentLanguage === "en-US"
     ) {
 
-      const sectionNames = {
-        inicio: "Home",
-        produto: "Product",
-        campanha: "Campaign",
-        notas: "Notes",
-        experiencia: "Experience",
-        sensacao: "Feeling",
-        momentos: "Moments",
-        galeria: "Gallery",
-        mood: "Mood",
-        quiz: "Quiz"
+      const names = {
+
+        inicio:
+          "Home",
+
+        produto:
+          "Product",
+
+        campanha:
+          "Campaign",
+
+        notas:
+          "Notes",
+
+        experiencia:
+          "Experience",
+
+        sensacao:
+          "Feeling",
+
+        "quando-usar":
+          "Moments",
+
+        momentos:
+          "Moments",
+
+        galeria:
+          "Gallery",
+
+        mood:
+          "Mood",
+
+        quiz:
+          "Quiz"
+
       };
 
 
       label =
-        sectionNames[
+        names[
           current.id
         ] ||
         label;
@@ -6928,7 +5425,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     CONFIGURAÇÕES SALVAS
+     CARREGAR CONFIGURAÇÕES
   ========================================================= */
 
   function readBool(
@@ -6943,17 +5440,12 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
 
-    if (
-      value === null
-    ) {
-
+    if (value === null) {
       return fallback;
-
     }
 
 
-    return value ===
-      "true";
+    return value === "true";
 
   }
 
@@ -6961,6 +5453,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function loadSettings() {
 
     applyColors(
+
       storage.get(
         "dreamPrimary",
         "#df76a8"
@@ -6972,6 +5465,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ),
 
       false
+
     );
 
 
@@ -6984,119 +5478,109 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    const particlesEnabled =
+    const particleState =
       readBool(
         "dreamParticles",
         true
       );
 
 
-    body.classList.toggle(
-      "no-particles",
-      !particlesEnabled
-    );
-
-
-    if (
-      $("#particlesToggle")
-    ) {
+    if ($("#particlesToggle")) {
 
       $("#particlesToggle").checked =
-        particlesEnabled;
+        particleState;
 
     }
 
 
-    const animationsEnabled =
+    body.classList.toggle(
+      "no-particles",
+      !particleState
+    );
+
+
+    const animationsState =
       readBool(
         "dreamAnimations",
         true
       );
 
 
-    body.classList.toggle(
-      "no-animations",
-      !animationsEnabled
-    );
-
-
-    if (
-      $("#animationsToggle")
-    ) {
+    if ($("#animationsToggle")) {
 
       $("#animationsToggle").checked =
-        animationsEnabled;
+        animationsState;
 
     }
 
 
-    const cursorEnabled =
+    body.classList.toggle(
+      "no-animations",
+      !animationsState
+    );
+
+
+    const cursorState =
       readBool(
         "dreamCursor",
         true
       );
 
 
-    body.classList.toggle(
-      "no-cursor",
-      !cursorEnabled
-    );
-
-
-    if (
-      $("#cursorToggle")
-    ) {
+    if ($("#cursorToggle")) {
 
       $("#cursorToggle").checked =
-        cursorEnabled;
+        cursorState;
 
     }
 
 
-    const glassEnabled =
+    body.classList.toggle(
+      "no-cursor",
+      !cursorState
+    );
+
+
+    const glassState =
       readBool(
         "dreamGlass",
         true
       );
 
 
-    body.classList.toggle(
-      "no-glass",
-      !glassEnabled
-    );
-
-
-    if (
-      $("#glassToggle")
-    ) {
+    if ($("#glassToggle")) {
 
       $("#glassToggle").checked =
-        glassEnabled;
+        glassState;
 
     }
 
 
-    const cleanEnabled =
+    body.classList.toggle(
+      "no-glass",
+      !glassState
+    );
+
+
+    const cleanState =
       readBool(
         "dreamClean",
         false
       );
 
 
-    body.classList.toggle(
-      "clean-mode",
-      cleanEnabled
-    );
-
-
-    if (
-      $("#cleanModeToggle")
-    ) {
+    if ($("#cleanModeToggle")) {
 
       $("#cleanModeToggle").checked =
-        cleanEnabled;
+        cleanState;
 
     }
+
+
+    body.classList.toggle(
+      "clean-mode",
+      cleanState
+    );
 
 
     setPerformance(
@@ -7108,9 +5592,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    if (
-      $("#motion3dToggle")
-    ) {
+    if ($("#motion3dToggle")) {
 
       $("#motion3dToggle").checked =
         readBool(
@@ -7121,9 +5603,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      $("#hapticToggle")
-    ) {
+    if ($("#hapticToggle")) {
 
       $("#hapticToggle").checked =
         readBool(
@@ -7134,9 +5614,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      $("#spraySoundToggle")
-    ) {
+    if ($("#spraySoundToggle")) {
 
       $("#spraySoundToggle").checked =
         readBool(
@@ -7145,126 +5623,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     }
-
-
-    applyRange(
-      "#animationSpeed",
-      "#animationSpeedValue",
-      "dreamAnimationSpeed",
-      Number(
-        storage.get(
-          "dreamAnimationSpeed",
-          100
-        )
-      ),
-      40,
-      160,
-      safe => {
-
-        root.style.setProperty(
-          "--animation-speed",
-          safe / 100
-        );
-
-      }
-    );
-
-
-    applyRange(
-      "#motion3dRange",
-      "#motion3dValue",
-      "dreamMotion3DIntensity",
-      Number(
-        storage.get(
-          "dreamMotion3DIntensity",
-          100
-        )
-      ),
-      0,
-      150
-    );
-
-
-    applyRange(
-      "#cursorGlowRange",
-      "#cursorGlowValue",
-      "dreamCursorGlowIntensity",
-      Number(
-        storage.get(
-          "dreamCursorGlowIntensity",
-          100
-        )
-      ),
-      0,
-      150,
-      safe => {
-
-        root.style.setProperty(
-          "--cursor-glow-intensity",
-          safe / 100
-        );
-
-      }
-    );
-
-
-    applyRange(
-      "#particleIntensityRange",
-      "#particleIntensityValue",
-      "dreamParticleIntensity",
-      Number(
-        storage.get(
-          "dreamParticleIntensity",
-          100
-        )
-      ),
-      0,
-      150
-    );
-
-
-    applyRange(
-      "#sprayIntensityRange",
-      "#sprayIntensityValue",
-      "dreamSprayIntensity",
-      Number(
-        storage.get(
-          "dreamSprayIntensity",
-          100
-        )
-      ),
-      40,
-      160,
-      safe => {
-
-        root.style.setProperty(
-          "--spray-intensity",
-          safe / 100
-        );
-
-      }
-    );
-
-
-    applyRange(
-      "#contrastControl",
-      "#contrastValue",
-      "dreamContrast",
-      Number(
-        storage.get(
-          "dreamContrast",
-          100
-        )
-      ),
-      80,
-      130,
-      safe => {
-
-        body.style.filter =
-          `contrast(${safe / 100})`;
-
-      }
-    );
 
 
     setFontSize(
@@ -7276,20 +5634,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     setMusicVolume(
-      Number(
-        storage.get(
-          "dreamMusicVolume",
-          35
-        )
-      ),
-      false
-    );
-
-
-    setLanguage(
       storage.get(
-        "dreamLanguage",
-        "pt-BR"
+        "dreamMusicVolume",
+        35
       ),
       false
     );
@@ -7312,6 +5659,7 @@ document.addEventListener("DOMContentLoaded", () => {
     () => {
 
       const keys = [
+
         "dreamPrimary",
         "dreamSecondary",
         "dreamDark",
@@ -7332,6 +5680,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "dreamContrast",
         "dreamFontSize",
         "dreamMusicVolume"
+
       ];
 
 
@@ -7346,229 +5695,28 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
 
-      applyColors(
-        "#df76a8",
-        "#9562dc"
-      );
-
-
-      setDark(
-        false
-      );
-
-
-      body.classList.remove(
-        "no-particles",
-        "no-animations",
-        "no-cursor",
-        "no-glass",
-        "clean-mode",
-        "performance-mode",
-        "font-small",
-        "font-large"
-      );
-
-
-      body.classList.add(
-        "font-normal"
-      );
-
-
-      body.style.filter =
-        "";
-
-
-      const toggles = {
-        particlesToggle: true,
-        animationsToggle: true,
-        cursorToggle: true,
-        glassToggle: true,
-        cleanModeToggle: false,
-        performanceToggle: false,
-        motion3dToggle: true,
-        hapticToggle: true,
-        spraySoundToggle: true
-      };
-
-
-      Object.entries(
-        toggles
-      ).forEach(
-        ([id, value]) => {
-
-          const element =
-            document.getElementById(
-              id
-            );
-
-
-          if (
-            element
-          ) {
-
-            element.checked =
-              value;
-
-          }
-
-        }
-      );
-
-
-      const ranges = {
-        animationSpeed: 100,
-        motion3dRange: 100,
-        cursorGlowRange: 100,
-        particleIntensityRange: 100,
-        sprayIntensityRange: 100,
-        contrastControl: 100
-      };
-
-
-      Object.entries(
-        ranges
-      ).forEach(
-        ([id, value]) => {
-
-          const element =
-            document.getElementById(
-              id
-            );
-
-
-          if (
-            element
-          ) {
-
-            element.value =
-              value;
-
-          }
-
-        }
-      );
-
-
-      const labels = {
-        animationSpeedValue: "100%",
-        motion3dValue: "100%",
-        cursorGlowValue: "100%",
-        particleIntensityValue: "100%",
-        sprayIntensityValue: "100%",
-        contrastValue: "100%"
-      };
-
-
-      Object.entries(
-        labels
-      ).forEach(
-        ([id, value]) => {
-
-          const element =
-            document.getElementById(
-              id
-            );
-
-
-          if (
-            element
-          ) {
-
-            element.textContent =
-              value;
-
-          }
-
-        }
-      );
-
-
-      root.style.setProperty(
-        "--animation-speed",
-        1
-      );
-
-
-      root.style.setProperty(
-        "--cursor-glow-intensity",
-        1
-      );
-
-
-      root.style.setProperty(
-        "--spray-intensity",
-        1
-      );
-
-
-      setFontSize(
-        "normal"
-      );
-
-
-      setMusicVolume(
-        35
-      );
-
-
-      generateParticles();
-
-
       showToast(
-        currentLanguage ===
-        "pt-BR"
+        currentLanguage === "pt-BR"
           ? "Configurações restauradas ♡"
           : "Settings restored ♡"
       );
 
-    }
-  );
 
+      setTimeout(
+        () => {
 
-  /* =========================================================
-     FECHAR MODAIS CLICANDO FORA
-  ========================================================= */
+          window.location.reload();
 
-  productModal?.addEventListener(
-    "click",
-    event => {
-
-      if (
-        event.target ===
-        productModal
-      ) {
-
-        closeLayer(
-          productModal
-        );
-
-      }
-
-    }
-  );
-
-
-  noteModal?.addEventListener(
-    "click",
-    event => {
-
-      if (
-        event.target ===
-        noteModal
-      ) {
-
-        closeLayer(
-          noteModal
-        );
-
-      }
+        },
+        500
+      );
 
     }
   );
 
 
   /* =========================================================
-     ATALHOS
+     TECLADO
   ========================================================= */
 
   document.addEventListener(
@@ -7587,25 +5735,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       if (
-        event.key ===
-        "Escape"
+        event.key === "Escape"
       ) {
 
-        closeLayer(
-          productModal
-        );
-
+        closeProductModal();
 
         closeLayer(
           noteModal
         );
 
-
         closeLightbox();
 
-
         closeStudio();
-
 
         menu?.classList.remove(
           "open"
@@ -7623,12 +5764,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
 
-      if (
-        typing
-      ) {
-
+      if (typing) {
         return;
-
       }
 
 
@@ -7639,25 +5776,19 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
 
         if (
-          event.key ===
-          "ArrowRight"
+          event.key === "ArrowRight"
         ) {
 
           nextLightbox();
-
-          return;
 
         }
 
 
         if (
-          event.key ===
-          "ArrowLeft"
+          event.key === "ArrowLeft"
         ) {
 
           prevLightbox();
-
-          return;
 
         }
 
@@ -7738,7 +5869,8 @@ document.addEventListener("DOMContentLoaded", () => {
      RESIZE
   ========================================================= */
 
-  let resizeTimer;
+  let resizeTimer =
+    null;
 
 
   window.addEventListener(
@@ -7756,13 +5888,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             updateScroll();
 
-
             updateSectionIndicator();
 
 
             if (
-              window.innerWidth >
-              900
+              window.innerWidth > 900
             ) {
 
               menu?.classList.remove(
@@ -7781,8 +5911,48 @@ document.addEventListener("DOMContentLoaded", () => {
           120
         );
 
+    },
+    {
+      passive: true
     }
   );
+
+
+  /* =========================================================
+     API GLOBAL / TESTE
+  ========================================================= */
+
+  window.Dream = {
+
+    spray:
+      sprayDream,
+
+    setLanguage,
+
+    setDark,
+
+    showToast,
+
+    openProduct:
+      openProductModal,
+
+    closeProduct:
+      closeProductModal,
+
+    openStudio,
+
+    closeStudio,
+
+    openGallery:
+      () => {
+
+        openLightbox(
+          0
+        );
+
+      }
+
+  };
 
 
   /* =========================================================
@@ -7791,28 +5961,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadSettings();
 
-
-  updateGalleryUI();
-
-
   updateScroll();
-
-
-  updateSectionIndicator();
-
 
   updateTimeline();
 
+  updateGalleryUI();
+
+  updateSectionIndicator();
+
+  updateFavorite();
+
 
   console.log(
-    "%cDream ♡ Amor no Ar",
-    "color:#df76a8;font-size:22px;font-weight:900;"
+    "%cDream JS carregado ✓",
+    "color:#df76a8;font-size:17px;font-weight:800;"
   );
 
 
   console.log(
-    "%cDream JS carregado com sucesso ✦",
-    "color:#9562dc;font-size:12px;font-weight:700;"
+    "Botões .open-product encontrados:",
+    document.querySelectorAll(
+      ".open-product"
+    ).length
+  );
+
+
+  console.log(
+    "productModal encontrado:",
+    Boolean(
+      productModal
+    )
   );
 
 
