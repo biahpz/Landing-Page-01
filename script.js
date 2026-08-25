@@ -1593,15 +1593,6 @@ document.addEventListener("DOMContentLoaded", () => {
             language;
 
 
-        /*
-           IMPORTANTE:
-           não chama Google Translate nem tradução
-           automática do navegador.
-
-           Somente elementos do próprio site que tenham
-           data-i18n serão alterados.
-        */
-
         $$("[data-i18n]").forEach(
             element => {
 
@@ -2215,9 +2206,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     }
-
-
-    bindToggle(
+        bindToggle(
         "#particlesToggle",
         "dreamParticles",
         "no-particles",
@@ -2284,7 +2273,8 @@ document.addEventListener("DOMContentLoaded", () => {
     /* =========================================================
        RANGES
     ========================================================= */
-        function bindRange(
+
+    function bindRange(
         inputId,
         valueId,
         storageKey,
@@ -2544,7 +2534,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       PRESETS
+       PRESETS / ESTILOS RÁPIDOS
     ========================================================= */
 
     const presets = {
@@ -2728,8 +2718,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================================================
        MODAL BASE
-
-       A PARTE 2 CONTINUA EXATAMENTE DAQUI.
     ========================================================= */
 
     function openLayer(element) {
@@ -2974,10 +2962,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /* =========================================================
-       DELEGAÇÃO DE EVENTOS DO PRODUTO
-    ========================================================= */
-
     document.addEventListener(
         "click",
         event => {
@@ -3092,17 +3076,13 @@ document.addEventListener("DOMContentLoaded", () => {
             textElement.textContent =
                 favoriteText;
 
-        } else {
+        } else if (
+            favoriteButton.children.length ===
+            0
+        ) {
 
-            if (
-                favoriteButton.children.length ===
-                0
-            ) {
-
-                favoriteButton.textContent =
-                    favoriteText;
-
-            }
+            favoriteButton.textContent =
+                favoriteText;
 
         }
 
@@ -3130,7 +3110,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             showToast(
-
                 productFavorite
                     ? (
                         currentLanguage === "pt-BR"
@@ -3142,7 +3121,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             ? "Produto removido dos favoritos"
                             : "Product removed from favorites"
                     )
-
             );
 
         }
@@ -3571,7 +3549,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             particle.animate(
                 [
-
                     {
                         transform:
                             "translate(-50%, -50%) scale(.2)",
@@ -3600,10 +3577,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         opacity:
                             0
                     }
-
                 ],
                 {
-
                     duration:
                         650 +
                         Math.random() *
@@ -3614,7 +3589,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     fill:
                         "forwards"
-
                 }
             );
 
@@ -3736,20 +3710,17 @@ document.addEventListener("DOMContentLoaded", () => {
         ) {
 
             const rect =
-                sprayButton
-                    .getBoundingClientRect();
+                sprayButton.getBoundingClientRect();
 
 
             x =
                 rect.left +
-                rect.width /
-                2;
+                rect.width / 2;
 
 
             y =
                 rect.top +
-                rect.height /
-                2;
+                rect.height / 2;
 
         }
 
@@ -3967,9 +3938,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    $$(
-        "[data-note]"
-    ).forEach(
+    $$("[data-note]").forEach(
         button => {
 
             button.addEventListener(
@@ -4059,9 +4028,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const timelineStages = [
 
         {
-
-            max:
-                1,
+            max: 1,
 
             ptTitle:
                 "Primeiros minutos",
@@ -4074,14 +4041,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             enText:
                 "A fresh, bright and delicate opening."
-
         },
 
-
         {
-
-            max:
-                3,
+            max: 3,
 
             ptTitle:
                 "Coração floral",
@@ -4094,14 +4057,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             enText:
                 "Floral notes begin to stand out, making the fragrance more romantic."
-
         },
 
-
         {
-
-            max:
-                6,
+            max: 6,
 
             ptTitle:
                 "Conforto",
@@ -4114,14 +4073,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             enText:
                 "The fragrance becomes softer, more comfortable and enveloping."
-
         },
 
-
         {
-
-            max:
-                Infinity,
+            max: Infinity,
 
             ptTitle:
                 "Assinatura final",
@@ -4134,7 +4089,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             enText:
                 "A soft presence remains on the skin with a delicate touch."
-
         }
 
     ];
@@ -4164,8 +4118,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     item.max
             ) ||
             timelineStages[
-                timelineStages.length -
-                1
+                timelineStages.length - 1
             ];
 
 
@@ -4223,12 +4176,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const progress =
             (
-                value -
-                min
+                value - min
             ) /
             (
-                max -
-                min
+                max - min
             ) *
             100;
 
@@ -4401,11 +4352,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             showToast(
-
                 currentLanguage === "pt-BR"
-                                    ? `Mood ${name} aplicado ♡`
+                    ? `Mood ${name} aplicado ♡`
                     : `${name} mood applied ♡`
-
             );
 
         }
@@ -4432,9 +4381,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
     );
-
-
-    /* =========================================================
+        /* =========================================================
        DREAM MOMENT
     ========================================================= */
 
@@ -6526,9 +6473,7 @@ document.addEventListener("DOMContentLoaded", () => {
         renderQuizQuestion();
 
     }
-
-
-    function renderQuizQuestion() {
+        function renderQuizQuestion() {
 
         const question =
             quizQuestions[
@@ -6595,7 +6540,8 @@ document.addEventListener("DOMContentLoaded", () => {
         ) {
 
             return;
-                    }
+
+        }
 
 
         quizOptions.innerHTML =
@@ -8538,7 +8484,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       TESTE DOS ELEMENTOS IMPORTANTES
+       DIAGNÓSTICO
     ========================================================= */
 
     function dreamDiagnostics() {
