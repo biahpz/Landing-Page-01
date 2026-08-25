@@ -2471,12 +2471,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
 
-      /*
-         Seu MP3 pode conter mais de uma borrifada.
-         O áudio é interrompido rapidamente para
-         tocar somente a primeira.
-      */
-
       sprayAudioStopTimer =
         setTimeout(
           () => {
@@ -2575,8 +2569,6 @@ document.addEventListener("DOMContentLoaded", () => {
     spraying =
       true;
 
-
-    /* MP3 REAL */
 
     playSprayAudio();
 
@@ -2857,11 +2849,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "click",
     sprayDream
   );
-
-
-  /* =========================================================
-     PARTE 1/3 TERMINA AQUI
-  ========================================================= */
     /* =========================================================
      CURSOR GLOW
   ========================================================= */
@@ -5275,11 +5262,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
   );
-
-
-  /* =========================================================
-     PARTE 2/3 TERMINA AQUI
-  ========================================================= */
     /* =========================================================
      QUIZ
   ========================================================= */
