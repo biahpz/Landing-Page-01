@@ -6431,7 +6431,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-    ];
+    };
 
 
     let quizIndex =
