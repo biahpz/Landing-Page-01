@@ -262,6 +262,8 @@
             <button
                 class="pill-btn open-product"
                 type="button"
+                data-open-product="true"
+                aria-controls="productModal"
                 data-i18n="nav.discover"
             >
                 Conhecer
@@ -292,6 +294,13 @@
         src="./audio/Moonlight.mp3"
         preload="metadata"
         loop
+    ></audio>
+
+
+    <audio
+        id="sprayAudio"
+        src="./audio/spray.mp3"
+        preload="auto"
     ></audio>
 
 
@@ -459,6 +468,8 @@
                     <button
                         class="secondary-btn open-product"
                         type="button"
+                        data-open-product="true"
+                        aria-controls="productModal"
                         data-i18n="hero.viewProduct"
                     >
                         Ver produto
@@ -867,6 +878,8 @@
                         <button
                             class="primary-btn open-product"
                             type="button"
+                            data-open-product="true"
+                            aria-controls="productModal"
                             data-i18n="product.details"
                         >
                             Ver detalhes
@@ -958,6 +971,8 @@
                     <button
                         class="campaign-ghost-btn open-product"
                         type="button"
+                        data-open-product="true"
+                        aria-controls="productModal"
                         data-i18n="campaign.product"
                     >
                         Conhecer produto
@@ -1005,7 +1020,8 @@
                     </span>
 
                 </h2>
-                
+
+
                 <p data-i18n="notes.description">
                     Explore as diferentes camadas
                     e descubra como a fragrância evolui.
@@ -1052,19 +1068,67 @@
 
                     <div class="chips">
 
-                        <button class="note-chip" data-note="bergamota" type="button" data-i18n="note.bergamot">Bergamota</button>
-                        <button class="note-chip" data-note="laranja" type="button" data-i18n="note.orange">Laranja</button>
-                        <button class="note-chip" data-note="mandarina" type="button" data-i18n="note.mandarin">Mandarina</button>
-                        <button class="note-chip" data-note="limao" type="button" data-i18n="note.lemon">Limão</button>
-                        <button class="note-chip" data-note="cassis" type="button">Cassis</button>
-                        <button class="note-chip" data-note="maca" type="button" data-i18n="note.apple">Maçã</button>
+                        <button
+                            class="note-chip"
+                            data-note="bergamota"
+                            type="button"
+                            data-i18n="note.bergamot"
+                        >
+                            Bergamota
+                        </button>
+
+                        <button
+                            class="note-chip"
+                            data-note="laranja"
+                            type="button"
+                            data-i18n="note.orange"
+                        >
+                            Laranja
+                        </button>
+
+                        <button
+                            class="note-chip"
+                            data-note="mandarina"
+                            type="button"
+                            data-i18n="note.mandarin"
+                        >
+                            Mandarina
+                        </button>
+
+                        <button
+                            class="note-chip"
+                            data-note="limao"
+                            type="button"
+                            data-i18n="note.lemon"
+                        >
+                            Limão
+                        </button>
+
+                        <button
+                            class="note-chip"
+                            data-note="cassis"
+                            type="button"
+                        >
+                            Cassis
+                        </button>
+
+                        <button
+                            class="note-chip"
+                            data-note="maca"
+                            type="button"
+                            data-i18n="note.apple"
+                        >
+                            Maçã
+                        </button>
 
                     </div>
 
                 </article>
 
 
-                <article class="note-card note-card-featured reveal premium-card">
+                <article
+                    class="note-card note-card-featured reveal premium-card"
+                >
 
                     <div class="note-card-top">
 
@@ -1099,12 +1163,59 @@
 
                     <div class="chips">
 
-                        <button class="note-chip" data-note="rosa" type="button" data-i18n="note.rose">Rosa</button>
-                        <button class="note-chip" data-note="tilia" type="button" data-i18n="note.linden">Tília</button>
-                        <button class="note-chip" data-note="freesia" type="button" data-i18n="note.freesia">Frésia</button>
-                        <button class="note-chip" data-note="lotus" type="button" data-i18n="note.lotus">Flor de Lótus</button>
-                        <button class="note-chip" data-note="gardenia" type="button" data-i18n="note.gardenia">Gardênia</button>
-                        <button class="note-chip" data-note="pessego" type="button" data-i18n="note.peach">Pêssego</button>
+                        <button
+                            class="note-chip"
+                            data-note="rosa"
+                            type="button"
+                            data-i18n="note.rose"
+                        >
+                            Rosa
+                        </button>
+
+                        <button
+                            class="note-chip"
+                            data-note="tilia"
+                            type="button"
+                            data-i18n="note.linden"
+                        >
+                            Tília
+                        </button>
+
+                        <button
+                            class="note-chip"
+                            data-note="freesia"
+                            type="button"
+                            data-i18n="note.freesia"
+                        >
+                            Frésia
+                        </button>
+
+                        <button
+                            class="note-chip"
+                            data-note="lotus"
+                            type="button"
+                            data-i18n="note.lotus"
+                        >
+                            Flor de Lótus
+                        </button>
+
+                        <button
+                            class="note-chip"
+                            data-note="gardenia"
+                            type="button"
+                            data-i18n="note.gardenia"
+                        >
+                            Gardênia
+                        </button>
+
+                        <button
+                            class="note-chip"
+                            data-note="pessego"
+                            type="button"
+                            data-i18n="note.peach"
+                        >
+                            Pêssego
+                        </button>
 
                     </div>
 
@@ -1146,11 +1257,48 @@
 
                     <div class="chips">
 
-                        <button class="note-chip" data-note="ambar" type="button" data-i18n="note.amber">Âmbar</button>
-                        <button class="note-chip" data-note="sandalo" type="button" data-i18n="note.sandalwood">Sândalo</button>
-                        <button class="note-chip" data-note="baunilha" type="button" data-i18n="note.vanilla">Baunilha</button>
-                        <button class="note-chip" data-note="tonka" type="button">Tonka</button>
-                        <button class="note-chip" data-note="musk" type="button">Musk</button>
+                        <button
+                            class="note-chip"
+                            data-note="ambar"
+                            type="button"
+                            data-i18n="note.amber"
+                        >
+                            Âmbar
+                        </button>
+
+                        <button
+                            class="note-chip"
+                            data-note="sandalo"
+                            type="button"
+                            data-i18n="note.sandalwood"
+                        >
+                            Sândalo
+                        </button>
+
+                        <button
+                            class="note-chip"
+                            data-note="baunilha"
+                            type="button"
+                            data-i18n="note.vanilla"
+                        >
+                            Baunilha
+                        </button>
+
+                        <button
+                            class="note-chip"
+                            data-note="tonka"
+                            type="button"
+                        >
+                            Tonka
+                        </button>
+
+                        <button
+                            class="note-chip"
+                            data-note="musk"
+                            type="button"
+                        >
+                            Musk
+                        </button>
 
                     </div>
 
@@ -1337,8 +1485,13 @@
                         <div>
 
                             <span>
-                                <span data-i18n="meter.floral">Floral</span>
-                                <b class="gradient-text">90%</b>
+                                <span data-i18n="meter.floral">
+                                    Floral
+                                </span>
+
+                                <b class="gradient-text">
+                                    90%
+                                </b>
                             </span>
 
                             <div>
@@ -1347,11 +1500,17 @@
 
                         </div>
 
+
                         <div>
 
                             <span>
-                                <span data-i18n="meter.romantic">Romântico</span>
-                                <b class="gradient-text">92%</b>
+                                <span data-i18n="meter.romantic">
+                                    Romântico
+                                </span>
+
+                                <b class="gradient-text">
+                                    92%
+                                </b>
                             </span>
 
                             <div>
@@ -1360,11 +1519,17 @@
 
                         </div>
 
+
                         <div>
 
                             <span>
-                                <span data-i18n="meter.comfort">Confortável</span>
-                                <b class="gradient-text">84%</b>
+                                <span data-i18n="meter.comfort">
+                                    Confortável
+                                </span>
+
+                                <b class="gradient-text">
+                                    84%
+                                </b>
                             </span>
 
                             <div>
@@ -1373,11 +1538,17 @@
 
                         </div>
 
+
                         <div>
 
                             <span>
-                                <span data-i18n="meter.presence">Presença</span>
-                                <b class="gradient-text">62%</b>
+                                <span data-i18n="meter.presence">
+                                    Presença
+                                </span>
+
+                                <b class="gradient-text">
+                                    62%
+                                </b>
                             </span>
 
                             <div>
@@ -1386,11 +1557,17 @@
 
                         </div>
 
+
                         <div>
 
                             <span>
-                                <span data-i18n="meter.intensity">Intensidade</span>
-                                <b class="gradient-text">58%</b>
+                                <span data-i18n="meter.intensity">
+                                    Intensidade
+                                </span>
+
+                                <b class="gradient-text">
+                                    58%
+                                </b>
                             </span>
 
                             <div>
@@ -1444,8 +1621,12 @@
                             data-mood="romantico"
                         >
                             <span>♡</span>
-                            <span data-i18n="mood.romantic">Romântico</span>
+
+                            <span data-i18n="mood.romantic">
+                                Romântico
+                            </span>
                         </button>
+
 
                         <button
                             type="button"
@@ -1453,8 +1634,12 @@
                             data-mood="sonhador"
                         >
                             <span>☾</span>
-                            <span data-i18n="mood.dreamy">Sonhador</span>
+
+                            <span data-i18n="mood.dreamy">
+                                Sonhador
+                            </span>
                         </button>
+
 
                         <button
                             type="button"
@@ -1462,8 +1647,12 @@
                             data-mood="noturno"
                         >
                             <span>✦</span>
-                            <span data-i18n="mood.night">Noturno</span>
+
+                            <span data-i18n="mood.night">
+                                Noturno
+                            </span>
                         </button>
+
 
                         <button
                             type="button"
@@ -1471,8 +1660,12 @@
                             data-mood="energia"
                         >
                             <span>⚡</span>
-                            <span data-i18n="mood.energy">Energia</span>
+
+                            <span data-i18n="mood.energy">
+                                Energia
+                            </span>
                         </button>
+
 
                         <button
                             type="button"
@@ -1480,14 +1673,20 @@
                             data-mood="calmo"
                         >
                             <span>☁</span>
-                            <span data-i18n="mood.calm">Calmo</span>
+
+                            <span data-i18n="mood.calm">
+                                Calmo
+                            </span>
                         </button>
 
                     </div>
 
+
                     <div class="mood-hint">
 
-                        <span>✦</span>
+                        <span>
+                            ✦
+                        </span>
 
                         <p data-i18n="experience.moodHint">
                             A identidade visual muda
@@ -1501,9 +1700,7 @@
             </div>
 
         </section>
-
-
-        <!-- =================================================
+                <!-- =================================================
              DREAM MOMENT
         ================================================== -->
 
@@ -2000,7 +2197,8 @@
                         data-scene="ceu"
                     >
                         <span>☾</span>
-                                                <div>
+
+                        <div>
                             <strong data-i18n="scene.sky">Céu</strong>
                             <small data-i18n="scene.dreamy">sonhador</small>
                         </div>
@@ -2153,6 +2351,7 @@
                     class="gallery-arrow gallery-arrow-left"
                     id="galleryPrev"
                     type="button"
+                    aria-label="Imagem anterior"
                 >
                     ‹
                 </button>
@@ -2299,6 +2498,7 @@
                     class="gallery-arrow gallery-arrow-right"
                     id="galleryNext"
                     type="button"
+                    aria-label="Próxima imagem"
                 >
                     ›
                 </button>
@@ -2669,6 +2869,8 @@
                     <button
                         class="primary-btn open-product"
                         type="button"
+                        data-open-product="true"
+                        aria-controls="productModal"
                         data-i18n="final.product"
                     >
                         Ver produto
@@ -2699,15 +2901,14 @@
         </section>
 
     </main>
-
-
-    <!-- =====================================================
+        <!-- =====================================================
          PRODUCT MODAL
     ====================================================== -->
 
     <div
         class="product-modal"
         id="productModal"
+        tabindex="-1"
         role="dialog"
         aria-modal="true"
         aria-hidden="true"
@@ -2920,6 +3121,7 @@
             class="lightbox-close"
             id="lightboxClose"
             type="button"
+            aria-label="Fechar galeria"
         >
             ×
         </button>
@@ -2928,6 +3130,7 @@
             class="lightbox-nav lightbox-prev"
             id="lightboxPrev"
             type="button"
+            aria-label="Imagem anterior"
         >
             ‹
         </button>
@@ -2976,6 +3179,7 @@
             class="lightbox-nav lightbox-next"
             id="lightboxNext"
             type="button"
+            aria-label="Próxima imagem"
         >
             ›
         </button>
@@ -2992,16 +3196,21 @@
         id="settingsButton"
         type="button"
         aria-label="Abrir Dream Studio"
+        aria-controls="settingsPanel"
+        aria-expanded="false"
     >
         <span>✦</span>
     </button>
-        <!-- =====================================================
+
+
+    <!-- =====================================================
          DREAM STUDIO
     ====================================================== -->
 
     <aside
         class="settings-panel"
         id="settingsPanel"
+        aria-hidden="true"
     >
 
         <div class="settings-panel-head">
@@ -3404,7 +3613,6 @@
             <label class="switch-row">
 
                 <div>
-
                     <strong data-i18n="studio.particles">
                         Partículas
                     </strong>
@@ -3412,7 +3620,6 @@
                     <small data-i18n="studio.particlesDesc">
                         Elementos flutuantes
                     </small>
-
                 </div>
 
                 <input
@@ -3426,7 +3633,6 @@
             <label class="switch-row">
 
                 <div>
-
                     <strong data-i18n="studio.animations">
                         Animações
                     </strong>
@@ -3434,7 +3640,6 @@
                     <small data-i18n="studio.animationsDesc">
                         Transições da experiência
                     </small>
-
                 </div>
 
                 <input
@@ -3448,7 +3653,6 @@
             <label class="switch-row">
 
                 <div>
-
                     <strong>
                         Cursor Glow
                     </strong>
@@ -3456,7 +3660,6 @@
                     <small data-i18n="studio.cursorDesc">
                         Iluminação que acompanha o mouse
                     </small>
-
                 </div>
 
                 <input
@@ -3470,7 +3673,6 @@
             <label class="switch-row">
 
                 <div>
-
                     <strong data-i18n="studio.motion">
                         Movimento 3D
                     </strong>
@@ -3478,7 +3680,6 @@
                     <small data-i18n="studio.motionDesc">
                         Profundidade do frasco
                     </small>
-
                 </div>
 
                 <input
@@ -3492,7 +3693,6 @@
             <label class="switch-row">
 
                 <div>
-
                     <strong data-i18n="studio.haptic">
                         Vibração do spray
                     </strong>
@@ -3500,7 +3700,6 @@
                     <small data-i18n="studio.hapticDesc">
                         Feedback em aparelhos compatíveis
                     </small>
-
                 </div>
 
                 <input
@@ -3514,7 +3713,6 @@
             <label class="switch-row">
 
                 <div>
-
                     <strong data-i18n="studio.spraySound">
                         Som do borrifador
                     </strong>
@@ -3522,7 +3720,6 @@
                     <small data-i18n="studio.spraySoundDesc">
                         Reproduzir efeito ao borrifar
                     </small>
-
                 </div>
 
                 <input
@@ -3650,7 +3847,6 @@
 
             </div>
 
-
             <div class="range-setting">
 
                 <div>
@@ -3674,7 +3870,6 @@
                 >
 
             </div>
-
 
             <div class="range-setting">
 
@@ -3700,7 +3895,6 @@
 
             </div>
 
-
             <div class="range-setting">
 
                 <div>
@@ -3724,7 +3918,6 @@
                 >
 
             </div>
-
 
             <div class="range-setting">
 
@@ -3788,7 +3981,6 @@
 
             </div>
 
-
             <div class="font-size-setting">
 
                 <span data-i18n="studio.textSize">
@@ -3851,7 +4043,6 @@
         Dream ♡
     </div>
 
-
     <div
         class="section-indicator"
         id="sectionIndicator"
@@ -3859,7 +4050,6 @@
         <span>01</span>
         Início
     </div>
-
 
     <div class="keyboard-hints">
 
@@ -3885,11 +4075,11 @@
 
     </div>
 
-
     <button
         class="back-top"
         id="backTop"
         type="button"
+        aria-label="Voltar ao topo"
     >
         ↑
     </button>
@@ -3915,7 +4105,6 @@
             </p>
 
         </div>
-
 
         <div class="developer-area">
 
@@ -3947,11 +4136,9 @@
 
                 </div>
 
-
                 <span class="developer-x gradient-text">
                     ×
                 </span>
-
 
                 <div class="developer">
 
@@ -3999,7 +4186,6 @@
 
             </button>
 
-
             <button
                 class="footer-lang"
                 type="button"
@@ -4028,9 +4214,116 @@
     ====================================================== -->
 
     <script
-        src="./script.js?v=62.1"
+        src="./script.js?v=62.2"
         defer
     ></script>
+
+
+    <!-- =====================================================
+         PRODUCT MODAL FALLBACK • v62.2
+         Garante que todos os botões "Conhecer / Ver produto"
+         funcionem mesmo se o script principal estiver em cache.
+    ====================================================== -->
+
+    <script>
+
+        (() => {
+
+            const getProductModal = () =>
+                document.getElementById("productModal");
+
+            const openProduct = () => {
+
+                const modal = getProductModal();
+
+                if (!modal) {
+                    console.error("Dream: #productModal não encontrado.");
+                    return;
+                }
+
+                modal.style.display = "";
+                modal.classList.add("open", "active", "visible");
+                modal.setAttribute("aria-hidden", "false");
+
+                document.body.classList.add("modal-open");
+
+                requestAnimationFrame(() => {
+                    modal.querySelector(".product-modal-card")?.focus?.();
+                });
+
+            };
+
+            const closeProduct = () => {
+
+                const modal = getProductModal();
+
+                if (!modal) {
+                    return;
+                }
+
+                modal.classList.remove("open", "active", "visible");
+                modal.setAttribute("aria-hidden", "true");
+
+                if (!document.querySelector(
+                    ".product-modal.open, .note-modal.open, .lightbox.open"
+                )) {
+                    document.body.classList.remove("modal-open");
+                }
+
+            };
+
+            document.addEventListener(
+                "click",
+                event => {
+
+                    const openButton = event.target.closest?.(
+                        ".open-product, [data-open-product]"
+                    );
+
+                    if (openButton) {
+                        event.preventDefault();
+                        openProduct();
+                        return;
+                    }
+
+                    const closeButton = event.target.closest?.(
+                        ".close-product, [data-close-product]"
+                    );
+
+                    if (
+                        closeButton &&
+                        getProductModal()?.contains(closeButton)
+                    ) {
+                        event.preventDefault();
+                        closeProduct();
+                    }
+
+                },
+                true
+            );
+
+            document.addEventListener(
+                "keydown",
+                event => {
+
+                    if (
+                        event.key === "Escape" &&
+                        getProductModal()?.classList.contains("open")
+                    ) {
+                        closeProduct();
+                    }
+
+                }
+            );
+
+            window.DreamProductFallback = {
+                open: openProduct,
+                close: closeProduct
+            };
+
+        })();
+
+    </script>
 
 
     <!-- LOADER FAILSAFE -->
