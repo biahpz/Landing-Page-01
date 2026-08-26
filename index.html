@@ -43,6 +43,57 @@
         href="./style.css?v=60.4"
     >
 
+
+    <!-- PRODUCT MODAL DIRECT FIX • v62.3 -->
+    <script>
+        window.dreamOpenProduct = function (event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            const modal = document.getElementById("productModal");
+            if (!modal) {
+                console.error("Dream: #productModal não encontrado.");
+                return false;
+            }
+
+            modal.classList.add("open", "active", "visible");
+            modal.setAttribute("aria-hidden", "false");
+            modal.style.display = "flex";
+            modal.style.opacity = "1";
+            modal.style.visibility = "visible";
+            modal.style.pointerEvents = "auto";
+
+            document.body.classList.add("modal-open");
+            document.body.style.overflow = "hidden";
+
+            return false;
+        };
+
+        window.dreamCloseProduct = function (event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            const modal = document.getElementById("productModal");
+            if (!modal) return false;
+
+            modal.classList.remove("open", "active", "visible");
+            modal.setAttribute("aria-hidden", "true");
+            modal.style.opacity = "";
+            modal.style.visibility = "";
+            modal.style.pointerEvents = "";
+            modal.style.display = "";
+
+            document.body.classList.remove("modal-open");
+            document.body.style.overflow = "";
+
+            return false;
+        };
+    </script>
+
 </head>
 
 
@@ -262,10 +313,11 @@
             <button
                 class="pill-btn open-product"
                 type="button"
-                data-open-product="true"
-                aria-controls="productModal"
+                        data-open-product="true"
+                        aria-controls="productModal"
                 data-i18n="nav.discover"
-            >
+            
+                onclick="return dreamOpenProduct(event)">
                 Conhecer
             </button>
 
@@ -471,7 +523,8 @@
                         data-open-product="true"
                         aria-controls="productModal"
                         data-i18n="hero.viewProduct"
-                    >
+                    
+                onclick="return dreamOpenProduct(event)">
                         Ver produto
                     </button>
 
@@ -576,10 +629,7 @@
                     id="sprayWave"
                 ></div>
 
-                <div
-                    class="spray-glow"
-                    id="sprayGlow"
-                ></div>
+                <div class="spray-glow" id="sprayGlow"></div>
 
 
                 <div class="bottle-wrapper">
@@ -878,10 +928,11 @@
                         <button
                             class="primary-btn open-product"
                             type="button"
-                            data-open-product="true"
-                            aria-controls="productModal"
+                        data-open-product="true"
+                        aria-controls="productModal"
                             data-i18n="product.details"
-                        >
+                        
+                onclick="return dreamOpenProduct(event)">
                             Ver detalhes
                         </button>
 
@@ -974,7 +1025,8 @@
                         data-open-product="true"
                         aria-controls="productModal"
                         data-i18n="campaign.product"
-                    >
+                    
+                onclick="return dreamOpenProduct(event)">
                         Conhecer produto
                     </button>
 
@@ -1068,67 +1120,19 @@
 
                     <div class="chips">
 
-                        <button
-                            class="note-chip"
-                            data-note="bergamota"
-                            type="button"
-                            data-i18n="note.bergamot"
-                        >
-                            Bergamota
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="laranja"
-                            type="button"
-                            data-i18n="note.orange"
-                        >
-                            Laranja
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="mandarina"
-                            type="button"
-                            data-i18n="note.mandarin"
-                        >
-                            Mandarina
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="limao"
-                            type="button"
-                            data-i18n="note.lemon"
-                        >
-                            Limão
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="cassis"
-                            type="button"
-                        >
-                            Cassis
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="maca"
-                            type="button"
-                            data-i18n="note.apple"
-                        >
-                            Maçã
-                        </button>
+                        <button class="note-chip" data-note="bergamota" type="button" data-i18n="note.bergamot">Bergamota</button>
+                        <button class="note-chip" data-note="laranja" type="button" data-i18n="note.orange">Laranja</button>
+                        <button class="note-chip" data-note="mandarina" type="button" data-i18n="note.mandarin">Mandarina</button>
+                        <button class="note-chip" data-note="limao" type="button" data-i18n="note.lemon">Limão</button>
+                        <button class="note-chip" data-note="cassis" type="button">Cassis</button>
+                        <button class="note-chip" data-note="maca" type="button" data-i18n="note.apple">Maçã</button>
 
                     </div>
 
                 </article>
 
 
-                <article
-                    class="note-card note-card-featured reveal premium-card"
-                >
+                <article class="note-card note-card-featured reveal premium-card">
 
                     <div class="note-card-top">
 
@@ -1163,59 +1167,12 @@
 
                     <div class="chips">
 
-                        <button
-                            class="note-chip"
-                            data-note="rosa"
-                            type="button"
-                            data-i18n="note.rose"
-                        >
-                            Rosa
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="tilia"
-                            type="button"
-                            data-i18n="note.linden"
-                        >
-                            Tília
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="freesia"
-                            type="button"
-                            data-i18n="note.freesia"
-                        >
-                            Frésia
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="lotus"
-                            type="button"
-                            data-i18n="note.lotus"
-                        >
-                            Flor de Lótus
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="gardenia"
-                            type="button"
-                            data-i18n="note.gardenia"
-                        >
-                            Gardênia
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="pessego"
-                            type="button"
-                            data-i18n="note.peach"
-                        >
-                            Pêssego
-                        </button>
+                        <button class="note-chip" data-note="rosa" type="button" data-i18n="note.rose">Rosa</button>
+                        <button class="note-chip" data-note="tilia" type="button" data-i18n="note.linden">Tília</button>
+                        <button class="note-chip" data-note="freesia" type="button" data-i18n="note.freesia">Frésia</button>
+                        <button class="note-chip" data-note="lotus" type="button" data-i18n="note.lotus">Flor de Lótus</button>
+                        <button class="note-chip" data-note="gardenia" type="button" data-i18n="note.gardenia">Gardênia</button>
+                        <button class="note-chip" data-note="pessego" type="button" data-i18n="note.peach">Pêssego</button>
 
                     </div>
 
@@ -1257,48 +1214,11 @@
 
                     <div class="chips">
 
-                        <button
-                            class="note-chip"
-                            data-note="ambar"
-                            type="button"
-                            data-i18n="note.amber"
-                        >
-                            Âmbar
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="sandalo"
-                            type="button"
-                            data-i18n="note.sandalwood"
-                        >
-                            Sândalo
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="baunilha"
-                            type="button"
-                            data-i18n="note.vanilla"
-                        >
-                            Baunilha
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="tonka"
-                            type="button"
-                        >
-                            Tonka
-                        </button>
-
-                        <button
-                            class="note-chip"
-                            data-note="musk"
-                            type="button"
-                        >
-                            Musk
-                        </button>
+                        <button class="note-chip" data-note="ambar" type="button" data-i18n="note.amber">Âmbar</button>
+                        <button class="note-chip" data-note="sandalo" type="button" data-i18n="note.sandalwood">Sândalo</button>
+                        <button class="note-chip" data-note="baunilha" type="button" data-i18n="note.vanilla">Baunilha</button>
+                        <button class="note-chip" data-note="tonka" type="button">Tonka</button>
+                        <button class="note-chip" data-note="musk" type="button">Musk</button>
 
                     </div>
 
@@ -1468,7 +1388,7 @@
                     <h3
                         class="gradient-text"
                         data-i18n="experience.personality"
-                    >
+                                            >
                         Personalidade
                     </h3>
 
@@ -1485,13 +1405,8 @@
                         <div>
 
                             <span>
-                                <span data-i18n="meter.floral">
-                                    Floral
-                                </span>
-
-                                <b class="gradient-text">
-                                    90%
-                                </b>
+                                <span data-i18n="meter.floral">Floral</span>
+                                <b class="gradient-text">90%</b>
                             </span>
 
                             <div>
@@ -1500,17 +1415,11 @@
 
                         </div>
 
-
                         <div>
 
                             <span>
-                                <span data-i18n="meter.romantic">
-                                    Romântico
-                                </span>
-
-                                <b class="gradient-text">
-                                    92%
-                                </b>
+                                <span data-i18n="meter.romantic">Romântico</span>
+                                <b class="gradient-text">92%</b>
                             </span>
 
                             <div>
@@ -1519,17 +1428,11 @@
 
                         </div>
 
-
                         <div>
 
                             <span>
-                                <span data-i18n="meter.comfort">
-                                    Confortável
-                                </span>
-
-                                <b class="gradient-text">
-                                    84%
-                                </b>
+                                <span data-i18n="meter.comfort">Confortável</span>
+                                <b class="gradient-text">84%</b>
                             </span>
 
                             <div>
@@ -1538,17 +1441,11 @@
 
                         </div>
 
-
                         <div>
 
                             <span>
-                                <span data-i18n="meter.presence">
-                                    Presença
-                                </span>
-
-                                <b class="gradient-text">
-                                    62%
-                                </b>
+                                <span data-i18n="meter.presence">Presença</span>
+                                <b class="gradient-text">62%</b>
                             </span>
 
                             <div>
@@ -1557,17 +1454,11 @@
 
                         </div>
 
-
                         <div>
 
                             <span>
-                                <span data-i18n="meter.intensity">
-                                    Intensidade
-                                </span>
-
-                                <b class="gradient-text">
-                                    58%
-                                </b>
+                                <span data-i18n="meter.intensity">Intensidade</span>
+                                <b class="gradient-text">58%</b>
                             </span>
 
                             <div>
@@ -1621,12 +1512,8 @@
                             data-mood="romantico"
                         >
                             <span>♡</span>
-
-                            <span data-i18n="mood.romantic">
-                                Romântico
-                            </span>
+                            <span data-i18n="mood.romantic">Romântico</span>
                         </button>
-
 
                         <button
                             type="button"
@@ -1634,12 +1521,8 @@
                             data-mood="sonhador"
                         >
                             <span>☾</span>
-
-                            <span data-i18n="mood.dreamy">
-                                Sonhador
-                            </span>
+                            <span data-i18n="mood.dreamy">Sonhador</span>
                         </button>
-
 
                         <button
                             type="button"
@@ -1647,12 +1530,8 @@
                             data-mood="noturno"
                         >
                             <span>✦</span>
-
-                            <span data-i18n="mood.night">
-                                Noturno
-                            </span>
+                            <span data-i18n="mood.night">Noturno</span>
                         </button>
-
 
                         <button
                             type="button"
@@ -1660,12 +1539,8 @@
                             data-mood="energia"
                         >
                             <span>⚡</span>
-
-                            <span data-i18n="mood.energy">
-                                Energia
-                            </span>
+                            <span data-i18n="mood.energy">Energia</span>
                         </button>
-
 
                         <button
                             type="button"
@@ -1673,20 +1548,14 @@
                             data-mood="calmo"
                         >
                             <span>☁</span>
-
-                            <span data-i18n="mood.calm">
-                                Calmo
-                            </span>
+                            <span data-i18n="mood.calm">Calmo</span>
                         </button>
 
                     </div>
 
-
                     <div class="mood-hint">
 
-                        <span>
-                            ✦
-                        </span>
+                        <span>✦</span>
 
                         <p data-i18n="experience.moodHint">
                             A identidade visual muda
@@ -1700,7 +1569,9 @@
             </div>
 
         </section>
-                <!-- =================================================
+
+
+        <!-- =================================================
              DREAM MOMENT
         ================================================== -->
 
@@ -2839,7 +2710,7 @@
                 <span
                     class="eyebrow gradient-text"
                     data-i18n="final.eyebrow"
-                >
+                                    >
                     DREAM • AMOR NO AR
                 </span>
 
@@ -2872,7 +2743,8 @@
                         data-open-product="true"
                         aria-controls="productModal"
                         data-i18n="final.product"
-                    >
+                    
+                onclick="return dreamOpenProduct(event)">
                         Ver produto
                     </button>
 
@@ -2901,7 +2773,9 @@
         </section>
 
     </main>
-        <!-- =====================================================
+
+
+    <!-- =====================================================
          PRODUCT MODAL
     ====================================================== -->
 
@@ -2914,7 +2788,7 @@
         aria-hidden="true"
     >
 
-        <div class="product-modal-backdrop close-product"></div>
+        <div class="product-modal-backdrop close-product" onclick="return dreamCloseProduct(event)"></div>
 
         <div class="product-modal-card premium-card">
 
@@ -2922,7 +2796,8 @@
                 class="modal-close close-product"
                 type="button"
                 aria-label="Fechar detalhes do produto"
-            >
+            
+                onclick="return dreamCloseProduct(event)">
                 ×
             </button>
 
@@ -4214,7 +4089,7 @@
     ====================================================== -->
 
     <script
-        src="./script.js?v=62.2"
+        src="./script.js?v=62.3"
         defer
     ></script>
 
