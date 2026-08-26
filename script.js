@@ -9285,7 +9285,7 @@ document.addEventListener(
 
             }
 
-        ];
+        };
 
 
         const quizQuestionsEN = [
