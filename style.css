@@ -2462,8 +2462,7 @@ body.music-playing
     border-bottom:
         1px solid
         var(--border);
-
-    background:
+            background:
         linear-gradient(
             90deg,
             rgba(var(--primary-rgb), .025),
@@ -2629,8 +2628,7 @@ body.music-playing
 
     padding: 9px 11px;
 
-    border:
-        1px solid var(--border);
+    border: 1px solid var(--border);
 
     border-radius: 999px;
 
@@ -2726,6 +2724,8 @@ body.music-playing
 
     margin-top: 29px;
 }
+
+
 /* =========================================================
    CAMPAIGN
 ========================================================= */
@@ -4772,8 +4772,6 @@ body.music-playing
 .final-cta .hero-buttons {
     justify-content: center;
 }
-
-
 /* =========================================================
    PRODUCT MODAL
 ========================================================= */
@@ -5227,6 +5225,8 @@ body.music-playing
     font-size: 11px;
     line-height: 1.7;
 }
+
+
 /* =========================================================
    LIGHTBOX
 ========================================================= */
@@ -6663,6 +6663,7 @@ body.no-animations *::after {
 
 /* =========================================================
    MUSIC PLAYING
+   COMPATIBILIDADE COM O JS NOVO
 ========================================================= */
 
 body.music-playing
@@ -6693,7 +6694,7 @@ body.music-playing
 
 
 /* =========================================================
-   TABLET / DESKTOP MÉDIO
+   MOBILE MENU
 ========================================================= */
 
 @media (
@@ -6753,14 +6754,18 @@ body.music-playing
             );
     }
 
+
     .header {
         top: 8px;
+
         min-height: 59px;
     }
+
 
     .menu-mobile {
         display: grid;
     }
+
 
     .menu {
         position: absolute;
@@ -6806,11 +6811,13 @@ body.music-playing
             transform .22s ease;
     }
 
+
     body.dark
     .menu {
         background:
             rgba(20,16,22,.97);
     }
+
 
     .menu.open {
         opacity: 1;
@@ -6820,6 +6827,7 @@ body.music-playing
             translateY(0);
     }
 
+
     .menu a {
         padding: 11px 12px;
 
@@ -6828,18 +6836,22 @@ body.music-playing
         font-size: 9px;
     }
 
+
     .menu a:hover {
         background:
             var(--surface-soft);
     }
 
+
     .menu a::after {
         display: none;
     }
 
+
     .language-switcher {
         display: none;
     }
+
 
     .hero {
         min-height: auto;
@@ -6854,24 +6866,29 @@ body.music-playing
             55px;
     }
 
+
     .hero-copy {
         text-align: center;
     }
+
 
     .hero-status {
         margin-inline:
             auto;
     }
 
+
     .hero-copy > p {
         margin-inline:
             auto;
     }
 
+
     .hero-buttons {
         justify-content:
             center;
     }
+
 
     .hero-facts {
         max-width: 550px;
@@ -6880,14 +6897,17 @@ body.music-playing
         margin-right: auto;
     }
 
+
     .hero-tip {
         justify-content:
             center;
     }
 
+
     .hero-product {
         min-height: 590px;
     }
+
 
     .two-col {
         width: var(--container);
@@ -6898,15 +6918,20 @@ body.music-playing
         gap: 45px;
     }
 
+
     .product-showcase {
         min-height: 560px;
     }
 
+
     .notes-grid,
     .experience-grid {
+
         grid-template-columns:
             1fr;
+
     }
+
 
     .feeling-layout {
         grid-template-columns:
@@ -6915,14 +6940,17 @@ body.music-playing
         gap: 35px;
     }
 
+
     .feeling-orbit {
         min-height: 470px;
     }
+
 
     .scene-layout {
         grid-template-columns:
             1fr;
     }
+
 
     .scene-buttons {
         grid-template-columns:
@@ -6932,6 +6960,7 @@ body.music-playing
             );
     }
 
+
     .scene-button {
         justify-content:
             center;
@@ -6940,9 +6969,11 @@ body.music-playing
             center;
     }
 
+
     .scene-button > div {
         display: none;
     }
+
 
     .dream-moment-card {
         grid-template-columns:
@@ -6950,11 +6981,13 @@ body.music-playing
             1fr;
     }
 
+
     .dream-moment-card
     > button {
         grid-column:
             1 / -1;
     }
+
 
     .product-modal-card {
         grid-template-columns:
@@ -6963,9 +6996,11 @@ body.music-playing
         max-width: 600px;
     }
 
+
     .product-modal-image {
         min-height: 350px;
     }
+
 
     .product-modal-image img {
         width:
@@ -6975,9 +7010,11 @@ body.music-playing
             );
     }
 
+
     .product-modal-copy {
         padding: 38px 30px;
     }
+
 
     .footer-v60 {
         grid-template-columns:
@@ -6987,15 +7024,18 @@ body.music-playing
             center;
     }
 
+
     .footer-language {
         justify-content:
             center;
     }
 
+
     .keyboard-hints {
         display:
             none;
     }
+
 
     .section-indicator {
         display:
@@ -7020,10 +7060,12 @@ body.music-playing
             );
     }
 
+
     body {
         overflow-x:
             hidden;
     }
+
 
     .header {
         width:
@@ -7039,15 +7081,18 @@ body.music-playing
             17px;
     }
 
+
     .logo {
         font-size:
             23px;
     }
 
+
     .hero {
         padding-top:
             105px;
     }
+
 
     .hero h1 {
         font-size:
@@ -7061,10 +7106,12 @@ body.music-playing
             -5px;
     }
 
+
     .hero-copy > p {
         font-size:
             13px;
     }
+
 
     .hero-buttons {
         display:
@@ -7074,23 +7121,29 @@ body.music-playing
             1fr;
     }
 
+
     .hero-buttons
     .primary-btn,
 
     .hero-buttons
     .secondary-btn {
+
         width: 100%;
+
     }
+
 
     .hero-facts {
         grid-template-columns:
             1fr;
     }
 
+
     .hero-product {
         min-height:
             520px;
     }
+
 
     .product-halo {
         width:
@@ -7100,6 +7153,7 @@ body.music-playing
             400px;
     }
 
+
     .product-ring-one {
         width:
             340px;
@@ -7107,6 +7161,7 @@ body.music-playing
         height:
             340px;
     }
+
 
     .product-ring-two {
         width:
@@ -7116,6 +7171,7 @@ body.music-playing
             410px;
     }
 
+
     .bottle-wrapper {
         width:
             min(
@@ -7124,12 +7180,14 @@ body.music-playing
             );
     }
 
+
     .spray-counter-card {
         left: 0;
 
         bottom:
             18%;
     }
+
 
     .volume-badge {
         right: 0;
@@ -7138,10 +7196,12 @@ body.music-playing
             18%;
     }
 
+
     .hero-product-caption {
         display:
             none;
     }
+
 
     .ticker div {
         padding:
@@ -7151,6 +7211,7 @@ body.music-playing
             6px;
     }
 
+
     .product-section,
     .notes-section,
     .experience-section,
@@ -7159,14 +7220,18 @@ body.music-playing
     .gallery-section,
     .mood-section,
     .quiz-section {
+
         padding:
             85px 0;
+
     }
+
 
     .section-title {
         margin-bottom:
             38px;
     }
+
 
     .section-title h2 {
         font-size:
@@ -7180,6 +7245,7 @@ body.music-playing
             -2.4px;
     }
 
+
     .product-showcase {
         min-height:
             460px;
@@ -7187,6 +7253,7 @@ body.music-playing
         border-radius:
             28px;
     }
+
 
     .product-showcase img {
         width:
@@ -7196,10 +7263,12 @@ body.music-playing
             );
     }
 
+
     .campaign {
         min-height:
             570px;
     }
+
 
     .campaign-copy h2 {
         font-size:
@@ -7210,30 +7279,36 @@ body.music-playing
             );
     }
 
+
     .notes-grid {
         gap:
             13px;
     }
+
 
     .note-card {
         min-height:
             0;
     }
 
+
     .experience-card {
         padding:
             23px;
     }
+
 
     .mood-buttons {
         grid-template-columns:
             1fr;
     }
 
+
     .feeling-orbit {
         min-height:
             365px;
     }
+
 
     .feeling-ring-one {
         width:
@@ -7243,6 +7318,7 @@ body.music-playing
             190px;
     }
 
+
     .feeling-ring-two {
         width:
             270px;
@@ -7250,6 +7326,7 @@ body.music-playing
         height:
             270px;
     }
+
 
     .feeling-ring-three {
         width:
@@ -7259,6 +7336,7 @@ body.music-playing
             340px;
     }
 
+
     .feeling-center {
         width:
             145px;
@@ -7267,15 +7345,18 @@ body.music-playing
             145px;
     }
 
+
     .moments-grid {
         grid-template-columns:
             1fr;
     }
 
+
     .dream-scene {
         padding:
             85px 0;
     }
+
 
     .scene-buttons {
         grid-template-columns:
@@ -7284,6 +7365,7 @@ body.music-playing
                 minmax(0,1fr)
             );
     }
+
 
     .scene-result {
         min-height:
@@ -7299,6 +7381,7 @@ body.music-playing
             center;
     }
 
+
     .scene-result-icon {
         width:
             80px;
@@ -7309,6 +7392,7 @@ body.music-playing
         font-size:
             38px;
     }
+
 
     .gallery-item {
         min-width:
@@ -7321,6 +7405,7 @@ body.music-playing
             24px;
     }
 
+
     .gallery-arrow {
         width:
             40px;
@@ -7332,20 +7417,24 @@ body.music-playing
             22px;
     }
 
+
     #galleryPrev {
         left:
             5px;
     }
+
 
     #galleryNext {
         right:
             5px;
     }
 
+
     .gallery-bottom {
         flex-wrap:
             wrap;
     }
+
 
     .gallery-dots {
         order:
@@ -7358,6 +7447,7 @@ body.music-playing
             center;
     }
 
+
     .mood-grid {
         grid-template-columns:
             repeat(
@@ -7365,6 +7455,7 @@ body.music-playing
                 minmax(0,1fr)
             );
     }
+
 
     .quiz-card {
         min-height:
@@ -7377,15 +7468,18 @@ body.music-playing
             28px;
     }
 
+
     .quiz-options {
         grid-template-columns:
             1fr;
     }
 
+
     .final-cta {
         padding:
             85px 0;
     }
+
 
     .final-cta-copy {
         padding:
@@ -7395,6 +7489,7 @@ body.music-playing
             29px;
     }
 
+
     .dream-moment-card {
         grid-template-columns:
             1fr;
@@ -7403,10 +7498,12 @@ body.music-playing
             center;
     }
 
+
     .dream-moment-icon {
         margin:
             auto;
     }
+
 
     .lightbox {
         padding:
@@ -7414,10 +7511,12 @@ body.music-playing
             20px;
     }
 
+
     .lightbox-image-wrap {
         height:
             55vh;
     }
+
 
     .lightbox-nav {
         width:
@@ -7427,15 +7526,18 @@ body.music-playing
             39px;
     }
 
+
     .lightbox-prev {
         left:
             7px;
     }
 
+
     .lightbox-next {
         right:
             7px;
     }
+
 
     .lightbox-close {
         top:
@@ -7445,11 +7547,13 @@ body.music-playing
             13px;
     }
 
+
     .product-modal,
     .note-modal {
         padding:
             10px;
     }
+
 
     .product-modal-card {
         max-height:
@@ -7461,25 +7565,30 @@ body.music-playing
             24px;
     }
 
+
     .product-modal-image {
         min-height:
             280px;
     }
+
 
     .product-modal-copy {
         padding:
             31px 20px;
     }
 
+
     .product-modal-copy h2 {
         font-size:
             40px;
     }
 
+
     .modal-mini-info {
         grid-template-columns:
             1fr;
     }
+
 
     .note-modal-card {
         padding:
@@ -7489,6 +7598,7 @@ body.music-playing
             25px;
     }
 
+
     .settings-panel {
         width: 100%;
 
@@ -7496,6 +7606,7 @@ body.music-playing
             21px 18px
             34px;
     }
+
 
     .palette-grid {
         grid-template-columns:
@@ -7505,10 +7616,12 @@ body.music-playing
             );
     }
 
+
     .settings-language {
         grid-template-columns:
             1fr;
     }
+
 
     .dream-music-player {
         left: 10px;
@@ -7529,6 +7642,7 @@ body.music-playing
             8px;
     }
 
+
     .music-cover {
         width:
             38px;
@@ -7536,6 +7650,7 @@ body.music-playing
         height:
             38px;
     }
+
 
     .dream-music-button,
     .music-mute-button {
@@ -7546,6 +7661,7 @@ body.music-playing
             33px;
     }
 
+
     .back-top {
         right:
             17px;
@@ -7553,6 +7669,7 @@ body.music-playing
         bottom:
             76px;
     }
+
 
     .settings-fab {
         right:
@@ -7568,10 +7685,12 @@ body.music-playing
             49px;
     }
 
+
     .toast {
         bottom:
             75px;
     }
+
 
     .footer-v60 {
         padding-bottom:
@@ -7594,15 +7713,18 @@ body.music-playing
             58px;
     }
 
+
     .hero-product {
         min-height:
             470px;
     }
 
+
     .bottle-wrapper {
         width:
             225px;
     }
+
 
     .spray-counter-card {
         transform:
@@ -7612,6 +7734,7 @@ body.music-playing
             left bottom;
     }
 
+
     .volume-badge {
         transform:
             scale(.86);
@@ -7620,10 +7743,12 @@ body.music-playing
             right bottom;
     }
 
+
     .mood-grid {
         grid-template-columns:
             1fr;
     }
+
 
     .palette-grid {
         grid-template-columns:
@@ -7689,6 +7814,10 @@ body.music-playing
 
 
 /* =========================================================
+   FIM • DREAM STYLE v60.3
+========================================================= */
+
+/* =========================================================
    SPRAY • POLIMENTO v60.4
 ========================================================= */
 
@@ -7706,9 +7835,7 @@ body.music-playing
 }
 
 @keyframes sprayButtonPulse {
-
-    0%,
-    100% {
+    0%, 100% {
         transform:
             translateX(-50%)
             scale(1);
@@ -7725,7 +7852,6 @@ body.music-playing
             translateX(-50%)
             scale(1.045);
     }
-
 }
 
 .spray-counter-card.pulse {
@@ -7736,20 +7862,16 @@ body.music-playing
 }
 
 @keyframes sprayCounterPulse {
-
-    0%,
-    100% {
+    0%, 100% {
         transform: scale(1);
     }
 
     45% {
         transform: scale(1.08);
-
         box-shadow:
             0 18px 50px
             rgba(var(--primary-rgb), .20);
     }
-
 }
 
 .product-halo.spraying {
@@ -7760,20 +7882,15 @@ body.music-playing
 }
 
 @keyframes sprayHaloPulse {
-
-    0%,
-    100% {
+    0%, 100% {
         opacity: 1;
-
         transform: scale(1);
     }
 
     35% {
         opacity: .82;
-
         transform: scale(1.07);
     }
-
 }
 
 .spray-area {
@@ -7784,34 +7901,53 @@ body.music-playing
         );
 }
 
-body.performance-mode
-.spray-mist:nth-child(n+30),
-
-body.performance-mode
-.spray-symbol-particle:nth-child(n+7) {
-
+body.performance-mode .spray-mist:nth-child(n+30),
+body.performance-mode .spray-symbol-particle:nth-child(n+7) {
     display: none;
-
 }
 
-@media (
-    prefers-reduced-motion: reduce
-) {
-
+@media (prefers-reduced-motion: reduce) {
     .spray-button.spraying,
     .spray-counter-card.pulse,
     .product-halo.spraying,
-    .hero-product.spraying
-    .main-bottle {
-
-        animation-duration:
-            .01ms !important;
-
+    .hero-product.spraying .main-bottle {
+        animation-duration: .01ms !important;
     }
-
 }
 
 
 /* =========================================================
-   FIM • DREAM STYLE v60.4
+   PRODUCT MODAL • CSS FALLBACK v60.5
+   O modal não depende do JavaScript para abrir/fechar.
+========================================================= */
+
+.product-modal-toggle {
+    position: fixed;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#productModalToggle:checked ~ #productModal {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+#productModalToggle:checked ~ #productModal .product-modal-card {
+    transform: translateY(0) scale(1) !important;
+}
+
+.product-css-close {
+    cursor: pointer;
+}
+
+body:has(#productModalToggle:checked) {
+    overflow: hidden;
+}
+
+/* =========================================================
+   FIM • PRODUCT MODAL CSS FALLBACK v60.5
 ========================================================= */

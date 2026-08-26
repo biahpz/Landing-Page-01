@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -40,64 +40,21 @@
 
     <link
         rel="stylesheet"
-        href="./style.css?v=60.4"
+        href="./style.css?v=60.5"
     >
-
-
-    <!-- PRODUCT MODAL DIRECT FIX • v62.3 -->
-    <script>
-        window.dreamOpenProduct = function (event) {
-            if (event) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-
-            const modal = document.getElementById("productModal");
-            if (!modal) {
-                console.error("Dream: #productModal não encontrado.");
-                return false;
-            }
-
-            modal.classList.add("open", "active", "visible");
-            modal.setAttribute("aria-hidden", "false");
-            modal.style.display = "flex";
-            modal.style.opacity = "1";
-            modal.style.visibility = "visible";
-            modal.style.pointerEvents = "auto";
-
-            document.body.classList.add("modal-open");
-            document.body.style.overflow = "hidden";
-
-            return false;
-        };
-
-        window.dreamCloseProduct = function (event) {
-            if (event) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-
-            const modal = document.getElementById("productModal");
-            if (!modal) return false;
-
-            modal.classList.remove("open", "active", "visible");
-            modal.setAttribute("aria-hidden", "true");
-            modal.style.opacity = "";
-            modal.style.visibility = "";
-            modal.style.pointerEvents = "";
-            modal.style.display = "";
-
-            document.body.classList.remove("modal-open");
-            document.body.style.overflow = "";
-
-            return false;
-        };
-    </script>
-
 </head>
 
 
 <body class="font-normal">
+
+    <!-- PRODUCT MODAL TOGGLE • CSS FALLBACK v62.4 -->
+    <input
+        type="checkbox"
+        id="productModalToggle"
+        class="product-modal-toggle"
+        aria-hidden="true"
+        tabindex="-1"
+    >
 
 
     <!-- =====================================================
@@ -310,16 +267,11 @@
             </button>
 
 
-            <button
-                class="pill-btn open-product"
-                type="button"
-                        data-open-product="true"
-                        aria-controls="productModal"
-                data-i18n="nav.discover"
-            
-                onclick="return dreamOpenProduct(event)">
+            <label
+                class="pill-btn "
+                data-i18n="nav.discover" for="productModalToggle" role="button" tabindex="0" aria-controls="productModal">
                 Conhecer
-            </button>
+            </label>
 
 
             <button
@@ -517,16 +469,11 @@
                     </a>
 
 
-                    <button
-                        class="secondary-btn open-product"
-                        type="button"
-                        data-open-product="true"
-                        aria-controls="productModal"
-                        data-i18n="hero.viewProduct"
-                    
-                onclick="return dreamOpenProduct(event)">
+                    <label
+                        class="secondary-btn "
+                        data-i18n="hero.viewProduct" for="productModalToggle" role="button" tabindex="0" aria-controls="productModal">
                         Ver produto
-                    </button>
+                    </label>
 
                 </div>
 
@@ -925,16 +872,11 @@
 
                     <div class="product-actions">
 
-                        <button
-                            class="primary-btn open-product"
-                            type="button"
-                        data-open-product="true"
-                        aria-controls="productModal"
-                            data-i18n="product.details"
-                        
-                onclick="return dreamOpenProduct(event)">
+                        <label
+                            class="primary-btn "
+                            data-i18n="product.details" for="productModalToggle" role="button" tabindex="0" aria-controls="productModal">
                             Ver detalhes
-                        </button>
+                        </label>
 
                         <button
                             class="favorite-btn"
@@ -1019,16 +961,11 @@
                         Explorar universo Dream
                     </a>
 
-                    <button
-                        class="campaign-ghost-btn open-product"
-                        type="button"
-                        data-open-product="true"
-                        aria-controls="productModal"
-                        data-i18n="campaign.product"
-                    
-                onclick="return dreamOpenProduct(event)">
+                    <label
+                        class="campaign-ghost-btn "
+                        data-i18n="campaign.product" for="productModalToggle" role="button" tabindex="0" aria-controls="productModal">
                         Conhecer produto
-                    </button>
+                    </label>
 
                 </div>
 
@@ -2737,16 +2674,11 @@
 
                 <div class="hero-buttons">
 
-                    <button
-                        class="primary-btn open-product"
-                        type="button"
-                        data-open-product="true"
-                        aria-controls="productModal"
-                        data-i18n="final.product"
-                    
-                onclick="return dreamOpenProduct(event)">
+                    <label
+                        class="primary-btn "
+                        data-i18n="final.product" for="productModalToggle" role="button" tabindex="0" aria-controls="productModal">
                         Ver produto
-                    </button>
+                    </label>
 
                     <button
                         class="secondary-btn gradient-border-btn"
@@ -2788,18 +2720,11 @@
         aria-hidden="true"
     >
 
-        <div class="product-modal-backdrop close-product" onclick="return dreamCloseProduct(event)"></div>
+        <label for="productModalToggle" class="product-modal-backdrop product-css-close" aria-label="Fechar detalhes do produto"></label>
 
         <div class="product-modal-card premium-card">
 
-            <button
-                class="modal-close close-product"
-                type="button"
-                aria-label="Fechar detalhes do produto"
-            
-                onclick="return dreamCloseProduct(event)">
-                ×
-            </button>
+            <label for="productModalToggle" class="modal-close product-css-close" role="button" tabindex="0" aria-label="Fechar detalhes do produto">×</label>
 
             <div class="product-modal-image">
 
@@ -4089,119 +4014,10 @@
     ====================================================== -->
 
     <script
-        src="./script.js?v=62.3"
+        src="./script.js?v=62.4"
         defer
     ></script>
-
-
-    <!-- =====================================================
-         PRODUCT MODAL FALLBACK • v62.2
-         Garante que todos os botões "Conhecer / Ver produto"
-         funcionem mesmo se o script principal estiver em cache.
-    ====================================================== -->
-
-    <script>
-
-        (() => {
-
-            const getProductModal = () =>
-                document.getElementById("productModal");
-
-            const openProduct = () => {
-
-                const modal = getProductModal();
-
-                if (!modal) {
-                    console.error("Dream: #productModal não encontrado.");
-                    return;
-                }
-
-                modal.style.display = "";
-                modal.classList.add("open", "active", "visible");
-                modal.setAttribute("aria-hidden", "false");
-
-                document.body.classList.add("modal-open");
-
-                requestAnimationFrame(() => {
-                    modal.querySelector(".product-modal-card")?.focus?.();
-                });
-
-            };
-
-            const closeProduct = () => {
-
-                const modal = getProductModal();
-
-                if (!modal) {
-                    return;
-                }
-
-                modal.classList.remove("open", "active", "visible");
-                modal.setAttribute("aria-hidden", "true");
-
-                if (!document.querySelector(
-                    ".product-modal.open, .note-modal.open, .lightbox.open"
-                )) {
-                    document.body.classList.remove("modal-open");
-                }
-
-            };
-
-            document.addEventListener(
-                "click",
-                event => {
-
-                    const openButton = event.target.closest?.(
-                        ".open-product, [data-open-product]"
-                    );
-
-                    if (openButton) {
-                        event.preventDefault();
-                        openProduct();
-                        return;
-                    }
-
-                    const closeButton = event.target.closest?.(
-                        ".close-product, [data-close-product]"
-                    );
-
-                    if (
-                        closeButton &&
-                        getProductModal()?.contains(closeButton)
-                    ) {
-                        event.preventDefault();
-                        closeProduct();
-                    }
-
-                },
-                true
-            );
-
-            document.addEventListener(
-                "keydown",
-                event => {
-
-                    if (
-                        event.key === "Escape" &&
-                        getProductModal()?.classList.contains("open")
-                    ) {
-                        closeProduct();
-                    }
-
-                }
-            );
-
-            window.DreamProductFallback = {
-                open: openProduct,
-                close: closeProduct
-            };
-
-        })();
-
-    </script>
-
-
-    <!-- LOADER FAILSAFE -->
+<!-- LOADER FAILSAFE -->
 
     <script>
 
