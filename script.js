@@ -9530,7 +9530,7 @@ document.addEventListener(
 
             }
 
-        ];
+        };
 
 
         const noteLabelsPT = {
