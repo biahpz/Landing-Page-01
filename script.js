@@ -5829,7 +5829,7 @@ document.addEventListener(
 
             }
 
-        ];
+        };
 
 
         let quizCurrentQuestion =
