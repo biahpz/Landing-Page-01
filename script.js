@@ -1535,14 +1535,6 @@ document.addEventListener(
 
         function getParticleAmount() {
 
-            /*
-                Desktop:
-                intensidade 5 ≈ 22 partículas.
-
-                Mobile:
-                reduz automaticamente.
-            */
-
             const base =
                 Math.round(
                     7 +
@@ -1889,11 +1881,6 @@ document.addEventListener(
             );
 
 
-            /*
-                Força o navegador a reiniciar
-                a animação CSS.
-            */
-
             void element.offsetWidth;
 
 
@@ -2183,9 +2170,8 @@ document.addEventListener(
             ) {
 
                 /*
-                    Navegadores podem bloquear
-                    áudio dependendo das permissões.
-                    Não é erro fatal.
+                    Áudio pode ser bloqueado
+                    pelo navegador.
                 */
 
             }
@@ -2218,7 +2204,7 @@ document.addEventListener(
             ) {
 
                 /*
-                    Feedback tátil é opcional.
+                    Vibração é opcional.
                 */
 
             }
@@ -2309,11 +2295,6 @@ document.addEventListener(
 
             vibrateSpray();
 
-
-            /*
-                Mensagens especiais sem atrapalhar
-                o contador.
-            */
 
             if (
                 state.sprayCount ===
@@ -2607,7 +2588,6 @@ document.addEventListener(
 
         /* =====================================================
            API INTERNA
-           AS PRÓXIMAS PARTES VÃO COMPLETAR
         ====================================================== */
 
         window.DreamApp = {
@@ -2632,7 +2612,7 @@ document.addEventListener(
 
 
         /*
-            NÃO FECHE AQUI O DOMContentLoaded.
+            NÃO FECHE O DOMContentLoaded AQUI.
 
             A PARTE 2/4 continua exatamente abaixo.
         */
@@ -3430,11 +3410,27 @@ document.addEventListener(
         }
 
 
+        /*
+            IMPORTANTE:
+            não usamos [data-mood] sozinho.
+
+            O body também possui data-mood
+            e isso fazia qualquer clique na
+            página poder ser interpretado
+            como clique de mood.
+        */
+
+        const moodControlSelector =
+            ".mood-button[data-mood], .mood-showcase-card[data-mood]";
+
+
         function renderMoodButtons(
             moodKey
         ) {
 
-            $$("[data-mood]").forEach(
+            $$(
+                moodControlSelector
+            ).forEach(
                 button => {
 
                     button.classList.toggle(
@@ -3526,6 +3522,43 @@ document.addEventListener(
                     moodKey
                 );
 
+
+                /*
+                    Ao escolher um mood manualmente,
+                    ele passa a ser a fonte de cores
+                    na próxima visita também.
+                */
+
+                storage.remove(
+                    "dream.palette"
+                );
+
+
+                storage.remove(
+                    "dream.customColors"
+                );
+
+
+                storage.remove(
+                    "dream.preset"
+                );
+
+
+                $$("[data-palette]").forEach(
+                    button =>
+                        button.classList.remove(
+                            "active"
+                        )
+                );
+
+
+                $$("[data-preset]").forEach(
+                    button =>
+                        button.classList.remove(
+                            "active"
+                        )
+                );
+
             }
 
 
@@ -3551,7 +3584,7 @@ document.addEventListener(
 
                 const moodButton =
                     event.target.closest(
-                        "[data-mood]"
+                        moodControlSelector
                     );
 
 
@@ -4293,11 +4326,6 @@ document.addEventListener(
 
             }
 
-
-            /*
-                Funciona mesmo que o offsetParent
-                do item mude.
-            */
 
             const trackRect =
                 galleryTrack
@@ -5531,54 +5559,41 @@ document.addEventListener(
         const quizStart =
             $("#quizStart");
 
-
         const startQuiz =
             $("#startQuiz");
-
 
         const quizQuestionsBox =
             $("#quizQuestions");
 
-
         const quizStep =
             $("#quizStep");
-
 
         const quizProgressBar =
             $("#quizProgressBar");
 
-
         const quizQuestion =
             $("#quizQuestion");
-
 
         const quizOptions =
             $("#quizOptions");
 
-
         const quizResult =
             $("#quizResult");
-
 
         const quizResultIcon =
             $("#quizResultIcon");
 
-
         const quizResultTitle =
             $("#quizResultTitle");
-
 
         const quizResultText =
             $("#quizResultText");
 
-
         const applyQuizMoodButton =
             $("#applyQuizMood");
 
-
         const restartQuizButton =
             $("#restartQuiz");
-
 
         const shareQuizResultButton =
             $("#shareQuizResult");
@@ -5587,7 +5602,6 @@ document.addEventListener(
         const quizQuestions = [
 
             {
-
                 question:
                     "Qual atmosfera combina mais com você?",
 
@@ -5627,7 +5641,6 @@ document.addEventListener(
 
 
             {
-
                 question:
                     "Como seria o seu momento perfeito?",
 
@@ -5667,7 +5680,6 @@ document.addEventListener(
 
 
             {
-
                 question:
                     "Qual palavra mais combina com você agora?",
 
@@ -5707,7 +5719,6 @@ document.addEventListener(
 
 
             {
-
                 question:
                     "Escolha um símbolo para terminar.",
 
@@ -5832,12 +5843,11 @@ document.addEventListener(
         let quizCurrentQuestion =
             0;
 
-
         let quizFinalMood =
             "romantico";
 
-
-        let quizScores = {};
+        let quizScores =
+            {};
 
 
         function resetQuizScores() {
@@ -5928,7 +5938,6 @@ document.addEventListener(
             const total =
                 quizQuestions.length;
 
-
             const current =
                 quizCurrentQuestion +
                 1;
@@ -6012,18 +6021,14 @@ document.addEventListener(
                     button.type =
                         "button";
 
-
                     button.className =
                         "quiz-option";
-
 
                     button.textContent =
                         option.label;
 
-
                     button.dataset.quizMood =
                         option.mood;
-
 
                     button.dataset.quizOption =
                         String(
@@ -6046,18 +6051,14 @@ document.addEventListener(
             quizCurrentQuestion =
                 0;
 
-
             quizFinalMood =
                 "romantico";
 
-
             resetQuizScores();
-
 
             showQuizScreen(
                 "questions"
             );
-
 
             renderQuizQuestion();
 
@@ -6096,11 +6097,6 @@ document.addEventListener(
 
             }
 
-
-            /*
-                Pequena troca visual
-                sem precisar reconstruir o quiz.
-            */
 
             if (
                 quizQuestionsBox &&
@@ -6183,7 +6179,6 @@ document.addEventListener(
                         highest =
                             score;
 
-
                         winner =
                             mood;
 
@@ -6195,12 +6190,6 @@ document.addEventListener(
                         mood ===
                             state.currentMood
                     ) {
-
-                        /*
-                            Em empate, usa o mood
-                            que a pessoa já escolheu
-                            no site.
-                        */
 
                         winner =
                             mood;
@@ -6271,13 +6260,10 @@ document.addEventListener(
             quizCurrentQuestion =
                 0;
 
-
             quizFinalMood =
                 "romantico";
 
-
             resetQuizScores();
-
 
             showQuizScreen(
                 "start"
@@ -6314,7 +6300,7 @@ document.addEventListener(
 
             const english =
                 state.currentLanguage ===
-                    "en-US";
+                "en-US";
 
 
             const text =
@@ -6449,7 +6435,6 @@ document.addEventListener(
         const settingsButton =
             $("#settingsButton");
 
-
         const closeSettingsButton =
             $("#closeSettings");
 
@@ -6567,7 +6552,6 @@ document.addEventListener(
 
         const darkToggle =
             $("#darkToggle");
-
 
         const themeButton =
             $("#themeButton");
@@ -6784,11 +6768,6 @@ document.addEventListener(
             }
 
 
-            /*
-                Atualiza as partículas porque
-                a quantidade muda em performance.
-            */
-
             createBackgroundParticles();
 
         }
@@ -6898,12 +6877,6 @@ document.addEventListener(
             }
 
 
-            /*
-                Remove data-mood para a paleta
-                escolhida não ser sobrescrita
-                pelas variáveis CSS de mood.
-            */
-
             delete body.dataset.mood;
 
 
@@ -6918,29 +6891,21 @@ document.addEventListener(
             );
 
 
-            const primaryInput =
-                $("#primaryColor");
-
-
-            const secondaryInput =
-                $("#secondaryColor");
-
-
             if (
-                primaryInput
+                primaryColor
             ) {
 
-                primaryInput.value =
+                primaryColor.value =
                     palette.primary;
 
             }
 
 
             if (
-                secondaryInput
+                secondaryColor
             ) {
 
-                secondaryInput.value =
+                secondaryColor.value =
                     palette.secondary;
 
             }
@@ -6958,6 +6923,34 @@ document.addEventListener(
 
                 storage.remove(
                     "dream.customColors"
+                );
+
+
+                storage.remove(
+                    "dream.mood"
+                );
+
+
+                storage.remove(
+                    "dream.preset"
+                );
+
+
+                $$(
+                    ".mood-button[data-mood], .mood-showcase-card[data-mood]"
+                ).forEach(
+                    button =>
+                        button.classList.remove(
+                            "active"
+                        )
+                );
+
+
+                $$("[data-preset]").forEach(
+                    button =>
+                        button.classList.remove(
+                            "active"
+                        )
                 );
 
             }
@@ -7012,7 +7005,6 @@ document.addEventListener(
 
         const primaryColor =
             $("#primaryColor");
-
 
         const secondaryColor =
             $("#secondaryColor");
@@ -7086,6 +7078,34 @@ document.addEventListener(
 
                 storage.remove(
                     "dream.palette"
+                );
+
+
+                storage.remove(
+                    "dream.mood"
+                );
+
+
+                storage.remove(
+                    "dream.preset"
+                );
+
+
+                $$(
+                    ".mood-button[data-mood], .mood-showcase-card[data-mood]"
+                ).forEach(
+                    button =>
+                        button.classList.remove(
+                            "active"
+                        )
+                );
+
+
+                $$("[data-preset]").forEach(
+                    button =>
+                        button.classList.remove(
+                            "active"
+                        )
                 );
 
             }
@@ -7364,14 +7384,11 @@ document.addEventListener(
                 targetTiltX =
                     0;
 
-
                 targetTiltY =
                     0;
 
-
                 currentTiltX =
                     0;
-
 
                 currentTiltY =
                     0;
@@ -7537,7 +7554,6 @@ document.addEventListener(
         const motionRange =
             $("#motionRange");
 
-
         const motionValue =
             $("#motionValue");
 
@@ -7614,10 +7630,8 @@ document.addEventListener(
         const particleRange =
             $("#particleRange");
 
-
         const particleValue =
             $("#particleValue");
-
 
         let particleUpdateTimer =
             null;
@@ -7706,7 +7720,6 @@ document.addEventListener(
 
         const sprayIntensityRange =
             $("#sprayIntensityRange");
-
 
         const sprayIntensityValue =
             $("#sprayIntensityValue");
@@ -8233,6 +8246,21 @@ document.addEventListener(
                     "dream.customColors"
                 );
 
+
+                storage.remove(
+                    "dream.mood"
+                );
+
+
+                $$(
+                    ".mood-button[data-mood], .mood-showcase-card[data-mood]"
+                ).forEach(
+                    button =>
+                        button.classList.remove(
+                            "active"
+                        )
+                );
+
             }
 
 
@@ -8462,6 +8490,20 @@ document.addEventListener(
 
             }
 
+            else if (
+                savedPalette ||
+                customColors
+            ) {
+
+                $$("[data-preset]").forEach(
+                    button =>
+                        button.classList.remove(
+                            "active"
+                        )
+                );
+
+            }
+
             else {
 
                 renderPresetButtons(
@@ -8522,38 +8564,29 @@ document.addEventListener(
             state.particles =
                 true;
 
-
             state.animations =
                 true;
-
 
             state.cursorGlow =
                 true;
 
-
             state.motion =
                 true;
-
 
             state.motionIntensity =
                 5;
 
-
             state.particleIntensity =
                 5;
-
 
             state.sprayIntensity =
                 5;
 
-
             state.spraySound =
                 true;
 
-
             state.haptic =
                 true;
-
 
             state.currentMood =
                 "romantico";
@@ -8637,13 +8670,6 @@ document.addEventListener(
             );
 
 
-            /*
-                Importante:
-                usa applyMood para também
-                corrigir o estado visual dos
-                botões de mood.
-            */
-
             applyMood(
                 "romantico",
                 false,
@@ -8664,12 +8690,6 @@ document.addEventListener(
             storage.set(
                 "dream.mood",
                 "romantico"
-            );
-
-
-            storage.set(
-                "dream.palette",
-                "dream"
             );
 
 
@@ -8777,521 +8797,321 @@ document.addEventListener(
             $$("[data-language]");
 
 
-        /*
-            Guardamos uma cópia do conteúdo dinâmico
-            em português antes de alterar qualquer coisa.
-        */
-
-        const cloneData = (
-            value
-        ) =>
+        const cloneData = value =>
             JSON.parse(
-                JSON.stringify(
-                    value
-                )
+                JSON.stringify(value)
             );
 
 
         const noteDataPT =
-            cloneData(
-                noteData
-            );
-
+            cloneData(noteData);
 
         const timelineStagesPT =
-            cloneData(
-                timelineStages
-            );
-
+            cloneData(timelineStages);
 
         const dreamMomentsPT =
-            cloneData(
-                dreamMoments
-            );
-
+            cloneData(dreamMoments);
 
         const scenesPT =
-            cloneData(
-                scenes
-            );
-
+            cloneData(scenes);
 
         const quizQuestionsPT =
-            cloneData(
-                quizQuestions
-            );
-
+            cloneData(quizQuestions);
 
         const quizResultsPT =
-            cloneData(
-                quizResults
-            );
+            cloneData(quizResults);
 
+
+        /* =====================================================
+           NOTAS • INGLÊS
+        ====================================================== */
 
         const noteDataEN = {
 
             bergamota: {
-
-                icon:
-                    "🍋",
-
-                title:
-                    "Bergamot",
-
+                icon: "🍋",
+                title: "Bergamot",
                 text:
                     "Fresh, citrusy and luminous. Bergamot creates a vibrant and delicate opening for the fragrance."
-
             },
-
 
             laranja: {
-
-                icon:
-                    "🍊",
-
-                title:
-                    "Orange",
-
+                icon: "🍊",
+                title: "Orange",
                 text:
                     "A bright and juicy citrus note that adds luminosity and comfort to the opening."
-
             },
-
 
             mandarina: {
-
-                icon:
-                    "🍊",
-
-                title:
-                    "Mandarin",
-
+                icon: "🍊",
+                title: "Mandarin",
                 text:
                     "Light and fruity, mandarin reinforces the freshness with a soft and spontaneous sweetness."
-
             },
-
 
             limao: {
-
-                icon:
-                    "🍋",
-
-                title:
-                    "Lemon",
-
+                icon: "🍋",
+                title: "Lemon",
                 text:
                     "Citrusy and energizing, it brings a clean and bright sensation to the first moments."
-
             },
-
 
             cassis: {
-
-                icon:
-                    "●",
-
-                title:
-                    "Cassis",
-
+                icon: "●",
+                title: "Cassis",
                 text:
                     "Fruity and slightly intense, cassis adds contrast and personality to the opening."
-
             },
-
 
             maca: {
-
-                icon:
-                    "🍎",
-
-                title:
-                    "Apple",
-
+                icon: "🍎",
+                title: "Apple",
                 text:
                     "Juicy and delicately sweet, apple brings a youthful and comfortable feeling."
-
             },
-
 
             rosa: {
-
-                icon:
-                    "🌹",
-
-                title:
-                    "Rose",
-
+                icon: "🌹",
+                title: "Rose",
                 text:
                     "Naturally romantic, rose helps create the delicate floral heart of Dream Love in the Air."
-
             },
-
 
             tilia: {
-
-                icon:
-                    "✿",
-
-                title:
-                    "Linden Blossom",
-
+                icon: "✿",
+                title: "Linden Blossom",
                 text:
                     "Soft and floral, it contributes to an airy, delicate and comfortable sensation."
-
             },
-
 
             freesia: {
-
-                icon:
-                    "❀",
-
-                title:
-                    "Freesia",
-
+                icon: "❀",
+                title: "Freesia",
                 text:
                     "A luminous flower that reinforces the fresh, delicate and contemporary personality."
-
             },
-
 
             lotus: {
-
-                icon:
-                    "🪷",
-
-                title:
-                    "Lotus",
-
+                icon: "🪷",
+                title: "Lotus",
                 text:
                     "Transparent and aquatic, lotus brings lightness and serenity to the floral heart."
-
             },
-
 
             gardenia: {
-
-                icon:
-                    "✿",
-
-                title:
-                    "Gardenia",
-
+                icon: "✿",
+                title: "Gardenia",
                 text:
                     "Floral and creamy, gardenia adds elegance and presence while maintaining softness."
-
             },
-
 
             pessego: {
-
-                icon:
-                    "🍑",
-
-                title:
-                    "Peach",
-
+                icon: "🍑",
+                title: "Peach",
                 text:
                     "Soft and fruity, peach adds a comfortable velvety sweetness to the fragrance."
-
             },
-
 
             ambar: {
-
-                icon:
-                    "◆",
-
-                title:
-                    "Amber",
-
+                icon: "◆",
+                title: "Amber",
                 text:
                     "Warm and enveloping, amber adds depth and comfort to the base of the fragrance."
-
             },
-
 
             sandalo: {
-
-                icon:
-                    "♢",
-
-                title:
-                    "Sandalwood",
-
+                icon: "♢",
+                title: "Sandalwood",
                 text:
                     "Creamy and woody, sandalwood brings softness, elegance and a cozy base."
-
             },
-
 
             baunilha: {
-
-                icon:
-                    "✦",
-
-                title:
-                    "Vanilla",
-
+                icon: "✦",
+                title: "Vanilla",
                 text:
                     "Sweet and comfortable, vanilla softens the composition and creates an enveloping sensation."
-
             },
-
 
             tonka: {
-
-                icon:
-                    "◈",
-
-                title:
-                    "Tonka Bean",
-
+                icon: "◈",
+                title: "Tonka Bean",
                 text:
                     "Tonka bean adds sweet depth, warmth and a soft finish to the fragrance."
-
             },
 
-
             musk: {
-
-                icon:
-                    "☁",
-
-                title:
-                    "Musk",
-
+                icon: "☁",
+                title: "Musk",
                 text:
                     "Clean, comfortable and soft, musk helps prolong the delicate sensation on the skin."
-
             }
 
         };
 
 
+        /* =====================================================
+           TIMELINE • INGLÊS
+        ====================================================== */
+
         const timelineStagesEN = [
 
             {
-
-                max:
-                    19,
-
-                hour:
-                    "Now",
-
-                title:
-                    "Start light.",
-
+                max: 19,
+                hour: "Now",
+                title: "Start light.",
                 text:
                     "The first moments feel luminous, fresh and full of energy."
-
             },
 
-
             {
-
-                max:
-                    39,
-
-                hour:
-                    "+2h",
-
-                title:
-                    "The florals appear.",
-
+                max: 39,
+                hour: "+2h",
+                title: "The florals appear.",
                 text:
                     "The fragrance begins to reveal a more floral, delicate and romantic heart."
-
             },
 
-
             {
-
-                max:
-                    59,
-
-                hour:
-                    "+4h",
-
-                title:
-                    "Love in the air.",
-
+                max: 59,
+                hour: "+4h",
+                title: "Love in the air.",
                 text:
                     "The romantic side becomes more noticeable and the feeling turns soft and enveloping."
-
             },
 
-
             {
-
-                max:
-                    79,
-
-                hour:
-                    "+6h",
-
-                title:
-                    "More comforting.",
-
+                max: 79,
+                hour: "+6h",
+                title: "More comforting.",
                 text:
                     "The base notes become stronger, creating a softer and deeper experience."
-
             },
 
-
             {
-
-                max:
-                    100,
-
-                hour:
-                    "Final",
-
-                title:
-                    "A Dream memory.",
-
+                max: 100,
+                hour: "Final",
+                title: "A Dream memory.",
                 text:
                     "What remains is a soft, comfortable and delicately enveloping signature."
-
             }
 
         ];
 
 
+        /* =====================================================
+           DREAM MOMENTS • INGLÊS
+        ====================================================== */
+
         const dreamMomentsEN = [
 
             {
-
                 title:
                     "Play your favorite song.",
 
                 text:
                     "Choose a song that matches the moment and turn a few ordinary minutes into a small memory."
-
             },
 
-
             {
-
                 title:
                     "Look at the sky for a minute.",
 
                 text:
                     "Sometimes an open window, a quiet moment and the sky are enough to change the feeling of your day."
-
             },
 
-
             {
-
                 title:
                     "Send a special message.",
 
                 text:
                     "Think of someone important and say something you would normally leave for later."
-
             },
 
-
             {
-
                 title:
                     "Do something just for you.",
 
                 text:
                     "A peaceful shower, music, fragrance or a few minutes without rushing can become a Dream moment."
-
             },
 
-
             {
-
                 title:
                     "Save a little memory.",
 
                 text:
                     "A picture, a phrase or a song can turn a simple moment into something worth remembering."
-
             },
 
-
             {
-
                 title:
                     "Put your phone away for a while.",
 
                 text:
                     "Give yourself time to notice the environment, the music, the fragrance and the little details."
-
             },
 
-
             {
-
                 title:
                     "Create your own atmosphere.",
 
                 text:
                     "Lower lights, the right music and a touch of Dream can completely transform a place."
-
             }
 
         ];
 
 
+        /* =====================================================
+           SCENES • INGLÊS
+        ====================================================== */
+
         const scenesEN = {
 
             romance: {
-
                 title:
                     "Love is in the air.",
 
                 text:
                     "A delicate, pink and enveloping atmosphere."
-
             },
 
-
             ceu: {
-
                 title:
                     "Dream higher.",
 
                 text:
                     "Blue, light and peaceful like a night spent looking at the sky."
-
             },
 
-
             flores: {
-
                 title:
                     "Flowers everywhere.",
 
                 text:
                     "A soft, floral and romantic scene inspired by the heart of Dream."
-
             },
 
-
             energia: {
-
                 title:
                     "Make the moment happen.",
 
                 text:
                     "Warmer, brighter and more intense for moments when you want to change the energy."
-
             }
 
         };
 
 
+        /* =====================================================
+           QUIZ • INGLÊS
+        ====================================================== */
+
         const quizQuestionsEN = [
 
             {
-
                 question:
                     "Which atmosphere feels most like you?",
 
@@ -9326,12 +9146,9 @@ document.addEventListener(
                     }
 
                 ]
-
             },
 
-
             {
-
                 question:
                     "What would your perfect moment look like?",
 
@@ -9366,12 +9183,9 @@ document.addEventListener(
                     }
 
                 ]
-
             },
 
-
             {
-
                 question:
                     "Which word matches you right now?",
 
@@ -9406,12 +9220,9 @@ document.addEventListener(
                     }
 
                 ]
-
             },
 
-
             {
-
                 question:
                     "Choose a symbol to finish.",
 
@@ -9453,7 +9264,6 @@ document.addEventListener(
                     }
 
                 ]
-
             }
 
         ];
@@ -9462,185 +9272,89 @@ document.addEventListener(
         const quizResultsEN = {
 
             romantico: {
-
-                icon:
-                    "♡",
-
-                title:
-                    "Romantic",
-
+                icon: "♡",
+                title: "Romantic",
                 text:
                     "Your Dream is delicate, enveloping and full of feeling. Special moments and love in the air match your personality."
-
             },
-
 
             sonhador: {
-
-                icon:
-                    "☁",
-
-                title:
-                    "Dreamy",
-
+                icon: "☁",
+                title: "Dreamy",
                 text:
                     "Your Dream is light, imaginative and peaceful. You enjoy moments that let your mind wander."
-
             },
-
 
             noturno: {
-
-                icon:
-                    "☾",
-
-                title:
-                    "Night",
-
+                icon: "☾",
+                title: "Night",
                 text:
                     "Your Dream has a deeper, elegant and mysterious side. Nighttime atmospheres match your personality."
-
             },
-
 
             energia: {
-
-                icon:
-                    "✦",
-
-                title:
-                    "Energy",
-
+                icon: "✦",
+                title: "Energy",
                 text:
                     "Your Dream is vibrant, spontaneous and full of movement. You like making the moment happen."
-
             },
 
-
             calmo: {
-
-                icon:
-                    "◌",
-
-                title:
-                    "Calm",
-
+                icon: "◌",
+                title: "Calm",
                 text:
                     "Your Dream values peace, comfort and lightness. Simple and serene moments suit you best."
-
             }
 
         };
 
 
+        /* =====================================================
+           LABELS DAS NOTAS
+        ====================================================== */
+
         const noteLabelsPT = {
 
-            bergamota:
-                "Bergamota",
-
-            laranja:
-                "Laranja",
-
-            mandarina:
-                "Mandarina",
-
-            limao:
-                "Limão",
-
-            cassis:
-                "Cassis",
-
-            maca:
-                "Maçã",
-
-            rosa:
-                "Rosa",
-
-            tilia:
-                "Tília",
-
-            freesia:
-                "Frésia",
-
-            lotus:
-                "Lótus",
-
-            gardenia:
-                "Gardênia",
-
-            pessego:
-                "Pêssego",
-
-            ambar:
-                "Âmbar",
-
-            sandalo:
-                "Sândalo",
-
-            baunilha:
-                "Baunilha",
-
-            tonka:
-                "Tonka",
-
-            musk:
-                "Musk"
+            bergamota: "Bergamota",
+            laranja: "Laranja",
+            mandarina: "Mandarina",
+            limao: "Limão",
+            cassis: "Cassis",
+            maca: "Maçã",
+            rosa: "Rosa",
+            tilia: "Tília",
+            freesia: "Frésia",
+            lotus: "Lótus",
+            gardenia: "Gardênia",
+            pessego: "Pêssego",
+            ambar: "Âmbar",
+            sandalo: "Sândalo",
+            baunilha: "Baunilha",
+            tonka: "Tonka",
+            musk: "Musk"
 
         };
 
 
         const noteLabelsEN = {
 
-            bergamota:
-                "Bergamot",
-
-            laranja:
-                "Orange",
-
-            mandarina:
-                "Mandarin",
-
-            limao:
-                "Lemon",
-
-            cassis:
-                "Cassis",
-
-            maca:
-                "Apple",
-
-            rosa:
-                "Rose",
-
-            tilia:
-                "Linden",
-
-            freesia:
-                "Freesia",
-
-            lotus:
-                "Lotus",
-
-            gardenia:
-                "Gardenia",
-
-            pessego:
-                "Peach",
-
-            ambar:
-                "Amber",
-
-            sandalo:
-                "Sandalwood",
-
-            baunilha:
-                "Vanilla",
-
-            tonka:
-                "Tonka",
-
-            musk:
-                "Musk"
+            bergamota: "Bergamot",
+            laranja: "Orange",
+            mandarina: "Mandarin",
+            limao: "Lemon",
+            cassis: "Cassis",
+            maca: "Apple",
+            rosa: "Rose",
+            tilia: "Linden",
+            freesia: "Freesia",
+            lotus: "Lotus",
+            gardenia: "Gardenia",
+            pessego: "Peach",
+            ambar: "Amber",
+            sandalo: "Sandalwood",
+            baunilha: "Vanilla",
+            tonka: "Tonka",
+            musk: "Musk"
 
         };
 
@@ -9655,9 +9369,7 @@ document.addEventListener(
         ) {
 
             const element =
-                $(
-                    selector
-                );
+                $(selector);
 
 
             if (
@@ -9684,16 +9396,12 @@ document.addEventListener(
                 ) => {
 
                     if (
-                        values[
-                            index
-                        ] !==
+                        values[index] !==
                         undefined
                     ) {
 
                         element.textContent =
-                            values[
-                                index
-                            ];
+                            values[index];
 
                     }
 
@@ -9711,9 +9419,7 @@ document.addEventListener(
             target.splice(
                 0,
                 target.length,
-                ...cloneData(
-                    source
-                )
+                ...cloneData(source)
             );
 
         }
@@ -9730,19 +9436,13 @@ document.addEventListener(
                 key => {
 
                     if (
-                        source[
-                            key
-                        ]
+                        source[key]
                     ) {
 
                         Object.assign(
-                            target[
-                                key
-                            ],
+                            target[key],
                             cloneData(
-                                source[
-                                    key
-                                ]
+                                source[key]
                             )
                         );
 
@@ -9770,8 +9470,12 @@ document.addEventListener(
             }
 
 
+            const oldEm =
+                $("em", element);
+
+
             const em =
-                $("em", element) ||
+                oldEm ||
                 document.createElement(
                     "em"
                 );
@@ -9811,6 +9515,10 @@ document.addEventListener(
         }
 
 
+        /*
+            Mantém o ponto animado do eyebrow.
+        */
+
         function setHeroEyebrow(
             text
         ) {
@@ -9843,7 +9551,6 @@ document.addEventListener(
                     dot
                 );
 
-
                 element.append(
                     document.createTextNode(
                         ` ${text}`
@@ -9861,6 +9568,10 @@ document.addEventListener(
 
         }
 
+
+        /*
+            Mantém o span animado do hero-scroll.
+        */
 
         function setHeroScrollText(
             text
@@ -9906,6 +9617,10 @@ document.addEventListener(
         }
 
 
+        /*
+            Mantém símbolo dentro dos botões.
+        */
+
         function setButtonWithSymbol(
             element,
             text
@@ -9946,6 +9661,10 @@ document.addEventListener(
 
         }
 
+
+        /*
+            Mantém os ícones dos moods.
+        */
 
         function setMoodButtonText(
             button,
@@ -9989,7 +9708,7 @@ document.addEventListener(
 
 
         /* =====================================================
-           TRADUÇÃO DE CONTEÚDO DINÂMICO
+           DADOS DINÂMICOS DO IDIOMA
         ====================================================== */
 
         function setDynamicLanguage(
@@ -9998,7 +9717,7 @@ document.addEventListener(
 
             const english =
                 language ===
-                    "en-US";
+                "en-US";
 
 
             replaceObjectData(
@@ -10048,30 +9767,25 @@ document.addEventListener(
 
                     const source =
                         english
-                            ? scenesEN[
-                                key
-                            ]
-                            : scenesPT[
-                                key
-                            ];
+                            ? scenesEN[key]
+                            : scenesPT[key];
 
 
                     if (
-                        source
+                        !source
                     ) {
 
-                        scenes[
-                            key
-                        ].title =
-                            source.title;
-
-
-                        scenes[
-                            key
-                        ].text =
-                            source.text;
+                        return;
 
                     }
+
+
+                    scenes[key].title =
+                        source.title;
+
+
+                    scenes[key].text =
+                        source.text;
 
                 }
             );
@@ -10082,24 +9796,20 @@ document.addEventListener(
                     ? "Romantic"
                     : "Romântico";
 
-
             moods.sonhador.name =
                 english
                     ? "Dreamy"
                     : "Sonhador";
-
 
             moods.noturno.name =
                 english
                     ? "Night"
                     : "Noturno";
 
-
             moods.energia.name =
                 english
                     ? "Energy"
                     : "Energia";
-
 
             moods.calmo.name =
                 english
@@ -10121,15 +9831,11 @@ document.addEventListener(
 
 
                     if (
-                        labels[
-                            key
-                        ]
+                        labels[key]
                     ) {
 
                         button.textContent =
-                            labels[
-                                key
-                            ];
+                            labels[key];
 
                     }
 
@@ -10138,8 +9844,7 @@ document.addEventListener(
 
 
             /*
-                Se uma nota estiver aberta,
-                atualiza sem fechar.
+                Atualiza nota já aberta.
             */
 
             if (
@@ -10159,16 +9864,34 @@ document.addEventListener(
                     note
                 ) {
 
-                    noteModalIcon.textContent =
-                        note.icon;
+                    if (
+                        noteModalIcon
+                    ) {
+
+                        noteModalIcon.textContent =
+                            note.icon;
+
+                    }
 
 
-                    noteModalTitle.textContent =
-                        note.title;
+                    if (
+                        noteModalTitle
+                    ) {
+
+                        noteModalTitle.textContent =
+                            note.title;
+
+                    }
 
 
-                    noteModalText.textContent =
-                        note.text;
+                    if (
+                        noteModalText
+                    ) {
+
+                        noteModalText.textContent =
+                            note.text;
+
+                    }
 
                 }
 
@@ -10190,11 +9913,6 @@ document.addEventListener(
             );
 
 
-            /*
-                Atualiza pergunta atual caso
-                o quiz esteja em andamento.
-            */
-
             if (
                 quizQuestionsBox &&
                 !quizQuestionsBox.hidden
@@ -10204,11 +9922,6 @@ document.addEventListener(
 
             }
 
-
-            /*
-                Atualiza resultado caso ele
-                esteja aparecendo.
-            */
 
             if (
                 quizResult &&
@@ -10225,16 +9938,34 @@ document.addEventListener(
                     result
                 ) {
 
-                    quizResultIcon.textContent =
-                        result.icon;
+                    if (
+                        quizResultIcon
+                    ) {
+
+                        quizResultIcon.textContent =
+                            result.icon;
+
+                    }
 
 
-                    quizResultTitle.textContent =
-                        result.title;
+                    if (
+                        quizResultTitle
+                    ) {
+
+                        quizResultTitle.textContent =
+                            result.title;
+
+                    }
 
 
-                    quizResultText.textContent =
-                        result.text;
+                    if (
+                        quizResultText
+                    ) {
+
+                        quizResultText.textContent =
+                            result.text;
+
+                    }
 
                 }
 
@@ -10253,7 +9984,7 @@ document.addEventListener(
 
             const english =
                 language ===
-                    "en-US";
+                "en-US";
 
 
             document.documentElement.lang =
@@ -10340,15 +10071,11 @@ document.addEventListener(
 
 
                     if (
-                        navTranslation[
-                            href
-                        ]
+                        navTranslation[href]
                     ) {
 
                         link.textContent =
-                            navTranslation[
-                                href
-                            ];
+                            navTranslation[href];
 
                     }
 
@@ -10367,9 +10094,7 @@ document.addEventListener(
             /* HERO */
 
             setHeroEyebrow(
-                english
-                    ? "O BOTICÁRIO • DREAM"
-                    : "O BOTICÁRIO • DREAM"
+                "O BOTICÁRIO • DREAM"
             );
 
 
@@ -10713,7 +10438,7 @@ document.addEventListener(
                     };
 
 
-            $$(".mood-button").forEach(
+            $$(".mood-button[data-mood]").forEach(
                 button => {
 
                     setMoodButtonText(
@@ -10745,31 +10470,55 @@ document.addEventListener(
                 ]
             ) {
 
-                dreamMomentTitle.textContent =
-                    dreamMoments[
-                        currentDreamMoment
-                    ].title;
+                if (
+                    dreamMomentTitle
+                ) {
+
+                    dreamMomentTitle.textContent =
+                        dreamMoments[
+                            currentDreamMoment
+                        ].title;
+
+                }
 
 
-                dreamMomentText.textContent =
-                    dreamMoments[
-                        currentDreamMoment
-                    ].text;
+                if (
+                    dreamMomentText
+                ) {
+
+                    dreamMomentText.textContent =
+                        dreamMoments[
+                            currentDreamMoment
+                        ].text;
+
+                }
 
             }
 
             else {
 
-                dreamMomentTitle.textContent =
-                    english
-                        ? "Your moment starts here."
-                        : "Seu momento começa aqui.";
+                if (
+                    dreamMomentTitle
+                ) {
+
+                    dreamMomentTitle.textContent =
+                        english
+                            ? "Your moment starts here."
+                            : "Seu momento começa aqui.";
+
+                }
 
 
-                dreamMomentText.textContent =
-                    english
-                        ? "Tap the button and discover a small inspiration to make your day feel a little more Dream."
-                        : "Toque no botão e descubra uma pequena inspiração para deixar seu dia mais Dream.";
+                if (
+                    dreamMomentText
+                ) {
+
+                    dreamMomentText.textContent =
+                        english
+                            ? "Tap the button and discover a small inspiration to make your day feel a little more Dream."
+                            : "Toque no botão e descubra uma pequena inspiração para deixar seu dia mais Dream.";
+
+                }
 
             }
 
@@ -10836,7 +10585,8 @@ document.addEventListener(
             );
 
 
-            const showcaseNames =
+            setAllText(
+                ".mood-showcase-card strong",
                 english
                     ? [
                         "Romantic",
@@ -10851,10 +10601,12 @@ document.addEventListener(
                         "Noturno",
                         "Energia",
                         "Calmo"
-                    ];
+                    ]
+            );
 
 
-            const showcaseDescriptions =
+            setAllText(
+                ".mood-showcase-card p",
                 english
                     ? [
                         "Pink, delicate and enveloping.",
@@ -10869,18 +10621,7 @@ document.addEventListener(
                         "Profundo, misterioso e elegante.",
                         "Vibrante, quente e cheio de vida.",
                         "Suave, tranquilo e confortável."
-                    ];
-
-
-            setAllText(
-                ".mood-showcase-card strong",
-                showcaseNames
-            );
-
-
-            setAllText(
-                ".mood-showcase-card p",
-                showcaseDescriptions
+                    ]
             );
 
 
@@ -11074,39 +10815,33 @@ document.addEventListener(
             );
 
 
-            const settingStrongPT = [
-                "Modo escuro",
-                "Interface limpa",
-                "Performance",
-                "Partículas",
-                "Animações",
-                "Brilho do cursor",
-                "Movimento 3D",
-                "Som do borrifador",
-                "Vibração",
-                "Música de fundo"
-            ];
-
-
-            const settingStrongEN = [
-                "Dark mode",
-                "Clean interface",
-                "Performance",
-                "Particles",
-                "Animations",
-                "Cursor glow",
-                "3D motion",
-                "Spray sound",
-                "Vibration",
-                "Background music"
-            ];
-
-
             setAllText(
                 ".setting-row strong",
                 english
-                    ? settingStrongEN
-                    : settingStrongPT
+                    ? [
+                        "Dark mode",
+                        "Clean interface",
+                        "Performance",
+                        "Particles",
+                        "Animations",
+                        "Cursor glow",
+                        "3D motion",
+                        "Spray sound",
+                        "Vibration",
+                        "Background music"
+                    ]
+                    : [
+                        "Modo escuro",
+                        "Interface limpa",
+                        "Performance",
+                        "Partículas",
+                        "Animações",
+                        "Brilho do cursor",
+                        "Movimento 3D",
+                        "Som do borrifador",
+                        "Vibração",
+                        "Música de fundo"
+                    ]
             );
 
 
@@ -11144,11 +10879,6 @@ document.addEventListener(
             );
 
 
-            /*
-                Desenvolvedor / criadora:
-                nomes e fotos permanecem intactos.
-            */
-
             setAllText(
                 ".creator-info > span",
                 english
@@ -11163,26 +10893,14 @@ document.addEventListener(
             );
 
 
-            setAllText(
-                ".creator-info > small",
-                english
-                    ? [
-                        "Development",
-                        "Creation"
-                    ]
-                    : [
-                        "Desenvolvimento",
-                        "Criação"
-                    ]
-            );
-
-
-            /* FAVORITO */
-
             renderFavorite();
 
         }
 
+
+        /* =====================================================
+           BOTÕES DE IDIOMA
+        ====================================================== */
 
         function renderLanguageButtons() {
 
@@ -11232,8 +10950,7 @@ document.addEventListener(
 
 
             /*
-                Indicador da seção também
-                acompanha o idioma.
+                Atualiza indicador de seção.
             */
 
             const currentSection =
@@ -11243,7 +10960,8 @@ document.addEventListener(
 
 
             if (
-                currentSection
+                currentSection &&
+                sectionIndicator
             ) {
 
                 let name =
@@ -11298,9 +11016,7 @@ document.addEventListener(
 
 
                     name =
-                        names[
-                            name
-                        ] ||
+                        names[name] ||
                         name;
 
                 }
@@ -11365,38 +11081,29 @@ document.addEventListener(
         const backgroundMusic =
             $("#backgroundMusic");
 
-
         const musicToggle =
             $("#musicToggle");
-
 
         const musicPlayer =
             $("#musicPlayer");
 
-
         const musicButton =
             $("#musicButton");
-
 
         const musicCurrentTime =
             $("#musicCurrentTime");
 
-
         const musicProgress =
             $("#musicProgress");
-
 
         const musicDuration =
             $("#musicDuration");
 
-
         const musicMute =
             $("#musicMute");
 
-
         const volumeRange =
             $("#volumeRange");
-
 
         const volumeValue =
             $("#volumeValue");
@@ -11635,13 +11342,11 @@ document.addEventListener(
                 error
             ) {
 
-                renderMusicState();
-
-
                 /*
-                    Autoplay pode ser bloqueado
-                    até a primeira interação.
+                    Navegadores podem bloquear autoplay.
                 */
+
+                renderMusicState();
 
                 return false;
 
@@ -11991,12 +11696,6 @@ document.addEventListener(
         renderMusicState();
 
 
-        /*
-            Não tentamos autoplay automaticamente.
-            Se o usuário havia deixado a música ligada,
-            mostramos o player e ele pode apertar ▶.
-        */
-
         if (
             musicEnabled
         ) {
@@ -12015,7 +11714,6 @@ document.addEventListener(
         const shareButton =
             $("#shareButton");
 
-
         const shareModal =
             $("#shareModal");
 
@@ -12024,7 +11722,7 @@ document.addEventListener(
 
             const english =
                 state.currentLanguage ===
-                    "en-US";
+                "en-US";
 
 
             const shareData = {
@@ -12176,8 +11874,7 @@ document.addEventListener(
 
                 else {
 
-                    await document
-                        .documentElement
+                    await document.documentElement
                         .requestFullscreen();
 
                 }
@@ -12213,12 +11910,11 @@ document.addEventListener(
 
 
         /* =====================================================
-           CORREÇÃO • CLIQUE APÓS ARRASTAR GALERIA
+           CORREÇÃO • DRAG DA GALERIA
         ====================================================== */
 
         let galleryPointerStart =
             0;
-
 
         let galleryPointerMoved =
             false;
@@ -12418,6 +12114,7 @@ document.addEventListener(
 
                 /*
                     Atalhos:
+
                     S = Dream Studio
                     M = música
                 */
@@ -12468,7 +12165,7 @@ document.addEventListener(
 
 
         /* =====================================================
-           SETTINGS • FECHAR AO CLICAR FORA
+           SETTINGS • CLIQUE FORA
         ====================================================== */
 
         document.addEventListener(
@@ -12507,7 +12204,7 @@ document.addEventListener(
 
 
         /* =====================================================
-           RESIZE FINAL
+           RESIZE
         ====================================================== */
 
         let finalResizeTimer =
@@ -12532,7 +12229,7 @@ document.addEventListener(
 
                             if (
                                 window.innerWidth >
-                                    980
+                                980
                             ) {
 
                                 closeMobileMenu();
@@ -12542,7 +12239,7 @@ document.addEventListener(
 
                             if (
                                 window.innerWidth <=
-                                    760
+                                760
                             ) {
 
                                 stopCursorGlow();
@@ -12571,7 +12268,7 @@ document.addEventListener(
 
 
         /* =====================================================
-           RESET • COMPLEMENTO DE ÁUDIO
+           RESET DO ÁUDIO
         ====================================================== */
 
         resetSettingsButton?.addEventListener(
@@ -12660,8 +12357,8 @@ document.addEventListener(
 
 
         /*
-            O setLanguage acima ajusta novamente
-            o indicador caso o idioma salvo seja inglês.
+            Atualiza novamente porque o nome
+            também depende do idioma.
         */
 
         setLanguage(
