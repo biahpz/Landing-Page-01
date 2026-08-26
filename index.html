@@ -40,7 +40,7 @@
 
     <link
         rel="stylesheet"
-        href="./style.css?v=60.3"
+        href="./style.css?v=60.4"
     >
 
 </head>
@@ -565,7 +565,10 @@
                     id="sprayWave"
                 ></div>
 
-                <div class="spray-glow"></div>
+                <div
+                    class="spray-glow"
+                    id="sprayGlow"
+                ></div>
 
 
                 <div class="bottle-wrapper">
@@ -588,6 +591,7 @@
                     class="spray-button"
                     id="sprayButton"
                     type="button"
+                    aria-label="Borrifar Dream Amor no Ar"
                 >
 
                     <span class="spray-button-symbol">
@@ -618,6 +622,7 @@
                         <strong
                             id="sprayCounter"
                             class="gradient-text"
+                            aria-live="polite"
                         >
                             0
                         </strong>
@@ -1000,8 +1005,7 @@
                     </span>
 
                 </h2>
-
-
+                
                 <p data-i18n="notes.description">
                     Explore as diferentes camadas
                     e descubra como a fragrância evolui.
@@ -1316,7 +1320,7 @@
                     <h3
                         class="gradient-text"
                         data-i18n="experience.personality"
-                                            >
+                    >
                         Personalidade
                     </h3>
 
@@ -1996,8 +2000,7 @@
                         data-scene="ceu"
                     >
                         <span>☾</span>
-
-                        <div>
+                                                <div>
                             <strong data-i18n="scene.sky">Céu</strong>
                             <small data-i18n="scene.dreamy">sonhador</small>
                         </div>
@@ -2636,7 +2639,7 @@
                 <span
                     class="eyebrow gradient-text"
                     data-i18n="final.eyebrow"
-                                    >
+                >
                     DREAM • AMOR NO AR
                 </span>
 
@@ -2707,6 +2710,7 @@
         id="productModal"
         role="dialog"
         aria-modal="true"
+        aria-hidden="true"
     >
 
         <div class="product-modal-backdrop close-product"></div>
@@ -2716,6 +2720,7 @@
             <button
                 class="modal-close close-product"
                 type="button"
+                aria-label="Fechar detalhes do produto"
             >
                 ×
             </button>
@@ -2845,6 +2850,9 @@
     <div
         class="note-modal"
         id="noteModal"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
     >
 
         <div class="note-modal-backdrop close-note"></div>
@@ -2854,6 +2862,7 @@
             <button
                 class="modal-close close-note"
                 type="button"
+                aria-label="Fechar nota"
             >
                 ×
             </button>
@@ -2897,6 +2906,9 @@
     <div
         class="lightbox"
         id="lightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
     >
 
         <div
@@ -2979,12 +2991,11 @@
         class="settings-fab"
         id="settingsButton"
         type="button"
+        aria-label="Abrir Dream Studio"
     >
         <span>✦</span>
     </button>
-
-
-    <!-- =====================================================
+        <!-- =====================================================
          DREAM STUDIO
     ====================================================== -->
 
@@ -3020,6 +3031,7 @@
                 class="settings-close"
                 id="closeSettings"
                 type="button"
+                aria-label="Fechar Dream Studio"
             >
                 ×
             </button>
@@ -3392,6 +3404,7 @@
             <label class="switch-row">
 
                 <div>
+
                     <strong data-i18n="studio.particles">
                         Partículas
                     </strong>
@@ -3399,6 +3412,7 @@
                     <small data-i18n="studio.particlesDesc">
                         Elementos flutuantes
                     </small>
+
                 </div>
 
                 <input
@@ -3412,6 +3426,7 @@
             <label class="switch-row">
 
                 <div>
+
                     <strong data-i18n="studio.animations">
                         Animações
                     </strong>
@@ -3419,6 +3434,7 @@
                     <small data-i18n="studio.animationsDesc">
                         Transições da experiência
                     </small>
+
                 </div>
 
                 <input
@@ -3432,6 +3448,7 @@
             <label class="switch-row">
 
                 <div>
+
                     <strong>
                         Cursor Glow
                     </strong>
@@ -3439,6 +3456,7 @@
                     <small data-i18n="studio.cursorDesc">
                         Iluminação que acompanha o mouse
                     </small>
+
                 </div>
 
                 <input
@@ -3452,6 +3470,7 @@
             <label class="switch-row">
 
                 <div>
+
                     <strong data-i18n="studio.motion">
                         Movimento 3D
                     </strong>
@@ -3459,6 +3478,7 @@
                     <small data-i18n="studio.motionDesc">
                         Profundidade do frasco
                     </small>
+
                 </div>
 
                 <input
@@ -3472,6 +3492,7 @@
             <label class="switch-row">
 
                 <div>
+
                     <strong data-i18n="studio.haptic">
                         Vibração do spray
                     </strong>
@@ -3479,6 +3500,7 @@
                     <small data-i18n="studio.hapticDesc">
                         Feedback em aparelhos compatíveis
                     </small>
+
                 </div>
 
                 <input
@@ -3492,6 +3514,7 @@
             <label class="switch-row">
 
                 <div>
+
                     <strong data-i18n="studio.spraySound">
                         Som do borrifador
                     </strong>
@@ -3499,6 +3522,7 @@
                     <small data-i18n="studio.spraySoundDesc">
                         Reproduzir efeito ao borrifar
                     </small>
+
                 </div>
 
                 <input
@@ -3626,6 +3650,7 @@
 
             </div>
 
+
             <div class="range-setting">
 
                 <div>
@@ -3649,6 +3674,7 @@
                 >
 
             </div>
+
 
             <div class="range-setting">
 
@@ -3674,6 +3700,7 @@
 
             </div>
 
+
             <div class="range-setting">
 
                 <div>
@@ -3697,6 +3724,7 @@
                 >
 
             </div>
+
 
             <div class="range-setting">
 
@@ -3760,6 +3788,7 @@
 
             </div>
 
+
             <div class="font-size-setting">
 
                 <span data-i18n="studio.textSize">
@@ -3822,6 +3851,7 @@
         Dream ♡
     </div>
 
+
     <div
         class="section-indicator"
         id="sectionIndicator"
@@ -3829,6 +3859,7 @@
         <span>01</span>
         Início
     </div>
+
 
     <div class="keyboard-hints">
 
@@ -3853,6 +3884,7 @@
         </span>
 
     </div>
+
 
     <button
         class="back-top"
@@ -3884,6 +3916,7 @@
 
         </div>
 
+
         <div class="developer-area">
 
             <span
@@ -3914,9 +3947,11 @@
 
                 </div>
 
+
                 <span class="developer-x gradient-text">
                     ×
                 </span>
+
 
                 <div class="developer">
 
@@ -3964,6 +3999,7 @@
 
             </button>
 
+
             <button
                 class="footer-lang"
                 type="button"
@@ -3992,7 +4028,7 @@
     ====================================================== -->
 
     <script
-        src="./script.js?v=61.3"
+        src="./script.js?v=62.0"
         defer
     ></script>
 
