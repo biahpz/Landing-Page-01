@@ -26,6 +26,8 @@
     </title>
 
 
+    <!-- DREAM EXPERIENCE • V4 -->
+
     <!-- =====================================================
          FONTES
     ====================================================== -->
@@ -53,7 +55,7 @@
 
     <link
         rel="stylesheet"
-        href="./style.css?v=3.1"
+        href="./style.css?v=4.0"
     >
 
 </head>
@@ -63,6 +65,117 @@
     class="font-normal"
     data-mood="romantico"
 >
+
+    <!-- =====================================================
+         DREAM V4 • ENTRADA PELO NOME
+    ====================================================== -->
+
+    <a class="skip-link" href="#inicio">
+        Pular para o conteúdo
+    </a>
+
+    <div
+        class="dream-entry"
+        id="dreamEntry"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="dreamEntryTitle"
+        aria-describedby="dreamEntryDescription"
+    >
+
+        <div class="dream-entry-aurora" aria-hidden="true"></div>
+        <div class="dream-entry-stars" id="dreamEntryStars" aria-hidden="true"></div>
+
+        <div class="dream-entry-card">
+
+            <div class="dream-entry-visual" aria-hidden="true">
+
+                <span class="dream-entry-orbit dream-entry-orbit-a"></span>
+                <span class="dream-entry-orbit dream-entry-orbit-b"></span>
+
+                <div class="dream-entry-product-halo"></div>
+
+                <img
+                    src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
+                    alt=""
+                    draggable="false"
+                >
+
+                <span class="dream-entry-signature">
+                    AMOR NO AR
+                </span>
+
+            </div>
+
+            <div class="dream-entry-content">
+
+                <span class="dream-entry-kicker">
+                    DREAM • V4
+                </span>
+
+                <h1 id="dreamEntryTitle">
+                    Seu momento começa <em>aqui.</em>
+                </h1>
+
+                <p id="dreamEntryDescription">
+                    Como podemos chamar você nesta experiência?
+                </p>
+
+                <form
+                    class="dream-entry-form"
+                    id="dreamEntryForm"
+                    novalidate
+                >
+
+                    <label class="sr-only" for="dreamNameInput">
+                        Seu nome
+                    </label>
+
+                    <div class="dream-name-field">
+
+                        <span aria-hidden="true">♡</span>
+
+                        <input
+                            id="dreamNameInput"
+                            name="dream-name"
+                            type="text"
+                            minlength="2"
+                            maxlength="24"
+                            autocomplete="name"
+                            placeholder="Digite seu nome"
+                            aria-describedby="dreamEntryError"
+                        >
+
+                    </div>
+
+                    <p
+                        class="dream-entry-error"
+                        id="dreamEntryError"
+                        role="alert"
+                        aria-live="polite"
+                    ></p>
+
+                    <button
+                        class="dream-entry-button"
+                        id="dreamEnterButton"
+                        type="submit"
+                    >
+                        <span>Entrar no Dream</span>
+                        <strong aria-hidden="true">→</strong>
+                    </button>
+
+                </form>
+
+                <small class="dream-entry-privacy">
+                    Seu nome fica salvo somente neste navegador.
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
 
 
     <!-- =====================================================
@@ -224,6 +337,66 @@
 
 
         <div class="header-actions">
+
+            <!-- DREAM V4 • PERFIL -->
+
+            <div class="dream-user" id="dreamUser">
+
+                <button
+                    class="dream-user-button"
+                    id="dreamUserButton"
+                    type="button"
+                    aria-haspopup="menu"
+                    aria-expanded="false"
+                    aria-controls="dreamUserMenu"
+                >
+
+                    <span
+                        class="dream-user-avatar"
+                        id="dreamUserInitial"
+                        aria-hidden="true"
+                    >
+                        D
+                    </span>
+
+                    <span class="dream-user-copy">
+                        <small id="dreamUserLabel">Dreamer</small>
+                        <strong id="dreamUserName">Visitante</strong>
+                    </span>
+
+                    <span class="dream-user-chevron" aria-hidden="true">⌄</span>
+
+                </button>
+
+                <div
+                    class="dream-user-menu"
+                    id="dreamUserMenu"
+                    role="menu"
+                    aria-hidden="true"
+                >
+
+                    <button
+                        id="dreamChangeName"
+                        type="button"
+                        role="menuitem"
+                    >
+                        <span aria-hidden="true">✎</span>
+                        <span>Trocar nome</span>
+                    </button>
+
+                    <button
+                        id="dreamLogout"
+                        type="button"
+                        role="menuitem"
+                    >
+                        <span aria-hidden="true">↗</span>
+                        <span>Sair</span>
+                    </button>
+
+                </div>
+
+            </div>
+
 
             <button
                 class="icon-btn"
@@ -3221,6 +3394,23 @@
         </div>
 
 
+
+
+        <!-- =================================================
+             DREAM V4 • MODO IMERSIVO
+        ================================================== -->
+
+        <button
+            class="immersive-fab"
+            id="immersiveButton"
+            type="button"
+            aria-pressed="false"
+            title="Ativar modo imersivo"
+        >
+            <span aria-hidden="true">◌</span>
+            <strong>Imersivo</strong>
+        </button>
+
         <!-- =================================================
              DREAM STUDIO BUTTON
         ================================================== -->
@@ -4547,7 +4737,7 @@
         ================================================== -->
 
         <script
-            src="./script.js?v=3.1"
+            src="./script.js?v=4.0"
             defer
         ></script>
 
