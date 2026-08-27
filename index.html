@@ -26,7 +26,7 @@
     </title>
 
 
-    <!-- DREAM EXPERIENCE • V4 -->
+    <!-- DREAM EXPERIENCE • V5 -->
 
     <!-- =====================================================
          FONTES
@@ -55,7 +55,7 @@
 
     <link
         rel="stylesheet"
-        href="./style.css?v=4.0"
+        href="./style.css?v=5.0"
     >
 
 </head>
@@ -67,7 +67,7 @@
 >
 
     <!-- =====================================================
-         DREAM V4 • ENTRADA PELO NOME
+         DREAM V5 • ENTRADA PELO NOME
     ====================================================== -->
 
     <a class="skip-link" href="#inicio">
@@ -110,7 +110,7 @@
             <div class="dream-entry-content">
 
                 <span class="dream-entry-kicker">
-                    DREAM • V4
+                    DREAM • V5
                 </span>
 
                 <h1 id="dreamEntryTitle">
@@ -338,7 +338,7 @@
 
         <div class="header-actions">
 
-            <!-- DREAM V4 • PERFIL -->
+            <!-- DREAM V5 • PERFIL -->
 
             <div class="dream-user" id="dreamUser">
 
@@ -374,6 +374,15 @@
                     role="menu"
                     aria-hidden="true"
                 >
+
+                    <button
+                        id="dreamOpenProfile"
+                        type="button"
+                        role="menuitem"
+                    >
+                        <span aria-hidden="true">◉</span>
+                        <span>Meu perfil Dream</span>
+                    </button>
 
                     <button
                         id="dreamChangeName"
@@ -643,6 +652,7 @@
                         class="spray-button"
                         id="sprayButton"
                         type="button"
+                        data-cursor="SPRAY"
                         aria-label="Borrifar Dream"
                     >
 
@@ -2420,6 +2430,7 @@
                     class="gallery-track reveal"
                     id="galleryTrack"
                     tabindex="0"
+                    data-cursor="DRAG"
                     aria-label="Galeria Dream"
                 >
 
@@ -3044,6 +3055,17 @@
 
 
                         <button
+                            class="make-dream-btn"
+                            id="makeItDream"
+                            type="button"
+                            data-cursor="DREAM"
+                        >
+                            <span aria-hidden="true">✦</span>
+                            Make it Dream
+                        </button>
+
+
+                        <button
                             class="secondary-btn"
                             id="fullscreenButton"
                             type="button"
@@ -3397,13 +3419,145 @@
 
 
         <!-- =================================================
-             DREAM V4 • MODO IMERSIVO
+             DREAM V5 • EXPERIÊNCIA GLOBAL
+        ================================================== -->
+
+        <div
+            class="dream-cinematic-intro"
+            id="dreamCinematicIntro"
+            aria-hidden="true"
+        >
+            <div class="dream-cinematic-noise" aria-hidden="true"></div>
+            <div class="dream-cinematic-orb dream-cinematic-orb-a" aria-hidden="true"></div>
+            <div class="dream-cinematic-orb dream-cinematic-orb-b" aria-hidden="true"></div>
+
+            <div class="dream-cinematic-content">
+                <span class="dream-cinematic-kicker">DREAM • EXPERIENCE V5</span>
+                <div class="dream-cinematic-product" aria-hidden="true">
+                    <span></span>
+                    <img
+                        src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
+                        alt=""
+                        draggable="false"
+                    >
+                </div>
+                <h2 id="dreamCinematicTitle">Seu Dream começa agora.</h2>
+                <p id="dreamCinematicCopy">Respire. Sinta. Explore.</p>
+                <button id="skipCinematicIntro" type="button">Pular intro</button>
+            </div>
+        </div>
+
+        <div
+            class="dream-experience-progress"
+            id="dreamExperienceProgress"
+            aria-label="Progresso da experiência"
+        >
+            <span class="dream-progress-orbit" aria-hidden="true">
+                <i id="dreamProgressRing"></i>
+            </span>
+            <span class="dream-progress-copy">
+                <small>EXPLORADO</small>
+                <strong id="dreamProgressValue">0%</strong>
+            </span>
+        </div>
+
+        <div
+            class="dream-context-cursor"
+            id="dreamContextCursor"
+            aria-hidden="true"
+        >
+            <span id="dreamContextCursorText">EXPLORE</span>
+        </div>
+
+        <button
+            class="focus-fab"
+            id="focusButton"
+            type="button"
+            aria-pressed="false"
+            title="Ativar modo Focus"
+        >
+            <span aria-hidden="true">◎</span>
+            <strong>Focus</strong>
+        </button>
+
+        <aside
+            class="dream-profile-panel"
+            id="dreamProfilePanel"
+            aria-hidden="true"
+            aria-labelledby="dreamProfileTitle"
+        >
+            <button
+                class="dream-profile-backdrop"
+                id="dreamProfileBackdrop"
+                type="button"
+                aria-label="Fechar perfil"
+            ></button>
+
+            <div class="dream-profile-card">
+                <div class="dream-profile-head">
+                    <div>
+                        <span class="section-eyebrow">SEU DREAM</span>
+                        <h2 id="dreamProfileTitle">Perfil Dream</h2>
+                    </div>
+                    <button id="dreamProfileClose" type="button" aria-label="Fechar perfil">×</button>
+                </div>
+
+                <div class="dream-profile-hero">
+                    <span class="dream-profile-avatar" id="dreamProfileAvatar">D</span>
+                    <div>
+                        <small>DREAMER</small>
+                        <strong id="dreamProfileName">Visitante</strong>
+                        <span id="dreamProfileMood">Mood Romântico</span>
+                    </div>
+                </div>
+
+                <div class="dream-profile-stats">
+                    <article>
+                        <span>✦</span>
+                        <strong id="dreamProfileSprays">0</strong>
+                        <small>Borrifadas</small>
+                    </article>
+                    <article>
+                        <span>◌</span>
+                        <strong id="dreamProfileProgress">0%</strong>
+                        <small>Explorado</small>
+                    </article>
+                    <article>
+                        <span>◆</span>
+                        <strong id="dreamProfileAchievements">0</strong>
+                        <small>Conquistas</small>
+                    </article>
+                </div>
+
+                <section class="dream-profile-section">
+                    <div class="dream-profile-section-head">
+                        <h3>Conquistas</h3>
+                        <span id="dreamProfileAchievementCount">0 desbloqueadas</span>
+                    </div>
+                    <div class="dream-profile-achievement-list" id="dreamProfileAchievementList"></div>
+                </section>
+
+                <section class="dream-profile-section">
+                    <div class="dream-profile-section-head">
+                        <h3>Continuar experiência</h3>
+                    </div>
+                    <button class="dream-resume-button" id="dreamResumeButton" type="button">
+                        <span>↗</span>
+                        <span>Voltar para <strong id="dreamResumeSection">Início</strong></span>
+                    </button>
+                </section>
+            </div>
+        </aside>
+
+        <!-- =================================================
+             DREAM V5 • MODOS
         ================================================== -->
 
         <button
             class="immersive-fab"
             id="immersiveButton"
             type="button"
+            data-cursor="IMMERSIVE"
             aria-pressed="false"
             title="Ativar modo imersivo"
         >
@@ -3419,6 +3573,7 @@
             class="studio-fab"
             id="settingsButton"
             type="button"
+            data-cursor="STUDIO"
             aria-controls="settingsPanel"
             aria-expanded="false"
         >
@@ -3485,6 +3640,24 @@
             ============================================== -->
 
             <div class="settings-scroll">
+
+                <div class="studio-v5-tabs" id="studioV5Tabs" role="tablist" aria-label="Categorias do Dream Studio">
+                    <button type="button" role="tab" data-studio-tab="presets" aria-selected="true">Presets</button>
+                    <button type="button" role="tab" data-studio-tab="visual" aria-selected="false">Visual</button>
+                    <button type="button" role="tab" data-studio-tab="effects" aria-selected="false">Efeitos</button>
+                    <button type="button" role="tab" data-studio-tab="audio" aria-selected="false">Áudio</button>
+                    <button type="button" role="tab" data-studio-tab="accessibility" aria-selected="false">Acessibilidade</button>
+                </div>
+
+                <div class="studio-v5-preview" id="studioV5Preview">
+                    <div class="studio-v5-preview-orb"></div>
+                    <div>
+                        <small>PREVIEW AO VIVO</small>
+                        <strong id="studioV5PreviewName">Dream</strong>
+                        <span id="studioV5PreviewMood">Romântico • equilibrado</span>
+                    </div>
+                    <button id="studioV5Surprise" type="button" data-cursor="RANDOM">Surpresa ✦</button>
+                </div>
 
 
                 <!-- =========================================
@@ -4737,7 +4910,7 @@
         ================================================== -->
 
         <script
-            src="./script.js?v=4.0"
+            src="./script.js?v=5.0"
             defer
         ></script>
 
