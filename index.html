@@ -13,7 +13,7 @@
 
     <meta
         name="theme-color"
-        content="#e786b3"
+        content="#cf6f9f"
     >
 
     <meta
@@ -55,7 +55,7 @@
 
     <link
         rel="stylesheet"
-        href="./style.css?v=5.0"
+        href="./style.css?v=5.4"
     >
 
 </head>
@@ -67,7 +67,7 @@
 >
 
     <!-- =====================================================
-         DREAM V5 • ENTRADA PELO NOME
+         DREAM V5.4 • PERFECT EDITION
     ====================================================== -->
 
     <a class="skip-link" href="#inicio">
@@ -99,7 +99,23 @@
                     src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
                     alt=""
                     draggable="false"
+                    decoding="async"
+                    fetchpriority="high"
+                    width="1500"
+                    height="1500"
                 >
+
+                <div class="dream-entry-visual-copy">
+                    <span class="dream-entry-visual-badge">DREAM EXPERIENCE</span>
+                    <strong>Uma experiência feita para você.</strong>
+                    <small>Seu mood, seu perfil, seu Dream.</small>
+                </div>
+
+                <div class="dream-entry-feature-pills">
+                    <span>♡ Mood</span>
+                    <span>✦ Dream Studio</span>
+                    <span>◎ Perfil</span>
+                </div>
 
                 <span class="dream-entry-signature">
                     AMOR NO AR
@@ -109,16 +125,24 @@
 
             <div class="dream-entry-content">
 
-                <span class="dream-entry-kicker">
-                    DREAM • V5
-                </span>
+                <div class="dream-entry-topline">
+
+                    <span class="dream-entry-kicker">
+                        DREAM • V5.4
+                    </span>
+
+                    <div class="dream-entry-live-avatar" id="dreamEntryAvatar" aria-hidden="true">
+                        D
+                    </div>
+
+                </div>
 
                 <h1 id="dreamEntryTitle">
                     Seu momento começa <em>aqui.</em>
                 </h1>
 
                 <p id="dreamEntryDescription">
-                    Como podemos chamar você nesta experiência?
+                    Diga como podemos chamar você e personalize toda a experiência Dream.
                 </p>
 
                 <form
@@ -127,13 +151,14 @@
                     novalidate
                 >
 
-                    <label class="sr-only" for="dreamNameInput">
-                        Seu nome
+                    <label class="dream-entry-field-label" for="dreamNameInput">
+                        <span>Seu nome</span>
+                        <small id="dreamNameCount">0/24</small>
                     </label>
 
                     <div class="dream-name-field">
 
-                        <span aria-hidden="true">♡</span>
+                        <span class="dream-name-field-icon" aria-hidden="true">♡</span>
 
                         <input
                             id="dreamNameInput"
@@ -142,9 +167,12 @@
                             minlength="2"
                             maxlength="24"
                             autocomplete="name"
+                            enterkeyhint="go"
                             placeholder="Digite seu nome"
-                            aria-describedby="dreamEntryError"
+                            aria-describedby="dreamEntryError dreamEntryPrivacyText"
                         >
+
+                        <span class="dream-name-field-check" aria-hidden="true">✓</span>
 
                     </div>
 
@@ -159,16 +187,21 @@
                         class="dream-entry-button"
                         id="dreamEnterButton"
                         type="submit"
+                        disabled
                     >
-                        <span>Entrar no Dream</span>
+                        <span>Continuar</span>
                         <strong aria-hidden="true">→</strong>
                     </button>
 
                 </form>
 
-                <small class="dream-entry-privacy">
-                    Seu nome fica salvo somente neste navegador.
-                </small>
+                <div class="dream-entry-privacy">
+                    <span class="dream-entry-privacy-icon" aria-hidden="true">◌</span>
+                    <span>
+                        <strong id="dreamEntryPrivacyTitle">Privado por padrão</strong>
+                        <small id="dreamEntryPrivacyText">Seu nome fica salvo somente neste navegador.</small>
+                    </span>
+                </div>
 
             </div>
 
@@ -985,8 +1018,8 @@
                 <div class="campaign-image">
 
                     <img
-                        src="./img/DREAM.png"
-                        alt="Universo Dream Amor no Ar"
+                        src="./img/dream 1.png"
+                        alt="Dream Amor no Ar em atmosfera romântica"
                         loading="lazy"
                     >
 
@@ -2377,20 +2410,19 @@
 
                         <h2>
 
-                            Entre no universo
+                            Cada detalhe.
 
                             <em>
-                                Dream.
+                                Uma nova perspectiva.
                             </em>
 
                         </h2>
 
 
                         <p>
-                            Arraste com o mouse,
-                            deslize no celular ou use
-                            as setas para explorar
-                            as imagens.
+                            Explore Dream Amor no Ar por novos ângulos.
+                            Arraste no notebook, deslize no celular
+                            ou use as setas para navegar.
                         </p>
 
                     </div>
@@ -2430,25 +2462,29 @@
                     class="gallery-track reveal"
                     id="galleryTrack"
                     tabindex="0"
-                    data-cursor="DRAG"
-                    aria-label="Galeria Dream"
+                    aria-label="Galeria Dream Amor no Ar"
+                    aria-roledescription="carrossel"
                 >
-
 
                     <!-- 01 -->
 
                     <article
                         class="gallery-item"
                         data-index="0"
+                        data-gallery-title-pt="Amor no Ar"
+                        data-gallery-title-en="Amor no Ar"
                     >
 
                         <img
-                            src="./img/DREAM.png"
-                            alt="Dream World"
+                            src="./img/dream 1.png"
+                            alt="Dream Amor no Ar em cenário romântico"
                             draggable="false"
-                            loading="lazy"
+                            loading="eager"
+                            decoding="async"
+                            fetchpriority="high"
+                            width="1672"
+                            height="941"
                         >
-
 
                         <div class="gallery-item-overlay">
 
@@ -2456,51 +2492,9 @@
                                 01
                             </span>
 
-
-                            <h3>
-                                Dream World
-                            </h3>
-
-
-                            <button
-                                class="gallery-open"
-                                type="button"
-                                aria-label="Abrir Dream World"
-                            >
-                                explorar ↗
-                            </button>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- 02 -->
-
-                    <article
-                        class="gallery-item"
-                        data-index="1"
-                    >
-
-                        <img
-                            src="./img/DREAM (2).png"
-                            alt="Amor no Ar"
-                            draggable="false"
-                            loading="lazy"
-                        >
-
-
-                        <div class="gallery-item-overlay">
-
-                            <span>
-                                02
-                            </span>
-
-
                             <h3>
                                 Amor no Ar
                             </h3>
-
 
                             <button
                                 class="gallery-open"
@@ -2514,21 +2508,65 @@
 
                     </article>
 
+                    <!-- 02 -->
+
+                    <article
+                        class="gallery-item"
+                        data-index="1"
+                        data-gallery-title-pt="Flores em Dream"
+                        data-gallery-title-en="Flores em Dream"
+                    >
+
+                        <img
+                            src="./img/dream 2.png"
+                            alt="Dream Amor no Ar entre flores delicadas"
+                            draggable="false"
+                            loading="lazy"
+                            decoding="async"
+                            width="1672"
+                            height="941"
+                        >
+
+                        <div class="gallery-item-overlay">
+
+                            <span>
+                                02
+                            </span>
+
+                            <h3>
+                                Flores em Dream
+                            </h3>
+
+                            <button
+                                class="gallery-open"
+                                type="button"
+                                aria-label="Abrir Flores em Dream"
+                            >
+                                explorar ↗
+                            </button>
+
+                        </div>
+
+                    </article>
 
                     <!-- 03 -->
 
                     <article
                         class="gallery-item"
                         data-index="2"
+                        data-gallery-title-pt="Entre Nuvens"
+                        data-gallery-title-en="Entre Nuvens"
                     >
 
                         <img
-                            src="./img/DREAM AMOR NO AR.png"
-                            alt="Romance Dream"
+                            src="./img/dream 3.png"
+                            alt="Dream Amor no Ar em um cenário de nuvens rosadas"
                             draggable="false"
                             loading="lazy"
+                            decoding="async"
+                            width="1672"
+                            height="941"
                         >
-
 
                         <div class="gallery-item-overlay">
 
@@ -2536,16 +2574,342 @@
                                 03
                             </span>
 
-
                             <h3>
-                                Romance Dream
+                                Entre Nuvens
                             </h3>
-
 
                             <button
                                 class="gallery-open"
                                 type="button"
-                                aria-label="Abrir Romance Dream"
+                                aria-label="Abrir Entre Nuvens"
+                            >
+                                explorar ↗
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- 04 -->
+
+                    <article
+                        class="gallery-item"
+                        data-index="3"
+                        data-gallery-title-pt="Reflexos Rosé"
+                        data-gallery-title-en="Reflexos Rosé"
+                    >
+
+                        <img
+                            src="./img/dream 4.png"
+                            alt="Dream Amor no Ar em cenário rosé com reflexos"
+                            draggable="false"
+                            loading="lazy"
+                            decoding="async"
+                            width="1672"
+                            height="941"
+                        >
+
+                        <div class="gallery-item-overlay">
+
+                            <span>
+                                04
+                            </span>
+
+                            <h3>
+                                Reflexos Rosé
+                            </h3>
+
+                            <button
+                                class="gallery-open"
+                                type="button"
+                                aria-label="Abrir Reflexos Rosé"
+                            >
+                                explorar ↗
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- 05 -->
+
+                    <article
+                        class="gallery-item"
+                        data-index="4"
+                        data-gallery-title-pt="Jardim Dream"
+                        data-gallery-title-en="Jardim Dream"
+                    >
+
+                        <img
+                            src="./img/dream 5.png"
+                            alt="Dream Amor no Ar em um jardim de flores rosas"
+                            draggable="false"
+                            loading="lazy"
+                            decoding="async"
+                            width="1672"
+                            height="941"
+                        >
+
+                        <div class="gallery-item-overlay">
+
+                            <span>
+                                05
+                            </span>
+
+                            <h3>
+                                Jardim Dream
+                            </h3>
+
+                            <button
+                                class="gallery-open"
+                                type="button"
+                                aria-label="Abrir Jardim Dream"
+                            >
+                                explorar ↗
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- 06 -->
+
+                    <article
+                        class="gallery-item"
+                        data-index="5"
+                        data-gallery-title-pt="Sonho nas Nuvens"
+                        data-gallery-title-en="Sonho nas Nuvens"
+                    >
+
+                        <img
+                            src="./img/dream 6.png"
+                            alt="Dream Amor no Ar em uma atmosfera leve e sonhadora"
+                            draggable="false"
+                            loading="lazy"
+                            decoding="async"
+                            width="1672"
+                            height="941"
+                        >
+
+                        <div class="gallery-item-overlay">
+
+                            <span>
+                                06
+                            </span>
+
+                            <h3>
+                                Sonho nas Nuvens
+                            </h3>
+
+                            <button
+                                class="gallery-open"
+                                type="button"
+                                aria-label="Abrir Sonho nas Nuvens"
+                            >
+                                explorar ↗
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- 07 -->
+
+                    <article
+                        class="gallery-item"
+                        data-index="6"
+                        data-gallery-title-pt="Céu de Amor"
+                        data-gallery-title-en="Céu de Amor"
+                    >
+
+                        <img
+                            src="./img/dream 7.png"
+                            alt="Dream Amor no Ar sob um céu romântico"
+                            draggable="false"
+                            loading="lazy"
+                            decoding="async"
+                            width="1672"
+                            height="941"
+                        >
+
+                        <div class="gallery-item-overlay">
+
+                            <span>
+                                07
+                            </span>
+
+                            <h3>
+                                Céu de Amor
+                            </h3>
+
+                            <button
+                                class="gallery-open"
+                                type="button"
+                                aria-label="Abrir Céu de Amor"
+                            >
+                                explorar ↗
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- 08 -->
+
+                    <article
+                        class="gallery-item"
+                        data-index="7"
+                        data-gallery-title-pt="Essência Rosé"
+                        data-gallery-title-en="Essência Rosé"
+                    >
+
+                        <img
+                            src="./img/dream 8.png"
+                            alt="Dream Amor no Ar em composição rosé elegante"
+                            draggable="false"
+                            loading="lazy"
+                            decoding="async"
+                            width="1672"
+                            height="941"
+                        >
+
+                        <div class="gallery-item-overlay">
+
+                            <span>
+                                08
+                            </span>
+
+                            <h3>
+                                Essência Rosé
+                            </h3>
+
+                            <button
+                                class="gallery-open"
+                                type="button"
+                                aria-label="Abrir Essência Rosé"
+                            >
+                                explorar ↗
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- 09 -->
+
+                    <article
+                        class="gallery-item"
+                        data-index="8"
+                        data-gallery-title-pt="Romance em Cena"
+                        data-gallery-title-en="Romance em Cena"
+                    >
+
+                        <img
+                            src="./img/dream 9.png"
+                            alt="Dream Amor no Ar em cenário romântico sofisticado"
+                            draggable="false"
+                            loading="lazy"
+                            decoding="async"
+                            width="1672"
+                            height="941"
+                        >
+
+                        <div class="gallery-item-overlay">
+
+                            <span>
+                                09
+                            </span>
+
+                            <h3>
+                                Romance em Cena
+                            </h3>
+
+                            <button
+                                class="gallery-open"
+                                type="button"
+                                aria-label="Abrir Romance em Cena"
+                            >
+                                explorar ↗
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- 10 -->
+
+                    <article
+                        class="gallery-item"
+                        data-index="9"
+                        data-gallery-title-pt="Dream Signature"
+                        data-gallery-title-en="Dream Signature"
+                    >
+
+                        <img
+                            src="./img/dream 10.png"
+                            alt="Dream Amor no Ar em composição especial da galeria"
+                            draggable="false"
+                            loading="lazy"
+                            decoding="async"
+                            width="1672"
+                            height="941"
+                        >
+
+                        <div class="gallery-item-overlay">
+
+                            <span>
+                                10
+                            </span>
+
+                            <h3>
+                                Dream Signature
+                            </h3>
+
+                            <button
+                                class="gallery-open"
+                                type="button"
+                                aria-label="Abrir Dream Signature"
+                            >
+                                explorar ↗
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- 11 -->
+
+                    <article
+                        class="gallery-item"
+                        data-index="10"
+                        data-gallery-title-pt="Frasco Original"
+                        data-gallery-title-en="Frasco Original"
+                    >
+
+                        <img
+                            src="./img/Dream-Des-Col-Splash-Amor-no-Ar_350ml_b48632_V2.webp"
+                            alt="Frasco original Dream Amor no Ar 350 ml"
+                            draggable="false"
+                            loading="lazy"
+                            decoding="async"
+                            width="1500"
+                            height="1500"
+                        >
+
+                        <div class="gallery-item-overlay">
+
+                            <span>
+                                11
+                            </span>
+
+                            <h3>
+                                Frasco Original
+                            </h3>
+
+                            <button
+                                class="gallery-open"
+                                type="button"
+                                aria-label="Abrir Frasco Original"
                             >
                                 explorar ↗
                             </button>
@@ -2571,7 +2935,7 @@
                     ></div>
 
 
-                    <div class="gallery-counter">
+                    <div class="gallery-counter" aria-live="polite">
 
                         <strong id="galleryCurrent">
                             01
@@ -2582,7 +2946,7 @@
                         </span>
 
                         <span id="galleryTotal">
-                            03
+                            11
                         </span>
 
                     </div>
@@ -3382,8 +3746,8 @@
 
                 <img
                     id="lightboxImage"
-                    src="./img/DREAM.png"
-                    alt="Imagem Dream ampliada"
+                    src="./img/dream 1.png"
+                    alt="Dream Amor no Ar ampliado"
                     draggable="false"
                 >
 
@@ -3391,12 +3755,12 @@
                 <div class="lightbox-info">
 
                     <h2 id="lightboxTitle">
-                        Dream World
+                        Amor no Ar
                     </h2>
 
 
                     <span id="lightboxCounter">
-                        01 / 03
+                        01 / 11
                     </span>
 
                 </div>
@@ -3460,25 +3824,6 @@
                 <strong id="dreamProgressValue">0%</strong>
             </span>
         </div>
-
-        <div
-            class="dream-context-cursor"
-            id="dreamContextCursor"
-            aria-hidden="true"
-        >
-            <span id="dreamContextCursorText">EXPLORE</span>
-        </div>
-
-        <button
-            class="focus-fab"
-            id="focusButton"
-            type="button"
-            aria-pressed="false"
-            title="Ativar modo Focus"
-        >
-            <span aria-hidden="true">◎</span>
-            <strong>Focus</strong>
-        </button>
 
         <aside
             class="dream-profile-panel"
@@ -3678,7 +4023,7 @@
                             type="button"
                             data-language="pt-BR"
                         >
-                            <span class="language-flag" aria-hidden="true">🇧🇷</span>
+                            <span class="language-flag flag-br" aria-hidden="true"></span>
                             <span class="language-label">Português</span>
                         </button>
 
@@ -3688,7 +4033,7 @@
                             type="button"
                             data-language="en-US"
                         >
-                            <span class="language-flag" aria-hidden="true">🇺🇸</span>
+                            <span class="language-flag flag-us" aria-hidden="true"></span>
                             <span class="language-label">English</span>
                         </button>
 
@@ -3980,8 +4325,8 @@
                             type="button"
                             data-palette="dream"
                             style="
-                                --palette-a: #e786b3;
-                                --palette-b: #9c6ce0;
+                                --palette-a: #d96f9f;
+                                --palette-b: #8266d8;
                             "
                         >
 
@@ -3997,8 +4342,8 @@
                             type="button"
                             data-palette="violet"
                             style="
-                                --palette-a: #a78bfa;
-                                --palette-b: #7c3aed;
+                                --palette-a: #927be0;
+                                --palette-b: #6550c7;
                             "
                         >
 
@@ -4014,8 +4359,8 @@
                             type="button"
                             data-palette="sky"
                             style="
-                                --palette-a: #60a5fa;
-                                --palette-b: #38bdf8;
+                                --palette-a: #6599d8;
+                                --palette-b: #58b8cb;
                             "
                         >
 
@@ -4031,8 +4376,8 @@
                             type="button"
                             data-palette="rose"
                             style="
-                                --palette-a: #fb7185;
-                                --palette-b: #e879f9;
+                                --palette-a: #e97a92;
+                                --palette-b: #c768c8;
                             "
                         >
 
@@ -4057,7 +4402,7 @@
                             <input
                                 type="color"
                                 id="primaryColor"
-                                value="#e786b3"
+                                value="#d96f9f"
                                 aria-label="Cor primária"
                             >
 
@@ -4073,7 +4418,7 @@
                             <input
                                 type="color"
                                 id="secondaryColor"
-                                value="#9c6ce0"
+                                value="#8266d8"
                                 aria-label="Cor secundária"
                             >
 
@@ -4554,14 +4899,46 @@
                      FONTE
                 ========================================== -->
 
-                <section class="settings-group">
+                <section class="settings-group settings-accessibility-v51">
 
                     <h3>
-                        Tamanho do texto
+                        Acessibilidade
                     </h3>
 
 
-                    <div class="font-size-buttons">
+                    <label class="setting-row focus-studio-row">
+
+                        <div>
+
+                            <strong id="focusStudioLabel">
+                                Modo Focus
+                            </strong>
+
+                            <small id="focusStudioDescription">
+                                Reduz distrações e efeitos sem esconder o conteúdo
+                            </small>
+
+                        </div>
+
+
+                        <input
+                            id="focusStudioToggle"
+                            type="checkbox"
+                        >
+
+                        <span class="toggle-ui"></span>
+
+                    </label>
+
+
+                    <div class="accessibility-font-block">
+
+                        <span class="accessibility-caption" id="fontSizeStudioLabel">
+                            Tamanho do texto
+                        </span>
+
+
+                        <div class="font-size-buttons">
 
                         <button
                             type="button"
@@ -4586,6 +4963,8 @@
                         >
                             A
                         </button>
+
+                        </div>
 
                     </div>
 
@@ -4910,7 +5289,7 @@
         ================================================== -->
 
         <script
-            src="./script.js?v=5.0"
+            src="./script.js?v=5.4"
             defer
         ></script>
 

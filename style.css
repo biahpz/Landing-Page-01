@@ -10,22 +10,22 @@
 ========================================================= */
 
 :root {
-    --primary: #e786b3;
-    --secondary: #9c6ce0;
+    --primary: #d96f9f;
+    --secondary: #8266d8;
 
-    --primary-rgb: 231, 134, 179;
-    --secondary-rgb: 156, 108, 224;
+    --primary-rgb: 217, 111, 159;
+    --secondary-rgb: 130, 102, 216;
 
-    --background: #fff9fc;
-    --background-soft: #fff4fa;
+    --background: #fffafc;
+    --background-soft: #fff5f9;
 
     --surface: rgba(255, 255, 255, 0.68);
     --surface-strong: rgba(255, 255, 255, 0.92);
     --surface-dark: rgba(24, 12, 27, 0.76);
 
-    --text: #271d27;
-    --text-soft: #786978;
-    --text-light: #aa98a7;
+    --text: #2f2330;
+    --text-soft: #776974;
+    --text-light: #a797a3;
 
     --border: rgba(70, 40, 70, 0.1);
     --border-light: rgba(255, 255, 255, 0.5);
@@ -18125,3 +18125,2179 @@ body.v5-auto-night.dark-auto {
         display: none !important;
     }
 }
+
+
+/* =========================================================
+   DREAM AMOR NO AR • V5.1 CLEAN PREMIUM
+========================================================= */
+
+:root {
+    --v51-radius-lg: 30px;
+    --v51-radius-md: 22px;
+    --v51-radius-sm: 16px;
+    --v51-ease: cubic-bezier(.22, .8, .24, 1);
+    --v51-shadow-hover: 0 24px 70px rgba(47, 27, 42, .12);
+}
+
+html { scroll-padding-top: 96px; }
+body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+
+.dream-context-cursor,
+.focus-fab { display: none !important; }
+
+#header {
+    transition: transform .42s var(--v51-ease), background-color .28s ease, box-shadow .28s ease, border-color .28s ease !important;
+    will-change: transform;
+}
+body.v51-header-hidden #header { transform: translateY(calc(-100% - 12px)); }
+body.v5-profile-open #header,
+body.dream-entry-open #header { transform: translateY(0) !important; }
+
+.dream-experience-progress {
+    right: 18px !important;
+    bottom: 92px !important;
+    transform: scale(.88);
+    transform-origin: right bottom;
+    opacity: .76;
+    transition: opacity .25s ease, transform .25s ease;
+}
+.dream-experience-progress:hover { opacity: 1; transform: scale(.94); }
+
+html.dream-v5-ready .hero-product img { animation: v51ProductEntrance 1s var(--v51-ease) both; }
+@keyframes v51ProductEntrance {
+    from { opacity: 0; transform: translateY(22px) scale(.985); filter: blur(7px); }
+    to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+.primary-btn,
+.secondary-btn,
+.pill-btn,
+.gallery-open,
+.preset-button,
+.language-button,
+.reset-settings,
+.settings-close,
+.studio-v5-tabs button,
+#studioV5Surprise,
+#makeItDream,
+#dreamResumeButton {
+    transition: transform .18s var(--v51-ease), box-shadow .22s ease, border-color .22s ease, background-color .22s ease, opacity .22s ease !important;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover,
+.pill-btn:hover,
+.gallery-open:hover,
+#studioV5Surprise:hover,
+#makeItDream:hover,
+#dreamResumeButton:hover { transform: translateY(-2px); }
+
+.primary-btn:active,
+.secondary-btn:active,
+.pill-btn:active,
+.gallery-open:active,
+.preset-button:active,
+.language-button:active,
+#studioV5Surprise:active,
+#makeItDream:active,
+#dreamResumeButton:active { transform: translateY(0) scale(.985); }
+
+.product-point,
+.mood-showcase-card,
+.note-card,
+.moment-card,
+.creator-card,
+.gallery-item {
+    transition: transform .32s var(--v51-ease), box-shadow .32s ease, border-color .32s ease, background-color .32s ease !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .product-point:hover,
+    .mood-showcase-card:hover,
+    .note-card:hover,
+    .moment-card:hover,
+    .creator-card:hover {
+        transform: translateY(-5px) !important;
+        box-shadow: var(--v51-shadow-hover);
+    }
+}
+
+.gallery-track { scroll-snap-type: x mandatory; scroll-behavior: smooth; }
+.gallery-item { scroll-snap-align: center; opacity: .76; filter: saturate(.88) brightness(.96); }
+.gallery-item.v5-coverflow-active { opacity: 1; filter: none; transform: translateY(-4px) scale(1.025) !important; z-index: 3; }
+.gallery-item.v5-coverflow-left,
+.gallery-item.v5-coverflow-right { transform: scale(.965) !important; }
+.gallery-item img { transition: transform .65s var(--v51-ease), filter .4s ease, opacity .32s ease; }
+.gallery-item.v5-coverflow-active img { transform: scale(1.018); }
+
+.settings-scroll { scroll-behavior: smooth; }
+.studio-v5-tabs {
+    position: sticky;
+    top: -1px;
+    z-index: 8;
+    margin: 0 -4px 16px;
+    padding: 8px 4px 10px;
+    background: linear-gradient(to bottom, rgba(255,255,255,.96) 72%, rgba(255,255,255,0));
+    backdrop-filter: blur(12px);
+}
+body.dark .studio-v5-tabs { background: linear-gradient(to bottom, rgba(22,17,24,.96) 72%, rgba(22,17,24,0)); }
+.studio-v5-tabs button { min-height: 38px; padding-inline: 14px; }
+.studio-v5-tabs button[aria-selected="true"] { box-shadow: 0 8px 24px rgba(var(--primary-rgb), .12); }
+.studio-v5-preview { border-radius: var(--v51-radius-md); box-shadow: none; border-color: rgba(var(--primary-rgb), .13); overflow: hidden; }
+.studio-v5-preview-orb { opacity: .74; filter: blur(1px); }
+.settings-group { border-radius: var(--v51-radius-md); }
+.setting-row { border-radius: var(--v51-radius-sm); }
+.setting-row:hover { background: rgba(var(--primary-rgb), .045); }
+.settings-accessibility-v51 .focus-studio-row { margin-bottom: 16px; border: 1px solid rgba(var(--primary-rgb), .12); background: rgba(var(--primary-rgb), .035); }
+.accessibility-font-block { display: grid; gap: 10px; padding-top: 4px; }
+.accessibility-caption { display: block; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; opacity: .56; }
+
+body.focus-v5 .footer-creators,
+body.focus-v5 .footer-bottom,
+body.focus-v5 [data-v51-focus-protected="true"] {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    filter: none !important;
+}
+body.focus-v5 main > section:not(.hero):not(.product-section):not(.final-section) { filter: none !important; }
+body.focus-v5 .ticker,
+body.focus-v5 .section-indicator,
+body.focus-v5 .back-top,
+body.focus-v5 .dream-experience-progress { opacity: .12 !important; pointer-events: none !important; }
+body.focus-v5 #particles { opacity: .08 !important; pointer-events: none !important; }
+body.focus-v5 #cursorGlow { opacity: 0 !important; pointer-events: none !important; }
+body.focus-v5 .ambient-decor { opacity: .18 !important; pointer-events: none !important; }
+body.focus-v5 .gallery-item:not(.v5-coverflow-active) { opacity: .52; }
+
+.modal-card,
+.dream-profile-card { border-radius: var(--v51-radius-lg); box-shadow: 0 30px 100px rgba(38, 20, 34, .16); }
+.dream-profile-card { overflow: hidden; }
+.dream-profile-stats article,
+.dream-profile-achievement { border-radius: 18px; }
+
+.footer-creators { opacity: 1; visibility: visible; }
+.creator-card { border-radius: 22px; }
+.creator-avatar img { transition: transform .45s var(--v51-ease); }
+.creator-card:hover .creator-avatar img { transform: scale(1.035); }
+
+body.v51-adaptive-lite .ambient-decor,
+body.v51-adaptive-lite #cursorGlow { display: none !important; }
+body.v51-adaptive-lite .gallery-item,
+body.v51-adaptive-lite .product-card,
+body.v51-adaptive-lite .moment-card { transform: none !important; }
+
+@media (max-width: 760px) {
+    :root { --v51-radius-lg: 24px; --v51-radius-md: 19px; }
+    html { scroll-padding-top: 78px; }
+    .dream-experience-progress { display: none !important; }
+    .studio-v5-tabs { margin-inline: -2px; padding-inline: 2px; }
+    .studio-v5-tabs button { min-height: 42px; padding-inline: 13px; }
+    .gallery-item,
+    .gallery-item.v5-coverflow-active,
+    .gallery-item.v5-coverflow-left,
+    .gallery-item.v5-coverflow-right { transform: none !important; opacity: 1; filter: none; }
+    .primary-btn,
+    .secondary-btn,
+    .pill-btn { min-height: 46px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #header,
+    .gallery-item,
+    .gallery-item img,
+    .primary-btn,
+    .secondary-btn,
+    .preset-button,
+    .creator-card,
+    .creator-avatar img {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+    }
+    html { scroll-behavior: auto !important; }
+}
+
+/* =========================================================
+   FIM • DREAM AMOR NO AR V5.1 CLEAN PREMIUM
+========================================================= */
+
+/* =========================================================
+   DREAM V5.2.1 • LOGIN / ENTRADA PREMIUM
+========================================================= */
+
+.dream-entry {
+    background:
+        radial-gradient(circle at 12% 18%, rgba(var(--primary-rgb), .16), transparent 34%),
+        radial-gradient(circle at 88% 12%, rgba(var(--secondary-rgb), .14), transparent 30%),
+        linear-gradient(145deg, #fffafd 0%, #faf7ff 52%, #f6f4fb 100%);
+}
+
+.dream-entry-aurora {
+    opacity: .34;
+    filter: blur(84px);
+}
+
+.dream-entry-star {
+    opacity: calc(var(--opacity, .46) * .62);
+}
+
+.dream-entry-card {
+    width: min(1080px, 100%);
+    min-height: min(680px, calc(100vh - 64px));
+    grid-template-columns: minmax(0, .92fr) minmax(390px, 1.08fr);
+    border-radius: clamp(30px, 4vw, 48px);
+    border-color: rgba(255,255,255,.9);
+    background: rgba(255,255,255,.72);
+    box-shadow:
+        0 34px 90px rgba(72, 40, 74, .12),
+        0 2px 12px rgba(72, 40, 74, .05),
+        inset 0 1px 0 rgba(255,255,255,.92);
+    backdrop-filter: blur(24px) saturate(135%);
+    -webkit-backdrop-filter: blur(24px) saturate(135%);
+}
+
+.dream-entry-visual {
+    min-height: 610px;
+    align-content: center;
+    background:
+        radial-gradient(circle at 50% 40%, rgba(255,255,255,.92), transparent 28%),
+        radial-gradient(circle at 46% 46%, rgba(var(--primary-rgb), .18), transparent 48%),
+        linear-gradient(155deg, rgba(var(--primary-rgb), .11), rgba(var(--secondary-rgb), .08));
+}
+
+.dream-entry-visual::before {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    border: 1px solid rgba(255,255,255,.58);
+    border-radius: 34px;
+    pointer-events: none;
+}
+
+.dream-entry-visual::after {
+    opacity: .48;
+    animation-duration: 7s;
+}
+
+.dream-entry-visual img {
+    width: min(58%, 305px);
+    max-height: 460px;
+    transform: translateY(-24px);
+    filter: drop-shadow(0 30px 40px rgba(74, 37, 66, .17));
+    animation: v52BottleFloat 7s ease-in-out infinite;
+}
+
+@keyframes v52BottleFloat {
+    0%, 100% { transform: translateY(-24px) rotate(-.5deg); }
+    50% { transform: translateY(-34px) rotate(.65deg); }
+}
+
+.dream-entry-product-halo {
+    width: min(64%, 360px);
+    opacity: .72;
+    animation-duration: 6.2s;
+}
+
+.dream-entry-orbit {
+    width: 61%;
+    opacity: .55;
+}
+
+.dream-entry-orbit-b {
+    width: 43%;
+    opacity: .48;
+}
+
+.dream-entry-visual-copy {
+    position: absolute;
+    z-index: 5;
+    left: clamp(26px, 4vw, 46px);
+    right: clamp(26px, 4vw, 46px);
+    bottom: 74px;
+    display: grid;
+    gap: 6px;
+    max-width: 330px;
+}
+
+.dream-entry-visual-badge {
+    width: fit-content;
+    padding: 6px 9px;
+    border: 1px solid rgba(var(--primary-rgb), .16);
+    border-radius: 999px;
+    font-size: .58rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+    color: var(--primary);
+    background: rgba(255,255,255,.58);
+    backdrop-filter: blur(8px);
+}
+
+.dream-entry-visual-copy strong {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2vw, 1.7rem);
+    line-height: 1.04;
+    letter-spacing: -.025em;
+    color: #3a2939;
+}
+
+.dream-entry-visual-copy small {
+    color: rgba(55,35,56,.56);
+    font-size: .72rem;
+}
+
+.dream-entry-feature-pills {
+    position: absolute;
+    z-index: 5;
+    top: 28px;
+    left: 28px;
+    right: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.dream-entry-feature-pills span {
+    padding: 7px 10px;
+    border: 1px solid rgba(255,255,255,.68);
+    border-radius: 999px;
+    color: rgba(54,35,55,.68);
+    background: rgba(255,255,255,.5);
+    backdrop-filter: blur(10px);
+    font-size: .62rem;
+    font-weight: 700;
+}
+
+.dream-entry-signature {
+    right: 30px;
+    left: auto;
+    bottom: 27px;
+    font-size: .58rem;
+    opacity: .72;
+}
+
+.dream-entry-content {
+    align-self: center;
+    padding: clamp(38px, 5.4vw, 72px);
+}
+
+.dream-entry-topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 23px;
+}
+
+.dream-entry-kicker {
+    margin-bottom: 0;
+    background: rgba(var(--primary-rgb), .055);
+}
+
+.dream-entry-live-avatar {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(var(--primary-rgb), .15);
+    border-radius: 16px;
+    color: var(--primary);
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    background: linear-gradient(145deg, rgba(255,255,255,.94), rgba(var(--primary-rgb), .08));
+    box-shadow: 0 10px 28px rgba(var(--primary-rgb), .09);
+    transition: transform 180ms ease, background 180ms ease;
+}
+
+.dream-entry h1 {
+    max-width: 570px;
+    font-size: clamp(2.75rem, 5vw, 5rem);
+    line-height: .96;
+}
+
+.dream-entry-content > p {
+    max-width: 520px;
+    margin: 22px 0 28px;
+    color: #786b78;
+    line-height: 1.65;
+}
+
+.dream-entry-form {
+    max-width: 535px;
+}
+
+.dream-entry-field-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin: 0 3px 8px;
+    color: #4f3d4e;
+    font-size: .74rem;
+    font-weight: 800;
+}
+
+.dream-entry-field-label small {
+    color: #a18f9f;
+    font-size: .67rem;
+    font-weight: 700;
+}
+
+.dream-name-field {
+    min-height: 66px;
+    border-radius: 19px;
+    background: rgba(255,255,255,.88);
+    box-shadow: 0 10px 30px rgba(70,35,66,.055);
+}
+
+.dream-name-field:focus-within {
+    transform: none;
+    border-color: rgba(var(--primary-rgb), .52);
+    box-shadow: 0 0 0 4px rgba(var(--primary-rgb), .075), 0 14px 38px rgba(var(--primary-rgb), .09);
+}
+
+.dream-name-field.has-value {
+    border-color: rgba(var(--primary-rgb), .28);
+}
+
+.dream-name-field.is-invalid {
+    border-color: rgba(190,67,102,.46);
+    box-shadow: 0 0 0 4px rgba(190,67,102,.06);
+}
+
+.dream-name-field-icon {
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    border-radius: 10px;
+    color: var(--primary);
+    background: rgba(var(--primary-rgb), .08);
+}
+
+.dream-name-field input {
+    min-width: 0;
+    font-size: .95rem;
+    font-weight: 650;
+}
+
+.dream-name-field-check {
+    width: 25px;
+    height: 25px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    color: #fff;
+    background: var(--primary);
+    font-size: .68rem;
+    opacity: 0;
+    transform: scale(.72);
+    transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.dream-name-field.has-valid-value .dream-name-field-check {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.dream-entry-error {
+    min-height: 22px;
+    margin: 7px 4px 5px !important;
+}
+
+.dream-entry-button {
+    min-height: 62px;
+    border-radius: 19px;
+    box-shadow: 0 14px 34px rgba(var(--primary-rgb), .22);
+}
+
+.dream-entry-button:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 19px 42px rgba(var(--primary-rgb), .28);
+}
+
+.dream-entry-button:disabled {
+    cursor: not-allowed;
+    opacity: .48;
+    filter: saturate(.6);
+    box-shadow: none;
+}
+
+.dream-entry-button:not(:disabled):active {
+    transform: translateY(0) scale(.995);
+}
+
+
+.dream-entry-privacy {
+    max-width: 535px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-top: 18px;
+    padding: 12px 14px;
+    border: 1px solid rgba(77,49,77,.08);
+    border-radius: 16px;
+    color: #8c7c8a;
+    background: rgba(255,255,255,.48);
+}
+
+.dream-entry-privacy-icon {
+    width: 31px;
+    height: 31px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    border-radius: 10px;
+    color: var(--primary);
+    background: rgba(var(--primary-rgb), .07);
+}
+
+.dream-entry-privacy > span:last-child {
+    display: grid;
+    gap: 2px;
+}
+
+.dream-entry-privacy strong {
+    color: #675664;
+    font-size: .7rem;
+}
+
+.dream-entry-privacy small {
+    font-size: .66rem;
+    line-height: 1.35;
+}
+
+@media (max-width: 980px) {
+    .dream-entry-card {
+        grid-template-columns: minmax(0, .9fr) minmax(350px, 1.1fr);
+    }
+
+    .dream-entry-feature-pills span:nth-child(2) {
+        display: none;
+    }
+}
+
+@media (max-width: 760px) {
+    .dream-entry {
+        padding: 12px;
+        align-items: start;
+    }
+
+    .dream-entry-card {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        border-radius: 26px;
+    }
+
+    .dream-entry-visual {
+        min-height: 238px;
+    }
+
+    .dream-entry-visual::before {
+        inset: 10px;
+        border-radius: 20px;
+    }
+
+    .dream-entry-visual img {
+        width: min(34%, 142px);
+        max-height: 195px;
+        transform: translateY(-4px);
+        animation: none;
+    }
+
+    .dream-entry-product-halo {
+        width: min(44%, 190px);
+    }
+
+    .dream-entry-orbit {
+        width: 38%;
+    }
+
+    .dream-entry-orbit-b {
+        width: 28%;
+    }
+
+    .dream-entry-feature-pills {
+        top: 15px;
+        left: 16px;
+        right: 16px;
+    }
+
+    .dream-entry-feature-pills span {
+        padding: 5px 8px;
+        font-size: .55rem;
+    }
+
+    .dream-entry-feature-pills span:nth-child(2),
+    .dream-entry-feature-pills span:nth-child(3) {
+        display: none;
+    }
+
+    .dream-entry-visual-copy {
+        left: 18px;
+        right: 18px;
+        bottom: 19px;
+        max-width: 230px;
+    }
+
+    .dream-entry-visual-copy strong {
+        font-size: 1.08rem;
+    }
+
+    .dream-entry-visual-copy small,
+    .dream-entry-visual-badge,
+    .dream-entry-signature {
+        display: none;
+    }
+
+    .dream-entry-content {
+        padding: 27px 20px 24px;
+    }
+
+    .dream-entry-topline {
+        margin-bottom: 16px;
+    }
+
+    .dream-entry-live-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 13px;
+    }
+
+    .dream-entry h1 {
+        font-size: clamp(2.35rem, 11vw, 3.7rem);
+    }
+
+    .dream-entry-content > p {
+        margin: 16px 0 21px;
+        font-size: .88rem;
+    }
+
+    .dream-name-field,
+    .dream-entry-button {
+        min-height: 58px;
+        border-radius: 16px;
+    }
+
+    .dream-entry-privacy {
+        margin-top: 13px;
+        padding: 10px 12px;
+    }
+}
+
+@media (max-width: 430px) {
+    .dream-entry-visual {
+        min-height: 196px;
+    }
+
+    .dream-entry-visual img {
+        width: min(31%, 118px);
+    }
+
+    .dream-entry-visual-copy {
+        max-width: 205px;
+    }
+
+    .dream-entry-content {
+        padding: 23px 17px 20px;
+    }
+
+    .dream-entry-kicker {
+        padding: 6px 9px;
+        font-size: .59rem;
+    }
+
+    .dream-entry-privacy-icon {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dream-entry-visual img,
+    .dream-entry-product-halo,
+    .dream-entry-aurora,
+    .dream-entry-star,
+    .dream-entry-visual::after {
+        animation: none !important;
+    }
+}
+
+
+/* =========================================================
+   DREAM AMOR NO AR • V5.3 CLEAN LUXE
+   CORES • HIERARQUIA • PROFUNDIDADE • POLIMENTO
+========================================================= */
+
+:root {
+    --primary: #d96f9f;
+    --secondary: #8266d8;
+    --primary-rgb: 217, 111, 159;
+    --secondary-rgb: 130, 102, 216;
+
+    --dream-champagne: #e9c48f;
+    --dream-champagne-rgb: 233, 196, 143;
+    --dream-ink: #2f2330;
+    --dream-muted: #776974;
+    --dream-canvas: #fffafc;
+    --dream-canvas-2: #faf7fc;
+    --dream-lilac: #f3effb;
+    --dream-rose: #fff0f6;
+
+    --v53-border: rgba(66, 42, 63, .09);
+    --v53-border-strong: rgba(66, 42, 63, .14);
+    --v53-glass: rgba(255, 255, 255, .72);
+    --v53-glass-strong: rgba(255, 255, 255, .90);
+    --v53-shadow: 0 18px 60px rgba(57, 35, 53, .09);
+    --v53-shadow-deep: 0 28px 90px rgba(57, 35, 53, .14);
+    --v53-highlight: inset 0 1px 0 rgba(255,255,255,.82);
+    --v53-ease: cubic-bezier(.22,.8,.24,1);
+}
+
+html {
+    color-scheme: light;
+    accent-color: var(--primary);
+}
+
+body {
+    color: var(--dream-ink);
+    background:
+        radial-gradient(circle at 8% 2%, rgba(var(--primary-rgb), .105), transparent 29%),
+        radial-gradient(circle at 91% 8%, rgba(var(--secondary-rgb), .085), transparent 27%),
+        radial-gradient(circle at 62% 74%, rgba(var(--dream-champagne-rgb), .055), transparent 29%),
+        linear-gradient(180deg, var(--dream-canvas) 0%, #fff 46%, var(--dream-canvas-2) 100%);
+}
+
+::selection {
+    color: #fff;
+    background: rgba(var(--primary-rgb), .82);
+}
+
+:focus-visible {
+    outline: 2px solid rgba(var(--primary-rgb), .78);
+    outline-offset: 4px;
+}
+
+/* HEADER */
+#header {
+    border-bottom-color: transparent;
+    background: rgba(255,255,255,.64);
+    backdrop-filter: blur(18px) saturate(135%);
+    -webkit-backdrop-filter: blur(18px) saturate(135%);
+}
+
+#header.scrolled {
+    border-bottom: 1px solid rgba(67,43,64,.07);
+    background: rgba(255,255,255,.86);
+    box-shadow: 0 12px 40px rgba(56,36,52,.055);
+}
+
+.brand strong,
+.footer-brand strong {
+    letter-spacing: -.035em;
+}
+
+.menu a {
+    position: relative;
+    color: rgba(47,35,48,.70);
+}
+
+.menu a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    bottom: -7px;
+    height: 2px;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transition: left .22s ease, right .22s ease, opacity .22s ease;
+    opacity: 0;
+}
+
+.menu a:hover::after,
+.menu a.active::after {
+    left: 12%;
+    right: 12%;
+    opacity: 1;
+}
+
+/* HERO */
+.hero {
+    isolation: isolate;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 8% 2% auto;
+    height: 72%;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 74% 42%, rgba(var(--primary-rgb), .115), transparent 31%),
+        radial-gradient(circle at 82% 36%, rgba(var(--secondary-rgb), .075), transparent 26%),
+        radial-gradient(circle at 24% 54%, rgba(var(--dream-champagne-rgb), .06), transparent 24%);
+    filter: blur(10px);
+}
+
+.hero .eyebrow,
+.section-eyebrow {
+    color: color-mix(in srgb, var(--primary) 74%, #5c4557 26%);
+    letter-spacing: .17em;
+}
+
+.hero h1 {
+    color: #2d222e;
+    text-wrap: balance;
+    letter-spacing: -.048em;
+}
+
+.hero h1 span,
+.section-heading h2 em,
+.product-copy h2 em,
+.campaign-copy h2 em,
+.final-content h2 em {
+    color: transparent;
+    background: linear-gradient(115deg, var(--primary) 8%, var(--secondary) 72%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.hero-description,
+.section-heading > p,
+.product-copy > p,
+.campaign-copy > p {
+    color: var(--dream-muted);
+}
+
+.hero-product::before {
+    opacity: .78;
+    background:
+        radial-gradient(circle, rgba(var(--primary-rgb), .15), rgba(var(--secondary-rgb), .055) 42%, transparent 71%);
+}
+
+.hero-product img {
+    filter: drop-shadow(0 30px 44px rgba(76,43,67,.16));
+}
+
+.hero-facts {
+    border-color: rgba(var(--primary-rgb), .08);
+}
+
+.hero-facts div {
+    background: rgba(255,255,255,.50);
+    border-color: rgba(70,44,66,.07);
+    box-shadow: var(--v53-highlight);
+}
+
+/* BUTTONS */
+.primary-btn,
+.pill-btn,
+.dream-entry-button,
+#dreamResumeButton,
+#makeItDream {
+    border-color: transparent !important;
+    color: #fff !important;
+    background:
+        linear-gradient(118deg, color-mix(in srgb, var(--primary) 96%, white 4%), color-mix(in srgb, var(--secondary) 92%, var(--primary) 8%));
+    box-shadow:
+        0 14px 32px rgba(var(--primary-rgb), .20),
+        inset 0 1px 0 rgba(255,255,255,.22);
+}
+
+.primary-btn:hover,
+.pill-btn:hover,
+.dream-entry-button:not(:disabled):hover,
+#dreamResumeButton:hover,
+#makeItDream:hover {
+    box-shadow:
+        0 20px 42px rgba(var(--primary-rgb), .25),
+        inset 0 1px 0 rgba(255,255,255,.26);
+}
+
+.secondary-btn,
+.gallery-open {
+    color: #51414f;
+    border-color: rgba(69,45,65,.11);
+    background: rgba(255,255,255,.66);
+    box-shadow: var(--v53-highlight);
+    backdrop-filter: blur(12px);
+}
+
+.secondary-btn:hover,
+.gallery-open:hover {
+    color: var(--primary);
+    border-color: rgba(var(--primary-rgb), .20);
+    background: rgba(255,255,255,.88);
+}
+
+/* SECTION RHYTHM */
+.product-section,
+.notes-section,
+.experience-section,
+.gallery-section,
+.mood-section,
+.quiz-section,
+.final-section {
+    position: relative;
+}
+
+.product-section,
+.experience-section,
+.mood-section {
+    background:
+        linear-gradient(180deg, rgba(255,255,255,.40), rgba(255,255,255,.82));
+}
+
+.notes-section,
+.gallery-section,
+.quiz-section {
+    background:
+        linear-gradient(180deg, rgba(var(--secondary-rgb), .022), rgba(var(--primary-rgb), .025));
+}
+
+.section-heading h2,
+.product-copy h2,
+.campaign-copy h2,
+.final-content h2 {
+    color: #302432;
+    letter-spacing: -.042em;
+    text-wrap: balance;
+}
+
+/* CARDS */
+.product-point,
+.note-card,
+.moment-card,
+.mood-showcase-card,
+.creator-card,
+.quiz-card,
+.timeline-card,
+.scene-card {
+    border-color: var(--v53-border) !important;
+    background: rgba(255,255,255,.69) !important;
+    box-shadow: var(--v53-highlight), 0 9px 30px rgba(53,35,50,.045);
+    backdrop-filter: blur(14px) saturate(118%);
+    -webkit-backdrop-filter: blur(14px) saturate(118%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .product-point:hover,
+    .note-card:hover,
+    .moment-card:hover,
+    .mood-showcase-card:hover,
+    .creator-card:hover,
+    .scene-card:hover {
+        border-color: rgba(var(--primary-rgb), .16) !important;
+        box-shadow: var(--v53-highlight), var(--v53-shadow) !important;
+    }
+}
+
+.note-card::before,
+.mood-showcase-card::before {
+    opacity: .48;
+}
+
+/* PRODUCT / CAMPAIGN */
+.product-card,
+.campaign-card {
+    border-color: rgba(67,43,64,.08);
+    box-shadow: var(--v53-shadow);
+}
+
+.product-card::after,
+.campaign-card::after {
+    opacity: .62;
+}
+
+/* MOODS */
+.mood-button,
+.palette-button,
+.preset-button {
+    border-color: rgba(65,43,62,.095);
+    background: rgba(255,255,255,.68);
+}
+
+.mood-button.active,
+.palette-button.active,
+.preset-button.active {
+    border-color: rgba(var(--primary-rgb), .30);
+    background:
+        linear-gradient(135deg, rgba(var(--primary-rgb), .105), rgba(var(--secondary-rgb), .065)),
+        rgba(255,255,255,.82);
+    box-shadow: 0 10px 28px rgba(var(--primary-rgb), .10);
+}
+
+/* GALLERY */
+.gallery-item {
+    border: 1px solid rgba(67,43,64,.085);
+    background: rgba(255,255,255,.70);
+    box-shadow: 0 16px 48px rgba(52,34,49,.07);
+}
+
+.gallery-item.v5-coverflow-active {
+    box-shadow: 0 24px 72px rgba(55,34,51,.13);
+}
+
+.gallery-item::after {
+    background: linear-gradient(to top, rgba(34,23,34,.56), transparent 58%);
+}
+
+/* DREAM STUDIO */
+.settings-panel {
+    border-left: 1px solid rgba(67,43,64,.08);
+    background:
+        radial-gradient(circle at 90% 0%, rgba(var(--secondary-rgb), .08), transparent 26%),
+        radial-gradient(circle at 8% 12%, rgba(var(--primary-rgb), .08), transparent 28%),
+        rgba(255,252,254,.94);
+    box-shadow: -22px 0 70px rgba(46,30,44,.10);
+}
+
+.settings-panel::before {
+    opacity: .55;
+}
+
+.settings-group {
+    border: 1px solid rgba(65,43,62,.075);
+    background: rgba(255,255,255,.60);
+    box-shadow: var(--v53-highlight);
+}
+
+.setting-row {
+    border-color: rgba(66,43,63,.075);
+}
+
+.switch input:checked + span,
+.switch input:checked + .switch-slider {
+    background: linear-gradient(110deg, var(--primary), var(--secondary));
+}
+
+.studio-v5-tabs button[aria-selected="true"] {
+    color: #fff;
+    border-color: transparent;
+    background: linear-gradient(110deg, var(--primary), var(--secondary));
+    box-shadow: 0 10px 26px rgba(var(--primary-rgb), .17);
+}
+
+.studio-v5-preview {
+    background:
+        radial-gradient(circle at 20% 20%, rgba(var(--primary-rgb), .10), transparent 35%),
+        linear-gradient(135deg, rgba(255,255,255,.78), rgba(var(--secondary-rgb), .035));
+}
+
+/* PROFILE */
+.dream-profile-backdrop {
+    background: rgba(32,21,31,.36);
+    backdrop-filter: blur(10px);
+}
+
+.dream-profile-card {
+    border: 1px solid rgba(255,255,255,.82);
+    background:
+        radial-gradient(circle at 85% 8%, rgba(var(--secondary-rgb), .09), transparent 28%),
+        radial-gradient(circle at 14% 4%, rgba(var(--primary-rgb), .10), transparent 26%),
+        rgba(255,252,254,.95);
+    box-shadow: 0 36px 120px rgba(40,25,38,.19);
+}
+
+.dream-profile-avatar {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    box-shadow: 0 14px 34px rgba(var(--primary-rgb), .20);
+}
+
+.dream-profile-stats article,
+.dream-profile-achievement {
+    border: 1px solid rgba(66,43,63,.075);
+    background: rgba(255,255,255,.68);
+}
+
+.dream-profile-achievement.unlocked {
+    border-color: rgba(var(--primary-rgb), .16);
+    background: linear-gradient(135deg, rgba(var(--primary-rgb), .07), rgba(var(--secondary-rgb), .035));
+}
+
+/* LOGIN V5.3 */
+.dream-entry {
+    background:
+        radial-gradient(circle at 9% 15%, rgba(var(--primary-rgb), .14), transparent 31%),
+        radial-gradient(circle at 91% 10%, rgba(var(--secondary-rgb), .105), transparent 28%),
+        radial-gradient(circle at 50% 96%, rgba(var(--dream-champagne-rgb), .07), transparent 28%),
+        linear-gradient(145deg, #fffafd 0%, #fbf8fd 52%, #f7f5fb 100%);
+}
+
+.dream-entry-card {
+    border-color: rgba(255,255,255,.90);
+    background: rgba(255,255,255,.73);
+    box-shadow:
+        0 36px 105px rgba(60,38,57,.13),
+        0 2px 10px rgba(60,38,57,.045),
+        inset 0 1px 0 rgba(255,255,255,.94);
+}
+
+.dream-entry-visual {
+    background:
+        radial-gradient(circle at 50% 39%, rgba(255,255,255,.94), transparent 27%),
+        radial-gradient(circle at 46% 45%, rgba(var(--primary-rgb), .16), transparent 48%),
+        radial-gradient(circle at 72% 24%, rgba(var(--dream-champagne-rgb), .065), transparent 28%),
+        linear-gradient(155deg, rgba(var(--primary-rgb), .09), rgba(var(--secondary-rgb), .07));
+}
+
+.dream-entry-visual-copy strong {
+    color: #342735;
+}
+
+.dream-entry-kicker,
+.dream-entry-visual-badge {
+    color: color-mix(in srgb, var(--primary) 76%, #4d3948 24%);
+    background: rgba(255,255,255,.70);
+    border-color: rgba(var(--primary-rgb), .14);
+}
+
+.dream-entry h1 {
+    color: #2d222e;
+    letter-spacing: -.048em;
+}
+
+.dream-entry h1 em {
+    color: transparent;
+    background: linear-gradient(115deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.dream-name-field {
+    border-color: rgba(66,43,63,.11);
+    background: rgba(255,255,255,.76);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.88);
+}
+
+.dream-name-field:focus-within {
+    border-color: rgba(var(--primary-rgb), .42);
+    box-shadow:
+        0 0 0 4px rgba(var(--primary-rgb), .08),
+        inset 0 1px 0 rgba(255,255,255,.90);
+}
+
+.dream-name-field-check {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.dream-entry-privacy {
+    border-color: rgba(66,43,63,.075);
+    background: rgba(255,255,255,.54);
+}
+
+/* FOOTER */
+.footer {
+    background:
+        radial-gradient(circle at 15% 0%, rgba(var(--primary-rgb), .07), transparent 32%),
+        radial-gradient(circle at 86% 0%, rgba(var(--secondary-rgb), .055), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,.85), rgba(249,246,250,.98));
+    border-top: 1px solid rgba(67,43,64,.07);
+}
+
+.footer-creators {
+    border-top-color: rgba(67,43,64,.07);
+}
+
+.creator-card {
+    background: rgba(255,255,255,.66) !important;
+}
+
+.footer-bottom {
+    color: rgba(73,56,70,.62);
+}
+
+/* DARK MODE */
+body.dark {
+    --dream-ink: #f3edf3;
+    --dream-muted: #b9aeb8;
+    --v53-border: rgba(255,255,255,.08);
+    --v53-border-strong: rgba(255,255,255,.13);
+    color: #f3edf3;
+    background:
+        radial-gradient(circle at 10% 5%, rgba(var(--primary-rgb), .13), transparent 30%),
+        radial-gradient(circle at 90% 8%, rgba(var(--secondary-rgb), .11), transparent 28%),
+        linear-gradient(180deg, #171218, #1c161d 55%, #171217);
+}
+
+body.dark #header,
+body.dark #header.scrolled {
+    border-bottom-color: rgba(255,255,255,.055);
+    background: rgba(23,18,24,.78);
+}
+
+body.dark .menu a {
+    color: rgba(244,237,243,.72);
+}
+
+body.dark .section-heading h2,
+body.dark .product-copy h2,
+body.dark .campaign-copy h2,
+body.dark .final-content h2,
+body.dark .hero h1 {
+    color: #f7f1f7;
+}
+
+body.dark .product-section,
+body.dark .experience-section,
+body.dark .mood-section,
+body.dark .notes-section,
+body.dark .gallery-section,
+body.dark .quiz-section {
+    background: rgba(255,255,255,.005);
+}
+
+body.dark .product-point,
+body.dark .note-card,
+body.dark .moment-card,
+body.dark .mood-showcase-card,
+body.dark .creator-card,
+body.dark .scene-card,
+body.dark .settings-group,
+body.dark .setting-row,
+body.dark .dream-profile-stats article,
+body.dark .dream-profile-achievement,
+body.dark .gallery-item {
+    border-color: rgba(255,255,255,.07) !important;
+    background: rgba(255,255,255,.035) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.035);
+}
+
+body.dark .settings-panel,
+body.dark .dream-profile-card {
+    border-color: rgba(255,255,255,.07);
+    background:
+        radial-gradient(circle at 88% 0%, rgba(var(--secondary-rgb), .12), transparent 28%),
+        radial-gradient(circle at 10% 8%, rgba(var(--primary-rgb), .10), transparent 28%),
+        rgba(24,18,25,.96);
+}
+
+body.dark .secondary-btn,
+body.dark .gallery-open,
+body.dark .palette-button,
+body.dark .preset-button,
+body.dark .mood-button {
+    color: #eee7ed;
+    border-color: rgba(255,255,255,.08);
+    background: rgba(255,255,255,.045);
+}
+
+body.dark .footer {
+    border-top-color: rgba(255,255,255,.06);
+    background:
+        radial-gradient(circle at 12% 0%, rgba(var(--primary-rgb), .07), transparent 32%),
+        linear-gradient(180deg, #191419, #151115);
+}
+
+/* MOBILE */
+@media (max-width: 760px) {
+    .hero::before {
+        inset: 6% -18% auto;
+        height: 65%;
+    }
+
+    .hero h1,
+    .section-heading h2,
+    .product-copy h2,
+    .campaign-copy h2,
+    .final-content h2 {
+        letter-spacing: -.035em;
+    }
+
+    .product-point,
+    .note-card,
+    .moment-card,
+    .mood-showcase-card,
+    .creator-card,
+    .gallery-item {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    .dream-entry-card {
+        box-shadow: 0 20px 55px rgba(58,37,55,.11);
+    }
+}
+
+@media (max-width: 430px) {
+    .dream-entry-content {
+        padding-inline: 18px;
+    }
+
+    .dream-entry h1 {
+        font-size: clamp(2.2rem, 11vw, 3rem);
+    }
+
+    .primary-btn,
+    .secondary-btn,
+    .pill-btn {
+        border-radius: 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .menu a::after {
+        transition: none !important;
+    }
+}
+
+/* =========================================================
+   FIM • DREAM AMOR NO AR V5.3 CLEAN LUXE
+========================================================= */
+
+/* =========================================================
+   DREAM AMOR NO AR • V5.4 PERFECT EDITION
+   POLIMENTO • MOBILE • GALERIA • FLAGS • ESTABILIDADE
+========================================================= */
+
+:root {
+    --primary: #cf6f9f;
+    --secondary: #8068c7;
+    --primary-rgb: 207, 111, 159;
+    --secondary-rgb: 128, 104, 199;
+
+    --v54-ink: #2d232e;
+    --v54-muted: #756a74;
+    --v54-line: rgba(58, 41, 57, .085);
+    --v54-line-strong: rgba(58, 41, 57, .14);
+    --v54-surface: rgba(255, 255, 255, .72);
+    --v54-surface-strong: rgba(255, 255, 255, .91);
+    --v54-shadow-soft: 0 14px 46px rgba(53, 35, 50, .065);
+    --v54-shadow-card: 0 24px 70px rgba(53, 35, 50, .105);
+    --v54-ease: cubic-bezier(.2, .78, .22, 1);
+    --v54-app-height: 100dvh;
+}
+
+html {
+    overflow-x: clip;
+    scrollbar-gutter: stable;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    overflow-x: clip;
+    min-height: 100svh;
+    min-height: var(--v54-app-height);
+    color: var(--v54-ink);
+}
+
+button,
+a,
+input,
+select,
+textarea,
+[role="button"] {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+    touch-action: manipulation;
+}
+
+img {
+    max-width: 100%;
+}
+
+::selection {
+    color: #fff;
+    background: color-mix(in srgb, var(--primary) 86%, #000 14%);
+}
+
+:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--primary) 82%, #fff 18%);
+    outline-offset: 4px;
+}
+
+/* ---------------------------------------------------------
+   PALETA / HIERARQUIA
+--------------------------------------------------------- */
+
+body {
+    background:
+        radial-gradient(circle at 8% 2%, rgba(var(--primary-rgb), .085), transparent 27%),
+        radial-gradient(circle at 91% 7%, rgba(var(--secondary-rgb), .065), transparent 25%),
+        radial-gradient(circle at 50% 82%, rgba(233, 196, 143, .045), transparent 27%),
+        linear-gradient(180deg, #fffafd 0%, #ffffff 47%, #faf8fc 100%);
+}
+
+.section-eyebrow,
+.hero .eyebrow {
+    color: color-mix(in srgb, var(--primary) 72%, #594a57 28%);
+}
+
+.hero h1 span,
+.section-heading h2 em,
+.product-copy h2 em,
+.campaign-copy h2 em,
+.final-content h2 em,
+.dream-entry h1 em {
+    background: linear-gradient(118deg, #d878a8 4%, #b372b6 48%, #786bc0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.primary-btn,
+.pill-btn,
+.dream-entry-button,
+#dreamResumeButton,
+#makeItDream {
+    background: linear-gradient(120deg, #ce719f, #a36fb7 52%, #7e6bc4) !important;
+    box-shadow:
+        0 14px 34px rgba(133, 77, 117, .17),
+        inset 0 1px 0 rgba(255, 255, 255, .24) !important;
+}
+
+/* ---------------------------------------------------------
+   BOTÕES SEM "PULO" / SHIFT
+--------------------------------------------------------- */
+
+.primary-btn,
+.secondary-btn,
+.pill-btn,
+.favorite-btn,
+.gallery-open,
+.gallery-control,
+.gallery-autoplay,
+.mood-button,
+.preset-button,
+.language-button,
+.palette-button,
+.font-size-buttons button,
+.studio-v5-tabs button,
+.reset-settings,
+.settings-close,
+.dream-entry-button,
+#studioV5Surprise,
+#makeItDream,
+#dreamResumeButton {
+    transform-origin: center;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    translate: 0 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .primary-btn:hover,
+    .secondary-btn:hover,
+    .pill-btn:hover,
+    .gallery-open:hover,
+    #studioV5Surprise:hover,
+    #makeItDream:hover,
+    #dreamResumeButton:hover {
+        transform: translate3d(0, -2px, 0) !important;
+    }
+
+    .primary-btn:active,
+    .secondary-btn:active,
+    .pill-btn:active,
+    .gallery-open:active,
+    .gallery-control:active,
+    .gallery-autoplay:active,
+    .preset-button:active,
+    .language-button:active,
+    .mood-button:active,
+    .palette-button:active,
+    #studioV5Surprise:active,
+    #makeItDream:active,
+    #dreamResumeButton:active,
+    .dream-entry-button:not(:disabled):active {
+        transform: translate3d(0, 0, 0) scale(.985) !important;
+    }
+}
+
+@media (hover: none), (pointer: coarse) {
+    .primary-btn:hover,
+    .secondary-btn:hover,
+    .pill-btn:hover,
+    .favorite-btn:hover,
+    .gallery-open:hover,
+    .gallery-control:hover,
+    .gallery-autoplay:hover,
+    .mood-button:hover,
+    .preset-button:hover,
+    .language-button:hover,
+    .palette-button:hover,
+    .font-size-buttons button:hover,
+    .dream-entry-button:hover,
+    #studioV5Surprise:hover,
+    #makeItDream:hover,
+    #dreamResumeButton:hover,
+    .primary-btn:active,
+    .secondary-btn:active,
+    .pill-btn:active,
+    .favorite-btn:active,
+    .gallery-open:active,
+    .gallery-control:active,
+    .gallery-autoplay:active,
+    .mood-button:active,
+    .preset-button:active,
+    .language-button:active,
+    .palette-button:active,
+    .font-size-buttons button:active,
+    .dream-entry-button:not(:disabled):active,
+    #studioV5Surprise:active,
+    #makeItDream:active,
+    #dreamResumeButton:active {
+        transform: none !important;
+    }
+}
+
+/* ---------------------------------------------------------
+   BANDEIRAS SEM EMOJI — FUNCIONA NO WINDOWS / NOTEBOOK
+--------------------------------------------------------- */
+
+.language-button {
+    min-width: 0;
+    isolation: isolate;
+}
+
+.language-flag {
+    position: relative;
+    width: 30px;
+    height: 21px;
+    display: block;
+    flex: 0 0 30px;
+    overflow: hidden;
+    border-radius: 5px;
+    font-size: 0 !important;
+    line-height: 0;
+    background: transparent;
+    box-shadow:
+        0 0 0 1px rgba(45, 34, 44, .09),
+        0 5px 12px rgba(45, 34, 44, .08);
+}
+
+.language-flag.flag-br {
+    background: #009b3a;
+}
+
+.language-flag.flag-br::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    left: 7.5px;
+    top: 3px;
+    background: #ffdf00;
+    transform: rotate(45deg);
+}
+
+.language-flag.flag-br::after {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    left: 10.5px;
+    top: 6px;
+    border-radius: 50%;
+    background: #002776;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.14);
+}
+
+.language-flag.flag-us {
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            #b22234 0 1.62px,
+            #fff 1.62px 3.24px
+        );
+}
+
+.language-flag.flag-us::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 13px;
+    height: 11.5px;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    background: #3c3b6e;
+    font-size: 5px;
+    line-height: 1;
+}
+
+.language-button.active .language-flag {
+    transform: none !important;
+    box-shadow:
+        0 0 0 2px rgba(var(--primary-rgb), .18),
+        0 5px 14px rgba(45, 34, 44, .09);
+}
+
+/* ---------------------------------------------------------
+   HEADER / MENU
+--------------------------------------------------------- */
+
+#header {
+    border: 1px solid rgba(255,255,255,.68);
+    box-shadow: 0 8px 34px rgba(50, 34, 48, .045);
+}
+
+#header.scrolled {
+    box-shadow: 0 12px 42px rgba(50, 34, 48, .065);
+}
+
+.menu a {
+    white-space: nowrap;
+}
+
+/* ---------------------------------------------------------
+   LOGIN PREMIUM + ESTÁVEL
+--------------------------------------------------------- */
+
+.dream-entry {
+    min-height: 100svh;
+    min-height: var(--v54-app-height);
+}
+
+.dream-entry-card {
+    overflow: clip;
+}
+
+.dream-name-field,
+.dream-entry-button {
+    width: 100%;
+}
+
+.dream-entry-button {
+    contain: layout paint;
+}
+
+.dream-entry-visual img {
+    object-fit: contain;
+}
+
+/* ---------------------------------------------------------
+   HERO / PRODUTO
+--------------------------------------------------------- */
+
+.hero-product img,
+.product-card-visual img,
+.product-modal-image img,
+.dream-cinematic-product img {
+    object-fit: contain;
+}
+
+.hero-product img {
+    filter: drop-shadow(0 30px 44px rgba(76,43,67,.13));
+}
+
+/* ---------------------------------------------------------
+   GALERIA V5.4 — 11 IMAGENS
+--------------------------------------------------------- */
+
+.gallery-section {
+    overflow: clip;
+}
+
+.gallery-header {
+    align-items: end;
+}
+
+.gallery-header > div:first-child {
+    max-width: 760px;
+}
+
+.gallery-track {
+    gap: clamp(14px, 1.6vw, 22px);
+    margin-inline: calc((100vw - min(calc(100% - 40px), var(--container))) / -2);
+    padding-inline: max(20px, calc((100vw - var(--container)) / 2));
+    padding-top: 8px;
+    padding-bottom: 30px;
+    scroll-padding-inline: max(20px, calc((100vw - var(--container)) / 2));
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+.gallery-item {
+    flex: 0 0 clamp(340px, 62vw, 760px);
+    min-height: 0 !important;
+    aspect-ratio: 16 / 9;
+    scroll-snap-align: center !important;
+    scroll-snap-stop: always;
+    border-radius: clamp(24px, 2.6vw, 36px);
+    opacity: .62;
+    filter: saturate(.84) brightness(.94);
+    box-shadow: 0 16px 46px rgba(52, 34, 49, .065);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    min-height: 0 !important;
+    object-fit: cover;
+    object-position: center;
+}
+
+.gallery-item.v5-coverflow-active {
+    opacity: 1;
+    filter: none;
+    transform: translateY(-3px) scale(1.012) !important;
+    box-shadow: 0 26px 76px rgba(52,34,49,.13);
+}
+
+.gallery-item.v5-coverflow-left,
+.gallery-item.v5-coverflow-right {
+    transform: scale(.975) !important;
+}
+
+.gallery-item-overlay {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    padding: clamp(18px, 2.2vw, 30px);
+}
+
+.gallery-item-overlay h3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.gallery-open {
+    min-width: 94px;
+    white-space: nowrap;
+}
+
+.gallery-dots {
+    max-width: min(100%, 440px);
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+    padding: 5px 2px;
+}
+
+.gallery-dots::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery-dot {
+    flex: 0 0 auto;
+}
+
+.gallery-counter {
+    min-width: 84px;
+    justify-content: center;
+    font-variant-numeric: tabular-nums;
+}
+
+.lightbox-content img {
+    object-fit: contain;
+    background: rgba(255,255,255,.02);
+}
+
+/* ---------------------------------------------------------
+   DREAM STUDIO
+--------------------------------------------------------- */
+
+.settings-panel {
+    overscroll-behavior: contain;
+}
+
+.settings-scroll {
+    overscroll-behavior-y: contain;
+}
+
+.studio-v5-tabs {
+    scrollbar-width: none;
+}
+
+.studio-v5-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.settings-group.v5-hidden-group {
+    display: none !important;
+}
+
+.focus-studio-row {
+    border-color: rgba(var(--primary-rgb), .09);
+}
+
+/* ---------------------------------------------------------
+   MODAIS / PERFIL
+--------------------------------------------------------- */
+
+.modal-card,
+.dream-profile-card,
+.settings-panel {
+    overscroll-behavior: contain;
+}
+
+body.modal-open,
+body.settings-open,
+body.v5-profile-open,
+body.dream-entry-open {
+    overscroll-behavior: none;
+}
+
+/* ---------------------------------------------------------
+   MOBILE — CORREÇÕES DE LAYOUT
+--------------------------------------------------------- */
+
+@media (max-width: 980px) {
+    .gallery-track {
+        margin-inline: -12px;
+        padding-inline: 12px;
+        scroll-padding-inline: 12px;
+    }
+
+    .gallery-item {
+        flex-basis: min(84vw, 680px);
+    }
+}
+
+@media (max-width: 760px) {
+    :root {
+        --header-height: 66px;
+    }
+
+    body {
+        min-width: 0;
+    }
+
+    #header {
+        width: calc(100% - 16px);
+        max-width: none;
+    }
+
+    .header-inner {
+        min-width: 0;
+        gap: 8px;
+    }
+
+    .brand {
+        min-width: 0;
+    }
+
+    .brand-sub {
+        max-width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .menu {
+        max-height: calc(var(--v54-app-height) - 96px);
+        padding-bottom: max(16px, env(safe-area-inset-bottom));
+    }
+
+    .hero {
+        min-height: 100svh;
+        min-height: var(--v54-app-height);
+    }
+
+    .hero-container {
+        min-width: 0;
+    }
+
+    .hero-copy,
+    .hero-product,
+    .product-copy,
+    .campaign-copy,
+    .settings-panel,
+    .settings-scroll,
+    .dream-profile-card {
+        min-width: 0;
+    }
+
+    .hero-product {
+        min-height: clamp(390px, 96vw, 520px);
+    }
+
+    .hero-product img {
+        max-height: clamp(390px, 98vw, 520px);
+    }
+
+    /* Corrige o botão de borrifar que pulava para o lado no toque. */
+    .spray-button,
+    body[data-preset-mode="soft"] .spray-button,
+    body[data-preset-mode="minimal"] .spray-button,
+    body[data-preset-mode="performance"] .spray-button,
+    body[data-preset-mode="cinematic"] .spray-button,
+    body[data-preset-mode="aurora"] .spray-button {
+        position: absolute;
+        left: 50%;
+        right: auto !important;
+        bottom: max(4%, env(safe-area-inset-bottom));
+        margin: 0;
+        transform: translate3d(-50%, 0, 0) !important;
+        transform-origin: center;
+    }
+
+    .spray-button:hover,
+    .spray-button:active {
+        transform: translate3d(-50%, 0, 0) !important;
+    }
+
+    .gallery-header {
+        gap: 18px;
+    }
+
+    .gallery-controls {
+        flex: 0 0 auto;
+    }
+
+    .gallery-track {
+        margin-inline: -14px;
+        padding-inline: 14px;
+        scroll-padding-inline: 14px;
+        gap: 12px;
+    }
+
+    .gallery-item {
+        flex: 0 0 calc(100vw - 40px) !important;
+        width: calc(100vw - 40px);
+        min-width: 0 !important;
+        aspect-ratio: 4 / 3;
+        border-radius: 24px;
+        opacity: .72;
+    }
+
+    .gallery-item.v5-coverflow-active,
+    .gallery-item.v5-coverflow-left,
+    .gallery-item.v5-coverflow-right {
+        transform: none !important;
+    }
+
+    .gallery-item-overlay {
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: center;
+        gap: 10px 12px;
+        padding: 18px;
+    }
+
+    .gallery-item-overlay h3 {
+        font-size: clamp(1.45rem, 7vw, 2rem);
+    }
+
+    .gallery-open {
+        grid-column: 1 / -1;
+        width: 100%;
+        min-height: 44px;
+    }
+
+    .gallery-footer {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+    }
+
+    .gallery-autoplay {
+        grid-column: 1 / -1;
+        justify-self: stretch;
+        width: 100%;
+        min-height: 44px;
+    }
+
+    .gallery-dots {
+        width: 100%;
+        max-width: none;
+    }
+
+    .settings-panel {
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: var(--v54-app-height) !important;
+        max-height: var(--v54-app-height) !important;
+        border-radius: 0 !important;
+        border: 0 !important;
+        padding-top: env(safe-area-inset-top);
+    }
+
+    .settings-head {
+        position: sticky;
+        top: 0;
+        z-index: 8;
+        background: color-mix(in srgb, var(--background) 88%, transparent 12%);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+    }
+
+    .studio-v5-tabs {
+        position: sticky;
+        top: 0;
+        z-index: 6;
+        display: flex !important;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 10px 2px 12px;
+        background: color-mix(in srgb, var(--background) 88%, transparent 12%);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+    }
+
+    .studio-v5-tabs button {
+        flex: 0 0 auto;
+        min-height: 42px;
+        padding-inline: 14px;
+        white-space: nowrap;
+    }
+
+    .settings-scroll {
+        min-height: 0;
+        height: calc(var(--v54-app-height) - 84px - env(safe-area-inset-top));
+        overflow-y: auto;
+        padding-bottom: max(30px, calc(env(safe-area-inset-bottom) + 20px));
+    }
+
+    .language-buttons {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .language-button {
+        justify-content: center !important;
+        min-width: 0;
+    }
+
+    .modal {
+        align-items: flex-end;
+    }
+
+    .modal-card {
+        width: 100%;
+        max-height: calc(var(--v54-app-height) - max(8px, env(safe-area-inset-top)) - max(8px, env(safe-area-inset-bottom)));
+        border-radius: 26px 26px 18px 18px;
+    }
+
+    .dream-profile-card {
+        width: 100%;
+        max-width: none;
+        max-height: var(--v54-app-height);
+        padding-bottom: max(22px, env(safe-area-inset-bottom));
+    }
+
+    .dream-entry {
+        min-height: var(--v54-app-height);
+        height: var(--v54-app-height);
+        overflow-y: auto;
+        overscroll-behavior-y: contain;
+        padding:
+            max(10px, env(safe-area-inset-top))
+            max(10px, env(safe-area-inset-right))
+            max(10px, env(safe-area-inset-bottom))
+            max(10px, env(safe-area-inset-left));
+    }
+
+    .dream-entry-card {
+        min-height: min(760px, calc(var(--v54-app-height) - 20px));
+    }
+
+    .dream-entry input,
+    .settings-panel input,
+    .settings-panel select,
+    .settings-panel textarea {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 520px) {
+    .section-container,
+    .hero-container,
+    .campaign-card {
+        width: calc(100% - 24px);
+    }
+
+    .gallery-track {
+        margin-inline: -12px;
+        padding-inline: 12px;
+        scroll-padding-inline: 12px;
+    }
+
+    .gallery-item {
+        flex-basis: calc(100vw - 24px) !important;
+        width: calc(100vw - 24px);
+        aspect-ratio: 5 / 4;
+    }
+
+    .gallery-controls {
+        gap: 8px;
+    }
+
+    .gallery-control {
+        width: 44px;
+        height: 44px;
+    }
+
+    .language-buttons {
+        grid-template-columns: 1fr 1fr !important;
+    }
+
+    .language-label {
+        font-size: .78rem;
+    }
+
+    .language-flag {
+        width: 28px;
+        height: 20px;
+        flex-basis: 28px;
+    }
+
+    .dream-entry-card {
+        border-radius: 24px;
+    }
+
+    .dream-entry-content {
+        padding-inline: 16px;
+    }
+}
+
+@media (max-width: 380px) {
+    .language-buttons {
+        grid-template-columns: 1fr !important;
+    }
+
+    .language-button {
+        justify-content: flex-start !important;
+    }
+
+    .gallery-item-overlay > span {
+        display: none;
+    }
+
+    .gallery-item-overlay h3 {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gallery-track {
+        scroll-behavior: auto !important;
+    }
+
+    .gallery-item,
+    .gallery-item img,
+    .spray-button,
+    .language-flag {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+body.dark {
+    --v54-ink: #f5eff5;
+    --v54-muted: #c0b5bf;
+    --v54-line: rgba(255,255,255,.075);
+    --v54-line-strong: rgba(255,255,255,.13);
+}
+
+body.dark .language-flag {
+    box-shadow: 0 0 0 1px rgba(255,255,255,.13), 0 5px 13px rgba(0,0,0,.18);
+}
+
+body.dark .gallery-item {
+    border-color: rgba(255,255,255,.07);
+    background: rgba(255,255,255,.035);
+}
+
+/* =========================================================
+   FIM • DREAM AMOR NO AR V5.4 PERFECT EDITION
+========================================================= */
