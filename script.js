@@ -6025,7 +6025,7 @@ document.addEventListener(
 
             }
 
-        ];
+        };
 
 
         let quizCurrentQuestion =
