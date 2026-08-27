@@ -7068,7 +7068,7 @@ document.addEventListener(
 
             }
 
-        ];
+        };
 
 
         function renderPaletteButtons(
