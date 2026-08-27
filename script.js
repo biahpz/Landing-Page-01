@@ -6141,7 +6141,7 @@ document.addEventListener(
 
             }
 
-        ];
+        };
 
 
         let quizCurrentQuestion =
