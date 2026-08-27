@@ -8,7 +8,7 @@
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     >
 
     <meta
@@ -53,7 +53,7 @@
 
     <link
         rel="stylesheet"
-        href="./style.css?v=2.0"
+        href="./style.css?v=3.1"
     >
 
 </head>
@@ -3315,7 +3315,8 @@
                             type="button"
                             data-language="pt-BR"
                         >
-                            🇧🇷 Português
+                            <span class="language-flag" aria-hidden="true">🇧🇷</span>
+                            <span class="language-label">Português</span>
                         </button>
 
 
@@ -3324,7 +3325,8 @@
                             type="button"
                             data-language="en-US"
                         >
-                            🇺🇸 English
+                            <span class="language-flag" aria-hidden="true">🇺🇸</span>
+                            <span class="language-label">English</span>
                         </button>
 
                     </div>
@@ -3345,67 +3347,89 @@
 
                     <div class="preset-grid">
 
-
                         <button
                             class="preset-button active"
                             type="button"
                             data-preset="dream"
+                            aria-pressed="true"
                         >
-
-                            <span>
-                                ♡
+                            <span class="preset-icon" aria-hidden="true">♡</span>
+                            <span class="preset-copy">
+                                <strong>Dream</strong>
+                                <small>Equilibrado • rosa & lilás</small>
                             </span>
-
-                            Dream
-
                         </button>
-
 
                         <button
                             class="preset-button"
                             type="button"
                             data-preset="cinematic"
+                            aria-pressed="false"
                         >
-
-                            <span>
-                                ◉
+                            <span class="preset-icon" aria-hidden="true">◉</span>
+                            <span class="preset-copy">
+                                <strong>Cinemático</strong>
+                                <small>Escuro • intenso • imersivo</small>
                             </span>
-
-                            Cinemático
-
                         </button>
-
 
                         <button
                             class="preset-button"
                             type="button"
                             data-preset="soft"
+                            aria-pressed="false"
                         >
-
-                            <span>
-                                ☁
+                            <span class="preset-icon" aria-hidden="true">☁</span>
+                            <span class="preset-copy">
+                                <strong>Suave</strong>
+                                <small>Pastel • leve • delicado</small>
                             </span>
-
-                            Suave
-
                         </button>
-
 
                         <button
                             class="preset-button"
                             type="button"
                             data-preset="performance"
+                            aria-pressed="false"
                         >
-
-                            <span>
-                                ⚡
+                            <span class="preset-icon" aria-hidden="true">⚡</span>
+                            <span class="preset-copy">
+                                <strong>Performance</strong>
+                                <small>Rápido • limpo • sem excessos</small>
                             </span>
+                        </button>
 
-                            Performance
+                        <button
+                            class="preset-button"
+                            type="button"
+                            data-preset="aurora"
+                            aria-pressed="false"
+                        >
+                            <span class="preset-icon" aria-hidden="true">✦</span>
+                            <span class="preset-copy">
+                                <strong>Aurora</strong>
+                                <small>Vibrante • mágico • colorido</small>
+                            </span>
+                        </button>
 
+                        <button
+                            class="preset-button"
+                            type="button"
+                            data-preset="minimal"
+                            aria-pressed="false"
+                        >
+                            <span class="preset-icon" aria-hidden="true">◌</span>
+                            <span class="preset-copy">
+                                <strong>Minimal</strong>
+                                <small>Editorial • calmo • direto</small>
+                            </span>
                         </button>
 
                     </div>
+
+                    <p class="preset-status" id="presetStatus" aria-live="polite">
+                        Dream • equilíbrio entre efeitos, cores e movimento.
+                    </p>
 
                 </section>
 
@@ -3463,6 +3487,82 @@
 
                         <input
                             id="cleanToggle"
+                            type="checkbox"
+                        >
+
+                        <span class="toggle-ui"></span>
+
+                    </label>
+
+
+                    <label class="setting-row">
+
+                        <div>
+
+                            <strong>
+                                Efeito vidro
+                            </strong>
+
+                            <small>
+                                Transparência e desfoque nos painéis
+                            </small>
+
+                        </div>
+
+
+                        <input
+                            id="glassToggle"
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span class="toggle-ui"></span>
+
+                    </label>
+
+
+                    <label class="setting-row">
+
+                        <div>
+
+                            <strong>
+                                Interface compacta
+                            </strong>
+
+                            <small>
+                                Reduz espaços e deixa tudo mais direto
+                            </small>
+
+                        </div>
+
+
+                        <input
+                            id="compactToggle"
+                            type="checkbox"
+                        >
+
+                        <span class="toggle-ui"></span>
+
+                    </label>
+
+
+                    <label class="setting-row">
+
+                        <div>
+
+                            <strong>
+                                Contraste extra
+                            </strong>
+
+                            <small>
+                                Destaca textos, bordas e controles
+                            </small>
+
+                        </div>
+
+
+                        <input
+                            id="contrastToggle"
                             type="checkbox"
                         >
 
@@ -3715,6 +3815,32 @@
                         <div>
 
                             <strong>
+                                Brilho ambiente
+                            </strong>
+
+                            <small>
+                                Luzes, halos e atmosfera ao redor do conteúdo
+                            </small>
+
+                        </div>
+
+
+                        <input
+                            id="ambientGlowToggle"
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span class="toggle-ui"></span>
+
+                    </label>
+
+
+                    <label class="setting-row">
+
+                        <div>
+
+                            <strong>
                                 Movimento 3D
                             </strong>
 
@@ -3761,6 +3887,66 @@
                             step="1"
                             value="5"
                             aria-label="Intensidade do movimento 3D"
+                        >
+
+                    </div>
+
+
+                    <!-- BRILHO -->
+
+                    <div class="range-setting">
+
+                        <div>
+
+                            <strong>
+                                Intensidade do brilho
+                            </strong>
+
+                            <span id="glowValue">
+                                6
+                            </span>
+
+                        </div>
+
+
+                        <input
+                            type="range"
+                            id="glowRange"
+                            min="0"
+                            max="10"
+                            step="1"
+                            value="6"
+                            aria-label="Intensidade do brilho ambiente"
+                        >
+
+                    </div>
+
+
+                    <!-- VIDRO -->
+
+                    <div class="range-setting">
+
+                        <div>
+
+                            <strong>
+                                Desfoque do vidro
+                            </strong>
+
+                            <span id="blurValue">
+                                14
+                            </span>
+
+                        </div>
+
+
+                        <input
+                            type="range"
+                            id="blurRange"
+                            min="0"
+                            max="28"
+                            step="1"
+                            value="14"
+                            aria-label="Desfoque do efeito vidro"
                         >
 
                     </div>
@@ -3824,6 +4010,61 @@
                         >
 
                     </div>
+
+                    <!-- EXPLOSÃO DO SPRAY -->
+
+                    <div class="range-setting">
+
+                        <div>
+
+                            <strong>
+                                Explosão do borrifador
+                            </strong>
+
+                            <span id="sprayExplosionValue">
+                                7
+                            </span>
+
+                        </div>
+
+
+                        <input
+                            type="range"
+                            id="sprayExplosionRange"
+                            min="1"
+                            max="10"
+                            step="1"
+                            value="7"
+                            aria-label="Tamanho da explosão do borrifador"
+                        >
+
+                    </div>
+
+
+                    <label class="setting-row gallery-studio-row">
+
+                        <div>
+
+                            <strong>
+                                Galeria automática
+                            </strong>
+
+                            <small>
+                                Avança as imagens automaticamente
+                            </small>
+
+                        </div>
+
+
+                        <input
+                            id="galleryStudioToggle"
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span class="toggle-ui"></span>
+
+                    </label>
 
                 </section>
 
@@ -4209,7 +4450,7 @@
 
                         <img
                             src="./img/ASTRO.jpg"
-                            alt="Bayerle"
+                            alt="Bayerlee"
                             loading="lazy"
                         >
 
@@ -4223,7 +4464,7 @@
                         </span>
 
                         <strong>
-                            Bayerle
+                            Bayerlee
                         </strong>
 
                         <small>
@@ -4306,7 +4547,7 @@
         ================================================== -->
 
         <script
-            src="./script.js?v=2.1"
+            src="./script.js?v=3.1"
             defer
         ></script>
 
