@@ -490,12 +490,6 @@ document.addEventListener(
         );
 
 
-        /*
-            Failsafe:
-            o site nunca fica preso no loader
-            caso algum arquivo externo demore.
-        */
-
         window.setTimeout(
             hideLoader,
             3500
@@ -1162,7 +1156,6 @@ document.addEventListener(
 
         /* =====================================================
            MODAL ENGINE
-           UM ÚNICO SISTEMA
         ====================================================== */
 
         function getOpenLayers() {
@@ -1301,13 +1294,6 @@ document.addEventListener(
         }
 
 
-        /*
-            ABERTURA DO PRODUTO
-
-            Todos os botões usam:
-            data-modal-open="productModal"
-        */
-
         document.addEventListener(
             "click",
             event => {
@@ -1343,16 +1329,11 @@ document.addEventListener(
 
                 event.preventDefault();
 
-
                 openProductModal();
 
             }
         );
 
-
-        /*
-            FECHAMENTO DO PRODUTO
-        */
 
         document.addEventListener(
             "click",
@@ -1389,11 +1370,6 @@ document.addEventListener(
             }
         );
 
-
-        /*
-            Clique exatamente na área externa
-            também fecha o modal.
-        */
 
         $$(".modal").forEach(
             modal => {
@@ -1588,14 +1564,6 @@ document.addEventListener(
 
 
         function getParticleAmount() {
-
-            /*
-                Desktop:
-                intensidade 5 ≈ 22 partículas.
-
-                Mobile:
-                reduz automaticamente.
-            */
 
             const base =
                 Math.round(
@@ -1943,11 +1911,6 @@ document.addEventListener(
             );
 
 
-            /*
-                Força o navegador a reiniciar
-                a animação CSS.
-            */
-
             void element.offsetWidth;
 
 
@@ -2012,11 +1975,9 @@ document.addEventListener(
 
 
                 const angle =
-                    (
-                        Math.random() *
-                        Math.PI *
-                        2
-                    );
+                    Math.random() *
+                    Math.PI *
+                    2;
 
 
                 const distance =
@@ -2303,10 +2264,7 @@ document.addEventListener(
 
                     burst.style.setProperty(
                         "--burst-delay",
-                        `${
-                            index *
-                            70
-                        }ms`
+                        `${index * 70}ms`
                     );
 
 
@@ -2361,12 +2319,6 @@ document.addEventListener(
                 error
             ) {
 
-                /*
-                    Navegadores podem bloquear
-                    áudio dependendo das permissões.
-                    Não é erro fatal.
-                */
-
             }
 
         }
@@ -2376,7 +2328,10 @@ document.addEventListener(
 
             if (
                 !state.haptic ||
-                !("vibrate" in navigator)
+                !(
+                    "vibrate" in
+                    navigator
+                )
             ) {
 
                 return;
@@ -2395,10 +2350,6 @@ document.addEventListener(
             catch (
                 error
             ) {
-
-                /*
-                    Feedback tátil é opcional.
-                */
 
             }
 
@@ -2461,6 +2412,11 @@ document.addEventListener(
             );
 
 
+            /*
+                A animação da borrifada fica no container
+                do produto, sem esconder a imagem.
+            */
+
             heroProduct?.classList.add(
                 "spraying"
             );
@@ -2492,11 +2448,6 @@ document.addEventListener(
 
             vibrateSpray();
 
-
-            /*
-                Mensagens especiais sem atrapalhar
-                o contador.
-            */
 
             if (
                 state.sprayCount ===
@@ -2790,7 +2741,6 @@ document.addEventListener(
 
         /* =====================================================
            API INTERNA
-           AS PRÓXIMAS PARTES VÃO COMPLETAR
         ====================================================== */
 
         window.DreamApp = {
@@ -2812,13 +2762,6 @@ document.addEventListener(
             createBackgroundParticles
 
         };
-
-
-        /*
-            NÃO FECHE AQUI O DOMContentLoaded.
-
-            A PARTE 2/4 continua exatamente abaixo.
-        */
 
 
         /* =====================================================
@@ -3170,12 +3113,8 @@ document.addEventListener(
                 }
 
 
-                const key =
-                    noteButton.dataset.note;
-
-
                 openNote(
-                    key
+                    noteButton.dataset.note
                 );
 
             }
@@ -3409,7 +3348,9 @@ document.addEventListener(
 
 
         updateTimeline();
-                /* =====================================================
+
+
+        /* =====================================================
            MOODS
         ====================================================== */
 
@@ -3442,7 +3383,8 @@ document.addEventListener(
 
                 name:
                     "Sonhador",
-                                    icon:
+
+                icon:
                     "☁"
 
             },
@@ -3720,12 +3662,6 @@ document.addEventListener(
                 );
 
 
-                /*
-                    Ao escolher um mood manualmente,
-                    ele passa a ser a fonte de cores
-                    na próxima visita também.
-                */
-
                 storage.remove(
                     "dream.palette"
                 );
@@ -3794,21 +3730,13 @@ document.addEventListener(
                 }
 
 
-                const moodKey =
-                    moodButton.dataset.mood;
-
-
                 applyMood(
-                    moodKey
+                    moodButton.dataset.mood
                 );
 
             }
         );
 
-
-        /*
-            Carrega o mood salvo sem mostrar toast.
-        */
 
         if (
             moods[
@@ -4307,8 +4235,7 @@ document.addEventListener(
                 ) {
 
                     return;
-
-                }
+                                    }
 
 
                 applyScene(
@@ -5015,11 +4942,6 @@ document.addEventListener(
                     error
                 ) {
 
-                    /*
-                        Pode acontecer caso o navegador
-                        já tenha liberado o pointer.
-                    */
-
                 }
 
             }
@@ -5180,7 +5102,6 @@ document.addEventListener(
 
                     startGalleryAutoplay();
 
-
                     showToast(
                         "Autoplay da galeria ativado."
                     );
@@ -5190,7 +5111,6 @@ document.addEventListener(
                 else {
 
                     stopGalleryAutoplay();
-
 
                     showToast(
                         "Autoplay da galeria pausado."
@@ -5422,7 +5342,6 @@ document.addEventListener(
 
             updateModalBodyState();
 
-
             stopGalleryAutoplay();
 
 
@@ -5515,10 +5434,6 @@ document.addEventListener(
                     "click",
                     event => {
 
-                        /*
-                            Evita abrir depois de um drag.
-                        */
-
                         if (
                             galleryDragging
                         ) {
@@ -5600,9 +5515,7 @@ document.addEventListener(
 
                     event.preventDefault();
 
-
                     nextGallery();
-
 
                     restartGalleryAutoplay();
 
@@ -5616,9 +5529,7 @@ document.addEventListener(
 
                     event.preventDefault();
 
-
                     previousGallery();
-
 
                     restartGalleryAutoplay();
 
@@ -5642,12 +5553,9 @@ document.addEventListener(
 
             renderGalleryDots();
 
-
             updateGalleryUI();
 
-
             updateGalleryAutoplayButton();
-
 
             startGalleryAutoplay();
 
@@ -5785,13 +5693,6 @@ document.addEventListener(
         };
 
 
-        /*
-            NÃO FECHE O DOMContentLoaded.
-
-            A PARTE 3/4 continua logo abaixo.
-        */
-
-
         /* =====================================================
            QUIZ
         ====================================================== */
@@ -5862,46 +5763,31 @@ document.addEventListener(
                 options: [
 
                     {
-
                         label:
                             "Um encontro romântico ♡",
-
                         mood:
                             "romantico"
-
                     },
 
-
                     {
-
                         label:
                             "Uma noite olhando o céu ☁",
-
                         mood:
                             "sonhador"
-
                     },
 
-
                     {
-
                         label:
                             "Uma cidade iluminada à noite ☾",
-
                         mood:
                             "noturno"
-
                     },
 
-
                     {
-
                         label:
                             "Um dia cheio de energia ✦",
-
                         mood:
                             "energia"
-
                     }
 
                 ]
@@ -5917,46 +5803,31 @@ document.addEventListener(
                 options: [
 
                     {
-
                         label:
                             "Perto de alguém especial",
-
                         mood:
                             "romantico"
-
                     },
 
-
                     {
-
                         label:
                             "Escutando música e imaginando",
-
                         mood:
                             "sonhador"
-
                     },
 
-
                     {
-
                         label:
                             "Em um lugar tranquilo",
-
                         mood:
                             "calmo"
-
                     },
 
-
                     {
-
                         label:
                             "Fazendo algo espontâneo",
-
                         mood:
                             "energia"
-
                     }
 
                 ]
@@ -5972,46 +5843,31 @@ document.addEventListener(
                 options: [
 
                     {
-
                         label:
                             "Amor",
-
                         mood:
                             "romantico"
-
                     },
 
-
                     {
-
                         label:
                             "Sonho",
-
                         mood:
                             "sonhador"
-
                     },
 
-
                     {
-
                         label:
                             "Mistério",
-
                         mood:
                             "noturno"
-
                     },
 
-
                     {
-
                         label:
                             "Paz",
-
                         mood:
                             "calmo"
-
                     }
 
                 ]
@@ -6027,57 +5883,38 @@ document.addEventListener(
                 options: [
 
                     {
-
                         label:
                             "♡ Coração",
-
                         mood:
                             "romantico"
-
                     },
 
-
                     {
-
                         label:
                             "☁ Nuvem",
-
                         mood:
                             "sonhador"
-
                     },
 
-
                     {
-
                         label:
                             "☾ Lua",
-
                         mood:
                             "noturno"
-
                     },
 
-
                     {
-
                         label:
                             "✦ Estrela",
-
                         mood:
                             "energia"
-
                     },
 
-
                     {
-
                         label:
                             "◌ Círculo",
-
                         mood:
                             "calmo"
-
                     }
 
                 ]
@@ -6169,7 +6006,8 @@ document.addEventListener(
             "romantico";
 
 
-        let quizScores = {};
+        let quizScores =
+            {};
 
 
         function resetQuizScores() {
@@ -6251,7 +6089,6 @@ document.addEventListener(
             ) {
 
                 finishQuiz();
-
 
                 return;
 
@@ -6425,16 +6262,10 @@ document.addEventListener(
 
                 finishQuiz();
 
-
                 return;
 
             }
 
-
-            /*
-                Pequena troca visual
-                sem precisar reconstruir o quiz.
-            */
 
             if (
                 quizQuestionsBox &&
@@ -6445,24 +6276,19 @@ document.addEventListener(
                     [
 
                         {
-
                             opacity:
                                 0,
 
                             transform:
                                 "translateY(10px)"
-
                         },
 
-
                         {
-
                             opacity:
                                 1,
 
                             transform:
                                 "translateY(0)"
-
                         }
 
                     ],
@@ -6534,12 +6360,6 @@ document.addEventListener(
                         mood ===
                             state.currentMood
                     ) {
-
-                        /*
-                            Em empate, usa o mood
-                            que a pessoa já escolheu
-                            no site.
-                        */
 
                         winner =
                             mood;
@@ -6804,6 +6624,23 @@ document.addEventListener(
             }
 
 
+            const settingsScroll =
+                $(
+                    ".settings-scroll",
+                    settingsPanel
+                );
+
+
+            if (
+                settingsScroll
+            ) {
+
+                settingsScroll.scrollTop =
+                    0;
+
+            }
+
+
             settingsPanel.classList.add(
                 "open"
             );
@@ -6815,23 +6652,45 @@ document.addEventListener(
             );
 
 
+            body.classList.add(
+                "settings-open"
+            );
+
+
+            body.classList.remove(
+                "v51-header-hidden"
+            );
+
+
             settingsButton?.setAttribute(
                 "aria-expanded",
                 "true"
             );
 
 
-            window.setTimeout(
+            requestAnimationFrame(
                 () => {
 
-                    closeSettingsButton
-                        ?.focus({
-                            preventScroll:
-                                true
+                    if (
+                        settingsScroll
+                    ) {
+
+                        settingsScroll.scrollTo({
+
+                            top:
+                                0,
+
+                            left:
+                                0,
+
+                            behavior:
+                                "auto"
+
                         });
 
-                },
-                120
+                    }
+
+                }
             );
 
         }
@@ -6856,6 +6715,11 @@ document.addEventListener(
             settingsPanel.setAttribute(
                 "aria-hidden",
                 "true"
+            );
+
+
+            body.classList.remove(
+                "settings-open"
             );
 
 
@@ -6890,7 +6754,16 @@ document.addEventListener(
 
         settingsButton?.addEventListener(
             "click",
-            toggleSettings
+            event => {
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+
+                toggleSettings();
+
+            }
         );
 
 
@@ -6939,7 +6812,7 @@ document.addEventListener(
                 "aria-label",
                 dark
                     ? "Ativar tema claro"
-                                        : "Ativar tema escuro"
+                    : "Ativar tema escuro"
             );
 
         }
@@ -6995,6 +6868,7 @@ document.addEventListener(
 
                 clearPresetSelection();
 
+
                 setDarkMode(
                     darkToggle.checked
                 );
@@ -7008,6 +6882,7 @@ document.addEventListener(
             () => {
 
                 clearPresetSelection();
+
 
                 setDarkMode(
                     !body.classList.contains(
@@ -7074,6 +6949,7 @@ document.addEventListener(
 
                 clearPresetSelection();
 
+
                 setCleanMode(
                     cleanToggle.checked
                 );
@@ -7129,11 +7005,6 @@ document.addEventListener(
             }
 
 
-            /*
-                Atualiza as partículas porque
-                a quantidade muda em performance.
-            */
-
             createBackgroundParticles();
 
         }
@@ -7144,6 +7015,7 @@ document.addEventListener(
             () => {
 
                 clearPresetSelection();
+
 
                 setPerformanceMode(
                     performanceToggle.checked
@@ -7266,12 +7138,6 @@ document.addEventListener(
 
             }
 
-
-            /*
-                Remove data-mood para a paleta
-                escolhida não ser sobrescrita
-                pelas variáveis CSS de mood.
-            */
 
             delete body.dataset.mood;
 
@@ -7558,6 +7424,7 @@ document.addEventListener(
 
                 clearPresetSelection();
 
+
                 setParticles(
                     particlesToggle.checked
                 );
@@ -7620,6 +7487,7 @@ document.addEventListener(
             () => {
 
                 clearPresetSelection();
+
 
                 setAnimations(
                     animationsToggle.checked
@@ -7698,6 +7566,7 @@ document.addEventListener(
             () => {
 
                 clearPresetSelection();
+
 
                 setCursorGlow(
                     cursorGlowToggle.checked
@@ -7799,6 +7668,7 @@ document.addEventListener(
 
                 clearPresetSelection();
 
+
                 setMotion(
                     motionToggle.checked
                 );
@@ -7856,6 +7726,7 @@ document.addEventListener(
 
                 clearPresetSelection();
 
+
                 setSpraySound(
                     spraySoundToggle.checked
                 );
@@ -7912,6 +7783,7 @@ document.addEventListener(
             () => {
 
                 clearPresetSelection();
+
 
                 setHaptic(
                     hapticToggle.checked
@@ -7991,6 +7863,7 @@ document.addEventListener(
             () => {
 
                 clearPresetSelection();
+
 
                 setMotionIntensity(
                     motionRange.value
@@ -8087,6 +7960,7 @@ document.addEventListener(
 
                 clearPresetSelection();
 
+
                 setParticleIntensity(
                     particleRange.value
                 );
@@ -8166,6 +8040,7 @@ document.addEventListener(
 
                 clearPresetSelection();
 
+
                 setSprayIntensity(
                     sprayIntensityRange.value
                 );
@@ -8178,130 +8053,558 @@ document.addEventListener(
            DREAM STUDIO • CONTROLES AVANÇADOS
         ====================================================== */
 
-        const glassToggle = $("#glassToggle");
-        const compactToggle = $("#compactToggle");
-        const contrastToggle = $("#contrastToggle");
-        const ambientGlowToggle = $("#ambientGlowToggle");
-        const glowRange = $("#glowRange");
-        const glowValue = $("#glowValue");
-        const blurRange = $("#blurRange");
-        const blurValue = $("#blurValue");
-        const sprayExplosionRange = $("#sprayExplosionRange");
-        const sprayExplosionValue = $("#sprayExplosionValue");
-        const galleryStudioToggle = $("#galleryStudioToggle");
+        const glassToggle =
+            $("#glassToggle");
+
+        const compactToggle =
+            $("#compactToggle");
+
+        const contrastToggle =
+            $("#contrastToggle");
+
+        const ambientGlowToggle =
+            $("#ambientGlowToggle");
+
+        const glowRange =
+            $("#glowRange");
+
+        const glowValue =
+            $("#glowValue");
+
+        const blurRange =
+            $("#blurRange");
+
+        const blurValue =
+            $("#blurValue");
+
+        const sprayExplosionRange =
+            $("#sprayExplosionRange");
+
+        const sprayExplosionValue =
+            $("#sprayExplosionValue");
+
+        const galleryStudioToggle =
+            $("#galleryStudioToggle");
 
 
-        function setGlass(enabled, save = true) {
-            state.glass = Boolean(enabled);
-            body.classList.toggle("no-glass", !state.glass);
-            if (glassToggle) glassToggle.checked = state.glass;
-            if (save) storage.set("dream.glass", state.glass);
+        function setGlass(
+            enabled,
+            save = true
+        ) {
+
+            state.glass =
+                Boolean(
+                    enabled
+                );
+
+
+            body.classList.toggle(
+                "no-glass",
+                !state.glass
+            );
+
+
+            if (
+                glassToggle
+            ) {
+
+                glassToggle.checked =
+                    state.glass;
+
+            }
+
+
+            if (
+                save
+            ) {
+
+                storage.set(
+                    "dream.glass",
+                    state.glass
+                );
+
+            }
+
         }
 
 
-        function setCompact(enabled, save = true) {
-            state.compact = Boolean(enabled);
-            body.classList.toggle("compact-ui", state.compact);
-            if (compactToggle) compactToggle.checked = state.compact;
-            if (save) storage.set("dream.compact", state.compact);
+        function setCompact(
+            enabled,
+            save = true
+        ) {
+
+            state.compact =
+                Boolean(
+                    enabled
+                );
+
+
+            body.classList.toggle(
+                "compact-ui",
+                state.compact
+            );
+
+
+            if (
+                compactToggle
+            ) {
+
+                compactToggle.checked =
+                    state.compact;
+
+            }
+
+
+            if (
+                save
+            ) {
+
+                storage.set(
+                    "dream.compact",
+                    state.compact
+                );
+
+            }
+
         }
 
 
-        function setContrast(enabled, save = true) {
-            state.contrast = Boolean(enabled);
-            body.classList.toggle("high-contrast", state.contrast);
-            if (contrastToggle) contrastToggle.checked = state.contrast;
-            if (save) storage.set("dream.contrast", state.contrast);
+        function setContrast(
+            enabled,
+            save = true
+        ) {
+
+            state.contrast =
+                Boolean(
+                    enabled
+                );
+
+
+            body.classList.toggle(
+                "high-contrast",
+                state.contrast
+            );
+
+
+            if (
+                contrastToggle
+            ) {
+
+                contrastToggle.checked =
+                    state.contrast;
+
+            }
+
+
+            if (
+                save
+            ) {
+
+                storage.set(
+                    "dream.contrast",
+                    state.contrast
+                );
+
+            }
+
         }
 
 
-        function setAmbientGlow(enabled, save = true) {
-            state.ambientGlow = Boolean(enabled);
-            body.classList.toggle("no-ambient-glow", !state.ambientGlow);
-            if (ambientGlowToggle) ambientGlowToggle.checked = state.ambientGlow;
-            if (save) storage.set("dream.ambientGlow", state.ambientGlow);
+        function setAmbientGlow(
+            enabled,
+            save = true
+        ) {
+
+            state.ambientGlow =
+                Boolean(
+                    enabled
+                );
+
+
+            body.classList.toggle(
+                "no-ambient-glow",
+                !state.ambientGlow
+            );
+
+
+            if (
+                ambientGlowToggle
+            ) {
+
+                ambientGlowToggle.checked =
+                    state.ambientGlow;
+
+            }
+
+
+            if (
+                save
+            ) {
+
+                storage.set(
+                    "dream.ambientGlow",
+                    state.ambientGlow
+                );
+
+            }
+
         }
 
 
-        function setGlowIntensity(value, save = true) {
-            state.glowIntensity = clamp(Number(value) || 0, 0, 10);
+        function setGlowIntensity(
+            value,
+            save = true
+        ) {
+
+            state.glowIntensity =
+                clamp(
+                    Number(
+                        value
+                    ) || 0,
+                    0,
+                    10
+                );
+
+
             root.style.setProperty(
                 "--studio-glow-strength",
-                String(0.35 + state.glowIntensity * 0.14)
+                String(
+                    0.35 +
+                    state.glowIntensity *
+                    0.14
+                )
             );
-            if (glowRange) glowRange.value = String(state.glowIntensity);
-            if (glowValue) glowValue.textContent = String(state.glowIntensity);
-            if (save) storage.set("dream.glowIntensity", state.glowIntensity);
+
+
+            if (
+                glowRange
+            ) {
+
+                glowRange.value =
+                    String(
+                        state.glowIntensity
+                    );
+
+            }
+
+
+            if (
+                glowValue
+            ) {
+
+                glowValue.textContent =
+                    String(
+                        state.glowIntensity
+                    );
+
+            }
+
+
+            if (
+                save
+            ) {
+
+                storage.set(
+                    "dream.glowIntensity",
+                    state.glowIntensity
+                );
+
+            }
+
         }
 
 
-        function setGlassBlur(value, save = true) {
-            state.glassBlur = clamp(Number(value) || 0, 0, 28);
-            root.style.setProperty("--studio-glass-blur", `${state.glassBlur}px`);
-            if (blurRange) blurRange.value = String(state.glassBlur);
-            if (blurValue) blurValue.textContent = String(state.glassBlur);
-            if (save) storage.set("dream.glassBlur", state.glassBlur);
+        function setGlassBlur(
+            value,
+            save = true
+        ) {
+
+            state.glassBlur =
+                clamp(
+                    Number(
+                        value
+                    ) || 0,
+                    0,
+                    28
+                );
+
+
+            root.style.setProperty(
+                "--studio-glass-blur",
+                `${state.glassBlur}px`
+            );
+
+
+            if (
+                blurRange
+            ) {
+
+                blurRange.value =
+                    String(
+                        state.glassBlur
+                    );
+
+            }
+
+
+            if (
+                blurValue
+            ) {
+
+                blurValue.textContent =
+                    String(
+                        state.glassBlur
+                    );
+
+            }
+
+
+            if (
+                save
+            ) {
+
+                storage.set(
+                    "dream.glassBlur",
+                    state.glassBlur
+                );
+
+            }
+
         }
 
 
-        function setSprayExplosion(value, save = true) {
-            state.sprayExplosion = clamp(Number(value) || 1, 1, 10);
-            root.style.setProperty("--spray-explosion", String(state.sprayExplosion));
-            if (sprayExplosionRange) sprayExplosionRange.value = String(state.sprayExplosion);
-            if (sprayExplosionValue) sprayExplosionValue.textContent = String(state.sprayExplosion);
-            if (save) storage.set("dream.sprayExplosion", state.sprayExplosion);
+        function setSprayExplosion(
+            value,
+            save = true
+        ) {
+
+            state.sprayExplosion =
+                clamp(
+                    Number(
+                        value
+                    ) || 1,
+                    1,
+                    10
+                );
+
+
+            root.style.setProperty(
+                "--spray-explosion",
+                String(
+                    state.sprayExplosion
+                )
+            );
+
+
+            if (
+                sprayExplosionRange
+            ) {
+
+                sprayExplosionRange.value =
+                    String(
+                        state.sprayExplosion
+                    );
+
+            }
+
+
+            if (
+                sprayExplosionValue
+            ) {
+
+                sprayExplosionValue.textContent =
+                    String(
+                        state.sprayExplosion
+                    );
+
+            }
+
+
+            if (
+                save
+            ) {
+
+                storage.set(
+                    "dream.sprayExplosion",
+                    state.sprayExplosion
+                );
+
+            }
+
         }
 
 
-        function setGalleryAutoplay(enabled, save = true) {
-            galleryAutoplayEnabled = Boolean(enabled);
-            if (galleryStudioToggle) galleryStudioToggle.checked = galleryAutoplayEnabled;
+        function setGalleryAutoplay(
+            enabled,
+            save = true
+        ) {
+
+            galleryAutoplayEnabled =
+                Boolean(
+                    enabled
+                );
+
+
+            if (
+                galleryStudioToggle
+            ) {
+
+                galleryStudioToggle.checked =
+                    galleryAutoplayEnabled;
+
+            }
+
+
             updateGalleryAutoplayButton();
-            if (galleryAutoplayEnabled) startGalleryAutoplay();
-            else stopGalleryAutoplay();
-            if (save) storage.set("dream.galleryAutoplay", galleryAutoplayEnabled);
+
+
+            if (
+                galleryAutoplayEnabled
+            ) {
+
+                startGalleryAutoplay();
+
+            }
+
+            else {
+
+                stopGalleryAutoplay();
+
+            }
+
+
+            if (
+                save
+            ) {
+
+                storage.set(
+                    "dream.galleryAutoplay",
+                    galleryAutoplayEnabled
+                );
+
+            }
+
         }
 
 
-        glassToggle?.addEventListener("change", () => {
-            clearPresetSelection();
-            setGlass(glassToggle.checked);
-        });
+        glassToggle?.addEventListener(
+            "change",
+            () => {
 
-        compactToggle?.addEventListener("change", () => {
-            clearPresetSelection();
-            setCompact(compactToggle.checked);
-        });
+                clearPresetSelection();
 
-        contrastToggle?.addEventListener("change", () => {
-            clearPresetSelection();
-            setContrast(contrastToggle.checked);
-        });
 
-        ambientGlowToggle?.addEventListener("change", () => {
-            clearPresetSelection();
-            setAmbientGlow(ambientGlowToggle.checked);
-        });
+                setGlass(
+                    glassToggle.checked
+                );
 
-        glowRange?.addEventListener("input", () => {
-            clearPresetSelection();
-            setGlowIntensity(glowRange.value);
-        });
+            }
+        );
 
-        blurRange?.addEventListener("input", () => {
-            clearPresetSelection();
-            setGlassBlur(blurRange.value);
-        });
 
-        sprayExplosionRange?.addEventListener("input", () => {
-            clearPresetSelection();
-            setSprayExplosion(sprayExplosionRange.value);
-        });
+        compactToggle?.addEventListener(
+            "change",
+            () => {
 
-        galleryStudioToggle?.addEventListener("change", () => {
-            clearPresetSelection();
-            setGalleryAutoplay(galleryStudioToggle.checked);
-        });
+                clearPresetSelection();
+
+
+                setCompact(
+                    compactToggle.checked
+                );
+
+            }
+        );
+
+
+        contrastToggle?.addEventListener(
+            "change",
+            () => {
+
+                clearPresetSelection();
+
+
+                setContrast(
+                    contrastToggle.checked
+                );
+
+            }
+        );
+
+
+        ambientGlowToggle?.addEventListener(
+            "change",
+            () => {
+
+                clearPresetSelection();
+
+
+                setAmbientGlow(
+                    ambientGlowToggle.checked
+                );
+
+            }
+        );
+
+
+        glowRange?.addEventListener(
+            "input",
+            () => {
+
+                clearPresetSelection();
+
+
+                setGlowIntensity(
+                    glowRange.value
+                );
+
+            }
+        );
+
+
+        blurRange?.addEventListener(
+            "input",
+            () => {
+
+                clearPresetSelection();
+
+
+                setGlassBlur(
+                    blurRange.value
+                );
+
+            }
+        );
+
+
+        sprayExplosionRange?.addEventListener(
+            "input",
+            () => {
+
+                clearPresetSelection();
+
+
+                setSprayExplosion(
+                    sprayExplosionRange.value
+                );
+
+            }
+        );
+
+
+        galleryStudioToggle?.addEventListener(
+            "change",
+            () => {
+
+                clearPresetSelection();
+
+
+                setGalleryAutoplay(
+                    galleryStudioToggle.checked
+                );
+
+            }
+        );
 
 
         /* =====================================================
@@ -8419,141 +8722,392 @@ document.addEventListener(
         const presets = {
 
             dream: {
-                dark: false,
-                clean: false,
-                performance: false,
-                particles: true,
-                animations: true,
-                cursor: true,
-                motion: true,
-                motionIntensity: 5,
-                particleIntensity: 5,
-                sprayIntensity: 5,
-                palette: "dream",
-                font: "normal",
-                glass: true,
-                compact: false,
-                contrast: false,
-                ambientGlow: true,
-                glowIntensity: 6,
-                glassBlur: 14,
-                sprayExplosion: 7,
-                galleryAutoplay: true
+
+                dark:
+                    false,
+
+                clean:
+                    false,
+
+                performance:
+                    false,
+
+                particles:
+                    true,
+
+                animations:
+                    true,
+
+                cursor:
+                    true,
+
+                motion:
+                    true,
+
+                motionIntensity:
+                    5,
+
+                particleIntensity:
+                    5,
+
+                sprayIntensity:
+                    5,
+
+                palette:
+                    "dream",
+
+                font:
+                    "normal",
+
+                glass:
+                    true,
+
+                compact:
+                    false,
+
+                contrast:
+                    false,
+
+                ambientGlow:
+                    true,
+
+                glowIntensity:
+                    6,
+
+                glassBlur:
+                    14,
+
+                sprayExplosion:
+                    7,
+
+                galleryAutoplay:
+                    true
+
             },
+
 
             cinematic: {
-                dark: true,
-                clean: false,
-                performance: false,
-                particles: true,
-                animations: true,
-                cursor: true,
-                motion: true,
-                motionIntensity: 9,
-                particleIntensity: 7,
-                sprayIntensity: 8,
-                palette: "violet",
-                font: "large",
-                glass: true,
-                compact: false,
-                contrast: true,
-                ambientGlow: true,
-                glowIntensity: 10,
-                glassBlur: 20,
-                sprayExplosion: 10,
-                galleryAutoplay: true
+
+                dark:
+                    true,
+
+                clean:
+                    false,
+
+                performance:
+                    false,
+
+                particles:
+                    true,
+
+                animations:
+                    true,
+
+                cursor:
+                    true,
+
+                motion:
+                    true,
+
+                motionIntensity:
+                    9,
+
+                particleIntensity:
+                    7,
+
+                sprayIntensity:
+                    8,
+
+                palette:
+                    "violet",
+
+                font:
+                    "large",
+
+                glass:
+                    true,
+
+                compact:
+                    false,
+
+                contrast:
+                    true,
+
+                ambientGlow:
+                    true,
+
+                glowIntensity:
+                    10,
+
+                glassBlur:
+                    20,
+
+                sprayExplosion:
+                    10,
+
+                galleryAutoplay:
+                    true
+
             },
+
 
             soft: {
-                dark: false,
-                clean: false,
-                performance: false,
-                particles: true,
-                animations: true,
-                cursor: false,
-                motion: true,
-                motionIntensity: 2,
-                particleIntensity: 2,
-                sprayIntensity: 3,
-                palette: "pearl",
-                font: "normal",
-                glass: true,
-                compact: false,
-                contrast: false,
-                ambientGlow: true,
-                glowIntensity: 4,
-                glassBlur: 24,
-                sprayExplosion: 5,
-                galleryAutoplay: true
+
+                dark:
+                    false,
+
+                clean:
+                    false,
+
+                performance:
+                    false,
+
+                particles:
+                    true,
+
+                animations:
+                    true,
+
+                cursor:
+                    false,
+
+                motion:
+                    true,
+
+                motionIntensity:
+                    2,
+
+                particleIntensity:
+                    2,
+
+                sprayIntensity:
+                    3,
+
+                palette:
+                    "pearl",
+
+                font:
+                    "normal",
+
+                glass:
+                    true,
+
+                compact:
+                    false,
+
+                contrast:
+                    false,
+
+                ambientGlow:
+                    true,
+
+                glowIntensity:
+                    4,
+
+                glassBlur:
+                    24,
+
+                sprayExplosion:
+                    5,
+
+                galleryAutoplay:
+                    true
+
             },
+
 
             performance: {
-                dark: false,
-                clean: true,
-                performance: true,
-                particles: false,
-                animations: false,
-                cursor: false,
-                motion: false,
-                motionIntensity: 0,
-                particleIntensity: 1,
-                sprayIntensity: 2,
-                palette: "dream",
-                font: "normal",
-                glass: false,
-                compact: true,
-                contrast: false,
-                ambientGlow: false,
-                glowIntensity: 0,
-                glassBlur: 0,
-                sprayExplosion: 3,
-                galleryAutoplay: false
+
+                dark:
+                    false,
+
+                clean:
+                    true,
+
+                performance:
+                    true,
+
+                particles:
+                    false,
+
+                animations:
+                    false,
+
+                cursor:
+                    false,
+
+                motion:
+                    false,
+
+                motionIntensity:
+                    0,
+
+                particleIntensity:
+                    1,
+
+                sprayIntensity:
+                    2,
+
+                palette:
+                    "dream",
+
+                font:
+                    "normal",
+
+                glass:
+                    false,
+
+                compact:
+                    true,
+
+                contrast:
+                    false,
+
+                ambientGlow:
+                    false,
+
+                glowIntensity:
+                    0,
+
+                glassBlur:
+                    0,
+
+                sprayExplosion:
+                    3,
+
+                galleryAutoplay:
+                    false
+
             },
+
 
             aurora: {
-                dark: false,
-                clean: false,
-                performance: false,
-                particles: true,
-                animations: true,
-                cursor: true,
-                motion: true,
-                motionIntensity: 8,
-                particleIntensity: 9,
-                sprayIntensity: 9,
-                palette: "aurora",
-                font: "large",
-                glass: true,
-                compact: false,
-                contrast: false,
-                ambientGlow: true,
-                glowIntensity: 10,
-                glassBlur: 18,
-                sprayExplosion: 10,
-                galleryAutoplay: true
+
+                dark:
+                    false,
+
+                clean:
+                    false,
+
+                performance:
+                    false,
+
+                particles:
+                    true,
+
+                animations:
+                    true,
+
+                cursor:
+                    true,
+
+                motion:
+                    true,
+
+                motionIntensity:
+                    8,
+
+                particleIntensity:
+                    9,
+
+                sprayIntensity:
+                    9,
+
+                palette:
+                    "aurora",
+
+                font:
+                    "large",
+
+                glass:
+                    true,
+
+                compact:
+                    false,
+
+                contrast:
+                    false,
+
+                ambientGlow:
+                    true,
+
+                glowIntensity:
+                    10,
+
+                glassBlur:
+                    18,
+
+                sprayExplosion:
+                    10,
+
+                galleryAutoplay:
+                    true
+
             },
 
+
             minimal: {
-                dark: false,
-                clean: true,
-                performance: false,
-                particles: false,
-                animations: true,
-                cursor: false,
-                motion: false,
-                motionIntensity: 0,
-                particleIntensity: 1,
-                sprayIntensity: 2,
-                palette: "pearl",
-                font: "small",
-                glass: false,
-                compact: true,
-                contrast: true,
-                ambientGlow: false,
-                glowIntensity: 0,
-                glassBlur: 0,
-                sprayExplosion: 4,
-                galleryAutoplay: false
+
+                dark:
+                    false,
+
+                clean:
+                    true,
+
+                performance:
+                    false,
+
+                particles:
+                    false,
+
+                animations:
+                    true,
+
+                cursor:
+                    false,
+
+                motion:
+                    false,
+
+                motionIntensity:
+                    0,
+
+                particleIntensity:
+                    1,
+
+                sprayIntensity:
+                    2,
+
+                palette:
+                    "pearl",
+
+                font:
+                    "small",
+
+                glass:
+                    false,
+
+                compact:
+                    true,
+
+                contrast:
+                    true,
+
+                ambientGlow:
+                    false,
+
+                glowIntensity:
+                    0,
+
+                glassBlur:
+                    0,
+
+                sprayExplosion:
+                    4,
+
+                galleryAutoplay:
+                    false
+
             }
 
         };
@@ -8564,62 +9118,127 @@ document.addEventListener(
 
 
         const presetMeta = {
+
             dream: {
-                pt: "Dream • equilíbrio entre efeitos, cores e movimento.",
-                en: "Dream • balanced effects, colors and motion."
+
+                pt:
+                    "Dream • equilíbrio entre efeitos, cores e movimento.",
+
+                en:
+                    "Dream • balanced effects, colors and motion."
+
             },
+
+
             cinematic: {
-                pt: "Cinemático • contraste forte, profundidade e movimento intenso.",
-                en: "Cinematic • strong contrast, depth and intense motion."
+
+                pt:
+                    "Cinemático • contraste forte, profundidade e movimento intenso.",
+
+                en:
+                    "Cinematic • strong contrast, depth and intense motion."
+
             },
+
+
             soft: {
-                pt: "Suave • tons pastel, menos movimento e atmosfera delicada.",
-                en: "Soft • pastel tones, gentler motion and a delicate atmosphere."
+
+                pt:
+                    "Suave • tons pastel, menos movimento e atmosfera delicada.",
+
+                en:
+                    "Soft • pastel tones, gentler motion and a delicate atmosphere."
+
             },
+
+
             performance: {
-                pt: "Performance • visual simplificado para máxima fluidez.",
-                en: "Performance • simplified visuals for maximum smoothness."
+
+                pt:
+                    "Performance • visual simplificado para máxima fluidez.",
+
+                en:
+                    "Performance • simplified visuals for maximum smoothness."
+
             },
+
+
             aurora: {
-                pt: "Aurora • cores vivas, brilho e efeitos mais intensos.",
-                en: "Aurora • vivid colors, glow and stronger effects."
+
+                pt:
+                    "Aurora • cores vivas, brilho e efeitos mais intensos.",
+
+                en:
+                    "Aurora • vivid colors, glow and stronger effects."
+
             },
+
+
             minimal: {
-                pt: "Minimal • visual editorial, limpo e sem distrações.",
-                en: "Minimal • clean editorial visuals with fewer distractions."
+
+                pt:
+                    "Minimal • visual editorial, limpo e sem distrações.",
+
+                en:
+                    "Minimal • clean editorial visuals with fewer distractions."
+
             }
+
         };
 
 
         function renderPresetStatus(
             presetName = null
         ) {
-            if (!presetStatus) {
+
+            if (
+                !presetStatus
+            ) {
+
                 return;
+
             }
 
-            if (!presetName || !presetMeta[presetName]) {
+
+            if (
+                !presetName ||
+                !presetMeta[
+                    presetName
+                ]
+            ) {
+
                 presetStatus.textContent =
-                    state.currentLanguage === "en-US"
+                    state.currentLanguage ===
+                    "en-US"
                         ? "Custom • your own combination of settings."
                         : "Personalizado • sua combinação de configurações.";
+
+
                 return;
+
             }
 
+
             presetStatus.textContent =
-                state.currentLanguage === "en-US"
-                    ? presetMeta[presetName].en
-                    : presetMeta[presetName].pt;
+                state.currentLanguage ===
+                "en-US"
+                    ? presetMeta[
+                        presetName
+                    ].en
+                    : presetMeta[
+                        presetName
+                    ].pt;
+
         }
 
 
         function clearPresetSelection(
             save = true
         ) {
+
             state.currentPreset =
                 null;
-
-            delete body.dataset.presetMode;
+                            delete body.dataset.presetMode;
 
             $$('[data-preset]').forEach(
                 button => {
@@ -8946,6 +9565,7 @@ document.addEventListener(
                 state.haptic,
                 false
             );
+
 
             setGlass(state.glass, false);
             setCompact(state.compact, false);
@@ -10348,7 +10968,9 @@ document.addEventListener(
             );
 
         }
-                function replaceArrayData(
+
+
+        function replaceArrayData(
             target,
             source
         ) {
@@ -12343,6 +12965,7 @@ document.addEventListener(
 
                 renderMusicState();
 
+
                 return true;
 
             }
@@ -12493,6 +13116,7 @@ document.addEventListener(
                 else {
 
                     backgroundMusic.pause();
+
                     renderMusicState();
 
                 }
@@ -12702,6 +13326,7 @@ document.addEventListener(
 
 
         renderVolume();
+
         renderMusicState();
 
 
@@ -12887,8 +13512,7 @@ document.addEventListener(
                     await document.exitFullscreen();
 
                 }
-
-                else {
+                                else {
 
                     await document
                         .documentElement
@@ -12988,6 +13612,7 @@ document.addEventListener(
 
 
                 event.preventDefault();
+
                 event.stopPropagation();
 
 
@@ -13033,6 +13658,7 @@ document.addEventListener(
                     ) {
 
                         closeLightbox();
+
                         return;
 
                     }
@@ -13062,6 +13688,7 @@ document.addEventListener(
                     ) {
 
                         closeSettings();
+
                         return;
 
                     }
@@ -13104,6 +13731,7 @@ document.addEventListener(
                     ) {
 
                         event.preventDefault();
+
                         nextLightbox();
 
                     }
@@ -13115,6 +13743,7 @@ document.addEventListener(
                     ) {
 
                         event.preventDefault();
+
                         previousLightbox();
 
                     }
@@ -13268,6 +13897,7 @@ document.addEventListener(
 
 
                             updateScrollProgress();
+
                             findActiveSection();
 
                         },
@@ -13327,6 +13957,7 @@ document.addEventListener(
 
 
                 renderVolume();
+
                 renderMusicState();
 
             }
@@ -13514,78 +14145,40 @@ document.addEventListener("DOMContentLoaded", () => {
         [...parent.querySelectorAll(selector)];
 
     const bodyV4 = document.body;
-
     const rootV4 = document.documentElement;
 
-
     const safeStorage = {
-
         get(key, fallback = null) {
-
             try {
-
-                const value =
-                    localStorage.getItem(key);
-
-                return value === null
-                    ? fallback
-                    : JSON.parse(value);
-
+                const value = localStorage.getItem(key);
+                return value === null ? fallback : JSON.parse(value);
             }
-
             catch (error) {
-
                 return fallback;
-
             }
-
         },
-
 
         set(key, value) {
-
             try {
-
-                localStorage.setItem(
-                    key,
-                    JSON.stringify(value)
-                );
-
+                localStorage.setItem(key, JSON.stringify(value));
                 return true;
-
             }
-
             catch (error) {
-
                 return false;
-
             }
-
         },
 
-
         remove(key) {
-
             try {
-
                 localStorage.removeItem(key);
-
             }
-
             catch (error) {
-
                 // armazenamento é opcional
-
             }
-
         }
-
     };
 
-
-    const app = () =>
-        window.DreamApp || {};
-
+    const app = () => window.DreamApp || {};
 
     /* =====================================================
        PERFORMANCE AUTOMÁTICA
@@ -13596,581 +14189,196 @@ document.addEventListener("DOMContentLoaded", () => {
         navigator.mozConnection ||
         navigator.webkitConnection;
 
-
     const lowHardware =
-        (
-            Number(
-                navigator.hardwareConcurrency
-            ) > 0 &&
-            Number(
-                navigator.hardwareConcurrency
-            ) <= 4
-        ) ||
-        (
-            Number(
-                navigator.deviceMemory
-            ) > 0 &&
-            Number(
-                navigator.deviceMemory
-            ) <= 4
-        ) ||
-        Boolean(
-            connection?.saveData
-        );
+        (Number(navigator.hardwareConcurrency) > 0 && Number(navigator.hardwareConcurrency) <= 4) ||
+        (Number(navigator.deviceMemory) > 0 && Number(navigator.deviceMemory) <= 4) ||
+        Boolean(connection?.saveData);
 
-
-    if (
-        lowHardware
-    ) {
-
-        bodyV4.classList.add(
-            "v4-lite"
-        );
-
+    if (lowHardware) {
+        bodyV4.classList.add("v4-lite");
     }
-
 
     /* =====================================================
        ENTRADA PELO NOME
     ====================================================== */
 
-    const entry =
-        $v4("#dreamEntry");
+    const entry = $v4("#dreamEntry");
+    const entryForm = $v4("#dreamEntryForm");
+    const nameInput = $v4("#dreamNameInput");
+    const entryError = $v4("#dreamEntryError");
+    const entryStars = $v4("#dreamEntryStars");
+    const entryAvatar = $v4("#dreamEntryAvatar");
+    const nameCount = $v4("#dreamNameCount");
+    const enterButton = $v4("#dreamEnterButton");
+    const nameField = $v4(".dream-name-field");
 
-    const entryForm =
-        $v4("#dreamEntryForm");
+    const userRoot = $v4("#dreamUser");
+    const userButton = $v4("#dreamUserButton");
+    const userMenu = $v4("#dreamUserMenu");
+    const userNameElement = $v4("#dreamUserName");
+    const userInitial = $v4("#dreamUserInitial");
+    const changeNameButton = $v4("#dreamChangeName");
+    const logoutButton = $v4("#dreamLogout");
 
-    const nameInput =
-        $v4("#dreamNameInput");
+    let currentUserName = "";
 
-    const entryError =
-        $v4("#dreamEntryError");
-
-    const entryStars =
-        $v4("#dreamEntryStars");
-
-    const entryAvatar =
-        $v4("#dreamEntryAvatar");
-
-    const nameCount =
-        $v4("#dreamNameCount");
-
-    const enterButton =
-        $v4("#dreamEnterButton");
-
-    const nameField =
-        $v4(".dream-name-field");
-
-
-    const userRoot =
-        $v4("#dreamUser");
-
-    const userButton =
-        $v4("#dreamUserButton");
-
-    const userMenu =
-        $v4("#dreamUserMenu");
-
-    const userNameElement =
-        $v4("#dreamUserName");
-
-    const userInitial =
-        $v4("#dreamUserInitial");
-
-    const changeNameButton =
-        $v4("#dreamChangeName");
-
-    const logoutButton =
-        $v4("#dreamLogout");
-
-
-    let currentUserName =
-        "";
-
-
-    function normalizeName(
-        value
-    ) {
-
-        return String(
-            value ||
-            ""
-        )
-            .replace(
-                /\s+/g,
-                " "
-            )
+    function normalizeName(value) {
+        return String(value || "")
+            .replace(/\s+/g, " ")
             .trim()
-            .slice(
-                0,
-                24
-            );
-
+            .slice(0, 24);
     }
 
-
-    function firstName(
-        value
-    ) {
-
-        return normalizeName(
-            value
-        )
-            .split(
-                " "
-            )[0] ||
-            "Dreamer";
-
+    function firstName(value) {
+        return normalizeName(value).split(" ")[0] || "Dreamer";
     }
 
+    function updateUserUI(name) {
+        currentUserName = normalizeName(name);
 
-    function updateUserUI(
-        name
-    ) {
-
-        currentUserName =
-            normalizeName(
-                name
-            );
-
-
-        if (
-            userNameElement
-        ) {
-
-            userNameElement.textContent =
-                firstName(
-                    currentUserName
-                );
-
+        if (userNameElement) {
+            userNameElement.textContent = firstName(currentUserName);
         }
 
-
-        if (
-            userInitial
-        ) {
-
+        if (userInitial) {
             userInitial.textContent =
                 currentUserName
-                    ? currentUserName
-                        .charAt(
-                            0
-                        )
-                        .toLocaleUpperCase(
-                            "pt-BR"
-                        )
+                    ? currentUserName.charAt(0).toLocaleUpperCase("pt-BR")
                     : "D";
-
         }
 
+        const heroCopy = $v4(".hero-copy");
+        let welcome = $v4("#dreamPersonalWelcome");
 
-        const heroCopy =
-            $v4(
-                ".hero-copy"
-            );
+        if (heroCopy && !welcome) {
+            welcome = document.createElement("p");
+            welcome.id = "dreamPersonalWelcome";
+            welcome.className = "dream-personal-welcome";
 
-
-        let welcome =
-            $v4(
-                "#dreamPersonalWelcome"
-            );
-
-
-        if (
-            heroCopy &&
-            !welcome
-        ) {
-
-            welcome =
-                document.createElement(
-                    "p"
-                );
-
-
-            welcome.id =
-                "dreamPersonalWelcome";
-
-
-            welcome.className =
-                "dream-personal-welcome";
-
-
-            const heading =
-                $v4(
-                    "h1",
-                    heroCopy
-                );
-
-
-            heroCopy.insertBefore(
-                welcome,
-                heading ||
-                heroCopy.firstChild
-            );
-
+            const heading = $v4("h1", heroCopy);
+            heroCopy.insertBefore(welcome, heading || heroCopy.firstChild);
         }
 
-
-        if (
-            welcome
-        ) {
-
+        if (welcome) {
             const english =
-                app().state
-                    ?.currentLanguage ===
-                "en-US";
+                app().state?.currentLanguage === "en-US";
 
-
-            welcome.textContent =
-                currentUserName
-                    ? (
-                        english
-                            ? `Welcome, ${firstName(currentUserName)} ♡`
-                            : `Olá, ${firstName(currentUserName)} ♡`
-                    )
-                    : "";
-
+            welcome.textContent = currentUserName
+                ? (english
+                    ? `Welcome, ${firstName(currentUserName)} ♡`
+                    : `Olá, ${firstName(currentUserName)} ♡`)
+                : "";
         }
-
     }
-
 
     function buildEntryStars() {
-
-        if (
-            !entryStars ||
-            entryStars.childElementCount
-        ) {
-
+        if (!entryStars || entryStars.childElementCount) {
             return;
-
         }
 
+        const amount = bodyV4.classList.contains("v4-lite") ? 0 : 14;
 
-        const amount =
-            bodyV4.classList.contains(
-                "v4-lite"
-            )
-                ? 0
-                : 14;
-
-
-        for (
-            let index = 0;
-            index < amount;
-            index += 1
-        ) {
-
-            const star =
-                document.createElement(
-                    "span"
-                );
-
-
-            star.className =
-                "dream-entry-star";
-
-
-            star.style.left =
-                `${Math.random() * 100}%`;
-
-
-            star.style.top =
-                `${Math.random() * 100}%`;
-
-
-            star.style.setProperty(
-                "--size",
-                `${2 + Math.random() * 5}px`
-            );
-
-
-            star.style.setProperty(
-                "--opacity",
-                String(
-                    0.2 +
-                    Math.random() *
-                    0.6
-                )
-            );
-
-
-            star.style.setProperty(
-                "--duration",
-                `${6 + Math.random() * 8}s`
-            );
-
-
-            star.style.setProperty(
-                "--delay",
-                `${Math.random() * -7}s`
-            );
-
-
-            entryStars.appendChild(
-                star
-            );
-
+        for (let index = 0; index < amount; index += 1) {
+            const star = document.createElement("span");
+            star.className = "dream-entry-star";
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.setProperty("--size", `${2 + Math.random() * 5}px`);
+            star.style.setProperty("--opacity", String(0.2 + Math.random() * 0.6));
+            star.style.setProperty("--duration", `${6 + Math.random() * 8}s`);
+            star.style.setProperty("--delay", `${Math.random() * -7}s`);
+            entryStars.appendChild(star);
         }
-
     }
-
 
     function renderEntryInputState() {
+        const value = normalizeName(nameInput?.value || "");
+        const length = value.length;
+        const valid = length >= 2;
 
-        const value =
-            normalizeName(
-                nameInput?.value ||
-                ""
-            );
-
-
-        const length =
-            value.length;
-
-
-        const valid =
-            length >= 2;
-
-
-        if (
-            nameCount
-        ) {
-
-            nameCount.textContent =
-                `${length}/24`;
-
+        if (nameCount) {
+            nameCount.textContent = `${length}/24`;
         }
 
-
-        if (
-            entryAvatar
-        ) {
-
-            entryAvatar.textContent =
-                value
-                    ? value
-                        .charAt(
-                            0
-                        )
-                        .toLocaleUpperCase(
-                            "pt-BR"
-                        )
-                    : "D";
-
+        if (entryAvatar) {
+            entryAvatar.textContent = value
+                ? value.charAt(0).toLocaleUpperCase("pt-BR")
+                : "D";
         }
 
-
-        if (
-            enterButton
-        ) {
-
-            enterButton.disabled =
-                !valid;
-
-
-            enterButton.setAttribute(
-                "aria-disabled",
-                String(
-                    !valid
-                )
-            );
-
+        if (enterButton) {
+            enterButton.disabled = !valid;
+            enterButton.setAttribute("aria-disabled", String(!valid));
         }
 
-
-        nameField?.classList.toggle(
-            "has-value",
-            length > 0
-        );
-
-
-        nameField?.classList.toggle(
-            "has-valid-value",
-            valid
-        );
-
-
+        nameField?.classList.toggle("has-value", length > 0);
+        nameField?.classList.toggle("has-valid-value", valid);
         nameField?.classList.toggle(
             "is-invalid",
-            Boolean(
-                entryError
-                    ?.textContent
-                    ?.trim()
-            )
+            Boolean(entryError?.textContent?.trim())
         );
-
     }
 
-
-    function openEntry(
-        prefill = currentUserName
-    ) {
-
-        if (
-            !entry
-        ) {
-
+    function openEntry(prefill = currentUserName) {
+        if (!entry) {
             return;
-
         }
-
 
         closeUserMenu();
+        entry.hidden = false;
+        entry.classList.remove("leaving");
+        bodyV4.classList.add("dream-entry-open");
+        entry.setAttribute("aria-hidden", "false");
 
-
-        entry.hidden =
-            false;
-
-
-        entry.classList.remove(
-            "leaving"
-        );
-
-
-        bodyV4.classList.add(
-            "dream-entry-open"
-        );
-
-
-        entry.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-
-        if (
-            nameInput
-        ) {
-
-            nameInput.value =
-                normalizeName(
-                    prefill
-                );
-
-
+        if (nameInput) {
+            nameInput.value = normalizeName(prefill);
             renderEntryInputState();
 
+            window.setTimeout(() => {
+                nameInput.focus({ preventScroll: true });
 
-            window.setTimeout(
-                () => {
-
-                    nameInput.focus({
-                        preventScroll:
-                            true
-                    });
-
-
-                    if (
-                        nameInput.value
-                    ) {
-
-                        nameInput.select();
-
-                    }
-
-                },
-                160
-            );
-
+                if (nameInput.value) {
+                    nameInput.select();
+                }
+            }, 160);
         }
-
     }
-
 
     function closeEntry() {
-
-        if (
-            !entry
-        ) {
-
+        if (!entry) {
             return;
-
         }
 
+        entry.classList.add("leaving");
+        bodyV4.classList.remove("dream-entry-open");
+        entry.setAttribute("aria-hidden", "true");
 
-        entry.classList.add(
-            "leaving"
-        );
-
-
-        bodyV4.classList.remove(
-            "dream-entry-open"
-        );
-
-
-        entry.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-
-        window.setTimeout(
-            () => {
-
-                entry.hidden =
-                    true;
-
-
-                entry.classList.remove(
-                    "leaving"
-                );
-
-            },
-            540
-        );
-
+        window.setTimeout(() => {
+            entry.hidden = true;
+            entry.classList.remove("leaving");
+        }, 540);
     }
 
+    function saveName(name) {
+        const finalName = normalizeName(name);
 
-    function saveName(
-        name
-    ) {
-
-        const finalName =
-            normalizeName(
-                name
-            );
-
-
-        if (
-            finalName.length <
-            2
-        ) {
-
-            if (
-                entryError
-            ) {
-
+        if (finalName.length < 2) {
+            if (entryError) {
                 entryError.textContent =
-                    app().state
-                        ?.currentLanguage ===
-                    "en-US"
+                    app().state?.currentLanguage === "en-US"
                         ? "Enter at least 2 characters."
                         : "Digite pelo menos 2 caracteres.";
-
             }
 
-
             renderEntryInputState();
-
-
             nameInput?.focus();
-
-
             return false;
-
         }
 
-
-        safeStorage.set(
-            "dream.userName",
-            finalName
-        );
-
+        safeStorage.set("dream.userName", finalName);
 
         try {
-                        sessionStorage.setItem("dream.v5.2.entrySeen", "1");
+            sessionStorage.setItem("dream.v5.2.entrySeen", "1");
         }
         catch (error) {
             // sessionStorage é opcional
@@ -14183,7 +14391,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         closeEntry();
-
         unlockAchievement("welcome", {
             pt: `Bem-vindo ao Dream, ${firstName(finalName)} ♡`,
             en: `Welcome to Dream, ${firstName(finalName)} ♡`
@@ -14192,766 +14399,243 @@ document.addEventListener("DOMContentLoaded", () => {
         return true;
     }
 
+    entryForm?.addEventListener("submit", event => {
+        event.preventDefault();
+        saveName(nameInput?.value);
+    });
 
-    entryForm?.addEventListener(
-        "submit",
-        event => {
-
-            event.preventDefault();
-
-            saveName(
-                nameInput?.value
-            );
-
+    nameInput?.addEventListener("input", () => {
+        if (entryError) {
+            entryError.textContent = "";
         }
-    );
 
+        renderEntryInputState();
+    });
 
-    nameInput?.addEventListener(
-        "input",
-        () => {
-
-            if (
-                entryError
-            ) {
-
-                entryError.textContent =
-                    "";
-
-            }
-
-
-            renderEntryInputState();
-
+    nameInput?.addEventListener("blur", () => {
+        if (!nameInput.value.trim()) {
+            nameField?.classList.remove("has-value", "has-valid-value", "is-invalid");
         }
-    );
-
-
-    nameInput?.addEventListener(
-        "blur",
-        () => {
-
-            if (
-                !nameInput.value.trim()
-            ) {
-
-                nameField?.classList.remove(
-                    "has-value",
-                    "has-valid-value",
-                    "is-invalid"
-                );
-
-            }
-
-        }
-    );
-
+    });
 
     /* =====================================================
        PERFIL / MENU
     ====================================================== */
 
     function openUserMenu() {
-
-        if (
-            !userRoot ||
-            !userMenu ||
-            !userButton
-        ) {
-
+        if (!userRoot || !userMenu || !userButton) {
             return;
-
         }
 
-
-        userRoot.classList.add(
-            "open"
-        );
-
-
-        userMenu.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-
-        userButton.setAttribute(
-            "aria-expanded",
-            "true"
-        );
-
+        userRoot.classList.add("open");
+        userMenu.setAttribute("aria-hidden", "false");
+        userButton.setAttribute("aria-expanded", "true");
     }
-
 
     function closeUserMenu() {
-
-        if (
-            !userRoot ||
-            !userMenu ||
-            !userButton
-        ) {
-
+        if (!userRoot || !userMenu || !userButton) {
             return;
-
         }
 
-
-        userRoot.classList.remove(
-            "open"
-        );
-
-
-        userMenu.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-
-        userButton.setAttribute(
-            "aria-expanded",
-            "false"
-        );
-
+        userRoot.classList.remove("open");
+        userMenu.setAttribute("aria-hidden", "true");
+        userButton.setAttribute("aria-expanded", "false");
     }
 
+    userButton?.addEventListener("click", event => {
+        event.stopPropagation();
 
-    userButton?.addEventListener(
-        "click",
-        event => {
-
-            event.stopPropagation();
-
-
-            if (
-                userRoot?.classList.contains(
-                    "open"
-                )
-            ) {
-
-                closeUserMenu();
-
-            }
-
-            else {
-
-                openUserMenu();
-
-            }
-
+        if (userRoot?.classList.contains("open")) {
+            closeUserMenu();
         }
-    );
-
-
-    changeNameButton?.addEventListener(
-        "click",
-        () => {
-
-            openEntry(
-                currentUserName
-            );
-
+        else {
+            openUserMenu();
         }
-    );
+    });
 
+    changeNameButton?.addEventListener("click", () => {
+        openEntry(currentUserName);
+    });
 
-    logoutButton?.addEventListener(
-        "click",
-        () => {
+    logoutButton?.addEventListener("click", () => {
+        safeStorage.remove("dream.userName");
+        currentUserName = "";
+        updateUserUI("");
+        openEntry("");
+    });
 
-            safeStorage.remove(
-                "dream.userName"
-            );
-
-
-            currentUserName =
-                "";
-
-
-            updateUserUI(
-                ""
-            );
-
-
-            openEntry(
-                ""
-            );
-
+    document.addEventListener("pointerdown", event => {
+        if (!userRoot?.contains(event.target)) {
+            closeUserMenu();
         }
-    );
-
-
-    document.addEventListener(
-        "pointerdown",
-        event => {
-
-            if (
-                !userRoot?.contains(
-                    event.target
-                )
-            ) {
-
-                closeUserMenu();
-
-            }
-
-        }
-    );
-
+    });
 
     /* =====================================================
        MODO IMERSIVO
     ====================================================== */
 
-    const immersiveButton =
-        $v4("#immersiveButton");
-
-
-    let immersive =
-        false;
-
+    const immersiveButton = $v4("#immersiveButton");
+    let immersive = false;
 
     function syncImmersiveButton() {
-
-        if (
-            !immersiveButton
-        ) {
-
+        if (!immersiveButton) {
             return;
-
         }
-
 
         const english =
-            app().state
-                ?.currentLanguage ===
-            "en-US";
+            app().state?.currentLanguage === "en-US";
 
+        immersiveButton.setAttribute("aria-pressed", String(immersive));
+        immersiveButton.title = immersive
+            ? (english ? "Exit immersive mode" : "Sair do modo imersivo")
+            : (english ? "Enable immersive mode" : "Ativar modo imersivo");
 
-        immersiveButton.setAttribute(
-            "aria-pressed",
-            String(
-                immersive
-            )
-        );
+        const strong = immersiveButton.querySelector("strong");
 
-
-        immersiveButton.title =
-            immersive
-                ? (
-                    english
-                        ? "Exit immersive mode"
-                        : "Sair do modo imersivo"
-                )
-                : (
-                    english
-                        ? "Enable immersive mode"
-                        : "Ativar modo imersivo"
-                );
-
-
-        const strong =
-            immersiveButton.querySelector(
-                "strong"
-            );
-
-
-        if (
-            strong
-        ) {
-
-            strong.textContent =
-                immersive
-                    ? (
-                        english
-                            ? "Exit"
-                            : "Sair"
-                    )
-                    : (
-                        english
-                            ? "Immersive"
-                            : "Imersivo"
-                    );
-
+        if (strong) {
+            strong.textContent = immersive
+                ? (english ? "Exit" : "Sair")
+                : (english ? "Immersive" : "Imersivo");
         }
-
     }
 
-
-    function setImmersive(
-        enabled
-    ) {
-
-        immersive =
-            Boolean(
-                enabled
-            );
-
-
-        bodyV4.classList.toggle(
-            "immersive-v4",
-            immersive
-        );
-
-
+    function setImmersive(enabled) {
+        immersive = Boolean(enabled);
+        bodyV4.classList.toggle("immersive-v4", immersive);
         syncImmersiveButton();
 
-
-        if (
-            immersive
-        ) {
-
+        if (immersive) {
             closeUserMenu();
-
         }
-
     }
 
-
-    immersiveButton?.addEventListener(
-        "click",
-        () => {
-
-            setImmersive(
-                !immersive
-            );
-
-        }
-    );
-
+    immersiveButton?.addEventListener("click", () => {
+        setImmersive(!immersive);
+    });
 
     /* =====================================================
        REFLEXO DO PRODUTO
     ====================================================== */
 
-    const heroProductV4 =
-        $v4("#heroProduct");
+    const heroProductV4 = $v4("#heroProduct");
 
+    if (heroProductV4) {
+        const shine = document.createElement("div");
+        shine.className = "v4-product-shine";
+        shine.setAttribute("aria-hidden", "true");
+        heroProductV4.appendChild(shine);
 
-    if (
-        heroProductV4
-    ) {
-
-        const shine =
-            document.createElement(
-                "div"
-            );
-
-
-        shine.className =
-            "v4-product-shine";
-
-
-        shine.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-
-        heroProductV4.appendChild(
-            shine
-        );
-
-
-        heroProductV4.addEventListener(
-            "pointermove",
-            event => {
-
-                if (
-                    bodyV4.classList.contains(
-                        "v4-lite"
-                    )
-                ) {
-
-                    return;
-
-                }
-
-
-                const rect =
-                    heroProductV4
-                        .getBoundingClientRect();
-
-
-                const x =
-                    (
-                        (
-                            event.clientX -
-                            rect.left
-                        ) /
-                        rect.width
-                    ) *
-                    100;
-
-
-                const y =
-                    (
-                        (
-                            event.clientY -
-                            rect.top
-                        ) /
-                        rect.height
-                    ) *
-                    100;
-
-
-                heroProductV4.style.setProperty(
-                    "--v4-shine-x",
-                    `${x}%`
-                );
-
-
-                heroProductV4.style.setProperty(
-                    "--v4-shine-y",
-                    `${y}%`
-                );
-
+        heroProductV4.addEventListener("pointermove", event => {
+            if (bodyV4.classList.contains("v4-lite")) {
+                return;
             }
-        );
 
+            const rect = heroProductV4.getBoundingClientRect();
+            const x = ((event.clientX - rect.left) / rect.width) * 100;
+            const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+            heroProductV4.style.setProperty("--v4-shine-x", `${x}%`);
+            heroProductV4.style.setProperty("--v4-shine-y", `${y}%`);
+        });
     }
-
 
     /* =====================================================
        SPRAY V4
     ====================================================== */
 
-    const sprayButtonV4 =
-        $v4("#sprayButton");
-
+    const sprayButtonV4 = $v4("#sprayButton");
 
     function createV4SprayCloud() {
-
-        if (
-            !heroProductV4 ||
-            bodyV4.classList.contains(
-                "v4-lite"
-            )
-        ) {
-
+        if (!heroProductV4 || bodyV4.classList.contains("v4-lite")) {
             return;
-
         }
 
+        const cloud = document.createElement("div");
+        cloud.className = "v4-spray-cloud";
+        cloud.setAttribute("aria-hidden", "true");
 
-        const cloud =
-            document.createElement(
-                "div"
-            );
+        const intensity = Number(app().state?.sprayIntensity) || 5;
+        const amount = Math.min(34, 16 + intensity * 2);
 
+        for (let index = 0; index < amount; index += 1) {
+            const particle = document.createElement("span");
+            particle.className = "v4-spray-particle";
 
-        cloud.className =
-            "v4-spray-cloud";
+            const angle = (-145 + Math.random() * 110) * (Math.PI / 180);
+            const distance = 70 + Math.random() * (90 + intensity * 8);
+            const x = Math.cos(angle) * distance;
+            const y = Math.sin(angle) * distance;
 
+            particle.style.setProperty("--v4-x", `${x}px`);
+            particle.style.setProperty("--v4-y", `${y}px`);
+            particle.style.setProperty("--v4-size", `${4 + Math.random() * 10}px`);
+            particle.style.setProperty("--v4-delay", `${Math.random() * 120}ms`);
+            particle.style.setProperty("--v4-duration", `${760 + Math.random() * 520}ms`);
+            particle.style.setProperty("--v4-scale", String(0.7 + Math.random() * 1.5));
 
-        cloud.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-
-        const intensity =
-            Number(
-                app().state
-                    ?.sprayIntensity
-            ) ||
-            5;
-
-
-        const amount =
-            Math.min(
-                34,
-                16 +
-                intensity *
-                2
-            );
-
-
-        for (
-            let index = 0;
-            index < amount;
-            index += 1
-        ) {
-
-            const particle =
-                document.createElement(
-                    "span"
-                );
-
-
-            particle.className =
-                "v4-spray-particle";
-
-
-            const angle =
-                (
-                    -145 +
-                    Math.random() *
-                    110
-                ) *
-                (
-                    Math.PI /
-                    180
-                );
-
-
-            const distance =
-                70 +
-                Math.random() *
-                (
-                    90 +
-                    intensity *
-                    8
-                );
-
-
-            const x =
-                Math.cos(
-                    angle
-                ) *
-                distance;
-
-
-            const y =
-                Math.sin(
-                    angle
-                ) *
-                distance;
-
-
-            particle.style.setProperty(
-                "--v4-x",
-                `${x}px`
-            );
-
-
-            particle.style.setProperty(
-                "--v4-y",
-                `${y}px`
-            );
-
-
-            particle.style.setProperty(
-                "--v4-size",
-                `${
-                    4 +
-                    Math.random() *
-                    10
-                }px`
-            );
-
-
-            particle.style.setProperty(
-                "--v4-delay",
-                `${
-                    Math.random() *
-                    120
-                }ms`
-            );
-
-
-            particle.style.setProperty(
-                "--v4-duration",
-                `${
-                    760 +
-                    Math.random() *
-                    520
-                }ms`
-            );
-
-
-            particle.style.setProperty(
-                "--v4-scale",
-                String(
-                    0.7 +
-                    Math.random() *
-                    1.5
-                )
-            );
-
-
-            cloud.appendChild(
-                particle
-            );
-
+            cloud.appendChild(particle);
         }
 
+        heroProductV4.appendChild(cloud);
 
-        heroProductV4.appendChild(
-            cloud
-        );
-
-
-        window.setTimeout(
-            () => {
-
-                cloud.remove();
-
-            },
-            1600
-        );
-
+        window.setTimeout(() => {
+            cloud.remove();
+        }, 1600);
     }
 
+    sprayButtonV4?.addEventListener("click", () => {
+        createV4SprayCloud();
 
-    sprayButtonV4?.addEventListener(
-        "click",
-        () => {
+        window.setTimeout(() => {
+            const sprays = Number(app().state?.sprayCount) || 0;
 
-            createV4SprayCloud();
-
-
-            window.setTimeout(
-                () => {
-
-                    const sprays =
-                        Number(
-                            app().state
-                                ?.sprayCount
-                        ) ||
-                        0;
-
-
-                    if (
-                        sprays >=
-                        50
-                    ) {
-
-                        unlockAchievement(
-                            "sprays-50",
-                            {
-                                pt:
-                                    "50 borrifadas • Dream sem limites ✦",
-
-                                en:
-                                    "50 sprays • Unlimited Dream ✦"
-                            }
-                        );
-
-                    }
-
-                },
-                60
-            );
-
-        }
-    );
-
+            if (sprays >= 50) {
+                unlockAchievement("sprays-50", {
+                    pt: "50 borrifadas • Dream sem limites ✦",
+                    en: "50 sprays • Unlimited Dream ✦"
+                });
+            }
+        }, 60);
+    });
 
     /* =====================================================
        GALERIA 3D
     ====================================================== */
 
-    $$v4(
-        ".gallery-item"
-    ).forEach(
-        card => {
+    $$v4(".gallery-item").forEach(card => {
+        card.addEventListener("pointermove", event => {
+            if (
+                bodyV4.classList.contains("v4-lite") ||
+                window.innerWidth <= 760 ||
+                event.pointerType === "touch"
+            ) {
+                return;
+            }
 
-            card.addEventListener(
-                "pointermove",
-                event => {
+            const rect = card.getBoundingClientRect();
+            const x = (event.clientX - rect.left) / rect.width;
+            const y = (event.clientY - rect.top) / rect.height;
 
-                    if (
-                        bodyV4.classList.contains(
-                            "v4-lite"
-                        ) ||
-                        window.innerWidth <=
-                        760 ||
-                        event.pointerType ===
-                        "touch"
-                    ) {
+            const rotateY = (x - 0.5) * 7;
+            const rotateX = (0.5 - y) * 6;
 
-                        return;
+            card.style.setProperty("--v4-card-x", `${rotateX}deg`);
+            card.style.setProperty("--v4-card-y", `${rotateY}deg`);
+            card.classList.add("v4-tilting");
+        });
 
-                    }
-
-
-                    const rect =
-                        card.getBoundingClientRect();
-
-
-                    const x =
-                        (
-                            event.clientX -
-                            rect.left
-                        ) /
-                        rect.width;
-
-
-                    const y =
-                        (
-                            event.clientY -
-                            rect.top
-                        ) /
-                        rect.height;
-
-
-                    const rotateY =
-                        (
-                            x -
-                            0.5
-                        ) *
-                        7;
-
-
-                    const rotateX =
-                        (
-                            0.5 -
-                            y
-                        ) *
-                        6;
-
-
-                    card.style.setProperty(
-                        "--v4-card-x",
-                        `${rotateX}deg`
-                    );
-
-
-                    card.style.setProperty(
-                        "--v4-card-y",
-                        `${rotateY}deg`
-                    );
-
-
-                    card.classList.add(
-                        "v4-tilting"
-                    );
-
-                }
-            );
-
-
-            card.addEventListener(
-                "pointerleave",
-                () => {
-
-                    card.classList.remove(
-                        "v4-tilting"
-                    );
-
-
-                    card.style.removeProperty(
-                        "--v4-card-x"
-                    );
-
-
-                    card.style.removeProperty(
-                        "--v4-card-y"
-                    );
-
-                }
-            );
-
-        }
-    );
-
+        card.addEventListener("pointerleave", () => {
+            card.classList.remove("v4-tilting");
+            card.style.removeProperty("--v4-card-x");
+            card.style.removeProperty("--v4-card-y");
+        });
+    });
 
     /* =====================================================
        RIPPLE DOS BOTÕES
     ====================================================== */
 
     const rippleSelector = [
-
         ".primary-btn",
         ".secondary-btn",
         ".pill-btn",
@@ -14961,304 +14645,124 @@ document.addEventListener("DOMContentLoaded", () => {
         ".studio-fab",
         ".immersive-fab",
         ".dream-entry-button"
+    ].join(",");
 
-    ].join(
-        ","
-    );
+    document.addEventListener("pointerdown", event => {
+        const button = event.target.closest(rippleSelector);
 
-
-    document.addEventListener(
-        "pointerdown",
-        event => {
-
-            const button =
-                event.target.closest(
-                    rippleSelector
-                );
-
-
-            if (
-                !button ||
-                (
-                    event.pointerType ===
-                        "touch" &&
-                    event.isPrimary ===
-                        false
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            const rect =
-                button.getBoundingClientRect();
-
-
-            const ripple =
-                document.createElement(
-                    "span"
-                );
-
-
-            ripple.className =
-                "v4-ripple";
-
-
-            ripple.style.left =
-                `${
-                    event.clientX -
-                    rect.left
-                }px`;
-
-
-            ripple.style.top =
-                `${
-                    event.clientY -
-                    rect.top
-                }px`;
-
-
-            button.classList.add(
-                "v4-ripple-host"
-            );
-
-
-            button.appendChild(
-                ripple
-            );
-
-
-            window.setTimeout(
-                () =>
-                    ripple.remove(),
-                680
-            );
-
+        if (!button || event.pointerType === "touch" && event.isPrimary === false) {
+            return;
         }
-    );
 
+        const rect = button.getBoundingClientRect();
+        const ripple = document.createElement("span");
+
+        ripple.className = "v4-ripple";
+        ripple.style.left = `${event.clientX - rect.left}px`;
+        ripple.style.top = `${event.clientY - rect.top}px`;
+
+        button.classList.add("v4-ripple-host");
+        button.appendChild(ripple);
+
+        window.setTimeout(() => ripple.remove(), 680);
+    });
 
     /* =====================================================
        DREAM SCENES • ATMOSFERA GLOBAL
     ====================================================== */
 
-    const visitedScenes =
-        new Set(
-            safeStorage.get(
-                "dream.v4.visitedScenes",
-                []
-            )
-        );
-
-
-    document.addEventListener(
-        "click",
-        event => {
-
-            const sceneButton =
-                event.target.closest(
-                    "[data-scene]"
-                );
-
-
-            if (
-                !sceneButton
-            ) {
-
-                return;
-
-            }
-
-
-            const scene =
-                sceneButton.dataset.scene;
-
-
-            bodyV4.dataset.v4Scene =
-                scene;
-
-
-            visitedScenes.add(
-                scene
-            );
-
-
-            safeStorage.set(
-                "dream.v4.visitedScenes",
-                [
-                    ...visitedScenes
-                ]
-            );
-
-
-            if (
-                visitedScenes.size >=
-                4
-            ) {
-
-                unlockAchievement(
-                    "all-scenes",
-                    {
-                        pt:
-                            "Todas as Dream Scenes descobertas ◌",
-
-                        en:
-                            "All Dream Scenes discovered ◌"
-                    }
-                );
-
-            }
-
-        }
+    const visitedScenes = new Set(
+        safeStorage.get("dream.v4.visitedScenes", [])
     );
 
+    document.addEventListener("click", event => {
+        const sceneButton = event.target.closest("[data-scene]");
+
+        if (!sceneButton) {
+            return;
+        }
+
+        const scene = sceneButton.dataset.scene;
+
+        bodyV4.dataset.v4Scene = scene;
+
+        visitedScenes.add(scene);
+
+        safeStorage.set(
+            "dream.v4.visitedScenes",
+            [...visitedScenes]
+        );
+
+        if (visitedScenes.size >= 4) {
+            unlockAchievement("all-scenes", {
+                pt: "Todas as Dream Scenes descobertas ◌",
+                en: "All Dream Scenes discovered ◌"
+            });
+        }
+    });
 
     /* =====================================================
        CONQUISTAS
     ====================================================== */
 
-    let achievementTimer =
-        null;
+    let achievementTimer = null;
 
-
-    function unlockAchievement(
-        key,
-        copy
-    ) {
-
-        const unlocked =
-            new Set(
-                safeStorage.get(
-                    "dream.v4.achievements",
-                    []
-                )
-            );
-
-
-        if (
-            unlocked.has(
-                key
-            )
-        ) {
-
-            return;
-
-        }
-
-
-        unlocked.add(
-            key
+    function unlockAchievement(key, copy) {
+        const unlocked = new Set(
+            safeStorage.get("dream.v4.achievements", [])
         );
 
+        if (unlocked.has(key)) {
+            return;
+        }
+
+        unlocked.add(key);
 
         safeStorage.set(
             "dream.v4.achievements",
-            [
-                ...unlocked
-            ]
+            [...unlocked]
         );
 
-
         const english =
-            app().state
-                ?.currentLanguage ===
-            "en-US";
+            app().state?.currentLanguage === "en-US";
 
+        const toast = document.createElement("div");
 
-        const toast =
-            document.createElement(
-                "div"
-            );
-
-
-        toast.className =
-            "dream-achievement";
-
+        toast.className = "dream-achievement";
 
         toast.setAttribute(
             "role",
             "status"
         );
 
-
         toast.setAttribute(
             "aria-live",
             "polite"
         );
 
+        toast.innerHTML = `
+            <span class="dream-achievement-icon" aria-hidden="true">✦</span>
+            <span>
+                <small>${english ? "Achievement" : "Conquista"}</small>
+                <strong>${english ? copy.en : copy.pt}</strong>
+            </span>
+        `;
 
-        toast.innerHTML =
-            `
-                <span
-                    class="dream-achievement-icon"
-                    aria-hidden="true"
-                >
-                    ✦
-                </span>
+        document.querySelector(".dream-achievement")?.remove();
 
-                <span>
-                    <small>
-                        ${english ? "Achievement" : "Conquista"}
-                    </small>
+        document.body.appendChild(toast);
 
-                    <strong>
-                        ${english ? copy.en : copy.pt}
-                    </strong>
-                </span>
-            `;
+        requestAnimationFrame(() => {
+            toast.classList.add("show");
+        });
 
+        window.clearTimeout(achievementTimer);
 
-        document
-            .querySelector(
-                ".dream-achievement"
-            )
-            ?.remove();
-
-
-        document.body.appendChild(
-            toast
-        );
-
-
-        requestAnimationFrame(
-            () => {
-
-                toast.classList.add(
-                    "show"
-                );
-
-            }
-        );
-
-
-        window.clearTimeout(
-            achievementTimer
-        );
-
-
-        achievementTimer =
-            window.setTimeout(
-                () => {
-
-                    toast.classList.remove(
-                        "show"
-                    );
-
-
-                    window.setTimeout(
-                        () =>
-                            toast.remove(),
-                        320
-                    );
-
-                },
-                3200
-            );
-
+        achievementTimer = window.setTimeout(() => {
+            toast.classList.remove("show");
+            window.setTimeout(() => toast.remove(), 320);
+        }, 3200);
     }
-
 
     /* =====================================================
        DREAM STUDIO • FERRAMENTAS V4
@@ -15267,415 +14771,162 @@ document.addEventListener("DOMContentLoaded", () => {
     const resetButtonV4 =
         $v4("#resetSettings");
 
-
     function injectStudioV4Tools() {
-
         if (
             !resetButtonV4 ||
             $v4("#v4StudioTools")
         ) {
-
             return;
-
         }
 
-
         const tools =
-            document.createElement(
-                "div"
-            );
-
+            document.createElement("div");
 
         tools.id =
             "v4StudioTools";
 
-
         tools.className =
             "v4-studio-tools";
 
+        tools.innerHTML = `
+            <button type="button" id="v4SavePreset">Salvar meu Dream</button>
+            <button type="button" id="v4ApplyPreset">Aplicar meu Dream</button>
+            <button type="button" class="v4-randomize" id="v4Randomize">✦ Randomizar Dream</button>
+        `;
 
-        tools.innerHTML =
-            `
-                <button
-                    type="button"
-                    id="v4SavePreset"
-                >
-                    Salvar meu Dream
-                </button>
+        resetButtonV4.before(tools);
 
-                <button
-                    type="button"
-                    id="v4ApplyPreset"
-                >
-                    Aplicar meu Dream
-                </button>
-
-                <button
-                    type="button"
-                    class="v4-randomize"
-                    id="v4Randomize"
-                >
-                    ✦ Randomizar Dream
-                </button>
-            `;
-
-
-        resetButtonV4.before(
-            tools
-        );
-
-
-        $v4(
-            "#v4SavePreset"
-        )?.addEventListener(
+        $v4("#v4SavePreset")?.addEventListener(
             "click",
             saveCustomV4Preset
         );
 
-
-        $v4(
-            "#v4ApplyPreset"
-        )?.addEventListener(
+        $v4("#v4ApplyPreset")?.addEventListener(
             "click",
             applyCustomV4Preset
         );
 
-
-        $v4(
-            "#v4Randomize"
-        )?.addEventListener(
+        $v4("#v4Randomize")?.addEventListener(
             "click",
             randomizeDreamV4
         );
-
     }
-
 
     function captureV4Preset() {
-
-        const state =
-            app().state ||
-            {};
-
+        const state = app().state || {};
 
         return {
-
-            dark:
-                bodyV4.classList.contains(
-                    "dark"
-                ),
-
-            clean:
-                bodyV4.classList.contains(
-                    "clean-mode"
-                ),
-
-            performance:
-                bodyV4.classList.contains(
-                    "performance-mode"
-                ),
-
-            particles:
-                state.particles !==
-                false,
-
-            animations:
-                state.animations !==
-                false,
-
-            cursorGlow:
-                state.cursorGlow !==
-                false,
-
-            motion:
-                state.motion !==
-                false,
-
-            motionIntensity:
-                Number(
-                    state.motionIntensity
-                ) ||
-                0,
-
-            particleIntensity:
-                Number(
-                    state.particleIntensity
-                ) ||
-                1,
-
-            sprayIntensity:
-                Number(
-                    state.sprayIntensity
-                ) ||
-                1,
-
-            glass:
-                state.glass !==
-                false,
-
-            compact:
-                Boolean(
-                    state.compact
-                ),
-
-            contrast:
-                Boolean(
-                    state.contrast
-                ),
-
-            ambientGlow:
-                state.ambientGlow !==
-                false,
-
-            glowIntensity:
-                Number(
-                    state.glowIntensity
-                ) ||
-                0,
-
-            glassBlur:
-                Number(
-                    state.glassBlur
-                ) ||
-                0,
-
-            sprayExplosion:
-                Number(
-                    state.sprayExplosion
-                ) ||
-                1,
-
-            primary:
-                getComputedStyle(
-                    rootV4
-                )
-                    .getPropertyValue(
-                        "--primary"
-                    )
-                    .trim(),
-
-            secondary:
-                getComputedStyle(
-                    rootV4
-                )
-                    .getPropertyValue(
-                        "--secondary"
-                    )
-                    .trim()
-
+            dark: bodyV4.classList.contains("dark"),
+            clean: bodyV4.classList.contains("clean-mode"),
+            performance: bodyV4.classList.contains("performance-mode"),
+            particles: state.particles !== false,
+            animations: state.animations !== false,
+            cursorGlow: state.cursorGlow !== false,
+            motion: state.motion !== false,
+            motionIntensity: Number(state.motionIntensity) || 0,
+            particleIntensity: Number(state.particleIntensity) || 1,
+            sprayIntensity: Number(state.sprayIntensity) || 1,
+            glass: state.glass !== false,
+            compact: Boolean(state.compact),
+            contrast: Boolean(state.contrast),
+            ambientGlow: state.ambientGlow !== false,
+            glowIntensity: Number(state.glowIntensity) || 0,
+            glassBlur: Number(state.glassBlur) || 0,
+            sprayExplosion: Number(state.sprayExplosion) || 1,
+            primary: getComputedStyle(rootV4).getPropertyValue("--primary").trim(),
+            secondary: getComputedStyle(rootV4).getPropertyValue("--secondary").trim()
         };
-
     }
 
-
     function saveCustomV4Preset() {
-
         safeStorage.set(
             "dream.v4.customPreset",
             captureV4Preset()
         );
 
-
-        unlockAchievement(
-            "custom-preset",
-            {
-                pt:
-                    "Seu primeiro Dream personalizado foi salvo ♡",
-
-                en:
-                    "Your first custom Dream was saved ♡"
-            }
-        );
-
+        unlockAchievement("custom-preset", {
+            pt: "Seu primeiro Dream personalizado foi salvo ♡",
+            en: "Your first custom Dream was saved ♡"
+        });
 
         const button =
             $v4("#v4SavePreset");
 
-
-        if (
-            button
-        ) {
-
+        if (button) {
             const old =
                 button.textContent;
 
-
             button.textContent =
-                app().state
-                    ?.currentLanguage ===
-                "en-US"
+                app().state?.currentLanguage === "en-US"
                     ? "Saved ✓"
                     : "Salvo ✓";
 
-
             window.setTimeout(
                 () => {
-
-                    button.textContent =
-                        old;
-
+                    button.textContent = old;
                 },
                 1200
             );
-
         }
-
     }
 
-
     function applyCustomV4Preset() {
-
         const preset =
             safeStorage.get(
                 "dream.v4.customPreset",
                 null
             );
 
-
         const api =
             app();
 
-
-        if (
-            !preset
-        ) {
-
+        if (!preset) {
             const button =
                 $v4("#v4ApplyPreset");
 
-
-            if (
-                button
-            ) {
-
+            if (button) {
                 const old =
                     button.textContent;
 
-
                 button.textContent =
-                    api.state
-                        ?.currentLanguage ===
-                    "en-US"
+                    api.state?.currentLanguage === "en-US"
                         ? "Save one first"
                         : "Salve um primeiro";
 
-
                 window.setTimeout(
                     () => {
-
-                        button.textContent =
-                            old;
-
+                        button.textContent = old;
                     },
                     1400
                 );
-
             }
 
-
             return;
-
         }
 
-
-        api.setDarkMode?.(
-            preset.dark
-        );
-
-
-        api.setCleanMode?.(
-            preset.clean
-        );
-
-
-        api.setPerformanceMode?.(
-            preset.performance
-        );
-
-
-        api.setParticles?.(
-            preset.particles
-        );
-
-
-        api.setAnimations?.(
-            preset.animations
-        );
-
-
-        api.setCursorGlow?.(
-            preset.cursorGlow
-        );
-
-
-        api.setMotion?.(
-            preset.motion
-        );
-
-
-        api.setMotionIntensity?.(
-            preset.motionIntensity
-        );
-
-
-        api.setParticleIntensity?.(
-            preset.particleIntensity
-        );
-
-
-        api.setSprayIntensity?.(
-            preset.sprayIntensity
-        );
-
-
-        api.setGlass?.(
-            preset.glass
-        );
-
-
-        api.setCompact?.(
-            preset.compact
-        );
-
-
-        api.setContrast?.(
-            preset.contrast
-        );
-
-
-        api.setAmbientGlow?.(
-            preset.ambientGlow
-        );
-
-
-        api.setGlowIntensity?.(
-            preset.glowIntensity
-        );
-
-
-        api.setGlassBlur?.(
-            preset.glassBlur
-        );
-
-
-        api.setSprayExplosion?.(
-            preset.sprayExplosion
-        );
-
-
-        api.applyCustomColors?.(
-            preset.primary,
-            preset.secondary
-        );
-
+        api.setDarkMode?.(preset.dark);
+        api.setCleanMode?.(preset.clean);
+        api.setPerformanceMode?.(preset.performance);
+        api.setParticles?.(preset.particles);
+        api.setAnimations?.(preset.animations);
+        api.setCursorGlow?.(preset.cursorGlow);
+        api.setMotion?.(preset.motion);
+        api.setMotionIntensity?.(preset.motionIntensity);
+        api.setParticleIntensity?.(preset.particleIntensity);
+        api.setSprayIntensity?.(preset.sprayIntensity);
+        api.setGlass?.(preset.glass);
+        api.setCompact?.(preset.compact);
+        api.setContrast?.(preset.contrast);
+        api.setAmbientGlow?.(preset.ambientGlow);
+        api.setGlowIntensity?.(preset.glowIntensity);
+        api.setGlassBlur?.(preset.glassBlur);
+        api.setSprayExplosion?.(preset.sprayExplosion);
+        api.applyCustomColors?.(preset.primary, preset.secondary);
     }
 
-
     function randomizeDreamV4() {
-
         const api =
             app();
-
 
         const moods = [
             "romantico",
@@ -15685,7 +14936,6 @@ document.addEventListener("DOMContentLoaded", () => {
             "calmo"
         ];
 
-
         const mood =
             moods[
                 Math.floor(
@@ -15694,26 +14944,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 )
             ];
 
-
-        api.applyMood?.(
-            mood
-        );
-
-
-        api.setAnimations?.(
-            true
-        );
-
-
-        api.setMotion?.(
-            true
-        );
-
-
-        api.setParticles?.(
-            true
-        );
-
+        api.applyMood?.(mood);
+        api.setAnimations?.(true);
+        api.setMotion?.(true);
+        api.setParticles?.(true);
 
         api.setMotionIntensity?.(
             2 +
@@ -15723,7 +14957,6 @@ document.addEventListener("DOMContentLoaded", () => {
             )
         );
 
-
         api.setParticleIntensity?.(
             2 +
             Math.floor(
@@ -15731,7 +14964,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 9
             )
         );
-
 
         api.setSprayIntensity?.(
             3 +
@@ -15741,7 +14973,6 @@ document.addEventListener("DOMContentLoaded", () => {
             )
         );
 
-
         api.setGlowIntensity?.(
             3 +
             Math.floor(
@@ -15750,23 +14981,13 @@ document.addEventListener("DOMContentLoaded", () => {
             )
         );
 
-
-        unlockAchievement(
-            "random-dream",
-            {
-                pt:
-                    "O acaso escolheu um novo Dream ✦",
-
-                en:
-                    "Chance chose a new Dream ✦"
-            }
-        );
-
+        unlockAchievement("random-dream", {
+            pt: "O acaso escolheu um novo Dream ✦",
+            en: "Chance chose a new Dream ✦"
+        });
     }
 
-
     injectStudioV4Tools();
-
 
     /* =====================================================
        QUIZ • CONQUISTA
@@ -15775,475 +14996,237 @@ document.addEventListener("DOMContentLoaded", () => {
     const quizResultV4 =
         $v4("#quizResult");
 
-
-    if (
-        quizResultV4
-    ) {
-
+    if (quizResultV4) {
         const observer =
-            new MutationObserver(
-                () => {
-
-                    if (
-                        !quizResultV4.hidden
-                    ) {
-
-                        unlockAchievement(
-                            "quiz",
-                            {
-                                pt:
-                                    "Você descobriu o seu Dream Mood ♡",
-
-                                en:
-                                    "You discovered your Dream Mood ♡"
-                            }
-                        );
-
-                    }
-
+            new MutationObserver(() => {
+                if (!quizResultV4.hidden) {
+                    unlockAchievement("quiz", {
+                        pt: "Você descobriu o seu Dream Mood ♡",
+                        en: "You discovered your Dream Mood ♡"
+                    });
                 }
-            );
-
+            });
 
         observer.observe(
             quizResultV4,
             {
-                attributes:
-                    true,
-
-                attributeFilter: [
-                    "hidden"
-                ]
+                attributes: true,
+                attributeFilter: ["hidden"]
             }
         );
-
     }
-
 
     /* =====================================================
        IDIOMA V4
     ====================================================== */
 
     function syncV4Language() {
-
         const english =
-            app().state
-                ?.currentLanguage ===
-            "en-US";
+            app().state?.currentLanguage === "en-US";
 
+        const title = $v4("#dreamEntryTitle");
+        const description = $v4("#dreamEntryDescription");
+        const privacyTitle = $v4("#dreamEntryPrivacyTitle");
+        const privacyText = $v4("#dreamEntryPrivacyText");
+        const fieldLabel = $v4(".dream-entry-field-label > span");
+        const visualBadge = $v4(".dream-entry-visual-badge");
+        const visualTitle = $v4(".dream-entry-visual-copy strong");
+        const visualText = $v4(".dream-entry-visual-copy small");
+        const enterCopy = $v4("#dreamEnterButton span");
+        const userLabel = $v4("#dreamUserLabel");
+        const changeCopy = $v4("#dreamChangeName span:last-child");
+        const logoutCopy = $v4("#dreamLogout span:last-child");
+        const savePreset = $v4("#v4SavePreset");
+        const applyPreset = $v4("#v4ApplyPreset");
+        const randomPreset = $v4("#v4Randomize");
 
-        const title =
-            $v4("#dreamEntryTitle");
-
-
-        const description =
-            $v4("#dreamEntryDescription");
-
-
-        const privacyTitle =
-            $v4("#dreamEntryPrivacyTitle");
-
-
-        const privacyText =
-            $v4("#dreamEntryPrivacyText");
-
-
-        const fieldLabel =
-            $v4(
-                ".dream-entry-field-label > span"
-            );
-
-
-        const visualBadge =
-            $v4(
-                ".dream-entry-visual-badge"
-            );
-
-
-        const visualTitle =
-            $v4(
-                ".dream-entry-visual-copy strong"
-            );
-
-
-        const visualText =
-            $v4(
-                ".dream-entry-visual-copy small"
-            );
-
-
-        const enterCopy =
-            $v4(
-                "#dreamEnterButton span"
-            );
-
-
-        const userLabel =
-            $v4("#dreamUserLabel");
-
-
-        const changeCopy =
-            $v4(
-                "#dreamChangeName span:last-child"
-            );
-
-
-        const logoutCopy =
-            $v4(
-                "#dreamLogout span:last-child"
-            );
-
-
-        const savePreset =
-            $v4("#v4SavePreset");
-
-
-        const applyPreset =
-            $v4("#v4ApplyPreset");
-
-
-        const randomPreset =
-            $v4("#v4Randomize");
-
-
-        if (
-            title
-        ) {
-
+        if (title) {
             title.innerHTML =
                 english
                     ? "Your moment starts <em>here.</em>"
                     : "Seu momento começa <em>aqui.</em>";
-
         }
 
-
-        if (
-            description
-        ) {
-
+        if (description) {
             description.textContent =
                 english
                     ? "Tell us what to call you and personalize the entire Dream experience."
                     : "Diga como podemos chamar você e personalize toda a experiência Dream.";
-
         }
 
-
-        if (
-            fieldLabel
-        ) {
-
+        if (fieldLabel) {
             fieldLabel.textContent =
                 english
                     ? "Your name"
                     : "Seu nome";
-
         }
 
-
-        if (
-            nameInput
-        ) {
-
+        if (nameInput) {
             nameInput.placeholder =
                 english
                     ? "Type your name"
                     : "Digite seu nome";
-
         }
 
-
-        if (
-            enterCopy
-        ) {
-
+        if (enterCopy) {
             enterCopy.textContent =
                 english
                     ? "Continue"
                     : "Continuar";
-
         }
 
-
-        if (
-            privacyTitle
-        ) {
-
+        if (privacyTitle) {
             privacyTitle.textContent =
                 english
                     ? "Private by default"
                     : "Privado por padrão";
-
         }
 
-
-        if (
-            privacyText
-        ) {
-
+        if (privacyText) {
             privacyText.textContent =
                 english
                     ? "Your name is stored only in this browser."
                     : "Seu nome fica salvo somente neste navegador.";
-
         }
 
-
-        if (
-            visualBadge
-        ) {
-
+        if (visualBadge) {
             visualBadge.textContent =
                 "DREAM EXPERIENCE";
-
         }
 
-
-        if (
-            visualTitle
-        ) {
-
+        if (visualTitle) {
             visualTitle.textContent =
                 english
                     ? "An experience made for you."
                     : "Uma experiência feita para você.";
-
         }
 
-
-        if (
-            visualText
-        ) {
-
+        if (visualText) {
             visualText.textContent =
                 english
                     ? "Your mood, your profile, your Dream."
                     : "Seu mood, seu perfil, seu Dream.";
-
         }
 
-
-        if (
-            userLabel
-        ) {
-
+        if (userLabel) {
             userLabel.textContent =
                 "Dreamer";
-
         }
 
-
-        if (
-            changeCopy
-        ) {
-
+        if (changeCopy) {
             changeCopy.textContent =
                 english
                     ? "Change name"
                     : "Trocar nome";
-
         }
 
-
-        if (
-            logoutCopy
-        ) {
-
+        if (logoutCopy) {
             logoutCopy.textContent =
                 english
                     ? "Exit"
                     : "Sair";
-
         }
 
-
-        if (
-            savePreset
-        ) {
-
+        if (savePreset) {
             savePreset.textContent =
                 english
                     ? "Save my Dream"
                     : "Salvar meu Dream";
-
         }
 
-
-        if (
-            applyPreset
-        ) {
-
+        if (applyPreset) {
             applyPreset.textContent =
                 english
                     ? "Apply my Dream"
                     : "Aplicar meu Dream";
-
         }
 
-
-        if (
-            randomPreset
-        ) {
-
+        if (randomPreset) {
             randomPreset.textContent =
                 english
                     ? "✦ Randomize Dream"
                     : "✦ Randomizar Dream";
-
         }
 
-
-        updateUserUI(
-            currentUserName
-        );
-
-
+        updateUserUI(currentUserName);
         renderEntryInputState();
-
-
         syncImmersiveButton();
-
     }
 
-
-    $$v4(
-        "[data-language]"
-    ).forEach(
-        button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    window.setTimeout(
-                        syncV4Language,
-                        0
-                    );
-
-                }
-            );
-
-        }
-    );
-
+    $$v4("[data-language]").forEach(button => {
+        button.addEventListener("click", () => {
+            window.setTimeout(syncV4Language, 0);
+        });
+    });
 
     /* =====================================================
        TECLADO / ACESSIBILIDADE
     ====================================================== */
 
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (
-                event.key ===
-                "Escape"
-            ) {
-
-                if (
-                    userRoot?.classList.contains(
-                        "open"
-                    )
-                ) {
-
-                    closeUserMenu();
-
-                    return;
-
-                }
-
-
-                if (
-                    immersive
-                ) {
-
-                    setImmersive(
-                        false
-                    );
-
-                    return;
-
-                }
-
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+            if (userRoot?.classList.contains("open")) {
+                closeUserMenu();
+                return;
             }
 
-
-            if (
-                event.key ===
-                    "Tab" &&
-                entry &&
-                !entry.hidden
-            ) {
-
-                const focusables =
-                    $$v4(
-                        'input, button, [href], [tabindex]:not([tabindex="-1"])',
-                        entry
-                    ).filter(
-                        element =>
-                            !element.disabled &&
-                            element.offsetParent !==
-                                null
-                    );
-
-
-                if (
-                    !focusables.length
-                ) {
-
-                    return;
-
-                }
-
-
-                const first =
-                    focusables[0];
-
-
-                const last =
-                    focusables[
-                        focusables.length -
-                        1
-                    ];
-
-
-                if (
-                    event.shiftKey &&
-                    document.activeElement ===
-                        first
-                ) {
-
-                    event.preventDefault();
-
-                    last.focus();
-
-                }
-
-                else if (
-                    !event.shiftKey &&
-                    document.activeElement ===
-                        last
-                ) {
-
-                    event.preventDefault();
-
-                    first.focus();
-
-                }
-
+            if (immersive) {
+                setImmersive(false);
+                return;
             }
-
         }
-    );
 
+        if (
+            event.key === "Tab" &&
+            entry &&
+            !entry.hidden
+        ) {
+            const focusables =
+                $$v4(
+                    'input, button, [href], [tabindex]:not([tabindex="-1"])',
+                    entry
+                ).filter(
+                    element =>
+                        !element.disabled &&
+                        element.offsetParent !== null
+                );
+
+            if (!focusables.length) {
+                return;
+            }
+
+            const first =
+                focusables[0];
+
+            const last =
+                focusables[
+                    focusables.length -
+                    1
+                ];
+
+            if (
+                event.shiftKey &&
+                document.activeElement === first
+            ) {
+                event.preventDefault();
+                last.focus();
+            }
+
+            else if (
+                !event.shiftKey &&
+                document.activeElement === last
+            ) {
+                event.preventDefault();
+                first.focus();
+            }
+        }
+    });
 
     /* =====================================================
        INICIALIZAÇÃO V4
     ====================================================== */
 
     buildEntryStars();
-
 
     const savedName =
         normalizeName(
@@ -16253,122 +15236,66 @@ document.addEventListener("DOMContentLoaded", () => {
             )
         );
 
-
     let entrySeenThisSession =
         false;
 
-
     try {
-
         entrySeenThisSession =
             sessionStorage.getItem(
                 "dream.v5.2.entrySeen"
             ) ===
             "1";
-
     }
 
-    catch (
-        error
-    ) {
-
+    catch (error) {
         entrySeenThisSession =
             false;
-
     }
 
+    if (savedName) {
+        updateUserUI(savedName);
 
-    if (
-        savedName
-    ) {
-
-        updateUserUI(
-            savedName
-        );
-
-
-        if (
-            entrySeenThisSession
-        ) {
-
+        if (entrySeenThisSession) {
             entry?.setAttribute(
                 "aria-hidden",
                 "true"
             );
 
-
-            if (
-                entry
-            ) {
-
+            if (entry) {
                 entry.hidden =
                     true;
-
             }
-
 
             bodyV4.classList.remove(
                 "dream-entry-open"
             );
-
         }
 
         else {
-
-            openEntry(
-                savedName
-            );
-
+            openEntry(savedName);
         }
-
     }
 
     else {
-
-        updateUserUI(
-            ""
-        );
-
-
-        openEntry(
-            ""
-        );
-
+        updateUserUI("");
+        openEntry("");
     }
 
-
     syncV4Language();
-
 
     rootV4.classList.add(
         "dream-v4-ready"
     );
 
-
     window.DreamV4 = {
-
-        version:
-            "5.3-clean-luxe",
-
+        version: "5.4.1-stability",
         openEntry,
-
         closeEntry,
-
         setImmersive,
-
-        saveCustomPreset:
-            saveCustomV4Preset,
-
-        applyCustomPreset:
-            applyCustomV4Preset,
-
-        randomize:
-            randomizeDreamV4,
-
-        getUserName:
-            () =>
-                currentUserName
-
+        saveCustomPreset: saveCustomV4Preset,
+        applyCustomPreset: applyCustomV4Preset,
+        randomize: randomizeDreamV4,
+        getUserName: () => currentUserName
     };
 
 });
@@ -16390,7 +15317,6 @@ document.addEventListener(
 
         "use strict";
 
-
         const $v5 = (
             selector,
             parent = document
@@ -16398,7 +15324,6 @@ document.addEventListener(
             parent.querySelector(
                 selector
             );
-
 
         const $$v5 = (
             selector,
@@ -16410,24 +15335,17 @@ document.addEventListener(
                 )
             ];
 
-
         const bodyV5 =
             document.body;
-
 
         const rootV5 =
             document.documentElement;
 
-
         const apiV5 = () =>
-            window.DreamApp ||
-            {};
-
+            window.DreamApp || {};
 
         const dreamV4 = () =>
-            window.DreamV4 ||
-            {};
-
+            window.DreamV4 || {};
 
         const storeV5 = {
 
@@ -16435,61 +15353,46 @@ document.addEventListener(
                 key,
                 fallback = null
             ) {
-
                 try {
-
                     const value =
                         localStorage.getItem(
                             key
                         );
 
-
-                    return value ===
-                        null
+                    return value === null
                         ? fallback
                         : JSON.parse(
                             value
                         );
-
                 }
 
                 catch (
                     error
                 ) {
-
                     return fallback;
-
                 }
-
             },
-
 
             set(
                 key,
                 value
             ) {
-
                 try {
-
                     localStorage.setItem(
                         key,
                         JSON.stringify(
                             value
                         )
                     );
-
                 }
 
                 catch (
                     error
                 ) {
-
                 }
-
             }
 
         };
-
 
         /* =====================================================
            REDUCED MOTION
@@ -16500,28 +15403,21 @@ document.addEventListener(
                 "(prefers-reduced-motion: reduce)"
             );
 
-
         function syncReducedMotion() {
-
             bodyV5.classList.toggle(
                 "v5-reduced-motion",
                 Boolean(
                     reducedMotion?.matches
                 )
             );
-
         }
 
-
-        reducedMotion
-            ?.addEventListener?.(
-                "change",
-                syncReducedMotion
-            );
-
+        reducedMotion?.addEventListener?.(
+            "change",
+            syncReducedMotion
+        );
 
         syncReducedMotion();
-
 
         /* =====================================================
            CINEMATIC INTRO
@@ -16532,28 +15428,23 @@ document.addEventListener(
                 "#dreamCinematicIntro"
             );
 
-
         const cinematicTitle =
             $v5(
                 "#dreamCinematicTitle"
             );
-
 
         const cinematicCopy =
             $v5(
                 "#dreamCinematicCopy"
             );
 
-
         const skipCinematicIntro =
             $v5(
                 "#skipCinematicIntro"
             );
 
-
         let cinematicTimer =
             null;
-
 
         function closeCinematicIntro() {
 
@@ -16563,47 +15454,36 @@ document.addEventListener(
                     "show"
                 )
             ) {
-
                 return;
-
             }
-
 
             window.clearTimeout(
                 cinematicTimer
             );
 
-
             cinematicIntro.classList.add(
                 "leaving"
             );
-
 
             bodyV5.classList.remove(
                 "v5-cinematic-open"
             );
 
-
             window.setTimeout(
                 () => {
-
                     cinematicIntro.classList.remove(
                         "show",
                         "leaving"
                     );
 
-
                     cinematicIntro.setAttribute(
                         "aria-hidden",
                         "true"
                     );
-
                 },
                 820
             );
-
         }
-
 
         function openCinematicIntro(
             name = ""
@@ -16615,17 +15495,13 @@ document.addEventListener(
                     "v5-reduced-motion"
                 )
             ) {
-
                 return;
-
             }
-
 
             const english =
                 apiV5().state
                     ?.currentLanguage ===
                 "en-US";
-
 
             const first =
                 String(
@@ -16634,15 +15510,9 @@ document.addEventListener(
                     ""
                 )
                     .trim()
-                    .split(
-                        /\s+/
-                    )[0];
+                    .split(/\s+/)[0];
 
-
-            if (
-                cinematicTitle
-            ) {
-
+            if (cinematicTitle) {
                 cinematicTitle.textContent =
                     first
                         ? (
@@ -16655,126 +15525,92 @@ document.addEventListener(
                                 ? "Your Dream starts now."
                                 : "Seu Dream começa agora."
                         );
-
             }
 
-
-            if (
-                cinematicCopy
-            ) {
-
+            if (cinematicCopy) {
                 cinematicCopy.textContent =
                     english
                         ? "Breathe. Feel. Explore."
                         : "Respire. Sinta. Explore.";
-
             }
 
-
-            if (
-                skipCinematicIntro
-            ) {
-
+            if (skipCinematicIntro) {
                 skipCinematicIntro.textContent =
                     english
                         ? "Skip intro"
                         : "Pular intro";
-
             }
-
 
             cinematicIntro.setAttribute(
                 "aria-hidden",
                 "false"
             );
 
-
             cinematicIntro.classList.add(
                 "show"
             );
 
-
             bodyV5.classList.add(
                 "v5-cinematic-open"
             );
-
 
             cinematicTimer =
                 window.setTimeout(
                     closeCinematicIntro,
                     3400
                 );
-
         }
-
 
         skipCinematicIntro?.addEventListener(
             "click",
             closeCinematicIntro
         );
 
-
         const nameFormV5 =
             $v5(
                 "#dreamEntryForm"
             );
 
-
         nameFormV5?.addEventListener(
             "submit",
             () => {
-
                 const name =
                     $v5(
                         "#dreamNameInput"
                     )?.value ||
                     "";
 
-
                 if (
-                    String(
-                        name
-                    ).trim().length >=
-                    2
+                    String(name)
+                        .trim()
+                        .length >= 2
                 ) {
-
                     window.setTimeout(
                         () => {
-
-                            openCinematicIntro(
-                                name
-                            );
-
+                            openCinematicIntro(name);
                         },
                         620
                     );
-
                 }
-
             }
         );
-
 
         const returnIntroSeen =
             sessionStorage.getItem(
                 "dream.v5.returnIntro"
             );
 
-
         if (
             dreamV4().getUserName?.() &&
             !returnIntroSeen
         ) {
-
             sessionStorage.setItem(
                 "dream.v5.returnIntro",
                 "1"
             );
 
-
             window.setTimeout(
                 () => {
-
                     if (
                         !$v5(
                             "#dreamEntry"
@@ -16785,20 +15621,14 @@ document.addEventListener(
                             "#dreamEntry"
                         )?.hidden
                     ) {
-
                         openCinematicIntro(
-                            dreamV4()
-                                .getUserName?.()
+                            dreamV4().getUserName?.()
                         );
-
                     }
-
                 },
                 760
             );
-
         }
-
 
         /* =====================================================
            EXPERIENCE PROGRESS
@@ -16809,18 +15639,15 @@ document.addEventListener(
                 "#dreamExperienceProgress"
             );
 
-
         const progressValue =
             $v5(
                 "#dreamProgressValue"
             );
 
-
         const trackedV5 =
             $$v5(
                 ".section-track[id]"
             );
-
 
         const viewedSections =
             new Set(
@@ -16830,24 +15657,18 @@ document.addEventListener(
                 )
             );
 
-
         let lastSection =
             storeV5.get(
                 "dream.v5.lastSection",
                 "inicio"
             );
 
-
         function getExperiencePercent() {
-
             if (
                 !trackedV5.length
             ) {
-
                 return 0;
-
             }
-
 
             return Math.min(
                 100,
@@ -16859,91 +15680,59 @@ document.addEventListener(
                     100
                 )
             );
-
         }
 
-
         function renderExperienceProgress() {
-
             const percent =
                 getExperiencePercent();
-
 
             rootV5.style.setProperty(
                 "--v5-progress",
                 `${percent}%`
             );
 
-
-            if (
-                progressValue
-            ) {
-
+            if (progressValue) {
                 progressValue.textContent =
                     `${percent}%`;
-
             }
 
-
-            if (
-                progressRoot
-            ) {
-
+            if (progressRoot) {
                 progressRoot.title =
                     apiV5().state
                         ?.currentLanguage ===
-                    "en-US"
+                        "en-US"
                         ? `${percent}% explored`
                         : `${percent}% explorado`;
-
             }
-
         }
 
-
         if (
-            "IntersectionObserver" in
-            window
+            "IntersectionObserver" in window
         ) {
-
             const progressObserver =
                 new IntersectionObserver(
                     entries => {
-
                         entries.forEach(
                             entry => {
-
                                 if (
                                     !entry.isIntersecting
                                 ) {
-
                                     return;
-
                                 }
-
 
                                 const id =
                                     entry.target.id;
 
-
-                                if (
-                                    id
-                                ) {
-
-                                    viewedSections.add(
-                                        id
-                                    );
-
+                                if (id) {
+                                    viewedSections.add(id);
 
                                     lastSection =
                                         id;
-
 
                                     storeV5.set(
                                         "dream.v5.lastSection",
                                         id
                                     );
-
 
                                     storeV5.set(
                                         "dream.v5.viewedSections",
@@ -16952,24 +15741,16 @@ document.addEventListener(
                                         ]
                                     );
 
-
                                     renderExperienceProgress();
-
-
                                     renderProfile();
-
                                 }
-
                             }
                         );
-
                     },
                     {
-                        threshold:
-                            0.38
+                        threshold: 0.38
                     }
                 );
-
 
             trackedV5.forEach(
                 section =>
@@ -16977,12 +15758,9 @@ document.addEventListener(
                         section
                     )
             );
-
         }
 
-
         renderExperienceProgress();
-
 
         /* =====================================================
            FOCUS MODE • DREAM STUDIO
@@ -16993,7 +15771,6 @@ document.addEventListener(
                 "#focusStudioToggle"
             );
 
-
         let focusEnabled =
             Boolean(
                 storeV5.get(
@@ -17002,48 +15779,31 @@ document.addEventListener(
                 )
             );
 
-
         function setFocusMode(
             enabled,
             notify = true
         ) {
-
             focusEnabled =
-                Boolean(
-                    enabled
-                );
-
+                Boolean(enabled);
 
             bodyV5.classList.toggle(
                 "focus-v5",
                 focusEnabled
             );
 
-
-            if (
-                focusStudioToggle
-            ) {
-
+            if (focusStudioToggle) {
                 focusStudioToggle.checked =
                     focusEnabled;
-
             }
-
 
             storeV5.set(
                 "dream.v5.focus",
                 focusEnabled
             );
 
-
-            if (
-                notify
-            ) {
-
+            if (notify) {
                 apiV5().showToast?.(
-                    apiV5().state
-                        ?.currentLanguage ===
-                    "en-US"
+                    apiV5().state?.currentLanguage === "en-US"
                         ? (
                             focusEnabled
                                 ? "Focus mode enabled ◎"
@@ -17055,58 +15815,42 @@ document.addEventListener(
                                 : "Modo Focus desativado"
                         )
                 );
-
             }
-
         }
 
+        focusStudioToggle?.addEventListener(
+            "change",
+            () => {
+                setFocusMode(
+                    focusStudioToggle.checked
+                );
 
-        focusStudioToggle
-            ?.addEventListener(
-                "change",
-                () => {
+                window.setTimeout(
+                    updateStudioPreview,
+                    0
+                );
+            }
+        );
 
-                    setFocusMode(
-                        focusStudioToggle
-                            .checked
-                    );
-
-
-                    window.setTimeout(
-                        updateStudioPreview,
-                        0
-                    );
-
-                }
-            );
-
-
-        $v5(
-            "#resetSettings"
-        )?.addEventListener(
+        $v5("#resetSettings")?.addEventListener(
             "click",
             () => {
-
                 setFocusMode(
                     false,
                     false
                 );
 
-
                 storeV5.set(
                     "dream.v5.focus",
                     false
                 );
-
             }
         );
-
 
         setFocusMode(
             focusEnabled,
             false
         );
-
 
         /* =====================================================
            PROFILE DREAM
@@ -17117,287 +15861,162 @@ document.addEventListener(
                 "#dreamProfilePanel"
             );
 
-
         const openProfileButton =
             $v5(
                 "#dreamOpenProfile"
             );
-
 
         const profileClose =
             $v5(
                 "#dreamProfileClose"
             );
 
-
         const profileBackdrop =
             $v5(
                 "#dreamProfileBackdrop"
             );
-
 
         const profileName =
             $v5(
                 "#dreamProfileName"
             );
 
-
         const profileAvatar =
             $v5(
                 "#dreamProfileAvatar"
             );
-
 
         const profileMood =
             $v5(
                 "#dreamProfileMood"
             );
 
-
         const profileSprays =
             $v5(
                 "#dreamProfileSprays"
             );
-
 
         const profileProgress =
             $v5(
                 "#dreamProfileProgress"
             );
 
-
         const profileAchievements =
             $v5(
                 "#dreamProfileAchievements"
             );
-
 
         const profileAchievementCount =
             $v5(
                 "#dreamProfileAchievementCount"
             );
 
-
         const profileAchievementList =
             $v5(
                 "#dreamProfileAchievementList"
             );
-
 
         const resumeButton =
             $v5(
                 "#dreamResumeButton"
             );
 
-
         const resumeSection =
             $v5(
                 "#dreamResumeSection"
             );
 
-
         const achievementCatalog = [
-
             {
-                key:
-                    "welcome",
-
-                icon:
-                    "♡",
-
-                pt:
-                    "Primeiro Dream",
-
-                en:
-                    "First Dream",
-
-                descriptionPT:
-                    "Entrou pela primeira vez.",
-
-                descriptionEN:
-                    "Entered Dream for the first time."
+                key: "welcome",
+                icon: "♡",
+                pt: "Primeiro Dream",
+                en: "First Dream",
+                descriptionPT: "Entrou pela primeira vez.",
+                descriptionEN: "Entered Dream for the first time."
             },
-
             {
-                key:
-                    "quiz",
-
-                icon:
-                    "◌",
-
-                pt:
-                    "Dream Mood",
-
-                en:
-                    "Dream Mood",
-
-                descriptionPT:
-                    "Concluiu o quiz.",
-
-                descriptionEN:
-                    "Completed the quiz."
+                key: "quiz",
+                icon: "◌",
+                pt: "Dream Mood",
+                en: "Dream Mood",
+                descriptionPT: "Concluiu o quiz.",
+                descriptionEN: "Completed the quiz."
             },
-
             {
-                key:
-                    "all-scenes",
-
-                icon:
-                    "☁",
-
-                pt:
-                    "Explorador de cenas",
-
-                en:
-                    "Scene Explorer",
-
-                descriptionPT:
-                    "Descobriu todas as Dream Scenes.",
-
-                descriptionEN:
-                    "Discovered every Dream Scene."
+                key: "all-scenes",
+                icon: "☁",
+                pt: "Explorador de cenas",
+                en: "Scene Explorer",
+                descriptionPT: "Descobriu todas as Dream Scenes.",
+                descriptionEN: "Discovered every Dream Scene."
             },
-
             {
-                key:
-                    "custom-preset",
-
-                icon:
-                    "◆",
-
-                pt:
-                    "Meu próprio Dream",
-
-                en:
-                    "My Own Dream",
-
-                descriptionPT:
-                    "Salvou um preset personalizado.",
-
-                descriptionEN:
-                    "Saved a custom preset."
+                key: "custom-preset",
+                icon: "◆",
+                pt: "Meu próprio Dream",
+                en: "My Own Dream",
+                descriptionPT: "Salvou um preset personalizado.",
+                descriptionEN: "Saved a custom preset."
             },
-
             {
-                key:
-                    "random-dream",
-
-                icon:
-                    "✦",
-
-                pt:
-                    "Deixe o acaso sonhar",
-
-                en:
-                    "Let Chance Dream",
-
-                descriptionPT:
-                    "Usou o randomizador.",
-
-                descriptionEN:
-                    "Used the randomizer."
+                key: "random-dream",
+                icon: "✦",
+                pt: "Deixe o acaso sonhar",
+                en: "Let Chance Dream",
+                descriptionPT: "Usou o randomizador.",
+                descriptionEN: "Used the randomizer."
             },
-
             {
-                key:
-                    "sprays-50",
-
-                icon:
-                    "✧",
-
-                pt:
-                    "Dream sem limites",
-
-                en:
-                    "Unlimited Dream",
-
-                descriptionPT:
-                    "Chegou a 50 borrifadas.",
-
-                descriptionEN:
-                    "Reached 50 sprays."
+                key: "sprays-50",
+                icon: "✧",
+                pt: "Dream sem limites",
+                en: "Unlimited Dream",
+                descriptionPT: "Chegou a 50 borrifadas.",
+                descriptionEN: "Reached 50 sprays."
             },
-
             {
-                key:
-                    "v5-explorer",
-
-                icon:
-                    "◎",
-
-                pt:
-                    "100% Dream",
-
-                en:
-                    "100% Dream",
-
-                descriptionPT:
-                    "Explorou toda a experiência.",
-
-                descriptionEN:
-                    "Explored the whole experience."
+                key: "v5-explorer",
+                icon: "◎",
+                pt: "100% Dream",
+                en: "100% Dream",
+                descriptionPT: "Explorou toda a experiência.",
+                descriptionEN: "Explored the whole experience."
             },
-
             {
-                key:
-                    "v5-make-dream",
-
-                icon:
-                    "★",
-
-                pt:
-                    "Make it Dream",
-
-                en:
-                    "Make it Dream",
-
-                descriptionPT:
-                    "Ativou a sequência especial.",
-
-                descriptionEN:
-                    "Activated the special sequence."
+                key: "v5-make-dream",
+                icon: "★",
+                pt: "Make it Dream",
+                en: "Make it Dream",
+                descriptionPT: "Ativou a sequência especial.",
+                descriptionEN: "Activated the special sequence."
             }
-
         ];
 
-
         function getUnlockedAchievements() {
-
             return new Set(
                 storeV5.get(
                     "dream.v4.achievements",
                     []
                 )
             );
-
         }
-
 
         function unlockV5Achievement(
             key,
             pt,
             en
         ) {
-
             const unlocked =
                 getUnlockedAchievements();
 
-
             if (
-                unlocked.has(
-                    key
-                )
+                unlocked.has(key)
             ) {
-
                 return;
-
             }
 
-
-            unlocked.add(
-                key
-            );
-
+            unlocked.add(key);
 
             storeV5.set(
                 "dream.v4.achievements",
@@ -17406,56 +16025,43 @@ document.addEventListener(
                 ]
             );
 
-
             apiV5().showToast?.(
                 apiV5().state
                     ?.currentLanguage ===
-                "en-US"
+                    "en-US"
                     ? `✦ Achievement: ${en}`
                     : `✦ Conquista: ${pt}`
             );
 
-
             renderProfile();
-
         }
-
 
         function getSectionLabel(
             id
         ) {
-
             const section =
                 $v5(
                     `#${id}`
                 );
 
-
-            return section
-                ?.dataset
+            return section?.dataset
                 ?.sectionName ||
                 id ||
                 "Início";
-
         }
 
-
         function renderProfile() {
-
             const english =
                 apiV5().state
                     ?.currentLanguage ===
                 "en-US";
 
-
             const name =
-                dreamV4()
-                    .getUserName?.() ||
+                dreamV4().getUserName?.() ||
                 storeV5.get(
                     "dream.userName",
-                    "Visitante"
+                    "Dreamer"
                 );
-
 
             const first =
                 String(
@@ -17463,19 +16069,16 @@ document.addEventListener(
                     "D"
                 ).trim();
 
-
             const moodKey =
                 apiV5().state
                     ?.currentMood ||
                 "romantico";
-
 
             const moodName =
                 apiV5().moods?.[
                     moodKey
                 ]?.name ||
                 moodKey;
-
 
             const sprays =
                 Number(
@@ -17484,81 +16087,46 @@ document.addEventListener(
                 ) ||
                 0;
 
-
             const percent =
                 getExperiencePercent();
-
 
             const unlocked =
                 getUnlockedAchievements();
 
-
-            if (
-                profileName
-            ) {
-
+            if (profileName) {
                 profileName.textContent =
                     first ||
-                    "Visitante";
-
+                    "Dreamer";
             }
 
-
-            if (
-                profileAvatar
-            ) {
-
+            if (profileAvatar) {
                 profileAvatar.textContent =
                     first
-                        .charAt(
-                            0
-                        )
+                        .charAt(0)
                         .toLocaleUpperCase(
                             "pt-BR"
                         ) ||
                     "D";
-
             }
 
-
-            if (
-                profileMood
-            ) {
-
+            if (profileMood) {
                 profileMood.textContent =
                     english
                         ? `${moodName} Mood`
                         : `Mood ${moodName}`;
-
             }
 
-
-            if (
-                profileSprays
-            ) {
-
+            if (profileSprays) {
                 profileSprays.textContent =
-                    String(
-                        sprays
-                    );
-
+                    String(sprays);
             }
 
-
-            if (
-                profileProgress
-            ) {
-
+            if (profileProgress) {
                 profileProgress.textContent =
                     `${percent}%`;
-
             }
 
-
-            if (
-                profileAchievements
-            ) {
-
+            if (profileAchievements) {
                 profileAchievements.textContent =
                     String(
                         achievementCatalog.filter(
@@ -17568,9 +16136,7 @@ document.addEventListener(
                                 )
                         ).length
                     );
-
             }
-
 
             const unlockedCount =
                 achievementCatalog.filter(
@@ -17580,198 +16146,124 @@ document.addEventListener(
                         )
                 ).length;
 
-
-            if (
-                profileAchievementCount
-            ) {
-
+            if (profileAchievementCount) {
                 profileAchievementCount.textContent =
                     english
                         ? `${unlockedCount} unlocked`
                         : `${unlockedCount} desbloqueadas`;
-
             }
 
-
-            if (
-                profileAchievementList
-            ) {
-
+            if (profileAchievementList) {
                 profileAchievementList.innerHTML =
                     "";
 
-
                 achievementCatalog.forEach(
                     item => {
-
                         const unlockedItem =
                             unlocked.has(
                                 item.key
                             );
-
 
                         const card =
                             document.createElement(
                                 "article"
                             );
 
-
                         card.className =
                             `dream-profile-achievement${unlockedItem ? " unlocked" : ""}`;
 
+                        card.innerHTML = `
+                            <span aria-hidden="true">${unlockedItem ? item.icon : "·"}</span>
+                            <div>
+                                <strong>${english ? item.en : item.pt}</strong>
+                                <small>${unlockedItem ? (english ? item.descriptionEN : item.descriptionPT) : (english ? "Locked" : "Bloqueada")}</small>
+                            </div>
+                        `;
 
-                        card.innerHTML =
-                            `
-                                <span aria-hidden="true">
-                                    ${unlockedItem ? item.icon : "·"}
-                                </span>
-
-                                <div>
-                                    <strong>
-                                        ${english ? item.en : item.pt}
-                                    </strong>
-
-                                    <small>
-                                        ${
-                                            unlockedItem
-                                                ? (
-                                                    english
-                                                        ? item.descriptionEN
-                                                        : item.descriptionPT
-                                                )
-                                                : (
-                                                    english
-                                                        ? "Locked"
-                                                        : "Bloqueada"
-                                                )
-                                        }
-                                    </small>
-                                </div>
-                            `;
-
-
-                        profileAchievementList
-                            .appendChild(
-                                card
-                            );
-
+                        profileAchievementList.appendChild(
+                            card
+                        );
                     }
                 );
-
             }
 
-
-            if (
-                resumeSection
-            ) {
-
+            if (resumeSection) {
                 resumeSection.textContent =
                     getSectionLabel(
                         lastSection
                     );
-
             }
 
-
-            if (
-                percent >=
-                100
-            ) {
-
+            if (percent >= 100) {
                 unlockV5Achievement(
                     "v5-explorer",
                     "100% Dream",
                     "100% Dream"
                 );
-
             }
-
         }
 
-
         function openProfile() {
-
-            if (
-                !profilePanel
-            ) {
-
+            if (!profilePanel) {
                 return;
-
             }
 
-
             renderProfile();
-
 
             profilePanel.classList.add(
                 "open"
             );
-
 
             profilePanel.setAttribute(
                 "aria-hidden",
                 "false"
             );
 
-
             bodyV5.classList.add(
                 "v5-profile-open"
             );
-
 
             window.setTimeout(
                 () =>
                     profileClose?.focus(),
                 120
             );
-
         }
 
-
         function closeProfile() {
-
             profilePanel?.classList.remove(
                 "open"
             );
-
 
             profilePanel?.setAttribute(
                 "aria-hidden",
                 "true"
             );
 
-
             bodyV5.classList.remove(
                 "v5-profile-open"
             );
-
         }
-
 
         openProfileButton?.addEventListener(
             "click",
             openProfile
         );
 
-
         profileClose?.addEventListener(
             "click",
             closeProfile
         );
-
 
         profileBackdrop?.addEventListener(
             "click",
             closeProfile
         );
 
-
         resumeButton?.addEventListener(
             "click",
             () => {
-
                 closeProfile();
-
 
                 $v5(
                     `#${lastSection}`
@@ -17779,19 +16271,15 @@ document.addEventListener(
                     {
                         behavior:
                             apiV5().state
-                                ?.animations !==
-                            false
+                                ?.animations !== false
                                 ? "smooth"
                                 : "auto",
-
                         block:
                             "start"
                     }
                 );
-
             }
         );
-
 
         /* =====================================================
            COVERFLOW GALLERY
@@ -17802,7 +16290,6 @@ document.addEventListener(
                 "#galleryTrack"
             );
 
-
         const galleryItemsV5 =
             galleryTrackV5
                 ? $$v5(
@@ -17811,44 +16298,34 @@ document.addEventListener(
                 )
                 : [];
 
-
         function updateCoverflow() {
-
             if (
                 !galleryTrackV5 ||
                 !galleryItemsV5.length
             ) {
-
                 return;
-
             }
-
 
             const center =
                 galleryTrackV5.scrollLeft +
                 galleryTrackV5.clientWidth /
                 2;
 
-
             let activeIndex =
                 0;
 
-
             let smallest =
                 Infinity;
-
 
             galleryItemsV5.forEach(
                 (
                     item,
                     index
                 ) => {
-
                     const itemCenter =
                         item.offsetLeft +
                         item.offsetWidth /
                         2;
-
 
                     const distance =
                         Math.abs(
@@ -17856,37 +16333,29 @@ document.addEventListener(
                             center
                         );
 
-
                     if (
                         distance <
                         smallest
                     ) {
-
                         smallest =
                             distance;
 
-
                         activeIndex =
                             index;
-
                     }
-
                 }
             );
-
 
             galleryItemsV5.forEach(
                 (
                     item,
                     index
                 ) => {
-
                     item.classList.toggle(
                         "v5-coverflow-active",
                         index ===
                             activeIndex
                     );
-
 
                     item.classList.toggle(
                         "v5-coverflow-left",
@@ -17894,61 +16363,45 @@ document.addEventListener(
                             activeIndex
                     );
 
-
                     item.classList.toggle(
                         "v5-coverflow-right",
                         index >
                             activeIndex
                     );
-
                 }
             );
-
         }
-
 
         let coverflowFrame =
             null;
 
-
         galleryTrackV5?.addEventListener(
             "scroll",
             () => {
-
                 if (
                     coverflowFrame
                 ) {
-
                     cancelAnimationFrame(
                         coverflowFrame
                     );
-
                 }
-
 
                 coverflowFrame =
                     requestAnimationFrame(
                         () => {
-
                             updateCoverflow();
-
 
                             coverflowFrame =
                                 null;
-
                         }
                     );
-
             },
             {
-                passive:
-                    true
+                passive: true
             }
         );
 
-
         updateCoverflow();
-
 
         /* =====================================================
            STUDIO V5 TABS + PREVIEW
@@ -17959,35 +16412,29 @@ document.addEventListener(
                 "#studioV5Tabs [data-studio-tab]"
             );
 
-
         const studioGroups =
             $$v5(
                 "#settingsPanel .settings-group"
             );
-
 
         const studioPreviewName =
             $v5(
                 "#studioV5PreviewName"
             );
 
-
         const studioPreviewMood =
             $v5(
                 "#studioV5PreviewMood"
             );
-
 
         const studioSurprise =
             $v5(
                 "#studioV5Surprise"
             );
 
-
         function groupCategory(
             group
         ) {
-
             const heading =
                 $v5(
                     "h3",
@@ -17997,17 +16444,13 @@ document.addEventListener(
                     ?.toLowerCase() ||
                 "";
 
-
             if (
                 heading.includes(
                     "preset"
                 )
             ) {
-
                 return "presets";
-
             }
-
 
             if (
                 heading.includes(
@@ -18026,11 +16469,8 @@ document.addEventListener(
                     "idioma"
                 )
             ) {
-
                 return "visual";
-
             }
-
 
             if (
                 heading.includes(
@@ -18040,11 +16480,8 @@ document.addEventListener(
                     "effect"
                 )
             ) {
-
                 return "effects";
-
             }
-
 
             if (
                 heading.includes(
@@ -18054,11 +16491,8 @@ document.addEventListener(
                     "audio"
                 )
             ) {
-
                 return "audio";
-
             }
-
 
             if (
                 heading.includes(
@@ -18074,36 +16508,26 @@ document.addEventListener(
                     "access"
                 )
             ) {
-
                 return "accessibility";
-
             }
 
-
             return "visual";
-
         }
-
 
         studioGroups.forEach(
             group => {
-
                 group.dataset.v5StudioCategory =
                     groupCategory(
                         group
                     );
-
             }
         );
-
 
         function selectStudioTab(
             tab
         ) {
-
             studioTabs.forEach(
                 button => {
-
                     button.setAttribute(
                         "aria-selected",
                         String(
@@ -18111,85 +16535,56 @@ document.addEventListener(
                             tab
                         )
                     );
-
                 }
             );
 
-
             studioGroups.forEach(
                 group => {
-
                     group.classList.toggle(
                         "v5-hidden-group",
                         group.dataset.v5StudioCategory !==
                             tab
                     );
-
                 }
             );
-
 
             storeV5.set(
                 "dream.v5.studioTab",
                 tab
             );
-
         }
-
 
         studioTabs.forEach(
             button => {
-
                 button.addEventListener(
                     "click",
                     () => {
-
                         selectStudioTab(
                             button.dataset.studioTab
                         );
-
                     }
                 );
-
             }
         );
 
-
         function updateStudioPreview() {
-
-            if (
-                studioPreviewName
-            ) {
-
+            if (studioPreviewName) {
                 const preset =
                     apiV5().state
                         ?.currentPreset;
 
-
                 studioPreviewName.textContent =
                     preset
-                        ? preset
-                            .charAt(
-                                0
-                            )
-                            .toUpperCase() +
-                          preset.slice(
-                              1
-                          )
+                        ? preset.charAt(0).toUpperCase() +
+                          preset.slice(1)
                         : "Custom Dream";
-
             }
 
-
-            if (
-                studioPreviewMood
-            ) {
-
+            if (studioPreviewMood) {
                 const moodKey =
                     apiV5().state
                         ?.currentMood ||
                     "romantico";
-
 
                 const moodName =
                     apiV5().moods?.[
@@ -18197,58 +16592,44 @@ document.addEventListener(
                     ]?.name ||
                     moodKey;
 
-
                 studioPreviewMood.textContent =
                     `${moodName} • ${focusEnabled ? "Focus" : "Live"}`;
-
             }
-
         }
-
 
         $v5(
             "#settingsPanel"
         )?.addEventListener(
             "input",
             () => {
-
                 requestAnimationFrame(
                     updateStudioPreview
                 );
-
             }
         );
-
 
         $v5(
             "#settingsPanel"
         )?.addEventListener(
             "click",
             () => {
-
                 requestAnimationFrame(
                     updateStudioPreview
                 );
-
             }
         );
-
 
         studioSurprise?.addEventListener(
             "click",
             () => {
-
                 dreamV4().randomize?.();
-
 
                 window.setTimeout(
                     updateStudioPreview,
                     80
                 );
-
             }
         );
-
 
         selectStudioTab(
             storeV5.get(
@@ -18257,9 +16638,7 @@ document.addEventListener(
             )
         );
 
-
         updateStudioPreview();
-
 
         /* =====================================================
            SCROLL TEXT REVEAL
@@ -18270,132 +16649,99 @@ document.addEventListener(
                 ".section-heading h2, .final-content h2"
             );
 
-
         scrollHeadings.forEach(
             heading => {
-
                 if (
                     heading.dataset.v5Words ===
                         "true" ||
                     heading.children.length >
                         2
                 ) {
-
                     return;
-
                 }
 
-
-                const nodes = [
-                    ...heading.childNodes
-                ];
-
+                const nodes =
+                    [
+                        ...heading.childNodes
+                    ];
 
                 nodes.forEach(
                     node => {
-
                         if (
                             node.nodeType !==
                             Node.TEXT_NODE
                         ) {
-
                             return;
-
                         }
-
 
                         const fragment =
                             document.createDocumentFragment();
 
-
                         String(
                             node.textContent
                         )
-                            .split(
-                                /(\s+)/
-                            )
+                            .split(/(\s+)/)
                             .forEach(
                                 part => {
-
                                     if (
                                         !part.trim()
                                     ) {
-
                                         fragment.appendChild(
                                             document.createTextNode(
                                                 part
                                             )
                                         );
 
-
                                         return;
-
                                     }
-
 
                                     const span =
                                         document.createElement(
                                             "span"
                                         );
 
-
                                     span.className =
                                         "v5-scroll-word";
-
 
                                     span.textContent =
                                         part;
 
-
                                     fragment.appendChild(
                                         span
                                     );
-
                                 }
                             );
-
 
                         node.replaceWith(
                             fragment
                         );
-
                     }
                 );
 
-
                 heading.dataset.v5Words =
                     "true";
-
             }
         );
-
 
         const scrollWords =
             $$v5(
                 ".v5-scroll-word"
             );
 
-
         if (
             "IntersectionObserver" in
             window
         ) {
-
             const wordObserver =
                 new IntersectionObserver(
                     entries => {
-
                         entries.forEach(
                             entry => {
-
                                 if (
                                     !entry.isIntersecting
                                 ) {
-
                                     return;
-
                                 }
-
 
                                 const words =
                                     $$v5(
@@ -18403,35 +16749,28 @@ document.addEventListener(
                                         entry.target
                                     );
 
-
                                 words.forEach(
                                     (
                                         word,
                                         index
                                     ) => {
-
                                         window.setTimeout(
                                             () =>
                                                 word.classList.add(
                                                     "visible"
                                                 ),
                                             index *
-                                            42
+                                                42
                                         );
-
                                     }
                                 );
-
                             }
                         );
-
                     },
                     {
-                        threshold:
-                            0.35
+                        threshold: 0.35
                     }
                 );
-
 
             [
                 ...new Set(
@@ -18443,29 +16782,23 @@ document.addEventListener(
                     )
                 )
             ]
-                .filter(
-                    Boolean
-                )
+                .filter(Boolean)
                 .forEach(
                     heading =>
                         wordObserver.observe(
                             heading
                         )
                 );
-
         }
 
         else {
-
             scrollWords.forEach(
                 word =>
                     word.classList.add(
                         "visible"
                     )
             );
-
         }
-
 
         /* =====================================================
            MAKE IT DREAM
@@ -18476,39 +16809,29 @@ document.addEventListener(
                 "#makeItDream"
             );
 
-
         let dreamSequenceRunning =
             false;
 
-
         async function runDreamSequence() {
-
             if (
                 dreamSequenceRunning
             ) {
-
                 return;
-
             }
-
 
             dreamSequenceRunning =
                 true;
-
 
             bodyV5.classList.add(
                 "v5-dream-sequence"
             );
 
-
             dreamV4().randomize?.();
-
 
             const hero =
                 $v5(
                     "#inicio"
                 );
-
 
             hero?.scrollIntoView(
                 {
@@ -18518,12 +16841,10 @@ document.addEventListener(
                         )
                             ? "auto"
                             : "smooth",
-
                     block:
                         "start"
                 }
             );
-
 
             await new Promise(
                 resolve =>
@@ -18533,9 +16854,7 @@ document.addEventListener(
                     )
             );
 
-
             apiV5().sprayDream?.();
-
 
             await new Promise(
                 resolve =>
@@ -18545,18 +16864,15 @@ document.addEventListener(
                     )
             );
 
-
             apiV5().sprayDream?.();
-
 
             apiV5().showToast?.(
                 apiV5().state
                     ?.currentLanguage ===
-                "en-US"
+                    "en-US"
                     ? "Make it Dream ✦"
                     : "Make it Dream ✦"
             );
-
 
             unlockV5Achievement(
                 "v5-make-dream",
@@ -18564,30 +16880,23 @@ document.addEventListener(
                 "Make it Dream"
             );
 
-
             window.setTimeout(
                 () => {
-
                     bodyV5.classList.remove(
                         "v5-dream-sequence"
                     );
 
-
                     dreamSequenceRunning =
                         false;
-
                 },
                 1750
             );
-
         }
-
 
         makeItDream?.addEventListener(
             "click",
             runDreamSequence
         );
-
 
         /* =====================================================
            PROFILE LIVE UPDATE
@@ -18598,169 +16907,119 @@ document.addEventListener(
         )?.addEventListener(
             "click",
             () => {
-
                 window.setTimeout(
                     renderProfile,
                     90
                 );
-
             }
         );
-
 
         document.addEventListener(
             "click",
             event => {
-
                 if (
                     event.target.closest(
                         "[data-mood], [data-preset], [data-scene]"
                     )
                 ) {
-
                     window.setTimeout(
                         () => {
-
                             renderProfile();
-
-
                             updateStudioPreview();
-
                         },
                         80
                     );
-
                 }
-
             }
         );
-
 
         /* =====================================================
            LANGUAGE V5
         ====================================================== */
 
         function syncV5Language() {
-
             const english =
                 apiV5().state
                     ?.currentLanguage ===
                 "en-US";
-
 
             const openProfileCopy =
                 $v5(
                     "#dreamOpenProfile span:last-child"
                 );
 
-
             if (
                 openProfileCopy
             ) {
-
                 openProfileCopy.textContent =
                     english
                         ? "My Dream profile"
                         : "Meu perfil Dream";
-
             }
-
 
             if (
                 makeItDream
             ) {
-
                 makeItDream.lastChild.textContent =
                     " Make it Dream";
-
             }
-
 
             const focusStudioLabel =
                 $v5(
                     "#focusStudioLabel"
                 );
 
-
             const focusStudioDescription =
                 $v5(
                     "#focusStudioDescription"
                 );
-
 
             const fontSizeStudioLabel =
                 $v5(
                     "#fontSizeStudioLabel"
                 );
 
-
-            if (
-                focusStudioLabel
-            ) {
-
+            if (focusStudioLabel) {
                 focusStudioLabel.textContent =
                     english
                         ? "Focus mode"
                         : "Modo Focus";
-
             }
 
-
-            if (
-                focusStudioDescription
-            ) {
-
+            if (focusStudioDescription) {
                 focusStudioDescription.textContent =
                     english
                         ? "Reduces distractions and effects without hiding content"
                         : "Reduz distrações e efeitos sem esconder o conteúdo";
-
             }
 
-
-            if (
-                fontSizeStudioLabel
-            ) {
-
+            if (fontSizeStudioLabel) {
                 fontSizeStudioLabel.textContent =
                     english
                         ? "Text size"
                         : "Tamanho do texto";
-
             }
 
-
             renderExperienceProgress();
-
-
             renderProfile();
-
-
             updateStudioPreview();
-
         }
-
 
         $$v5(
             "[data-language]"
         ).forEach(
             button => {
-
                 button.addEventListener(
                     "click",
                     () => {
-
                         window.setTimeout(
                             syncV5Language,
                             30
                         );
-
                     }
                 );
-
             }
         );
-
 
         /* =====================================================
            KEYBOARD V5
@@ -18769,10 +17028,8 @@ document.addEventListener(
         document.addEventListener(
             "keydown",
             event => {
-
                 const target =
                     event.target;
-
 
                 const typing =
                     target instanceof
@@ -18783,74 +17040,51 @@ document.addEventListener(
                         HTMLSelectElement ||
                     target?.isContentEditable;
 
-
                 if (
                     event.key ===
                     "Escape"
                 ) {
-
                     if (
                         cinematicIntro?.classList.contains(
                             "show"
                         )
                     ) {
-
                         closeCinematicIntro();
-
                         return;
-
                     }
-
 
                     if (
                         profilePanel?.classList.contains(
                             "open"
                         )
                     ) {
-
                         closeProfile();
-
                         return;
-
                     }
-
                 }
-
 
                 if (
                     typing
                 ) {
-
                     return;
-
                 }
 
-
                 if (
-                    event.key
-                        .toLowerCase() ===
+                    event.key.toLowerCase() ===
                     "p"
                 ) {
-
                     openProfile();
-
                 }
-
 
                 if (
-                    event.key
-                        .toLowerCase() ===
-                        "d" &&
+                    event.key.toLowerCase() ===
+                    "d" &&
                     event.shiftKey
                 ) {
-
                     runDreamSequence();
-
                 }
-
             }
         );
-
 
         /* =====================================================
            V5.1 • SMART HEADER
@@ -18861,29 +17095,19 @@ document.addEventListener(
                 "#header"
             );
 
-
         let lastScrollYV51 =
             window.scrollY;
-
 
         let headerScrollFrameV51 =
             null;
 
-
         function syncSmartHeaderV51() {
-
             headerScrollFrameV51 =
                 null;
 
-
-            if (
-                !headerV51
-            ) {
-
+            if (!headerV51) {
                 return;
-
             }
-
 
             const currentY =
                 Math.max(
@@ -18891,11 +17115,9 @@ document.addEventListener(
                     window.scrollY
                 );
 
-
             const delta =
                 currentY -
                 lastScrollYV51;
-
 
             const interfaceOpen =
                 Boolean(
@@ -18919,7 +17141,6 @@ document.addEventListener(
                     )
                 );
 
-
             if (
                 interfaceOpen ||
                 currentY <
@@ -18927,11 +17148,9 @@ document.addEventListener(
                 delta <
                     -7
             ) {
-
                 bodyV5.classList.remove(
                     "v51-header-hidden"
                 );
-
             }
 
             else if (
@@ -18940,76 +17159,57 @@ document.addEventListener(
                 currentY >
                     180
             ) {
-
                 bodyV5.classList.add(
                     "v51-header-hidden"
                 );
-
             }
-
 
             lastScrollYV51 =
                 currentY;
-
         }
-
 
         window.addEventListener(
             "scroll",
             () => {
-
                 if (
                     headerScrollFrameV51
                 ) {
-
                     return;
-
                 }
-
 
                 headerScrollFrameV51 =
                     requestAnimationFrame(
                         syncSmartHeaderV51
                     );
-
             },
             {
-                passive:
-                    true
+                passive: true
             }
         );
-
 
         document.addEventListener(
             "click",
             event => {
-
                 if (
                     event.target.closest(
                         "#settingsButton, #dreamOpenProfile, #menuMobile"
                     )
                 ) {
-
                     bodyV5.classList.remove(
                         "v51-header-hidden"
                     );
-
                 }
-
             }
         );
-
 
         /* =====================================================
            V5.1 • ADAPTIVE PERFORMANCE
         ====================================================== */
 
         function syncAdaptiveQualityV51() {
-
             const compactViewport =
                 window.innerWidth <=
                 760;
-
 
             const lowMemory =
                 Number(
@@ -19018,7 +17218,6 @@ document.addEventListener(
                 ) <=
                 4;
 
-
             const lowCpu =
                 Number(
                     navigator.hardwareConcurrency ||
@@ -19026,95 +17225,70 @@ document.addEventListener(
                 ) <=
                 4;
 
-
             const saveData =
                 Boolean(
                     navigator.connection
                         ?.saveData
                 );
 
-
             bodyV5.classList.toggle(
                 "v51-adaptive-lite",
                 compactViewport ||
-                lowMemory ||
-                lowCpu ||
-                saveData
+                    lowMemory ||
+                    lowCpu ||
+                    saveData
             );
-
         }
 
-
         syncAdaptiveQualityV51();
-
 
         window.addEventListener(
             "resize",
             syncAdaptiveQualityV51,
             {
-                passive:
-                    true
+                passive: true
             }
         );
-
 
         /* =====================================================
            V5.1 • IMAGE LOADING
         ====================================================== */
 
-        $$v5(
-            "img"
-        ).forEach(
-            image => {
+        $$v5("img").forEach(image => {
+            if (
+                !image.closest(
+                    ".hero-product"
+                ) &&
+                !image.hasAttribute(
+                    "loading"
+                )
+            ) {
+                image.loading =
+                    "lazy";
+            }
 
-                if (
-                    !image.closest(
-                        ".hero-product"
-                    ) &&
-                    !image.hasAttribute(
-                        "loading"
-                    )
-                ) {
+            image.decoding =
+                "async";
 
-                    image.loading =
-                        "lazy";
-
-                }
-
-
-                image.decoding =
-                    "async";
-
-
-                if (
-                    image.complete
-                ) {
-
-                    image.classList.add(
-                        "v51-image-ready"
-                    );
-
-
-                    return;
-
-                }
-
-
-                image.addEventListener(
-                    "load",
-                    () =>
-                        image.classList.add(
-                            "v51-image-ready"
-                        ),
-                    {
-                        once:
-                            true
-                    }
+            if (image.complete) {
+                image.classList.add(
+                    "v51-image-ready"
                 );
 
+                return;
             }
-        );
 
+            image.addEventListener(
+                "load",
+                () =>
+                    image.classList.add(
+                        "v51-image-ready"
+                    ),
+                {
+                    once: true
+                }
+            );
+        });
 
         /* =====================================================
            V5.1 • FOCUS PROTECTION
@@ -19125,66 +17299,38 @@ document.addEventListener(
             ".footer-bottom",
             ".product-section",
             ".final-section"
-        ].forEach(
-            selector => {
-
-                $$v5(
-                    selector
-                ).forEach(
-                    element => {
-
-                        element.dataset
-                            .v51FocusProtected =
-                            "true";
-
-                    }
-                );
-
-            }
-        );
-
+        ].forEach(selector => {
+            $$v5(selector).forEach(element => {
+                element.dataset.v51FocusProtected =
+                    "true";
+            });
+        });
 
         /* =====================================================
            INITIALIZATION
         ====================================================== */
 
         renderProfile();
-
-
         syncV5Language();
-
 
         rootV5.classList.add(
             "dream-v5-ready"
         );
 
-
         window.DreamV5 = {
-
             version:
                 "5.1",
-
             openProfile,
-
             closeProfile,
-
             setFocusMode,
-
             runDreamSequence,
-
             openCinematicIntro,
-
             closeCinematicIntro,
-
             getProgress:
                 getExperiencePercent,
-
             renderProfile,
-
             updateCoverflow,
-
             selectStudioTab
-
         };
 
     }
@@ -19207,7 +17353,6 @@ document.addEventListener(
 
         "use strict";
 
-
         const $v54 = (
             selector,
             parent = document
@@ -19215,7 +17360,6 @@ document.addEventListener(
             parent.querySelector(
                 selector
             );
-
 
         const $$v54 = (
             selector,
@@ -19227,19 +17371,15 @@ document.addEventListener(
                 )
             ];
 
-
         const rootV54 =
             document.documentElement;
-
 
         const bodyV54 =
             document.body;
 
-
         const apiV54 = () =>
             window.DreamApp ||
             {};
-
 
         /* =====================================================
            ALTURA REAL DO VIEWPORT • MOBILE
@@ -19248,79 +17388,60 @@ document.addEventListener(
         let viewportFrameV54 =
             null;
 
-
         function syncViewportHeightV54() {
-
             viewportFrameV54 =
                 null;
-
 
             const height =
                 window.visualViewport
                     ?.height ||
                 window.innerHeight;
 
-
             rootV54.style.setProperty(
                 "--v54-app-height",
                 `${Math.round(height)}px`
             );
-
         }
 
-
         function requestViewportSyncV54() {
-
             if (
                 viewportFrameV54
             ) {
-
                 return;
-
             }
-
 
             viewportFrameV54 =
                 requestAnimationFrame(
                     syncViewportHeightV54
                 );
-
         }
 
-
         syncViewportHeightV54();
-
 
         window.addEventListener(
             "resize",
             requestViewportSyncV54,
             {
-                passive:
-                    true
+                passive: true
             }
         );
-
 
         window.addEventListener(
             "orientationchange",
             requestViewportSyncV54,
             {
-                passive:
-                    true
+                passive: true
             }
         );
-
 
         window.visualViewport
             ?.addEventListener(
                 "resize",
                 requestViewportSyncV54,
                 {
-                    passive:
-                        true
+                    passive: true
                 }
             );
-
 
         /* =====================================================
            DREAM STUDIO • ABA ACESSIBILIDADE
@@ -19331,7 +17452,6 @@ document.addEventListener(
                 "#settingsPanel"
             );
 
-
         const accessibilityGroupV54 =
             $v54(
                 ".settings-accessibility-v51",
@@ -19339,54 +17459,39 @@ document.addEventListener(
                 document
             );
 
-
         if (
             accessibilityGroupV54
         ) {
-
             accessibilityGroupV54
                 .dataset
                 .v5StudioCategory =
-                "accessibility";
-
+                    "accessibility";
         }
 
-
         const storedStudioTabV54 =
-            (
-                () => {
-
-                    try {
-
-                        return JSON.parse(
-                            localStorage.getItem(
-                                "dream.v5.studioTab"
-                            ) ||
-                            '"presets"'
-                        );
-
-                    }
-
-                    catch (
-                        error
-                    ) {
-
-                        return "presets";
-
-                    }
-
+            (() => {
+                try {
+                    return JSON.parse(
+                        localStorage.getItem(
+                            "dream.v5.studioTab"
+                        ) ||
+                        '"presets"'
+                    );
                 }
-            )();
 
+                catch (
+                    error
+                ) {
+                    return "presets";
+                }
+            })();
 
         window.setTimeout(
             () => {
-
                 if (
                     window.DreamV5
                         ?.selectStudioTab
                 ) {
-
                     window.DreamV5
                         .selectStudioTab(
                             [
@@ -19401,13 +17506,10 @@ document.addEventListener(
                                 ? storedStudioTabV54
                                 : "presets"
                         );
-
                 }
-
             },
             0
         );
-
 
         /* =====================================================
            GALERIA V5.4 • TITLES / ARIA / PRELOAD
@@ -19418,7 +17520,6 @@ document.addEventListener(
                 "#galleryTrack"
             );
 
-
         const galleryItemsV54 =
             galleryTrackV54
                 ? $$v54(
@@ -19427,21 +17528,17 @@ document.addEventListener(
                 )
                 : [];
 
-
         const galleryDotsV54 =
             $v54(
                 "#galleryDots"
             );
-
 
         const galleryCurrentV54 =
             $v54(
                 "#galleryCurrent"
             );
 
-
         const galleryTitlePTV54 = [
-
             "Amor no Ar",
             "Flores em Dream",
             "Entre Nuvens",
@@ -19453,12 +17550,9 @@ document.addEventListener(
             "Romance em Cena",
             "Dream Signature",
             "Frasco Original"
-
         ];
 
-
         const galleryTitleENV54 = [
-
             "Love in the Air",
             "Flowers in Dream",
             "Among the Clouds",
@@ -19470,46 +17564,36 @@ document.addEventListener(
             "Romance Scene",
             "Dream Signature",
             "Original Bottle"
-
         ];
 
-
         function getGalleryLanguageV54() {
-
             return apiV54().state
                 ?.currentLanguage ===
                 "en-US"
                     ? "en-US"
                     : "pt-BR";
-
         }
 
-
         function syncGalleryLanguageV54() {
-
             const english =
                 getGalleryLanguageV54() ===
                 "en-US";
-
 
             const titles =
                 english
                     ? galleryTitleENV54
                     : galleryTitlePTV54;
 
-
             galleryItemsV54.forEach(
                 (
                     item,
                     index
                 ) => {
-
                     const title =
                         titles[
                             index
                         ] ||
                         `Dream ${index + 1}`;
-
 
                     const heading =
                         $v54(
@@ -19517,33 +17601,26 @@ document.addEventListener(
                             item
                         );
 
-
                     const button =
                         $v54(
                             ".gallery-open",
                             item
                         );
 
-
                     if (
                         heading
                     ) {
-
                         heading.textContent =
                             title;
-
                     }
-
 
                     if (
                         button
                     ) {
-
                         button.textContent =
                             english
                                 ? "explore ↗"
                                 : "explorar ↗";
-
 
                         button.setAttribute(
                             "aria-label",
@@ -19551,17 +17628,12 @@ document.addEventListener(
                                 ? `Open ${title}`
                                 : `Abrir ${title}`
                         );
-
                     }
-
                 }
             );
-
         }
 
-
         function getCurrentGalleryIndexV54() {
-
             const number =
                 Number(
                     galleryCurrentV54
@@ -19569,46 +17641,35 @@ document.addEventListener(
                         ?.trim()
                 );
 
-
             if (
                 Number.isFinite(
                     number
                 ) &&
                 number >
-                0
+                    0
             ) {
-
                 return Math.min(
                     galleryItemsV54.length -
-                    1,
+                        1,
                     number -
-                    1
+                        1
                 );
-
             }
 
-
             return 0;
-
         }
-
 
         const preloadedGalleryImagesV54 =
             new Set();
 
-
         function preloadGalleryImageV54(
             index
         ) {
-
             if (
                 !galleryItemsV54.length
             ) {
-
                 return;
-
             }
-
 
             const normalized =
                 (
@@ -19616,7 +17677,6 @@ document.addEventListener(
                     galleryItemsV54.length
                 ) %
                 galleryItemsV54.length;
-
 
             const source =
                 $v54(
@@ -19632,44 +17692,32 @@ document.addEventListener(
                     ]
                 )?.src;
 
-
             if (
                 !source ||
-                preloadedGalleryImagesV54
-                    .has(
-                        source
-                    )
+                preloadedGalleryImagesV54.has(
+                    source
+                )
             ) {
-
                 return;
-
             }
-
 
             preloadedGalleryImagesV54.add(
                 source
             );
 
-
             const image =
                 new Image();
-
 
             image.decoding =
                 "async";
 
-
             image.src =
                 source;
-
         }
 
-
         function syncGalleryA11yV54() {
-
             const activeIndex =
                 getCurrentGalleryIndexV54();
-
 
             const dots =
                 galleryDotsV54
@@ -19679,161 +17727,124 @@ document.addEventListener(
                     )
                     : [];
 
-
             dots.forEach(
                 (
                     dot,
                     index
                 ) => {
-
                     if (
                         index ===
                         activeIndex
                     ) {
-
                         dot.setAttribute(
                             "aria-current",
                             "true"
                         );
 
-
                         dot.scrollIntoView({
-                            behavior:
-                                "smooth",
-
-                            block:
-                                "nearest",
-
-                            inline:
-                                "nearest"
+                            behavior: "smooth",
+                            block: "nearest",
+                            inline: "nearest"
                         });
-
                     }
 
                     else {
-
                         dot.removeAttribute(
                             "aria-current"
                         );
-
                     }
-
                 }
             );
-
 
             galleryItemsV54.forEach(
                 (
                     item,
                     index
                 ) => {
-
                     item.setAttribute(
                         "aria-label",
                         `${index + 1} de ${galleryItemsV54.length}`
                     );
 
-
                     item.setAttribute(
                         "aria-current",
                         String(
                             index ===
-                            activeIndex
+                                activeIndex
                         )
                     );
-
                 }
             );
-
 
             preloadGalleryImageV54(
                 activeIndex
             );
 
-
             preloadGalleryImageV54(
                 activeIndex +
-                1
+                    1
             );
-
 
             preloadGalleryImageV54(
                 activeIndex -
-                1
+                    1
             );
-
         }
-
 
         let gallerySyncTimerV54 =
             null;
 
-
         galleryTrackV54?.addEventListener(
             "scroll",
             () => {
-
                 window.clearTimeout(
                     gallerySyncTimerV54
                 );
-
 
                 gallerySyncTimerV54 =
                     window.setTimeout(
                         syncGalleryA11yV54,
                         130
                     );
-
             },
             {
-                passive:
-                    true
+                passive: true
             }
         );
-
 
         galleryDotsV54?.addEventListener(
             "click",
             () => {
-
                 window.setTimeout(
                     syncGalleryA11yV54,
                     120
                 );
-
             }
         );
-
 
         $v54(
             "#galleryPrev"
         )?.addEventListener(
             "click",
             () => {
-
                 window.setTimeout(
                     syncGalleryA11yV54,
                     140
                 );
-
             }
         );
-
 
         $v54(
             "#galleryNext"
         )?.addEventListener(
             "click",
             () => {
-
                 window.setTimeout(
                     syncGalleryA11yV54,
                     140
                 );
-
             }
         );
-
 
         /* =====================================================
            IMAGENS • LOAD / ERROR SEM QUEBRAR O LAYOUT
@@ -19843,87 +17854,65 @@ document.addEventListener(
             "img"
         ).forEach(
             image => {
-
                 image.decoding =
                     "async";
 
-
                 function markReady() {
-
                     image.classList.add(
                         "v54-image-ready"
                     );
 
-
                     image.classList.remove(
                         "v54-image-error"
                     );
-
                 }
 
-
                 function markError() {
-
                     image.classList.add(
                         "v54-image-error"
                     );
-
 
                     const galleryItem =
                         image.closest(
                             ".gallery-item"
                         );
 
-
                     if (
                         galleryItem
                     ) {
-
                         galleryItem.classList.add(
                             "v54-gallery-image-error"
                         );
-
                     }
-
                 }
-
 
                 if (
                     image.complete &&
                     image.naturalWidth >
-                    0
+                        0
                 ) {
-
                     markReady();
-
                 }
 
                 else {
-
                     image.addEventListener(
                         "load",
                         markReady,
                         {
-                            once:
-                                true
+                            once: true
                         }
                     );
-
 
                     image.addEventListener(
                         "error",
                         markError,
                         {
-                            once:
-                                true
+                            once: true
                         }
                     );
-
                 }
-
             }
         );
-
 
         /* =====================================================
            TOUCH • LIMPEZA DE ESTADO VISUAL
@@ -19932,57 +17921,43 @@ document.addEventListener(
         document.addEventListener(
             "pointerup",
             () => {
-
                 bodyV54.classList.remove(
                     "v54-pointer-down"
                 );
-
             },
             {
-                passive:
-                    true
+                passive: true
             }
         );
-
 
         document.addEventListener(
             "pointercancel",
             () => {
-
                 bodyV54.classList.remove(
                     "v54-pointer-down"
                 );
-
             },
             {
-                passive:
-                    true
+                passive: true
             }
         );
-
 
         document.addEventListener(
             "pointerdown",
             event => {
-
                 if (
                     event.pointerType ===
                     "touch"
                 ) {
-
                     bodyV54.classList.add(
                         "v54-pointer-down"
                     );
-
                 }
-
             },
             {
-                passive:
-                    true
+                passive: true
             }
         );
-
 
         /* =====================================================
            LANGUAGE V5.4
@@ -19992,29 +17967,20 @@ document.addEventListener(
             "[data-language]"
         ).forEach(
             button => {
-
                 button.addEventListener(
                     "click",
                     () => {
-
                         window.setTimeout(
                             () => {
-
                                 syncGalleryLanguageV54();
-
-
                                 syncGalleryA11yV54();
-
                             },
                             40
                         );
-
                     }
                 );
-
             }
         );
-
 
         /* =====================================================
            INIT
@@ -20022,33 +17988,26 @@ document.addEventListener(
 
         syncGalleryLanguageV54();
 
-
         window.setTimeout(
             syncGalleryA11yV54,
             80
         );
 
-
         rootV54.classList.add(
             "dream-v5-4-ready"
         );
 
-
         if (
             window.DreamV5
         ) {
-
             window.DreamV5.version =
-                "5.4";
-
+                "5.4.1";
 
             window.DreamV5.syncViewport =
                 syncViewportHeightV54;
 
-
             window.DreamV5.syncGallery =
                 syncGalleryA11yV54;
-
         }
 
     }

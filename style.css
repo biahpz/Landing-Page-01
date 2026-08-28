@@ -2492,11 +2492,17 @@ em {
 
 
 .hero-product.spraying
-.product-image {
+.product-image-wrap {
     animation:
         bottleSpray
         0.62s
         ease;
+}
+
+.hero-product.spraying
+.product-image {
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 
@@ -20300,4 +20306,58 @@ body.dark .gallery-item {
 
 /* =========================================================
    FIM • DREAM AMOR NO AR V5.4 PERFECT EDITION
+========================================================= */
+
+
+/* =========================================================
+   DREAM V5.4.1 • STABILITY HOTFIX
+   STUDIO • SPRAY • MOBILE
+========================================================= */
+
+/* O antigo modo imersivo foi removido da interface. */
+.immersive-fab {
+    display: none !important;
+}
+
+/* O painel abre sobre a página, sem empurrar/rolar o conteúdo. */
+body.settings-open {
+    overflow: hidden;
+    touch-action: none;
+}
+
+body.settings-open .settings-panel,
+body.settings-open .settings-scroll {
+    touch-action: pan-y;
+}
+
+.settings-panel.open {
+    transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Mantém o frasco sempre visível durante a borrifada. */
+.hero-product.spraying .product-image {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* A reação da borrifada fica no wrapper e não reinicia o fade do frasco. */
+.hero-product.spraying .product-image-wrap {
+    animation: bottleSpray 0.62s ease !important;
+}
+
+@media (max-width: 760px) {
+    .settings-panel.open {
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: var(--v54-app-height, 100dvh) !important;
+        max-height: none !important;
+        border-radius: 0 !important;
+    }
+}
+
+/* =========================================================
+   FIM • DREAM V5.4.1 STABILITY HOTFIX
 ========================================================= */
